@@ -3,9 +3,13 @@ require './function/config.php';
 session_start();
 
 if (isset($_POST["submit"])) {
-    $title = mysqli_real_escape_string($conn, $_POST["title"]);
-    $details = mysqli_real_escape_string($conn, $_POST["details"]);
+    $title = $_POST["title"]; //php pdo code
+    $details = $_POST["details"];
     $user_id = $_SESSION['auth_user']['id'];
+
+    // $title = mysqli_real_escape_string($conn, $_POST["title"]);
+    // $details = mysqli_real_escape_string($conn, $_POST["details"]);
+    // $user_id = $_SESSION['auth_user']['id'];
 
     if ($_FILES["image"]["error"] === 4) {
         echo "<script> alert('Image Does Not Exist'); </script>";
@@ -22,23 +26,37 @@ if (isset($_POST["submit"])) {
         } elseif ($filesize > 3000000) {
             echo "<script> alert('Image Size Is Too Large'); </script>";
         } else {
-            $newImageName = uniqid();
-            $newImageName .= '.' . $imageExtension;
+            $newImageName = uniqid() . '.' . $imageExtension;
+            $imagePath = 'upload/news/' . $newImageName;
 
-            move_uploaded_file($tmpName, 'upload/news/' . $newImageName);
-            $query = "INSERT INTO news (title, details, image, user_id) VALUES ('$title', '$details', '$newImageName', '$user_id')";
-            $result = mysqli_query($conn, $query);
-            if ($result) {
-                echo "
-                <script> 
-                    alert('Successfully Added'); 
-                    document.location.href = 'admin-add-news.php';
-                </script>";
+            if (move_uploaded_file($tmpName, $imagePath)) {
+                try {
+                
+                    $query = "INSERT INTO news (title, details, image, user_id) VALUES (:title, :details, :image, :user_id)";
+                    $stmt = $conn->prepare($query);
+
+                    $stmt->bindParam(':title', $title, PDO::PARAM_STR); //bind param
+                    $stmt->bindParam(':details', $details, PDO::PARAM_STR);
+                    $stmt->bindParam(':image', $newImageName, PDO::PARAM_STR);
+                    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+                    if ($stmt->execute()) {
+                        echo "<script> 
+                            alert('Successfully Added'); 
+                            window.location.href = 'admin-add-news.php';
+                        </script>";
+                    } else {
+                        echo "Error: " . $stmt->errorInfo()[2];
+                    }
+                } catch (PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
             } else {
-                echo "Error: " . mysqli_error($conn); // Display the specific error message
+                echo "Error moving uploaded file.";
             }
         }
     }
+    
 }
 ?>
 

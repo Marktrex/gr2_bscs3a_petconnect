@@ -21,7 +21,7 @@ if (isset($_POST["register"])) { //code ni marc
     // $searchEmail = "test@gmail.com";
 
     //php using PDO
-    $sql_check = "SELECT * FROM users WHERE email = :email";
+    $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);
     // Bind the parameter
     $stmt->bindParam(':email', $email);
@@ -31,14 +31,14 @@ if (isset($_POST["register"])) { //code ni marc
     $rowCount = $stmt->rowCount();
 
     if ($rowCount > 0) {
-        echo "Data exists!";
+        echo "Hello :)";
         $conn = null;
     } 
     else {
         echo "Data does not exist.";
         if ($password == $passwordRepeat){
             //insert user data
-            $sql_insert = "INSERT INTO users (fname, lname, email, password, user_type) VALUES(:fname, :lname , :email, :password, 2)";
+            $sql_insert = "INSERT INTO user (fname, lname, email, password, user_type) VALUES(:fname, :lname , :email, :password, 2)";
             $stmt = $conn->prepare($sql_insert);
             // Bind the parameter, needed in using PDO
             $stmt->bindParam(':fname', $fname);
@@ -47,7 +47,10 @@ if (isset($_POST["register"])) { //code ni marc
             $stmt->bindParam(':password', $password); 
             // Execute the query
             if ($stmt->execute()) {
-                echo "Record inserted successfully!";
+                echo '<script language="javascript">';
+                echo 'alert("Sign up sucessfully");';
+                echo 'window.location = "../home.php";';
+                echo '</script>';
             } else {
                 echo "Error inserting record: " . $stmt->errorInfo()[2];
             }

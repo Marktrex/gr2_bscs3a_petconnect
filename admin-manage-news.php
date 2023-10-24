@@ -15,22 +15,29 @@ if (isset($_POST['promote'])) {
         exit;
     } elseif ($is_featured == 0) {
         // Set all other news as not featured (is_featured = 0)
-        $updateAllSql = "UPDATE news SET is_featured = 0 WHERE news_id <> '$id'";
-        if (mysqli_query($conn, $updateAllSql)) {
+        $updateAllSql = "UPDATE news SET is_featured = 0 WHERE news_id <> :id";
+        $stmt = $conn->prepare($updateAllSql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT); //use to bind a parameter to a prepared statement. 
+        // $stmt->execute(); you can put this execute method in the if statement
+
+        if ($stmt->execute()) {
             // Set the selected news as featured (is_featured = 1)
-            $updateSql = "UPDATE news SET is_featured = 1 WHERE news_id = '$id'";
-            if (mysqli_query($conn, $updateSql)) {
+            $updateSql = "UPDATE news SET is_featured = 1 WHERE news_id = :id";
+            $stmt = $conn->prepare($updateSql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+           
+            if ($stmt->execute()) {
                 echo '<script language="javascript">';
                 echo 'alert("Set as Headlined");';
                 echo 'window.location.href = "admin-manage-news.php";';
                 echo '</script>';
                 exit;
             } else {
-                echo "Error setting as Headlined: " . mysqli_error($conn);
+                echo "Error setting as Headlined: " . $stmtUpdate->errorInfo()[2];
                 exit;
             }
         } else {
-            echo "Error updating news: " . mysqli_error($conn);
+            echo "Error updating news: " . $stmtUpdate->errorInfo()[2];
             exit;
         }
     } else {
@@ -43,44 +50,53 @@ if (isset($_POST['promote'])) {
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $id = $_POST['id'];
-    $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $details = mysqli_real_escape_string($conn, $_POST['details']);
+    $title = $_POST['title'];
+    $details = $_POST['details'];
 
-    $sql = "UPDATE news SET title = '$title', details = '$details' WHERE news_id = '$id'";
+    // $title = mysqli_real_escape_string($conn, $_POST['title']);
+    // $details = mysqli_real_escape_string($conn, $_POST['details']);
 
+    $sql = "UPDATE news SET title = :title, details = :details WHERE news_id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':details', $details, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     // Perform the database query
-    if (mysqli_query($conn, $sql)) {
+    if ($stmt->execute()) {
         echo "
             <script> 
                 alert('Data updated successfully'); 
                 window.location.href = 'admin-manage-news.php';
             </script>";
     } else {
-        echo "Error updating data: " . mysqli_error($conn);
+        echo "Error updating data: ";
     }
 }
 
 // Delete Button
 if (isset($_POST['delete'])) {
-    // Retrieve the id of the record to delete
+    // Retrieve the ID of the record to delete
     $id = $_POST['id'];
 
-    // Delete the record from the database
-    $sql = "DELETE FROM news WHERE news_id='$id'";
+        // Prepare the SQL statement with a parameterized query
+        $stmt = $conn->prepare("DELETE FROM news WHERE news_id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-    if (mysqli_query($conn, $sql)) {
-        echo "
-        <script> 
-            alert('Record deleted successfully'); 
-            document.location.href = 'admin-manage-news.php';
-        </script>";
-    } else {
-        echo "Error deleting record: " . mysqli_error($conn);
-    }
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "
+            <script> 
+                alert('Record deleted successfully'); 
+                window.location.href = 'admin-manage-news.php';
+            </script>";
+        } else {
+            echo "Error deleting record: " . $stmt->errorInfo()[2];
+        }
+  
 }
 
 // Close the database connection
-mysqli_close($conn);
+$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -160,11 +176,13 @@ mysqli_close($conn);
 
                             // Query the database table
                             $sql = "SELECT news_id, image ,title , details, date_published, is_featured FROM news";
-                            $result = $conn->query($sql);
+                            $stmt = $conn->query($sql);
+
+                            // $result = $conn->query($sql);
 
                             // Fetch and display the data
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
+                            if ($stmt->rowCount() > 0) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
 
                                     <tr>
@@ -193,7 +211,7 @@ mysqli_close($conn);
                             }
 
                             // Close the connection
-                            $conn->close();
+                            $conn = null;
                             ?>
                         </tbody>
                     </table>

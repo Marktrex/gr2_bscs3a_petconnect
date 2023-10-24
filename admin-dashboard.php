@@ -292,13 +292,15 @@ $countVolunteer = $rowVolunteer['volunteer'];
                             $time_slot = 'Morning Session';
 
                             // Query the database to fetch the appointments for the selected date and time slot
-                            $query = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
-                            $result = mysqli_query($conn, $query);
+                            $sql = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
+                            $stmt = $conn->query($sql); // sql query of php pdo
+
+                            // $result = mysqli_query($conn, $query);
 
                             // Check if there are any appointments
-                            if (mysqli_num_rows($result) > 0) {
+                            if ($stmt->rowCount() > 0) {
                                 // Iterate over each appointment and create table rows
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     $type = $row['appointment_type'];
                                     $firstName = $row['first_name'];
                                     $middleName = $row['middle_name'];
@@ -372,13 +374,15 @@ $countVolunteer = $rowVolunteer['volunteer'];
                             $time_slot = 'Afternoon Session';
 
                             // Query the database to fetch the appointments for the selected date and time slot
-                            $query = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
-                            $result = mysqli_query($conn, $query);
+                            $sql = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
+                            $stmt = $conn->query($sql);
+                
+                            // $result = mysqli_query($conn, $query);
 
                             // Check if there are any appointments
-                            if (mysqli_num_rows($result) > 0) {
+                            if ($stmt->rowCount() > 0) {
                                 // Iterate over each appointment and create table rows
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     $type = $row['appointment_type'];
                                     $firstName = $row['first_name'];
                                     $middleName = $row['middle_name'];

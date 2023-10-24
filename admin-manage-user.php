@@ -59,7 +59,9 @@ if (isset($_POST['demote'])) {
     } elseif ($userType == 1) {
         // Demote to regular user
         $sql = "UPDATE user SET user_type = 2 WHERE user_id = '$id'";
-        if (mysqli_query($conn, $sql)) {
+        $stmt = $conn->prepare($sql);
+
+        if ($stmt) {
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
