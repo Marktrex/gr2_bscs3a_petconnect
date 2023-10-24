@@ -1,7 +1,7 @@
 <?php
 require './function/config.php';
 session_start();
-
+$kahitanongvariable;
 if (isset($_POST["submit"])) {
     $title = mysqli_real_escape_string($conn, $_POST["title"]);
     $details = mysqli_real_escape_string($conn, $_POST["details"]);
