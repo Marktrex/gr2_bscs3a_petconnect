@@ -101,9 +101,10 @@ if (isset($_POST['update'])) {
         // If no new password is provided, update only the other fields
         $sql = "UPDATE user SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE user_id = '$id'";
     }
-    $stmt->prepare($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
     // Perform the database query
-    if (mysqli_query($conn, $sql)) {
+    if($stmt){
         echo "
             <script> 
                 alert('Data updated successfully'); 
@@ -126,8 +127,10 @@ if (isset($_POST['delete'])) {
 
     // Delete the record from the database
     $sql = "DELETE FROM user WHERE user_id='$id'";
+    $stmt = $conn->prepare($sql);
+    $stmt ->execute();
 
-    if (mysqli_query($conn, $sql)) {
+    if ($stmt) {
         echo "
         <script> 
             alert('Record deleted successfully'); 
