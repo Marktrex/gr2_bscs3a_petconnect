@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Acme", serif;
+  text-decoration: none;
+  /* outline: auto; */
+}
+body {
+  position: relative;
+}
+
+.navbar {
+  width: 100%;
+  z-index: 999;
+}
+
+.navbar a {
+  display: inline-block;
+  color: #6c4421;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 13px 30px 13px 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.navbar a.logo {
+  padding: 3px 2px 1px 2px;
+  vertical-align: middle;
+  margin-top: 0.5rem;
+  margin-left: 20px;
+}
+.navbar .list:hover {
+  background-color: #d6bca8;
+  border-radius: 10px;
+}
+.img-logo {
+  width: 8rem;
+  top: 1.6%;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #ffffff;
+  color: #6c4421;
+  padding: 13px 30px 13px 30px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.dropdown-content {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  padding: 1px 1px 1px 1px;
+  z-index: 999;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  width: 11rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #d6bca8;
+}
+
+.navbar a.login {
+  margin-left: 20rem;
+}
+.dd-p {
+  position: relative;
+}
+
+.dd-p .dropdown-content {
+  position: absolute;
+}
+
+/* Adjust the margin-left for the dropdown */
+.navbar .dropdown.dd-p {
+  margin-left: 15rem;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar a:not(.logo),
+  .navbar .dr:not(.logo) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive .logo {
+    display: none;
+  }
+  .navbar.responsive a.icon {
+    position: absolute;
+    display: block;
+    top: -12px;
+    right: 20px;
+    float: right;
+    padding: 10px; /* Add this line */
+    z-index: 1000;
+  }
+  .navbar.responsive a, .navbar.responsive .dr {
+    float: none;
+    display: block;
+    text-align: center;
+    margin-top: 15px; /* Adjust as needed */
+  }
+  .navbar.responsive .dropdown {
+    float: none;
+    display: block;
+    text-align: center;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+    margin-top: -15px;
+    margin-left: 8rem;
+  }
+  .dropdown .dropdown-content a:hover {
+    display: block;
+  }
+  .navbar a.login {
+    margin-left: 0;
+  }
+  .navbar .dropdown.dd-p {
+    margin-left: 0rem;
+  }
+}

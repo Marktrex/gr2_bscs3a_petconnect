@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Acme", serif;
+  text-decoration: none;
+  /* outline: auto; */
+}
+/* Footer */
+.footer {
+  min-height: 60vh;
+  margin-top: 3%;
+  position: relative;
+  padding: 5%;
+  background: #fad046;
+  border-top-left-radius: 6rem;
+  border-top-right-radius: 6rem;
+}
+
+.footer .logo {
+  width: 10rem;
+}
+
+.footer .quick-links {
+  display: block;
+  font-size: 20px;
+  margin-top: 1.5rem;
+  margin-right: 10%;
+  background-color: #fff9d6;
+  position: absolute;
+  padding: 2%;
+  border-radius: 10%;
+}
+
+.footer .about-us {
+  position: absolute;
+  top: 20%;
+  left: 23%;
+  width: 70%;
+  text-align: justify;
+}
+
+.footer .address {
+  position: absolute;
+  top: 50%;
+  left: 23%;
+}
+.footer .about-us h3 {
+  font-size: 1.8rem;
+}
+
+.footer .about-us p {
+  font-size: 1.1rem;
+}
+
+.footer .address h3 {
+  font-size: 1.8rem;
+}
+
+.footer .address p {
+  font-size: 1.1rem;
+}
+
+.footer .address a {
+  font-size: 1.1rem;
+}
+
+.info {
+  min-height: 12vh;
+  display: flex;
+  background-color: #253239;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.info .contact {
+  margin-top: 10px;
+  float: left;
+  margin-left: 20%;
+}
+
+.info .information {
+  margin-top: 10px;
+  float: left;
+  margin-left: 17%;
+  margin-bottom: 10px;
+}
+
+.info .social {
+  margin-top: 10px;
+  float: left;
+  margin-left: 17%;
+}
+
+.info .social h3 {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.info .social i {
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+
+  .scroll-to-top:hover {
+    background-color: #555;
+  }
+
+@media screen and (max-width: 600px) {
+  .footer .logo{
+    margin-left: 30%;
+  }
+
+  .footer {
+    min-height: 75vh;
+  }
+  .footer .about-us {
+    position: absolute;
+    top: 20%;
+    left: 46%;
+    width: 50%;
+    text-align: justify;
+  }
+  .footer .address {
+    position: absolute;
+    top: 80%;
+    left: 46%;
+    width: 50%;
+  }
+  .footer .quick-links {
+    display: block;
+    font-size: 20px;
+    margin-top: 5rem;
+    margin-right: 10%;
+    background-color: #fff9d6;
+    position: absolute;
+    padding: 2%;
+    border-radius: 10%;
+  }
+
+  .footer .about-us h3 {
+    font-size: 1.1rem;
+  }
+  .footer .address h3 {
+    font-size: 1.1rem;
+  }
+
+  .footer .address p {
+    font-size: 1.1rem;
+  }
+
+  .footer .address a {
+    font-size: 1.1rem;
+  }
+
+  .info {
+    min-height: 12vh;
+    display: flex;
+    background-color: #253239;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .info h3{
+    font-size: 15px;
+  }
+  .info p{
+    font-size: 0.9rem;
+  }
+  .info .contact {
+    margin-top: 10px;
+    float: left;
+    margin-left: 0%;
+  }
+  
+  .info .information {
+    margin-top: 10px;
+    float: left;
+    margin-left: 10%;
+    margin-bottom: 10px;
+  }
+  
+  .info .social {
+    margin-top: 10px;
+    float: left;
+    margin-left: 10%;
+  }
+  
+  .info .social h3 {
+    margin-top: 0px;
+    text-align: center;
+    
+  }
+  
+  .info .social i {
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    font-size: 1.5em;
+  }
+}

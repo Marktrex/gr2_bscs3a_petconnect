@@ -1,0 +1,21 @@
+ <!-- Display featured pets -->
+            <?php for ($i = 1; $i <= 4; $i++):
+                $rows = mysqli_query($conn, "SELECT * FROM pets WHERE is_featured = $i");
+                foreach ($rows as $row): ?>
+                    <a href="adoptprofile.php?id=<?php echo $row['pets_id']; ?>">
+                        <div class="feature card<?php echo $i; ?>">
+                            <img src="./upload/<?php echo $row['image']; ?>" alt="">
+                            <h4><b>
+                                    <?php echo $row["name"]; ?>
+                                </b></h4>
+                        </div>
+                    </a>
+                <?php endforeach;
+            endfor; ?>
+
+
+             $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+              $stmt = $conn->prepare($clearSql);
+    $stmt->execute();

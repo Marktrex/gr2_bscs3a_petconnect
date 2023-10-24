@@ -1,0 +1,52 @@
+
+
+//first create a database name called websys and insert this code in the sql page.
+DROP TABLE if EXISTS users;
+CREATE TABLE users(
+    users_id int(11) AUTO_INCREMENT PRIMARY KEY NOT null,
+    fname varchar(250) not null,
+    lname varchar(250) not null,
+    email varchar(250) not null,
+    password varchar(250) not null,
+    user_type varchar(25) not null,
+    date_created timestamp
+);
+
+DROP TABLE if EXISTS appointments;
+CREATE TABLE appointments(
+    appointment_id int(11) AUTO_INCREMENT PRIMARY KEY NOT null,
+    appointment_type varchar(250) not null,
+    appointment_date date,
+    time_slot varchar(250) not null,
+    first_name varchar(255) not null,
+    middle_name varchar(250) not null,
+    last_name varchar(255) not null,
+    mobile_number varchar(20) not null,
+    home_address varchar(255) not null,
+    email_address varchar(255) not null
+);
+
+DROP TABLE if EXISTS pets;
+CREATE TABLE pets(
+    pet_id int(11) AUTO_INCREMENT PRIMARY KEY NOT null,
+    name varchar(250) not null,
+    type varchar(250) not null,
+    breed varchar(250) not null,
+    sex varchar(250) not null,
+    weight varchar(250) not null,
+    age varchar(250) not null,
+    date date,
+    about text not null,
+    image varchar(250) not null
+);
+
+CREATE TABLE news(
+    news_id int(11) AUTO_INCREMENT PRIMARY KEY NOT null,
+    title varchar(250) not null,
+    details mediumtext not null,
+    image varchar(250) not null,
+    date_published datetime
+);
+
+
+

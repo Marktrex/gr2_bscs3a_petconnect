@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Acme", serif;
+  text-decoration: none;
+  /* outline: auto; */
+}
+
+.navbar {
+  background-color: #253239;
+  overflow: hidden;
+  /* z-index: 1; */
+}
+.navbar a {
+  display: inline-block;
+  color: #6c4421;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 13px 30px 13px 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+.navbar a.logo {
+  padding: 3px 2px 1px 2px;
+  vertical-align: middle;
+  margin-top: 0.5rem;
+  margin-left: 20px;
+  
+}
+
+.navbar .list {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  color: black;
+  transition: transform 0.3s;
+}
+
+.navbar .list:hover {
+  transform: scale(1.1);
+}
+
+.img-logo {
+  width: 8rem;
+  top: 1.6%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.setting {
+  min-height: 89vh;
+  display: flex;
+  /* background-color: #253239; */
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar {
+  position: relative;
+  background-color: #fad046;
+  width: 20rem;
+  /* min-height: 78vh; */
+}
+
+.setting .sidebar a {
+  display: flex;
+  padding: 20px 50px 20px 50px;
+  background-color: #253239;
+  text-decoration: none;
+  color: white;
+  font-size: large;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main {
+  position: absolute;
+  background-color: #f0f0f0;
+  width: 76rem;
+  min-height: 89vh;
+  margin-left: 20rem;
+}
+
+/* Form Design */
+ a,
+ .form-control {
+     text-decoration: none !important;
+ }
+
+ .table-container {
+     max-height: 400px;
+     overflow-y: scroll;
+ }
+
+ .form-row {
+     margin-bottom: 1rem;
+ }
+
+ .form-row label {
+     width: 80px;
+ }
+
+ .form-row input {
+     width: 50px;
+ }
+
+ .table-container {
+     max-height: 400px;
+     overflow-y: scroll;
+ }
+
+ .form-container {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 20px;
+ }
+
+ .form-group {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-bottom: 10px;
+ }
+
+ .form-group label {
+     text-align: center;
+ }
+
+ .form-group input[type="number"] {
+     width: 50px;
+     height: 50px;
+     text-align: center;
+ }
+
+ input[type="submit"] {
+     margin-top: 10px;
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }

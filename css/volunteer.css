@@ -1,0 +1,508 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Acme", serif;
+  text-decoration: none;
+  /* outline: auto; */
+}
+
+.navbar .n5 {
+  background-color: #d6bca8;
+  border-radius: 10px;
+}
+
+.home {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 230vh;
+}
+
+.home .content img {
+  width: 30vw;
+  height: 80vh;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.content img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50px;
+}
+
+.title h1 {
+  position: absolute;
+  width: 45rem;
+  text-align: center;
+  font-weight: 400;
+  font-size: 1cm;
+  top: 5%;
+  left: 45%;
+}
+
+.content2 {
+  position: absolute;
+  top: 12%;
+  left: 46%;
+}
+
+.home .content2 img {
+  width: 45vw;
+  height: 40vh;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.content2 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+}
+
+.content3 {
+  position: absolute;
+  top: 32%;
+  left: 46%;
+}
+
+.home .content3 img {
+  width: 20vw;
+  height: 40vh;
+  overflow: hidden;
+  border-radius: 40px;
+  margin-right: 70px; /* Add right margin */
+}
+
+.content3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 40px;
+}
+
+.home .requirement {
+  position: absolute;
+  top: 48%;
+  left: 5%;
+}
+
+.requirement img {
+  padding: 10px;
+  width: 4vw;
+  height: 8vh;
+}
+
+.requirement {
+  width: 30rem;
+}
+
+.requirement h1 {
+  font-size: 1cm;
+}
+
+.requirement p {
+  font-size: 0.7cm;
+}
+
+.requirement .content {
+  width: 30vw;
+  height: 8vh;
+  margin-left: 65px;
+}
+
+.requirement .b1 {
+  position: absolute;
+  margin-top: 0px;
+  margin-left: -10px;
+}
+
+.requirement .b2 {
+  position: absolute;
+  margin-top: 90px;
+  margin-left: -10px;
+}
+
+.requirement .b3 {
+  position: absolute;
+  margin-top: 160px;
+  margin-left: -10px;
+}
+
+.requirement .b4 {
+  position: absolute;
+  margin-top: 210px;
+  margin-left: -10px;
+}
+
+.home .opportunity {
+  position: absolute;
+  top: 57%;
+  left: 55%;
+}
+
+.opportunity img {
+  padding: 10px;
+  width: 4vw;
+  height: 8vh;
+}
+
+.opportunity {
+  width: 30rem;
+}
+
+.opportunity h1 {
+  font-size: 1cm;
+}
+
+.opportunity p {
+  font-size: 0.7cm;
+}
+
+.opportunity .content {
+  width: 30vw;
+  height: 8vh;
+  margin-left: 65px;
+}
+
+.opportunity .b1 {
+  position: absolute;
+  margin-top: 0px;
+  margin-left: -10px;
+}
+
+.opportunity .b2 {
+  position: absolute;
+  margin-top: 110px;
+  margin-left: -10px;
+}
+
+.opportunity .b3 {
+  position: absolute;
+  margin-top: 210px;
+  margin-left: -10px;
+}
+
+.home .benefits {
+  position: absolute;
+  top: 70%;
+  left: 5%;
+}
+
+.benefits img {
+  padding: 10px;
+  width: 4vw;
+  height: 8vh;
+}
+
+.benefits {
+  width: 30rem;
+}
+
+.benefits h1 {
+  font-size: 1cm;
+}
+
+.benefits p {
+  font-size: 0.7cm;
+}
+
+.benefits .content {
+  width: 30vw;
+  height: 8vh;
+  margin-left: 65px;
+}
+
+.benefits .b1 {
+  position: absolute;
+  margin-top: 0px;
+  margin-left: -10px;
+}
+
+.benefits .b2 {
+  position: absolute;
+  margin-top: 90px;
+  margin-left: -10px;
+}
+
+.benefits .b3 {
+  position: absolute;
+  margin-top: 178px;
+  margin-left: -10px;
+}
+
+.home .button {
+  position: absolute;
+  top: 80%;
+  left: 58%;
+}
+
+.home .button img {
+  width: 25rem;
+  height: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .home {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 230vh;
+  }
+
+  .home .content img {
+    width: 35vw;
+    height: 40vh;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50px;
+  }
+
+  .content img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50px;
+  }
+
+  .title h1 {
+    position: absolute;
+    width: 15rem;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.5cm;
+    top: 5%;
+    left: 41%;
+  }
+
+  .content2 {
+    position: absolute;
+    top: 12%;
+    left: 46%;
+  }
+
+  .home .content2 img {
+    width: 45vw;
+    height: 15vh;
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .content2 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+  }
+
+  .content3 {
+    position: absolute;
+    top: 22%;
+    left: 42%;
+    display: flex;
+  }
+
+  .home .content3 img {
+    width: 25vw;
+    height: 15vh;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-right: 10px; /* Add right margin */
+  }
+
+  .content3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 40px;
+  }
+
+  .home .requirement {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    text-align: center;
+  }
+
+  .requirement img {
+    display: none;
+    padding: 0px;
+    width: 3vw;
+    height: 2vh;
+  }
+
+  .requirement {
+    width:  20rem;
+  }
+
+  .requirement h1 {
+    font-size: 0.6cm;
+    width: 20rem;
+    margin-left: 40px;
+  }
+
+  .requirement p {
+    font-size: 0.5cm;
+  }
+
+  .requirement .content {
+    width: 70vw;
+    height: 8vh;
+    margin-left: 50px;
+  }
+
+  .requirement .b1 {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: -10px;
+  }
+
+  .requirement .b2 {
+    position: absolute;
+    margin-top: 90px;
+    margin-left: -10px;
+  }
+
+  .requirement .b3 {
+    position: absolute;
+    margin-top: 160px;
+    margin-left: -10px;
+  }
+
+  .requirement .b4 {
+    position: absolute;
+    margin-top: 210px;
+    margin-left: -10px;
+  }
+
+  .home .opportunity {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    text-align: center;
+  }
+
+  .opportunity img {
+    display: none;
+    padding: 10px;
+    width: 3vw;
+    height: 4vh;
+  }
+
+  .opportunity {
+    width: 30rem;
+  }
+
+  .opportunity h1 {
+    font-size: 0.6cm;
+    width: 20rem;
+    margin-left: 40px;
+  }
+
+  .opportunity p {
+    font-size: 0.5cm;
+  }
+
+  .opportunity .content {
+    width: 70vw;
+    height: 8vh;
+    margin-left: 50px;
+  }
+
+  .opportunity .b1 {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -10px;
+  }
+
+  .opportunity .b2 {
+    position: absolute;
+    margin-top: 110px;
+    margin-left: -10px;
+  }
+
+  .opportunity .b3 {
+    position: absolute;
+    margin-top: 210px;
+    margin-left: -10px;
+  }
+
+  .home .benefits {
+    position: absolute;
+    top: 65%;
+    left: 5%;
+    text-align: center;
+  }
+
+  .benefits img {
+    display: none;
+    padding: 10px;
+    width: 4vw;
+    height: 8vh;
+  }
+
+  .benefits {
+    width: 20rem;
+  }
+
+  .benefits h1 {
+    font-size: 0.6cm;
+    width: 20rem;
+    margin-left: 40px;
+  }
+
+  .benefits p {
+    font-size: 0.5cm;
+  }
+
+  .benefits .content {
+    width: 70vw;
+    height: 8vh;
+    margin-left: 50px;
+  }
+
+  .benefits .b1 {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: -10px;
+  }
+
+  .benefits .b2 {
+    position: absolute;
+    margin-top: 90px;
+    margin-left: -10px;
+  }
+
+  .benefits .b3 {
+    position: absolute;
+    margin-top: 178px;
+    margin-left: -10px;
+  }
+
+  .home .button {
+    position: absolute;
+    top: 85%;
+    left: 15%;
+  }
+
+  .home .button img {
+    width: 20rem;
+    height: 5rem;
+  }
+}
