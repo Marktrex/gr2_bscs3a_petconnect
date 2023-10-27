@@ -43,8 +43,9 @@ session_start(); // Add this line to start the session
                 <div class="headline">
                     <?php
                     // Fetch the featured news item from the database
-                    $featuredNews = mysqli_query($conn, "SELECT * FROM news WHERE is_featured = 1");
-                    $featuredNews = mysqli_fetch_assoc($featuredNews);
+                    $stmt = $conn->prepare("SELECT * FROM news WHERE is_featured = 1");
+                    $stmt->execute();
+                    $featuredNews = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     if ($featuredNews) {
                         $image = $featuredNews['image'];
@@ -90,8 +91,13 @@ session_start(); // Add this line to start the session
                     <div class="news-slider">
                         <?php
                         // Fetch the data from the database and store it in an array
-                        $newsItems = mysqli_query($conn, "SELECT * FROM news ORDER BY date_published DESC");
-                        $newsItems = mysqli_fetch_all($newsItems, MYSQLI_ASSOC);
+                        // $newsItems = mysqli_query($conn, "SELECT * FROM news ORDER BY date_published DESC");
+                        // $newsItems = mysqli_fetch_all($newsItems, MYSQLI_ASSOC);
+        
+                        $stmt = $conn->prepare("SELECT * FROM news ORDER BY date_published DESC");
+                        $stmt->execute();
+                        // Fetch the data as an associative array
+                        $newsItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         // Loop through the news items and populate the HTML template
                         foreach ($newsItems as $newsItem) {

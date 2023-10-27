@@ -283,7 +283,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
                     </thead>
                     <tbody>
                         <?php
-                        // Check if the date-input field is submitted
+                        // Check if the date-input field is submitted //code for accepting appointments in the morning session
                         if (isset($_POST['date-input'])) {
                             // Retrieve the selected date from the input field
                             $date = $_POST['date-input'];
@@ -292,15 +292,22 @@ $countVolunteer = $rowVolunteer['volunteer'];
                             $time_slot = 'Morning Session';
 
                             // Query the database to fetch the appointments for the selected date and time slot
-                            $sql = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
-                            $stmt = $conn->query($sql); // sql query of php pdo
+                            // $query = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
+                            // $result = mysqli_query($conn, $query);
+
+                            $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
+                            $result = $conn->prepare($sql); // sql query of php pdo
+                            $result->bindParam(':date', $date, PDO::PARAM_STR);
+                            $result->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
+                            // Execute the query
+                            $result->execute();
 
                             // $result = mysqli_query($conn, $query);
 
                             // Check if there are any appointments
-                            if ($stmt->rowCount() > 0) {
+                            if ($result->rowCount() > 0) {
                                 // Iterate over each appointment and create table rows
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     $type = $row['appointment_type'];
                                     $firstName = $row['first_name'];
                                     $middleName = $row['middle_name'];
@@ -374,9 +381,11 @@ $countVolunteer = $rowVolunteer['volunteer'];
                             $time_slot = 'Afternoon Session';
 
                             // Query the database to fetch the appointments for the selected date and time slot
-                            $sql = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
-                            $stmt = $conn->query($sql);
-                
+                            $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+                            $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
+                            $stmt->execute();
                             // $result = mysqli_query($conn, $query);
 
                             // Check if there are any appointments

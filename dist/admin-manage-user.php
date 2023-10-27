@@ -56,19 +56,20 @@ if (isset($_POST['demote'])) {
         echo 'window.location.href = "admin-manage-user.php";';
         echo '</script>';
         exit;
-    } elseif ($userType == 1) {
+    } elseif ($userType == 1) { 
         // Demote to regular user
         $sql = "UPDATE user SET user_type = 2 WHERE user_id = '$id'";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-        if ($stmt) {
+        if ($stmt->execute()) {
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
             echo '</script>';
             exit;
         } else {
-            echo "Error demoting user to regular user: " . $conn = null;
+            echo "Error demoting user to regular user" . $conn = null;
             exit;
         }
     } else {
@@ -91,22 +92,24 @@ if (isset($_POST['update'])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     
-    // $firstName = mysqli_real_escape_string($conn, $_POST['fname']); this is the php pdo
-    // $lastName = mysqli_real_escape_string($conn, $_POST['lname']);
-    // $email = mysqli_real_escape_string($conn, $_POST['email']);
-    // $password = mysqli_real_escape_string($conn, $_POST['password']);
+
 
     // Update the data in the database
     if (!empty($password)) {
-        $sql = "UPDATE user SET fname = '$firstName', lname = '$lastName', email = '$email', password = '$password' WHERE user_id = '$id'";
+        $sql = "UPDATE user SET fname = :firstName, lname = :lastName, email = :email, password = :password WHERE user_id = :id";
     } else {
-        // If no new password is provided, update only the other fields
-        $sql = "UPDATE user SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE user_id = '$id'";
+        $sql = "UPDATE user SET fname = :firstName, lname = :lastName, email = :email WHERE user_id = :id";
     }
+
     $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    // Perform the database query
-    if($stmt){
+    $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+    $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+    
+    // Execute the statement
+    if ($stmt->execute()) {
         echo "
             <script> 
                 alert('Data updated successfully'); 

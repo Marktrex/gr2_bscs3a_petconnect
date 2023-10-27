@@ -4,13 +4,13 @@ session_start(); // Add this line to start the session
 
 // Retrieve the news content based on the news ID (replace 'YOUR_DB_TABLE_NAME' with the actual table name)
 $newsId = $_GET['news_id']; // Assuming the news ID is passed through the URL parameter
-$query = "SELECT * FROM news WHERE news_id = $newsId";
-$result = mysqli_query($conn, $query);
+$sql = "SELECT * FROM news WHERE news_id = $newsId";
+$result = $conn->prepare($sql);
 
 // Check if the query was successful
-if ($result) {
+if ($result->execute()) {
     // Fetch the data from the query result
-    $newsItem = mysqli_fetch_assoc($result);
+    $newsItem = $result->fetch(PDO::FETCH_ASSOC);
 
     // Retrieve the desired data fields
     $title = $newsItem['title'];
@@ -19,7 +19,7 @@ if ($result) {
     $image = $newsItem['image'];
 
     // Close the database connection
-    mysqli_close($conn);
+    $conn = null;
 } else {
     // Handle the case when the query fails
     echo "Failed to retrieve news content.";

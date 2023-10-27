@@ -3,7 +3,6 @@ session_start();
 require './function/config.php';
 include './function/navbar.php';
 
-
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
@@ -12,28 +11,49 @@ $sex = $_POST['sex'] ?? '';
 $weight = $_POST['weight'] ?? '';
 $age = $_POST['age'] ?? '';
 
-// Build the base query
-$query = "SELECT * FROM pets WHERE 1=1";
+try { //research this try catch method
+   
+    // Build the base query
+    $query = "SELECT * FROM pets WHERE 1=1";
 
-// Add filters to the query if they are selected
-if (!empty($type)) {
-    $query .= " AND type = '$type'";
-}
-if (!empty($sex)) {
-    $query .= " AND sex = '$sex'";
-}
-if (!empty($weight)) {
-    $query .= " AND weight = '$weight'";
-}
-if (!empty($age)) {
-    $query .= " AND age = '$age'";
-}
+    // Create an array to hold the values for binding
+    $values = [];
 
-// Execute the query
-$result = mysqli_query($conn, $query);
-$pet_data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    // Add filters to the query if they are selected
+    if (!empty($type)) {
+        $query .= " AND type = :type";
+        $values[':type'] = $type;
+    }
+    if (!empty($sex)) {
+        $query .= " AND sex = :sex";
+        $values[':sex'] = $sex;
+    }
+    if (!empty($weight)) {
+        $query .= " AND weight = :weight";
+        $values[':weight'] = $weight;
+    }
+    if (!empty($age)) {
+        $query .= " AND age = :age";
+        $values[':age'] = $age;
+    }
+
+    // Prepare the statement
+    $stmt = $conn->prepare($query);
+
+    // Bind the values to the placeholders
+    foreach ($values as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch the pet data
+    $pet_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

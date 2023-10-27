@@ -24,19 +24,22 @@ session_start(); // Add this line to start the session
                 <div class="contact-container">
                     <div class="contact-info">
                         <p>
-                            <?php
+                            <?php                               
+
                             // Fetch the message for a specific appointment
                             if (isset($_GET['appointmentId'])) {
                                 $appointmentId = $_GET['appointmentId'];
 
                                 // Query the appointment table to retrieve the message
-                                $query = "SELECT message FROM appointment WHERE appointment_id = '$appointmentId'";
-                                $result = mysqli_query($conn, $query);
+                                $sql = "SELECT message FROM appointment WHERE appointment_id = :appointment_id";
+                                $result = $conn->prepare($sql);
+                                $result->bindParam(':appointment_id', $appointmentId, PDO::PARAM_INT);
+                                $result->execute();
 
                                 // Check if a message is found
-                                if (mysqli_num_rows($result) > 0) {
+                                if ($result->rowCount() > 0) {
                                     // Display the message
-                                    $row = mysqli_fetch_assoc($result);
+                                    $row = $result->fetch(PDO::FETCH_ASSOC);
                                     $message = $row['message'];
                                     $formattedMessage = nl2br($message); // Convert new lines to HTML line breaks
                                     ?>

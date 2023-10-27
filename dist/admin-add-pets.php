@@ -14,15 +14,6 @@ if (isset($_POST["submit"])) {
     $weight = $_POST["weight"];
     $user_id = $_SESSION['auth_user']['id'];
 
-    // $name = mysqli_real_escape_string($conn, $_POST["name"]);
-    // $type = mysqli_real_escape_string($conn, $_POST["type"]);
-    // $breed = mysqli_real_escape_string($conn, $_POST["breed"]);
-    // $sex = mysqli_real_escape_string($conn, $_POST["sex"]);
-    // $weight = mysqli_real_escape_string($conn, $_POST["weight"]);
-    // $age = mysqli_real_escape_string($conn, $_POST["age"]);
-    // $date = mysqli_real_escape_string($conn, $_POST["date"]);
-    // $about = mysqli_real_escape_string($conn, $_POST["about"]);
-    // $user_id = $_SESSION['auth_user']['id'];
 
     if ($_FILES["image"]["error"] === 4) {
         echo "<script> alert('Image Does Not Exist'); </script>";
@@ -43,9 +34,22 @@ if (isset($_POST["submit"])) {
             $newImageName .= '.' . $imageExtension;
 
             move_uploaded_file($tmpName, 'upload/' . $newImageName);
-            $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES('$name' , '$type', '$breed' , '$sex' , '$weight' , '$age', '$about', '$date', '$newImageName', '$user_id')";
+            $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image, :user_id)";
+
             $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+            $stmt->bindParam(':breed', $breed, PDO::PARAM_STR);
+            $stmt->bindParam(':sex', $sex, PDO::PARAM_STR);
+            $stmt->bindParam(':weight', $weight, PDO::PARAM_STR);
+            $stmt->bindParam(':age', $age, PDO::PARAM_STR);
+            $stmt->bindParam(':about', $about, PDO::PARAM_STR);
+            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+            $stmt->bindParam(':image', $newImageName, PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
+            // Execute the prepared statement
+      
             // $result = mysqli_query($conn, $query);
             if ($stmt) {
                 echo "
@@ -54,7 +58,7 @@ if (isset($_POST["submit"])) {
                     document.location.href = 'admin-add-pets.php';
                 </script>";
             } else {
-                echo "Error: " . mysqli_error($conn); // Display the specific error message
+                echo "Error, Adding pet failed "; // Display the specific error message
             }
         }
     }

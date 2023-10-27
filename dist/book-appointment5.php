@@ -6,15 +6,27 @@ require './function/config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare and execute the database query
-    $query = "INSERT INTO appointment (appointment_type, appointment_date, time_slot, first_name, middle_name, last_name, mobile_number, home_address, email_address, status, user_id, message) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO appointment (appointment_type, appointment_date, time_slot, first_name, middle_name, last_name, mobile_number, home_address, email_address, status, user_id, message) 
+    VALUES (:appointment_type, :appointment_date, :appointment_time_slot, :first_name, :middle_name, :last_name, :mobile_number, :home_address, :email_address, :status, :user_id, :message)";
+    
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssssssssssis", $_SESSION['appointment_type'], $_SESSION['appointment_date'], $_SESSION['appointment_time_slot'], $_SESSION['first_name'], $_SESSION['middle_name'], $_SESSION['last_name'], $_SESSION['mobile_number'], $_SESSION['home_address'], $_SESSION['email_address'],  $_SESSION['status'], $_SESSION['auth_user']['id'], $_SESSION['message']);
+    $stmt->bindParam(':appointment_type', $_SESSION['appointment_type']);
+    $stmt->bindParam(':appointment_date', $_SESSION['appointment_date']);
+    $stmt->bindParam(':appointment_time_slot', $_SESSION['appointment_time_slot']);
+    $stmt->bindParam(':first_name', $_SESSION['first_name']);
+    $stmt->bindParam(':middle_name', $_SESSION['middle_name']);
+    $stmt->bindParam(':last_name', $_SESSION['last_name']);
+    $stmt->bindParam(':mobile_number', $_SESSION['mobile_number']);
+    $stmt->bindParam(':home_address', $_SESSION['home_address']);
+    $stmt->bindParam(':email_address', $_SESSION['email_address']);
+    $stmt->bindParam(':status', $_SESSION['status']);
+    $stmt->bindParam(':user_id', $_SESSION['auth_user']['id']);
+    $stmt->bindParam(':message', $_SESSION['message']);    
     $stmt->execute();
     
-
     // Close the database connection
-    $stmt->close();
-    $conn->close();
+    $stmt = null;
+    $conn = null;
 
     // Redirect to the next page or display a success message
     header("Location: book-appointment6.php");

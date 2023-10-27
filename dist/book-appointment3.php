@@ -14,10 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $timeSlot = $_POST["time-slot"];
 
     // Check if the selected date and time slot are not in the database
-    $query = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$timeSlot'";
-    $result = mysqli_query($conn, $query);
-    $rowCount = mysqli_num_rows($result);
-    if ($rowCount > 0) {
+    $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :timeSlot";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+    $stmt->bindParam(':timeSlot', $timeSlot, PDO::PARAM_STR);
+    $stmt->execute();
+ 
+    if ($stmt->rowCount() > 0) {
         // The selected date and time slot are already booked, handle the error condition
         $errorMessage = "The selected date and time slot are already booked. Please choose another slot.";
     } else {
@@ -74,10 +77,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <?php
                     // Retrieve the dates from the appointment table in the database
                     $query = "SELECT appointment_date, time_slot FROM appointment";
-                    $result = mysqli_query($conn, $query);
+                    $result = $conn->prepare($query);
 
                     // Generate event objects for each date
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                         $date = $row['appointment_date'];
                         $time_slot = $row['time_slot'];
 

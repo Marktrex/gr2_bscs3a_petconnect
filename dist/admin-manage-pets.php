@@ -61,28 +61,28 @@ if (isset($_POST['update'])) {
     } else {
         // Update the data in the database without changing the image
         
-        $sql = "UPDATE pets SET name='$name', type='$type', breed='$breed', sex='$sex', weight='$weight', age='$age', date='$date', about='$about' WHERE pets_id='$id'";
+        $sql = "UPDATE pets SET name = :name, type = :type, breed = :breed, sex = :sex, weight = :weight, age = :age, date = :date, about = :about WHERE pets_id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':type', $type);
+        $stmt->bindParam(':breed', $breed);
+        $stmt->bindParam(':sex', $sex);
+        $stmt->bindParam(':weight', $weight);
+        $stmt->bindParam(':age', $age);
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':about', $about);
+        $stmt->bindParam(':id', $id);
     }
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-        // $stmt->bindParam(':name', $name); not necessary? idk.
-        // $stmt->bindParam(':type', $type);
-        // $stmt->bindParam(':breed', $breed);
-        // $stmt->bindParam(':sex', $sex);
-        // $stmt->bindParam(':weight', $weight);
-        // $stmt->bindParam(':age', $age);
-        // $stmt->bindParam(':date', $date);
-        // $stmt->bindParam(':about', $about);
-        // $stmt->bindParam(':id', $id);
+        
     // Perform the database query
-    if ($stmt) {
+    if ($stmt->execute()) {
         echo "
         <script> 
             alert('Data updated successfully'); 
             window.location.href = 'admin-manage-pets.php';
         </script>";
     } else {
-        echo "Error updating data: " . mysqli_error($conn);
+        echo "Error updating data";
     }
 }
 
@@ -102,6 +102,7 @@ if (isset($_POST['delete'])) {
     // Delete the record from the database
     $sql = "DELETE FROM pets WHERE pets_id='$id'";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     if ($stmt) {
         echo "
@@ -110,7 +111,7 @@ if (isset($_POST['delete'])) {
             document.location.href = 'admin-manage-pets.php';
         </script>";
     } else {
-        echo "Error deleting record: " . mysqli_error($conn);
+        echo "Error deleting record";
     }
 }
 
