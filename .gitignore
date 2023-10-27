@@ -1,0 +1,5 @@
+# Ignore Node.js and npm dependencies
+node_modules/
+
+# Ignore vendor folder (if applicable)
+vendor/
