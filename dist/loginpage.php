@@ -14,34 +14,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
-<body class="tw-flex tw-items-center tw-justify-center
-            tw-h-screen tw-w-screen
-            tw-p-12">
-    <div class="tw-flex
-                tw-h-3/4 tw-w-3/4
-                custom-middle-background-color">
-        <div class="tw-hidden md:tw-flex tw-items-center tw-justify-center tw-flex-1">
-
+<body class="flex items-center justify-center
+            h-screen w-screen
+            custom-background-color">
+    <div class="flex gap-12
+                h-full w-full
+                md:h-3/4 md:w-3/4
+                py-15 px-20
+                custom-frame
+                rounded-none md:rounded-[48px]">
+        <div class="hidden lg:flex items-center justify-center flex-1">
             <img src="./image/LoginSignup/photo-deco-1.png" alt="design photo" 
-            class= "tw-h-4/5">
+            class= "">
         </div>
-        <form class="tw-flex tw-flex-col tw-justify-center tw-flex-1"
+        <form class="flex flex-col justify-center flex-1 gap-7"
          name="login" action="./function/authcode.php" method="post">
-            <div class="input-container">
-                <input class="input-field" type="email" placeholder="Email" name="email" id="username" required >
+            <div class="custom-text">
+                <h2 class = "text-5xl">Login</h2>
+                <p class= "my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
             </div>
-            <div class="input-container password">
-                <input class="input-field" type="password" placeholder="Password" name="password" id="password"
+            <div class="">
+                <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required >
+            </div>
+            <div class="mt-3">
+                <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
                     required>
-                <i class="fa-solid fa-eye" id="show-password"></i>
+                    <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
             </div>
-            <a href="" class="forgot-pass">
-                <p>Forgot Password?</p>
-            </a>
-            <input type="submit" name="login" value="Login" class="loginbtn">
-            <a href="signuppage.php" class="account">
-                <p>Don't have an Account?<br>Sign Up</p>
-            </a>
+            <div class="flex justify-between
+                        custom-text">
+                <div class="select-none ">
+                    <input type="checkbox" id="check"/>
+                    <label for="check" class="cursor-pointer">Remember me</label>
+                </div>
+                <a href="#" class="custom-important-text hover:underline underline-offset-2">Forgot Password?</a>
+            </div>
+            <input type="submit" name="login" value="Login" class="custom-button">
+            <section class="custom-text">
+                <div class="sign-up-container">
+                    <p>Don't have an account? <a href="signuppage.php">
+                        <span class="custom-important-text hover:underline underline-offset-2">Sign up </span></a></p>
+                </div>
+            </section>
         </form>
 
     </div>
