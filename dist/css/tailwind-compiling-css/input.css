@@ -1,3 +1,91 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities
+{
+    :root
+    {
+        --background-text-color: #f5dfbb;
+        --frame-shadow: brown;
+        --frame-color: #f2542d;
+        --text-color: #f5dfbb;
+        --color-important: #ffb845;
+        --checkbox-color: pink;
+    }
+
+    /* dark theme */
+    [data-theme="dark"] {
+        --background-text-color: #c1bfbd;
+        --frame-shadow:#c1bfbd;
+        --frame-color:#0a86da;
+        --text-color: #f5dfbb;
+        --color-important: #333;
+        --checkbox-color: pink;
+    }
+
+    .custom-background-color
+    {
+        background-color: var(--background-text-color);
+    }
+
+    .custom-frame
+    {
+        box-shadow: 0px 10px 40px var(--frame-shadow); 
+        background-color: var(--frame-color);
+    }
+
+    .custom-text
+    {
+        color: var(--text-color);
+        font-family: "Abhaya Libre-Bold", Helvetica;
+        font-size: 1rem;
+    }
+    
+    .custom-input
+    {
+        background-color: var(--frame-color);
+        height: 100%;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 0 1.5rem;
+        color: antiquewhite;
+        transition: all 0.3s ease;
+        border-bottom: 2px solid var(--color-important);
+    }
+
+    .custom-input:focus{
+
+        border-color: antiquewhite;
+    }
+    
+    .custom-input::placeholder{
+        color: var(--color-important);
+    }
+    
+    .custom-important-text
+    {
+        color: var(--color-important);
+    }
+
+    input[type="checkbox"]
+    {
+        accent-color: var(--checkbox-color);
+    }
+    
+    .custom-button
+    {
+        background-color: var(--background-text-color);
+        padding: 10px 0;
+        border-radius: 30px;
+        border: 2px solid var(--color-important);
+        cursor: pointer;
+    }
+
+    .custom-button:hover
+    {
+        background-color: var(--color-important);
+    }
+}
