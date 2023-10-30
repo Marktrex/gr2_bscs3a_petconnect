@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+@layer utilities
+{
+   .custom-middle-background-color
+   {
+    @apply tw-rounded-lg;
+    @apply tw-bg-[#f2542d];
+    box-shadow: 0px 10px 40px brown;
+   }
+
+   
+}
