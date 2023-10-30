@@ -59,6 +59,7 @@
         </form>
 
     </div>
+    <?php require_once "components/light-switch.php"?>
     <script src="./script/script.js"></script>
 </body>
 
