@@ -1,0 +1,13 @@
+{
+  "comment" : "DONT REMOVE SCRIPT FOR BELOW, ITS FOR EXECUTION",
+  "startCopy": "start copy after me",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./dist/css/tailwind-compiling-css/input.css -o ./dist/css/tailwind-compiling-css/output.css --watch"
+  },
+
+  "endCopy": "end copy before me",
+  
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
