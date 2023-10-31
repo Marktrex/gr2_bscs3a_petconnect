@@ -6,22 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rePaw City</title>
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <footer class="footer">
-        <a href="index.php"><img src="./image/logo (1).png" class="logo"></a>
+        <a href="../user/index.php"><img src="../image/logo (1).png" class="logo"></a>
         <div class="quick-links">
             <h3>Quick Links</h3><br>
-            <a href="adoptpage.php?type=Dog">ADOPT A DOG</a><br>
-            <a href="adoptpage.php?type=Cat">ADOPT A CAT</a><br>
-            <a href="donatepage.php" >DONATE</a><br>
-            <a href="success-stories.php">SUCCESS STORIES</a><br>
-            <a href="volunteer.php">VOLUNTEER</a><br>
-            <a href="news.php">NEWS</a>
+            <a href="../user/adoptpage.php?type=Dog">ADOPT A DOG</a><br>
+            <a href="../user/adoptpage.php?type=Cat">ADOPT A CAT</a><br>
+            <a href="../user/donatepage.php" >DONATE</a><br>
+            <a href="../user/success-stories.php">SUCCESS STORIES</a><br>
+            <a href="../user/volunteer.php">VOLUNTEER</a><br>
+            <a href="../user/news.php">NEWS</a>
         </div>
         <div class="about-us">
             <h3>ABOUT US</h3>
@@ -47,10 +47,10 @@
             </div>
             <div class="information">
                 <h3>INFORMATION</h3>
-                <a href="mission.php" style="text-decoration: none; color: white;"><p>Mission</p></a>
-                <a href="FAQ.php" style="text-decoration: none; color: white;"><p>Assistance</p></a>
-                <a href="privacy-policy.php" style="text-decoration: none; color: white;"><p>Privacy Policy</p></a>
-                <a href="terms-of-use.php" style="text-decoration: none; color: white;"><p>Terms of Use</p></a>
+                <a href="../user/mission.php" style="text-decoration: none; color: white;"><p>Mission</p></a>
+                <a href="../user/FAQ.php" style="text-decoration: none; color: white;"><p>Assistance</p></a>
+                <a href="../user/privacy-policy.php" style="text-decoration: none; color: white;"><p>Privacy Policy</p></a>
+                <a href="../user/terms-of-use.php" style="text-decoration: none; color: white;"><p>Terms of Use</p></a>
             </div>
             <div class="social">
                 <h3>SOCIAL</h3>

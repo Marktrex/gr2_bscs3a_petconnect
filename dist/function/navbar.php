@@ -1,4 +1,4 @@
-<?php require './function/config.php' ?>
+<?php require '../function/config.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rePaw City</title>
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
 </head>
@@ -15,12 +15,12 @@
 <body>
 
     <div class="navbar" id="myNavbar">
-        <a href="index.php" class="logo"><img src="image/logo (1).png" class="img-logo"></a>
-        <a href="home.php" class="list a n1">Home</a>
-        <a href="adoptpage.php" class="list n2">Adopt</a>
-        <a href="donatepage.php" class="list n3">Donate</a>
-        <a href="news.php" class="list n4">News</a>
-        <a href="volunteer.php" class="list n5">Volunteer</a>
+        <a href="../user/index.php" class="logo"><img src="../image/logo (1).png" class="img-logo"></a>
+        <a href="../user/home.php" class="list a n1">Home</a>
+        <a href="../user/adoptpage.php" class="list n2">Adopt</a>
+        <a href="../user/donatepage.php" class="list n3">Donate</a>
+        <a href="../user/news.php" class="list n4">News</a>
+        <a href="../user/volunteer.php" class="list n5">Volunteer</a>
         <div class="dropdown dr">
             <a href="javascript:void(0);" class="list n6">About Us &#9660;</a>
             <div class="dropdown-content">
@@ -73,15 +73,15 @@
                     }
                 }
                 ?>
-                // </div>
+                </div>
             </div>
             <a href="javascript:void(0);" class="list logout" onclick="logout()">Logout</a>
             <?php
         } else {
             // Display login and sign up buttons
             ?>
-            <a href="loginpage.php" class="list login">Log In</a>
-            <a href="signuppage.php" class="list signup">Sign Up</a>
+            <a href="../loginpage.php" class="list login">Log In</a>
+            <a href="../signuppage.php" class="list signup">Sign Up</a>
             <?php
         }
         ?>
@@ -101,7 +101,7 @@
         function logout() {
             if (confirm("Are you sure you want to log out?")) {
                 // Perform logout action
-                window.location.href = "logout.php";
+                window.location.href = "../function/logout.php";
             }
         }
     </script>

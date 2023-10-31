@@ -93,10 +93,10 @@ else if (isset($_POST["login"])) {
             ];
 
             echo '<script language="javascript">';
-            echo 'window.location = "../admin-dashboard.php";';
+           
             echo 'alert("Logged In Successfully as Admin");';
             echo '</script>';
-            header("Location: ../admin-dashboard.php");
+            header("Location: ../admin/admin-dashboard.php");
         } 
         else if ($userType === '2') {
             // Redirect user to a user dashboard
@@ -109,13 +109,16 @@ else if (isset($_POST["login"])) {
                 'email' => $userdata['email']
             ];
             echo '<script language="javascript">';
-            echo 'window.location = "../home.php";';
+            echo 'window.location = "../user/home.php";';
             echo '</script>';
         }
         
     } else {
         // Login failed
-        echo "Invalid username or password. Please try again.";
+        echo '<script language="javascript">';
+        echo 'alert("Invalid username or password. Please try again.");';
+        echo 'window.location = "../loginpage.php";';
+        echo '</script>';
         $conn = null;
     }
 
