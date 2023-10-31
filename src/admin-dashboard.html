@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="admin-dashboard-light.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!--Use Layout.css-->
+
+<body>
+    <div class="container">
+        <!--Navbar-->
+        <header>
+        <nav class="navbar">
+            <a href="#" class="logo"><img src="icons/logo.png" alt="Insert Logo">
+            <ul class="items">
+                <li><a id="messages" href="#"><i class="fa fa-envelope"></i><a></li>
+                <li><a id="notifications" href="#"><i class="fa fa-bell"></i><a></li>
+                <li><a href="#"><img src="icons/icons-user.png" alt="Profile"></a></li>
+            </ul>
+        </nav>
+        </header>
+
+        <!--Put Contents Here in main-->
+        <main class="content">
+        <!--Content cards-->
+            <div class="cards">
+                <div class="card-date">
+                    <div class="box">   
+                        <p id="calendar-container">DATE</p>
+                    </div>
+                </div>
+                <a id="events" href="#">
+                <div class="card">
+                    <div class="box">
+                        <h1>EVENTS</h1>
+                    </div>
+                    <i class="fa fa-flag fa-4x"></i>
+                </div></a>
+                <a id="adopt" href="#">
+                <div class="card">
+                    <div class="box">
+                        <h1>ADOPT</h1>
+                    </div>
+                    <i class="fa fa-paw fa-4x"></i>
+                </div></a>
+                <a id="visits" href="#">
+                <div class="card">
+                    <div class="box">
+                        <h1>VISITS</h1>
+                    </div>
+                    <i class="fa fa-users fa-4x"></i>
+                </div></a>
+            </div>
+            <div class="content-2">
+                <div class="recent-activities"></div>
+            </div>
+        </main>
+
+<script>
+    // Function to generate a simple calendar
+    function generateCalendar() {
+        const calendarContainer = document.getElementById("calendar-container");
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate(); // Get the current day of the month
+
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+        const currentYear = currentDate.getFullYear();
+
+        let calendarHTML = `<h2>${currentMonth} ${currentYear}</h2><table><tr>`;
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            if (day === currentDay) {
+                calendarHTML += `<td class="today">${day}</td>`; // Add "today" class to the current day
+            } else {
+                calendarHTML += `<td>${day}</td>`;
+            }
+
+            if (new Date(currentYear, currentDate.getMonth(), day).getDay() === 6) {
+                calendarHTML += "</tr><tr>";
+            }
+        }
+
+        calendarHTML += "</tr></table>";
+        calendarContainer.innerHTML = calendarHTML;
+    }
+
+    // Call the function to generate the calendar
+    generateCalendar();
+</script>
+        <!--SideBar-->
+        <aside id="sidenav" class="sidebar">
+          
+            <ul class="menu-links"> 
+                <span id="close-btn" href="javascript:void(0)">&times;</span>
+                <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
+                <li><a id="add" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a></li>
+                <li><a id="manage" href="#"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a></li>
+                <li><a id="users" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a></li>
+                <li><a id="logout"href="#"><i class="fa fa-arrow-circle-right"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
+              </ul> 
+            <span id="menu-btn" style="font-size:30px;cursor:pointer">&#9776;</span>
+        </aside>
+
+        <script>
+            const sidebar = document.querySelector("sidebar");
+            const menuBtn = document.querySelector("#menu-btn");
+            const closeBtn = document.querySelector("#close-btn");
+
+            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
+
+            closeBtn.addEventListener("click", () => menuBtn.click());
+        </script>   
+    </div>
+</body>
+</html>
