@@ -1,3 +1,5 @@
+<!-- layout for logging in, sign up, forgot password etc -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetConnect</title>
 
-    <link rel="stylesheet" href="css/tailwind-compiling-css/output.css">
+    <!-- change the link depending on the position of the file(look for output.css) -->
+    <link rel="stylesheet" href="../css/tailwind-compiling-css/output.css">
 
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -24,23 +27,31 @@
                 custom-frame
                 rounded-none md:rounded-[48px]">
         <div class="hidden lg:flex items-center justify-center flex-1">
-            <img src="./image/LoginSignup/photo-deco-1.png" alt="design photo" 
+            <!-- photo for the right(change here) -->
+            <img src="../image/LoginSignup/photo-deco-1.png" alt="design photo" 
             class= "">
         </div>
+        <!-- form -->
         <form class="flex flex-col justify-center flex-1 gap-7"
-         name="login" action="./function/authcode.php" method="post">
+         name="" action="" method="">
+         <!-- change here for introduction -->
             <div class="custom-text">
-                <h2 class = "text-5xl font-bold">Login</h2>
+                <h2 class = "text-5xl font-bold">Sample Header</h2>
                 <p class= "my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
             </div>
+
+            <!-- inputs  -->
+            <!-- class is "custom-input(put inside a div if necessary) -->
             <div class="">
-                <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required >
+                <input class="custom-input " type="text" placeholder="Sample Email" name="" id="" required >
             </div>
             <div class="mt-3">
-                <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
+                <input class="custom-input  " type="password" placeholder="Sample Passoword" name="" id=""
                     required>
                     <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
             </div>
+
+            <!-- Checkbox -->
             <div class="flex justify-between
                         custom-text">
                 <div class="select-none ">
@@ -49,17 +60,25 @@
                 </div>
                 <a href="#" class="custom-important-text hover:underline underline-offset-2">Forgot Password?</a>
             </div>
-            <input type="submit" name="login" value="Login" class="custom-button">
+
+            <!-- submit button(uses class "custom-button") -->
+            <input type="submit" name="" value="" class="custom-button">
+
+            <!-- This section is for redirecting -->
             <section class="custom-text">
                 <div class="sign-up-container">
-                    <p>Don't have an account? <a href="signuppage.php">
+                    <p>Don't have an account? <a href="">
                         <span class="custom-important-text hover:underline underline-offset-2">Sign up </span></a></p>
                 </div>
             </section>
         </form>
 
     </div>
+
+    <!-- For the switching light -->
     <?php require_once "components/light-switch.php"?>
+
+    <!-- For the js script -->
     <script src="./script/script.js"></script>
 </body>
 
