@@ -54,13 +54,28 @@
                     <i class="fa fa-users fa-4x"></i>
                 </div></a>
             </div>
-            <div class="content-2">
-                <div class="recent-activities"></div>
+            <div class="content-2"> <!--recent activities-->
+                <div class="recent-activities">
+                    <div class="title">
+                        <h2>Recent Activities</h2>
+                        <a href="#" class="btn">View All</a>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                <i class="fa fa-bell"></i>Lebron James</th>
+                            <td>
+                                <a href="#" class="btn">Reply</a>
+                                <a href="#" class="btn">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </main>
 
 <script>
-    // Function to generate a simple calendar
+    // Function to generate a calendar
     function generateCalendar() {
         const calendarContainer = document.getElementById("calendar-container");
         const currentDate = new Date();
@@ -74,7 +89,7 @@
 
         for (let day = 1; day <= daysInMonth; day++) {
             if (day === currentDay) {
-                calendarHTML += `<td class="today">${day}</td>`; // Add "today" class to the current day
+                calendarHTML += `<td class="today">${day}</td>`;
             } else {
                 calendarHTML += `<td>${day}</td>`;
             }
@@ -87,13 +102,11 @@
         calendarHTML += "</tr></table>";
         calendarContainer.innerHTML = calendarHTML;
     }
-
-    // Call the function to generate the calendar
     generateCalendar();
 </script>
+
         <!--SideBar-->
         <aside id="sidenav" class="sidebar">
-          
             <ul class="menu-links"> 
                 <span id="close-btn" href="javascript:void(0)">&times;</span>
                 <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
