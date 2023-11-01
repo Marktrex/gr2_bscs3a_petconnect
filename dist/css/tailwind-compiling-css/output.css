@@ -580,56 +580,12 @@ video {
   left: 0.25rem;
 }
 
-.top-\[3px\] {
-  top: 3px;
-}
-
 .top-0 {
   top: 0px;
 }
 
-.top-\[5px\] {
-  top: 5px;
-}
-
-.top-\[2px\] {
-  top: 2px;
-}
-
-.top-\[4px\] {
-  top: 4px;
-}
-
-.left-\[3px\] {
-  left: 3px;
-}
-
-.left-\[5px\] {
-  left: 5px;
-}
-
-.left-\[199px\] {
-  left: 199px;
-}
-
-.right-1\/2 {
-  right: 50%;
-}
-
-.-top-5 {
-  top: -1.25rem;
-}
-
-.-top-10 {
-  top: -2.5rem;
-}
-
-.top-10 {
-  top: 2.5rem;
-}
-
-.m-auto {
-  margin: auto;
+.top-\[3px\] {
+  top: 3px;
 }
 
 .my-3 {
@@ -639,6 +595,10 @@ video {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mt-3 {
@@ -665,37 +625,21 @@ video {
   display: none;
 }
 
+.h-\[5rem\] {
+  height: 5rem;
+}
+
 .h-screen {
   height: 100vh;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-full {
-  height: 100%;
-}
-
-.h-16 {
-  height: 4rem;
-}
-
-.h-24 {
-  height: 6rem;
-}
-
-.h-3\/4 {
-  height: 75%;
-}
-
-.max-h-full {
-  max-height: 100%;
 }
 
 .min-h-fit {
   min-height: -moz-fit-content;
   min-height: fit-content;
+}
+
+.w-\[75px\] {
+  width: 75px;
 }
 
 .w-full {
@@ -706,37 +650,12 @@ video {
   width: 100vw;
 }
 
-.w-10 {
-  width: 2.5rem;
-}
-
-.w-16 {
-  width: 4rem;
-}
-
-.w-24 {
-  width: 6rem;
-}
-
-.w-3\/4 {
-  width: 75%;
-}
-
-.max-w-full {
-  max-width: 100%;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
 
 .grow {
   flex-grow: 1;
-}
-
-.translate-x-1\/2 {
-  --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -761,6 +680,10 @@ video {
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -781,18 +704,6 @@ video {
   border-radius: 0px;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.p-6 {
-  padding: 1.5rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
-}
-
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;
@@ -801,6 +712,10 @@ video {
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.ps-8 {
+  padding-inline-start: 2rem;
 }
 
 .text-center {
@@ -835,6 +750,7 @@ video {
 :root
     {
   --background-text-color: #f5dfbb;
+  --navbar-color: #fdf7ec;
   --frame-shadow: brown;
   --frame-color: #f2542d;
   --text-color: #f5dfbb;
@@ -847,6 +763,7 @@ video {
 
 [data-theme="dark"] {
   --background-text-color: #090b29;
+  --navbar-color: #240155;
   --frame-shadow: rgb(61, 23, 88);
   --frame-color:#381162;
   --text-color: #1EDDD4;
@@ -858,6 +775,11 @@ video {
 .custom-background-color
     {
   background-color: var(--background-text-color);
+}
+
+.custom-navbar-color
+    {
+  background: var(--navbar-color);
 }
 
 .custom-frame
