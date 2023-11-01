@@ -9,80 +9,78 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rePaw City</title>
-    <link rel="stylesheet" href="css/signuppage.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
+    <title>Pet Connect</title>
+
+
+    <link rel="stylesheet" href="css/tailwind-compiling-css/output.css">
+
+
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
 
-<body>
-    <div class="signup">
-        <div class="slideshow-container">
-            <img src=".\image\LoginSignup\bg1.jpg" alt="Image 1">
-            <img src=".\image\LoginSignup\bg2.jpg" alt="Image 2">
-            <img src=".\image\LoginSignup\bg3.jpg" alt="Image 3">
+<body class="flex items-center justify-center
+            h-screen w-screen
+            custom-background-color">
+
+    <div class="flex gap-12
+        min-h-fit w-full
+        md:w-3/4
+        py-16 px-20
+        custom-frame
+        rounded-none md:rounded-[48px]">
+        
+        <div class="hidden lg:flex items-center justify-center flex-1">
+            <!-- photo for the right(change here) -->
+            <img src="./image/LoginSignup/photo-deco-2.png" alt="design photo" 
+            class= "">
         </div>
-        <a href="index.php"><img src="./image/logo (1).png" class="logo"></a>
 
 
-        <form class="signup-form" name="signup"  action="./function/authcode.php" method="post" autocomplete="off">
-            <div class="content">
-                <h1>Create an Account</h1>
-                <p class="sub-title">Let's get started!</p>
+        <form class="flex flex-col justify-center flex-1 gap-7"
+         name="signup"  action="./function/authcode.php" method="post" autocomplete="off">
+            <div class="custom-text">
+                <h2 class = "text-5xl font-bold">Register</h2>
+                <p class= "my-3">Let's Get Started!
+                                Create an account to login.</p>
             </div>
-            <br>
-            <div class="input-container">
-                <i class="fa-regular fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="First Name" name="fname" id="fname" required>
+
+            <div class="">
+                <!-- <i class="fa-regular fa-user icon"></i> -->
+                <input class="custom-input" type="text" placeholder="First Name" name="fname" id="fname" required>
             </div>
-            <div class="input-container">
-                <i class="fa-regular fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Last Name" name="lname" id="lname" required>
+            <div class="mt-3">
+                <!-- <i class="fa-regular fa-user icon"></i> -->
+                <input class="custom-input" type="text" placeholder="Last Name" name="lname" id="lname" required>
             </div>
-            <div class="input-container">
-                <i class="fa-solid fa-envelope icon"></i>
-                <input class="input-field" type="email" placeholder="Email" name="email" id="email" required>
+            <div class="mt-3">
+                <!-- <i class="fa-solid fa-envelope icon"></i> -->
+                <input class="custom-input" type="email" placeholder="Email" name="email" id="email" required>
             </div>
-            <div class="input-container">
-                <i class="fa-solid fa-lock icon"></i>
-                <input class="input-field" type="text" placeholder="Password" name="password" id="password" required>
+            <div class="mt-3">
+                <!-- <i class="fa-solid fa-lock icon"></i> -->
+                <input class="custom-input" type="text" placeholder="Password" name="password" id="password" required>
             </div>
-            <div class="input-container">
-                <i class="fa-solid fa-lock icon"></i>
-                <input class="input-field" type="text" placeholder="Confirm Password" name="cpassword" id="password" required>
+            <div class="mt-3">
+                <!-- <i class="fa-solid fa-lock icon"></i> -->
+                <input class="custom-input" type="text" placeholder="Confirm Password" name="cpassword" id="password" required>
             </div>
-            <input type="submit" name="register" value="Sign Up" class="signupbtn">
-            <a href="loginpage.php" class="content">
-                <p>Already have an Account?<br>Log in</p>
-            </a>
+
+            <input type="submit" name="register" value="Sign Up" class="custom-button">
+            <section class="custom-text">
+                <div class="sign-up-container">
+                    <p>Already have an Account? <a href="loginpage.php">
+                        <span class="custom-important-text hover:underline underline-offset-2">Log in </span></a></p>
+                </div>
+            </section>
         </form>
 
     </div>
+
+    <?php require_once "components/light-switch.php"?>
     <script src="./script/script.js"></script>
 
-    <script>
-        var slideIndex = 0;
-        var slides = document.getElementsByClassName("slideshow-container")[0].getElementsByTagName("img");
-
-        function showSlides() {
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].style.opacity = 0;
-            }
-
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1;
-            }
-
-            slides[slideIndex - 1].style.opacity = 1;
-
-            setTimeout(showSlides, 4000); // Delay between slides (2 seconds)
-        }
-
-        showSlides();
-    </script>
+    
 </body>
 
 </html>
