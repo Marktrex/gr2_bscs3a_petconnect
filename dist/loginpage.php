@@ -18,9 +18,9 @@
             h-screen w-screen
             custom-background-color">
     <div class="flex gap-12
-                h-full w-full
-                md:h-3/4 md:w-3/4
-                py-15 px-20
+                min-h-fit w-full
+                md:w-3/4
+                py-16 px-20
                 custom-frame
                 rounded-none md:rounded-[48px]">
         <div class="hidden lg:flex items-center justify-center flex-1">
@@ -30,7 +30,7 @@
         <form class="flex flex-col justify-center flex-1 gap-7"
          name="login" action="./function/authcode.php" method="post">
             <div class="custom-text">
-                <h2 class = "text-5xl">Login</h2>
+                <h2 class = "text-5xl font-bold">Login</h2>
                 <p class= "my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
             </div>
             <div class="">
