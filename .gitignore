@@ -4,5 +4,3 @@ node_modules/
 # Ignore vendor folder (if applicable)
 vendor/
 
-# Ignore tailwind output css
-./dist/css/tailwind-compiling-css/output.css
