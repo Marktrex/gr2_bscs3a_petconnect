@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 
 <head>
-    <link rel="icon" href="image/icon.png" type="image/png">
+    <link rel="icon" href="image/logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@ session_start();
 
     <div class = "h-[5rem] flex justify-start items-center ps-8 custom-navbar-color">
         <a href="#">
-            <img src="image/icon.png" alt="icon" class="w-[75px]">
+            <img src="image/logo.png" alt="icon" class="w-[75px]" id = "logIcon">
         </a>
     </div>
     <div class = "flex items-center justify-center mt-10">

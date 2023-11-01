@@ -21,7 +21,7 @@
             custom-background-color">
     <div class = "h-[5rem] flex justify-start items-center ps-8 custom-navbar-color">
         <a href="#">
-            <img src="image/icon.png" alt="icon" class="w-[75px]">
+            <img src="image/logo.png" alt="icon" class="w-[75px]" id = "logIcon">
         </a>
     </div>
     <div class = "flex items-center justify-center mt-10">
