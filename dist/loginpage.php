@@ -22,6 +22,7 @@
                 md:w-3/4
                 py-16 px-20
                 custom-frame
+                relative
                 rounded-none md:rounded-[48px]">
         <div class="hidden lg:flex items-center justify-center flex-1">
             <img src="./image/LoginSignup/photo-deco-1.png" alt="design photo" 
@@ -37,12 +38,12 @@
             <!-- inputs -->
             <div class="mt-3 relative">
                 <i class="fa-solid fa-envelope icon custom-important-text
-                        absolute top-[3px] left-1"></i>
+                        absolute top-[3px] "></i>
                 <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required >
             </div>
             <div class="mt-3 relative">
                 <i class="fa-solid fa-lock icon custom-important-text
-                        absolute top-[3px] left-1"></i>
+                        absolute top-[3px] "></i>
                 <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
                     required>
             </div>
@@ -63,7 +64,7 @@
                 </div>
             </section>
         </form>
-
+        <?php require_once "components/icon-middle-top.php"?>
     </div>
     <?php require_once "components/light-switch.php"?>
     <script src="./script/script.js"></script>
