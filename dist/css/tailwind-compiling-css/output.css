@@ -568,6 +568,26 @@ video {
   }
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-1 {
+  left: 0.25rem;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.top-\[3px\] {
+  top: 3px;
+}
+
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -575,6 +595,10 @@ video {
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
 }
 
 .mt-3 {
@@ -601,8 +625,8 @@ video {
   display: none;
 }
 
-.h-full {
-  height: 100%;
+.h-\[5rem\] {
+  height: 5rem;
 }
 
 .h-screen {
@@ -612,6 +636,10 @@ video {
 .min-h-fit {
   min-height: -moz-fit-content;
   min-height: fit-content;
+}
+
+.w-\[75px\] {
+  width: 75px;
 }
 
 .w-full {
@@ -652,6 +680,10 @@ video {
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -680,6 +712,10 @@ video {
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.ps-8 {
+  padding-inline-start: 2rem;
 }
 
 .text-center {
@@ -714,6 +750,7 @@ video {
 :root
     {
   --background-text-color: #f5dfbb;
+  --navbar-color: #fdf7ec;
   --frame-shadow: brown;
   --frame-color: #f2542d;
   --text-color: #f5dfbb;
@@ -726,6 +763,7 @@ video {
 
 [data-theme="dark"] {
   --background-text-color: #090b29;
+  --navbar-color: #240155;
   --frame-shadow: rgb(61, 23, 88);
   --frame-color:#381162;
   --text-color: #1EDDD4;
@@ -737,6 +775,11 @@ video {
 .custom-background-color
     {
   background-color: var(--background-text-color);
+}
+
+.custom-navbar-color
+    {
+  background: var(--navbar-color);
 }
 
 .custom-frame
@@ -807,10 +850,6 @@ input[type="checkbox"]
 }
 
 @media (min-width: 768px) {
-  .md\:h-3\/4 {
-    height: 75%;
-  }
-
   .md\:w-3\/4 {
     width: 75%;
   }

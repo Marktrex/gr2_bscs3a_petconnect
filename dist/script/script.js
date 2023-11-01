@@ -34,6 +34,11 @@ function detectColorScheme(){
     //dark theme preferred, set document with a `data-theme` attribute
     if (theme=="dark") {
          document.documentElement.setAttribute("data-theme", "dark");
+         setLogo(true);
+    }
+    else
+    {
+        setLogo(false);
     }
 }
 
@@ -45,15 +50,21 @@ const toggleSwitch = document.querySelector('#switch-button-theme');
 
 //function that changes the theme, and sets a localStorage variable to track the theme between page loads
 function switchTheme(e) {
+    
+
     if (e.target.checked) {
         localStorage.setItem('theme', 'dark');
         document.documentElement.setAttribute('data-theme', 'dark');
         toggleSwitch.checked = true;
+        setLogo(true);
     } else {
         localStorage.setItem('theme', 'light');
         document.documentElement.setAttribute('data-theme', 'light');
         toggleSwitch.checked = false;
-    }    
+        setLogo(false);
+    }
+
+    
 }
 
 //listener for changing themes
@@ -62,4 +73,26 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 //pre-check the dark-theme checkbox if dark-theme is set
 if (document.documentElement.getAttribute("data-theme") == "dark"){
     toggleSwitch.checked = true;
+}
+
+
+function setLogo(isDark)
+{
+    const icon = document.querySelector('#logIcon');
+    const darkIcon = "logo-dark.png";
+    const lightIcon = "logo.png";
+
+    let iconValue = icon.getAttribute('src');
+    let parts = iconValue.split('/');
+    if(isDark)
+    {
+        parts[parts.length - 1] = darkIcon;
+    }
+    else
+    {
+        parts[parts.length - 1] = lightIcon;
+    }
+
+    iconValue = parts.join('/');
+    icon.setAttribute('src', iconValue);
 }

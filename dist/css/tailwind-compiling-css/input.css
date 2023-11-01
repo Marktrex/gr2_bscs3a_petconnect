@@ -8,17 +8,20 @@
     :root
     {
         --background-text-color: #f5dfbb;
+        --navbar-color: #fdf7ec;
         --frame-shadow: brown;
         --frame-color: #f2542d;
         --text-color: #f5dfbb;
         --color-important: #ffb845;
         --checkbox-color: pink;
         --button:#f5dfbb;
+        
     }
 
     /* dark theme */
     [data-theme="dark"] {
         --background-text-color: #090b29;
+        --navbar-color: #240155;
         --frame-shadow: rgb(61, 23, 88);
         --frame-color:#381162;
         --text-color: #1EDDD4;
@@ -30,6 +33,11 @@
     .custom-background-color
     {
         background-color: var(--background-text-color);
+    }
+
+    .custom-navbar-color
+    {
+        background: var(--navbar-color);
     }
 
     .custom-frame
