@@ -45,24 +45,29 @@ session_start();
                                 Create an account to login.</p>
             </div>
 
-            <div class="">
-                <!-- <i class="fa-regular fa-user icon"></i> -->
+            <div class="relative">
+                <i class="fa-regular fa-user icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input" type="text" placeholder="First Name" name="fname" id="fname" required>
             </div>
-            <div class="mt-3">
-                <!-- <i class="fa-regular fa-user icon"></i> -->
+            <div class="mt-3 relative">
+                <i class="fa-regular fa-user icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input" type="text" placeholder="Last Name" name="lname" id="lname" required>
             </div>
-            <div class="mt-3">
-                <!-- <i class="fa-solid fa-envelope icon"></i> -->
+            <div class="mt-3 relative">
+                <i class="fa-solid fa-envelope icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input" type="email" placeholder="Email" name="email" id="email" required>
             </div>
-            <div class="mt-3">
-                <!-- <i class="fa-solid fa-lock icon"></i> -->
+            <div class="mt-3 relative">
+                <i class="fa-solid fa-lock icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input" type="text" placeholder="Password" name="password" id="password" required>
             </div>
-            <div class="mt-3">
-                <!-- <i class="fa-solid fa-lock icon"></i> -->
+            <div class="mt-3 relative">
+                <i class="fa-solid fa-lock icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input" type="text" placeholder="Confirm Password" name="cpassword" id="password" required>
             </div>
 

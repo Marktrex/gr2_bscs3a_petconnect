@@ -29,18 +29,24 @@
         </div>
         <form class="flex flex-col justify-center flex-1 gap-7"
          name="login" action="./function/authcode.php" method="post">
+         <!-- intro -->
             <div class="custom-text">
                 <h2 class = "text-5xl font-bold">Login</h2>
                 <p class= "my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
             </div>
-            <div class="">
+            <!-- inputs -->
+            <div class="mt-3 relative">
+                <i class="fa-solid fa-envelope icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required >
             </div>
-            <div class="mt-3">
+            <div class="mt-3 relative">
+                <i class="fa-solid fa-lock icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
                     required>
-                    <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
             </div>
+            <!-- checkbox -->
             <div class="flex justify-between
                         custom-text">
                 <div class="select-none ">

@@ -42,10 +42,14 @@
 
             <!-- inputs  -->
             <!-- class is "custom-input(put inside a div if necessary) -->
-            <div class="">
+            <div class="relative">
+                <i class="fa-regular fa-user icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input " type="text" placeholder="Sample Email" name="" id="" required >
             </div>
-            <div class="mt-3">
+            <div class="mt-3 relative">
+            <i class="fa-solid fa-lock icon custom-important-text
+                        absolute top-[3px] left-1"></i>
                 <input class="custom-input  " type="password" placeholder="Sample Passoword" name="" id=""
                     required>
                     <!-- <i class="fa-solid fa-eye" id="show-password"></i> -->
