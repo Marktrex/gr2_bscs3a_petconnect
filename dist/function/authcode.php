@@ -89,7 +89,8 @@ else if (isset($_POST["login"])) {
                 // Save the ID in the session
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
-                'email' => $userdata['email']
+                'email' => $userdata['email'],
+                'role' => "admin"
             ];
 
             echo '<script language="javascript">';
@@ -106,7 +107,8 @@ else if (isset($_POST["login"])) {
                 // Save the ID in the session
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
-                'email' => $userdata['email']
+                'email' => $userdata['email'],
+                'role' => "user"
             ];
             echo '<script language="javascript">';
             echo 'window.location = "../user/home.php";';

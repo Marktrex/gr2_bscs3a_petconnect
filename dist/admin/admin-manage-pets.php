@@ -1,6 +1,12 @@
 <?php
 require '../function/config.php';
 
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+{
+    header("location: ../error/403-forbidden.html");
+    exit();
+}
+
 // Check if the form is submitted
 if (isset($_POST['update'])) {
     // Retrieve the data from the form

@@ -2,6 +2,12 @@
 require '../function/config.php';
 session_start();
 
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+{
+    header("location: ../error/403-forbidden.html");
+    exit();
+}
+
 // Count total appointments
 $sql_total = "SELECT COUNT(*) AS total FROM appointment"; 
 $stmtTotal = $conn->prepare($sql_total); //we prepared the sql query by using the 'prepare' function

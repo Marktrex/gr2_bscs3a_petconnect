@@ -1,6 +1,13 @@
 <?php
 require '../function/config.php';
 
+
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+{
+    header("location: ../error/403-forbidden.html");
+    exit();
+}
+
 // Promote Button
 if (isset($_POST['promote'])) {
     // Retrieve the data from the form
