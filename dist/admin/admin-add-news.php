@@ -2,6 +2,13 @@
 require '../function/config.php';
 session_start();
 
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+{
+    header("location: ../error/403-forbidden.html");
+    exit();
+}
+
+
 if (isset($_POST["submit"])) {
     $title = $_POST["title"]; //php pdo code
     $details = $_POST["details"];
