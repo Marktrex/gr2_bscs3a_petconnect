@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Add Pets   |   PetConnect</title>
+    <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<!--Use Layout.css-->
+
+<body>
+    <div class="container">
+        <!--Navbar-->
+        <header>
+        <nav class="navbar">
+            <a href="#" class="logo"><img src="icons/logo.png" alt="Insert Logo">
+            <ul class="items">
+                <li><a id="messages" href="#"><i class="fa fa-envelope"></i><a></li>
+                <li><a id="notifications" href="#"><i class="fa fa-bell"></i><a></li>
+                <li><a href="#"><img src="icons/icons-user.png" alt="Profile"></a></li>
+            </ul>
+        </nav>
+        </header>
+
+        <!--Put Contents Here in main-->
+        <main class="content">
+            <div class="wrapper">
+                <form class="form">
+
+                    <h1 class="form-title">Pet Form</h1>
+
+                        <div class="form-input">
+
+                            <!--Pet Profile Pic-->
+                        <div class="image-container">
+                            <img src="icons/pet-profile-bg.jpg" id="profile-pic">
+                            <label for="input-file" class="img-label">Update Image</label>
+                            <input type="file" accept="image/jpeg, image/jpg, image/png" id="input-file">
+                        </div>
+
+                            <!--Pet Name-->
+                            <div class="pet-container">
+                                <label for="name">Pet Name:</label>
+                                <input type="text" class="pet-name" id="name" name="name" maxlength="20">
+                            </div>
+
+                            <!--Pet Breed-->
+                            <div class="pet-container">
+                                <label for="breed">Breed:</label><br>
+                                <select class="pet-breed" name="breed" id="breed" required>
+                                    <option value="">Select Breed</option>
+
+                                    <!--Dog Breeds-->
+                                    <optgroup label="Dog Breeds">
+                                        <option value="Aspin">Aspin</option>
+                                        <option value="Beagle">Beagle</option>
+                                        <option value="Bichon Frise">Bichon Frise</option>
+                                        <option value="Boston Terrier">Boston Terrier</option>
+                                        <option value="Bulldog">Bulldog</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="Chow Chow">Chow Chow</option>
+                                        <option value="Corgi">Corgi</option>
+                                        <option value="Dachshund">Dachshund</option>
+                                        <option value="Dalmatian">Dalmatian</option>
+                                        <option value="Doberman Pinscher">Doberman Pinscher</option>
+                                        <option value="German Shepherd">German Shepherd</option>
+                                        <option value="Golden Retriever">Golden Retriever</option>
+                                        <option value="Labrador Retriever">Labrador Retriever</option>
+                                        <option value="Poodle">Poodle</option>
+                                        <option value="Pomeranian">Pomeranian</option>
+                                        <option value="Pug">Pug</option>
+                                        <option value="Saint Bernard">Saint Bernard</option>
+                                        <option value="Shih Tzu">Shih Tzu</option>
+                                        <option value="Siberian Husky">Siberian Husky</option>
+                                        <option value="Other breed:">Other breed:</option>
+                                    </optgroup>
+
+                                    <!--Cat Breeds-->
+                                    <optgroup label="Cat Breeds">
+                                        <option value="American Shorthair">American Shorthair</option>
+                                        <option value="Bengal">Bengal</option>
+                                        <option value="British Shorthair">British Shorthair</option>
+                                        <option value="Burmese">Burmese</option>
+                                        <option value="Bombay">Bombay</option>
+                                        <option value="Calico">Calico</option>
+                                        <option value="Chinchilla">Chinchilla</option>
+                                        <option value="Domestic Long Hair">Domestic Long Hair</option>
+                                        <option value="Devon Rex">Devon Rex</option>
+                                        <option value="Exotic Shorthair">Exotic Shorthair</option>
+                                        <option value="Himalayan">Himalayan</option>
+                                        <option value="Main Coon">Main Coon</option>
+                                        <option value="Munchkin">Munchkin</option>
+                                        <option value="Persian">Persian</option>
+                                        <option value="Puspin">Puspin</option>
+                                        <option value="Ragdoll">Ragdoll</option>
+                                        <option value="Russian Blue">Russian Blue</option>
+                                        <option value="Scottish Fold">Scottish Fold</option>
+                                        <option value="Siamese">Siamese</option>
+                                        <option value="Sphynx">Sphynx</option>
+                                        <option value="Other breed:">Other breed:</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <!--Pet Age-->
+                            <div class="pet-container">
+                                <label for="age">Age:</label><br>
+                                <input type="number" class="pet-age" id="age" name="age" required>
+                            </div>
+
+                            <!--Pet Sex-->
+                            <div class="pet-container">
+                                <label for="sex">Sex:</label>
+                                    <div class="btn-group">
+                                        <button class="btn-sex"><i class="fa fa-mars fa-lg" id="icon-sex"style="color: #ffffff;"></i>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</button>
+                                        <button class="btn-sex"><i class="fa fa-venus fa-lg" id="icon-sex"style="color: #ff99da;"></i>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</button>
+                                    </div>
+                            </div>
+
+                            <!--Pet Weight-->
+                            <div class="pet-container">
+                                <label for="weight">Weight:</label><br>
+                                    <div class="btn-group">
+                                        <button class="btn-weight">0-25 lbs</button>
+                                        <button class="btn-weight">25-50 lbs</button>
+                                        <button class="btn-weight">50-100 lbs</button>
+                                        <button class="btn-weight">100+ lbs</button>
+                                    </div>
+                            </div>
+
+                            <!--About-->
+                            <div class="pet-container">
+                                <div class="about-container">
+                                    <textarea placeholder="Pet Story:"></textarea>
+                                </div>
+                            </div>
+
+
+                            <!--Admit and Cancel Button-->
+                            <div class="pet-container">
+                                <div class="ac-btn">
+                                    <button id="btn-admit">Admit Pet</button>
+                                    <button type="submit" name="cancel" class="cancel">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </main>
+
+        <!--SideBar-->
+        <aside id="sidenav" class="sidebar">
+          
+            <ul class="menu-links"> 
+                <span id="close-btn" href="javascript:void(0)">&times;</span>
+                <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
+                <li><a id="add" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a></li>
+                <li><a id="manage" href="#"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a></li>
+                <li><a id="users" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a></li>
+                <li><a id="logout"href="#"><i class="fa fa-arrow-circle-right"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
+              </ul> 
+            <span id="menu-btn" style="font-size:30px;cursor:pointer">&#9776;</span>
+        </aside>
+
+        <script>
+            const sidebar = document.querySelector("sidebar");
+            const menuBtn = document.querySelector("#menu-btn");
+            const closeBtn = document.querySelector("#close-btn");
+
+            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
+
+            closeBtn.addEventListener("click", () => menuBtn.click());
+
+            let profilePic = document.getElementById("profile-pic");
+            let inputFile = document.getElementById("input-file");
+
+            inputFile.onchange = function(){
+                profilePic.src = URL.createObjectURL(inputFile.files[0]);
+            }
+        
+        </script>  
+    </div>
+</body>
+</html>
