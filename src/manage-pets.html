@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="layout-light.css"> 
+    <link rel="stylesheet" type="text/css" href="manage-pets.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Manage Pets</title>
 </head>
 
 <!--Lightmode: layout-light.css-->
@@ -16,7 +17,6 @@
         <header>
         <nav class="navbar">
             <a href="#" class="logo"><img src="icons/logo.png" alt="Logo">
-
             <ul class="items">
                 <li><a id="messages" href="#"><i class="fa fa-envelope"></i><a></li>
                 <li><a id="notifications" href="#"><i class="fa fa-bell"></i><a></li>
@@ -26,7 +26,35 @@
         </header>
 
         <!--Put Contents Here in main-->
-        <main class="content"></main>
+        <main class="content">
+                <div class="item title-1">
+                    <h1>Manage Pets</h1>
+                </div>
+
+                <div class="item profile">
+                        
+                    <img src="" alt="photo"><br>
+                    <button>Upload Photo</button>
+
+                    <div>
+                        <label for="ID">ID</label><br>
+                        <input type="number" id="ID" placeholder="Enter ID">
+                    </div>
+
+                    <div>
+                        <label for="about">About</label><br>
+                        <textarea name="about" id="about" cols="30" rows="10"></textarea>
+                    </div>
+
+                </div>
+
+                <div class="item fields">
+                    
+                
+                </div>
+                <div class="item title-2">list</div>
+                <div class="item list">table</div>
+        </main>
 
         <!--SideBar-->
         <aside id="sidenav" class="sidebar">

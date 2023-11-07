@@ -1,8 +1,4 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-:root{
-    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
-    /* Frame Shadow */;
-}
 
 *{
     margin: 0;
@@ -23,22 +19,13 @@
 
 
 header{
-    background: #fdf7ec;
+    background: #240155;
     padding: 0 20px;
     grid-area: header;
     height: 100px;
     width: 100%;
     position: relative;
-    box-shadow: var(--main-box-shadow);
-    z-index: 1;
-}
-
-nav{
-    max-width: 1700px;
-    width: 100%;
-    height: 80px;
-    margin: 0 auto;
-    
+    box-shadow: 3px 5px 10px #25113a;
 }
 
 .navbar img{
@@ -46,13 +33,18 @@ nav{
     margin-top: 6px;
 }
 
+nav{
+    max-width: 1700px;
+    width: 100%;
+    height: 80px;
+    margin: 0 auto;
+}
 
 nav, .items{
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: space-between;
-    
 }
 
 a{
@@ -71,32 +63,32 @@ a{
 }
 
 #messages, #notifications{
-    color: #ffb845;
+    color: #1EDDD4;
     font-size: 24px;
 }
 
 #messages :hover{
-    color: #f2542d;
+    color: #c3fdfa;
     transition: all 0.3s ease;
 }
 
 #notifications :hover{
-    color: #f2542d;
+    color: #c3fdfa;
     transition: all 0.3s ease;
 }
 
 main{
-    background: #f5dfbb;
+    background: #090b29;
     grid-area: main;
     height: 100vh;
 }
 
 .sidebar{
-    background: #0e9594;
+    background: #4e00a7;
     grid-area: sidebar;
     position: relative;
     overflow: hidden;
-    box-shadow: var(--main-box-shadow);
+    box-shadow: 0px 5px 10px #60289c;
  
 }
 
@@ -120,7 +112,7 @@ main{
 }
 
 .sidebar a:hover:not(.active) {
-    background-color: #127475;
+    background-color: #34026e;
     color: white;
     border-left: 20px;
     transition: all 0.3s ease;
@@ -163,12 +155,12 @@ main{
         left: 0;
         top: 0;
     }
-
+    
     .sidebar .menu-links {
         height: 100vh;
         max-width: 1200px;
         width: 100%;
-        background:#0e9594;
+        background:#4e00a7;
         position: fixed;
         left: -1200px;
         top: 0;
@@ -198,7 +190,7 @@ main{
     .sidebar .menu-links a:hover{
         color: white;
         background: none;
-        background-color: #127475;
+        background-color: #34026e;
         transition: all 0.2s ease;
     }
     
