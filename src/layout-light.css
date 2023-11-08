@@ -178,7 +178,7 @@ main{
         text-align: center;
     }
 
-    aside .mobile-mode .sidebar .menu-links{
+    .sidebar.mobile-mode .menu-links{
         left: 0;
     }
 

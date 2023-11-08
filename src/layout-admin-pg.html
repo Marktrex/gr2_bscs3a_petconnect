@@ -43,11 +43,11 @@
         </aside>
 
         <script>
-            const aside = document.querySelector("aside");
+            const aside = document.querySelector("#sidenav");
             const menuBtn = document.querySelector("#menu-btn");
             const closeBtn = document.querySelector("#close-btn");
 
-            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
+            menuBtn.addEventListener("click", () => aside.classList.toggle("mobile-mode"));
 
             closeBtn.addEventListener("click", () => menuBtn.click());
         </script>
