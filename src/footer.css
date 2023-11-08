@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+    font-family: 'Magic-Retro';
+    src: url(/src/fonts/MagicRetro.ttf);
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+  
+footer .footer-content{
+    display: flex;
+    width: 100%;
+    background: #0e9594;
+    color: #fff; 
+    padding: 2em; 
+    font-size: 1.2rem;
+}
+
+footer .footer-content .item{
+    border: 3px solid black;
+    width: 700px;
+    padding: 2em;
+}
+
+.item img{
+    width: 200px;
+    margin-left: 75px;
+}
+
+footer .info{
+    display: flex;
+    width: 100%;
+    background: #127475;
+    color: #fff; 
+    padding: 2em; 
+    font-size: 0.9rem;
+}
