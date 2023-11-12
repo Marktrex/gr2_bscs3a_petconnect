@@ -17,11 +17,39 @@ class Audit
         $this->short_description = $short_description;
     }
 
+    
+
+    protected function checkNullResponsible()
+    {
+        if(!$this->responsible_id)
+        {
+            try {
+                $db = new DBConnect();
+                $conn = $db->connection();
+
+                $sql = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1;";
+
+                $stmt = $conn->prepare($sql);
+                
+                $stmt->execute();
+
+                $latestUserId = $stmt->fetchColumn();
+
+                $this->responsible_id = $latestUserId;
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            
+
+            $conn = null;
+        }
+    }
+
     public function activity_log()
     {
         if(!$this->responsible_id)
         {
-            checkNullResponsible();
+            $this->checkNullResponsible();
         }
         try {
             // Initialize PDO connection
@@ -49,30 +77,6 @@ class Audit
     
         // Close the connection
         $conn = null;
-    }
-
-    private function checkNullResponsible()
-    {
-        if(!$this->responsible_id)
-        {
-            try {
-                $conn = new DBConnect();
-                $sql = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1;";
-
-                $stmt = $conn->prepare($sql);
-                
-                $stmt->execute();
-
-                $latestUserId = $stmt->fetchColumn();
-
-                $this->responsible_id = $latestUserId;
-            } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-            
-
-            $conn = null;
-        }
     }
     
 }

@@ -53,14 +53,17 @@ if (isset($_POST["register"])) { //code ni marc
             $stmt->bindParam(':password', $password); 
             // Execute the query
             if ($stmt->execute()) {
-                echo '<script language="javascript">';
-                echo 'alert("Sign up sucessfully");';
-                echo 'window.location = "../home.php";';
-                echo '</script>';
-
                 // audit
                 $log = new Audit(null, "register", "new registration of user");
                 $log->activity_log();
+
+                
+                echo '<script language="javascript">';
+                echo 'alert("Sign up sucessfully");';
+                echo 'window.location = "../loginpage.php";';
+                echo '</script>';
+
+                
 
             } else {
                 echo "Error inserting record: " . $stmt->errorInfo()[2];
