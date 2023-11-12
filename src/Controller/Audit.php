@@ -19,10 +19,14 @@ class Audit
 
     public function activity_log()
     {
-        checkNullResponsible();
+        if(!$this->responsible_id)
+        {
+            checkNullResponsible();
+        }
         try {
             // Initialize PDO connection
-            $conn = new DBConnect();
+            $db = new DBConnect();
+            $conn = $db->connection();
     
             // Your SQL query with the table name concatenated
             $sql = "INSERT INTO audit_log (responsible_id, type, short_description) VALUES (:responsible_id, :type, :short_description)";

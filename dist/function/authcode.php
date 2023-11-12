@@ -1,10 +1,13 @@
 <!-- Sign Up  -->
 <?php
+
+use MyApp\Controller\Audit;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
 session_start();
 require('config.php'); //PDO connection to the database
-
-require_once "../../controller/audit.class.php"; //audit log
-
 
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
@@ -88,7 +91,13 @@ else if (isset($_POST["login"])) {
         $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
-        
+
+
+        // audit
+        $log = new Audit($userID, "login", "User has logged in");
+        $log->activity_log();
+
+
         if ($userType === '1') {
             // Redirect admin to an admin dashboard
             $_SESSION['auth'] = true;
@@ -123,9 +132,7 @@ else if (isset($_POST["login"])) {
             echo '</script>';
         }
 
-        // audit
-        $log = new Audit($userID, "login", "User has logged in");
-        $log->activity_log();
+       
 
     } else {
         // Login failed

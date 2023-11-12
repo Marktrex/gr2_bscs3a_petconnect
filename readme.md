@@ -14,7 +14,7 @@ ung source folder is for storing of compilation
 
 cheat sheet
 ```
-composer dump-autoload -o
+composer dump-autoload
 
 composer install
 

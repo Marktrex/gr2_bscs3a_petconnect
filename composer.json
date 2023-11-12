@@ -3,5 +3,9 @@
         "psr-4": {
             "MyApp\\" : "src/"
         }
+    },
+    "require": {
+       
     }
+    
 }
