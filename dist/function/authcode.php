@@ -14,7 +14,7 @@ if (isset($_POST["register"])) { //code ni marc
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $passwordRepeat = $_POST["password"];
+    $passwordRepeat = $_POST["cpassword"];
     
     
     // $fname = mysqli_real_escape_string($conn, $_POST["fname"]); //code ni aian
@@ -37,7 +37,10 @@ if (isset($_POST["register"])) { //code ni marc
     $rowCount = $stmt->rowCount();
 
     if ($rowCount > 0) {
-        echo "Hello :)";
+        echo '<script language="javascript">';
+        echo 'alert("Email already exists");';
+        echo 'window.location = "../signuppage.php";';
+        echo '</script>';
         $conn = null;
     } 
     else {
@@ -68,6 +71,13 @@ if (isset($_POST["register"])) { //code ni marc
             } else {
                 echo "Error inserting record: " . $stmt->errorInfo()[2];
             }
+            $conn = null;
+        }else {
+            // register failed
+            echo '<script language="javascript">';
+            echo 'alert("Please make sure password and confirm password is the same");';
+            echo 'window.location = "../signuppage.php";';
+            echo '</script>';
             $conn = null;
         }
     }
