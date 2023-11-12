@@ -56,7 +56,7 @@ if (isset($_POST["register"])) { //code ni marc
                 echo '</script>';
 
                 // audit
-                $log = new audit(null, "register", "new registration of user");
+                $log = new Audit(null, "register", "new registration of user");
                 $log->activity_log();
 
             } else {
@@ -122,9 +122,9 @@ else if (isset($_POST["login"])) {
             echo 'window.location = "../user/home.php";';
             echo '</script>';
         }
-        
+
         // audit
-        $log = new audit($userID, "login", "User has logged in");
+        $log = new Audit($userID, "login", "User has logged in");
         $log->activity_log();
 
     } else {

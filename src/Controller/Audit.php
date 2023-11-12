@@ -1,11 +1,11 @@
 <?php
 
-namespace MyApp\controller;
+namespace MyApp\Controller;
 
-require_once "../database/DBConnect.class.php";
+use MyApp\Database\DBConnect;
 
 
-class audit
+class Audit
 {
     private $short_description;
     private $responsible_id;

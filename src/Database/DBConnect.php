@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\database;
+namespace MyApp\Database;
 
 class DBConnect
 {
