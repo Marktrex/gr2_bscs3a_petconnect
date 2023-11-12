@@ -3,6 +3,9 @@
 session_start();
 require('config.php'); //PDO connection to the database
 
+require_once "../../controller/audit.class.php"; //audit log
+
+
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
@@ -51,6 +54,11 @@ if (isset($_POST["register"])) { //code ni marc
                 echo 'alert("Sign up sucessfully");';
                 echo 'window.location = "../home.php";';
                 echo '</script>';
+
+                // audit
+                $log = new audit(null, "register", "new registration of user");
+                $log->activity_log();
+
             } else {
                 echo "Error inserting record: " . $stmt->errorInfo()[2];
             }
@@ -115,6 +123,10 @@ else if (isset($_POST["login"])) {
             echo '</script>';
         }
         
+        // audit
+        $log = new audit($userID, "login", "User has logged in");
+        $log->activity_log();
+
     } else {
         // Login failed
         echo '<script language="javascript">';
