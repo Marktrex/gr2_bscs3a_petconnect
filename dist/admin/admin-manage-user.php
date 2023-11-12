@@ -1,5 +1,6 @@
 <?php
 require '../function/config.php';
+session_start();
 
 if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
 {
