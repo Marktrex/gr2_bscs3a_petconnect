@@ -1,4 +1,7 @@
 <?php
+
+namespace MyApp\database;
+
 class DBConnect
 {
     private $dsn = "localhost";

@@ -1,4 +1,7 @@
 <?php
+
+namespace MyApp\controller;
+
 require_once "../database/DBConnect.class.php";
 
 
