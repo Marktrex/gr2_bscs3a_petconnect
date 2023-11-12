@@ -48,6 +48,8 @@ if (isset($_POST["submit"])) {
                     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
                     if ($stmt->execute()) {
+                        $log = new Audit($_SESSION['auth_user']['id'],"add news","admin added news $title");
+                        $log->activity_log();
                         echo "<script> 
                             alert('Successfully Added'); 
                             window.location.href = 'admin-add-news.php';

@@ -59,6 +59,8 @@ if (isset($_POST["submit"])) {
       
             // $result = mysqli_query($conn, $query);
             if ($stmt) {
+                $log = new Audit($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name on $date");
+                $log->activity_log();
                 echo "
                 <script> 
                     alert('Pets added successfully'); 
