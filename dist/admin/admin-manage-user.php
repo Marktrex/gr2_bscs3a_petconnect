@@ -23,8 +23,9 @@ if (isset($_POST['promote'])) {
         exit;
     } elseif ($userType == 2) {
         // Promote to admin
-        $sql = "UPDATE user SET user_type = 1 WHERE user_id = '$id'";
+        $sql = "UPDATE user SET user_type = 1 WHERE user_id = :id";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         if ($stmt) {
             echo '<script language="javascript">';
@@ -65,7 +66,7 @@ if (isset($_POST['demote'])) {
         exit;
     } elseif ($userType == 1) { 
         // Demote to regular user
-        $sql = "UPDATE user SET user_type = 2 WHERE user_id = '$id'";
+        $sql = "UPDATE user SET user_type = 2 WHERE user_id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
