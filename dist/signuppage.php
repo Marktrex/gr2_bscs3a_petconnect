@@ -68,12 +68,12 @@ session_start();
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-lock icon custom-important-text
                             absolute top-[3px] "></i>
-                    <input class="custom-input" type="text" placeholder="Password" name="password" id="password" required>
+                    <input class="custom-input" type="password" placeholder="Password" name="password" id="password" required>
                 </div>
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-lock icon custom-important-text
                             absolute top-[3px] "></i>
-                    <input class="custom-input" type="text" placeholder="Confirm Password" name="cpassword" id="password" required>
+                    <input class="custom-input" type="password" placeholder="Confirm Password" name="cpassword" id="password" required>
                 </div>
 
                 <input type="submit" name="register" value="Sign Up" class="custom-button">
