@@ -28,7 +28,7 @@ class Model
         $stmt = $conn->prepare($sql);
         try {
             if ($stmt->execute()) {
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $stmt->fetchAll(PDO::FETCH_OBJ);
             } else {
                 // Handle error if the query fails
                 return false;

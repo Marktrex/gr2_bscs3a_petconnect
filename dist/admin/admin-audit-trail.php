@@ -11,7 +11,7 @@ if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
 }
 
 $audit = new AuditModelController();
-$audit = $audit->getAuditLog();
+$auditLogs = $audit->getAuditLog();
 
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,27 @@ $audit = $audit->getAuditLog();
     <link rel="icon" href="../image/icon.png" type="image/png">
 </head>
 <body>
-    <table>
-        
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Responsible ID</th>
+                <th>Type</th>
+                <th>Short Description</th>
+                <th>Date Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($auditLogs as $log): ?>
+                <tr>
+                    <td><?= $log->id ?></td>
+                    <td><?= $log->responsible_id ?></td>
+                    <td><?= $log->type ?></td>
+                    <td><?= $log->short_description ?></td>
+                    <td><?= $log->date_time ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
 </body>
 </html>
