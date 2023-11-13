@@ -42,8 +42,12 @@ $loggedIn = isset($_SESSION['auth_user']);
             <?php
             $i = 1;
             $id = $_GET['id'];
-            $rows = mysqli_query($conn, "Select * from pets where pets_id = $id")
-                ?>
+            $stmt = $conn->prepare("SELECT * FROM pets WHERE pets_id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            ?>
             <?php foreach ($rows as $row): ?>
                 <div class="photo">
                     <img src="./upload/<?php echo $row["image"]; ?>" alt="">

@@ -17,14 +17,7 @@ if (isset($_POST["register"])) { //code ni marc
     $passwordRepeat = $_POST["cpassword"];
     
     
-    // $fname = mysqli_real_escape_string($conn, $_POST["fname"]); //code ni aian
-    // $lname = mysqli_real_escape_string($conn, $_POST["lname"]);
-    // $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    // $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    // $cpassword = mysqli_real_escape_string($conn, $_POST["cpassword"]);
-
-    // $check_email_query = "SELECT email FROM user WHERE email='$email'";
-    // $searchEmail = "test@gmail.com";
+   
 
     //php using PDO
     $sql_check = "SELECT * FROM user WHERE email = :email";

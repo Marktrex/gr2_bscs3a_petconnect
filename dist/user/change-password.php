@@ -3,22 +3,26 @@ session_start();
 require '../function/config.php';
 
 if (isset($_POST['update'])) {
-    $oldpassword = mysqli_real_escape_string($conn, $_POST['oldpassword']);
-    $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
+    $oldpassword = $_POST['oldpassword'];
+    $newpassword = $_POST['newpassword'];
 
     // Retrieve the user's old password from the database
     $email = $_SESSION['auth_user']['email'];
-    $select_query = "SELECT password FROM user WHERE email='$email'";
-    $select_query_run = mysqli_query($conn, $select_query);
-    $row = mysqli_fetch_assoc($select_query_run);
+    $select_query = "SELECT password FROM user WHERE email=:email";
+    $stmt_select = $conn->prepare($select_query);
+    $stmt_select->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt_select->execute();
+    $row = $stmt_select->fetch(PDO::FETCH_ASSOC);
     $old_password_db = $row['password'];
 
     if ($oldpassword === $old_password_db) {
         // Update the user's password in the database
-        $update_query = "UPDATE user SET password='$newpassword' WHERE email='$email'";
-        $update_query_run = mysqli_query($conn, $update_query);
+        $update_query = "UPDATE user SET password=:newpassword WHERE email=:email";
+        $stmt_update = $conn->prepare($update_query);
+        $stmt_update->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+        $stmt_update->bindParam(':email', $email, PDO::PARAM_STR);
 
-        if ($update_query_run) {
+        if ($stmt_update->execute()) {
             echo '<script language="javascript">';
             echo 'alert("Password updated successfully");';
             echo 'window.location = "change-password.php";';

@@ -11,7 +11,7 @@ if (isset($_SESSION['auth'])) {
 
     unset($_SESSION['auth']);
     unset($_SESSION['auth_user']);
-
+    unset($_SESSION['user_data']);
 }
 
 header('Location: ../user/home.php');
