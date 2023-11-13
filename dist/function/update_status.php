@@ -1,4 +1,6 @@
 <?php
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
 require 'config.php';
 
 // Check if the appointment ID and status values are provided
@@ -33,9 +35,12 @@ if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
 
     // Execute the query
     $success = $stmt->execute();
+    
 
     if ($success) {
         // Return a success response
+        $log = new Audit($_SESSION['auth_user']['id'],"appointment","admin $status appointment of $appointmentId");
+        $log->activity_log();
         http_response_code(200);
         echo "Status updated successfully";
     } else {
