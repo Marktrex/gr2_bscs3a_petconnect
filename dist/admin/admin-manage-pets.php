@@ -1,4 +1,9 @@
 <?php
+
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
 require '../function/config.php';
 session_start();
 
@@ -22,14 +27,6 @@ if (isset($_POST['update'])) {
     $date = $_POST["date"];
     $about = $_POST["about"];
 
-    // $name = mysqli_real_escape_string($conn, $_POST["name"]); this code is for PHP MYSQLI
-    // $type = mysqli_real_escape_string($conn, $_POST["type"]);
-    // $breed = mysqli_real_escape_string($conn, $_POST["breed"]);
-    // $sex = mysqli_real_escape_string($conn, $_POST["sex"]);
-    // $weight = mysqli_real_escape_string($conn, $_POST["weight"]);
-    // $age = mysqli_real_escape_string($conn, $_POST["age"]);
-    // $date = mysqli_real_escape_string($conn, $_POST["date"]);
-    // $about = mysqli_real_escape_string($conn, $_POST["about"]);
 
     // Check if the image is uploaded
     if (!empty($_FILES['image']['name'])) {
@@ -52,11 +49,22 @@ if (isset($_POST['update'])) {
                 $image_new_name = uniqid('image_') . '.' . $image_ext;
 
                 // Upload the image to the server
-                $image_destination = 'upload/' . $image_new_name;
+                $image_destination = '../upload/' . $image_new_name;
                 move_uploaded_file($image_tmp, $image_destination);
 
                 // Update the image in the database
-                $sql = "UPDATE pets SET name='$name', type='$type', breed='$breed', sex='$sex', weight='$weight', age='$age', date='$date', about='$about', image='$image_new_name' WHERE pets_id='$id'";
+                $sql = "UPDATE pets SET name = :name, type = :type, breed = :breed, sex = :sex, weight = :weight, age = :age, date = :date, about = :about, image = :image_new_name WHERE pets_id = :id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':name', $name);
+                $stmt->bindParam(':type', $type);
+                $stmt->bindParam(':breed', $breed);
+                $stmt->bindParam(':sex', $sex);
+                $stmt->bindParam(':weight', $weight);
+                $stmt->bindParam(':age', $age);
+                $stmt->bindParam(':date', $date);
+                $stmt->bindParam(':about', $about);
+                $stmt->bindParam(':image_new_name', $image_new_name);
+                $stmt->bindParam(':id', $id);
             } else {
                 echo "Invalid image format. Only JPG, JPEG, and PNG files are allowed.";
                 exit;
@@ -83,10 +91,12 @@ if (isset($_POST['update'])) {
         
     // Perform the database query
     if ($stmt->execute()) {
+        $log = new Audit($_SESSION['auth_user']['id'],"admin modified pet","admin change the content of pet: $name id: $id");
+        $log->activity_log();
         echo "
         <script> 
             alert('Data updated successfully'); 
-            window.location.href = '../admin-manage-pets.php';
+            window.location.href = './admin-manage-pets.php';
         </script>";
     } else {
         echo "Error updating data";
@@ -107,15 +117,17 @@ if (isset($_POST['delete'])) {
     $id = $_POST['id'];
 
     // Delete the record from the database
-    $sql = "DELETE FROM pets WHERE pets_id='$id'";
+    $sql = "DELETE FROM pets WHERE pets_id=:id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     if ($stmt) {
+        $log = new Audit($_SESSION['auth_user']['id'],"admin deleted a pet","admin deleted id: $id");
+        $log->activity_log();
         echo "
         <script> 
             alert('Record deleted successfully'); 
-            document.location.href = '../admin-manage-pets.php';
+            document.location.href = './admin-manage-pets.php';
         </script>";
     } else {
         echo "Error deleting record";
