@@ -28,7 +28,6 @@
         <main class="content">
             <div class="wrapper">
                 <form class="form">
-
                     <h1 class="form-title">Pet Form</h1>
 
                         <div class="form-input">
@@ -42,13 +41,19 @@
 
                             <!--Pet Name-->
                             <div class="pet-container">
-                                <label for="name">Pet Name:</label>
+                                <label for="name"><a>Pet Name</a></label>
                                 <input type="text" class="pet-name" id="name" name="name" maxlength="20">
-                            </div>
+                                <br>
 
-                            <!--Pet Breed-->
-                            <div class="pet-container">
-                                <label for="breed">Breed:</label><br>
+                                <label for="species"><a>Species</a></label>
+                                <select class="pet-type" name="species" id="species" required>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                </select>
+                                <br>
+
+
+                                <label for="breed"><a>Breed</a></label>
                                 <select class="pet-breed" name="breed" id="breed" required>
                                     <option value="">Select Breed</option>
 
@@ -102,52 +107,38 @@
                                         <option value="Other breed:">Other breed:</option>
                                     </optgroup>
                                 </select>
-                            </div>
+                                <br>
 
                             <!--Pet Age-->
-                            <div class="pet-container">
-                                <label for="age">Age:</label><br>
+                                <label for="age"><a>Age</a></label>
                                 <input type="number" class="pet-age" id="age" name="age" required>
-                            </div>
+                                <br>
 
                             <!--Pet Sex-->
-                            <div class="pet-container">
-                                <label for="sex">Sex:</label>
-                                    <div class="btn-group">
-                                        <button class="btn-sex"><i class="fa fa-mars fa-lg" id="icon-sex"style="color: #ffffff;"></i>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Male</button>
-                                        <button class="btn-sex"><i class="fa fa-venus fa-lg" id="icon-sex"style="color: #ff99da;"></i>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Female</button>
-                                    </div>
-                            </div>
+                                <label for=" sex"><a>Sex</a></label>
+                                <select class="pet-sex" name="sex" id="sex" required>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <br>
 
                             <!--Pet Weight-->
-                            <div class="pet-container">
-                                <label for="weight">Weight:</label><br>
-                                    <div class="btn-group">
-                                        <button class="btn-weight">0-25 lbs</button>
-                                        <button class="btn-weight">25-50 lbs</button>
-                                        <button class="btn-weight">50-100 lbs</button>
-                                        <button class="btn-weight">100+ lbs</button>
-                                    </div>
-                            </div>
+                                <label for="weight"><a>Weight</a></label>
+                                <input type="number" class="pet-weight" id="weight" name="weight" required placeholder="lbs">
+                                <br>
 
-                            <!--About-->
-                            <div class="pet-container">
-                                <div class="about-container">
-                                    <textarea placeholder="Pet Story:"></textarea>
-                                </div>
-                            </div>
+                            <!--About-->    
+                                <label for="about"><a id="label-about">About</a></label>
+                                <textarea name="about" id="about" cols="100" rows="12"></textarea>
 
+                                <section class="ac-btn">
+                                    <button class="add-btn">Add Pet</button>
+                                    <button class="clear-btn">Clear all</button>
+                                </section>
 
-                            <!--Admit and Cancel Button-->
-                            <div class="pet-container">
-                                <div class="ac-btn">
-                                    <button id="btn-admit">Admit Pet</button>
-                                    <button type="submit" name="cancel" class="cancel">Cancel</button>
-                                </div>
+                            
+                            
                             </div>
-                        </div>
                 </form>
             </div>
         </main>

@@ -123,7 +123,7 @@ main{
 }
 
 .profile{
-    grid-row: 2/7;
+    grid-row: 1/7;
     grid-column: 1/10;
 }
 
@@ -257,12 +257,12 @@ main{
 }
 
 .upd-btn .update-btn{
-    background-color:  #ffb845ba;
+    background-color:  #58c3c3;
 }
 
 .update-btn:hover{
-    box-shadow: 0px 0px 7px #ffb845;
-    background-color: #ffb845;
+    box-shadow: 0px 0px 7px #0e9594;
+    background-color: #0e9594;
     transition: all 0.2s ease;
 }
 
@@ -342,7 +342,6 @@ td img{
     position: relative;
     overflow: hidden;
     box-shadow: var(--main-box-shadow);
- 
 }
 
 .menu-links{

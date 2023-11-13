@@ -1,8 +1,17 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
+    /* Frame Shadow */;
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(37, 141, 141, 0.248);
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 
 .container{
@@ -14,6 +23,7 @@
     "header header header"
     "sidebar main main";
     min-height: auto;
+    overflow: hidden;
 }
 
 header{
@@ -23,7 +33,8 @@ header{
     height: 100px;
     width: 100%;
     position: relative;
-    box-shadow: #fdf7ec;
+    box-shadow: var(--main-box-shadow);
+    z-index: 1;
 }
 
 .navbar img{
@@ -79,14 +90,16 @@ main{
     background: #f5dfbb;
     grid-area: main;
     height: 100vh;
-    padding: 30px;
-    display: flex;
+    padding: 40px;
 }
 
 .wrapper {
     background-color:#fdf7ec;
     width: 100%;
+    height: 83vh;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--main-content-shadow);
 }
 
 .wrapper .form .form-input {
@@ -102,8 +115,14 @@ form .form-title {
     text-align: center;
     font-size: 32px;
     position: relative;
+    color: #0e9594;
     border-bottom: 2px solid #0e9594;
 }
+
+h1{
+    padding: 10px;
+}
+
 .form-input .image-container {
     margin-top: 2%;
     grid-row: 1 / 6;
@@ -112,28 +131,36 @@ form .form-title {
     height: 210px;
 }
 
+.pet-container a{
+    color: #6a6262;
+    margin-left: 200px;
+}
+
 .form .image-container label {
     display: block;
-    background-color: #ffb845;
+    background-color: #ffb845ba;
     color: black;
-    padding: 1%;
+    padding: 1em;
     --webkit-appearance: button;
     cursor: pointer;
-    border-radius: 10px;
-    max-width: 95%;
-    width: auto;
+    border-radius: 20px;
+    width: 230px;
     text-align: center;
-    margin-left: 3%;
+    margin-left: 160px;
 }
 .form .image-container img {
-    width: 180px;
-    border: 2px solid #0e9594;
-    margin-bottom: 2%;
+    width: 250px;
+    margin-left: 150px;
+    margin-bottom: 20px;
+    border-radius: 30px;
 }
 .form .image-container input {
     display: none;
 }
 
+form .pet-container{
+    margin-left: 160px;
+}
 
 form .form-input .pet-container {
     width: 100%;
@@ -142,95 +169,86 @@ form .form-input .pet-container {
 }
 
 .form-input .pet-container input,
-.form-input .pet-container select,
-.form-input .pet-container .btn-group {
+.form-input .pet-container select{
     position: relative;
-    width: 95%;
-    border-radius: 15px;
-    background-color: #0e9594;
+    width: 650px;
+    border-radius: 10px;
+    background-color:var(--main-input-color );
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 8px;
-    color: white;
+    padding: 12px;
+    margin: 10px;
 }
 
-.pet-container .btn-sex,
-.pet-container .btn-weight
- {
-  color: white;
-  border-radius: 15px;
-  border: 2px solid #0e9594;
-  background-color: #0e9594;
+textarea{
+    width: 40rem;
+    margin: -30px 30px 10px 320px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--main-input-color);
 }
 
-.pet-container .btn-sex {
-    width: 49%;
-}
-
-.pet-container .btn-weight {
-  width: 24%;
-}
-
-.pet-container .btn-sex:hover,
-.pet-container .btn-weight:hover {
-    background-color: white;
-    color: #0e9594;
-}
-
-.pet-container .about-container {
-    position: relative;
-    color: white;
-    margin-top: -25%;
-}
-
-.about-container ::placeholder {
-    text-align: center;
-    background-color: #fdf7ec;
-    color: black;
-    padding: 5px;
-}
-
-.about-container textarea {
-    height: 210px;
-    width: 200px;
-    margin-left: 8%;
-    border: 2px solid #0e9594;
-    border-radius: 10px;
-    background-color: #0e9594;
-    color: white;
-    outline: none;
-}
-
-.about-container .textarea:hover {
-    background-color: white;
-    color: black;
-}
-
-.pet-container .ac-btn {
+#label-about{
     display: flex;
-    position: relative;
-    text-align: center;
-    margin-top: 16%;
-    margin-left: 55%;
-    width: 300px;
+    margin-top: 35px;
 }
 
-.ac-btn button {
-    width: 100%;
-    margin-left: 10%;
-    padding: 10px;
+#name{
+    margin-left: 40px;
+}
+
+#breed{
+    margin-left: 67px;
+}
+
+#sex{
+    margin-left: 81px
+}
+
+#species{
+    margin-left: 55px
+}
+
+#age{
+    margin-left: 80px
+}
+
+#weight{
+    margin-left: 60px;
+}
+
+.ac-btn{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 15px 15px -500px;
+}
+
+button{
+    padding: 15px 45px;
     border: none;
-    outline: none;
-    border-radius: 10px;
-    background-color: #ffb845;
-    cursor: pointer;
-  
+    border-radius: 30px;
 }
 
-.ac-btn button:hover {
-  background-color: #f2542d;
-  color: white;
+.add-btn{
+    background-color:  #58c3c3;
+}
+
+.add-btn:hover{
+    box-shadow: 0px 0px 7px #0e9594;
+    background-color: #0e9594;
+    transition: all 0.2s ease;
+}
+
+.clear-btn{
+    background-color:  #ffb845ba;
+}
+
+.clear-btn:hover{
+    box-shadow: 0px 0px 7px #ffb845;
+    background-color: #ffb845;
+    transition: all 0.2s ease;
 }
 
 .sidebar{
@@ -238,7 +256,7 @@ form .form-input .pet-container {
     grid-area: sidebar;
     position: relative;
     overflow: hidden;
- 
+    box-shadow: var(--main-box-shadow);
 }
 
 .menu-links{
@@ -284,18 +302,6 @@ form .form-input .pet-container {
     cursor: pointer;
     font-size: 1.7rem;
     position: absolute;
-}
-
-/*--- Customize Scrollbar ---*/
-::-webkit-scrollbar{
-    width: 10px;
-}
-::-webkit-scrollbar-track{
-    background-color: #fdf7ec;
-}
-::-webkit-scrollbar-thumb{
-    background: linear-gradient(#0e9594, #ffb845);
-    border-radius: 20px;
 }
 
 @media only screen and (max-width:678px){
