@@ -40,7 +40,7 @@ if (isset($_POST['promote'])) {
             echo '</script>';
             exit;
         } else {
-            echo "Error promoting user to admin: " . mysqli_error($conn);
+            echo "Error promoting user to admin: ";
             exit;
         }
     } else {
@@ -134,7 +134,7 @@ if (isset($_POST['update'])) {
                 window.location.href = 'admin-manage-user.php';
             </script>";
     } else {
-        echo "Error updating data: " . mysqli_error($conn);
+        echo "Error updating data: ";
     }
 }
 
