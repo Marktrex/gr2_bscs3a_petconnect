@@ -1,4 +1,7 @@
 <?php
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 require '../function/config.php';
 session_start();
 
@@ -43,41 +46,41 @@ if (isset($_POST['submit'])) {
     $stmt4->execute();
 
     if ($stmt1 && $stmt2 && $stmt3 && $stmt4) {
+        $log = new Audit($_SESSION['auth_user']['id'],"admin set featured pets","admin has set featured pets:$featuredImage1 , $featuredImage2 , $featuredImage3, $featuredImage4 ");
+        $log->activity_log();
         echo "
         <script> 
             alert('Records updated successfully'); 
             window.location.href = 'admin-manage-featured.php';
         </script>";
     } else {
-        echo "Error updating records: " . $conn = null;
-    }
-
-    // Retrieve the current values of is_featured column from the database
-    $featuredImage1 = "";
-    $featuredImage2 = "";
-    $featuredImage3 = "";
-    $featuredImage4 = "";
-
-    $sql = "SELECT pets_id, is_featured FROM pets WHERE is_featured > 0";
-    $stmt = $pdo->query($sql);
-    // $result = mysqli_query($conn, $sql); 
-
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $id = $row['pets_id'];
-        $isFeatured = $row['is_featured'];
-
-        if ($isFeatured == 1) {
-            $featuredImage1 = $id;
-        } elseif ($isFeatured == 2) {
-            $featuredImage2 = $id;
-        } elseif ($isFeatured == 3) {
-            $featuredImage3 = $id;
-        } elseif ($isFeatured == 4) {
-            $featuredImage4 = $id;
-        }
+        echo "Error updating records: ";
     }
 }
+// Retrieve the current values of is_featured column from the database
+$featuredImage1 = null;
+$featuredImage2 = null;
+$featuredImage3 = null;
+$featuredImage4 = null;
 
+$sql = "SELECT pets_id, is_featured FROM pets WHERE is_featured > 0";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $id = $row['pets_id'];
+    $isFeatured = $row['is_featured'];
+
+    if ($isFeatured == 1) {
+        $featuredImage1 = $id;
+    } elseif ($isFeatured == 2) {
+        $featuredImage2 = $id;
+    } elseif ($isFeatured == 3) {
+        $featuredImage3 = $id;
+    } elseif ($isFeatured == 4) {
+        $featuredImage4 = $id;
+    }
+}
 // Close the database connection
 $conn = null;
 ?>
@@ -173,7 +176,7 @@ $conn = null;
                         <div class="form-group">
                             <label for="featured_image_1">Featured Image 1:</label>
                             <input type="number" name="featured_image_1" id="featured_image_1"
-                                value="<?php echo isset($featuredImage1) ? $featuredImage1 : ''; ?>">
+                                value="<?php echo isset($featuredImage1) ? $featuredImage1 : '';?>">
                         </div>
                         <div class="form-group">
                             <label for="featured_image_2">Featured Image 2:</label>
