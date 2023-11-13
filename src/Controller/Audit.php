@@ -4,7 +4,6 @@ namespace MyApp\Controller;
 
 use MyApp\Database\DBConnect;
 
-
 class Audit
 {
     private $short_description;
@@ -17,7 +16,6 @@ class Audit
         $this->short_description = $short_description;
     }
 
-    
 
     protected function checkNullResponsible()
     {
@@ -78,6 +76,7 @@ class Audit
         // Close the connection
         $conn = null;
     }
+    
     
 }
 ?>
