@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2023 at 03:26 PM
+-- Generation Time: Nov 13, 2023 at 11:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -61,10 +61,41 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_type`, `appointment_da
 CREATE TABLE `audit_log` (
   `id` int(11) NOT NULL,
   `responsible_id` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
-  `short_description` int(11) DEFAULT NULL,
+  `type` varchar(255) NOT NULL,
+  `short_description` text DEFAULT NULL,
   `date_time` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `audit_log`
+--
+
+INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `short_description`, `date_time`) VALUES
+(1, 1, '0', '0', '2023-11-13 01:15:57'),
+(2, 1, 'login', 'User has logged in', '2023-11-13 01:17:01'),
+(3, 2, 'login', 'User has logged in', '2023-11-13 01:17:30'),
+(4, 13, 'register', 'new registration of user', '2023-11-13 01:29:26'),
+(5, 14, 'register', 'new registration of user', '2023-11-13 01:34:46'),
+(6, 1, 'login', 'User has logged in', '2023-11-13 01:37:27'),
+(7, 1, 'Logout', 'User has logged out', '2023-11-13 01:42:52'),
+(8, 1, 'login', 'User has logged in', '2023-11-13 01:51:52'),
+(9, 1, 'user promotion', 'admin promoted 2 to admin', '2023-11-13 02:00:54'),
+(10, 1, 'user demotion', 'admin demoted 2 to admin', '2023-11-13 02:00:59'),
+(11, 1, 'user promotion', 'admin promoted id:2 to admin', '2023-11-13 02:01:40'),
+(12, 1, 'admin modified user', 'admin change the content of user: marc123 id: 2', '2023-11-13 02:01:45'),
+(13, 1, 'admin modified user', 'admin change the content of user: 123123123 id: 14', '2023-11-13 02:04:26'),
+(14, 1, 'Logout', 'User has logged out', '2023-11-13 02:07:07'),
+(15, 1, 'login', 'User has logged in', '2023-11-13 02:07:12'),
+(16, 1, 'admin deletes account', 'admin deletes account:14', '2023-11-13 02:10:07'),
+(17, 1, 'admin modified pet', 'admin change the content of pet: pogi si marc21 id: ', '2023-11-13 18:39:40'),
+(18, 1, 'admin modified pet', 'admin change the content of pet: pogi si marc id: 2', '2023-11-13 18:40:28'),
+(19, 1, 'admin deleted a pet', 'admin deleted id: 2', '2023-11-13 18:41:28'),
+(20, 1, 'admin deleted a pet', 'admin deleted id: 3', '2023-11-13 18:41:40'),
+(21, 1, 'add pets', 'admin added pets named:admin123 on 1212-12-12', '2023-11-13 18:45:14'),
+(22, 1, 'add news', 'admin added news sample', '2023-11-13 18:46:25'),
+(23, 1, 'admin set headline', 'admin has set news id: 4 to headline', '2023-11-13 18:51:37'),
+(24, 1, 'admin deletes news', 'admin deleted news id: 4', '2023-11-13 18:51:56'),
+(25, 1, 'admin update news', 'admin updated news titled: testicle2 and id: 2', '2023-11-13 18:52:10');
 
 -- --------------------------------------------------------
 
@@ -77,7 +108,7 @@ CREATE TABLE `news` (
   `title` varchar(250) NOT NULL,
   `details` mediumtext NOT NULL,
   `image` varchar(250) NOT NULL,
-  `date_published` datetime NOT NULL,
+  `date_published` datetime NOT NULL DEFAULT current_timestamp(),
   `is_featured` tinyint(4) NOT NULL,
   `user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,7 +118,7 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`news_id`, `title`, `details`, `image`, `date_published`, `is_featured`, `user_id`) VALUES
-(2, 'testicle', '123456', '65378bf8c08c8.png', '0000-00-00 00:00:00', 1, 1);
+(2, 'testicle2', '123456', '65378bf8c08c8.png', '0000-00-00 00:00:00', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -115,11 +146,11 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`pets_id`, `name`, `type`, `breed`, `sex`, `weight`, `age`, `date`, `about`, `image`, `user_id`, `is_featured`) VALUES
-(1, '1', 'Dog', 'Shih Tzu', 'Female', '10-20 lbs', '5 to 10 years', '2023-10-24', 'wkwwdwdwdwdwdwd', 'image_6537711b43fa1.png', 0, '1'),
-(2, 'pogi si marc', 'Cat', 'Siberian Husky', 'Female', 'over 50 lbs', 'over 10 years', '2023-10-24', 'pogi', '653767f482f49.png', 1, '2'),
-(3, '113', 'Dog', 'Shih Tzu', 'Female', '10-20 lbs', '6 months to 5 years', '2023-10-24', 'nuibba', '6537698da6859.png', 1, '3'),
+(1, '1', 'Dog', 'Shih Tzu', 'Female', '10-20 lbs', '5 to 10 years', '2023-10-24', 'wkwwdwdwdwdwdwd', 'image_6551fc2589b86.jpg', 0, '0'),
 (5, 'test', 'Dog', 'Shih Tzu', 'Male', '5-10 lbs', '5 to 10 years', '2023-10-24', 'barabida omsim', '65376a772b8f3.png', 1, '0'),
-(6, 'wew', 'Cat', 'Rottweiler', 'Female', 'Less than 5 lbs', 'Less than 6 months', '2023-10-24', 'sheesh pogi ni aries', '65376a95c15e7.png', 1, '0');
+(6, 'wew', 'Cat', 'Rottweiler', 'Female', 'Less than 5 lbs', 'Less than 6 months', '2023-10-24', 'sheesh pogi ni aries', '65376a95c15e7.png', 1, '0'),
+(7, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', '6551fdb6e11e3.jpg', 1, ''),
+(8, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', '6551fe3a50a53.jpg', 1, '');
 
 -- --------------------------------------------------------
 
@@ -143,9 +174,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`) VALUES
 (1, 'tester', 'testtest', 'admin@gmail.com', '123', '1', '2023-10-24 08:12:20'),
-(2, 'marc', 'david', 'marc@gmail.com', '123', '2', '2023-10-24 05:02:46'),
+(2, 'marc123', 'david', 'marc@gmail.com', '123', '1', '2023-11-12 18:01:45'),
 (3, 'tset123', '123', '123@gmail.com', '123', '2', '2023-10-24 08:29:55'),
-(5, 'test', 'test', '532432@gmail.com', '123', '1', '2023-10-24 08:45:28');
+(5, 'test', 'test', '532432@gmail.com', '123', '1', '2023-10-24 08:45:28'),
+(13, 'sample', 'sample', 'sample@sample', '123', '2', '2023-11-12 17:29:26');
 
 --
 -- Indexes for dumped tables
@@ -161,8 +193,7 @@ ALTER TABLE `appointment`
 -- Indexes for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_responsible` (`responsible_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `news`
@@ -196,35 +227,25 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `audit_log`
---
-ALTER TABLE `audit_log`
-  ADD CONSTRAINT `user_responsible` FOREIGN KEY (`responsible_id`) REFERENCES `user` (`user_id`);
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
