@@ -1,8 +1,11 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 
 .container{
@@ -134,12 +137,13 @@ main{
     font-size: 1.7rem;
     position: absolute;
 }
+
 /*content*/
 .content .cards{
-    padding: 20px 40px;
+    padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 .content .cards .card{
@@ -150,7 +154,7 @@ main{
     flex-direction: column; 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
@@ -174,7 +178,7 @@ main{
     flex-direction: column; 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     text-align: center;
@@ -192,6 +196,7 @@ main{
     background-color: rgba(45, 48, 64, 0.81); /* Background color for the hovered day */
     color: white; /* Text color for the hovered day */
 }
+
 a{
     color: black;
 }
