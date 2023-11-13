@@ -9,3 +9,16 @@ ung public files is nasa distribution folder
 
 
 ung source folder is for storing of compilation
+
+
+
+cheat sheet
+```
+composer dump-autoload
+
+composer install
+
+npm install
+
+npm run dev
+```

@@ -1,4 +1,7 @@
 <?php
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 require '../function/config.php';
 session_start();
 
@@ -40,7 +43,7 @@ if (isset($_POST["submit"])) {
             $newImageName = uniqid();
             $newImageName .= '.' . $imageExtension;
 
-            move_uploaded_file($tmpName, 'upload/' . $newImageName);
+            move_uploaded_file($tmpName, '../upload/' . $newImageName);
             $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image, :user_id)";
 
             $stmt = $conn->prepare($sql);
@@ -59,10 +62,12 @@ if (isset($_POST["submit"])) {
       
             // $result = mysqli_query($conn, $query);
             if ($stmt) {
+                $log = new Audit($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name on $date");
+                $log->activity_log();
                 echo "
                 <script> 
                     alert('Pets added successfully'); 
-                    document.location.href = '../admin-add-pets.php';
+                    document.location.href = './admin-add-pets.php';
                 </script>";
             } else {
                 echo "Error, Adding pet failed "; // Display the specific error message

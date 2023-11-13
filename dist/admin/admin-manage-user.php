@@ -1,5 +1,10 @@
 <?php
+
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 require '../function/config.php';
+session_start();
 
 if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
 {
@@ -22,10 +27,13 @@ if (isset($_POST['promote'])) {
         exit;
     } elseif ($userType == 2) {
         // Promote to admin
-        $sql = "UPDATE user SET user_type = 1 WHERE user_id = '$id'";
+        $sql = "UPDATE user SET user_type = 1 WHERE user_id = :id";
         $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         if ($stmt) {
+            $log = new Audit($_SESSION['auth_user']['id'],"user promotion","admin promoted id:$id to admin");
+            $log->activity_log();
             echo '<script language="javascript">';
             echo 'alert("Promoted to Admin");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -64,11 +72,13 @@ if (isset($_POST['demote'])) {
         exit;
     } elseif ($userType == 1) { 
         // Demote to regular user
-        $sql = "UPDATE user SET user_type = 2 WHERE user_id = '$id'";
+        $sql = "UPDATE user SET user_type = 2 WHERE user_id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
+            $log = new Audit($_SESSION['auth_user']['id'],"user demotion","admin demoted id:$id to admin");
+            $log->activity_log();
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -116,6 +126,8 @@ if (isset($_POST['update'])) {
     
     // Execute the statement
     if ($stmt->execute()) {
+        $log = new Audit($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
+        $log->activity_log();
         echo "
             <script> 
                 alert('Data updated successfully'); 
@@ -137,11 +149,15 @@ if (isset($_POST['delete'])) {
     $id = $_POST['id'];
 
     // Delete the record from the database
-    $sql = "DELETE FROM user WHERE user_id='$id'";
+    $sql = "DELETE FROM user WHERE user_id=:id";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt ->execute();
 
     if ($stmt) {
+        // might change to update
+        $log = new Audit($_SESSION['auth_user']['id'],"admin deletes account","admin deletes account:$id");
+        $log->activity_log();
         echo "
         <script> 
             alert('Record deleted successfully'); 

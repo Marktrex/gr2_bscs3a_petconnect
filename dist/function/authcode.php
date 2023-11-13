@@ -1,5 +1,11 @@
 <!-- Sign Up  -->
 <?php
+
+use MyApp\Controller\Audit;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+
 session_start();
 require('config.php'); //PDO connection to the database
 
@@ -8,7 +14,7 @@ if (isset($_POST["register"])) { //code ni marc
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $passwordRepeat = $_POST["password"];
+    $passwordRepeat = $_POST["cpassword"];
     
     
     // $fname = mysqli_real_escape_string($conn, $_POST["fname"]); //code ni aian
@@ -31,7 +37,10 @@ if (isset($_POST["register"])) { //code ni marc
     $rowCount = $stmt->rowCount();
 
     if ($rowCount > 0) {
-        echo "Hello :)";
+        echo '<script language="javascript">';
+        echo 'alert("Email already exists");';
+        echo 'window.location = "../signuppage.php";';
+        echo '</script>';
         $conn = null;
     } 
     else {
@@ -47,13 +56,28 @@ if (isset($_POST["register"])) { //code ni marc
             $stmt->bindParam(':password', $password); 
             // Execute the query
             if ($stmt->execute()) {
+                // audit
+                $log = new Audit(null, "register", "new registration of user");
+                $log->activity_log();
+
+                
                 echo '<script language="javascript">';
                 echo 'alert("Sign up sucessfully");';
-                echo 'window.location = "../home.php";';
+                echo 'window.location = "../loginpage.php";';
                 echo '</script>';
+
+                
+
             } else {
                 echo "Error inserting record: " . $stmt->errorInfo()[2];
             }
+            $conn = null;
+        }else {
+            // register failed
+            echo '<script language="javascript">';
+            echo 'alert("Please make sure password and confirm password is the same");';
+            echo 'window.location = "../signuppage.php";';
+            echo '</script>';
             $conn = null;
         }
     }
@@ -80,7 +104,13 @@ else if (isset($_POST["login"])) {
         $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
-        
+
+
+        // audit
+        $log = new Audit($userID, "login", "User has logged in");
+        $log->activity_log();
+
+
         if ($userType === '1') {
             // Redirect admin to an admin dashboard
             $_SESSION['auth'] = true;
@@ -114,7 +144,9 @@ else if (isset($_POST["login"])) {
             echo 'window.location = "../user/home.php";';
             echo '</script>';
         }
-        
+
+       
+
     } else {
         // Login failed
         echo '<script language="javascript">';

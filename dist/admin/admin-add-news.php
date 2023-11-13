@@ -1,4 +1,7 @@
 <?php
+use MyApp\Controller\Audit;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 require '../function/config.php';
 session_start();
 
@@ -34,7 +37,7 @@ if (isset($_POST["submit"])) {
             echo "<script> alert('Image Size Is Too Large'); </script>";
         } else {
             $newImageName = uniqid() . '.' . $imageExtension;
-            $imagePath = 'upload/news/' . $newImageName;
+            $imagePath = '../upload/news/' . $newImageName;
 
             if (move_uploaded_file($tmpName, $imagePath)) {
                 try {
@@ -48,6 +51,8 @@ if (isset($_POST["submit"])) {
                     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
                     if ($stmt->execute()) {
+                        $log = new Audit($_SESSION['auth_user']['id'],"add news","admin added news $title");
+                        $log->activity_log();
                         echo "<script> 
                             alert('Successfully Added'); 
                             window.location.href = 'admin-add-news.php';
