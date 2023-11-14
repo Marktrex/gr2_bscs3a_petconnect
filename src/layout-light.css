@@ -14,12 +14,11 @@
 .container{
     display: grid;
     height: 100vh;
-    grid-template-columns: 16rem 1fr 16rem;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 16rem repeat(2, 1fr);
+    grid-template-rows: 100px 1fr;
     grid-template-areas: 
     "header header header"
     "sidebar main main";
-    min-height: auto;
 }
 
 
@@ -37,11 +36,7 @@ header{
 }
 
 nav{
-    max-width: 1700px;
-    width: 100%;
-    height: 80px;
     margin: 0 auto;
-    
 }
 
 .navbar img{
@@ -93,7 +88,6 @@ a{
 main{
     background: #f5dfbb;
     grid-area: main;
-    height: 100vh;
 }
 
 /*---------------------------------SIDEBAR-----------------------------*/
