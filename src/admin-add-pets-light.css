@@ -104,9 +104,9 @@ form .form-input .pet-container {
     margin-right: 10px; /* Adjust the margin as needed */
 }
 
-.form-input .pet-container div input, .form-input .pet-container div select
+.form-input .pet-container div input, .form-input .pet-container div select, .form-input .pet-container div textarea
 {
-    flex: 2;  /* Adjust the flex value as needed */
+    flex: 2 0 100px;  /* Adjust the flex value as needed */
     min-height: 2.3rem;
 }
 
@@ -114,8 +114,6 @@ textarea{
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
-    min-width: 100%;
-    max-width: 100%;
 }
 
 #label-about{
@@ -188,7 +186,6 @@ button{
     }
     
     .pet-container .about-container textarea{
-        max-width: 500px;
         width: 100%;
         height: 100px;
     }

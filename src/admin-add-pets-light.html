@@ -63,6 +63,7 @@
 
               <!--Pet Name-->
               <div class="pet-container">
+                <!-- Name -->
                 <div>
                   <label for="name"><a>Pet Name</a></label>
                   <input
@@ -74,7 +75,7 @@
                   />
                 </div>
                 <br />
-
+                <!-- species -->
                 <div>
                   <label for="species"><a>Species</a></label>
                   <select class="pet-type" name="species" id="species" required>
@@ -83,7 +84,7 @@
                   </select>
                 </div>
                 <br />
-
+                Breed
                 <div>
                   <label for="breed"><a>Breed</a></label>
                   <select class="pet-breed" name="breed" id="breed" required>
@@ -149,13 +150,13 @@
                 <!--Pet Age-->
                 <div>
                   <label for="age"><a>Age</a></label>
-                  <input
-                    type="number"
-                    class="pet-age"
-                    id="age"
-                    name="age"
-                    required
-                  />
+                  <select class="form-control" id="age" name="age" required>
+                      <option value="">Select Age</option>
+                      <option value="Less than 6 months">Less than 6 months</option>
+                      <option value="6 months to 5 years">6 months to 5 years</option>
+                      <option value="5 to 10 years">5 to 10 years</option>
+                      <option value="over 10 years">over 10 years</option>
+                  </select>
                 </div>
                 <br />
 
@@ -172,28 +173,37 @@
                 <!--Pet Weight-->
                 <div>
                   <label for="weight"><a>Weight</a></label>
-                  <input
-                    type="number"
-                    class="pet-weight"
-                    id="weight"
-                    name="weight"
-                    required
-                    placeholder="lbs"
-                  />
+                  <select class="form-control" id="weight" name="weight" required>
+                    <option value="">Select Weight</option>
+                    <option value="Less than 5 lbs">Less than 5 lbs</option>
+                    <option value="5-10 lbs">5-10 lbs</option>
+                    <option value="10-20 lbs">10-20 lbs</option>
+                    <option value="20-50 lbs">20-50 lbs</option>
+                    <option value="over 50 lbs">over 50 lbs</option>
+                </select>
                 </div>
                 <br />
-
+                <!-- date of rescue -->
+                <div >
+                  <label for="date"><a>Date of Rescue</a></label>
+                  <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <br/>
+                <div>
+                  <label for="about"><a id="label-about">About</a></label>
+                  <textarea
+                    name="about"
+                    id="about"
+                    cols="100"
+                    rows="12"
+                  ></textarea>
+                </div>
                 
               </div>
+              <!-- textarea -->
             </div>
             <!--About-->
-            <label for="about"><a id="label-about">About</a></label>
-            <textarea
-              name="about"
-              id="about"
-              cols="100"
-              rows="12"
-            ></textarea>
+            
 
             <section class="ac-btn">
               <button class="add-btn">Add Pet</button>
