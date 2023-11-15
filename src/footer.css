@@ -11,15 +11,27 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
 }
-  
+
+
+footer{
+    min-height: 100%;
+    top: 100vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: sticky; 
+}
+
 footer .footer-content{
     display: flex;
     width: 100%;
     background: #0e9594;
     color: #c9e6e7;; 
     padding: 2em; 
-    font-size: 1.2rem;
+    font-size: 1.2rem; 
+
 }
+
 
 footer .footer-content .item{
     width: 700px;

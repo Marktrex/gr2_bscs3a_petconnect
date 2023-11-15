@@ -13,6 +13,8 @@
 }
 
 body {
+  min-height: 100vh;
+  position: relative;
   background: #fdc161;
 }
 
