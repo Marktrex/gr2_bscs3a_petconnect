@@ -13,11 +13,9 @@
 
 
 .content {
-    display: grid;
-    height: 100vh;
-    grid-template-columns: repeat(5,100px);
-    grid-gap: 1em;
-    grid-auto-flow: row; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 40px;
 }
 
@@ -26,10 +24,6 @@
     padding: -1em;
 }
 
-.title-1{
-    grid-row: 1/1;
-    grid-column: 1/10;
-}
 
 .profile, .list {
     background-color: #fdf7ec;
@@ -38,33 +32,24 @@
 }
 
 .profile{
-    grid-row: 1/7;
-    grid-column: 1/10;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-rows: repeat(auto-fit,minmax(200px, 1fr));
+    padding: 3rem;
+    gap: 15px;
+    grid-auto-flow: row dense;
 }
 
 .profile img{
     margin-top: 20px;
-    width: 200px;
+    width: inherit;
     border-radius: 30px;
 }
 
-.container2{
-    display: flex;
-    color:#6a6262;;
-    flex-wrap: nowrap;
-    justify-content: center;
-    margin-top: -15px;
-}
-
-.item{
-    padding: 50px;
-    margin-left: 50px;
-}
 
 #ID{
     margin-top: 20px;
     margin-left: 5px;
-    width: 118px;
     padding: 7px;
     border: none;
     border-radius: 5px;
@@ -76,8 +61,12 @@
     color: #6a6262;
 }
 
-.details2 input{
-    width: 350px;
+.details1 div
+{
+    width: 250px;
+}
+
+input{
     padding: 9px;
     margin: 15px 15px 15px 0px;
     border-radius: 5px;
@@ -85,55 +74,28 @@
     background-color: var(--main-input-color);
 }
 
-.details2 select{
-    width: 350px;
+select{
     padding: 9px;
-    margin: 15px;
+    margin: 15px 15px 15px 0px;
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
 }
 
-.details2 textarea{
-    width: 50rem;
+textarea{
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 10rem;
 }
 
 #label-about{
     display: flex;
-    margin-top: 30px;
 }
 
-#name{
-    margin-left: 20px;
-}
 
-#breed{
-    margin-left: 48px;
-}
-
-#sex{
-    margin-left: 63px
-}
-
-#species{
-    margin-left: 22px
-}
-
-#age{
-    margin-left: 54px
-}
-
-#weight{
-    margin-left: 34px;
-}
-
-#about{
-    margin-top: -30px;
-    margin-left: 100px
-}
 
 .img-label{
     display: block;
@@ -143,8 +105,6 @@
     --webkit-appearance: button;
     cursor: pointer;
     border-radius: 10px;
-    max-width: 95%;
-    width: 210px;
     text-align: center;
     margin-top: 20px;
 }
@@ -153,16 +113,43 @@
     display: none;
 }
 
-.details1{
-    padding: 6vh;
+.details1
+{
+    grid-row: span 2;
     justify-self: center;
+}
+.details4
+{
+    grid-column: span 2;
+}
+
+
+.details2 div, .details3 div, .flex
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.details2 div label,.details3 div label, .flex label
+{
+    flex: 1; /* This makes the label take up all available space */
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.details2 div input, .details2 div select, .details2 div textarea,
+.details3 div input, .details3 div select, .details3 div textarea, .flex input
+{
+    flex: 2 0 100px;  /* Adjust the flex value as needed */
+    min-height: 2.3rem;
 }
 
 .upd-btn{
     display: flex;
     gap: 15px;
     justify-content: end;
-    margin: 20px 15px -15px 15px;
 }
 
 .upd-btn button{
@@ -191,18 +178,16 @@
     transition: all 0.2s ease;
 }
 
-.list{
-    grid-row: 7/20;
-    grid-column: 1/10;
 
-}
-
-.list table{
-    width: 160vh;
-    height: 10vh;
+table{
+    width: 100%;
     box-shadow: var(--main-content-shadow);
 }
 
+.list
+{
+    overflow-x: auto;
+}
 .list h1{
     font-size: 30px;
     margin-top: 20px;
@@ -213,9 +198,6 @@
 table{
     border-collapse: collapse;
     background-color: #feeed3;
-    margin: 2em;
-    overflow: auto;
-    overflow: overlay;
 }
 
 table tr:nth-child(even){
@@ -230,7 +212,10 @@ table tr:hover {
 table, td, th{
     padding: 0.4rem 1rem 0.4rem 1rem;
     margin-top: 15px;
-    width: 1rem; 
+    
+}
+td, th{
+
 }
 
 th{
@@ -250,7 +235,78 @@ td img{
 }
 
 
-@media only screen and (max-width:678px){
-    
+@media only screen and (max-width:1024px){
+    .details1{
+        grid-row: span 1;
+    }
+    .details4
+    {
+        grid-column: span 1;
+    }
 }
 
+@media (min-width: 1536px)
+{
+    .details1{
+        grid-column: 1/2;
+    }
+    .details2{
+        grid-column: 2/3;
+    }
+    .details3{
+        grid-column: 3/4;
+    }
+    .details4{
+        grid-column: 2/4;
+    }
+}
+
+
+@media only screen and (max-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "Name"; }
+	td:nth-of-type(3):before { content: "Species"; }
+	td:nth-of-type(4):before { content: "Breed"; }
+	td:nth-of-type(5):before { content: "Age"; }
+	td:nth-of-type(6):before { content: "Sex"; }
+	td:nth-of-type(7):before { content: "Weight"; }
+	td:nth-of-type(8):before { content: "Date of rescue"; }
+	td:nth-of-type(9):before { content: "Description"; }
+}

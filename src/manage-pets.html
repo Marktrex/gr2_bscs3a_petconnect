@@ -42,6 +42,115 @@
 
       <!--Put Contents Here in main-->
       <main class="content">
+        
+
+        <!-- editing -->
+        <form action="" method="post">
+          <div class="profile">
+            <div class="item details1">
+              <div>
+                <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
+                <label for="input-file" class="img-label">Upload Image</label>
+                <input
+                  type="file"
+                  accept="image/jpeg, image/jpg, image/png"
+                  id="input-file"
+                />
+              </div>
+              <label for="ID"><a>ID</a></label>
+              <input
+                type="number"
+                id="ID"
+                class="id"
+                placeholder="Enter ID"
+                readonly
+              />
+            </div>
+            <div class="item details2">
+              <!-- name -->
+              <div>
+                <label for="name"><a>Pet Name</a></label>
+                <input
+                  type="text"
+                  class="pet-name"
+                  id="name"
+                  name="name"
+                  maxlength="20"
+                />
+              </div>
+              <!-- species -->
+              <div>
+                <label for="species"><a>Species</a></label>
+                <select class="pet-type" name="species" id="species" required>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                </select>
+              </div>
+              <!-- breed -->
+              <div>
+                <label for="breed"><a>Breed</a></label>
+                <input
+                  type="text"
+                  class="pet-breed"
+                  id="breed"
+                  name="breed"
+                  maxlength="breed"
+                />
+              </div>
+            </div>
+            <div class = "details3">
+              <!-- age -->
+              <div>
+                <label for="age"><a>Age</a></label>
+                <input
+                  type="number"
+                  class="pet-age"
+                  id="age"
+                  name="age"
+                  required
+                />
+              </div>
+              <!-- sex -->
+              <div>
+                <label for=" sex"><a>Sex</a></label>
+                <select class="pet-sex" name="sex" id="sex" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <!-- weight -->
+              <div>
+                <label for="weight"><a>Weight</a></label>
+                <input
+                  type="number"
+                  class="pet-weight"
+                  id="weight"
+                  name="weight"
+                  required
+                  placeholder="lbs"
+                />
+              </div>
+            </div>
+            <div class = "details4">
+              <!-- date of rescue -->
+              <div class = "flex">
+                <label for="date"><a>Date of Rescue</a></label>
+                <input type="date" class="" id="date" name="date" required>
+              </div>
+          
+              <div>
+                <label for="about"><a id="label-about">About</a></label>
+                <textarea name="about" id="about"></textarea>
+              </div>
+              <section class="upd-btn">
+                <button class="update-btn"><a href="#"></a>Update</button>
+                <button class="delete-btn">Delete</button>
+              </section>
+            </div>
+          </div>
+        </form>
+
+        
         <!-- table list -->
         <div class="list">
           <h1>Pets List</h1>
@@ -91,98 +200,55 @@
                     fur in various shades of caramel and gray.
                   </td>
                 </tr>
+                <tr>
+                  <td>1</td>
+                  <td><img src="/src/icons/sample photo.jpg" alt="" /> Zeus</td>
+                  <td>Cat</td>
+                  <td>Ragdoll</td>
+                  <td>2</td>
+                  <td>Male</td>
+                  <td>350 lbs</td>
+                  <td>2021-07-16</td>
+                  <td>
+                    Meet zoos, a charming and playful cat with a sleek coat of
+                    fur in various shades of caramel and gray.
+                  </td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><img src="/src/icons/sample photo.jpg" alt="" /> Zeus</td>
+                  <td>Cat</td>
+                  <td>Ragdoll</td>
+                  <td>2</td>
+                  <td>Male</td>
+                  <td>350 lbs</td>
+                  <td>2021-07-16</td>
+                  <td>
+                    Meet zoos, a charming and playful cat with a sleek coat of
+                    fur in various shades of caramel and gray.
+                  </td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><img src="/src/icons/sample photo.jpg" alt="" /> Zeus</td>
+                  <td>Cat</td>
+                  <td>Ragdoll</td>
+                  <td>2</td>
+                  <td>Male</td>
+                  <td>350 lbs</td>
+                  <td>2021-07-16</td>
+                  <td>
+                    Meet zoos, a charming and playful cat with a sleek coat of
+                    fur in various shades of caramel and gray.
+                  </td>
+                </tr>
               </tbody>
             </table>
           </section>
         </div>
-
-        <!-- editing -->
-        <div class="profile">
-          <div class="container2">
-            <div class="item details1">
-              <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
-              <label for="input-file" class="img-label">Upload Image</label>
-              <input
-                type="file"
-                accept="image/jpeg, image/jpg, image/png"
-                id="input-file"
-              />
-
-              <label for="ID"><a>ID</a></label>
-              <input
-                type="number"
-                id="ID"
-                class="id"
-                placeholder="Enter ID"
-                readonly
-              />
-            </div>
-
-            <div class="item details2">
-              <label for="name"><a>Pet Name</a></label>
-              <input
-                type="text"
-                class="pet-name"
-                id="name"
-                name="name"
-                maxlength="20"
-              />
-
-              <label for="species"><a>Species</a></label>
-              <select class="pet-type" name="species" id="species" required>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-              </select>
-              <br />
-
-              <label for="breed"><a>Breed</a></label>
-              <input
-                type="text"
-                class="pet-breed"
-                id="breed"
-                name="breed"
-                maxlength="breed"
-              />
-
-              <label for="age"><a>Age</a></label>
-              <input
-                type="number"
-                class="pet-age"
-                id="age"
-                name="age"
-                required
-              />
-              <br />
-
-              <label for=" sex"><a>Sex</a></label>
-              <select class="pet-sex" name="sex" id="sex" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-
-              <label for="weight"><a>Weight</a></label>
-              <input
-                type="number"
-                class="pet-weight"
-                id="weight"
-                name="weight"
-                required
-                placeholder="lbs"
-              />
-              <br />
-
-              <label for="about"><a id="label-about">About</a></label>
-              <textarea name="about" id="about" cols="100" rows="10"></textarea>
-              <br />
-
-              <section class="upd-btn">
-                <button class="update-btn"><a href="#"></a>Update</button>
-                <button class="delete-btn">Delete</button>
-              </section>
-            </div>
-          </div>
-        </div>
+        
       </main>
+
 
       <!--SideBar-->
       <aside id="sidenav" class="sidebar">
