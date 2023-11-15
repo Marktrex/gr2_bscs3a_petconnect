@@ -178,13 +178,16 @@ textarea{
     transition: all 0.2s ease;
 }
 
-.list table{
-    /* change table */
-    width: 160vh;
-    height: 10vh;
+
+table{
+    width: 100%;
     box-shadow: var(--main-content-shadow);
 }
 
+.list
+{
+    overflow-x: auto;
+}
 .list h1{
     font-size: 30px;
     margin-top: 20px;
@@ -195,9 +198,6 @@ textarea{
 table{
     border-collapse: collapse;
     background-color: #feeed3;
-    margin: 2em;
-    overflow: auto;
-    overflow: overlay;
 }
 
 table tr:nth-child(even){
@@ -212,7 +212,10 @@ table tr:hover {
 table, td, th{
     padding: 0.4rem 1rem 0.4rem 1rem;
     margin-top: 15px;
-    width: 1rem; 
+    
+}
+td, th{
+
 }
 
 th{
@@ -258,3 +261,52 @@ td img{
     }
 }
 
+
+@media only screen and (max-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "Name"; }
+	td:nth-of-type(3):before { content: "Species"; }
+	td:nth-of-type(4):before { content: "Breed"; }
+	td:nth-of-type(5):before { content: "Age"; }
+	td:nth-of-type(6):before { content: "Sex"; }
+	td:nth-of-type(7):before { content: "Weight"; }
+	td:nth-of-type(8):before { content: "Date of rescue"; }
+	td:nth-of-type(9):before { content: "Description"; }
+}

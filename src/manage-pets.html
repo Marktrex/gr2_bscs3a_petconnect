@@ -45,111 +45,110 @@
         
 
         <!-- editing -->
-        <div class="profile">
-          <div class="item details1">
-            <div>
-              <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
-              <label for="input-file" class="img-label">Upload Image</label>
-              <input
-                type="file"
-                accept="image/jpeg, image/jpg, image/png"
-                id="input-file"
-              />
-            </div>
-
-            <label for="ID"><a>ID</a></label>
-            <input
-              type="number"
-              id="ID"
-              class="id"
-              placeholder="Enter ID"
-              readonly
-            />
-          </div>
-
-          <div class="item details2">
-            <!-- name -->
-            <div>
-              <label for="name"><a>Pet Name</a></label>
-              <input
-                type="text"
-                class="pet-name"
-                id="name"
-                name="name"
-                maxlength="20"
-              />
-            </div>
-            <!-- species -->
-            <div>
-              <label for="species"><a>Species</a></label>
-              <select class="pet-type" name="species" id="species" required>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-              </select>
-            </div>
-            <!-- breed -->
-            <div>
-              <label for="breed"><a>Breed</a></label>
-              <input
-                type="text"
-                class="pet-breed"
-                id="breed"
-                name="breed"
-                maxlength="breed"
-              />
-            </div>
-          </div>
-          <div class = "details3">
-            <!-- age -->
-            <div>
-              <label for="age"><a>Age</a></label>
+        <form action="" method="post">
+          <div class="profile">
+            <div class="item details1">
+              <div>
+                <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
+                <label for="input-file" class="img-label">Upload Image</label>
+                <input
+                  type="file"
+                  accept="image/jpeg, image/jpg, image/png"
+                  id="input-file"
+                />
+              </div>
+              <label for="ID"><a>ID</a></label>
               <input
                 type="number"
-                class="pet-age"
-                id="age"
-                name="age"
-                required
+                id="ID"
+                class="id"
+                placeholder="Enter ID"
+                readonly
               />
             </div>
-            <!-- sex -->
-            <div>
-              <label for=" sex"><a>Sex</a></label>
-              <select class="pet-sex" name="sex" id="sex" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
+            <div class="item details2">
+              <!-- name -->
+              <div>
+                <label for="name"><a>Pet Name</a></label>
+                <input
+                  type="text"
+                  class="pet-name"
+                  id="name"
+                  name="name"
+                  maxlength="20"
+                />
+              </div>
+              <!-- species -->
+              <div>
+                <label for="species"><a>Species</a></label>
+                <select class="pet-type" name="species" id="species" required>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                </select>
+              </div>
+              <!-- breed -->
+              <div>
+                <label for="breed"><a>Breed</a></label>
+                <input
+                  type="text"
+                  class="pet-breed"
+                  id="breed"
+                  name="breed"
+                  maxlength="breed"
+                />
+              </div>
             </div>
-            <!-- weight -->
-            <div>
-              <label for="weight"><a>Weight</a></label>
-              <input
-                type="number"
-                class="pet-weight"
-                id="weight"
-                name="weight"
-                required
-                placeholder="lbs"
-              />
+            <div class = "details3">
+              <!-- age -->
+              <div>
+                <label for="age"><a>Age</a></label>
+                <input
+                  type="number"
+                  class="pet-age"
+                  id="age"
+                  name="age"
+                  required
+                />
+              </div>
+              <!-- sex -->
+              <div>
+                <label for=" sex"><a>Sex</a></label>
+                <select class="pet-sex" name="sex" id="sex" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <!-- weight -->
+              <div>
+                <label for="weight"><a>Weight</a></label>
+                <input
+                  type="number"
+                  class="pet-weight"
+                  id="weight"
+                  name="weight"
+                  required
+                  placeholder="lbs"
+                />
+              </div>
+            </div>
+            <div class = "details4">
+              <!-- date of rescue -->
+              <div class = "flex">
+                <label for="date"><a>Date of Rescue</a></label>
+                <input type="date" class="" id="date" name="date" required>
+              </div>
+          
+              <div>
+                <label for="about"><a id="label-about">About</a></label>
+                <textarea name="about" id="about"></textarea>
+              </div>
+              <section class="upd-btn">
+                <button class="update-btn"><a href="#"></a>Update</button>
+                <button class="delete-btn">Delete</button>
+              </section>
             </div>
           </div>
-          <div class = "details4">
-            <!-- date of rescue -->
-            <div class = "flex">
-              <label for="date"><a>Date of Rescue</a></label>
-              <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            
-            <div>
-              <label for="about"><a id="label-about">About</a></label>
-              <textarea name="about" id="about"></textarea>
-            </div>
-
-            <section class="upd-btn">
-              <button class="update-btn"><a href="#"></a>Update</button>
-              <button class="delete-btn">Delete</button>
-            </section>
-          </div>
-        </div>
+        </form>
 
         
         <!-- table list -->
