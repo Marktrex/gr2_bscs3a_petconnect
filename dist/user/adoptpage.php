@@ -2,7 +2,11 @@
 session_start();
 require '../function/config.php';
 include '../function/navbar.php';
-
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission

@@ -1,6 +1,11 @@
-<?php require '../function/config.php' ?>
-<?php
+<?php 
+require '../function/config.php';
 session_start(); // Add this line to start the session
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">

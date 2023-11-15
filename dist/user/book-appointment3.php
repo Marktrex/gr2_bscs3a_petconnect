@@ -1,7 +1,11 @@
 <?php
 session_start();
 require '../function/config.php';
-
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 $errorMessage = "";
 // Check if there is an error message in the URL
 if (isset($_GET['error']) && $_GET['error'] == 1) {

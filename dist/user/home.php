@@ -1,6 +1,11 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
+// print_r($_SESSION);
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +47,13 @@ session_start(); // Add this line to start the session
             </div>
 
             <h2 class="adopt-title">Pets Available for Adoption</h2>
-
-            <a href="adoptpage.php">
+                <a href="adoptpage.php">
                 <p class="see-more">See More <i class="fa-sharp fa-solid fa-arrow-right"></i></p>
             </a>
-
+            
         </div>
     </section>
-
+    <a href="../../index.php">CHAT</a>
     <section class="hero">
         <div class="adoption">
             <!-- Display featured pets -->

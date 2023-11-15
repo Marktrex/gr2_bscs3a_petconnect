@@ -1,7 +1,12 @@
 <?php
 session_start();
 require '../function/config.php';
-
+// print_r($_SESSION);
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 if (isset($_POST['update'])) {
     $oldpassword = $_POST['oldpassword'];
     $newpassword = $_POST['newpassword'];
@@ -12,30 +17,40 @@ if (isset($_POST['update'])) {
     $stmt_select = $conn->prepare($select_query);
     $stmt_select->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt_select->execute();
+
     $row = $stmt_select->fetch(PDO::FETCH_ASSOC);
-    $old_password_db = $row['password'];
 
-    if ($oldpassword === $old_password_db) {
-        // Update the user's password in the database
-        $update_query = "UPDATE user SET password=:newpassword WHERE email=:email";
-        $stmt_update = $conn->prepare($update_query);
-        $stmt_update->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-        $stmt_update->bindParam(':email', $email, PDO::PARAM_STR);
-
-        if ($stmt_update->execute()) {
-            echo '<script language="javascript">';
-            echo 'alert("Password updated successfully");';
-            echo 'window.location = "change-password.php";';
-            echo '</script>';
+    if ($row !== false) {
+        $old_password_db = $row['password'];
+    
+        if ($oldpassword === $old_password_db) {
+            // Update the user's password in the database
+            $update_query = "UPDATE user SET password=:newpassword WHERE email=:email";
+            $stmt_update = $conn->prepare($update_query);
+            $stmt_update->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+            $stmt_update->bindParam(':email', $email, PDO::PARAM_STR);
+    
+            if ($stmt_update->execute()) {
+                echo '<script language="javascript">';
+                echo 'alert("Password updated successfully");';
+                echo 'window.location = "change-password.php";';
+                echo '</script>';
+            } else {
+                echo '<script language="javascript">';
+                echo 'alert("Failed to update password");';
+                echo 'window.location = "change-password.php";';
+                echo '</script>';
+            }
         } else {
             echo '<script language="javascript">';
-            echo 'alert("Failed to update password");';
+            echo 'alert("Old password does not match");';
             echo 'window.location = "change-password.php";';
             echo '</script>';
         }
     } else {
+        // Handle the case where no matching record was found
         echo '<script language="javascript">';
-        echo 'alert("Old password does not match");';
+        echo 'alert("No matching record found in the database");';
         echo 'window.location = "change-password.php";';
         echo '</script>';
     }

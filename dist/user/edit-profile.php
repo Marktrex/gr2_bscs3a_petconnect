@@ -1,24 +1,40 @@
 <?php
 session_start();
 require '../function/config.php';
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 
 if (isset($_POST['update'])) {
-    $fname = mysqli_real_escape_string($conn, $_POST['fname']);
-    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    
+
+    // Check the email from POST
+ 
 
     // Perform the database update query
-    $update_query = "UPDATE user SET fname='$fname', lname='$lname' WHERE email='$email'";
-    $update_query_run = mysqli_query($conn, $update_query);
+    $stmt = "UPDATE user SET fname=:fname, lname=:lname WHERE email=:email";
+    $query = $conn->prepare($stmt);
 
-    if ($update_query_run) {
+    $query->bindParam(':fname', $fname, PDO::PARAM_STR);
+    $query->bindParam(':lname', $lname, PDO::PARAM_STR);
+
+
+    if ($query->execute()) {
         $_SESSION['auth_user']['fname'] = $fname; // Update session data
         $_SESSION['auth_user']['lname'] = $lname; // Update session data
+        
         echo '<script language="javascript">';
         echo 'alert("Profile updated successfully");';
         echo 'window.location = "edit-profile.php";';
         echo '</script>';
     } else {
+        // Display errors
+        print_r($query->errorInfo());
+
         echo '<script language="javascript">';
         echo 'alert("Failed to update profile");';
         echo 'window.location = "edit-profile.php";';
@@ -63,11 +79,7 @@ if (isset($_POST['update'])) {
                         <input type="text" class="form-control" id="lname" name="lname"
                             placeholder="Enter your last name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
-                            required>
-                    </div>
+                    
                     <div class="text-center">
                         <button type="submit" name="update" class="btn btn-primary">Update</button>
                     </div>

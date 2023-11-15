@@ -99,7 +99,7 @@ require('database/ChatRooms.php');
 
 				<div class="mt-3 mb-3 text-center">
 					<h3 class="mt-2"><?php echo $value['name']; ?></h3>
-					<a href="../user/home.php" class="btn btn-secondary mt-2 mb-2">Back</a>
+					<a href="dist/user/home.php" class="btn btn-secondary mt-2 mb-2">Back</a>
 					<input type="button" class="btn btn-primary mt-2 mb-2" id="logout" name="logout" value="Logout" />
 				</div>
 				<?php
@@ -416,7 +416,7 @@ require('database/ChatRooms.php');
 					{
 						conn.close();
 
-						location = '../user/home.php';
+						location = 'dist/user/home.php';
 					}
 				}
 			})

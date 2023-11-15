@@ -4,7 +4,7 @@ use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 
-if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "1" )
 {
     header("location: ../error/403-forbidden.html");
     exit();

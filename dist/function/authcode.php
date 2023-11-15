@@ -1,11 +1,5 @@
 <!-- Sign Up  -->
 <?php
-
-use MyApp\Controller\Audit;
-
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-
 session_start();
 require('config.php'); //PDO connection to the database
 
@@ -14,11 +8,9 @@ if (isset($_POST["register"])) { //code ni marc
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $passwordRepeat = $_POST["cpassword"];
+    $passwordRepeat = $_POST["password"];
     
     
-   
-
     //php using PDO
     $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);
@@ -30,52 +22,67 @@ if (isset($_POST["register"])) { //code ni marc
     $rowCount = $stmt->rowCount();
 
     if ($rowCount > 0) {
-        echo '<script language="javascript">';
-        echo 'alert("Email already exists");';
-        echo 'window.location = "../signuppage.php";';
-        echo '</script>';
+        // echo "Hello :)";
         $conn = null;
     } 
     else {
         echo "Data does not exist.";
-        if ($password == $passwordRepeat){
-            //insert user data
-            $sql_insert = "INSERT INTO user (fname, lname, email, password, user_type) VALUES(:fname, :lname , :email, :password, 2)";
-            $stmt = $conn->prepare($sql_insert);
-            // Bind the parameter, needed in using PDO
-            $stmt->bindParam(':fname', $fname);
-            $stmt->bindParam(':lname', $lname); 
-            $stmt->bindParam(':email', $email); 
-            $stmt->bindParam(':password', $password); 
-            // Execute the query
-            if ($stmt->execute()) {
-                // audit
-                $log = new Audit(null, "register", "new registration of user");
-                $log->activity_log();
+        if ($password == $passwordRepeat) {
+            // Passwords match, proceed with insertion
+        
+            // Set the common user_type for both queries
+            $user_status = 'Enable';
+            $user_type = '2';
+            $type = 'User';
+            // Insert into chat_user_table
+            $query1 = "
+                INSERT INTO chat_user_table (user_name, user_email, user_password, user_status, user_type) 
+                VALUES (:fname, :email, :password , :user_status, :user_type)
+            ";
+             // automatically set the user_type to "User" when creating an account
+            $statement1 = $conn->prepare($query1);
+            $statement1->bindParam(':fname', $fname);
+            $statement1->bindParam(':email', $email);
+            $statement1->bindParam(':password', $password);
+            $statement1->bindParam(':user_status', $user_status); // Set the user_status to 'User'
+            $statement1->bindParam(':user_type', $type); // Set user_type to 'User'
 
-                
+        
+            // Insert into user table
+            $query2 = "
+                INSERT INTO user (fname, lname, email, password, user_type) 
+                VALUES (:fname, :lname , :email, :password, :user_type)
+            ";
+        
+            $statement2 = $conn->prepare($query2);
+            $statement2->bindParam(':fname', $fname);
+            $statement2->bindParam(':lname', $lname);
+            $statement2->bindParam(':email', $email);
+            $statement2->bindParam(':password', $password);
+            $statement2->bindParam(':user_type', $user_type);
+        
+            // Execute both queries
+            $conn->beginTransaction();
+        
+            try {
+                $statement1->execute();
+                $statement2->execute();
+        
+                // If both queries are successful, commit the transaction
+                $conn->commit();
+        
                 echo '<script language="javascript">';
-                echo 'alert("Sign up sucessfully");';
-                echo 'window.location = "../loginpage.php";';
+                echo 'alert("Sign up successfully");';
+                echo 'window.location = "../user/home.php";';
                 echo '</script>';
-
-                
-
-            } else {
-                echo "Error inserting record: " . $stmt->errorInfo()[2];
+            } catch (PDOException $e) {
+                // If any query fails, roll back the transaction
+                $conn->rollBack();
+        
+                echo "Error inserting record: " . $e->getMessage();
             }
-            $conn = null;
-        }else {
-            // register failed
-            echo '<script language="javascript">';
-            echo 'alert("Please make sure password and confirm password is the same");';
-            echo 'window.location = "../signuppage.php";';
-            echo '</script>';
-            $conn = null;
         }
     }
-
-
 }
 // LOG IN
 else if (isset($_POST["login"])) {
@@ -97,23 +104,18 @@ else if (isset($_POST["login"])) {
         $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
-
-
-        // audit
-        $log = new Audit($userID, "login", "User has logged in");
-        $log->activity_log();
-
-
+        
         if ($userType === '1') {
             // Redirect admin to an admin dashboard
             $_SESSION['auth'] = true;
+        
             $_SESSION['auth_user'] = [
                 'id' => $userID,
                 // Save the ID in the session
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
-                'role' => "admin"
+                'role' => "1"
             ];
 
             echo '<script language="javascript">';
@@ -125,21 +127,21 @@ else if (isset($_POST["login"])) {
         else if ($userType === '2') {
             // Redirect user to a user dashboard
             $_SESSION['auth'] = true;
+            
             $_SESSION['auth_user'] = [
                 'id' => $userID,
                 // Save the ID in the session
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
-                'role' => "user"
+                'role' => "2"
             ];
             echo '<script language="javascript">';
-            echo 'window.location = "../user/home.php";';
+            header("Location: ../user/home.php");
+
             echo '</script>';
         }
-
-       
-
+        
     } else {
         // Login failed
         echo '<script language="javascript">';

@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 require '../function/config.php';
 session_start();
 
-if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "admin" )
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "1" )
 {
     header("location: ../error/403-forbidden.html");
     exit();
@@ -17,9 +17,6 @@ if (isset($_POST["submit"])) {
     $details = $_POST["details"];
     $user_id = $_SESSION['auth_user']['id'];
 
-    // $title = mysqli_real_escape_string($conn, $_POST["title"]);
-    // $details = mysqli_real_escape_string($conn, $_POST["details"]);
-    // $user_id = $_SESSION['auth_user']['id'];
 
     if ($_FILES["image"]["error"] === 4) {
         echo "<script> alert('Image Does Not Exist'); </script>";
@@ -95,8 +92,8 @@ if (isset($_POST["submit"])) {
 
 <body>
     <nav class="navbar">
-        <a href="../index.php" class="logo"><img src="../image/logo (1).png" class="img-logo"></a>
-        <a href="javascript:void(0);" class="list" onclick="logout()">Logout</a>
+    <a href="admin-dashboard.php" class="logo"><img src="../image/logo (1).png" class="img-logo"></a>
+    <a href="javascript:void(0);" class="list" onclick="logout()">Logout</a>
     </nav>
     <div class="setting">
         <div class="sidebar">
@@ -107,6 +104,8 @@ if (isset($_POST["submit"])) {
             <a href="admin-manage-user.php" class="menu"> Manage Users</a>
             <a href="admin-add-news.php" class="menu"> Add News</a>
             <a href="admin-manage-news.php" class="menu"> Manage News</a>
+            <a href="../../privatechat.php" class="menu"> Chat</a>
+
         </div>
         <div class="main">
 
