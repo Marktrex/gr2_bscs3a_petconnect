@@ -244,23 +244,10 @@
         >
       </aside>
 
+      <script src="general.js"></script>
       <script>
-        const sidebar = document.querySelector("sidebar");
-        const menuBtn = document.querySelector("#menu-btn");
-        const closeBtn = document.querySelector("#close-btn");
 
-        menuBtn.addEventListener("click", () =>
-          sidebar.classList.toggle("mobile-mode")
-        );
-
-        closeBtn.addEventListener("click", () => menuBtn.click());
-
-        let profilePic = document.getElementById("profile-pic");
-        let inputFile = document.getElementById("input-file");
-
-        inputFile.onchange = function () {
-          profilePic.src = URL.createObjectURL(inputFile.files[0]);
-        };
+        
       </script>
     </div>
   </body>

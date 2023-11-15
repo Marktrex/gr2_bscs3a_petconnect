@@ -1,165 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- content style -->
-    <link rel="stylesheet" type="text/css" href="manage-pets.css"> 
+    <link rel="stylesheet" type="text/css" href="manage-pets.css" />
 
     <!-- layout style -->
-    <link rel="stylesheet" type="text/css" href="layout-light.css"> 
+    <link rel="stylesheet" type="text/css" href="layout-light.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Manage Pets</title>
-</head>
+  </head>
 
-<!--Lightmode: layout-light.css-->
-<!--Darkmode: layout-dark.css-->
+  <!--Lightmode: layout-light.css-->
+  <!--Darkmode: layout-dark.css-->
 
-<body>
+  <body>
     <div class="container">
-        <!--Navbar-->
-        <header>
+      <!--Navbar-->
+      <header>
         <nav class="navbar">
-            <a href="#" class="logo"><img src="icons/logo.png" alt="Logo">
-            <ul class="items">
-                <li><a id="messages" href="#"><i class="fa fa-envelope"></i><a></li>
-                <li><a id="notifications" href="#"><i class="fa fa-bell"></i><a></li>
-                <li><a href="#"><img src="icons/icons-user.png" alt="Profile"></a></li>
-            </ul>
+          <a href="#" class="logo"><img src="icons/logo.png" alt="Logo" /></a>
+          <ul class="items">
+            <li>
+              <a id="messages" href="#"><i class="fa fa-envelope"></i></a>
+            </li>
+            <li>
+              <a id="notifications" href="#"><i class="fa fa-bell"></i></a>
+            </li>
+            <li>
+              <a href="#"><img src="icons/icons-user.png" alt="Profile" /></a>
+            </li>
+          </ul>
         </nav>
-        </header>
+      </header>
 
-        <!--Put Contents Here in main-->
-        <main class="content">
-              
-                <div class="profile">
-                    <div class="container2">
-                        <div class="item details1"> 
-                            <img src="icons/pet-profile-bg.jpg" alt="photo"><br>
-                            <label for="input-file" class="img-label">Update Image</label>
-                            <input type="file" accept="image/jpeg, image/jpg, image/png" id="input-file">
+      <!--Put Contents Here in main-->
+      <main class="content">
+        <!-- table list -->
+        <div class="list">
+          <h1>Pets List</h1>
 
-                            <label for="ID"><a>ID</a></label>
-                            <input type="number" id="ID" class="id" placeholder="Enter ID">
-                        </div>
+          <section class="list-body">
+            <table id="pets-list">
+              <thead>
+                <tr id="header">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Species</th>
+                  <th>Breed</th>
+                  <th>Age</th>
+                  <th>Sex</th>
+                  <th>Weight</th>
+                  <th>Date of Rescue</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!--sample data only-->
+                <tr>
+                  <td>1</td>
+                  <td><img src="/src/icons/sample photo.jpg" alt="" /> Zeus</td>
+                  <td>Cat</td>
+                  <td>Ragdoll</td>
+                  <td>2</td>
+                  <td>Male</td>
+                  <td>350 lbs</td>
+                  <td>2021-07-16</td>
+                  <td>
+                    Meet zoos, a charming and playful cat with a sleek coat of
+                    fur in various shades of caramel and gray.
+                  </td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><img src="/src/icons/sample photo.jpg" alt="" /> Zeus</td>
+                  <td>Cat</td>
+                  <td>Ragdoll</td>
+                  <td>2</td>
+                  <td>Male</td>
+                  <td>350 lbs</td>
+                  <td>2021-07-16</td>
+                  <td>
+                    Meet zoos, a charming and playful cat with a sleek coat of
+                    fur in various shades of caramel and gray.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
 
-                        <div class="item details2">
-                            <label for="name"><a>Pet Name</a></label>
-                            <input type="text" class="pet-name" id="name" name="name" maxlength="20">
-                            
+        <!-- editing -->
+        <div class="profile">
+          <div class="container2">
+            <div class="item details1">
+              <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
+              <label for="input-file" class="img-label">Upload Image</label>
+              <input
+                type="file"
+                accept="image/jpeg, image/jpg, image/png"
+                id="input-file"
+              />
 
-                            <label for="species"><a>Species</a></label>
-                            <select class="pet-type" name="species" id="species" required>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                            </select>
-                            <br>
+              <label for="ID"><a>ID</a></label>
+              <input
+                type="number"
+                id="ID"
+                class="id"
+                placeholder="Enter ID"
+                readonly
+              />
+            </div>
 
-                            <label for="breed"><a>Breed</a></label>
-                            <input type="text" class="pet-breed" id="breed" name="breed" maxlength="breed">
+            <div class="item details2">
+              <label for="name"><a>Pet Name</a></label>
+              <input
+                type="text"
+                class="pet-name"
+                id="name"
+                name="name"
+                maxlength="20"
+              />
 
-                            <label for="age"><a>Age</a></label>
-                            <input type="number" class="pet-age" id="age" name="age" required>
-                            <br>
+              <label for="species"><a>Species</a></label>
+              <select class="pet-type" name="species" id="species" required>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+              </select>
+              <br />
 
-                            <label for=" sex"><a>Sex</a></label>
-                            <select class="pet-sex" name="sex" id="sex" required>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                            </select>
+              <label for="breed"><a>Breed</a></label>
+              <input
+                type="text"
+                class="pet-breed"
+                id="breed"
+                name="breed"
+                maxlength="breed"
+              />
 
-                            <label for="weight"><a>Weight</a></label>
-                            <input type="number" class="pet-weight" id="weight" name="weight" required placeholder="lbs">
-                            <br>
-                            
-                            <label for="about"><a id="label-about">About</a></label>
-                            <textarea name="about" id="about" cols="100" rows="10"></textarea>
-                            <br> 
-                            
-                            <section class="upd-btn">
-                                <button class="update-btn"><a href="#"></a>Update</button>
-                                <button class="delete-btn">Delete</button>
-                            </section>
-                        </div>
-                    </div>
-                </div>
+              <label for="age"><a>Age</a></label>
+              <input
+                type="number"
+                class="pet-age"
+                id="age"
+                name="age"
+                required
+              />
+              <br />
 
-                <div class="list">
-                    <h1>Pets List</h1>
-                 
-                    <section class="list-body">
-                    <table id="pets-list">
-                        <thead>
-                            <tr id="header">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Species</th>
-                                <th>Breed</th>
-                                <th>Age</th>
-                                <th>Sex</th>
-                                <th>Weight</th>
-                                <th>Date of Rescue</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!--sample data only-->
-                            <tr>
-                                <td>1</td>
-                                <td><img src="/src/icons/sample photo.jpg" alt=""> Zeus</td>
-                                <td>Cat</td>
-                                <td>Ragdoll</td>
-                                <td>2</td>
-                                <td>Male</td>
-                                <td>350 lbs</td>
-                                <td>2021-07-16</td>
-                                <td>Meet zoos, a charming and playful cat with a sleek coat of fur in various shades of caramel and gray.</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><img src="/src/icons/sample photo.jpg" alt=""> Zeus</td>
-                                <td>Cat</td>
-                                <td>Ragdoll</td>
-                                <td>2</td>
-                                <td>Male</td>
-                                <td>350 lbs</td>
-                                <td>2021-07-16</td>
-                                <td>Meet zoos, a charming and playful cat with a sleek coat of fur in various shades of caramel and gray.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </section>
+              <label for=" sex"><a>Sex</a></label>
+              <select class="pet-sex" name="sex" id="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
 
-                </div>
-        </main>
+              <label for="weight"><a>Weight</a></label>
+              <input
+                type="number"
+                class="pet-weight"
+                id="weight"
+                name="weight"
+                required
+                placeholder="lbs"
+              />
+              <br />
 
-        <!--SideBar-->
-        <aside id="sidenav" class="sidebar">
-          
-            <ul class="menu-links"> 
-                <span id="close-btn" href="javascript:void(0)">&times;</span>
-                <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
-                <li><a id="db" href="#"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a></li>
-                <li><a id="add" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a></li>
-                <li><a id="manage" href="#"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a></li>
-                <li><a id="users" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a></li>
-                <li><a id="logout"href="#"><i class="fa fa-arrow-circle-right"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
-              </ul> 
-            <span id="menu-btn" style="font-size:30px;cursor:pointer">&#9776;</span>
-        </aside>
+              <label for="about"><a id="label-about">About</a></label>
+              <textarea name="about" id="about" cols="100" rows="10"></textarea>
+              <br />
 
-        <script>
-            const aside = document.querySelector("aside");
-            const menuBtn = document.querySelector("#menu-btn");
-            const closeBtn = document.querySelector("#close-btn");
+              <section class="upd-btn">
+                <button class="update-btn"><a href="#"></a>Update</button>
+                <button class="delete-btn">Delete</button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
 
-            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
+      <!--SideBar-->
+      <aside id="sidenav" class="sidebar">
+        <ul class="menu-links">
+          <span id="close-btn" href="javascript:void(0)">&times;</span>
+          <li>
+            <a id="db" href="#"
+              ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+            >
+          </li>
+          <li>
+            <a id="db" href="#"
+              ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+            >
+          </li>
+          <li>
+            <a id="manage" href="#"
+              ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+            >
+          </li>
+          <li>
+            <a id="users" href="#"
+              ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+            >
+          </li>
+          <li>
+            <a id="logout" href="#"
+              ><i class="fa fa-arrow-circle-right"></i
+              >&nbsp;&nbsp;&nbsp;Logout</a
+            >
+          </li>
+        </ul>
+        <span id="menu-btn" style="font-size: 30px; cursor: pointer"
+          >&#9776;</span
+        >
+      </aside>
 
-            closeBtn.addEventListener("click", () => menuBtn.click());
-        </script>
-        
+      <script src="general.js"></script>
     </div>
-</body>
+  </body>
 </html>
