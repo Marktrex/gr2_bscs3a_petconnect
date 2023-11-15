@@ -12,10 +12,10 @@ if (isset($_POST['update'])) {
     $newpassword = $_POST['newpassword'];
 
     // Retrieve the user's old password from the database
-    $email = $_SESSION['auth_user']['email'];
-    $select_query = "SELECT password FROM user WHERE email=:email";
+    $id = $_SESSION['auth_user']['id'];
+    $select_query = "SELECT password FROM user WHERE user_id=:id";
     $stmt_select = $conn->prepare($select_query);
-    $stmt_select->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt_select->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt_select->execute();
 
     $row = $stmt_select->fetch(PDO::FETCH_ASSOC);
@@ -25,10 +25,10 @@ if (isset($_POST['update'])) {
     
         if ($oldpassword === $old_password_db) {
             // Update the user's password in the database
-            $update_query = "UPDATE user SET password=:newpassword WHERE email=:email";
+            $update_query = "UPDATE user SET password=:newpassword WHERE user_id=:id";
             $stmt_update = $conn->prepare($update_query);
             $stmt_update->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $stmt_update->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
     
             if ($stmt_update->execute()) {
                 echo '<script language="javascript">';

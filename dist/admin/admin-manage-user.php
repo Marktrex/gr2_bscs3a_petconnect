@@ -103,41 +103,55 @@ require '../function/config.php';
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $id = $_POST['id'];
-    $firstName = $_POST["fname"]; //php pdo code
+    $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    
 
-
-    // Update the data in the database
-    if (!empty($password)) {
-        $sql = "UPDATE user SET fname = :firstName, lname = :lastName, email = :email, password = :password WHERE user_id = :id";
-    } else {
-        $sql = "UPDATE user SET fname = :firstName, lname = :lastName, email = :email WHERE user_id = :id";
+    // Update the data in both tables
+    $conn->beginTransaction();
+try {
+    // Update chat_user_table
+    $query1 = "
+        UPDATE chat_user_table
+        SET user_name = :firstName, user_email = :email, user_password = :password
+        WHERE user_id = :id
+    ";
+    $statement1 = $conn->prepare($query1);
+    $statement1->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+    $statement1->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement1->bindParam(':password', $password, PDO::PARAM_STR);
+    $statement1->bindParam(':id', $id, PDO::PARAM_INT);
+    if (!$statement1->execute()) {
+        print_r($statement1->errorInfo());
+        exit;
     }
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-    $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-    
-    // Execute the statement
-    if ($stmt->execute()) {
-        $log = new Audit($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
-        $log->activity_log();
-        echo "
-            <script> 
-                alert('Data updated successfully'); 
-                window.location.href = 'admin-manage-user.php';
-            </script>";
-    } else {
-        echo "Error updating data: ";
+    // Update user table
+    $query2 = "
+        UPDATE user
+        SET fname = :firstName, lname = :lastName, email = :email, password = :password
+        WHERE user_id = :id
+    ";
+    $statement2 = $conn->prepare($query2);
+    $statement2->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+    $statement2->bindParam(':lastName', $lastName, PDO::PARAM_STR);
+    $statement2->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement2->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement2->bindParam(':password', $password, PDO::PARAM_STR);
+    if (!$statement2->execute()) {
+        print_r($statement2->errorInfo());
+        exit;
     }
+
+    // If both updates are successful, commit the transaction
+    $conn->commit();
+} catch (PDOException $e) {
+    // An error occurred, rollback the transaction
+    $conn->rollBack();
+    echo "Error updating data: " . $e->getMessage();
 }
-
+}
 ?>
 
 <?php

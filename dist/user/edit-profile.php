@@ -10,31 +10,31 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 if (isset($_POST['update'])) {
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
-    
+    // $newEmail = $_POST["email"];
 
-    // Check the email from POST
- 
+    // Get the currently logged-in user's id
+    $currentUserId = $_SESSION['auth_user']['id'];
+
 
     // Perform the database update query
-    $stmt = "UPDATE user SET fname=:fname, lname=:lname WHERE email=:email";
+    $stmt = "UPDATE user SET fname=:fname, lname=:lname WHERE user_id=:currentUserId";
     $query = $conn->prepare($stmt);
 
     $query->bindParam(':fname', $fname, PDO::PARAM_STR);
     $query->bindParam(':lname', $lname, PDO::PARAM_STR);
-
+    // $query->bindParam(':newEmail', $newEmail, PDO::PARAM_STR);
+    $query->bindParam(':currentUserId', $currentUserId, PDO::PARAM_STR);
 
     if ($query->execute()) {
-        $_SESSION['auth_user']['fname'] = $fname; // Update session data
-        $_SESSION['auth_user']['lname'] = $lname; // Update session data
-        
+        // Update session data if the query is successful
+        $_SESSION['auth_user']['fname'] = $fname;
+        $_SESSION['auth_user']['lname'] = $lname;
+
         echo '<script language="javascript">';
         echo 'alert("Profile updated successfully");';
         echo 'window.location = "edit-profile.php";';
         echo '</script>';
     } else {
-        // Display errors
-        print_r($query->errorInfo());
-
         echo '<script language="javascript">';
         echo 'alert("Failed to update profile");';
         echo 'window.location = "edit-profile.php";';
