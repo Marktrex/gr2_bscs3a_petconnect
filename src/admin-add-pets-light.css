@@ -5,20 +5,12 @@
     --main-input-color:rgba(37, 141, 141, 0.248);
 }
 
-
-.container{
-    overflow: hidden;
-}
-
-
 main{
     padding: 40px;
 }
 
 .wrapper {
     background-color:#fdf7ec;
-    width: 100%;
-    height: 83vh;
     padding: 20px;
     border-radius: 10px;
     box-shadow: var(--main-content-shadow);
@@ -26,11 +18,11 @@ main{
 
 .wrapper .form .form-input {
     display: grid;
-    grid-template-columns: 200px auto;
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
     column-gap: 50px;
-    margin-top: 2%;
-    width: 100%;
+    margin-top: 1rem;
 }
 
 form .form-title {
@@ -46,16 +38,14 @@ h1{
 }
 
 .form-input .image-container {
-    margin-top: 2%;
-    grid-row: 1 / 6;
     text-align: center;
-    margin-left: 15%;
-    height: 210px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .pet-container a{
     color: #6a6262;
-    margin-left: 200px;
 }
 
 .form .image-container label {
@@ -66,26 +56,28 @@ h1{
     --webkit-appearance: button;
     cursor: pointer;
     border-radius: 20px;
-    width: 230px;
     text-align: center;
-    margin-left: 160px;
 }
-.form .image-container img {
+
+.form .image-container div
+{
     width: 250px;
-    margin-left: 150px;
-    margin-bottom: 20px;
+}
+
+.form .image-container img {
+    width: inherit;
     border-radius: 30px;
+    margin-bottom: 0.5rem;
 }
 .form .image-container input {
     display: none;
 }
 
-form .pet-container{
-    margin-left: 160px;
+.form-input .pet-container{
+
 }
 
-form .form-input .pet-container {
-    width: 100%;
+form .form-input .pet-container { 
     padding: 3px;
     position: relative;
 }
@@ -93,58 +85,69 @@ form .form-input .pet-container {
 .form-input .pet-container input,
 .form-input .pet-container select{
     position: relative;
-    width: 650px;
     border-radius: 10px;
     background-color:var(--main-input-color );
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 12px;
-    margin: 10px;
+    padding: 0.5rem;
+}
+
+.form-input .pet-container div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.form-input .pet-container div label
+{
+    flex: 1; /* This makes the label take up all available space */
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.form-input .pet-container div input, .form-input .pet-container div select
+{
+    flex: 2;  /* Adjust the flex value as needed */
+    min-height: 2.3rem;
 }
 
 textarea{
-    width: 40rem;
-    margin: -30px 30px 10px 320px;
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
+    min-width: 100%;
+    max-width: 100%;
 }
 
 #label-about{
     display: flex;
-    margin-top: 35px;
 }
 
 #name{
-    margin-left: 40px;
 }
 
 #breed{
-    margin-left: 67px;
 }
 
 #sex{
-    margin-left: 81px
 }
 
 #species{
-    margin-left: 55px
 }
 
 #age{
-    margin-left: 80px
 }
 
 #weight{
-    margin-left: 60px;
 }
 
 .ac-btn{
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin: 20px 15px 15px -500px;
 }
 
 button{
@@ -183,25 +186,18 @@ button{
         overflow: auto;
     }
     .wrapper .form .form-input {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(5rem, auto) 1fr minmax(5rem, auto) ;
-        justify-content: center;
-        align-items: center;
         margin-top: 5%;
-        
     }
 
     .form .image-container img {
         max-width: 150px;
         width: 100%;
-        margin-left: -20%;
     }
 
     .form .image-container label{
         max-width: 140px;
         width: 100%;
         text-align: center;
-        margin-left: 17%;
     
     }
     
@@ -217,13 +213,10 @@ button{
         max-width: 500px;
         width: 100%;
         height: 100px;
-        margin-left: 0;
-        margin-top: 30%;
     }
 
     .pet-container .ac-btn {
         justify-content: center;
-        margin-left: 6%;
     }
 
     .pet-container .ac-btn button {

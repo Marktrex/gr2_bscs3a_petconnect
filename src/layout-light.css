@@ -13,9 +13,9 @@
 
 .container{
     display: grid;
-    height: 100vh;
+    min-height: 100vh;
     grid-template-columns: 16rem repeat(2, 1fr);
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 100px minmax(auto, 1fr);
     grid-template-areas: 
     "header header header"
     "sidebar main main";
@@ -96,7 +96,6 @@ main{
     background: #0e9594;
     grid-area: sidebar;
     position: relative;
-    overflow: hidden;
     box-shadow: var(--main-box-shadow);
  
 }
