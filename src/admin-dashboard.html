@@ -36,7 +36,7 @@
             <div class="cards">
                 <div class="card-date">
                     <div class="box">   
-                        <p id="calendar-container">DATE</p>
+                        <div class="calendar-container"></div>
                     </div>
                 </div>
                 <a id="events" href="#">
@@ -150,7 +150,7 @@
     <script>
         // Function to generate a calendar
         function generateCalendar() {
-            const calendarContainer = document.getElementById("calendar-container");
+            const calendarContainer = document.querySelector(".calendar-container");
             const currentDate = new Date();
             const currentDay = currentDate.getDate(); // Get the current day of the month
 
@@ -205,7 +205,9 @@
         }
 
         // Call the function to generate the calendar
-        generateCalendar();
+        document.addEventListener("DOMContentLoaded", function() {
+    generateCalendar();
+});
     </script>
 
         <!--SideBar-->
