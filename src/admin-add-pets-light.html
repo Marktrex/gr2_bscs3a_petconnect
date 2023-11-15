@@ -1,180 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Add Pets   |   PetConnect</title>
-    <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Add Pets | PetConnect</title>
 
-<!--Use Layout.css-->
+    <!-- content style -->
+    <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css" />
 
-<body>
+    <!-- layout style -->
+    <link rel="stylesheet" type="text/css" href="layout-light.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <!--Use Layout.css-->
+
+  <body>
     <div class="container">
-        <!--Navbar-->
-        <header>
+      <!--Navbar-->
+      <header>
         <nav class="navbar">
-            <a href="#" class="logo"><img src="icons/logo.png" alt="Insert Logo">
-            <ul class="items">
-                <li><a id="messages" href="#"><i class="fa fa-envelope"></i><a></li>
-                <li><a id="notifications" href="#"><i class="fa fa-bell"></i><a></li>
-                <li><a href="#"><img src="icons/icons-user.png" alt="Profile"></a></li>
-            </ul>
+          <a href="#" class="logo"
+            ><img src="icons/logo.png" alt="Insert Logo"
+          /></a>
+          <ul class="items">
+            <li>
+              <a id="messages" href="#"><i class="fa fa-envelope"></i></a>
+            </li>
+            <li>
+              <a id="notifications" href="#"><i class="fa fa-bell"></i></a>
+            </li>
+            <li>
+              <a href="#"><img src="icons/icons-user.png" alt="Profile" /></a>
+            </li>
+          </ul>
         </nav>
-        </header>
+      </header>
 
-        <!--Put Contents Here in main-->
-        <main class="content">
-            <div class="wrapper">
-                <form class="form">
-                    <h1 class="form-title">Pet Form</h1>
+      <!--Put Contents Here in main-->
+      <main class="content">
+        <div class="wrapper">
+          <form class="form">
+            <h1 class="form-title">Pet Form</h1>
 
-                        <div class="form-input">
+            <div class="form-input">
+              <!--Pet Profile Pic-->
+              <div class="image-container">
+                <div>
+                  <img src="icons/pet-profile-bg.jpg" id="profile-pic" />
+                  <label for="input-file" class="img-label">Upload Image</label>
+                  <input
+                    type="file"
+                    accept="image/jpeg, image/jpg, image/png"
+                    id="input-file"
+                  />
+                </div>
+              </div>
 
-                            <!--Pet Profile Pic-->
-                        <div class="image-container">
-                            <img src="icons/pet-profile-bg.jpg" id="profile-pic">
-                            <label for="input-file" class="img-label">Upload Image</label>
-                            <input type="file" accept="image/jpeg, image/jpg, image/png" id="input-file">
-                        </div>
+              <!--Pet Name-->
+              <div class="pet-container">
+                <!-- Name -->
+                <div>
+                  <label for="name"><a>Pet Name</a></label>
+                  <input
+                    type="text"
+                    class="pet-name"
+                    id="name"
+                    name="name"
+                    maxlength="20"
+                  />
+                </div>
+                <br />
+                <!-- species -->
+                <div>
+                  <label for="species"><a>Species</a></label>
+                  <select class="pet-type" name="species" id="species" required>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                  </select>
+                </div>
+                <br />
+                Breed
+                <div>
+                  <label for="breed"><a>Breed</a></label>
+                  <select class="pet-breed" name="breed" id="breed" required>
+                    <option value="">Select Breed</option>
+                    <!--Dog Breeds-->
+                    <optgroup label="Dog Breeds">
+                      <option value="Aspin">Aspin</option>
+                      <option value="Beagle">Beagle</option>
+                      <option value="Bichon Frise">Bichon Frise</option>
+                      <option value="Boston Terrier">Boston Terrier</option>
+                      <option value="Bulldog">Bulldog</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="Chow Chow">Chow Chow</option>
+                      <option value="Corgi">Corgi</option>
+                      <option value="Dachshund">Dachshund</option>
+                      <option value="Dalmatian">Dalmatian</option>
+                      <option value="Doberman Pinscher">Doberman Pinscher</option>
+                      <option value="German Shepherd">German Shepherd</option>
+                      <option value="Golden Retriever">Golden Retriever</option>
+                      <option value="Labrador Retriever">
+                        Labrador Retriever
+                      </option>
+                      <option value="Poodle">Poodle</option>
+                      <option value="Pomeranian">Pomeranian</option>
+                      <option value="Pug">Pug</option>
+                      <option value="Saint Bernard">Saint Bernard</option>
+                      <option value="Shih Tzu">Shih Tzu</option>
+                      <option value="Siberian Husky">Siberian Husky</option>
+                      <option value="Other breed:">Other breed:</option>
+                    </optgroup>
+                    <!--Cat Breeds-->
+                    <optgroup label="Cat Breeds">
+                      <option value="American Shorthair">
+                        American Shorthair
+                      </option>
+                      <option value="Bengal">Bengal</option>
+                      <option value="British Shorthair">British Shorthair</option>
+                      <option value="Burmese">Burmese</option>
+                      <option value="Bombay">Bombay</option>
+                      <option value="Calico">Calico</option>
+                      <option value="Chinchilla">Chinchilla</option>
+                      <option value="Domestic Long Hair">
+                        Domestic Long Hair
+                      </option>
+                      <option value="Devon Rex">Devon Rex</option>
+                      <option value="Exotic Shorthair">Exotic Shorthair</option>
+                      <option value="Himalayan">Himalayan</option>
+                      <option value="Main Coon">Main Coon</option>
+                      <option value="Munchkin">Munchkin</option>
+                      <option value="Persian">Persian</option>
+                      <option value="Puspin">Puspin</option>
+                      <option value="Ragdoll">Ragdoll</option>
+                      <option value="Russian Blue">Russian Blue</option>
+                      <option value="Scottish Fold">Scottish Fold</option>
+                      <option value="Siamese">Siamese</option>
+                      <option value="Sphynx">Sphynx</option>
+                      <option value="Other breed:">Other breed:</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <br />
 
-                            <!--Pet Name-->
-                            <div class="pet-container">
-                                <label for="name"><a>Pet Name</a></label>
-                                <input type="text" class="pet-name" id="name" name="name" maxlength="20">
-                                <br>
+                <!--Pet Age-->
+                <div>
+                  <label for="age"><a>Age</a></label>
+                  <select class="form-control" id="age" name="age" required>
+                      <option value="">Select Age</option>
+                      <option value="Less than 6 months">Less than 6 months</option>
+                      <option value="6 months to 5 years">6 months to 5 years</option>
+                      <option value="5 to 10 years">5 to 10 years</option>
+                      <option value="over 10 years">over 10 years</option>
+                  </select>
+                </div>
+                <br />
 
-                                <label for="species"><a>Species</a></label>
-                                <select class="pet-type" name="species" id="species" required>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
-                                </select>
-                                <br>
+                <!--Pet Sex-->
+                <div>
+                  <label for=" sex"><a>Sex</a></label>
+                  <select class="pet-sex" name="sex" id="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <br />
 
-
-                                <label for="breed"><a>Breed</a></label>
-                                <select class="pet-breed" name="breed" id="breed" required>
-                                    <option value="">Select Breed</option>
-
-                                    <!--Dog Breeds-->
-                                    <optgroup label="Dog Breeds">
-                                        <option value="Aspin">Aspin</option>
-                                        <option value="Beagle">Beagle</option>
-                                        <option value="Bichon Frise">Bichon Frise</option>
-                                        <option value="Boston Terrier">Boston Terrier</option>
-                                        <option value="Bulldog">Bulldog</option>
-                                        <option value="Chihuahua">Chihuahua</option>
-                                        <option value="Chow Chow">Chow Chow</option>
-                                        <option value="Corgi">Corgi</option>
-                                        <option value="Dachshund">Dachshund</option>
-                                        <option value="Dalmatian">Dalmatian</option>
-                                        <option value="Doberman Pinscher">Doberman Pinscher</option>
-                                        <option value="German Shepherd">German Shepherd</option>
-                                        <option value="Golden Retriever">Golden Retriever</option>
-                                        <option value="Labrador Retriever">Labrador Retriever</option>
-                                        <option value="Poodle">Poodle</option>
-                                        <option value="Pomeranian">Pomeranian</option>
-                                        <option value="Pug">Pug</option>
-                                        <option value="Saint Bernard">Saint Bernard</option>
-                                        <option value="Shih Tzu">Shih Tzu</option>
-                                        <option value="Siberian Husky">Siberian Husky</option>
-                                        <option value="Other breed:">Other breed:</option>
-                                    </optgroup>
-
-                                    <!--Cat Breeds-->
-                                    <optgroup label="Cat Breeds">
-                                        <option value="American Shorthair">American Shorthair</option>
-                                        <option value="Bengal">Bengal</option>
-                                        <option value="British Shorthair">British Shorthair</option>
-                                        <option value="Burmese">Burmese</option>
-                                        <option value="Bombay">Bombay</option>
-                                        <option value="Calico">Calico</option>
-                                        <option value="Chinchilla">Chinchilla</option>
-                                        <option value="Domestic Long Hair">Domestic Long Hair</option>
-                                        <option value="Devon Rex">Devon Rex</option>
-                                        <option value="Exotic Shorthair">Exotic Shorthair</option>
-                                        <option value="Himalayan">Himalayan</option>
-                                        <option value="Main Coon">Main Coon</option>
-                                        <option value="Munchkin">Munchkin</option>
-                                        <option value="Persian">Persian</option>
-                                        <option value="Puspin">Puspin</option>
-                                        <option value="Ragdoll">Ragdoll</option>
-                                        <option value="Russian Blue">Russian Blue</option>
-                                        <option value="Scottish Fold">Scottish Fold</option>
-                                        <option value="Siamese">Siamese</option>
-                                        <option value="Sphynx">Sphynx</option>
-                                        <option value="Other breed:">Other breed:</option>
-                                    </optgroup>
-                                </select>
-                                <br>
-
-                            <!--Pet Age-->
-                                <label for="age"><a>Age</a></label>
-                                <input type="number" class="pet-age" id="age" name="age" required>
-                                <br>
-
-                            <!--Pet Sex-->
-                                <label for=" sex"><a>Sex</a></label>
-                                <select class="pet-sex" name="sex" id="sex" required>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                                <br>
-
-                            <!--Pet Weight-->
-                                <label for="weight"><a>Weight</a></label>
-                                <input type="number" class="pet-weight" id="weight" name="weight" required placeholder="lbs">
-                                <br>
-
-                            <!--About-->    
-                                <label for="about"><a id="label-about">About</a></label>
-                                <textarea name="about" id="about" cols="100" rows="12"></textarea>
-
-                                <section class="ac-btn">
-                                    <button class="add-btn">Add Pet</button>
-                                    <button class="clear-btn">Clear all</button>
-                                </section>
-
-                            
-                            
-                            </div>
-                </form>
+                <!--Pet Weight-->
+                <div>
+                  <label for="weight"><a>Weight</a></label>
+                  <select class="form-control" id="weight" name="weight" required>
+                    <option value="">Select Weight</option>
+                    <option value="Less than 5 lbs">Less than 5 lbs</option>
+                    <option value="5-10 lbs">5-10 lbs</option>
+                    <option value="10-20 lbs">10-20 lbs</option>
+                    <option value="20-50 lbs">20-50 lbs</option>
+                    <option value="over 50 lbs">over 50 lbs</option>
+                </select>
+                </div>
+                <br />
+                <!-- date of rescue -->
+                <div >
+                  <label for="date"><a>Date of Rescue</a></label>
+                  <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <br/>
+                <div>
+                  <label for="about"><a id="label-about">About</a></label>
+                  <textarea
+                    name="about"
+                    id="about"
+                    cols="100"
+                    rows="12"
+                  ></textarea>
+                </div>
+                
+              </div>
+              <!-- textarea -->
             </div>
-        </main>
+            <!--About-->
+            
 
-        <!--SideBar-->
-        <aside id="sidenav" class="sidebar">
-          
-            <ul class="menu-links"> 
-                <span id="close-btn" href="javascript:void(0)">&times;</span>
-                <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
-                <li><a id="db" href="#"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a></li>
-                <li><a id="add" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a></li>
-                <li><a id="manage" href="#"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a></li>
-                <li><a id="users" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a></li>
-                <li><a id="logout"href="#"><i class="fa fa-arrow-circle-right"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
-              </ul> 
-            <span id="menu-btn" style="font-size:30px;cursor:pointer">&#9776;</span>
-        </aside>
+            <section class="ac-btn">
+              <button class="add-btn">Add Pet</button>
+              <button class="clear-btn">Clear all</button>
+            </section>
+          </form>
+        </div>
+      </main>
 
-        <script>
-            const sidebar = document.querySelector("sidebar");
-            const menuBtn = document.querySelector("#menu-btn");
-            const closeBtn = document.querySelector("#close-btn");
+      <!--SideBar-->
+      <aside id="sidenav" class="sidebar">
+        <ul class="menu-links">
+          <span id="close-btn" href="javascript:void(0)">&times;</span>
+          <li>
+            <a id="db" href="#"
+              ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+            >
+          </li>
+          <li>
+            <a id="db" href="#"
+              ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+            >
+          </li>
+          <li>
+            <a id="manage" href="#"
+              ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+            >
+          </li>
+          <li>
+            <a id="users" href="#"
+              ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+            >
+          </li>
+          <li>
+            <a id="logout" href="#"
+              ><i class="fa fa-arrow-circle-right"></i
+              >&nbsp;&nbsp;&nbsp;Logout</a
+            >
+          </li>
+        </ul>
+        <span id="menu-btn" style="font-size: 30px; cursor: pointer"
+          >&#9776;</span
+        >
+      </aside>
 
-            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
+      <script src="general.js"></script>
+      <script>
 
-            closeBtn.addEventListener("click", () => menuBtn.click());
-
-            let profilePic = document.getElementById("profile-pic");
-            let inputFile = document.getElementById("input-file");
-
-            inputFile.onchange = function(){
-                profilePic.src = URL.createObjectURL(inputFile.files[0]);
-            }
         
-        </script>  
+      </script>
     </div>
-</body>
+  </body>
 </html>
