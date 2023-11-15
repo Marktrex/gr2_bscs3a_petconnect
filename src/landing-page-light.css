@@ -253,6 +253,7 @@ main{
 
 .container2{
   display: flex;
+  flex-wrap: nowrap;
   padding: 0;
   height: 935px;
   margin-top: 145px;
@@ -334,6 +335,12 @@ main{
 /*--------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width: 900px) {
+  
+  body{
+    width: auto;
+    height: auto;
+  }
+
   header.show-mobile-menu::before {
     content: "";
     height: 100%;
@@ -408,10 +415,30 @@ main{
     margin-left: 10vh;
   }
 
+  .photodecor{
+    display: none;
+  }
+
   main{
-    height: 100vh;
     max-width: 740px;
     margin-left: 60px;
+  }
+
+  .container3 h1{
+    margin-right: 100px;
+  }
+
+  .service2, .service3, .service4{
+    display: none;
+  }
+
+  .testimonials{
+    margin-right: 100px;
+  }
+
+  .testimonial2{
+    display: none;
+  
   }
 
 }
