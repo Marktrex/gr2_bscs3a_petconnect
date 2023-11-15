@@ -1,46 +1,61 @@
 <?php
 session_start();
 require '../function/config.php';
+// print_r($_SESSION);
 //this checks the session if the admin is logged in
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
-
 if (isset($_POST['update'])) {
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    // $newEmail = $_POST["email"];
-
+    // Retrieve the data from the form
+    $firstName = $_POST["fname"];
+    $lastName = $_POST["lname"];
     // Get the currently logged-in user's id
     $currentUserId = $_SESSION['auth_user']['id'];
 
+    // Update the data in both tables
+    $conn->beginTransaction();
+    try {
+        // Update chat_user_table
+        $query1 = "
+            UPDATE chat_user_table
+            SET user_name = :firstName
+            WHERE user_id = :currentUserId
+        ";
+        $statement1 = $conn->prepare($query1);
+        $statement1->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+        $statement1->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+        if (!$statement1->execute()) {
+            print_r($statement1->errorInfo());
+            exit;
+        }
 
-    // Perform the database update query
-    $stmt = "UPDATE user SET fname=:fname, lname=:lname WHERE user_id=:currentUserId";
-    $query = $conn->prepare($stmt);
+        // Update user table
+        $query2 = "
+            UPDATE user
+            SET fname = :fname, lname = :lname
+            WHERE user_id = :currentUserId
+        ";
+        $statement2 = $conn->prepare($query2);
+        $statement2->bindParam(':fname', $firstName, PDO::PARAM_STR);
+        $statement2->bindParam(':lname', $lastName, PDO::PARAM_STR);
+        $statement2->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+        if (!$statement2->execute()) {
+            print_r($statement2->errorInfo());
+            exit;
+        }
 
-    $query->bindParam(':fname', $fname, PDO::PARAM_STR);
-    $query->bindParam(':lname', $lname, PDO::PARAM_STR);
-    // $query->bindParam(':newEmail', $newEmail, PDO::PARAM_STR);
-    $query->bindParam(':currentUserId', $currentUserId, PDO::PARAM_STR);
-
-    if ($query->execute()) {
-        // Update session data if the query is successful
-        $_SESSION['auth_user']['fname'] = $fname;
-        $_SESSION['auth_user']['lname'] = $lname;
-
-        echo '<script language="javascript">';
-        echo 'alert("Profile updated successfully");';
-        echo 'window.location = "edit-profile.php";';
-        echo '</script>';
-    } else {
-        echo '<script language="javascript">';
-        echo 'alert("Failed to update profile");';
-        echo 'window.location = "edit-profile.php";';
-        echo '</script>';
+        // If both updates are successful, commit the transaction
+        $conn->commit();
+    } catch (PDOException $e) {
+        // An error occurred, rollback the transaction
+        $conn->rollBack();
+        echo "Error updating data: " . $e->getMessage();
     }
 }
+
+
 ?>
 
 

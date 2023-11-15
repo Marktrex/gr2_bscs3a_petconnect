@@ -8,53 +8,66 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     exit();
 } 
 if (isset($_POST['update'])) {
+    // Retrieve the data from the form
     $oldpassword = $_POST['oldpassword'];
     $newpassword = $_POST['newpassword'];
+    // Get the currently logged-in user's id
+    $currentUserId = $_SESSION['auth_user']['id'];
 
-    // Retrieve the user's old password from the database
-    $id = $_SESSION['auth_user']['id'];
-    $select_query = "SELECT password FROM user WHERE user_id=:id";
-    $stmt_select = $conn->prepare($select_query);
-    $stmt_select->bindParam(':id', $id, PDO::PARAM_INT);
-    $stmt_select->execute();
-
-    $row = $stmt_select->fetch(PDO::FETCH_ASSOC);
-
-    if ($row !== false) {
-        $old_password_db = $row['password'];
-    
-        if ($oldpassword === $old_password_db) {
-            // Update the user's password in the database
-            $update_query = "UPDATE user SET password=:newpassword WHERE user_id=:id";
-            $stmt_update = $conn->prepare($update_query);
-            $stmt_update->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-            $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
-    
-            if ($stmt_update->execute()) {
-                echo '<script language="javascript">';
-                echo 'alert("Password updated successfully");';
-                echo 'window.location = "change-password.php";';
-                echo '</script>';
-            } else {
-                echo '<script language="javascript">';
-                echo 'alert("Failed to update password");';
-                echo 'window.location = "change-password.php";';
-                echo '</script>';
-            }
-        } else {
-            echo '<script language="javascript">';
-            echo 'alert("Old password does not match");';
-            echo 'window.location = "change-password.php";';
-            echo '</script>';
-        }
-    } else {
-        // Handle the case where no matching record was found
+    // Check if the old password is equal to the new password
+    if ($oldpassword === $newpassword) {
         echo '<script language="javascript">';
-        echo 'alert("No matching record found in the database");';
+        echo 'alert("Old password and new password cannot be the same");';
         echo 'window.location = "change-password.php";';
         echo '</script>';
+        exit; // Stop execution if passwords are the same
+    }
+
+    // Update the data in both tables
+    $conn->beginTransaction();
+    try {
+        // Update chat_user_table
+        $query1 = "
+            UPDATE chat_user_table
+            SET user_password = :newpassword
+            WHERE user_id = :currentUserId
+        ";
+        $statement1 = $conn->prepare($query1);
+        $statement1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+        $statement1->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+        if (!$statement1->execute()) {
+            print_r($statement1->errorInfo());
+            exit;
+        }
+
+        // Update user table
+        $query2 = "
+            UPDATE user
+            SET password = :newpassword
+            WHERE user_id = :currentUserId
+        ";
+        $statement2 = $conn->prepare($query2);
+        $statement2->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
+        $statement2->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+        if (!$statement2->execute()) {
+            print_r($statement2->errorInfo());
+            exit;
+        }
+
+        // If both updates are successful, commit the transaction
+        $conn->commit();
+
+        echo '<script language="javascript">';
+        echo 'alert("Password updated successfully");';
+        echo 'window.location = "change-password.php";';
+        echo '</script>';
+    } catch (PDOException $e) {
+        // An error occurred, rollback the transaction
+        $conn->rollBack();
+        echo "Error updating data: " . $e->getMessage();
     }
 }
+
 ?>
 
 

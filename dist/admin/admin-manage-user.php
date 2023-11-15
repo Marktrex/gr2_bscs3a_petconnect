@@ -143,9 +143,15 @@ try {
         print_r($statement2->errorInfo());
         exit;
     }
-
+    
     // If both updates are successful, commit the transaction
     $conn->commit();
+    $log = new Audit($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
+    $log->activity_log();
+    echo '<script language="javascript">';
+        echo 'alert("User updated successfully");';
+        echo 'window.location = "admin-manage-user.php";';
+        echo '</script>';
 } catch (PDOException $e) {
     // An error occurred, rollback the transaction
     $conn->rollBack();
