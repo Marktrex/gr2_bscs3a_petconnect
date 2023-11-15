@@ -73,10 +73,6 @@ h1{
     display: none;
 }
 
-.form-input .pet-container{
-
-}
-
 form .form-input .pet-container { 
     padding: 3px;
     position: relative;
@@ -124,24 +120,6 @@ textarea{
 
 #label-about{
     display: flex;
-}
-
-#name{
-}
-
-#breed{
-}
-
-#sex{
-}
-
-#species{
-}
-
-#age{
-}
-
-#weight{
 }
 
 .ac-btn{
