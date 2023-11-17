@@ -89,7 +89,7 @@
     <?php require_once "components/light-switch.php"?>
 
     <!-- For the js script -->
-    <script src="./script/script.js"></script>
+    <script src="./script/change-color-schema.js"></script>
 </body>
 
 </html>

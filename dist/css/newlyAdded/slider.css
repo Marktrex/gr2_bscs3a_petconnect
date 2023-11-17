@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+.images{
+    height: 100vh;
+    width: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-image: url(/src/icons/p1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: animate 30s infinite ease-in-out;
+}   
+
+@keyframes animate{
+    0%{
+        background-image: url(/src/icons/p1.jpg);
+    }
+    20%{
+        background-image: url(/src/icons/p2.jpg);
+    }
+    40%{
+        background-image: url(/src/icons/p3.jpg);
+    }
+    60%{
+        background-image: url(/src/icons/p4.jpg);
+    }
+    80%{
+        background-image: url(/src/icons/p5.jpg);
+    }
+    100%{
+        background-image: url(/src/icons/p1.jpg);
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .images{
+        display: none;
+    }
+}

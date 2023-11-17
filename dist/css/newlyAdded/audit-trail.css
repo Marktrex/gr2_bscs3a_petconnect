@@ -1,0 +1,193 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+:root{
+    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(37, 141, 141, 0.248);
+}
+
+
+
+/*---------------------------------CONTENT-----------------------------*/
+
+main{
+    grid-area: main;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 40px;
+}
+
+.wrapper{
+    background-color: #fdf7ec;
+    border-radius: 10px;
+    box-shadow: var(--main-content-shadow);
+}
+
+.wrapper{
+    padding: 30px;
+}
+
+.wrapper h1{
+    font-size: 30px;
+    padding: 5px;
+    color: #127475;
+    text-align: center;
+    border-bottom: 2px solid #127475;;
+}
+
+input
+{
+    position: relative;
+    border-radius: 10px;
+    background-color: var(--main-input-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    min-height: 2.3rem;
+}
+
+.search
+{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0px;
+}
+.search div
+{
+    flex: 1 0 300px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.search div > label
+{
+    flex: 1;
+}
+.search div > input
+{
+    flex: 2;
+}
+
+table{
+    width: 100%;
+    box-shadow: var(--main-content-shadow);
+}
+
+.list
+{
+    overflow-x: auto;
+}
+.list h1{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 0%;
+}
+
+table{
+    border-collapse: collapse;
+    background-color: #feeed3;
+}
+
+table tr:nth-child(even){
+    background-color: #f2dab2;
+}
+
+table tr:hover {
+    background-color: #fbd08c;
+    transition: all 0.2s ease;
+}
+
+table, td, th{
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 15px;
+    
+}
+
+
+th{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fdf7ec;
+    background-color: #0e9594;
+    text-align: left;
+}
+
+td img{
+    width: 46px;
+    height: 46px;
+    margin-right: .5rem;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+td,th
+{
+    padding: 15px;
+}
+
+
+/*--- Customize Scrollbar ---*/
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: #fdf7ec;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#0e9594, #ffb845);
+    border-radius: 20px;
+}
+
+
+@media only screen and (max-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before { content: "ID"; }
+    td:nth-of-type(2):before { content: "Responsible ID"; }
+    td:nth-of-type(3):before { content: "Email"; }
+    td:nth-of-type(4):before { content: "Action"; }
+    td:nth-of-type(5):before { content: "Short Description"; }
+    td:nth-of-type(6):before { content: "Date and Time"; }
+
+}
