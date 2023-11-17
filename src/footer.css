@@ -61,6 +61,7 @@ footer .item, .quick-links ul, .about ul{
 
 footer .item .socmed ul{
     display: flex;
+    flex-wrap: nowrap;
     text-decoration: none;
     list-style: none;
     gap: 15px;
@@ -135,4 +136,56 @@ footer .info .item{
     color: #9bbfc0ec;
 }
 
+@media only screen and (max-width: 900px){
+    footer{
+        max-width: 900px;
+    }
 
+    footer .footer-content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: #0e9594;
+        color: #c9e6e7;; 
+        padding: 2em; 
+        font-size: 1.2rem;
+    }
+
+    
+    footer .footer-content .item{
+        width: 700px;
+        justify-items: center;
+    }
+
+
+    footer .item img{
+        width: 200px;
+        margin-left: 30%;
+    }
+
+    footer strong{
+        margin-left: 26%;
+    }
+    
+    footer strong p{
+        text-align: center;
+        margin-left: 0rem;
+    }
+
+    footer .item .socmed ul{
+        display: flex;
+        flex-wrap: nowrap;
+        text-decoration: none;
+        list-style: none;
+        gap: 15px;
+        margin: 10px;
+        margin-left: 35%;
+    }
+
+    .quick-links ul, .about ul{
+        text-align: center;
+        margin-left: -9%;
+    }
+
+
+}

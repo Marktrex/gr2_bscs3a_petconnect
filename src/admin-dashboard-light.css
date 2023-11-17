@@ -4,8 +4,10 @@
 
 
 
+
 /*content*/
 .content .cards{
+    margin-top: 0px;
     padding: 20px;
     display: flex;
     align-items: center;
@@ -13,8 +15,8 @@
     flex-wrap: wrap;
 }
 .content .cards .card{
-    width: 250px;
-    height: 150px;
+    width: 320px;
+    height: 320px;
     background: white;
     margin: 20px 10px;
     flex-direction: column; 
@@ -36,9 +38,11 @@
     color: #f2542d;
     transition: all 0.3s ease;
 }
+
+/* Calendar */
 .content .cards .card-date{
-    width: 250px;
-    height: 250px;
+    width: 320px;
+    height: 320px;
     background: white;
     margin: 20px 10px;
     flex-direction: column; 
@@ -50,19 +54,31 @@
     text-align: center;
     font-size: 24px;
 }
-
-#calendar-container td {
+.calendar-container td {
     font-size: 20px;
     border-radius: 40%;
-    padding: 5px 5px;
+    padding: 5px 8px;
     cursor: pointer;
     transition: background-color 0.5s;
 }   
-#calendar-container td:hover {
+.calendar-container td:hover {
     background-color: rgba(45, 48, 64, 0.81); /* Background color for the hovered day */
     color: white; /* Text color for the hovered day */
 }
-
+.day {
+        font-size: 14px;
+        width: 40px;
+        text-align: center;
+        padding: 5px;
+    }
+.red {
+        color: red
+    }
+.days-of-week {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
 a{
     color: black;
 }
@@ -73,63 +89,67 @@ a{
     padding: 5px;
 }
 /* Recent Activities */
-.content .content-2{
-    min-height: 60vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
-.content .content-2 .recent-activities{
-    min-height: 50vh;
-    flex: 5;
-    background: white;
+.table_responsive{
+    max-width: 150vh;
+    border: 1px solid #29252B;
+    background-color: white;
+    padding: 15px;
+    overflow: auto;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border-radius: 10px;
-    margin: 40px 80px 25px 80px; /* default 0px 25px 25px 25px */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.title{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 15px 10px;
-    border-bottom: 2px solid #29252B;
-    background: #0e9594;
-    border-radius: 10px 10px 0 0;
-}
-.btn{
-    background: #f5dfbb;
-    color: black;
-    padding: 5px 10px;
-    text-align: center;
-    border-radius: 10px 10px 10px 10px;
-}
-.btn:hover{
-    color: #f2542d;
-    background: #f5dfbb;
-    padding: 3px 8px;
-    border: 2px solid #f2542d;
-}
-table{
-    padding: 10px;
+.tables {
     width: 100%;
+    font-size: 13px;
+    color: black;
+    white-space: nowrap;
+    border-collapse: collapse;
 }
-td{
-    padding: 10px;
-    font-size: 20px;
-    text-align: right;
+thead{
+    background-color: #0e9594;
+    color: black;
 }
-th{
-    padding: 10px;
-    font-size: 20px;
-    text-align: left;
-    font-weight: normal;
+.tables, thead th{
+    padding: 8px;
 }
-th i.fa {
-    margin-right: 10px;
+.tables th, .tables td{
+    border: 1px solid #414a4c;
+    border-radius: 3px;
+    padding: 10px 15px;
 }
-
+.delete-link {
+        color: red;
+    }
+.action-btn{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.action-btn>a{
+    text-decoration: none;
+    background: #f5dfbb;
+    border: 1px solid #e66155;
+    display: inline-block;
+    padding: 6px 8px;
+    font-weight: bold;
+    border-radius: 10px;
+    border-color: black;
+}
+.action-btn a:hover{
+    color: #f2542d;
+    border-color: #f2542d;
+    transition: 0.3s ease-in-out;
+}
+.tables>tbody>tr{
+    background-color: white;
+    transition: 0.3s ease-in-out;
+}
 @media only screen and (max-width:678px){
+
    
 }
+
 

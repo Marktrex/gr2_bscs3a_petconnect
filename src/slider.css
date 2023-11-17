@@ -36,3 +36,9 @@
         background-image: url(/src/icons/p1.jpg);
     }
 }
+
+@media only screen and (max-width: 900px){
+    .images{
+        display: none;
+    }
+}
