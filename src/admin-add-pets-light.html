@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Add Pets | PetConnect</title>
 
-    <!-- content style -->
-    <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css" />
+    <!-- for content color -->
+    <link rel="stylesheet" type="text/css" href="admin-add-pets-colors.css">
 
-    <!-- layout style -->
+    <!-- content style position -->
+    <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css" />
+    
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css">
+
+    <!-- layout style position-->
     <link rel="stylesheet" type="text/css" href="layout-light.css" />
 
     <link
@@ -22,17 +28,17 @@
   <body>
     <div class="container">
       <!--Navbar-->
-      <header>
+      <header class = "header-color">
         <nav class="navbar">
           <a href="#" class="logo"
             ><img src="icons/logo.png" alt="Insert Logo"
           /></a>
           <ul class="items">
             <li>
-              <a id="messages" href="#"><i class="fa fa-envelope"></i></a>
+              <a class = "message-notif-color" id="messages" href="#"><i class="fa fa-envelope"></i></a>
             </li>
             <li>
-              <a id="notifications" href="#"><i class="fa fa-bell"></i></a>
+              <a class = "message-notif-color" id="notifications" href="#"><i class="fa fa-bell"></i></a>
             </li>
             <li>
               <a href="#"><img src="icons/icons-user.png" alt="Profile" /></a>
@@ -42,7 +48,7 @@
       </header>
 
       <!--Put Contents Here in main-->
-      <main class="content">
+      <main class="content main-con-color">
         <div class="wrapper">
           <form class="form">
             <h1 class="form-title">Pet Form</h1>
@@ -214,11 +220,11 @@
       </main>
 
       <!--SideBar-->
-      <aside id="sidenav" class="sidebar">
-        <ul class="menu-links">
-          <span id="close-btn" href="javascript:void(0)">&times;</span>
+      <aside id="sidenav" class="sidebar sidebar-color">
+        <ul class="menu-links menu-links-color">
+          <span class = "menu-close-btn-color" id="close-btn" href="javascript:void(0)">&times;</span>
           <li>
-            <a id="db" href="#"
+            <a id="db" href="#" 
               ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
             >
           </li>
@@ -249,15 +255,13 @@
             >
           </li>
         </ul>
-        <span id="menu-btn" style="font-size: 30px; cursor: pointer"
+        <span class = "menu-close-btn-color" id="menu-btn" style="font-size: 30px; cursor: pointer"
           >&#9776;</span
         >
       </aside>
 
       <script src="general.js"></script>
       <script>
-
-        
       </script>
     </div>
   </body>
