@@ -166,12 +166,10 @@ button{
     }
 
     .form .image-container img {
-        max-width: 150px;
         width: 100%;
     }
 
     .form .image-container label{
-        max-width: 140px;
         width: 100%;
         text-align: center;
     

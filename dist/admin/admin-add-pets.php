@@ -89,7 +89,7 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-colors.css" />
 
     <!-- content style position -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-light.css" />
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-light.css?v=2" />
 
     <!-- for layout color -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
@@ -133,9 +133,9 @@ if (isset($_POST["submit"])) {
 
                         <div class="image-container">
                             <div>
-                                <img src="../icons/pet-profile-bg.jpg" id="profile-pic" />
-                                <label for="input-file" class="img-label">Upload Image</label>
-                                <input type="file" accept="image/jpeg, image/jpg, image/png" class="form-control-file" id="input-file" name="image" required>
+                            <img src="../icons/pet-profile-bg.jpg" id="profile-pic" />
+                            <label for="input-file" class="img-label">Upload Image</label>
+                                <input type="file" accept="image/jpeg, image/jpg, image/png"  id="input-file" name="image" required>
                             </div>
                         </div>
                         
@@ -316,6 +316,7 @@ if (isset($_POST["submit"])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="../script/admin-general.js"></script>
 </body>
 
 </html>
