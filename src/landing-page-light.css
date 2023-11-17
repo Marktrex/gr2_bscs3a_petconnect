@@ -22,7 +22,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1;
-  padding: 20px;
+  padding: 1rem;
 }
 
 header .navbar {
@@ -34,7 +34,7 @@ header .navbar {
 }
 
 .logo img{
-    width: 150px;
+    width: clamp(50px, 10vw,150px);
     image-resolution: 300px;
 }
 
