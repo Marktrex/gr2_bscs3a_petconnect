@@ -1,148 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <link rel="stylesheet" type="text/css" href="manage-users.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- content color -->
+
+    <!-- for content position -->
+    <link rel="stylesheet" type="text/css" href="manage-users.css" />
+
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css" />
+
+    <!-- layout position -->
+    <link rel="stylesheet" type="text/css" href="layout-light.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Manage Users</title>
-</head>
+  </head>
 
-<!--Lightmode: layout-light.css-->
-<!--Darkmode: layout-dark.css-->
+  <!--Lightmode: layout-light.css-->
+  <!--Darkmode: layout-dark.css-->
 
-<body>
+  <body>
     <div class="container">
-        <!--Navbar-->
-        <header>
-            <nav class="navbar">
-                <a href="#" class="logo"><img src="icons/logo.png" alt="Logo"></a>
-    
-                <ul class="items">
-                    <li><a id="messages" href="#"><i class="fa fa-envelope"></i></a></li>
-                    <li><a id="notifications" href="#"><i class="fa fa-bell"></i></a></li>
-                    <li><a href="#"><img src="icons/icons-user.png" alt="Profile"></a></li>
-                </ul>
-            </nav>
-        </header>
+      <!--Navbar-->
+      <header>
+        <nav class="navbar">
+          <a href="#" class="logo"><img src="icons/logo.png" alt="Logo" /></a>
 
-        <!--Put Contents Here in main-->
-        <main class="content">
-              
-                <div class="profile">
-                    <div class="container2">
-                        <div class="item details1"> 
-                            <img src="icons/pet-profile-bg.jpg" alt="photo"><br>
-                            <label for="input-file" class="img-label">Update Image</label>
-                            <input type="file" accept="image/jpeg, image/jpg, image/png" id="input-file">
+          <ul class="items">
+            <li>
+              <a id="messages" href="#"><i class="fa fa-envelope"></i></a>
+            </li>
+            <li>
+              <a id="notifications" href="#"><i class="fa fa-bell"></i></a>
+            </li>
+            <li>
+              <a href="#"><img src="icons/icons-user.png" alt="Profile" /></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-                            <label for="ID"><a>ID</a></label>
-                            <input type="number" id="ID" class="id" placeholder="Enter ID">
-                        </div>
+      <!--Put Contents Here in main-->
+      <main class="content">
+        <!-- editing -->
 
-                        <div class="item details2">
-                            <label for="user-email"><a>Email</a></label>
-                            <input type="text" class="user-email" id="user-email" name="user-email" maxlength="user-email">
-                            
-                            <label for="UserFname"><a>First Name</a></label>
-                            <input type="text" class="UserFname" id="UserFname" name="UserFname" maxlength="UserFname">
+        <form action="" method="post">
+          <div class="profile">
+            <div class="item details2">
+              <div>
+                <label for="ID"><a>ID</a></label>
+                <input type="number" id="ID" class="id" placeholder="Enter ID" readonly/>
+              </div>
+              <!-- email -->
+              <div>
+                <label for="user-email"><a>Email</a></label>
+                <input
+                  type="text"
+                  class="user-email"
+                  id="user-email"
+                  name="user-email"
+                  maxlength="user-email"
+                />
+              </div>
+              <!-- password -->
+              <div>
+                <label for="Password"><a>Password</a></label>
+                <input
+                  type="text"
+                  class="Password"
+                  id="Password"
+                  name="Password"
+                  maxlength="Password"
+                />
+              </div>
+            </div>
+            <div class="details3">
+              <!-- firstname -->
+              <div>
+                <label for="UserFname"><a>First Name</a></label>
+                <input
+                  type="text"
+                  class="UserFname"
+                  id="UserFname"
+                  name="UserFname"
+                  maxlength="UserFname"
+                />
+              </div>
+              <!-- last namae -->
+              <div>
+                <label for="UserLname"><a>Last Name</a></label>
+                <input
+                  type="text"
+                  class="UserLname"
+                  id="UserLname"
+                  name="UserLname"
+                  maxlength="UserLname"
+                />
+              </div>
+              <!-- user type -->
+              <div>
+                <label for="User-Type"><a>User Type </a></label>
+                <input
+                  type="text"
+                  readonly
+                  class="User-Type"
+                  id="User-Type"
+                  name="User-Type"
+                  required
+                />
+              </div>
+            </div>
+            <div class="details4">
+              <!-- date created -->
+              <div class = "flex">
+                <label for="Date"><a>Date Created</a></label>
+                <input
+                  type="text"
+                  class="Date"
+                  id="Date"
+                  name="Date"
+                  readonly
+                  required
+                  placeholder="MM.DD.YY"
+                />
+              </div>
 
-                            <label for="UserLname"><a>Last Name</a></label>
-                            <input type="text" class="UserLname"id="UserLname" name="UserLname" maxlength="UserLname">
+              <!-- about -->
+              <div>
+                <label for="about"><a id="label-about">About</a></label>
+                <textarea
+                  name="about"
+                  id="about"
+                  cols="100"
+                  rows="10"
+                ></textarea>
+              </div>
 
-                            <label for="Password"><a>Password</a></label>
-                            <input type="text" class="Password" id="Password" name="Password" maxlength="Password">
+              <!-- buttons -->
+              <section class="upd-btn">
+                <button class="update-btn"><a href="#"></a>Update</button>
+                <button class="delete-btn">Delete</button>
+                <button class="update-btn"><a href="#"></a>Promote</button>
+                <button class="delete-btn">Demote</button>
+              </section>
+            </div>
+          </div>
+        </form>
 
-                            <label for="User-Type"><a>User Type </a></label>
-                            <input type="number" class="User-Type" id="User-Type" name="User-Type" required>
-                            
-                            <label for="Date"><a>Date Created</a></label>
-                            <input type="number" class="Date" id="Date" name="Date" required placeholder="MM.DD.YY">
-                            <br>
-                            
-                            <label for="about"><a id="label-about">About</a></label>
-                            <textarea name="about" id="about" cols="100" rows="10"></textarea>
-                            <br> 
-                            
-                            <section class="upd-btn">
-                                <button class="update-btn"><a href="#"></a>Update</button>
-                                <button class="delete-btn">Delete</button>
-                            </section>
-                        </div>
-                    </div>
-                </div>
+        <div class="list">
+          <h1>User List</h1>
 
-                <div class="list">
-                    <h1>Pets List</h1>
-                 
-                    <section class="list-body">
-                    <table id="pets-list">
-                        <thead>
-                            <tr id="header">
-                                <th>ID</th>
-                                <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Password</th>
-                                <th>User Type</th>
-                                <th>Date Created</th>
-                                <th>Date of Join</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!--sample data only-->
-                            <tr>
-                                <td>1</td>
-                                <td>johnsantiago@gmail.com</td>
-                                <td>santiago</td>
-                                <td>john</td>
-                                <td>2345</td>
-                                <td>1</td>
-                                <td>06-11-2021</td>
-                                <td>2021-06-12</td
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>noelbeltran@gmail.com</td>
-                                <td>Beltran</td>
-                                <td>Noel</td>
-                                <td>654</td>
-                                <td>2</td>
-                                <td>06-16-2022</td>
-                                <td>2022-06-16</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </section>
+          <section class="list-body">
+            <table id="pets-list">
+              <thead>
+                <tr id="header">
+                  <th>ID</th>
+                  <th>Email</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Password</th>
+                  <th>User Type</th>
+                  <th>Date Created</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!--sample data only-->
+                <tr>
+                  <td>1</td>
+                  <td>johnsantiago@gmail.com</td>
+                  <td>santiago</td>
+                  <td>john</td>
+                  <td>2345</td>
+                  <td>1</td>
+                  <td>06-11-2021</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>noelbeltran@gmail.com</td>
+                  <td>Beltran</td>
+                  <td>Noel</td>
+                  <td>654</td>
+                  <td>2</td>
+                  <td>06-16-2022</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </main>
 
-                </div>
-        </main>
+      <!--SideBar-->
+      <aside id="sidenav" class="sidebar">
+        <ul class="menu-links menu-links-color">
+          <span id="close-btn" href="javascript:void(0)">&times;</span>
+          <li>
+            <a id="db" href="#"
+              ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+            >
+          </li>
+          <li>
+            <a id="manage" href="#"
+              ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+            >
+          </li>
+          <li>
+            <a id="users" href="#"
+              ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Audit Trail</a
+            >
+          </li>
+          <li>
+            <a id="logout" href="#"
+              ><i class="fa fa-arrow-circle-right"></i
+              >&nbsp;&nbsp;&nbsp;Logout</a
+            >
+          </li>
+        </ul>
+        <span id="menu-btn" style="font-size: 30px; cursor: pointer"
+          >&#9776;</span
+        >
+      </aside>
 
-        <!--SideBar-->
-        <aside id="sidenav" class="sidebar">
-          
-            <ul class="menu-links"> 
-                <span id="close-btn" href="javascript:void(0)">&times;</span>
-                <li><a id="db" href="#"><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
-                <li><a id="db" href="#"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a></li>
-                <li><a id="add" href="#"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a></li>
-                <li><a id="manage" href="#"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a></li>
-                <li><a id="users" href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a></li>
-                <li><a id="logout"href="#"><i class="fa fa-arrow-circle-right"></i>&nbsp;&nbsp;&nbsp;Logout</a></li>
-              </ul> 
-            <span id="menu-btn" style="font-size:30px;cursor:pointer">&#9776;</span>
-        </aside>
-
-        <script>
-            const aside = document.querySelector("aside");
-            const menuBtn = document.querySelector("#menu-btn");
-            const closeBtn = document.querySelector("#close-btn");
-
-            menuBtn.addEventListener("click", () => sidebar.classList.toggle("mobile-mode"));
-
-            closeBtn.addEventListener("click", () => menuBtn.click());
-        </script>
-        
+      <script src="general.js"></script>
     </div>
-</body>
+  </body>
 </html>
