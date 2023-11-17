@@ -151,6 +151,7 @@ textarea{
     gap: 15px;
     justify-content: end;
     flex-wrap: wrap;
+    margin-top: 0.75rem;
 }
 
 .upd-btn button{
@@ -215,8 +216,7 @@ table, td, th{
     margin-top: 15px;
     
 }
-td, th{
-}
+
 
 th{
     padding-top: 20px;
@@ -306,6 +306,6 @@ td img{
     }
     .upd-btn button
     {
-        flex: 0 0 45%;
+        flex: 0 0 35%;
     }
 }
