@@ -27,20 +27,41 @@
             English
           </a>
         </li>
-        <li class="join-btn"><a href="#">Join Us</a></li>
+          <a href="#">
+            <img class="icon-user" src="icons/icons-user.png" alt="User Icon">
+          </a>
         <span id="close-menu-btn" class="material-symbols-outlined">close</span>
       </ul>
       <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
     </nav>
+    <div class="title-container">
+          <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
+          <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search dogs, cats, etc.">
+        </div>
+    </div>
   </header>
-  
-<!-- content -->
-<h1 id="petsTitle">Our pets are waiting for you!</h1>
+
+<!-- content-Buttons -->
+    <div class="button-container">
+        <a href="#" class="button button-find-dog">
+          Find a <br> Dog
+          <img src="icons/btn-dog.png" alt="Dog Icon" class="dog-icon">
+        </a>
+        <a href="#" class="button button-find-cat">
+          Find a <br>Cat
+          <img src="icons/btn-cat.png" alt="Dog Icon" class="cat-icon">
+        </a>
+    </div>
+
+<!-- content-Available dog and cats-->
 
   <script>
     const header = document.querySelector("header");
     const hamburgerBtn = document.querySelector("#hamburger-btn");
     const closeMenuBtn = document.querySelector("#close-menu-btn");
+
 
     // Toggle mobile menu on hamburger button click
     hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));

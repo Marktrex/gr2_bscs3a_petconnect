@@ -15,16 +15,23 @@
 body {
   min-height: 100vh;
   position: relative;
-  background: #fdc161;
+  font-family: 'Lato', sans-serif; /*samp*/
+  background-color: #fdc161;
+  justify-content: center;
 }
 
 header {
-  position: fixed;
+  background: url('icons/close-up-portrait.png');
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;
+  height: 720px;
   z-index: 1;
   padding: 20px;
+  margin-bottom: 100;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header .navbar {
@@ -67,21 +74,8 @@ header .navbar {
 .navbar .menu-links li a:hover {
   color: #127475;
 }
-
-.navbar .menu-links .join-btn a {
-  padding: 8px 15px;
-  border-radius: 4px;
-  background-color: #127475;
-}
-
-.navbar .menu-links .join-btn a:hover {
-  color: #fff;
-  border-color: transparent;
-  background: #f2542d;
-}
-
 /*--------------------------------------------------------------------------------------------*/
-
+/*
 .hero-section {
   height: 100vh;
   background-position: center;
@@ -191,7 +185,7 @@ header .navbar {
   color: #000;
   background: #fff;
 }
-
+*/
 .navbar #hamburger-btn {
   color: #fff;
   cursor: pointer;
@@ -221,7 +215,7 @@ main{
   border-radius: 26px;
   box-shadow: 0px 3px 10px rgb(110, 109, 109);
 }
-
+/*
 .container1 h1{
   font-family: 'dairantou';
   color: #ff653e;
@@ -252,7 +246,7 @@ main{
 }
 
 /*--------------------------------------------------------------------------------------------*/
-
+/*
 .container2{
   display: flex;
   padding: 0;
@@ -286,7 +280,7 @@ main{
 }
 
 
-/*--------------------------------------------------------------------------------------------*/
+/--------------------------------------------------------------------------------------------/
 .container3{
   width: 90%;
   height: 730px;
@@ -320,7 +314,7 @@ main{
   background: #d3c3a9;
   transition:  0.2s ease;
 }
-
+*/
 /*--- Customize Scrollbar ---*/
 ::-webkit-scrollbar{
   width: 10px;
@@ -358,7 +352,6 @@ main{
     padding: 75px 40px 0;
     transition: left 0.2s ease;
   }
-
   header.show-mobile-menu .navbar .menu-links {
     left: 0;
   }
@@ -372,22 +365,11 @@ main{
     font-size: 1.1rem;
   }
 
-  .navbar .menu-links .join-btn a {
-    padding: 0;
-    background-color: #FFFFFF;
-    
-  }
-
-  .navbar .menu-links .join-btn a:hover {
-    color: #0e9594;
-    background: none;
-  }
-
   .navbar :is(#close-menu-btn, #hamburger-btn) {
     display: block;
   }
 
-  .hero-section {
+/*  .hero-section {
     background: none;
   }
 
@@ -409,7 +391,7 @@ main{
     text-align: center;
     margin-left: 10vh;
   }
-
+*/
   main{
     height: 100vh;
     max-width: 740px;
@@ -418,7 +400,138 @@ main{
 
 }
 /* Content */
-#petsTitle {
+/* header part*/
+a .icon-user{
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.2s ease;
+}
+.icon-user:hover {
+  opacity: 0.70; /* Adjust the opacity value as needed */
+}
+
+#petsTitle, #UnderpetsTitle {
   font-family: 'dairantou', sans-serif;
   color: #fff6e8;
+  }
+.title-container {
+  text-align: center;
+  padding: 20px;
+  margin-top: 15vh; 
+  justify-content: center;
+  }
+
+h1 {
+   font-size: 3.5em; 
+  }
+
+h2 {
+  font-size: 1.8em; 
+  color: white; 
+  }
+.search-container {
+  margin-top: 20px; 
+  }
+
+.search-bar {
+  height: 50px;
+  border: none;
+  border-radius: 20px; 
+  padding: 10px 15px; 
+  width: 500px; 
+  background: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  }
+
+/* dog and cat buttons*/
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.button {
+  position: relative;
+  width: 250px;
+  height: 100px;
+  background-color: #f2542d;
+  border: none;
+  font-family: 'dairantou', sans-serif;
+   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 30px 0px 30px 0px;
+  cursor: pointer;
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  line-height: 50px;
+}
+.button:hover {
+  background-color: rgba(242, 84, 45, 0.8); /* #f2542d; */
+  transform: scale(1.05);
+}
+/* Icon adjustments */
+.dog-icon,
+.cat-icon {
+  position: absolute;
+  top: 70%; 
+  transform: translateY(-50%);
+}
+.dog-icon {
+  right: 0px; 
+}
+.cat-icon {
+  right: 0px; 
+}
+.cat-icon {
+  max-width: 100%;
+  max-height: 100%;
+  width: 70px;
+  height: 70px;
+  line-height: 200px; /* Vertical centering of text */
+}
+.dog-icon {
+  max-width: 100%;
+  max-height: 100%;
+  width: 90px;
+  height: 90px;
+  line-height: 200px; /* Vertical centering of text */
+}
+
+/* Content Responsive*/
+@media (max-width: 900px) {
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.0em;
+}
+.search-bar {
+  width: 80%;
+  max-width: none;
+}
+header {
+  background-size: auto; /* Adjust as needed for mobile view */
+  margin-bottom: 50px; /* Adjust margin for mobile view */
+  height: 80vh; /* eto need ko para sa background */
+}
+.logo img {
+  width: 70%; 
+  max-width: 150px; 
+}
+.search-bar {
+  width: 50%;
+}
+.button-container {
+  flex-direction: row;
+  align-items: center;
+}
+.button {
+  width: 50%;
+  min-width: 20%;
+  margin: 10px 10px 10px 10px;
+  }
+
 }
