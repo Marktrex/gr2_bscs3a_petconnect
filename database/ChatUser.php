@@ -174,10 +174,11 @@ class ChatUser
 
 	function save_data()
 	{
+		$user_status = $this->user_status = 'Enable';
 		$user_type = $this->user_type = 'User'; // automatically set the user_type to "User" when creating an account
 		$query = "
-		INSERT INTO chat_user_table (user_name, user_email, user_password, user_status, user_created_on, user_verification_code, user_type) 
-		VALUES (:user_name, :user_email, :user_password, :user_status, :user_created_on, :user_verification_code, :user_type)
+		INSERT INTO chat_user_table (user_name, user_email, user_password, user_status, user_created_on,  user_type) 
+		VALUES (:user_name, :user_email, :user_password, :user_status, :user_created_on, :user_type)
 		";
 	
 		$statement = $this->connect->prepare($query);
@@ -186,7 +187,7 @@ class ChatUser
 		$statement->bindParam(':user_password', $this->user_password);
 		$statement->bindParam(':user_status', $this->user_status);
 		$statement->bindParam(':user_created_on', $this->user_created_on);
-		$statement->bindParam(':user_verification_code', $this->user_verification_code);
+		// $statement->bindParam(':user_verification_code', $this->user_verification_code);
 		$statement->bindParam(':user_type', $this->user_type); // Set user_type to 'User'
 		if($statement->execute())
 		{

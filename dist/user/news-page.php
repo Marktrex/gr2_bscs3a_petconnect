@@ -1,7 +1,11 @@
-<?php require './function/config.php' ?>
 <?php
 session_start(); // Add this line to start the session
-
+require './function/config.php';
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 // Retrieve the news content based on the news ID (replace 'YOUR_DB_TABLE_NAME' with the actual table name)
 $newsId = $_GET['news_id']; // Assuming the news ID is passed through the URL parameter
 $sql = "SELECT * FROM news WHERE news_id = $newsId";

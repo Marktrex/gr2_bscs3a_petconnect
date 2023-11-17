@@ -1,6 +1,11 @@
-<?php require '../function/config.php' ?>
 <?php
 session_start(); // Add this line to start the session
+require '../function/config.php';
+//this checks the session if the admin is logged in
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+} 
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +96,7 @@ session_start(); // Add this line to start the session
                     <div class="news-slider">
                         <?php
                         // Fetch the data from the database and store it in an array
-                        // $newsItems = mysqli_query($conn, "SELECT * FROM news ORDER BY date_published DESC");
-                        // $newsItems = mysqli_fetch_all($newsItems, MYSQLI_ASSOC);
-        
+                       
                         $stmt = $conn->prepare("SELECT * FROM news ORDER BY date_published DESC");
                         $stmt->execute();
                         // Fetch the data as an associative array

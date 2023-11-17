@@ -1,52 +1,12 @@
-function get_user_all_data_with_status_count()
-{
-	
-	if (isset($_SESSION['user_data'][1]['status'])) {
-        $logged_in_user_type = $_SESSION['user_data'][1]['status'];
-
-        // User side chat
-        if ($logged_in_user_type == "User") {
-            $query = "SELECT user_id, user_name, user_profile, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = :user_id AND from_user_id = chat_user_table.user_id AND status = 'No') AS count_status
-            FROM chat_user_table
-            WHERE user_type = 'User'";
-		// Admin side chat
-        } elseif ($logged_in_user_type == "Admin") {
-            $query = "SELECT user_id, user_name, user_profile, user_login_status, (SELECT COUNT(*) FROM chat_message WHERE to_user_id = :user_id AND from_user_id = chat_user_table.user_id AND status = 'No') AS count_status
-            FROM chat_user_table
-            WHERE user_type = 'User'";
-        } else {
-            echo "Error: Unexpected user type.";
-        }
-
-        $statement = $this->connect->prepare($query);
-        $statement->bindParam(':user_id', $this->user_id);
-        $statement->execute();
-        $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+ // Execute the statement
+    if ($stmt->execute()) {
+        $log = new Audit($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
+        $log->activity_log();
+        echo "
+            <script> 
+                alert('Data updated successfully'); 
+                window.location.href = 'admin-manage-user.php';
+            </script>";
     } else {
-        // Handle the case where 'status' is not set in the user_data array
-        echo "Error: User type not found. Please log in.";
+        echo "Error updating data: ";
     }
-}
-
-<?php
-    print_r($_SESSION);
-?>
-
-//admin only that shows
-$query = "
-    SELECT user_id, user_name, user_profile, user_login_status, 
-           (SELECT COUNT(*) FROM chat_message 
-            WHERE to_user_id = :user_id AND from_user_id = chat_user_table.user_id AND status = 'No') AS count_status 
-    FROM chat_user_table
-    WHERE user_type = 'Admin'
-";
-
-$_SESSION['user_data'][$user_data['user_id']] = [
-                        'user_type' => $user_data['user_type'],
-                        'id'    =>  $user_data['user_id'],
-                        'name'  =>  $user_data['user_name'],
-                        'profile'   =>  $user_data['user_profile'],
-                        'token' =>  $user_token
-                        
-                    ];
