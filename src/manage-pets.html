@@ -7,6 +7,9 @@
     <!-- content style -->
     <link rel="stylesheet" type="text/css" href="manage-pets.css" />
 
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css" />
+    
     <!-- layout style -->
     <link rel="stylesheet" type="text/css" href="layout-light.css" />
 
@@ -42,8 +45,6 @@
 
       <!--Put Contents Here in main-->
       <main class="content">
-        
-
         <!-- editing -->
         <form action="" method="post">
           <div class="profile">
@@ -98,7 +99,7 @@
                 />
               </div>
             </div>
-            <div class = "details3">
+            <div class="details3">
               <!-- age -->
               <div>
                 <label for="age"><a>Age</a></label>
@@ -131,13 +132,13 @@
                 />
               </div>
             </div>
-            <div class = "details4">
+            <div class="details4">
               <!-- date of rescue -->
-              <div class = "flex">
+              <div class="flex">
                 <label for="date"><a>Date of Rescue</a></label>
-                <input type="date" class="" id="date" name="date" required>
+                <input type="date" class="" id="date" name="date" required />
               </div>
-          
+
               <div>
                 <label for="about"><a id="label-about">About</a></label>
                 <textarea name="about" id="about"></textarea>
@@ -150,7 +151,6 @@
           </div>
         </form>
 
-        
         <!-- table list -->
         <div class="list">
           <h1>Pets List</h1>
@@ -246,13 +246,11 @@
             </table>
           </section>
         </div>
-        
       </main>
-
 
       <!--SideBar-->
       <aside id="sidenav" class="sidebar">
-        <ul class="menu-links">
+        <ul class="menu-links menu-links-color">
           <span id="close-btn" href="javascript:void(0)">&times;</span>
           <li>
             <a id="db" href="#"
@@ -260,7 +258,7 @@
             >
           </li>
           <li>
-            <a id="db" href="#"
+            <a id="add" href="#"
               ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
             >
           </li>
@@ -277,6 +275,11 @@
           <li>
             <a id="users" href="#"
               ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+            >
+          </li>
+          <li>
+            <a id="add" href="#"
+              ><i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Audit Trail</a
             >
           </li>
           <li>

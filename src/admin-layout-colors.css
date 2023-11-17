@@ -26,27 +26,27 @@
 
 
 /* layouts color */
-.header-color
+header
 {
     background-color: var(--header-color);
 }
 
-.message-notif-color
+#messages, #notifications   
 {
     color: var(--header-notif-message-color);
 }
 
-.message-notif-color :hover
+#messages :hover, #notification:hover
 {
     color: var(--message-notif-hover-color);
 }
 
-.main-con-color
+main
 {
     background-color: var(--main-con-color);
 }
 
-.sidebar-color
+.sidebar
 {
     background-color: var(--sidebar-color);
 }
@@ -56,24 +56,24 @@
     background-color: var(--sidebar-color);
 }
 
-.menu-links-color a
+.menu-links a
 {
     color: var(--menu-links-default-text-color);
 }
 
-.menu-links-color a.active
+.menu-links a.active
 {
     background-color: var(--menu-links-active-background-color);
     color: var(--menu-links-active-text-color);
 }
 
-.menu-links-color a:hover:not(.active)
+.sidebar a:hover:not(.active)
 {
     background-color: var(--menu-links-hover-background-color);
     color: var(--menu-links-hover-text-color);
 }
 
-.menu-close-btn-color
+#menu-btn, #close-btn
 {
     color: var(--burger-AndClose-color);
 }
