@@ -17,7 +17,7 @@ body {
 }
 
 header {
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   width: 100%;
@@ -63,7 +63,7 @@ header .navbar {
 }
 
 .navbar .menu-links li a:hover {
-  color: #127475;
+  color: #127475 !important;
 }
 
 .navbar .menu-links .join-btn a {
@@ -73,9 +73,9 @@ header .navbar {
 }
 
 .navbar .menu-links .join-btn a:hover {
-  color: #fff;
-  border-color: transparent;
-  background: #f2542d;
+  color: #fff !important;
+  border-color: transparent !important;
+  background: #f2542d !important;
 }
 
 /*--------------------------------------------------------------------------------------------*/
