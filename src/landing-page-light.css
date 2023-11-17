@@ -422,14 +422,15 @@ main{
   main{
     max-width: 740px;
     margin-left: 60px;
+    height: 108rem;
   }
 
   .container3 h1{
     margin-right: 100px;
   }
 
-  .service2, .service3, .service4{
-    display: none;
+  .services{
+    height: 50px;
   }
 
   .testimonials{
@@ -439,6 +440,12 @@ main{
   .testimonial2{
     display: none;
   
+  }
+
+  .services .item{
+    margin-top: 2.5rem;
+    width: 570px;
+    height: 350px;
   }
 
 }
