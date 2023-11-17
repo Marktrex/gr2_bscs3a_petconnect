@@ -6,13 +6,13 @@
     <title>Admin Add Pets | PetConnect</title>
 
     <!-- for content color -->
-    <link rel="stylesheet" type="text/css" href="admin-add-pets-colors.css">
+    <link rel="stylesheet" type="text/css" href="admin-add-pets-colors.css" />
 
     <!-- content style position -->
     <link rel="stylesheet" type="text/css" href="admin-add-pets-light.css" />
-    
+
     <!-- for layout color -->
-    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css">
+    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css" />
 
     <!-- layout style position-->
     <link rel="stylesheet" type="text/css" href="layout-light.css" />
@@ -28,17 +28,21 @@
   <body>
     <div class="container">
       <!--Navbar-->
-      <header class = "header-color">
+      <header class="header-color">
         <nav class="navbar">
           <a href="#" class="logo"
             ><img src="icons/logo.png" alt="Insert Logo"
           /></a>
           <ul class="items">
             <li>
-              <a class = "message-notif-color" id="messages" href="#"><i class="fa fa-envelope"></i></a>
+              <a class="message-notif-color" id="messages" href="#"
+                ><i class="fa fa-envelope"></i
+              ></a>
             </li>
             <li>
-              <a class = "message-notif-color" id="notifications" href="#"><i class="fa fa-bell"></i></a>
+              <a class="message-notif-color" id="notifications" href="#"
+                ><i class="fa fa-bell"></i
+              ></a>
             </li>
             <li>
               <a href="#"><img src="icons/icons-user.png" alt="Profile" /></a>
@@ -90,7 +94,7 @@
                   </select>
                 </div>
                 <br />
-       
+
                 <div>
                   <label for="breed"><a>Breed</a></label>
                   <select class="pet-breed" name="breed" id="breed" required>
@@ -107,7 +111,9 @@
                       <option value="Corgi">Corgi</option>
                       <option value="Dachshund">Dachshund</option>
                       <option value="Dalmatian">Dalmatian</option>
-                      <option value="Doberman Pinscher">Doberman Pinscher</option>
+                      <option value="Doberman Pinscher">
+                        Doberman Pinscher
+                      </option>
                       <option value="German Shepherd">German Shepherd</option>
                       <option value="Golden Retriever">Golden Retriever</option>
                       <option value="Labrador Retriever">
@@ -127,7 +133,9 @@
                         American Shorthair
                       </option>
                       <option value="Bengal">Bengal</option>
-                      <option value="British Shorthair">British Shorthair</option>
+                      <option value="British Shorthair">
+                        British Shorthair
+                      </option>
                       <option value="Burmese">Burmese</option>
                       <option value="Bombay">Bombay</option>
                       <option value="Calico">Calico</option>
@@ -157,11 +165,15 @@
                 <div>
                   <label for="age"><a>Age</a></label>
                   <select class="form-control" id="age" name="age" required>
-                      <option value="">Select Age</option>
-                      <option value="Less than 6 months">Less than 6 months</option>
-                      <option value="6 months to 5 years">6 months to 5 years</option>
-                      <option value="5 to 10 years">5 to 10 years</option>
-                      <option value="over 10 years">over 10 years</option>
+                    <option value="">Select Age</option>
+                    <option value="Less than 6 months">
+                      Less than 6 months
+                    </option>
+                    <option value="6 months to 5 years">
+                      6 months to 5 years
+                    </option>
+                    <option value="5 to 10 years">5 to 10 years</option>
+                    <option value="over 10 years">over 10 years</option>
                   </select>
                 </div>
                 <br />
@@ -179,22 +191,33 @@
                 <!--Pet Weight-->
                 <div>
                   <label for="weight"><a>Weight</a></label>
-                  <select class="form-control" id="weight" name="weight" required>
+                  <select
+                    class="form-control"
+                    id="weight"
+                    name="weight"
+                    required
+                  >
                     <option value="">Select Weight</option>
                     <option value="Less than 5 lbs">Less than 5 lbs</option>
                     <option value="5-10 lbs">5-10 lbs</option>
                     <option value="10-20 lbs">10-20 lbs</option>
                     <option value="20-50 lbs">20-50 lbs</option>
                     <option value="over 50 lbs">over 50 lbs</option>
-                </select>
+                  </select>
                 </div>
                 <br />
                 <!-- date of rescue -->
-                <div >
+                <div>
                   <label for="date"><a>Date of Rescue</a></label>
-                  <input type="date" class="form-control" id="date" name="date" required>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="date"
+                    name="date"
+                    required
+                  />
                 </div>
-                <br/>
+                <br />
                 <div>
                   <label for="about"><a id="label-about">About</a></label>
                   <textarea
@@ -204,12 +227,10 @@
                     rows="12"
                   ></textarea>
                 </div>
-                
               </div>
               <!-- textarea -->
             </div>
             <!--About-->
-            
 
             <section class="ac-btn">
               <button class="add-btn">Add Pet</button>
@@ -222,9 +243,14 @@
       <!--SideBar-->
       <aside id="sidenav" class="sidebar sidebar-color">
         <ul class="menu-links menu-links-color">
-          <span class = "menu-close-btn-color" id="close-btn" href="javascript:void(0)">&times;</span>
+          <span
+            class="menu-close-btn-color"
+            id="close-btn"
+            href="javascript:void(0)"
+            >&times;</span
+          >
           <li>
-            <a id="db" href="#" 
+            <a id="db" href="#"
               ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
             >
           </li>
@@ -255,14 +281,16 @@
             >
           </li>
         </ul>
-        <span class = "menu-close-btn-color" id="menu-btn" style="font-size: 30px; cursor: pointer"
+        <span
+          class="menu-close-btn-color"
+          id="menu-btn"
+          style="font-size: 30px; cursor: pointer"
           >&#9776;</span
         >
       </aside>
 
       <script src="general.js"></script>
-      <script>
-      </script>
+      <script></script>
     </div>
   </body>
 </html>
