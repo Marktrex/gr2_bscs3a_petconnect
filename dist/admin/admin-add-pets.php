@@ -135,7 +135,7 @@ if (isset($_POST["submit"])) {
                             <div>
                             <img src="../icons/pet-profile-bg.jpg" id="profile-pic" />
                             <label for="input-file" class="img-label">Upload Image</label>
-                                <input type="file" accept="image/jpeg, image/jpg, image/png"  id="input-file" name="image" required>
+                                <input type="file" accept="image/jpeg, image/jpg, image/png"  id="input-file" name="image">
                             </div>
                         </div>
                         
@@ -259,8 +259,8 @@ if (isset($_POST["submit"])) {
                         </div>
                     </div>
                     <section class="ac-btn">
-                        <button class="add-btn">Add Pet</button>
-                        <button class="clear-btn">Clear all</button>
+                        <button class="add-btn" type="submit" name="submit">Add Pet</button>
+                        <button class="clear-btn" type = "button">Clear all</button>
                     </section>
                 </form>
             </div>
