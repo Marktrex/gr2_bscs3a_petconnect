@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="audit-trail.css"> 
+
+    <!-- content position -->
+    <link rel="stylesheet" type="text/css" href="audit-trail.css">
+
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="admin-layout-colors.css" />
+
+    <!-- layout position -->
+    <link rel="stylesheet" type="text/css" href="layout-light.css"> 
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<!--Lightmode: layout-light.css-->
-<!--Darkmode: layout-dark.css-->
 
 <body>
     <div class="container">
@@ -31,14 +38,15 @@
                 <h1>Activity Log</h1>
 
                 <div class="search">
-                    <label for="user"><span>Search User</span></label>
-                    <input type="text" id="user" class="user" placeholder="Search User" readonly/>
+                    <div>
+                      <label for="user"><span>Search User</span></label>
+                      <input type="text" id="user" class="user" placeholder="Search User"/>
+                    </div>
 
-                    <label for="action"><span>Search Action</span></label>
-                    <input type="text" id="action" class="action" placeholder="Search Action" readonly/>
-
-                    <label for="username"><span>Date Range</span></label>
-                    <input type="number" id="ID" class="id" placeholder="Search Action" readonly/>
+                    <div>
+                      <label for="action"><span>Search Action</span></label>
+                      <input type="text" id="action" class="action" placeholder="Search Action"/>
+                    </div>
                 </div>
 
                 <section class="list-body">
