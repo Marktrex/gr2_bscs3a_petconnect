@@ -456,11 +456,11 @@ h2 {
   background-color: #f2542d;
   border: none;
   font-family: 'dairantou', sans-serif;
-   text-align: center;
+  text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-  margin: 30px 0px 30px 0px;
+  margin: 40px 0px 30px 0px;  /* top,right,bottom,left */
   cursor: pointer;
   color: white;
   border-radius: 15px;
@@ -498,7 +498,48 @@ h2 {
   height: 90px;
   line-height: 200px; /* Vertical centering of text */
 }
+/* content-Available dog and cats*/
+        .pet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 5%;
+        }
 
+        .dog-card {
+            text-align: center;
+            margin: 15px;
+            padding: 0px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .dog-card:hover {
+            transform: scale(1.05);
+        }
+
+        .dog-image {
+        /*  object-position: bottom; [para ma position yung crop maayos] */
+            object-fit: cover;
+            max-width: 100%;
+            width: 200px;
+            height: auto; /*backup height: 100px;*/
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0
+        }
+
+        .dog-name {
+            margin-top: 10px;
+            font-weight: bold;
+        }
 /* Content Responsive*/
 @media (max-width: 900px) {
 h1 {
