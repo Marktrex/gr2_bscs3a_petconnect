@@ -75,117 +75,6 @@ header .navbar {
   color: #127475;
 }
 /*--------------------------------------------------------------------------------------------*/
-/*
-.hero-section {
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  display: flex;
-  padding: 0 20px;
-  align-items: center;
-}
-
-.hero-section .content {
-  max-width: 1500px;
-  width: 100%;
-  margin-top: 50px;
-}
-
-.hero-section .photodecor img{
-  height: 87vh;
-  margin-top: -20px;
-  margin-right: 120px;
-}
-
-.hero-section .content h1 {
-  color: #0e9594;
-  font-family: 'dairantou';
-  font-size: 350%;
-  max-width: 200vh;
-  line-height: 70px;
-  margin-left: 20vh;
-}
-
-.hero-section .content p {
-  color: #fff6e8;
-  font-size: 26px;
-  max-width: 630px;
-  line-height: 30px;
-  margin-top: 15px;
-  margin-left: 20vh;
-}
-
-.hero-section .register-button{
-  margin-top: 25px;
-  margin-left: 20vh;
-} 
-
-.register-button{
-  border-radius: 30px;
-  background-color: #f2542d;
-  border: none;
-  box-shadow: -2px 5px 0px #7a1d05;
-  color: #FFFFFF;
-  font-size: 28px;
-  padding: 10px;
-  padding-bottom: 15px;
-  width: 250px;
-  transition: all 0.5s;
-  cursor: pointer;
-  justify-content: center;
-}
-
-.register-button span{
-  font-size: 22px;
-  cursor: pointer;
-  display: inline;
-  position: relative;
-  transition: 0.3s;
-}
-
-.register-button span:after{
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.3s;
-}
-
-.register-button:hover span {
-  padding-right: 25px;
-}
-
-.register-button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-.hero-section .search-form input {
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0 15px;
-  font-size: 1rem;
-  border-radius: 4px 0 0 4px;
-}
-
-.hero-section .popular-tags {
-  display: flex;
-  color: #fff;
-  gap: 25px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-top: 25px;
-}
-
-.hero-section .tags li a:hover {
-  color: #000;
-  background: #fff;
-}
-*/
 .navbar #hamburger-btn {
   color: #fff;
   cursor: pointer;
@@ -215,38 +104,9 @@ main{
   border-radius: 26px;
   box-shadow: 0px 3px 10px rgb(110, 109, 109);
 }
-/*
-.container1 h1{
-  font-family: 'dairantou';
-  color: #ff653e;
-  font-size: 55px;
-  text-align: center;
-  padding-top: 45px;
-}
-
-.services{
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
-.services .item{
-  margin-top: 2.5rem;
-  width: 350px;
-  height: 510px;
-  text-align: center;
-  background-color: #0e9594;
-  border-radius: 12px;
-}
-
-.services .item:hover{
-  margin-top: 2rem;
-  transition: 0.3s;
-  box-shadow: -10px 10px 0px #127475;
-}
 
 /*--------------------------------------------------------------------------------------------*/
-/*
+
 .container2{
   display: flex;
   padding: 0;
@@ -369,34 +229,12 @@ main{
     display: block;
   }
 
-/*  .hero-section {
-    background: none;
-  }
-
-  .hero-section .content {
-    margin: 0 auto 80px;
-  }
-
-  .hero-section .content :is(h1, .search-form) {
-    max-width: 100%;
-  }
-
-  .hero-section .content h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    line-height: 47px;
-  }
-
-  .hero-section .content p {
-    text-align: center;
-    margin-left: 10vh;
-  }
-*/
-  main{
+/*---------------------------------------------CONTENT-----------------------------------------------*/
+/*  main{
     height: 100vh;
     max-width: 740px;
     margin-left: 60px;
-  }
+  }*/
 
 }
 /* Content */
@@ -409,7 +247,7 @@ a .icon-user{
 .icon-user:hover {
   opacity: 0.70; /* Adjust the opacity value as needed */
 }
-
+/* for title */
 #petsTitle, #UnderpetsTitle {
   font-family: 'dairantou', sans-serif;
   color: #fff6e8;
@@ -429,15 +267,16 @@ h2 {
   font-size: 1.8em; 
   color: white; 
   }
+/* Search bar */
 .search-container {
+  position: relative;
   margin-top: 20px; 
   }
-
 .search-bar {
   height: 50px;
   border: none;
   border-radius: 20px; 
-  padding: 10px 15px; 
+  padding: 10px 20px; 
   width: 500px; 
   background: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
   outline: none;
@@ -460,7 +299,7 @@ h2 {
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-  margin: 40px 0px 30px 0px;  /* top,right,bottom,left */
+  margin: 40px 0px 120px 0px;  /* top,right,bottom,left */
   cursor: pointer;
   color: white;
   border-radius: 15px;
@@ -472,8 +311,7 @@ h2 {
   transform: scale(1.05);
 }
 /* Icon adjustments */
-.dog-icon,
-.cat-icon {
+.dog-icon, .cat-icon {
   position: absolute;
   top: 70%; 
   transform: translateY(-50%);
@@ -506,39 +344,49 @@ h2 {
             padding: 20px;
             margin-left: 10%;
             margin-right: 10%;
-            margin-top: 5%;
+            margin-top: 0%;
+            margin-bottom: 3%;
         }
 
-        .dog-card {
+        .pet-card {
             text-align: center;
             margin: 15px;
             padding: 0px;
-            background-color: white;
+            background-color: #f5dfbb;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
             border-radius: 15px;
         }
 
-        .dog-card:hover {
+        .pet-card:hover {
             transform: scale(1.05);
         }
 
-        .dog-image {
+        .pet-image {
         /*  object-position: bottom; [para ma position yung crop maayos] */
             object-fit: cover;
             max-width: 100%;
-            width: 200px;
-            height: auto; /*backup height: 100px;*/
+            width: 250px;
+            height: auto; /*backup tapos height: 100px;*/
             border-top-left-radius: 15px;
             border-top-right-radius: 15px;
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0
         }
 
-        .dog-name {
-            margin-top: 10px;
+        .pet-name {
             font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            font-family: 'dairantou', sans-serif;
+            color: #127475;
+        }
+        #available-pet {
+            font-family: 'dairantou', sans-serif;
+            color: #127475;
+            text-align: center;
+            font-size: 30px;
         }
 /* Content Responsive*/
 @media (max-width: 900px) {
@@ -572,7 +420,20 @@ header {
 .button {
   width: 50%;
   min-width: 20%;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 40px 10px;
   }
-
+#available-pet {
+  font-size: 1.5em;
+}
+.pet-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  }
+.pet-card {
+  width: 35%; /* Adjust the width of pet cards for better layout on smaller screens */
+  }
+.pet-image {
+  width: 100%; /* Make images take up the full width of the card */
+  border-radius: 15px; /* Reset border-radius for the bottom corners */
+  }
 }
