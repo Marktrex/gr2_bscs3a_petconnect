@@ -147,7 +147,7 @@ $conn = null;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="icon" href="../image/icon.png" type="image/png">
     <!-- content style -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/manage-pets.css" />
 
@@ -184,7 +184,7 @@ $conn = null;
             </ul>
             </nav>
         </header>
-        <main class="conttent">
+        <main class="content">
             <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="profile">
                     <div class="item details1">
