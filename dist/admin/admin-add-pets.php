@@ -83,7 +83,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Add Pets</title>
 
     <!-- for content color -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-colors.css" />
@@ -298,6 +298,11 @@ if (isset($_POST["submit"])) {
                 <a id="users" href="admin-manage-user.php"
                 ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
                 >
+            </li>
+            <li>
+                <a id="add" href="admin-audit-trail.php">
+                <i class="fa fa-clock-o"></i>
+                &nbsp;&nbsp;&nbsp;Audit Trail</a>
             </li>
             <li>
                 <a id="logout" href="javascript:void(0);" onclick="logout()"
