@@ -111,22 +111,6 @@ if (isset($_POST['update'])) {
     // Update the data in both tables
     $conn->beginTransaction();
 try {
-    // Update chat_user_table
-    $query1 = "
-        UPDATE chat_user_table
-        SET user_name = :firstName, user_email = :email, user_password = :password
-        WHERE user_id = :id
-    ";
-    $statement1 = $conn->prepare($query1);
-    $statement1->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-    $statement1->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement1->bindParam(':password', $password, PDO::PARAM_STR);
-    $statement1->bindParam(':id', $id, PDO::PARAM_INT);
-    if (!$statement1->execute()) {
-        print_r($statement1->errorInfo());
-        exit;
-    }
-
     // Update user table
     $query2 = "
         UPDATE user

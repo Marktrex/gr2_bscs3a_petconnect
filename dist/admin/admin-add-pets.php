@@ -260,7 +260,7 @@ if (isset($_POST["submit"])) {
                     </div>
                     <section class="ac-btn">
                         <button class="add-btn" type="submit" name="submit">Add Pet</button>
-                        <button class="clear-btn" type = "button">Clear all</button>
+                        <button class="clear-btn" type = "button" id ="clearAll">Clear all</button>
                     </section>
                 </form>
             </div>
@@ -320,8 +320,8 @@ if (isset($_POST["submit"])) {
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
     <script src="../script/admin-general.js"></script>
+    <script src="..\script\clearForm.js"></script>
 </body>
 
 </html>
