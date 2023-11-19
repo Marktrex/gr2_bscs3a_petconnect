@@ -23,10 +23,10 @@ footer .footer-content{
 
 footer .footer-content .item{
     width: 700px;
-    padding-top: 1em;
+    padding-top: 0em;
     padding: 1em;
     padding-left: 7em;
-    padding-right: 7em;
+    padding-right: 6em;
 }
 
 footer .item img{
@@ -38,25 +38,23 @@ footer strong{
     padding: 30px;
 }
 
-footer .item, .quick-links ul, .about ul{
+footer .item, .quick-links ul, .about ul, .Services ul{
     color: #c9e6e7;
     list-style: none; 
     margin-top: 15px;
 }
 
-.quick-links a, .about a{
+.quick-links a, .about a, .Services a{
     margin-left: 30px;
     color: #c9e6e7c8;
     text-decoration: none;
     font-size: 16px;
 }
 
-.about a:hover{
+.about a:hover,
+.quick-links a:hover,
+.Services a:hover{
   color: #fff;
-}
-
-.quick-links a:hover{
-    color: #fff;
 }
 
 footer .item .socmed ul{
@@ -101,6 +99,7 @@ footer .item .socmed ul .fa-twitter{
     padding-bottom: 7px;
 }
 
+
 footer .info{
     display: flex;
     width: 100%;
@@ -134,6 +133,12 @@ footer .info .item{
 .info .content2 p{
    text-align:right;
     color: #9bbfc0ec;
+    font-size: 0.9rem;
+    margin-top: 0rem;
+}
+
+.Services h1{
+    margin-left: 
 }
 
 @media only screen and (max-width: 900px){
