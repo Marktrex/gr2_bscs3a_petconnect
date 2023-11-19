@@ -37,8 +37,8 @@
              name="login" action="./function/authcode.php" method="post">
              <!-- intro -->
                 <div class="custom-text">
-                    <h2 class = "text-5xl font-bold">Login</h2>
-                    <p class= "my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
+                <h2 class="text-5xl font-bold" data-translate="Login">Login</h2>
+                <p class="my-3" data-translate="Welcome back, some of our furry friends are looking for their forever home!">Welcome back, some of our furry friends are looking for their forever home!</p>
                 </div>
                 <!-- inputs -->
                 <div class="mt-3 relative">
@@ -57,15 +57,15 @@
                             custom-text">
                     <div class="select-none ">
                         <input type="checkbox" id="check"/>
-                        <label for="check" class="cursor-pointer">Remember me</label>
+                        <label for="check" class="cursor-pointer" data-translate="Remember me">Remember me</label>
                     </div>
-                    <a href="#" class="custom-important-text hover:underline underline-offset-2">Forgot Password?</a>
+                    <a href="#" class="custom-important-text hover:underline underline-offset-2" data-translate="Forgot Password?">Forgot Password?</a>
                 </div>
                 <input type="submit" name="login" value="Login" class="custom-button">
                 <section class="custom-text">
                     <div class="sign-up-container">
-                        <p>Don't have an account? <a href="signuppage.php">
-                            <span class="custom-important-text hover:underline underline-offset-2">Sign up </span></a></p>
+                    <p data-translate="Don't have an account?">Don't have an account?</p>
+                   <a href="signuppage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="Sign up">Sign up</span></a>
                     </div>
                 </section>
             </form>
@@ -75,5 +75,11 @@
     <?php require_once "components/light-switch.php"?>
     <script src="./script/script.js"></script>
 </body>
-
+<!-- pizza -->
+<select id="languageSelector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fn">Filipino</option>
+    </select>
+    <script src="script\translation.js"></script>  
 </html>
