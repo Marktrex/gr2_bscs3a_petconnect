@@ -10,7 +10,7 @@ closeBtn.addEventListener("click", () => menuBtn.click());
 
 // updating profile
 let profilePic = document.getElementById("profile-pic");
-let inputFile = document.getElementById("input-file");
+let inputFile = document.getElementById("image");
 
 inputFile.onchange = function () {
     profilePic.src = URL.createObjectURL(inputFile.files[0]);

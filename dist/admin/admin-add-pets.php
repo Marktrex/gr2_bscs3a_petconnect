@@ -134,8 +134,8 @@ if (isset($_POST["submit"])) {
                         <div class="image-container">
                             <div>
                             <img src="../icons/pet-profile-bg.jpg" id="profile-pic" />
-                            <label for="input-file" class="img-label">Upload Image</label>
-                                <input type="file" accept="image/jpeg, image/jpg, image/png"  id="input-file" name="image">
+                            <label for="image" class="img-label">Upload Image</label>
+                                <input type="file" accept="image/jpeg, image/jpg, image/png"  id="image" name="image">
                             </div>
                         </div>
                         

@@ -109,7 +109,7 @@ textarea{
     margin-top: 20px;
 }
 
-#input-file{
+#image{
     display: none;
 }
 
@@ -232,6 +232,11 @@ td img{
     margin-right: .5rem;
     border-radius: 50%;
     vertical-align: middle;
+}
+
+table tr.active
+{
+    background-color: #fdc15f;
 }
 
 
