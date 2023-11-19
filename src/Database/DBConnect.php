@@ -19,10 +19,18 @@ class DBConnect
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     
-    public function query($sql, $params = [])
+    public function query($sql, $params = [], $returnObject = true)
     {
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($params);
+        if (!empty($params)) {
+            $stmt->execute($params);
+        } else {
+            $stmt->execute();
+        }
+        if ($returnObject)
+        {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
