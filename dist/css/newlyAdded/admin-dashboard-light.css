@@ -79,7 +79,12 @@
             justify-content: space-between;
             margin-bottom: 10px;
         }
-a{
+
+#date-input
+{
+    display: none;
+}
+button{
     color: black;
 }
 .today {
@@ -128,7 +133,7 @@ thead{
     justify-content: center;
     gap: 10px;
 }
-.action-btn>a{
+.action-btn>button{
     text-decoration: none;
     background: #f5dfbb;
     border: 1px solid #e66155;
@@ -138,7 +143,7 @@ thead{
     border-radius: 10px;
     border-color: black;
 }
-.action-btn a:hover{
+.action-btn button:hover{
     color: #f2542d;
     border-color: #f2542d;
     transition: 0.3s ease-in-out;
