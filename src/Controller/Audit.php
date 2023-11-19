@@ -10,6 +10,8 @@ class Audit
     private $responsible_id;
     private $type;
 
+    private $db = new DBConnect();
+
     public function __construct($responsible_id, $type, $short_description) {
         $this->responsible_id = $responsible_id;
         $this->type = $type;
