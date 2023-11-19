@@ -26,19 +26,15 @@
     box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
 }
-#events:hover{
-    color: #f2542d;
-    transition: all 0.3s ease;
+h1 {
+    color: #818996;
 }
-#adopt:hover{
-    color: #f2542d;
-    transition: all 0.3s ease;
+.card-number{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 10px;
+    font-weight: bold;
 }
-#visits:hover{
-    color: #f2542d;
-    transition: all 0.3s ease;
-}
-
 /* Calendar */
 .content .cards .card-date{
     width: 320px;
