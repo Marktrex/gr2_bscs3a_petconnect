@@ -27,12 +27,12 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 
         <div class="faq-container">
             <div class="faq-heading">
-                <h2>Frequently Asked Questions</h2>
-                <p>Welcome to the FAQ section for our pet shelter! Below are answers to some commonly asked questions.
+                <h2 data-translate="Frequently Asked Questions">Frequently Asked Questions</h2>
+                <p data-translate="Welcome to the FAQ">Welcome to the FAQ section for our pet shelter! Below are answers to some commonly asked questions.
                     If you have any additional inquiries, please don't hesitate to ask.</p>
             </div>
             <div class="faq-item">
-                <h3>Q: What is the purpose of rePaw City? <i class="fa fa-caret-down"></i></h3>
+                <h3 data-translate="What is the purpose of rePaw City?">Q: What is the purpose of rePaw City? <i class="fa fa-caret-down"></i></h3>
                 <div class="answer">
                     A: rePaw City is dedicated to providing a safe and caring environment for abandoned, neglected, or
                     surrendered pets. Our main goal is to rehabilitate and rehome these animals, ensuring they find
@@ -102,9 +102,14 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
             </div>
         </div>
     </section>
-
+<!-- pizza -->
+<select id="languageSelector">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fn">Filipino</option>
+    </select>
     <?php include '../function/footer.php' ?>
-
+<script src="..\script\translation.js"></script>  
 </body>
 
 </html>
