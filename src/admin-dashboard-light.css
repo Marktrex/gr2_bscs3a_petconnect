@@ -113,7 +113,6 @@ thead{
 }
 .tables th, .tables td{
     border: 1px solid #414a4c;
-    border-radius: 3px;
     padding: 10px 15px;
 }
 .delete-link {
