@@ -102,14 +102,8 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
             </div>
         </div>
     </section>
-<!-- pizza -->
-<select id="languageSelector">
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="fn">Filipino</option>
-    </select>
     <?php include '../function/footer.php' ?>
-<script src="..\script\translation.js"></script>  
+    <script src="..\script\translation.js"></script>  
 </body>
 
 </html>
