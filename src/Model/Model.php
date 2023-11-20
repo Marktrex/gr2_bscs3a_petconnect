@@ -27,10 +27,13 @@ class Model
     {
         $table = $this->table;
         $colId= $this->id;
+        $joins = implode(' ', $this->joins);
 
-        $sql = "SELECT * FROM {$table} WHERE $colId = {$id};";
+        $sql = "SELECT * FROM {$table} {$joins} WHERE {$colId} = :id;";
         try {
-            return $this->db->query($sql)[0];
+            return $this->db->query($sql, [
+                ':id' => $id
+            ]);
         } catch (PDOException $e) {
             // Output detailed error information for debugging
             echo "Error: " . $e->getMessage();
@@ -43,11 +46,11 @@ class Model
         $table = $this->table;
 
         $keys = implode(', ', array_keys($data));
-        $values = implode('\', \'', array_values($data));
+        $placeholders = ':' . implode(', :', array_keys($data));
 
-        $sql = "INSERT INTO {$table} ({$keys}) VALUES ('{$values}');";
+        $sql = "INSERT INTO {$table} ({$keys}) VALUES ({$placeholders});";
         try {
-            $this->db->query($sql);
+            $this->db->query($sql, $data);
             return;
         } catch (PDOException $e) {
             // Output detailed error information for debugging

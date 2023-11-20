@@ -78,7 +78,7 @@ $auditLogs = $audit->getAuditLog();
                         <tbody>
                             <?php foreach ($auditLogs as $log): ?>
                                 <tr>
-                                    <td><?= $log->audit_log_id ?></td>
+                                    <td><?= $log->id ?></td>
                                     <td><?= $log->responsible_id ?></td>
                                     <td>
                                         <?php
