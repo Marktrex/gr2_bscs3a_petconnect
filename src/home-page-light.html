@@ -34,7 +34,7 @@
       </ul>
       <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
     </nav>
-    <div class="title-container">
+     <div class="title-container">
           <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
           <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
         <div class="search-container">
@@ -120,7 +120,37 @@
         </div>
     </div>
 
+<!-- Donation container -->
+<div class="overall-description-container">
+    <div class="title">Planning to Donate?</div>
+      <div class="description-container">
+        <div class="description">
+          <i class="fa fa-home fa-5x"></i> Your Donations Helps us to expand our animal shelter to provide more Comfort.
+        </div>
+        <div class="description">
+          <i class="fa fa-heartbeat"></i> Provides Medical Care such as vaccinations, spaying/neutering, and other medical attention.
+        </div>
+        <div class="description">
+          <i class="fa fa-handshake-o"></i> Help us to cover the cost of important pet resources and other materials.
+        </div>
+      </div>
+      <button class="button-donations">Go to Donations</button>
+  </div>
 
+<!-- Become a voluteers -->
+  <div class="about-volunteer">
+    <div class="image-volunteer">
+      <img src="icons/picture-homepage.png">
+    </div>
+    <div class="content-volunteer">
+      <h3>Become one of our Volunteers</h3>
+      <p>Help us to take care of our furry companions and Give them the care they deserve<br> Regular interaction with volunteers helps socialize animals, making them more adaptable to human companionship.</p>
+      <a href="#" class="learn-more">Learn More</a>
+    </div>
+  </div>
+
+
+<!-- script for header responsive -->  
   <script>
     const header = document.querySelector("header");
     const hamburgerBtn = document.querySelector("#hamburger-btn");
@@ -139,7 +169,7 @@
 
         <div  class="item logo">
           <a href="#">
-          <img src="/src/icons/footer-logo.png" alt="logo">
+          <img src="icons/footer-logo.png" alt="logo">
           </a>
           <br>
           <div class="socmed">
@@ -191,5 +221,23 @@
       </div>
       
   </footer>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Hide pet cards with names "Cheese" and "Stacy" when screen width is 900 pixels or less
+            if ($(window).width() <= 900) {
+                $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
+            }
+
+            // Adjust visibility on window resize
+            $(window).resize(function () {
+                if ($(window).width() <= 900) {
+                    $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
+                } else {
+                    $(".pet-card").show();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

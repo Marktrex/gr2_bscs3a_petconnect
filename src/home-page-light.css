@@ -107,74 +107,6 @@ main{
 
 /*--------------------------------------------------------------------------------------------*/
 
-.container2{
-  display: flex;
-  padding: 0;
-  height: 935px;
-  margin-top: 145px;
-  background: #ff653e;
-}
-
-.container2 .item{
-  width: 950px;
-  height: auto;
-}
-
-.container2 h1{
-  font-family: 'dairantou';
-  color: #ffb845;
-  font-size: 75px;
-  text-align: left;
-  padding-top: 140px;
-  margin-left: 150px;
-}
-
-.container2 p{
-  color: wheat;
-  font-size: 24px;
-  max-width: 630px;
-  line-height: 30px;
-  margin-top: 14px;
-  margin-left: 120px;
-  text-align: justify;
-}
-
-
-/--------------------------------------------------------------------------------------------/
-.container3{
-  width: 90%;
-  height: 730px;
-  margin-top: 135px;
-  margin-left: 90px;
-}
-
-.container3 h1{
-  text-align: center;
-  font-family: 'dairantou';
-  color: #0e9594;
-  font-size: 55px;
-}
-
-.testimonials{
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-evenly;
-  margin-top: 50px;
-}
-
-.testimonials .item{
-  background: #f5dfbb;
-  height: 350px;
-  width: 800px;
-  border-radius: 26px;
-  box-shadow: 0px 3px 10px rgb(110, 109, 109)
-}
-
-.testimonials .item:hover{
-  background: #d3c3a9;
-  transition:  0.2s ease;
-}
-*/
 /*--- Customize Scrollbar ---*/
 ::-webkit-scrollbar{
   width: 10px;
@@ -230,11 +162,11 @@ main{
   }
 
 /*---------------------------------------------CONTENT-----------------------------------------------*/
-/*  main{
+    main{
     height: 100vh;
     max-width: 740px;
     margin-left: 60px;
-  }*/
+  }
 
 }
 /* Content */
@@ -269,8 +201,7 @@ h2 {
   }
 /* Search bar */
 .search-container {
-  position: relative;
-  margin-top: 20px; 
+    margin-top: 20px; 
   }
 .search-bar {
   height: 50px;
@@ -316,10 +247,7 @@ h2 {
   top: 70%; 
   transform: translateY(-50%);
 }
-.dog-icon {
-  right: 0px; 
-}
-.cat-icon {
+.dog-icon, .cat-icon  {
   right: 0px; 
 }
 .cat-icon {
@@ -337,63 +265,175 @@ h2 {
   line-height: 200px; /* Vertical centering of text */
 }
 /* content-Available dog and cats*/
-        .pet-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 0%;
-            margin-bottom: 3%;
-        }
+.pet-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 0%;
+    margin-bottom: 3%;
+}
 
-        .pet-card {
-            text-align: center;
-            margin: 15px;
-            padding: 0px;
-            background-color: #f5dfbb;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
-            cursor: pointer;
-            border-radius: 15px;
-        }
+.pet-card {
+    text-align: center;
+    margin: 15px;
+    padding: 0px;
+    background-color: #f5dfbb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 15px;
+}
 
-        .pet-card:hover {
-            transform: scale(1.05);
-        }
+.pet-card:hover {
+    transform: scale(1.05);
+}
 
-        .pet-image {
-        /*  object-position: bottom; [para ma position yung crop maayos] */
-            object-fit: cover;
-            max-width: 100%;
-            width: 250px;
-            height: auto; /*backup tapos height: 100px;*/
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0
-        }
+.pet-image {
+/*  object-position: bottom; [para ma position yung crop maayos] */
+    position: relative;
+    object-fit: cover;
+    width: 250px;
+    height: auto; /*backup tapos height: 100px;*/
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+.pet-name {
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    font-family: 'dairantou', sans-serif;
+    color: #127475;
+}
+#available-pet {
+    font-family: 'dairantou', sans-serif;
+    color: #127475;
+    text-align: center;
+    font-size: 30px;
+}
 
-        .pet-name {
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
-            font-family: 'dairantou', sans-serif;
-            color: #127475;
-        }
-        #available-pet {
-            font-family: 'dairantou', sans-serif;
-            color: #127475;
-            text-align: center;
-            font-size: 30px;
-        }
+/* Donation container*/
+.description i {
+  margin-right: 5px; /* Adjust spacing between icon and text */
+}
+    /* Style for the container */
+.overall-description-container{
+  padding: 2%;
+  background-color: #f5dfbb;
+  margin: 5% auto;
+  text-align: center;
+  border-radius: 15px;
+  width: 60%;
+  align-content: center;
+/*  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.40);  */
+}
+.description-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 10px; 
+  text-align: center;
+  padding: 20px;
+}
+.title {
+  color: #127475;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'dairantou', sans-seri;
+}
+.description {
+  padding: 30px;
+  color: #127475;
+  font-size: 20px;
+}
+.description i {
+  font-size: 500%; 
+  margin-right: 10px; /* Adjust spacing between icon and text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-donations {
+  padding: 10px;
+  background-color: #127475;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  width: 25%;
+  color: #f5dfbb;
+}
+.button-donations:hover{
+  transform: scale(1.05);
+}
+
+/* About Volunteers*/
+.volunteer-container{
+  /*height: 630px;*/
+  width: auto;
+  margin: 100px auto 0px 0px;
+  padding-bottom: 0px;
+}
+.about-volunteer{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #f2542d;
+  width: auto;
+}
+.image-volunteer{
+  flex: 1;
+  margin-right: 30px;
+  overflow: hidden;
+}
+.image-volunteer img{
+  width: 100%;
+}
+.content-volunteer{
+  flex: 1;
+  margin-left: 50px;
+}
+.content-volunteer p{
+  font-size: 20px;
+  line-height: 1.3;
+  color: #f5dfbb;
+  margin-right: 100px;
+}
+h3 {
+  color: #f5dfbb;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 35px;
+  font-weight: bold;
+  font-family: 'dairantou', sans-serif;
+}
+.learn-more{
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #fdc161;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 30px;
+  color: #f2542d;
+}
+.learn-more:hover{
+  transform: scale(1.05);
+  color: #0e9594;
+}
 /* Content Responsive*/
 @media (max-width: 900px) {
 h1 {
   font-size: 2em;
 }
-
+  /* Heading */
 h2 {
   font-size: 1.0em;
 }
@@ -413,6 +453,7 @@ header {
 .search-bar {
   width: 50%;
 }
+/* Dog or cat */
 .button-container {
   flex-direction: row;
   align-items: center;
@@ -422,6 +463,7 @@ header {
   min-width: 20%;
   margin: 10px 10px 40px 10px;
   }
+/* available dog and cat */  
 #available-pet {
   font-size: 1.5em;
 }
@@ -436,4 +478,30 @@ header {
   width: 100%; /* Make images take up the full width of the card */
   border-radius: 15px; /* Reset border-radius for the bottom corners */
   }
+    .pet-name:contains('Cheese'),
+    .pet-name:contains('Stacy') {
+        display: none;
+    }
+/* Donation container */
+  .overall-description-container {
+    width: 80%; /* Adjust the width for smaller screens */
+  }
+
+  .description i {
+    font-size: 80px; /* Adjust the size of the icon for smaller screens */
+  }
+  .button-donations {
+    width: 30%;
+    padding: 20px;
+  }
+/* volunteer container */
+.learn-more{
+  margin-bottom: 20px;
+}
+.image-volunteer{
+  display: none;
+}
+h3{
+  font-size: 40px;
+}
 }
