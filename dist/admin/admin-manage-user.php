@@ -111,22 +111,6 @@ if (isset($_POST['update'])) {
     // Update the data in both tables
     $conn->beginTransaction();
 try {
-    // Update chat_user_table
-    $query1 = "
-        UPDATE chat_user_table
-        SET user_name = :firstName, user_email = :email, user_password = :password
-        WHERE user_id = :id
-    ";
-    $statement1 = $conn->prepare($query1);
-    $statement1->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-    $statement1->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement1->bindParam(':password', $password, PDO::PARAM_STR);
-    $statement1->bindParam(':id', $id, PDO::PARAM_INT);
-    if (!$statement1->execute()) {
-        print_r($statement1->errorInfo());
-        exit;
-    }
-
     // Update user table
     $query2 = "
         UPDATE user
@@ -197,63 +181,110 @@ $conn = null;
 <html lang="en">
 
 <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="../image/icon.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="../css/admin-pets.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
-    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Custom CSS to remove text decoration */
-        a,
-        .form-control {
-            text-decoration: none !important;
-        }
+    <!-- content color -->
 
-        .table-container {
-            max-height: 400px;
-            overflow-y: scroll;
-        }
+    <!-- for content position -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/manage-users.css" />
 
-        @keyframes fadeOut {
-            0% {
-                opacity: 1;
-            }
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
 
-            100% {
-                opacity: 0;
-            }
-        }
-    </style>
+    <!-- layout position -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Manage Users</title>
 </head>
 
 <body>
-    <nav class="navbar">
-    <a href="admin-dashboard.php" class="logo"><img src="../image/logo (1).png" class="img-logo"></a>
-        <a href="javascript:void(0);" class="list" onclick="logout()">Logout</a>
-    </nav>
-    <div class="setting">
-        <div class="sidebar">
-            <a href="admin-dashboard.php" class="menu"> Dashboard</a>
-            <a href="admin-add-pets.php" class="menu"> Add Pets</a>
-            <a href="admin-manage-pets.php" class="menu"> Manage Pets</a>
-            <a href="admin-manage-featured.php" class="menu"> Modify Featured Image</a>
-            <a href="admin-manage-user.php" class="menu"> Manage Users</a>
-            <a href="admin-add-news.php" class="menu"> Add News</a>
-            <a href="admin-manage-news.php" class="menu"> Manage News</a>
-            <a href="../../privatechat.php" class="menu"> Chat</a>
+    <div class="container">
+        <!-- header/nav -->
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo" /></a>
 
-        </div>
-        <div class="main">
-            <div class="modify-featured">
-                <div class="container mt-4 table-container">
-                    <h1>User List</h1>
-                    <table class="table" style="text-align:center">
+                <ul class="items">
+                <li>
+                    <a id="messages" href="#"><i class="fa fa-envelope"></i></a>
+                </li>
+                <li>
+                    <a id="notifications" href="#"><i class="fa fa-bell"></i></a>
+                </li>
+                <li>
+                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
+                </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- content -->
+        <main class="content">
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <div class="profile">
+                    <div class="item details2">
+                        <!-- id -->
+                        <div>
+                            <label for="id">ID</label>
+                            <input placeholder="Enter ID" type="text" class="id" id="id" name="id" readonly>
+                        </div>
+                        <!-- email -->
+                        <div>
+                            <label for="email">Email</label>
+                            <input placeholder="Enter Email" type="email" class="user-email" id="email" name="email" required>
+                        </div>
+                        <!-- password -->
+                        <div>
+                            <label for="password">Password</label>
+                            <input placeholder="Enter Password" type="text" class="Password" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <div class="details3">
+                        <!-- firstname -->
+                        <div>
+                            <label for="fname">First Name</label>
+                            <input placeholder="Enter First Name" type="text" class="UserFname" id="fname" name="fname" required>
+                        </div>
+                        <!-- last name -->
+                        <div>
+                            <label for="lname">Last Name</label>
+                            <input placeholder="Enter Last Name" type="text" class="UserLname" id="lname" name="lname" required>
+                        </div>
+                        <!-- user type -->
+                        <div>
+                            <label for="user_type">User Type</label>
+                            <input placeholder="Enter User Type" type="text" class="User-Type" id="user_type" name="user_type" required
+                                readonly>
+                        </div>
+                    </div>
+                    <div class="details4">
+                        <!-- date created -->
+                        <div class = "flex">
+                            <label for="date_created">Date Created:</label>
+                            <input type="text" class="Date" id="date_created" name="date_created" required
+                                readonly placeholder="MM.DD.YY">
+                        </div>
+                        <!-- buttons -->
+                        <section class="upd-btn">
+                            <button type="submit" name="update" class="update-btn" id="btn-update">Update</button>
+                            <button type="submit" name="delete" class="delete-btn" id="btn-delete">Delete</button>
+                            <button type="submit" name="promote" class="update-btn"
+                                id="btn-promote">Promote</button>
+                            <button type="submit" name="demote" class="delete-btn" id="btn-demote">Demote</button>
+                        </section>
+                    </div>
+                </div>
+            </form>
+            <div class="list">
+                <h1>User List</h1>
+                <!-- table here -->
+                <section class="list-body">
+                    <table class="table" id="pets-list">
                         <thead>
                             <tr>
                                 <th>User ID</th>
@@ -268,18 +299,15 @@ $conn = null;
                         <tbody>
                             <?php
                             require '../function/config.php';
-
                             // Query the database table
                             $sql = "SELECT user_id, fname ,lname , email, password, user_type, created_at FROM user";
                             $stmt = $conn->query($sql);
                             $stmt -> execute();
                             // $result = $conn->query($sql);
-
                             // Fetch and display the data
                             if ($stmt->rowCount() > 0) {
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
-
                                     <tr>
                                         <td>
                                             <?php echo $row["user_id"]; ?>
@@ -303,82 +331,75 @@ $conn = null;
                                             <?php echo $row["created_at"]; ?>
                                         </td>
                                     </tr>
-
                                     <?php
                                 }
                             } else {
                                 echo "<tr><td colspan='6'>No data available</td></tr>";
                             }
-
                             // Close the connection
                             $conn = null;
                             ?>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="container mt-1">
-                    <h1>User Details</h1>
-                    <form action="#" method="POST" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="id">ID:</label>
-                                <input type="text" class="form-control" id="id" name="id" readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="user_type">User Type:</label>
-                                <input type="text" class="form-control" id="user_type" name="user_type" required
-                                    readonly>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="fname">First Name:</label>
-                                <input type="text" class="form-control" id="fname" name="fname" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="lname">Last Name:</label>
-                                <input type="text" class="form-control" id="lname" name="lname" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="password">Password:</label>
-                                <input type="text" class="form-control" id="password" name="password" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="date_created">Date Created:</label>
-                                <input type="text" class="form-control" id="date_created" name="date_created" required
-                                    readonly>
-                            </div>
-
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" name="update" class="btn btn-primary" id="btn-update">Update</button>
-                            <button type="submit" name="delete" class="btn btn-danger" id="btn-delete">Delete</button>
-                            <button type="submit" name="promote" class="btn btn-primary"
-                                id="btn-promote">Promote</button>
-                            <button type="submit" name="demote" class="btn btn-danger" id="btn-demote">Demote</button>
-                        </div>
-                    </form>
-                </div>
-
+                </section>
             </div>
-        </div>
-    </div>
-    </div>
-    </div>
+        </main>
+        <!--SideBar-->
+        <aside id="sidenav" class="sidebar">
+            <ul class="menu-links menu-links-color">
+            <span
+                id="close-btn"
+                href="javascript:void(0)"
+                >&times;</span
+            >
+            <li>
+                <a id="db" href="admin-dashboard.php"
+                ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+                >
+            </li>
+            <li>
+                <a id="db" href="../../privatechat.php"
+                ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-add-pets.php"
+                ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+                >
+            </li>
+            <li>
+                <a id="manage" href="admin-manage-pets.php"
+                ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+                >
+            </li>
+            <li>
+                <a id="users" href="admin-manage-user.php"
+                ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-audit-trail.php">
+                <i class="fa fa-clock-o"></i>
+                &nbsp;&nbsp;&nbsp;Audit Trail</a>
+            </li>
+            <li>
+                <a id="logout" href="javascript:void(0);" onclick="logout()"
+                ><i class="fa fa-arrow-circle-right"></i
+                >&nbsp;&nbsp;&nbsp;Logout</a
+                >
+            </li>
+            </ul>
+            <span
+            id="menu-btn"
+            style="font-size: 30px; cursor: pointer"
+            >&#9776;</span
+            >
+        </aside>
     </div>
 
+    <script src="../script/general.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 
     <script>
         $(document).ready(function () {

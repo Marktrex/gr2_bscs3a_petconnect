@@ -1,0 +1,201 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(37, 141, 141, 0.248);
+}
+
+main{
+    padding: 40px;
+}
+
+.wrapper {
+    background-color:#fdf7ec;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--main-content-shadow);
+}
+
+.wrapper .form .form-input {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: 1fr;
+    column-gap: 50px;
+    margin-top: 1rem;
+}
+
+form .form-title {
+    text-align: center;
+    font-size: 32px;
+    position: relative;
+    color: #0e9594;
+    border-bottom: 2px solid #0e9594;
+}
+
+h1{
+    padding: 10px;
+}
+
+.form-input .image-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.pet-container a{
+    color: #6a6262;
+}
+
+.form .image-container label {
+    display: block;
+    background-color: #ffb845ba;
+    color: black;
+    padding: 1em;
+    --webkit-appearance: button;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.form .image-container div
+{
+    width: 250px;
+}
+
+.form .image-container img {
+    width: inherit;
+    border-radius: 30px;
+    margin-bottom: 0.5rem;
+}
+.form .image-container input {
+    display: none;
+}
+
+form .form-input .pet-container { 
+    padding: 3px;
+    position: relative;
+}
+
+.form-input .pet-container input,
+.form-input .pet-container select{
+    position: relative;
+    border-radius: 10px;
+    background-color:var(--main-input-color );
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.form-input .pet-container div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.form-input .pet-container div label
+{
+    flex: 1; /* This makes the label take up all available space */
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+.form-input .pet-container div input, .form-input .pet-container div select, .form-input .pet-container div textarea
+{
+    flex: 2 0 100px;  /* Adjust the flex value as needed */
+    min-height: 2.3rem;
+}
+
+textarea{
+    border-radius: 5px;
+    border: none;
+    background-color: var(--main-input-color);
+}
+
+#label-about{
+    display: flex;
+}
+
+.ac-btn{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+button{
+    padding: 15px 45px;
+    border: none;
+    border-radius: 30px;
+}
+
+.add-btn{
+    background-color:  #58c3c3;
+}
+
+.add-btn:hover{
+    box-shadow: 0px 0px 7px #0e9594;
+    background-color: #0e9594;
+    transition: all 0.2s ease;
+}
+
+.clear-btn{
+    background-color:  #ffb845ba;
+}
+
+.clear-btn:hover{
+    box-shadow: 0px 0px 7px #ffb845;
+    background-color: #ffb845;
+    transition: all 0.2s ease;
+}
+
+
+
+
+@media only screen and (max-width:678px){
+    
+    
+    .wrapper {
+        overflow: auto;
+    }
+    .wrapper .form .form-input {
+        margin-top: 5%;
+    }
+
+    .form .image-container img {
+        width: 100%;
+    }
+
+    .form .image-container label{
+        width: 100%;
+        text-align: center;
+    
+    }
+    
+    .form-input .pet-container input,
+    .form-input .pet-container select,
+    .form-input .pet-container .btn-group,
+    .btn-group .btn-sex, 
+    .btn-group .btn-weight {
+        width: 100%;
+    }
+    
+    .pet-container .about-container textarea{
+        width: 100%;
+        height: 100px;
+    }
+
+    .pet-container .ac-btn {
+        justify-content: center;
+    }
+
+    .pet-container .ac-btn button {
+        padding: 7px;
+    }
+
+
+}
+

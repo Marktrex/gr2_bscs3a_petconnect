@@ -48,22 +48,30 @@ $countVolunteer = $rowVolunteer['volunteer'];
 <html lang="en">
 
 <head>
+    
     <link rel="icon" href="../image/icon.png" type="image/png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="../css/admin-dashboard.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
+    <title>Admin Dashboard</title>
+    
+    <!-- content style position -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css?v=2" />
+
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
+
+    <!-- layout style position-->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
+
+    <!-- for calendar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-
+    <!-- calendar -->
     <script>
         $(document).ready(function () {
             $('#calendar').fullCalendar({
@@ -143,122 +151,72 @@ $countVolunteer = $rowVolunteer['volunteer'];
         });
 
     </script>
-    <style>
-        a,
-        .form-control {
-            text-decoration: none !important;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- pizza -->
-    <select id="languageSelector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fn">Filipino</option>
-    </select>
-    <script src="..\script\translation.js"></script>  
-    <nav class="navbar">
-    <a href="admin-dashboard.php" class="logo"><img src="../image/logo (1).png" class="img-logo"></a>
-    <a href="javascript:void(0);" class="list" onclick="logout()" data-translate="Logout">Logout</a>
+implementingFrontEndtoBackend
+    <div class="container">
+        <header class="">
+            <nav class="navbar">
+                <a href="admin-dashboard.php" class="logo"
+                    ><img src="../icons/logo.png" alt="Insert Logo"
+                /></a>
+                <ul class="items">
+                    <li>
+                    <a class="" id="messages" href="#"
+                        ><i class="fa fa-envelope"></i
+                    ></a>
+                    </li>
+                    <li>
+                    <a class="" id="notifications" href="#"
+                        ><i class="fa fa-bell"></i
+                    ></a>
+                    </li>
+                    <li>
+                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <main class="content">
+            <div class="cards">
+                <div class="card-date">
+                    <div class="box">
+                        <!-- calendar(js process above) -->
+                        <div class="calendar-container">
+                            <div id="calendar">
 
-    </nav>
-    <div class="setting">
-        <div class="sidebar">
-        <a href="admin-dashboard.php" class="menu" data-translate="Dashboard">Dashboard</a>
-        <a href="admin-add-pets.php" class="menu" data-translate="Add Pets">Add Pets</a>
-        <a href="admin-manage-pets.php" class="menu" data-translate="Manage Pets">Manage Pets</a>
-        <a href="admin-manage-featured.php" class="menu" data-translate="Modify Featured Image">Modify Featured Image</a>
-        <a href="admin-manage-user.php" class="menu" data-translate="Manage Users">Manage Users</a>
-        <a href="admin-add-news.php" class="menu" data-translate="Add News">Add News</a>
-        <a href="admin-manage-news.php" class="menu" data-translate="Manage News">Manage News</a>
-        <a href="../../privatechat.php" class="menu" data-translate="Chat">Chat</a>
+                            </div>
+                        </div>
 
-        </div>
-        <div class="main">
-
-            <div class="dashboard">
-                <div class="card total">
-                    <i class="fas fa-calendar-check card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $totalAppointments; ?>
+   
                     </div>
-                    <div class="card-text">Total Appointments</div>
+                </div>
+                <div class="card">
+                    <i class="fa fa-calendar fa-5x"></i>
+                    <div class="box">
+                        <h1>APPOINTMENTS</h1>
+                    </div>
+                </div>
+                <div class="card">
+                <i class="fa fa-paw fa-5x"></i>
+                    <div class="box">
+                        <h1>ADOPT</h1>
+                    </div>
+                </div>
+                <div class="card">
+                    <i class="fa fa-users fa-5x"></i>
+                    <div class="box">
+                        <h1>VOLUNTEER</h1>
+                    </div>
                 </div>
             </div>
-            <div class="dashboard2">
-                <div class="card adopt">
-                    <i class="fas fa-paw card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countAdopt; ?>
-                    </div>
-                    <div class="card-text">Adopt</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hand-holding-heart card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countDonate; ?>
-                    </div>
-                    <div class="card-text">Donate</div>
-                </div>
-            </div>
-            <div class="dashboard3">
-                <div class="card adopt">
-                    <i class="fas fa-eye card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVisit; ?>
-                    </div>
-                    <div class="card-text">Visit</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hands-helping card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVolunteer; ?>
-                    </div>
-                    <div class="card-text">Volunteer</div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="calendar-container">
-                    <div id="calendar"></div>
-                </div>
-            </div>
+            <!-- tables for sessions -->
+            <!-- morning -->
+            <div class="table_responsive">
+                <h2>Morning Session</h2>
 
-            <form action="" method="post">
-                <input type="date" class="form-control" name="date-input" id="date-input" required
-                    onchange="submitForm()">
-            </form>
-
-            <script>
-                // Define the submitForm function
-                function submitForm() {
-                    // Submit the form
-                    document.getElementById('date-input').closest('form').submit();
-                }
-            </script>
-
-
-            <?php
-            if (isset($_POST['date-input'])) {
-                $date = $_POST['date-input'];
-            } else {
-                $date = date("Y-m-d"); // Get today's date
-            }
-
-            // Convert the date to words
-            $dateInWords = date("F j, Y", strtotime($date));
-
-            echo '<div class="date-container">';
-            echo '<div class="date">' . $dateInWords . '</div>';
-            echo '</div>';
-            ?>
-
-
-            <div class="appointment-container">
-                <div class="title">Morning Session</div>
-
-                <table class="appointment-table">
+                <table class="tables">
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -321,8 +279,10 @@ $countVolunteer = $rowVolunteer['volunteer'];
 
                                     if ($status == 'Pending') {
                                         // Show the "Accept" and "Cancel" buttons
-                                        echo '<button class="btn btn-success accept-btn" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                        echo '<button class="btn btn-danger cancel-btn" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                        echo '<span class = "action-btn">';
+                                        echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
+                                        echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                        echo '</span>';
                                     } else {
                                         // Show the status value
                                         echo $status;
@@ -343,11 +303,14 @@ $countVolunteer = $rowVolunteer['volunteer'];
 
 
             </div>
+            <!-- afternoon -->
+            <div class="table_responsive">
+                <h2>Afternoon Session</h2>
 
-            <div class="appointment-container2">
-            <div class="title" data-translate="Morning Session">Morning Session</div>
+implementingFrontEndtoBackend
+                <table class="tables">
 
-                <table class="appointment-table">
+
                     <thead>
                         <tr>
                         <th data-translate="Type">Type</th>
@@ -406,8 +369,10 @@ $countVolunteer = $rowVolunteer['volunteer'];
 
                                     if ($status == 'Pending') {
                                         // Show the "Accept" and "Cancel" buttons
-                                        echo '<button class="btn btn-success accept-btn" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                        echo '<button class="btn btn-danger cancel-btn" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                        echo '<span class = "action-btn">';
+                                        echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
+                                        echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                        echo '</span>';
                                     } else {
                                         // Show the status value
                                         echo $status;
@@ -426,11 +391,148 @@ $countVolunteer = $rowVolunteer['volunteer'];
                     </tbody>
                 </table>
             </div>
+        </main>
+        <!--SideBar-->
+        <aside id="sidenav" class="sidebar">
+            <ul class="menu-links menu-links-color">
+            <span
+                id="close-btn"
+                href="javascript:void(0)"
+                >&times;</span
+            >
+            <li>
+                <a id="db" href="admin-dashboard.php"
+                ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+                >
+            </li>
+            <li>
+                <a id="db" href="../../privatechat.php"
+                ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-add-pets.php"
+                ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+                >
+            </li>
+            <li>
+                <a id="manage" href="admin-manage-pets.php"
+                ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+                >
+            </li>
+            <li>
+                <a id="users" href="admin-manage-user.php"
+                ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-audit-trail.php">
+                <i class="fa fa-clock-o"></i>
+                &nbsp;&nbsp;&nbsp;Audit Trail</a>
+            </li>
+            <li>
+                <a id="logout" href="javascript:void(0);" onclick="logout()"
+                ><i class="fa fa-arrow-circle-right"></i
+                >&nbsp;&nbsp;&nbsp;Logout</a
+                >
+            </li>
+            </ul>
+            <span
+            id="menu-btn"
+            style="font-size: 30px; cursor: pointer"
+            >&#9776;</span
+            >
+        </aside>
+    </div>
+    <!-- old structure inside settings -->
+    <div class="setting">
+        
+        <div class="main">
+            <!-- appointments -->
+            <div class="dashboard">
+                <div class="card total">
+                    <i class="fas fa-calendar-check card-icon"></i>
+                    <div class="card-number">
+                        <?php echo $totalAppointments; ?>
+                    </div>
+                    <div class="card-text">Total Appointments</div>
+                </div>
+            </div>
+            <!-- adopt -->
+            <div class="dashboard2">
+                <div class="card adopt">
+                    <i class="fas fa-paw card-icon"></i>
+                    <div class="card-number">
+                        <?php echo $countAdopt; ?>
+                    </div>
+                    <div class="card-text">Adopt</div>
+                </div>
+                <div class="card adopt">
+                    <i class="fas fa-hand-holding-heart card-icon"></i>
+                    <div class="card-number">
+                        <?php echo $countDonate; ?>
+                    </div>
+                    <div class="card-text">Donate</div>
+                </div>
+            </div>
+            <!-- visit -->
+            <div class="dashboard3">
+                <div class="card adopt">
+                    <i class="fas fa-eye card-icon"></i>
+                    <div class="card-number">
+                        <?php echo $countVisit; ?>
+                    </div>
+                    <div class="card-text">Visit</div>
+                </div>
+                <div class="card adopt">
+                    <i class="fas fa-hands-helping card-icon"></i>
+                    <div class="card-number">
+                        <?php echo $countVolunteer; ?>
+                    </div>
+                    <div class="card-text">Volunteer</div>
+                </div>
+            </div>
+            <!-- calendar(js process above) -->
+            <div class="content">
+                <div class="calendar-container">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+            <!--this form accepts the change(or click) on the calendar  -->
+            <form action="" method="post">
+                <input type="date" class="form-control" name="date-input" id="date-input" required
+                    onchange="submitForm()">
+            </form>
+
+            <script>
+                // Define the submitForm function
+                function submitForm() {
+                    // Submit the form
+                    document.getElementById('date-input').closest('form').submit();
+                }
+            </script>
+
+            <!-- display the date selected on the calendar -->
+            <?php
+            if (isset($_POST['date-input'])) {
+                $date = $_POST['date-input'];
+            } else {
+                $date = date("Y-m-d"); // Get today's date
+            }
+
+            // Convert the date to words
+            $dateInWords = date("F j, Y", strtotime($date));
+
+            echo '<div class="date-container">';
+            echo '<div class="date">' . $dateInWords . '</div>';
+            echo '</div>';
+            ?>
         </div>
 
     </div>
 </body>
 
+<script src="../script/admin-general.js"></script>
 </html>
 
 <script>

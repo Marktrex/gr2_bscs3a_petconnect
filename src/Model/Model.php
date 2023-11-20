@@ -2,12 +2,12 @@
 
 namespace MyApp\Model;
 
-use PDO;
 use MyApp\Database\DBConnect;
 
 class Model
 {
     protected $table = null;
+    private $db;
 
     public function __construct()
     {
@@ -15,24 +15,16 @@ class Model
         {
             $this->table = basename(str_replace('\\', '/', get_class($this)));
         }
+        $this->db = new DBConnect();
     }
 
     public function all()
     {
         $table = $this->table;
-        $db = new DBConnect();
-        $conn = $db->connection();
         
-
-        $sql = "SELECT * FROM $table;";
-        $stmt = $conn->prepare($sql);
+        $sql = "SELECT * FROM {$table};";
         try {
-            if ($stmt->execute()) {
-                return $stmt->fetchAll(PDO::FETCH_OBJ);
-            } else {
-                // Handle error if the query fails
-                return false;
-            }
+            return $this->db->query($sql);
         } catch (PDOException $e) {
             // Output detailed error information for debugging
             echo "Error: " . $e->getMessage();

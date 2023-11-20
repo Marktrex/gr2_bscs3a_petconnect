@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+    font-family: 'Magic-Retro';
+    src: url(../../fonts/MagicRetro.ttf);
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+  
+footer .footer-content{
+    display: flex;
+    width: 100%;
+    background: #0e9594;
+    color: #c9e6e7;; 
+    padding: 2em; 
+    font-size: 1.2rem;
+}
+
+footer .footer-content .item{
+    width: 700px;
+    padding-top: 1em;
+    padding: 1em;
+    padding-left: 7em;
+    padding-right: 7em;
+}
+
+footer .item img{
+    width: 200px;
+    margin-left: 19px;
+}
+
+footer strong{
+    padding: 30px;
+}
+
+footer .item, .quick-links ul, .about ul{
+    color: #c9e6e7;
+    list-style: none; 
+    margin-top: 15px;
+}
+
+.quick-links a, .about a{
+    margin-left: 30px;
+    color: #c9e6e7c8;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.about a:hover{
+  color: #fff;
+}
+
+.quick-links a:hover{
+    color: #fff;
+}
+
+footer .item .socmed ul{
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+    list-style: none;
+    gap: 15px;
+    margin: 10px;
+    margin-left: 30px;
+}
+
+footer .item .socmed ul a{
+    color: #0e9594;
+    text-decoration: none;    
+    border-radius: 50%;
+    background-color:#9bbfc0;
+}
+
+footer .item .socmed ul a:hover{
+    background-color:#fff;
+}
+
+footer .item .socmed ul .fa-facebook{
+    padding-top: 7px;
+    padding-left: 11.5px;
+    padding-right: 11.5px;
+    padding-bottom: 7px;
+}
+
+footer .item .socmed ul .fa-instagram{
+    padding-top: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-bottom: 7px;
+}
+
+footer .item .socmed ul .fa-twitter{
+    padding-top: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 7px;
+}
+
+footer .info{
+    display: flex;
+    width: 100%;
+    background: #127475;
+    color: #fff; 
+    padding: 1.5em;
+    padding-left: 13.5em;
+    padding-right: 7em; 
+    font-size: 0.9rem;
+}
+
+footer .info .item{
+    width: 755px;
+}
+
+.info ul{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.info a{
+    color:#9bbfc0ec;
+    text-decoration: none;
+}
+
+.info a:hover{
+    color: #fff;
+}
+
+.info .content2 p{
+   text-align:right;
+    color: #9bbfc0ec;
+}
+
+@media only screen and (max-width: 900px){
+    footer{
+        max-width: 900px;
+    }
+
+    footer .footer-content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: #0e9594;
+        color: #c9e6e7;; 
+        padding: 2em; 
+        font-size: 1.2rem;
+    }
+
+    
+    footer .footer-content .item{
+        width: 700px;
+        justify-items: center;
+    }
+
+
+    footer .item img{
+        width: 200px;
+        margin-left: 30%;
+    }
+
+    footer strong{
+        margin-left: 26%;
+    }
+    
+    footer strong p{
+        text-align: center;
+        margin-left: 0rem;
+    }
+
+    footer .item .socmed ul{
+        display: flex;
+        flex-wrap: nowrap;
+        text-decoration: none;
+        list-style: none;
+        gap: 15px;
+        margin: 10px;
+        margin-left: 35%;
+    }
+
+    .quick-links ul, .about ul{
+        text-align: center;
+        margin-left: -9%;
+    }
+
+
+}

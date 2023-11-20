@@ -18,32 +18,140 @@ $auditLogs = $audit->getAuditLog();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Audit Trail</title>
     <link rel="icon" href="../image/icon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Trail</title>
+    <!-- content position -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/audit-trail.css">
+
+    <!-- for layout color -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
+
+    <!-- layout position -->
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Responsible ID</th>
-                <th>Type</th>
-                <th>Short Description</th>
-                <th>Date Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($auditLogs as $log): ?>
-                <tr>
-                    <td><?= $log->id ?></td>
-                    <td><?= $log->responsible_id ?></td>
-                    <td><?= $log->type ?></td>
-                    <td><?= $log->short_description ?></td>
-                    <td><?= $log->date_time ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+    <div class="container">
+        <!--Navbar-->
+        <header>
+            <nav class="navbar">
+                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo"></a>
+
+                <ul class="items">
+                    <li><a id="messages" href="#"><i class="fa fa-envelope"></i></a></li>
+                    <li><a id="notifications" href="#"><i class="fa fa-bell"></i></a></li>
+                    <li><a href="#"><img src="../icons/icons-user.png" alt="Profile"></a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="content">
+            <div class="wrapper">
+                <h1>Activity Log</h1>
+
+                <div class="search">
+                    <div>
+                    <label for="user"><span>Search User</span></label>
+                    <input type="text" id="user" class="user" placeholder="Search User"/>
+                    </div>
+
+                    <div>
+                    <label for="action"><span>Search Action</span></label>
+                    <input type="text" id="action" class="action" placeholder="Search Action"/>
+                    </div>
+                </div>
+                <section class="list-body">
+                    <table id="pets-list">
+                        <thead>
+                            <tr id="header">
+                                <th>ID</th>
+                                <th>Responsible ID</th>
+                                <th>User</th>
+                                <th>Type</th>
+                                <th>Short Description</th>
+                                <th>Date Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($auditLogs as $log): ?>
+                                <tr>
+                                    <td><?= $log->id ?></td>
+                                    <td><?= $log->responsible_id ?></td>
+                                    <td><?= $log->type ?></td>
+                                    <td><?= $log->short_description ?></td>
+                                    <td><?= $log->date_time ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+        <!--SideBar-->
+        <aside id="sidenav" class="sidebar">
+            <ul class="menu-links menu-links-color">
+            <span
+                id="close-btn"
+                href="javascript:void(0)"
+                >&times;</span
+            >
+            <li>
+                <a id="db" href="admin-dashboard.php"
+                ><i class="fa fa-list-ul"></i>&nbsp;&nbsp;&nbsp;Dashboard</a
+                >
+            </li>
+            <li>
+                <a id="db" href="../../privatechat.php"
+                ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-add-pets.php"
+                ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+                >
+            </li>
+            <li>
+                <a id="manage" href="admin-manage-pets.php"
+                ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+                >
+            </li>
+            <li>
+                <a id="users" href="admin-manage-user.php"
+                ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+                >
+            </li>
+            <li>
+                <a id="add" href="admin-audit-trail.php">
+                <i class="fa fa-clock-o"></i>
+                &nbsp;&nbsp;&nbsp;Audit Trail</a>
+            </li>
+            <li>
+                <a id="logout" href="javascript:void(0);" onclick="logout()"
+                ><i class="fa fa-arrow-circle-right"></i
+                >&nbsp;&nbsp;&nbsp;Logout</a
+                >
+            </li>
+            </ul>
+            <span
+            id="menu-btn"
+            style="font-size: 30px; cursor: pointer"
+            >&#9776;</span
+            >
+        </aside>
+
+        <script src="../script/admin-general.js"></script>
+    </div>
 </body>
 </html>
+
+<script>
+    function logout() {
+        if (confirm("Are you sure you want to log out?")) {
+            // Perform logout action
+            window.location.href = "../function/logout.php";
+        }
+    }
+</script>

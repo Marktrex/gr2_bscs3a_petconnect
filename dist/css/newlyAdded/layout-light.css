@@ -1,0 +1,204 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+:root{
+    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
+    /* Frame Shadow */;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.container{
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 16rem repeat(2, 1fr);
+    grid-template-rows: 100px minmax(auto, 1fr);
+    grid-template-areas: 
+    "header header header"
+    "sidebar main main";
+}
+
+
+/*---------------------------------HEADER-----------------------------*/
+
+header{
+    padding: 0 20px;
+    grid-area: header;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    box-shadow: var(--main-box-shadow);
+    z-index: 1;
+}
+
+nav{
+    margin: 0 auto;
+}
+
+.navbar img{
+    width: 100px;
+    margin-top: 6px;
+}
+
+
+nav, .items{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+a{
+    text-decoration: none;
+}
+
+.items{
+    column-gap: 15px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.items img{
+    width: 60px;
+    margin-top: 6px;
+}
+
+#messages, #notifications{
+    font-size: 24px;
+}
+
+#messages :hover{
+    transition: all 0.3s ease;
+}
+
+#notifications :hover{
+    transition: all 0.3s ease;
+}
+
+/*---------------------------------CONTENT-----------------------------*/
+
+main{
+    grid-area: main;
+}
+
+/*---------------------------------SIDEBAR-----------------------------*/
+
+.sidebar{
+    grid-area: sidebar;
+    position: relative;
+    box-shadow: var(--main-box-shadow); 
+}
+
+.menu-links{
+    list-style: none;
+    padding-top: 50px;
+    cursor: pointer;
+}
+
+.menu-links a{
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+
+.sidebar a:hover:not(.active) {
+    border-left: 20px;
+    transition: all 0.3s ease;
+}
+
+.sidebar #menu-btn{
+    cursor: pointer;
+    display: none;
+    font-size: 1.7rem;
+    padding: 20px;
+}
+
+.sidebar #close-btn{
+    cursor: pointer;
+    display: none;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.7rem;
+    position: absolute;
+}
+
+
+/*--- Customize Scrollbar ---*/
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: #fdf7ec;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#0e9594, #ffb845);
+    border-radius: 20px;
+}
+
+@media only screen and (max-width:670px){
+    .container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px minmax(5rem, auto) 1fr ;
+        grid-template-areas: 
+        "header"
+        "sidebar"
+        "main";
+    }
+
+    aside .mobile-mode::before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+    .sidebar .menu-links {
+        height: 100vh;
+        max-width: 1200px;
+        width: 100%;
+        position: fixed;
+        left: -1200px;
+        top: 0;
+        display: block;
+        padding: 90px;
+        transition: left 0.2s ease;
+        text-align: center;
+    }
+
+    .sidebar.mobile-mode .menu-links{
+        left: 0;
+        z-index: 99;
+    }
+
+    .sidebar .menu-links li {
+        margin-bottom: 30px;
+    }
+
+    .sidebar .menu-links li a {
+        font-size: 1.1rem;
+    }
+
+    .sidebar .menu-links a {
+        padding: 0;
+    }
+
+    .sidebar .menu-links a:hover{
+        transition: all 0.2s ease;
+    }
+    
+    .sidebar :is(#close-btn, #menu-btn) {
+        display: block;
+    }
+
+
+}
+
