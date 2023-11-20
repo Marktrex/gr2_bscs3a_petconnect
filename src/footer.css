@@ -25,9 +25,32 @@ footer .footer-content>div
     flex: 1;
 }
 
-footer .item img{
+footer .item img {
+    width: 90%;
+    object-fit: contain;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 10px;
+}
+footer .item.logo>a
+{
     width: 200px;
-    margin-left: 19px;
+}
+
+.footer-content ul:not(.socmed ul)
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-content .item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -56,7 +79,6 @@ footer .item .socmed ul{
     list-style: none;
     gap: 15px;
     margin: 10px;
-    margin-left: 30px;
 }
 
 footer .item .socmed ul a{
@@ -176,5 +198,5 @@ footer .info .item{
         gap: 15px;
         margin: 10px;
     }
-
 }
+

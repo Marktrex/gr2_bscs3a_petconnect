@@ -98,6 +98,7 @@ header .navbar {
 
 .hero-section .photodecor img{
   height: 87vh;
+  width: 50vw;
 }
 
 .hero-section .content h1 {
@@ -115,8 +116,6 @@ header .navbar {
   line-height: 30px;
 }
 
-.hero-section .register-button{
-} 
 
 .register-button{
   border-radius: 30px;
@@ -198,7 +197,6 @@ header .navbar {
   color: #ff653e;
   font-size: 55px;
   text-align: center;
-  margin-right: 1rem;
 }
 
 .services{
@@ -286,7 +284,6 @@ header .navbar {
   width: 90%;
   height: 730px;
   margin-top: 135px;
-  margin-left: 90px;
 }
 
 .container3 h1{
