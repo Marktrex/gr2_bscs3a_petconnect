@@ -14,19 +14,15 @@
   
 footer .footer-content{
     display: flex;
-    width: 100%;
+    justify-content: space-around;
     background: #0e9594;
     color: #c9e6e7;; 
     padding: 2em; 
     font-size: 1.2rem;
 }
-
-footer .footer-content .item{
-    width: 700px;
-    padding-top: 1em;
-    padding: 1em;
-    padding-left: 7em;
-    padding-right: 7em;
+footer .footer-content>div
+{
+    flex: 1;
 }
 
 footer .item img{
@@ -34,30 +30,23 @@ footer .item img{
     margin-left: 19px;
 }
 
-footer strong{
-    padding: 30px;
-}
 
-footer .item, .quick-links ul, .about ul{
+footer .item, .quick-links ul, .about ul, footer .Services ul{
     color: #c9e6e7;
     list-style: none; 
     margin-top: 15px;
 }
 
-.quick-links a, .about a{
-    margin-left: 30px;
+.quick-links a, .about a,.footer-content .Services a{
     color: #c9e6e7c8;
     text-decoration: none;
     font-size: 16px;
 }
 
-.about a:hover{
+.about a:hover, .quick-links a:hover, .quick-links a:hover, .footer-content .Services a:hover{
   color: #fff;
 }
 
-.quick-links a:hover{
-    color: #fff;
-}
 
 footer .item .socmed ul{
     display: flex;
@@ -103,17 +92,16 @@ footer .item .socmed ul .fa-twitter{
 
 footer .info{
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: space-around;
     background: #127475;
     color: #fff; 
-    padding: 1.5em;
-    padding-left: 13.5em;
-    padding-right: 7em; 
     font-size: 0.9rem;
 }
 
 footer .info .item{
-    width: 755px;
+    padding: 1rem 2rem;
+    flex: 1 0 30%;
 }
 
 .info ul{
@@ -154,22 +142,25 @@ footer .info .item{
     
     footer .footer-content .item{
         width: 700px;
+        display: flex;
+        align-items: center;
         justify-items: center;
+        flex-direction: column;
+        text-align: center;
     }
 
 
     footer .item img{
         width: 200px;
-        margin-left: 30%;
     }
 
-    footer strong{
-        margin-left: 26%;
-    }
     
     footer strong p{
         text-align: center;
-        margin-left: 0rem;
+    }
+    footer strong 
+    {
+        padding: 1rem;
     }
 
     footer .item .socmed ul{
@@ -179,13 +170,6 @@ footer .info .item{
         list-style: none;
         gap: 15px;
         margin: 10px;
-        margin-left: 35%;
     }
-
-    .quick-links ul, .about ul{
-        text-align: center;
-        margin-left: -9%;
-    }
-
 
 }

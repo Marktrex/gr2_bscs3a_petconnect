@@ -20,7 +20,6 @@ header {
   position: sticky;
   left: 0;
   top: 0;
-  width: 100%;
   z-index: 1;
   padding: 1rem;
   transition: all 0.5s ease;
@@ -37,7 +36,6 @@ header .navbar {
 .logo img{
     width: clamp(50px, 10vw,150px);
     width: 130px;
-    image-resolution: 300px;
 }
 
 .navbar .menu-links {
@@ -82,26 +80,24 @@ header .navbar {
 
 /*-----------------------------------------content---------------------------------------------------*/
 
-.hero-section {
-  background-position: center;
-  background-size: cover;
-  position: relative;
+.hero-section>div{
   display: flex;
-  padding: 0 20px;
   align-items: center;
-  margin-top: -5rem;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
 }
-
+.hero-section>div>.content>*
+{
+  margin: 2rem 0px;
+}
 .hero-section .content {
   max-width: 1500px;
-  width: 100%;
-  margin-top: 50px;
+  padding: 0px 6rem;
 }
 
 .hero-section .photodecor img{
   height: 87vh;
-  margin-top: -20px;
-  margin-right: 120px;
 }
 
 .hero-section .content h1 {
@@ -110,7 +106,6 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
-  margin-left: 20vh;
 }
 
 .hero-section .content p {
@@ -118,13 +113,9 @@ header .navbar {
   font-size: 26px;
   max-width: 630px;
   line-height: 30px;
-  margin-top: 15px;
-  margin-left: 20vh;
 }
 
 .hero-section .register-button{
-  margin-top: 25px;
-  margin-left: 20vh;
 } 
 
 .register-button{
@@ -168,29 +159,6 @@ header .navbar {
   right: 0;
 }
 
-.hero-section .search-form input {
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0 15px;
-  font-size: 1rem;
-  border-radius: 4px 0 0 4px;
-}
-
-.hero-section .popular-tags {
-  display: flex;
-  color: #fff;
-  gap: 25px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-top: 25px;
-}
-
-.hero-section .tags li a:hover {
-  color: #000;
-  background: #fff;
-}
 
 .navbar #hamburger-btn {
   color: #fff;
@@ -210,16 +178,19 @@ header .navbar {
 }
 
 
-/*--------------------------------------------------------------------------------------------*/
-
-main{
+/*---------------------------------------content-----------------------------------------------------*/
+.container1
+{
+  margin-top: 5rem;
+}
+.container1>div
+{
   background: #f5dfbb;
   width: 90%;
-  margin-top: 30px;
-  margin-left: 90px;
   border-radius: 26px;
   box-shadow: 0px 3px 10px rgb(110, 109, 109);
   padding: 5rem clamp(2rem,5vw,3rem);
+  margin: auto;
 }
 
 .container1 h1{
@@ -239,7 +210,7 @@ main{
 .services .item{
   margin-top: 2.5rem;
   width: 450px;
-  height: 510px;
+  min-height: 510px;
   text-align: center;
   background-color: #0e9594;
   border-radius: 12px;
@@ -277,43 +248,40 @@ main{
   box-shadow: -10px 10px 0px #127475;
 }
 
-/*--------------------------------------------------------------------------------------------*/
+/*-----------------------------------content---------------------------------------------------------*/
 
 .container2{
   display: flex;
-  flex-wrap: nowrap;
   padding: 0;
-  height: 935px;
+  min-height: auto;
   margin-top: 145px;
   background: #ff653e;
 }
 
 .container2 .item{
-  width: 950px;
+  flex: 1 0 50%;
   height: auto;
 }
-
+.container2 .purpose
+{
+  padding: 4rem;
+}
 .container2 h1{
   font-family: 'dairantou';
   color: #ffb845;
   font-size: 75px;
-  text-align: left;
-  padding-top: 140px;
-  margin-left: 150px;
+  text-align: center;
 }
 
 .container2 p{
   color: wheat;
   font-size: 24px;
-  max-width: 630px;
   line-height: 30px;
-  margin-top: 14px;
-  margin-left: 120px;
   text-align: justify;
 }
 
 
-/*--------------------------------------------------------------------------------------------*/
+/*--------------------------------------not applicable------------------------------------------------------*/
 .container3{
   width: 90%;
   height: 730px;
@@ -364,6 +332,10 @@ main{
 
 @media only screen and (max-width: 900px) {
   
+  header
+  {
+    position: relative;
+  }
 
   header.show-mobile-menu::before {
     content: "";
@@ -416,9 +388,6 @@ main{
     display: block;
   }
 
-  .hero-section {
-    background: none;
-  }
 
   .hero-section .content {
     margin: 0 auto 80px;
@@ -441,29 +410,19 @@ main{
   {
     display: inline-block;
   }
-  
-
-  .photodecor{
-    display: none;
-  }
-
   .container3 h1{
     margin-right: 100px;
   }
-
-  .testimonials{
-    margin-right: 100px;
-  }
-
-  .testimonial2{
-    display: none;
-  
-  }
-
   .services .item{
     margin-top: 2.5rem;
     flex: 1 0 100%;
-    height: 350px;
+    padding: 3rem;
   }
 
+}
+
+@media only screen and (max-width: 1280px) {
+  .photodecor{
+    display: none;
+  }
 }
