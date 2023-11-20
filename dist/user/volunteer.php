@@ -6,7 +6,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
-?>
+
 $loggedIn = isset($_SESSION['auth_user']);
 ?>
 <!DOCTYPE html>

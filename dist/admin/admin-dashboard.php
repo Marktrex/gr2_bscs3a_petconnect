@@ -15,11 +15,6 @@ $stmtTotal->execute();
 $rowTotal = $stmtTotal->fetch(PDO::FETCH_ASSOC); //We fetch the result using fetch(PDO::FETCH_ASSOC) to get an associative array.
 $totalAppointments = $rowTotal['total'];
 
-// $queryTotal = "SELECT COUNT(*) AS total FROM appointment";
-// $resultTotal = mysqli_query($conn, $queryTotal);
-// $rowTotal = mysqli_fetch_assoc($resultTotal);
-// $totalAppointments = $rowTotal['total'];
-
 // Count appointments for each category
 $sql_adopt = "SELECT COUNT(*) AS adopt FROM appointment WHERE appointment_type = 'Adopt'";
 $stmtAdopt = $conn->prepare($sql_adopt);
@@ -27,10 +22,6 @@ $stmtAdopt->execute();
 $rowAdopt = $stmtAdopt->fetch(PDO::FETCH_ASSOC);
 $countAdopt = $rowAdopt['adopt'];
 
-// $queryAdopt = "SELECT COUNT(*) AS adopt FROM appointment WHERE appointment_type = 'Adopt'";
-// $resultAdopt = mysqli_query($conn, $queryAdopt);
-// $rowAdopt = mysqli_fetch_assoc($resultAdopt);
-// $countAdopt = $rowAdopt['adopt'];
 
 $sql_donate = "SELECT COUNT(*) AS donate FROM appointment WHERE appointment_type = 'Donate'";
 $stmtDonate = $conn->prepare($sql_donate);
@@ -38,10 +29,6 @@ $stmtDonate->execute();
 $rowDonate = $stmtDonate->fetch(PDO::FETCH_ASSOC);
 $countDonate = $rowDonate['donate'];
 
-// $queryDonate = "SELECT COUNT(*) AS donate FROM appointment WHERE appointment_type = 'Donate'";
-// $resultDonate = mysqli_query($conn, $queryDonate);
-// $rowDonate = mysqli_fetch_assoc($resultDonate);
-// $countDonate = $rowDonate['donate'];
 
 $sql_visit = "SELECT COUNT(*) AS visit FROM appointment WHERE appointment_type = 'Visit'";
 $stmtVisit = $conn->prepare($sql_visit);
@@ -49,10 +36,6 @@ $stmtVisit->execute();
 $rowVisit = $stmtVisit->fetch(PDO::FETCH_ASSOC);
 $countVisit = $rowVisit['visit'];
 
-// $queryVisit = "SELECT COUNT(*) AS visit FROM appointment WHERE appointment_type = 'Visit'";
-// $resultVisit = mysqli_query($conn, $queryVisit);
-// $rowVisit = mysqli_fetch_assoc($resultVisit);
-// $countVisit = $rowVisit['visit'];
 
 $sql_volunteer = "SELECT COUNT(*) AS volunteer FROM appointment WHERE appointment_type = 'Volunteer'";
 $stmtVolunteer = $conn->prepare($sql_volunteer);
@@ -60,10 +43,6 @@ $stmtVolunteer->execute();
 $rowVolunteer = $stmtVolunteer->fetch(PDO::FETCH_ASSOC);
 $countVolunteer = $rowVolunteer['volunteer'];
 
-// $queryVolunteer = "SELECT COUNT(*) AS volunteer FROM appointment WHERE appointment_type = 'Volunteer'";
-// $resultVolunteer = mysqli_query($conn, $queryVolunteer);
-// $rowVolunteer = mysqli_fetch_assoc($resultVolunteer);
-// $countVolunteer = $rowVolunteer['volunteer'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,12 +85,6 @@ $countVolunteer = $rowVolunteer['volunteer'];
                     var selectedDate = moment(start).format('YYYY-MM-DD');
                     var today = moment().startOf('day'); // Get the start of the current day
 
-
-                    // if (moment(selectedDate).isBefore(today)) {
-                    //     // Do not select the date if it is before the current day
-                    //     $('#calendar').fullCalendar('unselect');
-                    //     return;
-                    // }
 
                     $('#date-input').val(selectedDate).change(); // Update the input value and trigger change event
                 },
@@ -181,6 +154,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
 </head>
 
 <body>
+implementingFrontEndtoBackend
     <div class="container">
         <header class="">
             <nav class="navbar">
@@ -214,6 +188,8 @@ $countVolunteer = $rowVolunteer['volunteer'];
 
                             </div>
                         </div>
+
+   
                     </div>
                 </div>
                 <div class="card">
@@ -331,15 +307,18 @@ $countVolunteer = $rowVolunteer['volunteer'];
             <div class="table_responsive">
                 <h2>Afternoon Session</h2>
 
+implementingFrontEndtoBackend
                 <table class="tables">
+
+
                     <thead>
                         <tr>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Mobile #</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Status</th>
+                        <th data-translate="Type">Type</th>
+                        <th data-translate="Name">Name</th>
+                        <th data-translate="Mobile #">Mobile #</th>
+                        <th data-translate="Address">Address</th>
+                        <th data-translate="Email">Email</th>
+                        <th data-translate="Status">Status</th>
                         </tr>
                     </thead>
                     <tbody>

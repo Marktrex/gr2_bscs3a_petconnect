@@ -45,9 +45,8 @@ session_start();
             <form class="flex flex-col justify-center flex-1 gap-7"
             name="signup"  action="./function/authcode.php" method="post" autocomplete="off">
                 <div class="custom-text">
-                    <h2 class = "text-5xl font-bold">Register</h2>
-                    <p class= "my-3">Let's Get Started!
-                                    Create an account to login.</p>
+                <h2 class="text-5xl font-bold" data-translate="Register">Register</h2>
+                <p class="my-3" data-translate="Let's Get Started! Create an account to login.">Let's Get Started! Create an account to login.</p>
                 </div>
 
                 <div class="relative">
@@ -79,8 +78,8 @@ session_start();
                 <input type="submit" name="register" value="Sign Up" class="custom-button">
                 <section class="custom-text">
                     <div class="sign-up-container">
-                        <p>Already have an Account? <a href="loginpage.php">
-                            <span class="custom-important-text hover:underline underline-offset-2">Log in </span></a></p>
+                        <p data-translate="Already have an Account?">Already have an Account? </p>
+                            <a href="loginpage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="login">Log in </span></a>
                     </div>
                 </section>
             </form>
@@ -93,5 +92,11 @@ session_start();
 
     
 </body>
-
+<!-- pizza -->
+<select id="languageSelector">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fn">Filipino</option>
+    </select>
+    <script src="script\translation.js"></script>  
 </html>
