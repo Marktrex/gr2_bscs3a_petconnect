@@ -92,7 +92,10 @@ class Model
         if (!$id2) {
             $id2 = $table2 . '_id';
         }
-        $this->joins[] = "LEFT JOIN {$table2} ON {$table1}.{$id1} = {$table2}.{$id2}";
+        $joinStatement = "LEFT JOIN {$table2} ON {$table1}.{$id1} = {$table2}.{$id2}";
+        if (!in_array($joinStatement, $this->joins)) {
+            $this->joins[] = $joinStatement;
+        }
         return $this;
     }
 
@@ -115,6 +118,35 @@ class Model
     private function getIdColumn()
     {
         return $this->table1 . '_id';
+    }
+
+    public function search($searchWordsArray, $columnsArray) {
+        $searchSqlArray = [];
+
+        foreach ($searchWordsArray as $index => $searchWords) {
+            $searchWords = $this->db->quote('%' . $searchWords . '%');
+
+            $searchConditions = [];
+            foreach ($columnsArray[$index] as $column) {
+                $searchConditions[] = "{$column} LIKE {$searchWords}";
+            }
+
+            $searchSqlArray[] = '(' . implode(' OR ', $searchConditions) . ')';
+        }
+
+        $searchSql = implode(' AND ', $searchSqlArray);
+
+        $joins = implode(' ', $this->joins);
+        $table = $this->table;
+        $id = $this->id;
+        $sql = "SELECT * FROM {$table} {$joins} WHERE {$searchSql} ORDER BY {$id} ASC;";
+    
+        try {
+            return $this->db->query($sql);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
 }
 ?>

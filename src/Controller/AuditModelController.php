@@ -34,5 +34,11 @@ class AuditModelController{
         $audit = $this->audit;
         return $audit->with("user")->find($number);
     }
+
+    public function search($value, $columns)
+    {
+        $audit = $this->audit;
+        return $audit->with("user")->search($value, $columns);
+    }
 }
 ?>
