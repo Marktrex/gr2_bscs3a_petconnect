@@ -97,8 +97,9 @@ header .navbar {
 }
 
 .hero-section .photodecor img{
-  height: 87vh;
+  height: 95vh;
   width: 50vw;
+  margin-top: -130px;
 }
 
 .hero-section .content h1 {
@@ -107,6 +108,7 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
+  margin-top: -50px;
 }
 
 .hero-section .content p {
@@ -395,6 +397,7 @@ header .navbar {
   }
   .hero-section
   {
+    margin-top: 120px;
     text-align: center;
   }
   .hero-section .content h1 {
@@ -416,6 +419,10 @@ header .navbar {
     padding: 3rem;
   }
 
+  .service3 h1{
+    font-size: 46px;
+    margin-left: 0px;
+  }
 }
 
 @media only screen and (max-width: 1280px) {
