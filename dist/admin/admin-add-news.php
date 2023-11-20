@@ -1,5 +1,5 @@
 <?php
-use MyApp\Controller\Audit;
+use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 require '../function/config.php';
@@ -48,8 +48,8 @@ if (isset($_POST["submit"])) {
                     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
                     if ($stmt->execute()) {
-                        $log = new Audit($_SESSION['auth_user']['id'],"add news","admin added news $title");
-                        $log->activity_log();
+                        $log = new AuditModelController();
+                        $log->activity_log($_SESSION['auth_user']['id'],"add news","admin added news $title");
                         echo "<script> 
                             alert('Successfully Added'); 
                             window.location.href = 'admin-add-news.php';

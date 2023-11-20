@@ -1,6 +1,6 @@
 <?php
 
-use MyApp\Controller\Audit;
+use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 require '../function/config.php';
@@ -38,8 +38,8 @@ if (isset($_POST['promote'])) {
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
            
             if ($stmt->execute()) {
-                $log = new Audit($_SESSION['auth_user']['id'],"admin set headline","admin has set news id: $id to headline");
-                $log->activity_log();
+                $log = new AuditModelController();
+                $log->activity_log($_SESSION['auth_user']['id'],"admin set headline","admin has set news id: $id to headline");
                 echo '<script language="javascript">';
                 echo 'alert("Set as Headlined");';
                 echo 'window.location.href = "admin-manage-news.php";';
@@ -74,8 +74,8 @@ if (isset($_POST['update'])) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     // Perform the database query
     if ($stmt->execute()) {
-        $log = new Audit($_SESSION['auth_user']['id'],"admin update news","admin updated news titled: $title and id: $id");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"admin update news","admin updated news titled: $title and id: $id");
         echo "
             <script> 
                 alert('Data updated successfully'); 
@@ -97,8 +97,9 @@ if (isset($_POST['delete'])) {
 
         // Execute the statement
         if ($stmt->execute()) {
-            $log = new Audit($_SESSION['auth_user']['id'],"admin deletes news","admin deleted news id: $id");
-            $log->activity_log();
+            $log = new AuditModelController();
+            $log->activity_log($_SESSION['auth_user']['id'],"admin deletes news","admin deleted news id: $id");
+            
             echo "
             <script> 
                 alert('Record deleted successfully'); 

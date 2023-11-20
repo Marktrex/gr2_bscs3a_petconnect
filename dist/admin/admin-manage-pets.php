@@ -1,6 +1,5 @@
 <?php
-
-use MyApp\Controller\Audit;
+use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 
@@ -91,8 +90,9 @@ if (isset($_POST['update'])) {
         
     // Perform the database query
     if ($stmt->execute()) {
-        $log = new Audit($_SESSION['auth_user']['id'],"admin modified pet","admin change the content of pet: $name id: $id");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"admin modified pet","admin change the content of pet: $name id: $id");
+        
         echo "
         <script> 
             alert('Data updated successfully'); 
@@ -122,8 +122,8 @@ if (isset($_POST['delete'])) {
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     if ($stmt) {
-        $log = new Audit($_SESSION['auth_user']['id'],"admin deleted a pet","admin deleted id: $id");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"admin deleted a pet","admin deleted id: $id");
         echo "
         <script> 
             alert('Record deleted successfully'); 

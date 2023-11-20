@@ -45,8 +45,8 @@ if (isset($_POST['submit'])) {
     $stmt4->execute();
 
     if ($stmt1 && $stmt2 && $stmt3 && $stmt4) {
-        $log = new Audit($_SESSION['auth_user']['id'],"admin set featured pets","admin has set featured pets:$featuredImage1 , $featuredImage2 , $featuredImage3, $featuredImage4 ");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"admin set featured pets","admin has set featured pets:$featuredImage1 , $featuredImage2 , $featuredImage3, $featuredImage4 ");
         echo "
         <script> 
             alert('Records updated successfully'); 

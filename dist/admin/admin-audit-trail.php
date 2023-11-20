@@ -78,8 +78,20 @@ $auditLogs = $audit->getAuditLog();
                         <tbody>
                             <?php foreach ($auditLogs as $log): ?>
                                 <tr>
-                                    <td><?= $log->id ?></td>
+                                    <td><?= $log->audit_log_id ?></td>
                                     <td><?= $log->responsible_id ?></td>
+                                    <td>
+                                        <?php
+                                        if (!$log->fname)
+                                        {
+                                            echo "Deleted User";
+                                        }
+                                        else
+                                        {
+                                            echo $log->fname;
+                                        }
+                                         ?>
+                                    </td>
                                     <td><?= $log->type ?></td>
                                     <td><?= $log->short_description ?></td>
                                     <td><?= $log->date_time ?></td>

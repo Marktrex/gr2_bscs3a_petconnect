@@ -1,5 +1,5 @@
 <?php
-use MyApp\Controller\Audit;
+use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 require 'config.php';
 
@@ -39,8 +39,8 @@ if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
 
     if ($success) {
         // Return a success response
-        $log = new Audit($_SESSION['auth_user']['id'],"appointment","admin $status appointment of $appointmentId");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"appointment","admin $status appointment of $appointmentId");
         http_response_code(200);
         echo "Status updated successfully";
     } else {
