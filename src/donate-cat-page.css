@@ -100,6 +100,85 @@ header .navbar {
 
 /*--------------------------------------------------------------------------------------------*/
 
+@media only screen and (max-width: 900px) {
+    header.show-mobile-menu::before {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      backdrop-filter: blur(2px);
+    }
+  
+    .navbar .menu-links {
+      height: 100vh;
+      max-width: 300px;
+      width: 100%;
+      background: #fdf7ec;
+      position: fixed;
+      left: -300px;
+      top: 0;
+      display: block;
+      padding: 75px 40px 0;
+      transition: left 0.2s ease;
+    }
+  
+    header.show-mobile-menu .navbar .menu-links {
+      left: 0;
+    }
+  
+    .navbar .menu-links li {
+      margin-bottom: 30px;
+    }
+  
+    .navbar .menu-links li a {
+      color: #e89003;
+      font-size: 1.1rem;
+    }
+  
+    .navbar .menu-links .join-btn a {
+      padding: 0;
+      background-color: #FFFFFF;
+      
+    }
+  
+    .navbar .menu-links .join-btn a:hover {
+      color: #0e9594;
+      background: none;
+    }
+  
+    .navbar :is(#close-menu-btn, #hamburger-btn) {
+      display: block;
+    }
+  
+    .hero-section {
+      background: none;
+    }
+  
+    .hero-section .content {
+      margin: 0 auto 80px;
+    }
+  
+    .hero-section .content :is(h1, .search-form) {
+      max-width: 100%;
+    }
+  
+    .hero-section .content h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      line-height: 47px;
+    }
+  
+    .hero-section .content p {
+      text-align: center;
+      margin-left: 10vh;
+    }
+  
+  }
+
+/*-----------------------------------------CONTENT---------------------------------------------------*/
+
 /*** Dropdown menu and search bar section***/
 .content{
     display: flex;
@@ -110,6 +189,13 @@ header .navbar {
     z-index: 1;
     padding: 15px;
     background: #0e9594;
+}
+
+.menu {
+    display: flex;
+    gap: 40rem;
+    justify-content: center;
+    align-items: center; 
 }
 
 .dropdown {
@@ -205,6 +291,7 @@ main {
     width: 100%;
     height: auto;
     padding: 40px;
+    gap: 50px;
     padding-bottom: 300px;
 }
 
@@ -213,11 +300,8 @@ main {
     height: auto;
 }
 
-
 .cat-select{
     position: relative;
-    width: 230px;
-    left: 5%;
     top: 3%;
 }
 
@@ -244,8 +328,8 @@ main {
 
 .display-cat {
     display: grid;
-    grid-template-columns: repeat(4, 220px);
-    grid-template-rows: repeat(auto, 100px);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-rows: auto;
     column-gap: 15px;
     row-gap: 35px;
     max-width: 940px;
@@ -321,5 +405,53 @@ main {
 }
 
 /*---------------------------------------------------------------------------------------------*/
+ /***Responsive***/
+ @media only screen and (max-width: 900px) {
+    .content{
+        height: 100%;
+        width: 100%;
+    }
+    .menu{
+        flex-direction: row;
+        height: auto;
+        gap: 9rem;
+    }
+    .dropdown .dropdown-btn
+    {
+        justify-content: center;
+        max-width:10px;
+        height: 40px;
+    }
+    .dropdown-btn img {
+        max-width: 35px;
+        height: auto;
+    }
+    .search-bar .input-field{
+        max-width: 200px;
+        width: auto; 
+        height: 40px;
+    }
+    main{
+        height: auto;
+        max-width: 740px;
+        flex-direction: column;
+        padding-top: 20px;
+    }
 
-
+    .cat-select {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+    }
+    .cat-select label {
+        font-size: 15px;
+    }
+    .cat-select select{
+        width: 94px;
+        padding: 6px;
+    }
+    .cat-select li{
+        padding: 0;
+        margin: 0;
+    }
+ }
