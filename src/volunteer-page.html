@@ -35,13 +35,140 @@
       <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
     </nav>
      <div class="title-container">
-          <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
-          <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search dogs, cats, etc.">
-        </div>
+          <h1 id="petsTitle">Join PetConnect<br>and help us by<br>Volunteering</h1>
+        </div>  
     </div>
   </header>
+<!-- Content --> 
+  <div class="about-container">
+    <div class="volunteer-container">
+      <img class="custom-image" src="icons/picture2-volunteer.png" alt="picture2">
+    </div>
+    <div class="text-container">
+      <div class="volunteer-title">Benefits</div>
+      <p class="custom1-paragraph">Animal Welfare</p>
+      <p class="custom2-paragraph">Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.</p>
+      <p class="custom1-paragraph">Professional and Skill Development</p>
+      <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enchance a variety of skills. Helps build a network of contracts, and may open doors to future employment opportunities.</p>
+      <p class="custom1-paragraph">Personal Fulfillment</p>
+      <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a diffrence in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
+    </div>
+  </div>
 
-  </body>
+  <div class="about-container-1">
+    <div class="text-container-1">
+      <div class="volunteer-title-1">Requirements</div>
+      <p class="custom1-paragraph-1">Age Limit</p>
+      <p class="custom2-paragraph-1">Requires volunteers to be a certain age, often 15 or older.</p>
+      <p class="custom1-paragraph-1">Time Commitment</p>
+      <p class="custom2-paragraph-1">PetConnect has a specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.</p>
+      <p class="custom1-paragraph-1">Passion for Animals</p>
+      <p class="custom2-paragraph-1">A passion for helping animals and creating a positive environment is often a key requirements.</p>
+      <p class="custom1-paragraph-1">Responsible Behavior</p>
+      <p class="custom2-paragraph-1">Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.</p>
+    </div>
+      <div class="volunteer-container-1">
+        <img class="custom-image-1" src="icons/picture3-volunteer.png" alt="picture2">
+      </div>
+  </div>
+
+<!-- Apply now -->
+<div class="applynow">
+  <div class="applynow-container">
+      <div class="applynow-title">Apply now!</div>
+      <div class="applynow-text">Send us your Email and we will send the Instructions for your Application Process.</div>
+    <input type="text" class="applynow-input" placeholder="Enter your Email">
+  </div>
+</div>
+
+<!-- script for header responsive -->  
+  <script>
+    const header = document.querySelector("header");
+    const hamburgerBtn = document.querySelector("#hamburger-btn");
+    const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+
+    // Toggle mobile menu on hamburger button click
+    hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+
+    // Close mobile menu on close button click
+    closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+  </script>
+
+  <footer> <!--src: footer.css-->
+      <div class="footer-content">
+
+        <div  class="item logo">
+          <a href="#">
+          <img src="icons/footer-logo.png" alt="logo">
+          </a>
+          <br>
+          <div class="socmed">
+            <strong>Connect with us</strong>
+            <ul>
+              <li><a href="#" class="fa fa-facebook"></a></li>
+              <li><a href="#" class="fa fa-instagram"></a></li>
+              <li><a href="#" class="fa fa-twitter"></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="item quick-links">
+          <strong>Quick Links</strong>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Adopt</a></li>
+            <li><a href="#">Volunteer</a>
+            </li>
+            <li><a href="#">Donate</a></li>
+          </ul>
+        </div>
+
+        <div class="item about">
+          <strong>About</strong>
+          <ul>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Address</a></li>
+            <li><a href="#">Testimonials</a></li>
+          </ul>
+        </div>
+
+        <div class="item Services">
+          <strong>Services</strong>
+        </div>
+      </div>
+
+      <div class="info">
+        <div class="item content1"> 
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div class="item content2">
+          <p> © PetConnect 2023</p>
+        </div>
+      </div>
+      
+  </footer>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Hide pet cards with names "Cheese" and "Stacy" when screen width is 900 pixels or less
+            if ($(window).width() <= 900) {
+                $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
+            }
+
+            // Adjust visibility on window resize
+            $(window).resize(function () {
+                if ($(window).width() <= 900) {
+                    $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
+                } else {
+                    $(".pet-card").show();
+                }
+            });
+        });
+    </script>
+</body>
 </html>

@@ -192,7 +192,7 @@ a .icon-user{
   }
 
 h1 {
-   font-size: 3.5em; 
+   font-size: 4em; 
   }
 
 h2 {
@@ -444,7 +444,7 @@ h2 {
 header {
   background-size: auto; /* Adjust as needed for mobile view */
   margin-bottom: 50px; /* Adjust margin for mobile view */
-  height: 80vh; /* eto need ko para sa background */
+  height: 80vh; /* background */
 }
 .logo img {
   width: 70%; 
@@ -476,7 +476,7 @@ header {
   }
 .pet-image {
   width: 100%; /* Make images take up the full width of the card */
-  border-radius: 15px; /* Reset border-radius for the bottom corners */
+  border-radius: 15px; 
   }
     .pet-name:contains('Cheese'),
     .pet-name:contains('Stacy') {
@@ -488,7 +488,7 @@ header {
   }
 
   .description i {
-    font-size: 80px; /* Adjust the size of the icon for smaller screens */
+    font-size: 80px; 
   }
   .button-donations {
     width: 30%;

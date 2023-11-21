@@ -21,12 +21,12 @@ body {
 }
 
 header {
-  background: url('icons/close-up-portrait.png');
+  background: url('icons/picture1-volunteer.png');
   position: relative;
   left: 0;
   top: 0;
   width: 100%;
-  height: 720px;
+  height: 80vh;
   z-index: 1;
   padding: 20px;
   margin-bottom: 100;
@@ -180,7 +180,7 @@ a .icon-user{
   opacity: 0.70; /* Adjust the opacity value as needed */
 }
 /* for title */
-#petsTitle, #UnderpetsTitle {
+#petsTitle {
   font-family: 'dairantou', sans-serif;
   color: #fff6e8;
   }
@@ -192,24 +192,233 @@ a .icon-user{
   }
 
 h1 {
-   font-size: 3.5em; 
+   font-size: 4em; 
+  }
+/* volunteers containers */
+    .about-container {
+      display: flex;
+      background-color: #f2542d;
+      margin-top: 120px; /* Add margin-top */
+    }
+
+    .text-container {
+      flex: 1;
+      padding: 20px;
+      margin-right: 120px;
+    }
+
+    .volunteer-container {
+      flex: 1;
+    }
+
+    .volunteer-title {
+      font-size: 50px;
+      margin-bottom: 10px;
+      color: #fdc161;
+    }
+
+    .custom-image {
+      width: 80%;
+      height: auto;
+      display: block;
+    }
+    .volunteer-title{
+      padding-top: 50px;
+      text-align: center;
+      font-family: 'dairantou', sans-serif;
+    }
+    .custom1-paragraph {
+      font-size: 26px;
+      font-weight: bold;
+      text-align: left;
+      padding-top: 50px;
+    }
+    .custom2-paragraph {
+      font-size: 24px;
+      text-align: left;
+    }
+    p {
+      color: #fff6e8;
+    }
+
+/* ---volunteers containers-1--- */
+    .about-container-1 {
+      display: flex;
+      background-color: #0e9594;
+      margin-top: 120px; /* Add margin-top */
+    }
+    .text-container-1 {
+      flex: 1;
+      margin-left: 200px;
+    }
+    .volunteer-container-1 {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end; /* Move the image to the very right end */
+      align-items: center;
+    }
+    .volunteer-title-1 {
+      font-size: 50px;
+      margin-bottom: 8px;
+      color: #f5dfbb;
+    }
+    .custom-image-1 {
+      width: 80%;
+      height: auto;
+      display: block;
+    }
+    .volunteer-title-1{
+      padding-top: 50px;
+      text-align: center;
+      font-family: 'dairantou', sans-serif;
+    }
+    .custom1-paragraph-1 {
+      font-size: 26px;
+      font-weight: bold;
+      text-align: left;
+      padding-top: 50px;
+      color: #f5dfbb;
+    }
+    .custom2-paragraph-1 {
+      font-size: 24px;
+      text-align: left;
+      color: #f5dfbb;
+    }
+/* ---Apply Now--- */
+    .applynow {
+      background-color: #fdc161;
+      margin: 5%;
+    }
+    .applynow-container {
+      background-color: #f5dfbb;
+      margin: 50px;
+      padding: 20px; /* Adjust padding as needed */
+      text-align: left;
+      border-radius: 15px;
+      height: 400px;
+      box-sizing: border-box;
+    }
+
+    .applynow-title {
+      padding-top: 30px;
+      padding-left: 50px;
+      color: #0e9594;
+      font-size: 4.0em;
+      font-family: 'dairantou', sans-serif;
+    }
+
+    .applynow-text {
+      padding: 60px 0 0 50px; /* Adjust padding as needed */
+      color: #0e9594;
+      font-size: 22px;
+      display: flex;
+    }
+
+    .applynow-input {
+      border: none;
+      border-bottom: 2px solid black; /* Set line under text box */
+      padding: 5px;
+      margin-top: 20px;
+      margin-left: 50px;
+      margin-right: 800px;
+      width: 30%; 
+      background-color: #f5dfbb;
+      border-color: #0e9594;
+      font-size: 22px;
+      max-width: 80%;
+    }
+    .applynow-input::placeholder {
+      color: #0e9594; 
+    }
+    .applynow-input:focus {
+      outline: none; 
+      border-bottom: 2px solid #0e9594; }
+/*-------------------------------Responsive in 900px---------------------------------------*/
+
+@media only screen and (max-width: 900px){
+  h1 {
+    font-size: 3em;
+    background-size: auto; /* Adjust as needed for mobile view */
+    margin-bottom: 50px; /* Adjust margin for mobile view */
+    height: 80vh; /* eto need ko para sa background */
+  }
+  .logo img {
+    width: 70%; 
+    max-width: 150px;   
+  }
+/*--Volunteer Containers--*/
+  .about-container {
+    flex-direction: column; /* horizontal layout on screens wider than 900px */
+  }
+  .custom-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally within its container */
+  }
+  .text-container{
+    margin-bottom: 40px;
+    padding-left: 40px;
+  }
+  .custom1-paragraph {
+    font-size: 22px;
+    padding-top: 35px;
+  }
+  .custom2-paragraph {
+    font-size: 20px;
+  }
+  .volunteer-title{
+    font-size: 40px;
+    padding: 10px;
+  }
+/*--Volunteer Containers-1--*/
+  .about-container-1 {
+    flex-direction: column; /* horizontal layout on screens wider than 900px */
+  }
+  .custom-image-1 {
+    width: 100%;
+    height: 350px;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally within its container */
+  }
+  .text-container-1{
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 90px;
+  }
+  .custom1-paragraph-1 {
+    font-size: 22px;
+    padding-top: 35px;
+  }
+  .custom2-paragraph-1 {
+    font-size: 20px;
+  }
+  .volunteer-title-1{
+    font-size: 40px;
+    padding: 5px;
+    padding-top: 40px;
+  }
+  /*--To Switch Position--*/
+  .volunteer-container-1 {
+    order: 1; /* Move the image container to the right */
   }
 
-h2 {
-  font-size: 1.8em; 
-  color: white; 
+  .text-container-1 {
+    order: 2; /* Keep the text container on the left */
   }
-/* Search bar */
-.search-container {
-    margin-top: 20px; 
+/*--apply now--*/
+  .applynow-input{
+    font-size: 18px;
   }
-.search-bar {
-  height: 50px;
-  border: none;
-  border-radius: 20px; 
-  padding: 10px 20px; 
-  width: 500px; 
-  background: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
-  outline: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+  .applynow-input{
+    width: 70%;
   }
+  .applynow-title{
+    font-size: 3.0em;
+  }
+  .applynow-input{
+    font-size: 18px;
+  }
+}
