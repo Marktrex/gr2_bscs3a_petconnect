@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+  font-family: 'dairantou';
+  src: url(/src/fonts/Dairantou.ttf);
+  src: url(/src/fonts/Lato.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  /* font-family: 'Lato', sans-serif; */
+}
+
+header {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 15px;
+}
+
+body {
+  margin: auto;
+  min-height: 100vh;
+  background: #fdc161;
+}
+
+/* Logo, Back and Searchbox */
+
+.logo img{
+  margin-left: 3rem;
+  width: 100px;
+  image-resolution: 300px;
+  display: block;
+}
+
+.back{
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-items: center;
+  color:#fff;
+  padding: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  border: 1px solid #c9e6e7;
+  border-radius: 2rem;
+  background-color: #127475;
+  margin-left: 28rem;
+}
+
+
+.searchbox{
+  overflow: hidden;
+  border: 1px solid #c9e6e7;
+  border-radius: 2rem;
+  margin-right: 28rem;
+  float: right;
+  display: flex;
+  color: black;
+  text-align: left;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 17px; 
+}
+
+.navbar {
+  margin-top: 0.5rem;
+  background-color: #127475;
+  padding: 1.5rem;
+}
+
+/* Logo, Back and Searchbox */
+
+/* Content of Pet (Card-Type) */
+ul{
+  list-style: none;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.petcontent{ /* Content Container */
+  margin: 1rem auto;
+  background-color:#f5dfbb ;
+  border-radius: 2rem;
+  overflow: hidden;
+  z-index: 0;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.petimg{
+  position:inherit;
+  border-radius: 0px 2rem  2rem 0px;
+  display: flex;
+  align-self: flex-start;
+  width: 40%;
+  height: auto;
+}
+
+.pettxt{
+  font-size: 25px;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #127475;
+  padding: 2rem;
+}
+
+.bookbutton{
+  margin-top: 5rem;
+  padding: 1rem 12rem 1rem 12rem;
+  border: 0px;
+  border-radius: 1rem;
+  color: #f5dfbb;
+  background-color: #f2542d;
+  font-weight: bold;
+}
+
+.petname{
+  font-family: 'dairantou';
+  font-size: 65px;
+  font-weight: bold;
+}
+
+.aboutinfo{
+  margin-top: 1rem;
+}
+
+/* Content of Pet (Card-Type) */
+
+/* Footer */
+
+footer{
+  min-height: 100%;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: sticky; 
+}
+
+footer .footer-content{
+  display: flex;
+  width: 100%;
+  background: #0e9594;
+  color: #c9e6e7;; 
+  padding: 2em; 
+  font-size: 1.2rem; 
+
+}
+
+
+footer .footer-content .item{
+  width: 700px;
+  padding-top: 1em;
+  padding: 1em;
+  padding-left: 7em;
+  padding-right: 7em;
+}
+
+footer .item img{
+  width: 200px;
+  margin-left: 19px;
+}
+
+footer strong{
+  padding: 30px;
+}
+
+footer .item, .quick-links ul, .about ul{
+  color: #c9e6e7;
+  list-style: none; 
+  margin-top: 15px;
+}
+
+.quick-links a, .about a{
+  margin-left: 30px;
+  color: #c9e6e7c8;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.about a:hover{
+color: #fff;
+}
+
+.quick-links a:hover{
+  color: #fff;
+}
+
+footer .item .socmed ul{
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+  gap: 15px;
+  margin: 10px;
+  margin-left: 30px;
+}
+
+footer .item .socmed ul a{
+  color: #0e9594;
+  text-decoration: none;    
+  border-radius: 50%;
+  background-color:#9bbfc0;
+}
+
+footer .item .socmed ul a:hover{
+  background-color:#fff;
+}
+
+footer .item .socmed ul .fa-facebook{
+  padding-top: 7px;
+  padding-left: 11.5px;
+  padding-right: 11.5px;
+  padding-bottom: 7px;
+}
+
+footer .item .socmed ul .fa-instagram{
+  padding-top: 7px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-bottom: 7px;
+}
+
+footer .item .socmed ul .fa-twitter{
+  padding-top: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 7px;
+}
+
+footer .info{
+  display: flex;
+  width: 100%;
+  background: #127475;
+  color: #fff; 
+  padding: 1.5em;
+  padding-left: 13.5em;
+  padding-right: 7em; 
+  font-size: 0.9rem;
+}
+
+footer .info .item{
+  width: 755px;
+}
+
+.info ul{
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.info a{
+  color:#9bbfc0ec;
+  text-decoration: none;
+}
+
+.info a:hover{
+  color: #fff;
+}
+
+.info .content2 p{
+ text-align:right;
+  color: #9bbfc0ec;
+}
+
+/* Footer */
