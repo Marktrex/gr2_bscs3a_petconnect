@@ -177,7 +177,7 @@ a .icon-user{
   transition: opacity 0.2s ease;
 }
 .icon-user:hover {
-  opacity: 0.70; /* Adjust the opacity value as needed */
+  opacity: 0.70; 
 }
 /* for title */
 #petsTitle {
@@ -198,7 +198,7 @@ h1 {
     .about-container {
       display: flex;
       background-color: #f2542d;
-      margin-top: 120px; /* Add margin-top */
+      margin-top: 120px; 
     }
 
     .text-container {
@@ -245,7 +245,7 @@ h1 {
     .about-container-1 {
       display: flex;
       background-color: #0e9594;
-      margin-top: 120px; /* Add margin-top */
+      margin-top: 120px; 
     }
     .text-container-1 {
       flex: 1;
@@ -292,7 +292,7 @@ h1 {
     .applynow-container {
       background-color: #f5dfbb;
       margin: 50px;
-      padding: 20px; /* Adjust padding as needed */
+      padding: 20px; 
       text-align: left;
       border-radius: 15px;
       height: 400px;
@@ -308,7 +308,7 @@ h1 {
     }
 
     .applynow-text {
-      padding: 60px 0 0 50px; /* Adjust padding as needed */
+      padding: 60px 0 0 50px; 
       color: #0e9594;
       font-size: 22px;
       display: flex;
@@ -316,7 +316,7 @@ h1 {
 
     .applynow-input {
       border: none;
-      border-bottom: 2px solid black; /* Set line under text box */
+      border-bottom: 2px solid black; 
       padding: 5px;
       margin-top: 20px;
       margin-left: 50px;
@@ -339,8 +339,8 @@ h1 {
   h1 {
     font-size: 3em;
     background-size: auto; /* Adjust as needed for mobile view */
-    margin-bottom: 50px; /* Adjust margin for mobile view */
-    height: 80vh; /* eto need ko para sa background */
+    margin-bottom: 50px; 
+    height: 80vh;
   }
   .logo img {
     width: 70%; 
@@ -353,9 +353,9 @@ h1 {
   .custom-image {
     width: 100%;
     height: 350px;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    object-fit: cover; 
     display: block;
-    margin: 0 auto; /* Center the image horizontally within its container */
+    margin: 0 auto; 
   }
   .text-container{
     margin-bottom: 40px;
@@ -381,7 +381,7 @@ h1 {
     height: 350px;
     object-fit: cover; /* Maintain aspect ratio and cover the container */
     display: block;
-    margin: 0 auto; /* Center the image horizontally within its container */
+    margin: 0 auto; 
   }
   .text-container-1{
     margin-bottom: 40px;
@@ -402,11 +402,11 @@ h1 {
   }
   /*--To Switch Position--*/
   .volunteer-container-1 {
-    order: 1; /* Move the image container to the right */
+    order: 1; 
   }
 
   .text-container-1 {
-    order: 2; /* Keep the text container on the left */
+    order: 2; 
   }
 /*--apply now--*/
   .applynow-input{
