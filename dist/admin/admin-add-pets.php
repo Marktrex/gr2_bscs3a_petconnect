@@ -1,5 +1,7 @@
 <?php
-use MyApp\Controller\Audit;
+
+use MyApp\Controller\AuditModelController;
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 require '../function/config.php';
@@ -61,8 +63,8 @@ if (isset($_POST["submit"])) {
             // Execute the prepared statement
       
             if ($stmt) {
-                $log = new Audit($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name on $date");
-                $log->activity_log();
+                $log = new AuditModelController();
+                $log->activity_log($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name");
                 echo "
                 <script> 
                     alert('Pets added successfully'); 

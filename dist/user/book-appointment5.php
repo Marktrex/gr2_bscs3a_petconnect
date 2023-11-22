@@ -1,4 +1,7 @@
 <?php
+use MyApp\Controller\AuditModelController;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 session_start(); // Add this line to start the session
 require '../function/config.php';
 //this checks the session if the admin is logged in
@@ -27,7 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':user_id', $_SESSION['auth_user']['id']);
     $stmt->bindParam(':message', $_SESSION['message']);    
     $stmt->execute();
-    
+    $log = new AuditModelController();
+    $name = $_SESSION['first_name'];
+    $type = $_SESSION['appointment_type'];
+    $log->activity_log($_SESSION['auth_user']['id'], "appointment", "User:$name booked an appointment type: $type");
     // Close the database connection
     $stmt = null;
     $conn = null;

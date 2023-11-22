@@ -154,7 +154,6 @@ $countVolunteer = $rowVolunteer['volunteer'];
 </head>
 
 <body>
-implementingFrontEndtoBackend
     <div class="container">
         <header class="">
             <nav class="navbar">
@@ -307,7 +306,6 @@ implementingFrontEndtoBackend
             <div class="table_responsive">
                 <h2>Afternoon Session</h2>
 
-implementingFrontEndtoBackend
                 <table class="tables">
 
 

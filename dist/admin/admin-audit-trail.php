@@ -11,8 +11,20 @@ if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "1" )
 }
 
 $audit = new AuditModelController();
-$auditLogs = $audit->getAuditLog();
-
+if(isset($_POST['search']))
+{
+    $auditLogs = $audit->search([
+        $_POST['search'],
+        $_POST['action']
+    ],[
+        ['user.fname', 'user.lname'],
+        ['audit_log.type', 'audit_log.short_description']
+    ]);
+}
+else
+{
+    $auditLogs = $audit->getAuditLog();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +65,17 @@ $auditLogs = $audit->getAuditLog();
                 <h1>Activity Log</h1>
 
                 <div class="search">
-                    <div>
-                    <label for="user"><span>Search User</span></label>
-                    <input type="text" id="user" class="user" placeholder="Search User"/>
-                    </div>
-
-                    <div>
-                    <label for="action"><span>Search Action</span></label>
-                    <input type="text" id="action" class="action" placeholder="Search Action"/>
-                    </div>
+                    <form action="#" method="POST">
+                        <div>
+                            <label for="user"><span>Search User</span></label>
+                            <input type="text" id="user" class="user" name = "user" placeholder="Search User"/>
+                        </div>
+                        <div>
+                            <label for="action"><span>Search Action</span></label>
+                            <input type="text" id="action" class="action" name = "action" placeholder="Search Action"/>
+                        </div>
+                        <button type = "submit" name="search">Sample</button>
+                    </form>
                 </div>
                 <section class="list-body">
                     <table id="pets-list">
@@ -80,6 +94,18 @@ $auditLogs = $audit->getAuditLog();
                                 <tr>
                                     <td><?= $log->id ?></td>
                                     <td><?= $log->responsible_id ?></td>
+                                    <td>
+                                        <?php
+                                        if (!$log->fname)
+                                        {
+                                            echo "Deleted User";
+                                        }
+                                        else
+                                        {
+                                            echo $log->fname . " " . $log->lname;
+                                        }
+                                         ?>
+                                    </td>
                                     <td><?= $log->type ?></td>
                                     <td><?= $log->short_description ?></td>
                                     <td><?= $log->date_time ?></td>

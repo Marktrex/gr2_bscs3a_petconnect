@@ -33,5 +33,9 @@ class DBConnect
         }
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function quote($value) {
+        return $this->pdo->quote($value);
+    }
 }
 ?>

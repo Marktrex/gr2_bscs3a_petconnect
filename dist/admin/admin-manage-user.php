@@ -1,6 +1,6 @@
 <?php
 
-use MyApp\Controller\Audit;
+use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 require '../function/config.php';
@@ -32,8 +32,8 @@ if (isset($_POST['promote'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         if ($stmt) {
-            $log = new Audit($_SESSION['auth_user']['id'],"user promotion","admin promoted id:$id to admin");
-            $log->activity_log();
+            $log = new AuditModelController();
+            $log->activity_log($_SESSION['auth_user']['id'],"user promotion","admin promoted id:$id to admin");
             echo '<script language="javascript">';
             echo 'alert("Promoted to Admin");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -77,8 +77,8 @@ if (isset($_POST['demote'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
-            $log = new Audit($_SESSION['auth_user']['id'],"user demotion","admin demoted id:$id to admin");
-            $log->activity_log();
+            $log = new AuditModelController();
+            $log->activity_log($_SESSION['auth_user']['id'],"user demotion","admin demoted id:$id to admin");
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -130,8 +130,8 @@ try {
     
     // If both updates are successful, commit the transaction
     $conn->commit();
-    $log = new Audit($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
-    $log->activity_log();
+    $log = new AuditModelController();
+    $log->activity_log($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
     echo '<script language="javascript">';
         echo 'alert("User updated successfully");';
         echo 'window.location = "admin-manage-user.php";';
@@ -160,8 +160,8 @@ if (isset($_POST['delete'])) {
 
     if ($stmt) {
         // might change to update
-        $log = new Audit($_SESSION['auth_user']['id'],"admin deletes account","admin deletes account:$id");
-        $log->activity_log();
+        $log = new AuditModelController();
+        $log->activity_log($_SESSION['auth_user']['id'],"admin deletes account","admin deletes account:$id");
         echo "
         <script> 
             alert('Record deleted successfully'); 

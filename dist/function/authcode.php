@@ -1,14 +1,17 @@
 <!-- Sign Up  -->
 <?php
+use MyApp\Controller\AuditModelController;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require('config.php'); //PDO connection to the database
-
+$log = new AuditModelController();
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $passwordRepeat = $_POST["password"];
+    $passwordRepeat = $_POST["cpassword"];
     
     
     //php using PDO
@@ -22,7 +25,10 @@ if (isset($_POST["register"])) { //code ni marc
     $rowCount = $stmt->rowCount();
 
     if ($rowCount > 0) {
-        // echo "Hello :)";
+        echo '<script language="javascript">';
+        echo 'alert("Email already exist");';
+        echo 'window.location = "../signuppage.php";';
+        echo '</script>';
         $conn = null;
     } 
     else {
@@ -34,20 +40,6 @@ if (isset($_POST["register"])) { //code ni marc
             $user_status = 'Enable';
             $user_type = '2';
             $type = 'User';
-            // Insert into chat_user_table
-            $query1 = "
-                INSERT INTO chat_user_table (user_name, user_email, user_password, user_status, user_type) 
-                VALUES (:fname, :email, :password , :user_status, :user_type)
-            ";
-             // automatically set the user_type to "User" when creating an account
-            $statement1 = $conn->prepare($query1);
-            $statement1->bindParam(':fname', $fname);
-            $statement1->bindParam(':email', $email);
-            $statement1->bindParam(':password', $password);
-            $statement1->bindParam(':user_status', $user_status); // Set the user_status to 'User'
-            $statement1->bindParam(':user_type', $type); // Set user_type to 'User'
-
-        
             // Insert into user table
             $query2 = "
                 INSERT INTO user (fname, lname, email, password, user_type) 
@@ -65,12 +57,11 @@ if (isset($_POST["register"])) { //code ni marc
             $conn->beginTransaction();
         
             try {
-                $statement1->execute();
                 $statement2->execute();
-        
+                $lastId = $conn->lastInsertId();
                 // If both queries are successful, commit the transaction
                 $conn->commit();
-        
+                $log->activity_log($lastId, 'Register', 'Created a new user account');
                 echo '<script language="javascript">';
                 echo 'alert("Sign up successfully");';
                 echo 'window.location = "../user/home.php";';
@@ -81,6 +72,13 @@ if (isset($_POST["register"])) { //code ni marc
         
                 echo "Error inserting record: " . $e->getMessage();
             }
+        }
+        else
+        {
+            echo '<script language="javascript">';
+            echo 'alert("Password and confirm password must be the same");';
+            echo 'window.location = "../signuppage.php";';
+            echo '</script>';
         }
     }
 }
@@ -117,7 +115,7 @@ else if (isset($_POST["login"])) {
                 'email' => $userdata['email'],
                 'role' => "1"
             ];
-
+            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'User Logged In');
             echo '<script language="javascript">';
            
             echo 'alert("Logged In Successfully as Admin");';
@@ -136,6 +134,7 @@ else if (isset($_POST["login"])) {
                 'email' => $userdata['email'],
                 'role' => "2"
             ];
+            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';
             header("Location: ../user/home.php");
 

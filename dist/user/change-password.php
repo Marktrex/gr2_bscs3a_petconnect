@@ -1,4 +1,7 @@
 <?php
+use MyApp\Controller\AuditModelController;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require '../function/config.php';
 // print_r($_SESSION);
@@ -26,21 +29,6 @@ if (isset($_POST['update'])) {
     // Update the data in both tables
     $conn->beginTransaction();
     try {
-        // Update chat_user_table
-        $query1 = "
-            UPDATE chat_user_table
-            SET user_password = :newpassword
-            WHERE user_id = :currentUserId
-        ";
-        $statement1 = $conn->prepare($query1);
-        $statement1->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-        $statement1->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
-        if (!$statement1->execute()) {
-            print_r($statement1->errorInfo());
-            exit;
-        }
-
-        // Update user table
         $query2 = "
             UPDATE user
             SET password = :newpassword
@@ -56,7 +44,8 @@ if (isset($_POST['update'])) {
 
         // If both updates are successful, commit the transaction
         $conn->commit();
-
+        $log = new AuditModelController();
+        $log->activity_log($currentUserId,"Change password","User has change password");
         echo '<script language="javascript">';
         echo 'alert("Password updated successfully");';
         echo 'window.location = "change-password.php";';

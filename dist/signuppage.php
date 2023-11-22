@@ -42,7 +42,7 @@ session_start();
             </div>
 
 
-            <form class="flex flex-col justify-center flex-1 gap-7"
+            <form id = "registerForm" class="flex flex-col justify-center flex-1 gap-7"
             name="signup"  action="./function/authcode.php" method="post" autocomplete="off">
                 <div class="custom-text">
                 <h2 class="text-5xl font-bold" data-translate="Register">Register</h2>
@@ -72,7 +72,7 @@ session_start();
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-lock icon custom-important-text
                             absolute top-[3px] "></i>
-                    <input class="custom-input" type="password" placeholder="Confirm Password" name="cpassword" id="password" required>
+                    <input class="custom-input" type="password" placeholder="Confirm Password" name="cpassword" id="confirmPassword" required>
                 </div>
 
                 <input type="submit" name="register" value="Sign Up" class="custom-button">
@@ -89,14 +89,7 @@ session_start();
 
     <?php require_once "components/light-switch.php"?>
     <script src="./script/change-color-schema.js"></script>
-
-    
+    <script src="./script/translate.js"></script>
+    <script src="./script/password-confirm.js"></script>
 </body>
-<!-- pizza -->
-<select id="languageSelector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fn">Filipino</option>
-    </select>
-    <script src="script\translation.js"></script>  
 </html>

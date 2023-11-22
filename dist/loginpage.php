@@ -74,12 +74,6 @@
     
     <?php require_once "components/light-switch.php"?>
     <script src="./script/change-color-schema.js"></script>
+    <script src="./script/translate.js"></script>
 </body>
-<!-- pizza -->
-<select id="languageSelector">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-            <option value="fn">Filipino</option>
-    </select>
-    <script src="script\translation.js"></script>  
 </html>
