@@ -14,5 +14,5 @@ if (isset($_SESSION['auth'])) {
     unset($_SESSION['user_data']);
 }
 
-header('Location: ../user/home.php');
+header('Location: ../user/index.php');
 ?>
