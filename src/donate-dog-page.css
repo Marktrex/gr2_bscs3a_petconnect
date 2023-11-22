@@ -278,7 +278,7 @@ header .navbar {
 
 /*--------------------------------------------------------------------------------------------*/
 
-/*** Cat Content ***/
+/*** Dog Content ***/
 main {
     display: flex;
     top: 16%;
@@ -290,23 +290,23 @@ main {
     padding-bottom: 300px;
 }
 
-.cat-content {
+.dog-content {
     width: 300px;
     height: auto;
 }
 
-.cat-select{
+.dog-select{
     position: relative;
     top: 3.5%;
 }
 
-.cat-select label{
+.dog-select label{
     font-weight: 700;
     font-size: 19px;
     color: #0e9594;
 }
 
-.cat-select select{
+.dog-select select{
     margin-top: 5px;
     padding: 14px;
     border-radius: 10px;
@@ -316,12 +316,12 @@ main {
     appearance: none;
 }
 
-.cat-select li{
+.dog-select li{
     list-style: none;
     padding: 15px;
 }
 
-.display-cat {
+.display-dog {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
@@ -330,7 +330,7 @@ main {
     width: 100%;
 }
 
-.display-cat h1{
+.display-dog h1{
     flex-direction: column;
     grid-column: 1 / 5;
     text-align: left;
@@ -339,15 +339,15 @@ main {
     margin-top: 1%;
 }
 
-.display-cat img,
-.display-cat .img-bg{
+.display-dog img,
+.display-dog .img-bg{
     width: 235px;
     height: 260px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
 }
 
-.display-cat .img-bg{
+.display-dog .img-bg{
     position: relative;
     overflow: hidden;
     height: 300px;
@@ -434,35 +434,35 @@ main {
         padding-top: 20px;
     }
 
-    .cat-content {
+    .dog-content {
         width: 100%;
     }
 
-    .cat-select {
+    .dog-select {
         display: flex;
         gap: 25px;
     }
 
-    .cat-select label {
+    .dog-select label {
         font-size: 15px;
     }
 
-    .cat-select select{
+    .dog-select select{
         width: 94px;
         padding: 6px;
     }
 
-    .cat-select li{
+    .dog-select li{
         padding: 0;
         margin: 0;
     }
 
-    .display-cat { /*2 columns dapat pero ayaw magwork*/
+    .display-dog { /*2 columns dapat pero ayaw magwork*/
         grid-template-columns: repeat(2, 1fr);
         column-gap: 30px;
     }
 
-    .display-cat h1{
+    .display-dog h1{
         text-align: center;
     }
     
