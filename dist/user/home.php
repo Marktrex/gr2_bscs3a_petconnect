@@ -13,15 +13,15 @@
 <body>
   <header>
     <nav class="navbar">
-      <a href="#" class="logo">
+      <a href="index.php" class="logo">
         <img src="../icons/logo.png" alt="Logo">
       </a>
 
       <ul class="menu-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Adopt</a></li>
-        <li><a href="#">Donate</a></li>
-        <li><a href="#">Volunteer</a></li><li class="language-item">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="adoptpage.php">Adopt</a></li>
+        <li><a href="donatepage.php">Donate</a></li>
+        <li><a href="volunter.php">Volunteer</a></li><li class="language-item">
           <a href="#">
             <span class="material-symbols-outlined">language</span>
             English
