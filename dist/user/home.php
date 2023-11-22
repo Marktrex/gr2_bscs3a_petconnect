@@ -130,7 +130,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
           <i class="fa fa-handshake-o"></i> Help us to cover the cost of important pet resources and other materials.
         </div>
       </div>
-      <button class="button-donations">Go to Donations</button>
+      <button class="button-donations" a href="donatepage.php">Go to Donations</button>
   </div>
 <!-- Become a voluteers -->
   <div class="about-volunteer">
@@ -140,7 +140,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     <div class="content-volunteer">
       <h3>Become one of our Volunteers</h3>
       <p>Help us to take care of our furry companions and Give them the care they deserve<br> Regular interaction with volunteers helps socialize animals, making them more adaptable to human companionship.</p>
-      <a href="#" class="learn-more">Learn More</a>
+      <a href="volunteer.php" class="learn-more">Learn More</a>
     </div>
   </div>
 <!-- script for header responsive -->  
@@ -172,17 +172,17 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
         <div class="item quick-links">
           <strong>Quick Links</strong>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Adopt</a></li>
-            <li><a href="#">Volunteer</a>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="adoptpage.php">Adopt</a></li>
+            <li><a href="volunteer.php">Volunteer</a>
             </li>
-            <li><a href="#">Donate</a></li>
+            <li><a href="donatepage.php">Donate</a></li>
           </ul>
         </div>
         <div class="item about">
           <strong>About</strong>
           <ul>
-            <li><a href="#">Team</a></li>
+            <li><a href="team.php">Team</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Address</a></li>
             <li><a href="#">Testimonials</a></li>
