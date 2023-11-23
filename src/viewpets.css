@@ -18,6 +18,7 @@ body {
   background: #fdc161;
 }
 
+
 /* Logo, Back and Searchbox */
 
 .logo img{
@@ -55,7 +56,6 @@ body {
   left: 0 ;
 }
 
-
 .searchbox{
   border: 1px solid #c9e6e7;
   border-radius: 2rem;
@@ -76,6 +76,15 @@ body {
   justify-content: space-between;
 }
 
+.list span{
+  margin: 0.05rem 0rem 0.5rem 0rem;
+  font-size: 20px;
+}
+
+.aboutinfo span{
+  
+}
+
 /* Logo, Back and Searchbox */
 
 /* Content of Pet (Card-Type) */
@@ -89,19 +98,21 @@ ul{
 }
 
 .petcontent{ /* Content Container */
-  margin: 1rem auto;
+  margin: 2.5rem auto;
   background-color:#f5dfbb ;
   border-radius: 2rem;
   z-index: 0;
-  width: 80%;
+  width: 130vh;
+  height: 80vh;
   display: flex;  
   overflow: hidden;
+  box-shadow: 0 .4rem .8rem #0005;
 }
 
 .petimg{
   border-radius: 0px 2rem  2rem 0px;
   display: flex;
-  width: 40%;
+  width: 50%;
   height: auto;
 }
 
@@ -120,17 +131,31 @@ ul{
 .bookbutton{
   border: 0px;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   color: #f5dfbb;
   background-color: #f2542d;
   font-weight: bold;
   width: 100%;
 }
 
+.bookbutton:hover{
+  background-color: #c43917;
+}
+
+.bookbutton span{
+  font-size: 20px;
+}
+
 .petname{
   font-family: 'dairantou';
   font-size: 65px;
   font-weight: bold;
+}
+
+.animal {
+    margin-top: -50px;
+    margin-bottom: 10px;
+  
 }
 
 .aboutinfo{
@@ -147,7 +172,7 @@ div:not(.petcontent):has(.petimg)
   div:not(.petcontent):has(.petimg)
   {
     display: block;
-    height: 80vh;
+    height: 50vh;
     overflow: hidden;
     .petimg
     {
@@ -171,5 +196,10 @@ div:not(.petcontent):has(.petimg)
       width: 100%;
       text-align: center;
     }
+  }
+
+  .animal{
+    margin-top: -30px;
+    margin-bottom: 10px;
   }
 }
