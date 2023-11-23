@@ -402,32 +402,24 @@ header .navbar {
     margin-left: 10vh;
   }
 
-  main{
-    height: 100vh;
-    max-width: 740px;
-    margin-left: 60px;
-  }
-
-/* Image Title */
+/* content*/
 
 }
 .container{
-position: relative;
-left: 0;
-top: 0;
-width: 100%;
-height: 600px;
-padding: 20px;
-margin-bottom: 5px;
-background-image: url(../src/icons/picture-donate.png);
-background-repeat: no-repeat;
-background-size: cover;
+  height: clamp(400px, 80vh ,600px);
+  padding: 20px;
+  margin-bottom: 5px;
+  background-image: url(../src/icons/picture-donate.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
 .text1{
   color: white;
   font-size:50px;
-  margin-top: 270px;
   font-family:'dairantou';
 }
 .text2{
@@ -443,21 +435,32 @@ background-size: cover;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: -20vh;
 }
+
 .content-box {
   flex-wrap: wrap;
-  width: 50%; 
-  padding: 20px;
+  padding: 3rem 2rem;
   background-color: #F5DFBB;
-  border: -10px solid #ccc;
   border-radius: 30px;
-  word-wrap: break-word;
   display: flex;
-  align-items: center;
   text-align: center;
   justify-content: space-around;
-  margin: 0 auto;
-  max-width: 800px;
+  gap: 1.5rem;
+  width: 70%;
+  height: auto;
+}
+.content-box > div
+{
+  height: 80%;
+  flex: 1 0 30%;
+}
+
+/* icons/image to be put on the floating div */
+.content-box > div > img /*change as you see fit */
+{
+  aspect-ratio: 1/1;
+  width: clamp(100px,100%, 180px);
 }
 
 .logo3{
@@ -480,7 +483,6 @@ background-size: cover;
 
 .logo-with-text{
   text-align: center;
-  margin-bottom: 20px;
   width: 200px;
   color:#0e9594;
   font-family:'lato';
@@ -496,11 +498,7 @@ overflow: hidden;
 word-wrap: break-word;
 }
 
-.logo-with-text img{
 
-  max-width:150px;
-  width:100%;
-}
 
 
 
@@ -511,26 +509,27 @@ box-sizing: border-box;
 }
 .container6{
   display: flex;
-  justify-content: center; /* Align flex items to the left */
-  align-items: center; /* Center items vertically */
+  justify-content: center; 
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  height: auto;
+  margin-top: 2rem;
 }
 
 .flexbox1 {
   display: flex;
   flex-direction: column;
   align-items: center; /* Align items to the left within the flex container */
+  justify-content: space-between;
   background-color: #f2542d ;
-  margin-top: 25px;
-  margin-right: 50px;
   padding: 20px;
   border-radius: 30px;
-  height: calc(50vh - 50px);
-  width: calc(35vh - 20px);
+  height: clamp(450px, 60vh, 600px);
 }
 
 .text-center1{
   text-align: center;
-  margin-bottom: 280px; /* Adjust spacing between centered text and logo */
   font-family: 'dairantou';
   color:#fff6e0;
 }
@@ -548,11 +547,6 @@ box-sizing: border-box;
   color: #fff6e8;
 }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
 .container7{
   display: flex;
   justify-content:flex start; /* Align flex items to the left */
@@ -561,48 +555,27 @@ box-sizing: border-box;
  
 }
 
-.flexbox2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Align items to the left within the flex container */
-  background-color: #f2542d ;
-  margin-top: 25px;
-  margin-left: 65px;
-  padding: 20px;
-  border-radius: 30px;
- height: calc(47vh - 20px);
- width: calc(35vh - 20px);
-}
-
-.text-center2 {
-  text-align: center;
-  margin-bottom: 280px;
-  font-family: 'dairantou';
-  color:#fff6e0;
-}
-
 .logo8{
   text-align: center; /* Center the logo */
   margin-bottom: 15px; /* Adjust spacing between logo and text */
 }
 
-.text-under-logo2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-family:'lato' ;
-  font-size: 16px;
-  color: #fff6e8;
-}
-
 .container{
   text-align: center;
 }
+
+.container8
+{
+  & > *
+  {
+    margin-bottom: 5px;
+  }
+}
+
 .description1 {
-  margin-top: 140px;
   font-size: 40px;
   text-align: center;
   color: #fff6e0;
-  margin-bottom: 5px;
   font-family: 'dairantou';
 }
 
@@ -610,7 +583,6 @@ box-sizing: border-box;
   font-size: 25px;
   text-align: center;
   color: #fff6e0;
-  margin-bottom: 5px;
   font-family: 'lato';
 }
 
@@ -618,7 +590,6 @@ box-sizing: border-box;
   font-size: 25px;
   text-align: center;
   color: #fff6e0;
-  margin-bottom: 5px;
   font-family: 'lato';
 }
 
@@ -626,6 +597,6 @@ box-sizing: border-box;
   font-size: 25px;
   text-align: center;
   color: #fff6e0;
-  margin-bottom: 90px;
   font-family: 'lato';
 }
+
