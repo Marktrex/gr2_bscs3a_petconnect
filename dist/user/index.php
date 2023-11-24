@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PetConnect Homepage</title>
+    <title>PetConnect Index</title>
     <link rel="stylesheet" href="../css/newlyAdded/landing-page-light.css" />
     <link rel="stylesheet" href="../css/newlyAdded/slider.css" />
     <link rel="stylesheet" href="../css/newlyAdded/footer.css" />

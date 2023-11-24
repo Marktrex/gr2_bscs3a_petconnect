@@ -222,5 +222,6 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
             });
         });
     </script>
+    
 </body>
 </html>
