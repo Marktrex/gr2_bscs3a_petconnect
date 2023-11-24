@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+  font-family: 'dairantou';
+  src: url(/fonts/Dairantou.ttf);
+  src: url(/fonts/Lato.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+
+body {
+  margin: auto;
+  min-height: 100vh;
+  background: #fdc161;
+}
+
+
+/* Logo, Back and Searchbox */
+
+.logo img{
+  margin-left: 3rem;
+  width: 100px;
+  image-resolution: 300px;
+  display: block;
+}
+
+.back{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:#fff;
+  padding: 1rem;
+  border: 1px solid #c9e6e7;
+  border-radius: 2rem;
+  background-color: #127475;
+  display: inline-block;
+  text-align: center;
+  width: clamp(180px,30%,250px);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+.back:hover:after
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  left: 0 ;
+}
+
+.searchbox{
+  border: 1px solid #c9e6e7;
+  border-radius: 2rem;
+  float: right;
+  display: flex;
+  color: black;
+  text-align: left;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 17px; 
+  width: clamp(300px,30%,400px);
+}
+
+.navbar {
+  background-color: #127475;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list span{
+  margin: 0.05rem 0rem 0.5rem 0rem;
+  font-size: 20px;
+}
+
+.aboutinfo span{
+  
+}
+
+/* Logo, Back and Searchbox */
+
+/* Content of Pet (Card-Type) */
+ul{
+  list-style: none;
+}
+
+.list{
+  display: flex;
+  flex-direction: column;
+}
+
+.petcontent{ /* Content Container */
+  margin: 2.5rem auto;
+  background-color:#f5dfbb ;
+  border-radius: 2rem;
+  z-index: 0;
+  width: 130vh;
+  height: 80vh;
+  display: flex;  
+  overflow: hidden;
+  box-shadow: 0 .4rem .8rem #0005;
+}
+
+.petimg{
+  border-radius: 0px 2rem  2rem 0px;
+  display: flex;
+  width: 50%;
+  height: auto;
+}
+
+.pettxt{
+  font-size: 25px;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #127475;
+  padding: 2rem;
+  width: 60%;
+  row-gap: 2rem;
+}
+
+.bookbutton{
+  border: 0px;
+  padding: 1rem;
+  border-radius: 2rem;
+  color: #f5dfbb;
+  background-color: #f2542d;
+  font-weight: bold;
+  width: 100%;
+}
+
+.bookbutton:hover{
+  background-color: #c43917;
+}
+
+.bookbutton span{
+  font-size: 20px;
+}
+
+.petname{
+  font-family: 'dairantou';
+  font-size: 65px;
+  font-weight: bold;
+}
+
+.animal {
+    margin-top: -50px;
+    margin-bottom: 10px;
+  
+}
+
+.aboutinfo{
+  margin-top: 1rem;
+}
+div:not(.petcontent):has(.petimg)
+  {
+    display: none;
+  }
+/* Content of Pet (Card-Type) */
+
+@media only screen and (max-width: 1024px)
+{
+  div:not(.petcontent):has(.petimg)
+  {
+    display: block;
+    height: 50vh;
+    overflow: hidden;
+    .petimg
+    {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0%;
+      aspect-ratio: 1/1;
+    }
+  }
+  .petcontent
+  {
+    position: relative;
+    margin-top: -10vh;
+    z-index: 100;
+    .petimg
+    {
+      display: none;
+    }
+    .pettxt
+    {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .animal{
+    margin-top: -30px;
+    margin-bottom: 10px;
+  }
+}

@@ -10,94 +10,113 @@ $loggedIn = isset($_SESSION['auth_user']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/newlyAdded/viewpets.css" />
+    <link rel="stylesheet" href="../css/newlyAdded/footer.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-<head>
-    <link rel="icon" href="../image/icon.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rePaw City</title>
-    <link rel="stylesheet" href="../css/adoptprofile.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
-</head>
 
-<body>
-    <?php include '../function/navbar.php' ?>
+  <!-- Back and Searchbox -->
 
-    <section class="home">
-        <div class="top">
-            <img src="../image/doggo.png" class="paw-bg">
-            <img src="../image/catto.png" class="paw-bg2">
-            <h1 class="title">Adopt</h1>
-            <p class="content">All of our cats and dogs can be seen by appointment only.</p>
-            <a href="<?php echo $loggedIn ? 'book-appointment.php' : '../loginpage.php'; ?>" class="book-app btn" <?php echo $loggedIn ? 'target="_blank"' : ''; ?>>
-                Book Appointment
-            </a>
+  <body>
+    
+    <div class="navbar">
+      <a href="home.php" class="back">
+        <span>• Back</span>
+      </a>
+      <input type="text" class="searchbox" placeholder="Search" />
+    </div>
+
+    <!-- Pet Content -->
+    <?php
+    $id = $_GET['id']; //gets the id of the pet
+    $stmt = $conn->prepare("SELECT * FROM pets WHERE pets_id = :id"); //only checks the information of the id that you got
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    // Fetch the first (and likely only) row for the given pet ID
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<div>
+    <img class="petimg" src="../upload/<?php echo $row['image']; ?>" alt="">
+</div>
+
+<div class="petcontent">
+    <img src="../upload/<?php echo $row['image']; ?>" class="petimg" alt="" />
+    <div class="pettxt">
+        <span class="petname"><?php echo $row['name']; ?></span>
+        <p class="animal"><?php echo $row['type']; ?></p>
+        <div class="list">
+            <span>Breed: <?php echo $row['breed']; ?></span>
+            <span>Age: <?php echo $row['age']; ?></span>
+            <span>Sex: <?php echo $row['sex']; ?></span>
+            <span>Date of Rescue: <?php echo $row['rescue_date']; ?></span>
         </div>
-        <div class="pets">
-            <h1 class="adopt-title">MEET OUR PETS</h1>
-            <a href="adoptpage.php">
-                <p class="back"><i class="fa-sharp fa-solid fa-arrow-left"></i> Back </p>
-            </a>
+        <span class="aboutinfo">About <b><?php echo $row['name']; ?></b>:</span>
+        <span><?php echo $row['about']; ?></span>
+        <div>
+            <button class="bookbutton">
+                <span>Book Appointment</span>
+            </button>
         </div>
-        <div class="pet">
-
-            <?php
-            $i = 1;
-            $id = $_GET['id'];
-            $stmt = $conn->prepare("SELECT * FROM pets WHERE pets_id = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            ?>
-            <?php foreach ($rows as $row): ?>
-                <div class="photo">
-                    <img src="./upload/<?php echo $row["image"]; ?>" alt="">
-                </div>
-                <div class="pet-info">
-
-                    <h1 class="petname">
-                        <?php echo $row["name"]; ?>
-                    </h1><br>
-                    <p class="a">Type :
-                        <?php echo $row["type"]; ?>
-                    </p>
-                    <p class="a">Breed :
-                        <?php echo $row["breed"]; ?>
-                    </p>
-                    <p class="b">Sex :
-                        <?php echo $row["sex"]; ?>
-                    </p>
-                    <p class="c">Weight :
-                        <?php echo $row["weight"]; ?>
-                    </p>
-                    <p class="d">Age :
-                        <?php echo $row["age"]; ?>
-                    </p>
-                    <p class="c">Date of Rescue :
-                        <?php echo $row["date"]; ?>
-                    </p><br>
-                    <h1 class="about-title">About
-                        <?php echo $row["name"]; ?>:
-                    </h1>
-                    <p class="about">
-                        <?php echo $row["about"]; ?>
-                    </p><br>
-                    <a href="<?php echo $loggedIn ? 'book-appointment.php' : 'loginpage.php'; ?>" class="contact-btn btn" <?php echo $loggedIn ? 'target="_blank"' : ''; ?>><i class="fa-solid fa-phone icon" style="color: #ffffff;"></i>
-                        Contact us to Meet
-                        <?php echo $row["name"]; ?>
-                    </a>
-
-                </div>
-            <?php endforeach; ?>
+    </div>
+</div>
+    
+    <footer> <!--src: footer.css-->
+      <div class="footer-content">
+        <div  class="item logo">
+          <a href="#">
+          <img src="../icons/footer-logo.png" alt="logo">
+          </a>
+          <br>
+          <div class="socmed">
+            <strong>Connect with us</strong>
+            <ul>
+              <li><a href="#" class="fa fa-facebook"></a></li>
+              <li><a href="#" class="fa fa-instagram"></a></li>
+              <li><a href="#" class="fa fa-twitter"></a></li>
+            </ul>
+          </div>
         </div>
-
-
-    </section>
-
-    <?php include './function/footer.php' ?>
-</body>
-
+        <div class="item quick-links">
+          <strong>Quick Links</strong>
+          <ul>
+            <li><a href="home.php">Home</a></li>
+            <li><a href="adoptpage.php">Adopt</a></li>
+            <li><a href="volunteer.php">Volunteer</a>
+            </li>
+            <li><a href="donatepage.php">Donate</a></li>
+          </ul>
+        </div>
+        <div class="item about">
+          <strong>About</strong>
+          <ul>
+            <li><a href="team.php">Team</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Address</a></li>
+            <li><a href="#">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="item Services">
+          <strong>Services</strong>
+        </div>
+      </div>
+      <div class="info">
+        <div class="item content1"> 
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+        <div class="item content2">
+          <p> © PetConnect 2023</p>
+        </div>
+      </div>
+      
+  </footer>
+  </body>
 </html>
