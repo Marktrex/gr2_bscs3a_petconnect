@@ -26,7 +26,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
       </a>
       <ul class="menu-links">
         <li><a href="home.php">Home</a></li>
-        <li><a href="adoptpage.php">Adopt</a></li>
+        <li><a href="adoptpage-dog.php">Adopt</a></li>
         <li><a href="donatepage.php">Donate</a></li>
         <li><a href="volunteer.php">Volunteer</a></li><li class="language-item">
           <a href="#">
@@ -51,11 +51,11 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
   </header>
 <!-- content-Buttons -->
     <div class="button-container">
-        <a href="adoptpage.php" class="button button-find-dog">
+        <a href="adoptpage-dog.php" class="button button-find-dog">
           Find a <br> Dog
           <img src="../icons/btn-dog.png" alt="Dog Icon" class="dog-icon">
         </a>
-        <a href="adoptpage.php" class="button button-find-cat">
+        <a href="adoptpage-cat.php" class="button button-find-cat">
           Find a <br>Cat
           <img src="../icons/btn-cat.png" alt="Dog Icon" class="cat-icon">
         </a>

@@ -26,9 +26,9 @@
 
         <ul class="menu-links">
           <li><a href="home.php">Home</a></li>
-          <li><a href="adoptpage.php">Adopt</a></li>
+          <li><a href="adoptpage-dog.php">Adopt</a></li>
           <li><a href="donatepage.php">Donate</a></li>
-          <li><a href="volunteer.phpl">Volunteer</a></li>
+          <li><a href="volunteer.php">Volunteer</a></li>
           <li class="language-item">
             <a href="#">
               <span class="material-symbols-outlined">language</span>
