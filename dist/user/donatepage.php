@@ -17,6 +17,7 @@
   </head>
 
   <body>
+  <?php require_once "../components/userNavbar.php"?>
     <main>
       <div class="container">
         <div class="text1">

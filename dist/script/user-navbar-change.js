@@ -1,4 +1,5 @@
 addEventOnNav();
+activeLink();
 
 function addEventOnNav() {
   const header = document.querySelector(".navbar");
@@ -51,6 +52,25 @@ function changeHeaderColor(textColor) {
     textColor = "#e89003";
   }
   header.querySelectorAll("a,span,label").forEach(function (a) {
-    a.style.cssText = `color: ${textColor} !important`; // Change to your desired text color
+    a.style.cssText = `color: ${textColor}`; // Change to your desired text color
+  });
+  activeLink();
+}
+
+function activeLink() {
+  // Get the current URL
+  let currentUrl = window.location.href;
+
+  // Select all the navbar links
+  let navbarLinks = document.querySelectorAll("nav a");
+
+  // Iterate over each link
+  navbarLinks.forEach((link) => {
+    // Compare the href attribute with the current URL
+    if (link.href === currentUrl) {
+      // If they match, add an attribute 'active' with the value 'true'
+      link.setAttribute("active", "true");
+      link.style.color = "#127475";
+    }
   });
 }

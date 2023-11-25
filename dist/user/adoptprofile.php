@@ -23,6 +23,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   <!-- Back and Searchbox -->
 
   <body>
+  <?php require_once "../components/userNavbar.php"?>
     
     <div class="navbar">
       <a href="home.php" class="back">

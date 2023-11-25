@@ -28,6 +28,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   </head>
 
   <body>
+  <?php require_once "../components/userNavbar.php"?>
     <section class="content">
       <!--Dropdown menu-->
       <div class="menu">

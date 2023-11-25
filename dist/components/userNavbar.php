@@ -40,7 +40,21 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
         </div>
       </div>
     </li>
-    <li class="join-btn"><a>Join Us</a></li>
+    <?php
+      if(session_status() == PHP_SESSION_NONE){
+        // session has not started
+        session_start();
+      }
+      if (isset($_SESSION['auth']) && $_SESSION['auth']) {
+    ?>
+    <!-- put option here -->
+    <?php
+      } else {
+    ?>
+      <li class="join-btn"><a>Join Us</a></li>
+    <?php
+      }
+    ?>
     <span id="close-menu-btn" class="material-symbols-outlined">close</span>
   </ul>
   <span id="hamburger-btn" class="material-symbols-outlined">menu</span>

@@ -18,31 +18,7 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar">
-        <a href="index.php" class="logo">
-          <img src="../icons/logo.png" alt="Logo" />
-        </a>
-
-        <ul class="menu-links">
-          <li><a href="home.php">Home</a></li>
-          <li><a href="adoptpage-dog.php">Adopt</a></li>
-          <li><a href="donatepage.php">Donate</a></li>
-          <li><a href="volunteer.php">Volunteer</a></li>
-          <li class="language-item">
-            <a href="#">
-              <span class="material-symbols-outlined">language</span>
-              English
-            </a>
-          </li>
-          <li class="join-btn"><a href="#">Join Us</a></li>
-          <span id="close-menu-btn" class="material-symbols-outlined"
-            >close</span
-          >
-        </ul>
-        <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
-      </nav>
-    </header>
+    <?php require_once "../components/userNavbar.php"?>
 
     <section class="hero-section">
       <div>
