@@ -11,7 +11,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
   <ul class="menu-links">
     <li><a href="home.php">Home</a></li>
     <li>
-      <a href="adoptpage-dog.php" active="">
+      <a href="adoptpage.php">
         Adopt
       </a>
     </li>

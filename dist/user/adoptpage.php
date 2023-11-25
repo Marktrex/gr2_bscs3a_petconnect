@@ -10,7 +10,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
-$type = $_POST['type'] ?? $_GET['type'] ?? '';
+$type = $_POST['type'] ?? $_GET['type'] ?? 'Cat';
 $breed = $_POST['breed'] ?? '';
 $sex = $_POST['sex'] ?? '';
 $weight = $_POST['weight'] ?? '';
@@ -87,19 +87,23 @@ try { //research this try catch method
           <div class="dropdown">
             <label for="dropdown" class="dropdown-btn">
               <img src="../icons/kitty-icon.png" alt="icon" />
-              <span>Cat</span>
+              <span><?php echo $type ?></span>
               <i class="fa fa-chevron-circle-down" style="color: #f9f9f9"></i>
             </label>
             <input type="checkbox" id="dropdown" />
             <div class="dropdown-content">
-              <a href="adoptpage-cat.php">
+              <label>
                 <img src="../icons/kitty-icon.png" alt="icon" />
                 <span>Cat</span>
-              </a>
-              <a href="adoptpage-dog.php">
+                <input <?php if($type == "Cat"){echo "checked";}?>
+                type="radio" name="type" id="cat" value = "Cat" onchange="this.form.submit()">
+              </label>
+              <label>
                 <img src="../icons/puppy-icon.png" alt="icon" />
                 <span>Dog</span>
-              </a>
+                <input <?php if($type == "Dog"){echo "checked";}?>
+                type="radio" name="type" id="dog" value="Dog" onchange="this.form.submit()">
+              </label>
             </div>
           </div>
           <!--Search bar-->
@@ -178,18 +182,15 @@ try { //research this try catch method
         <!-- <h1>Meet Our cats</h1> -->
         <div class="display-cat">
         <?php
-        $stmt = $conn->prepare("SELECT * FROM pets WHERE type = 'Cat'");
-        $stmt->execute(); // Correct method call
-        $cats = $stmt->fetchAll(PDO::FETCH_ASSOC); // to fetch all data
-        foreach ($cats as $cat) {
+        foreach ($pet_data as $pet) {
         ?>
           <div class="img-bg">
-              <img src="../upload/<?php echo $cat['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
-              <p class="img-text"><?php echo $cat['name']; ?></p>
+              <img src="../upload/<?php echo $pet['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
+              <p class="img-text"><?php echo $pet['name']; ?></p>
               <div class="overlay">
-                  <h2>Hello, it's me <?php echo $cat['name']; ?>!</h2>
+                  <h2>Hello, it's me <?php echo $pet['name']; ?>!</h2>
                   <p>
-                      <?php echo $cat['about']; ?>
+                      <?php echo $pet['about']; ?>
                   </p>
               </div>
           </div>

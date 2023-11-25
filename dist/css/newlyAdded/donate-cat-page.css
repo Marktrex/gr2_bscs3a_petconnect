@@ -221,7 +221,7 @@ header .navbar {
         width: 30px;
         height: 30px;
       }
-      & a {
+      & label {
         display: block;
         text-decoration: none;
         color: #f9f9f9;
@@ -233,7 +233,7 @@ header .navbar {
         }
       }
     }
-    #dropdown {
+    #dropdown, input[type="radio"] {
       display: none;
     }
   
