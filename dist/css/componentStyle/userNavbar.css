@@ -42,6 +42,9 @@
         &:hover {
           color: #127475;
         }
+        &[active="true"] {
+          color: #127475;
+        }
       }
     }
   }
@@ -107,6 +110,7 @@
         border-color: transparent !important;
         color: #fff !important;
         background: #f2542d !important;
+        cursor: pointer;
       }
     }
   }

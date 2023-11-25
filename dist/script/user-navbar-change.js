@@ -50,7 +50,7 @@ function changeHeaderColor(textColor) {
   if (header.classList.contains("show-mobile-menu")) {
     textColor = "#e89003";
   }
-  header.querySelectorAll("a,span").forEach(function (a) {
-    a.style.color = textColor; // Change to your desired text color
+  header.querySelectorAll("a,span,label").forEach(function (a) {
+    a.style.cssText = `color: ${textColor} !important`; // Change to your desired text color
   });
 }
