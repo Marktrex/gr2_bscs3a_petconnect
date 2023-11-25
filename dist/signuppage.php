@@ -1,5 +1,10 @@
 <?php 
 session_start();
+//check if user is already logged redirect to user/home.php if yes
+if(isset($_SESSION['auth_user'])){
+    header("Location: user/home.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

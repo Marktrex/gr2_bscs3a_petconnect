@@ -51,7 +51,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
     <?php
       } else {
     ?>
-      <li class="join-btn"><a>Join Us</a></li>
+      <li class="join-btn"><a href="../loginpage.php">Join Us</a></li>
     <?php
       }
     ?>

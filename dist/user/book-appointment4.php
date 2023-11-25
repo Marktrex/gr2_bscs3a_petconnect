@@ -6,6 +6,13 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
+if (isset($_SESSION['auth_user'])) { 
+    echo '<script language="javascript">';
+    echo 'alert("You do not have access to this page");';
+    echo '</script>';
+    header("Location: ../user/home.php");
+    exit();
+} 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Store form data in session variables
     $_SESSION['first_name'] = $_POST['first_name'];
