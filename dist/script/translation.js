@@ -1,157 +1,129 @@
 // Translation maps
 const translations = {
-    'en': { //english language
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': 'Welcome back, some of our furry friends are looking for their forever home!',
-        'login': 'Login',
-        'Remember me': 'Remember me',
-        'Forgot Password?': 'Forgot Password?',
+    "en": {
+        "Add News": "Add News",
+        "Add Pets": "Add Pets",
+        "Address": "Address",
+        "Adopt": "Adopt",
+        "Already have an Account?": "Already have an Account?",
+        "Chat": "Chat",
+        "Dashboard": "Dashboard",
         "Don't have an account?": "Don't have an account?",
-        'Sign up': 'Sign up',
-        //REGISTER PAGE
-        'Register': 'Register',
+        "Donate": "Donate",
+        "Email": "Email",
+        "Forgot Password?": "Forgot Password?",
         "Let's Get Started! Create an account to login.": "Let's Get Started! Create an account to login.",
-        'Already have an Account?': 'Already have an Account?',
-        'Log in': 'Log in',
-        //ADMIN PAGE
-        'Logout': 'Logout',
-        'Dashboard': 'Dashboard',
-        'Add Pets': 'Add Pets',
-        'Manage Pets': 'Manage Pets',
-        'Modify Featured Image': 'Modify Featured Image',
-        'Manage Users': 'Manage Users',
-        'Add News': 'Add News',
-        'Manage News': 'Manage News',
-        'Chat': 'Chat',
-        'Total Appointments': 'Total Appointments',
-        'Adopt': 'Adopt',
-        'Donate': 'Donate',
-        'Visit': 'Visit',
-        'Volunteer': 'Volunteer',
-        'Morning Session': 'Morning Session',
-        'Type': 'Type',
-        'Name': 'Name',
-        'Mobile #': 'Mobile #',
-        'Address': 'Address',
-        'Email': 'Email',
-        'Status': 'Status',
-
-
-        // Add more translations as needed
+        "Log in": "Log in",
+        "Logout": "Logout",
+        "Manage News": "Manage News",
+        "Manage Pets": "Manage Pets",
+        "Manage Users": "Manage Users",
+        "Mobile #": "Mobile #",
+        "Modify Featured Image": "Modify Featured Image",
+        "Morning Session": "Morning Session",
+        "Name": "Name",
+        "Register": "Register",
+        "Remember me": "Remember me",
+        "Sign up": "Sign up",
+        "Status": "Status",
+        "Total Appointments": "Total Appointments",
+        "Type": "Type",
+        "Visit": "Visit",
+        "Volunteer": "Volunteer",
+        "Welcome back, some of our furry friends are looking for their forever home!": "Welcome back, some of our furry friends are looking for their forever home!",
+        "login": "Login"
     },
-    'es': { // spanish language
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': '¡Bienvenido de nuevo, algunos de nuestros amigos peludos buscan su hogar para siempre!',
-        'login': 'Iniciar sesión',
-        'Remember me': 'Recuérdame',
-        'Forgot Password?': '¿Olvidaste tu contraseña?',
-        "Don't have an account?": "¿No tienes una cuenta?",
-        'Sign up': 'Regístrate',
-        //REGISTER PAGE
-        'Register': 'Registro',
-        "Let's Get Started! Create an account to login.": "¡Comencemos! Crea una cuenta para iniciar sesión.",
-        'Already have an Account?': '¿Ya tienes una cuenta?',
-        'Log in': 'Iniciar sesión',
-
-        //ADMIN PAGE
-        'Logout': 'Cerrar sesión',
-        'Dashboard': 'Tablero',
-        'Add Pets': 'Agregar mascotas',
-        'Manage Pets': 'Gestionar mascotas',
-        'Modify Featured Image': 'Modificar imagen destacada',
-        'Manage Users': 'Gestionar usuarios',
-        'Add News': 'Agregar noticias',
-        'Manage News': 'Gestionar noticias',
-        'Chat': 'Chat',
-        'Total Appointments': 'Citas totales',
-        'Adopt': 'Adoptar',
-        'Donate': 'Donar',
-        'Visit': 'Visitar',
-        'Volunteer': 'Voluntariado',
-        'Morning Session': 'Sesión de la mañana',
-        'Type': 'Tipo',
-        'Name': 'Nombre',
-        'Mobile #': 'Número de móvil',
-        'Address': 'Dirección',
-        'Email': 'Correo electrónico',
-        'Status': 'Estado',
-
-
-
-
-        // Add more translations as needed
+    "es": {
+        "Add News": "Agregar noticias",
+        "Add Pets": "Agregar mascotas",
+        "Address": "DirecciÃ³n",
+        "Adopt": "Adoptar",
+        "Already have an Account?": "Â¿Ya tienes una cuenta?",
+        "Chat": "Chat",
+        "Dashboard": "Tablero",
+        "Don't have an account?": "Â¿No tienes una cuenta?",
+        "Donate": "Donar",
+        "Email": "Correo electrÃ³nico",
+        "Forgot Password?": "Â¿Olvidaste tu contraseÃ±a?",
+        "Let's Get Started! Create an account to login.": "Â¡Comencemos! Crea una cuenta para iniciar sesiÃ³n.",
+        "Log in": "Iniciar sesiÃ³n",
+        "Logout": "Cerrar sesiÃ³n",
+        "Manage News": "Gestionar noticias",
+        "Manage Pets": "Gestionar mascotas",
+        "Manage Users": "Gestionar usuarios",
+        "Mobile #": "NÃºmero de mÃ³vil",
+        "Modify Featured Image": "Modificar imagen destacada",
+        "Morning Session": "SesiÃ³n de la maÃ±ana",
+        "Name": "Nombre",
+        "Register": "Registro",
+        "Remember me": "RecuÃ©rdame",
+        "Sign up": "RegÃ­strate",
+        "Status": "Estado",
+        "Total Appointments": "Citas totales",
+        "Type": "Tipo",
+        "Visit": "Visitar",
+        "Volunteer": "Voluntariado",
+        "Welcome back, some of our furry friends are looking for their forever home!": "Â¡Bienvenido de nuevo, algunos de nuestros amigos peludos buscan su hogar para siempre!",
+        "login": "Iniciar sesiÃ³n"
     },
-    'fn':{ //filipino language   
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': 'Maligayang pagbabalik, ilan sa aming mga kaibigang may balahibo ang naghahanap ng kanilang pang-forever na tahanan!',
-        'login': 'Mag-login',
-        'Remember me': 'Tandaan mo ako',
-        'Forgot Password?': 'Nakalimutan ang password?',
+    "fn": {
+        "Add News": "Agregar noticias",
+        "Add Pets": "Agregar mascotas",
+        "Address": "Address",
+        "Adopt": "Mag-ampon",
+        "Already have an Account?": "Mayroon ka na bang account?",
+        "Chat": "Chat",
+        "Dashboard": "Tablero",
         "Don't have an account?": "Wala pang account?",
-        'Sign up': 'Mag-sign up',
-        //REGISTER PAGE
-        'Register': 'Magparehistro',
-        "Let's Get Started! Create an account to login.": 'Magsimula tayo! Gumawa ng account para makapag-login.',
-        'Already have an Account?': 'Mayroon ka na bang account?',
-        'Log in': 'Mag-login',
-
-
-        //ADMIN PAGE
-        'Logout': 'Cerrar sesión',
-        'Dashboard': 'Tablero',
-        'Add Pets': 'Agregar mascotas',
-        'Manage Pets': 'Gestionar mascotas',
-        'Modify Featured Image': 'Modificar imagen destacada',
-        'Manage Users': 'Gestionar usuarios',
-        'Add News': 'Agregar noticias',
-        'Manage News': 'Gestionar noticias',
-        'Chat': 'Chat',
-        'Total Appointments': 'Kabuuang mga Appointment',
-        'Adopt': 'Mag-ampon',
-        'Donate': 'Mag-donate',
-        'Visit': 'Bisitahin',
-        'Volunteer': 'Mag-volunteer',
-        'Morning Session': 'Umaga Session',
-        'Type': 'Uri',
-        'Name': 'Pangalan',
-        'Mobile #': 'Mobile #',
-        'Address': 'Address',
-        'Email': 'Email',
-        'Status': 'Katayuan',
-
-
-
-
-
-        // Add more translations as needed
+        "Donate": "Mag-donate",
+        "Email": "Email",
+        "Forgot Password?": "Nakalimutan ang password?",
+        "Let's Get Started! Create an account to login.": "Magsimula tayo! Gumawa ng account para makapag-login.",
+        "Log in": "Mag-login",
+        "Logout": "Cerrar sesiÃ³n",
+        "Manage News": "Gestionar noticias",
+        "Manage Pets": "Gestionar mascotas",
+        "Manage Users": "Gestionar usuarios",
+        "Mobile #": "Mobile #",
+        "Modify Featured Image": "Modificar imagen destacada",
+        "Morning Session": "Umaga Session",
+        "Name": "Pangalan",
+        "Register": "Magparehistro",
+        "Remember me": "Tandaan mo ako",
+        "Sign up": "Mag-sign up",
+        "Status": "Katayuan",
+        "Total Appointments": "Kabuuang mga Appointment",
+        "Type": "Uri",
+        "Visit": "Bisitahin",
+        "Volunteer": "Mag-volunteer",
+        "Welcome back, some of our furry friends are looking for their forever home!": "Maligayang pagbabalik, ilan sa aming mga kaibigang may balahibo ang naghahanap ng kanilang pang-forever na tahanan!",
+        "login": "Mag-login"
     }
 };
 
+//execute the function
+updateLanguage(getCurrentLanguage());
+eventForRadioLanguage();
+
 // Function to translate text
 function translateUsingJs(key) {
-    return translations[getCurrentLanguage()][key] || key;
+    const lang = getCurrentLanguage();
+    return translations[lang][key] || "123";
 }
+
 
 // Function to update language
 function updateLanguage(lang) {
     setCurrentLanguage(lang);
 
-    // Example: translate content on the page
+    // Translate content on the page
     const elementsToTranslate = document.querySelectorAll('[data-translate]');
     elementsToTranslate.forEach(function (element) {
         const translationKey = element.getAttribute('data-translate');
         element.textContent = translateUsingJs(translationKey);
     });
 }
+
 
 // Function to get current language from local storage
 function getCurrentLanguage() {
@@ -163,11 +135,38 @@ function setCurrentLanguage(lang) {
     localStorage.setItem('language', lang);
 }
 
+function eventForRadioLanguage(){
+    // Get all radio buttons with the name 'language'
+    let languageRadios = document.querySelectorAll('input[name="language"]');
+    // Get the label of the checkbox
+    let languageLabel = document.querySelector('.navbar .dropdown-btn');
+    // Get the checkbox
+    let languageCheckbox = document.querySelector('#languageDropdown');
 
-updateLanguage(getCurrentLanguage());
+    // Add event listener for each radio button
+    languageRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            if (this.checked) {
+                // Get the language from the data-language attribute
+                let selectedLang = this.dataset.language;
+                // Create a new span element
+                let span = document.createElement('span');
+                // Set the class of the span
+                span.className = 'material-symbols-outlined';
+                // Set the text content of the span
+                span.textContent = 'language';
+                // Clear the label's content
+                languageLabel.innerHTML = '';
+                // Append the span to the label
+                languageLabel.appendChild(span);
+                // Append the language to the label
+                languageLabel.appendChild(document.createTextNode(' ' + radio.getAttribute('id')));
+                // Update the language
+                updateLanguage(selectedLang);
+                // Uncheck the checkbox
+                languageCheckbox.checked = false;
+            }
+        });
+    });
+}
 
-// Change language on select change
-document.querySelector('#languageSelector').addEventListener('change', function () {
-    let selectedLang = this.value;
-    updateLanguage(selectedLang);
-});
