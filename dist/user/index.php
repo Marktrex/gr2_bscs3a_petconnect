@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetConnect Index</title>
     <link rel="stylesheet" href="../css/newlyAdded/landing-page-light.css" />
-    <link rel="stylesheet" href="../css/newlyAdded/slider.css" />
-    <link rel="stylesheet" href="../css/newlyAdded/footer.css" />
+    <link rel="stylesheet" href="../css/newlyAdded/slider.css" />  
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -100,67 +99,6 @@
       </div>
     </div>
 
-    <footer>
-      <!--src: footer.css-->
-      <div class="footer-content">
-        <div class="item logo">
-          <a href="#">
-            <img src="../icons/footer-logo.png" alt="logo" />
-          </a>
-          <br />
-          <div class="socmed">
-            <strong>Connect with us</strong>
-            <ul>
-              <li><a href="#" class="fa fa-facebook"></a></li>
-              <li><a href="#" class="fa fa-instagram"></a></li>
-              <li><a href="#" class="fa fa-twitter"></a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="item quick-links">
-          <strong>Quick Links</strong>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Adopt</a></li>
-            <li><a href="#">Volunteer</a></li>
-            <li><a href="#">Donate</a></li>
-          </ul>
-        </div>
-
-        <div class="item about">
-          <strong>About</strong>
-          <ul>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Address</a></li>
-            <li><a href="#">Testimonials</a></li>
-          </ul>
-        </div>
-
-        <div class="item Services">
-          <strong>Services</strong>
-          <ul>
-            <li><a href="#">Video Conference</a></li>
-            <li><a href="#">Online Booking</a></li>
-            <li><a href="#">Legal Documentation</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="info">
-        <div class="item content1">
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-          </ul>
-        </div>
-        <div class="item content2">
-          <p>© PetConnect 2023</p>
-        </div>
-      </div>
-    </footer>
-
-    <script src="../script/navbar-scroll-change.js"></script>
+    <?php require_once "../components/footer.html"?>
   </body>
 </html>
