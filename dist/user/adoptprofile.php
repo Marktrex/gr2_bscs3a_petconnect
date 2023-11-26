@@ -42,7 +42,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<div>
+<div class="not-petcontent">
     <img class="petimg" src="../upload/<?php echo $row['image']; ?>" alt="">
 </div>
 
@@ -50,7 +50,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     <img src="../upload/<?php echo $row['image']; ?>" class="petimg" alt="" />
     <div class="pettxt">
         <span class="petname"><?php echo $row['name']; ?></span>
-        <p class="animal"><?php echo $row['type']; ?></p>
+        <p class="animal">Animal: <?php echo $row['type']; ?></p>
         <div class="list">
             <span>Breed: <?php echo $row['breed']; ?></span>
             <span>Age: <?php echo $row['age']; ?></span>
