@@ -74,7 +74,7 @@ else
                             <label for="action"><span>Search Action</span></label>
                             <input type="text" id="action" class="action" name = "action" placeholder="Search Action"/>
                         </div>
-                        <button type = "submit" name="search" class = "searchButton">Sample</button>
+                        <button type = "submit" name="search" class = "searchButton">Search</button>
                     </form>
                 </div>
                 <section class="list-body">

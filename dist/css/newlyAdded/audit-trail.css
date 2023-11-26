@@ -201,3 +201,14 @@ td,th
     td:nth-of-type(6):before { content: "Date and Time"; }
 
 }
+
+
+.search form{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    & > * {
+        flex: 1;;
+    }
+}
