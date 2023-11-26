@@ -7,7 +7,7 @@
 .images{
     overflow: hidden;
     position: relative;
-    background-image: url(/src/icons/p1.jpg);
+    background-image: url(../../icons/p1.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,22 +16,22 @@
 
 @keyframes animate{
     0%{
-        background-image: url(/src/icons/p1.jpg);
+        background-image: url(../../icons/p1.jpg);
     }
     20%{
-        background-image: url(/src/icons/p2.jpg);
+        background-image: url(../../icons/p2.jpg);
     }
     40%{
-        background-image: url(/src/icons/p3.jpg);
+        background-image: url(../../icons/p3.jpg);
     }
     60%{
-        background-image: url(/src/icons/p4.jpg);
+        background-image: url(../../icons/p4.jpg);
     }
     80%{
-        background-image: url(/src/icons/p5.jpg);
+        background-image: url(../../icons/p5.jpg);
     }
     100%{
-        background-image: url(/src/icons/p1.jpg);
+        background-image: url(../../icons/p1.jpg);
     }
 }
 
