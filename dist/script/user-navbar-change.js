@@ -30,8 +30,13 @@ window.addEventListener("scroll", function () {
 });
 
 function changeHeaderColor(textColor) {
-  const header = document.querySelector(".navbar");
+  // Check if the viewport width exceeds 800px
+  if (window.innerWidth > 800) {
+    return; // Exit the function
+  }
 
+  const header = document.querySelector(".navbar");
+  
   let scrollPosition = window.scrollY;
 
   // Change the background color of the navbar based on the scroll position

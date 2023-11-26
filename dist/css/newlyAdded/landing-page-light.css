@@ -108,7 +108,6 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
-  margin-top: -50px;
 }
 
 .hero-section .content p {
@@ -205,15 +204,17 @@ header .navbar {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 3vw;
+  padding: 0 3vw;
 }
 
 .services .item{
   margin-top: 2.5rem;
-  width: 450px;
   min-height: 510px;
   text-align: center;
   background-color: #0e9594;
   border-radius: 12px;
+  flex: 1 0 320px;
 }
 
 .item img{
