@@ -2,8 +2,7 @@
 
 @font-face{
   font-family: 'dairantou';
-  src: url(/fonts/Dairantou.ttf);
-  src: url(/fonts/Lato.ttf);
+  src: url(../../fonts/Dairantou.ttf);
 }
 
 * {

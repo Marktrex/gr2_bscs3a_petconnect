@@ -15,7 +15,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PetConnet Volunteer</title>
-  <link rel="stylesheet" href="../css//newlyAdded/volunteer-page.css">
+  <link rel="stylesheet" href="../css/newlyAdded/volunteer-page.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -52,7 +52,7 @@ $loggedIn = isset($_SESSION['auth_user']);
 <!-- Content --> 
   <div class="about-container">
     <div class="volunteer-container">
-      <img class="custom-image" src="icons/picture2-volunteer.png" alt="picture2">
+      <img class="custom-image" src="../icons/picture2-volunteer.png" alt="picture2">
     </div>
     <div class="text-container">
       <div class="volunteer-title">Benefits</div>
@@ -78,7 +78,7 @@ $loggedIn = isset($_SESSION['auth_user']);
       <p class="custom2-paragraph-1">Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.</p>
     </div>
       <div class="volunteer-container-1">
-        <img class="custom-image-1" src="icons/picture3-volunteer.png" alt="picture2">
+        <img class="custom-image-1" src="../icons/picture3-volunteer.png" alt="picture2">
       </div>
   </div>
 
@@ -90,5 +90,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     <input type="text" class="applynow-input" placeholder="Enter your Email">
   </div>
 </div>
+
+<?php require_once "../components/footer.html"?>
 </body>
 </html>
