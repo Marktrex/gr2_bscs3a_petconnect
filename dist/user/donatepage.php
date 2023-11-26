@@ -94,8 +94,8 @@ if (!isset($_SESSION['auth_user'])) {
             <img src="" alt="" />
           </div>
           <div class="text-under-logo1">
-            <p>Account Number: 1234-678-91011</p>
-            <p>Account Name: PetConnect</p>
+            <p>Account Number: 09293883802</p>
+            <p>Account Name: MarcMarc</p>
           </div>
         </div>
       </div>

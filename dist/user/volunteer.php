@@ -13,7 +13,7 @@ if (!isset($_SESSION['auth_user'])) {
   echo '</script>';
   header("Location: ../loginpage.php");
   exit();
-} ?>
+} 
 
 $loggedIn = isset($_SESSION['auth_user']);
 ?>
