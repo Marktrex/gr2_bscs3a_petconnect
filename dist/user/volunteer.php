@@ -109,27 +109,31 @@ $loggedIn = isset($_SESSION['auth_user']);
       <img class="custom-image" src="../icons/picture2-volunteer.png" alt="picture2">
     </div>
     <div class="text-container">
-      <div class="volunteer-title">Benefits</div>
-      <p class="custom1-paragraph">Animal Welfare</p>
-      <p class="custom2-paragraph">Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.</p>
-      <p class="custom1-paragraph">Professional and Skill Development</p>
-      <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enchance a variety of skills. Helps build a network of contracts, and may open doors to future employment opportunities.</p>
-      <p class="custom1-paragraph">Personal Fulfillment</p>
-      <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a diffrence in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
+      <div class="text-width">
+        <div class="volunteer-title">Benefits</div>
+        <p class="custom1-paragraph">Animal Welfare</p>
+        <p class="custom2-paragraph">Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.</p>
+        <p class="custom1-paragraph">Professional and Skill Development</p>
+        <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enchance a variety of skills. Helps build a network of contracts, and may open doors to future employment opportunities.</p>
+        <p class="custom1-paragraph">Personal Fulfillment</p>
+        <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a diffrence in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
+      </div>
     </div>
   </div>
 
   <div class="about-container-1">
     <div class="text-container-1">
-      <div class="volunteer-title-1">Requirements</div>
-      <p class="custom1-paragraph-1">Age Limit</p>
-      <p class="custom2-paragraph-1">Requires volunteers to be a certain age, often 15 or older.</p>
-      <p class="custom1-paragraph-1">Time Commitment</p>
-      <p class="custom2-paragraph-1">PetConnect has a specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.</p>
-      <p class="custom1-paragraph-1">Passion for Animals</p>
-      <p class="custom2-paragraph-1">A passion for helping animals and creating a positive environment is often a key requirements.</p>
-      <p class="custom1-paragraph-1">Responsible Behavior</p>
-      <p class="custom2-paragraph-1">Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.</p>
+      <div class="text-width">
+        <div class="volunteer-title-1">Requirements</div>
+        <p class="custom1-paragraph-1">Age Limit</p>
+        <p class="custom2-paragraph-1">Requires volunteers to be a certain age, often 15 or older.</p>
+        <p class="custom1-paragraph-1">Time Commitment</p>
+        <p class="custom2-paragraph-1">PetConnect has a specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.</p>
+        <p class="custom1-paragraph-1">Passion for Animals</p>
+        <p class="custom2-paragraph-1">A passion for helping animals and creating a positive environment is often a key requirements.</p>
+        <p class="custom1-paragraph-1">Responsible Behavior</p>
+        <p class="custom2-paragraph-1">Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.</p>
+      </div>
     </div>
       <div class="volunteer-container-1">
         <img class="custom-image-1" src="../icons/picture3-volunteer.png" alt="picture2">

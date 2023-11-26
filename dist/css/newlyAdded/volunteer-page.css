@@ -292,6 +292,11 @@ h1 {
   flex: 1;
   padding: 20px;
   margin-bottom: 3.5rem;
+  margin: 0 auto;
+  .text-width{
+    width: 85%;
+    margin: auto;
+  }
 }
 
 .volunteer-container {
@@ -305,8 +310,8 @@ h1 {
 }
 
 .custom-image {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: block;
 }
 .volunteer-title {
@@ -337,6 +342,10 @@ p {
 .text-container-1 {
   flex: 1;
   margin-bottom: 3.5rem;
+  .text-width{
+    width: 85%;
+    margin: auto;
+  }
 }
 .volunteer-container-1 {
   flex: 1;
@@ -350,8 +359,8 @@ p {
   color: #f5dfbb;
 }
 .custom-image-1 {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: block;
 }
 .volunteer-title-1 {
@@ -494,6 +503,7 @@ p {
 
   .text-container-1 {
     order: 2;
+    
   }
   /*--apply now--*/
   .applynow-input {
