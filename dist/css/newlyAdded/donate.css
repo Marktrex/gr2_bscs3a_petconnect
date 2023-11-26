@@ -400,7 +400,7 @@ header .navbar {
   /* content*/
 }
 .container {
-  height: clamp(400px, 80vh, 600px);
+  min-height: 80vh;
   padding: 20px;
   margin-bottom: 5px;
   background-image: url(../../icons/picture-donate.png);
@@ -445,13 +445,12 @@ header .navbar {
 }
 .content-box > div {
   height: 80%;
-  flex: 1 0 30%;
+  flex: 1 0 250px;
 }
 
 /* icons/image to be put on the floating div */
 .content-box > div > img /*change as you see fit */ {
   aspect-ratio: 1/1;
-  width: clamp(100px, 100%, 180px);
 }
 
 .logo3 {
@@ -580,9 +579,23 @@ header .navbar {
 
 @media only screen and (max-width: 900px) {
   .container8 {
+    width: 90%;
+    margin: 10vh auto;
     .description {
       margin-bottom: 1.5rem;
-      justify-content: center;
+      justify-content: center; 
     }
+  }
+  .container5{
+    width: 90%;
+    margin: 10vh auto;
+    .content-box{
+      width: 100%;
+    }
+  }
+
+  .container6 {
+    width: 90%;
+    margin: 10vh auto;
   }
 }
