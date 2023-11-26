@@ -1,173 +1,92 @@
-// Translation maps
-const translations = {
-    'en': { //english language
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': 'Welcome back, some of our furry friends are looking for their forever home!',
-        'login': 'Login',
-        'Remember me': 'Remember me',
-        'Forgot Password?': 'Forgot Password?',
-        "Don't have an account?": "Don't have an account?",
-        'Sign up': 'Sign up',
-        //REGISTER PAGE
-        'Register': 'Register',
-        "Let's Get Started! Create an account to login.": "Let's Get Started! Create an account to login.",
-        'Already have an Account?': 'Already have an Account?',
-        'Log in': 'Log in',
-        //ADMIN PAGE
-        'Logout': 'Logout',
-        'Dashboard': 'Dashboard',
-        'Add Pets': 'Add Pets',
-        'Manage Pets': 'Manage Pets',
-        'Modify Featured Image': 'Modify Featured Image',
-        'Manage Users': 'Manage Users',
-        'Add News': 'Add News',
-        'Manage News': 'Manage News',
-        'Chat': 'Chat',
-        'Total Appointments': 'Total Appointments',
-        'Adopt': 'Adopt',
-        'Donate': 'Donate',
-        'Visit': 'Visit',
-        'Volunteer': 'Volunteer',
-        'Morning Session': 'Morning Session',
-        'Type': 'Type',
-        'Name': 'Name',
-        'Mobile #': 'Mobile #',
-        'Address': 'Address',
-        'Email': 'Email',
-        'Status': 'Status',
-
-
-        // Add more translations as needed
-    },
-    'es': { // spanish language
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': '¡Bienvenido de nuevo, algunos de nuestros amigos peludos buscan su hogar para siempre!',
-        'login': 'Iniciar sesión',
-        'Remember me': 'Recuérdame',
-        'Forgot Password?': '¿Olvidaste tu contraseña?',
-        "Don't have an account?": "¿No tienes una cuenta?",
-        'Sign up': 'Regístrate',
-        //REGISTER PAGE
-        'Register': 'Registro',
-        "Let's Get Started! Create an account to login.": "¡Comencemos! Crea una cuenta para iniciar sesión.",
-        'Already have an Account?': '¿Ya tienes una cuenta?',
-        'Log in': 'Iniciar sesión',
-
-        //ADMIN PAGE
-        'Logout': 'Cerrar sesión',
-        'Dashboard': 'Tablero',
-        'Add Pets': 'Agregar mascotas',
-        'Manage Pets': 'Gestionar mascotas',
-        'Modify Featured Image': 'Modificar imagen destacada',
-        'Manage Users': 'Gestionar usuarios',
-        'Add News': 'Agregar noticias',
-        'Manage News': 'Gestionar noticias',
-        'Chat': 'Chat',
-        'Total Appointments': 'Citas totales',
-        'Adopt': 'Adoptar',
-        'Donate': 'Donar',
-        'Visit': 'Visitar',
-        'Volunteer': 'Voluntariado',
-        'Morning Session': 'Sesión de la mañana',
-        'Type': 'Tipo',
-        'Name': 'Nombre',
-        'Mobile #': 'Número de móvil',
-        'Address': 'Dirección',
-        'Email': 'Correo electrónico',
-        'Status': 'Estado',
-
-
-
-
-        // Add more translations as needed
-    },
-    'fn':{ //filipino language   
-        '':'',
-        'hello': 'hello',
-        'welcome': 'welcome',
-        //LOGIN PAGE
-        'Welcome back, some of our furry friends are looking for their forever home!': 'Maligayang pagbabalik, ilan sa aming mga kaibigang may balahibo ang naghahanap ng kanilang pang-forever na tahanan!',
-        'login': 'Mag-login',
-        'Remember me': 'Tandaan mo ako',
-        'Forgot Password?': 'Nakalimutan ang password?',
-        "Don't have an account?": "Wala pang account?",
-        'Sign up': 'Mag-sign up',
-        //REGISTER PAGE
-        'Register': 'Magparehistro',
-        "Let's Get Started! Create an account to login.": 'Magsimula tayo! Gumawa ng account para makapag-login.',
-        'Already have an Account?': 'Mayroon ka na bang account?',
-        'Log in': 'Mag-login',
-
-
-        //ADMIN PAGE
-        'Logout': 'Cerrar sesión',
-        'Dashboard': 'Tablero',
-        'Add Pets': 'Agregar mascotas',
-        'Manage Pets': 'Gestionar mascotas',
-        'Modify Featured Image': 'Modificar imagen destacada',
-        'Manage Users': 'Gestionar usuarios',
-        'Add News': 'Agregar noticias',
-        'Manage News': 'Gestionar noticias',
-        'Chat': 'Chat',
-        'Total Appointments': 'Kabuuang mga Appointment',
-        'Adopt': 'Mag-ampon',
-        'Donate': 'Mag-donate',
-        'Visit': 'Bisitahin',
-        'Volunteer': 'Mag-volunteer',
-        'Morning Session': 'Umaga Session',
-        'Type': 'Uri',
-        'Name': 'Pangalan',
-        'Mobile #': 'Mobile #',
-        'Address': 'Address',
-        'Email': 'Email',
-        'Status': 'Katayuan',
-
-
-
-
-
-        // Add more translations as needed
-    }
-};
+import { translations } from "../script/compilationOfTranslate.js";
+//execute the function
+updateLanguage(getCurrentLanguage());
+eventForRadioLanguage();
 
 // Function to translate text
 function translateUsingJs(key) {
-    return translations[getCurrentLanguage()][key] || key;
+  const lang = getCurrentLanguage();
+  return translations[lang][key] || key;
 }
 
 // Function to update language
 function updateLanguage(lang) {
-    setCurrentLanguage(lang);
+    
+  setCurrentLanguage(lang);
 
-    // Example: translate content on the page
-    const elementsToTranslate = document.querySelectorAll('[data-translate]');
-    elementsToTranslate.forEach(function (element) {
-        const translationKey = element.getAttribute('data-translate');
-        element.textContent = translateUsingJs(translationKey);
-    });
+  //update the language dropdown
+  // Get the label of the checkbox
+  let languageLabel = document.querySelector(".navbar .dropdown-btn");
+  let span = document.createElement("span");
+  span.className = "material-symbols-outlined";
+  span.textContent = "language";
+  languageLabel.innerHTML = "";
+  languageLabel.appendChild(span);
+  let chosen;
+  switch (lang) {
+    case "en":
+      chosen = "English";
+      break;
+    case "es":
+      chosen = "Spanish";
+      break;
+    case "fn":
+      chosen = "Filipino";
+      break;
+    default:
+      break;
+  }
+  languageLabel.appendChild(document.createTextNode(" " + chosen));
+  
+
+  // Translate content on the page
+  const elementsToTranslate = document.querySelectorAll("*");
+  
+  elementsToTranslate.forEach(function (element) {
+    // Iterate over child nodes
+    for (let i = 0; i < element.childNodes.length; i++) {
+      const childNode = element.childNodes[i];
+
+      // Check if the current child node is a direct text node
+      if (
+        childNode.nodeType === Node.TEXT_NODE
+      ) {
+        // If it is a direct text node, translate the text
+        childNode.nodeValue = translateUsingJs(childNode.nodeValue.trim());
+      }
+    }
+  });
 }
 
 // Function to get current language from local storage
 function getCurrentLanguage() {
-    return localStorage.getItem('language') || 'en';
+  return localStorage.getItem("language") || "en";
 }
 
 // Function to set current language in local storage
 function setCurrentLanguage(lang) {
-    localStorage.setItem('language', lang);
+  localStorage.setItem("language", lang);
 }
 
+function eventForRadioLanguage() {
+  // Get all radio buttons with the name 'language'
+  let languageRadios = document.querySelectorAll('input[name="language"]');
 
-updateLanguage(getCurrentLanguage());
+  // Get the checkbox
+  let languageCheckbox = document.querySelector("#languageDropdown");
 
-// Change language on select change
-document.querySelector('#languageSelector').addEventListener('change', function () {
-    let selectedLang = this.value;
-    updateLanguage(selectedLang);
-});
+  // Add event listener for each radio button
+  languageRadios.forEach(function (radio) {
+    radio.addEventListener("change", function () {
+      if (this.checked) { 
+        // Get the language from the data-language attribute
+        let selectedLang = this.dataset.language;
+        // Update the language
+        updateLanguage(selectedLang);
+        // Uncheck the checkbox
+        languageCheckbox.checked = false;
+        location.reload();
+      }
+    });
+  });
+}

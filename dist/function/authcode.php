@@ -35,7 +35,7 @@ if (isset($_POST["register"])) { //code ni marc
         echo "Data does not exist.";
         if ($password == $passwordRepeat) {
             // Passwords match, proceed with insertion
-        
+            $password = password_hash($password, PASSWORD_DEFAULT);
             // Set the common user_type for both queries
             $user_status = 'Enable';
             $user_type = '2';
@@ -64,7 +64,7 @@ if (isset($_POST["register"])) { //code ni marc
                 $log->activity_log($lastId, 'Register', 'Created a new user account');
                 echo '<script language="javascript">';
                 echo 'alert("Sign up successfully");';
-                echo 'window.location = "../user/home.php";';
+                echo 'window.location = "../loginpage.php";';
                 echo '</script>';
             } catch (PDOException $e) {
                 // If any query fails, roll back the transaction
@@ -87,19 +87,16 @@ else if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
     // loging in
-    $sql_check = "SELECT * FROM user WHERE email = :email AND password = :password";
+    $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);
     // binding the parameters
     $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':password', $password);
     //execute the query
     $stmt->execute();
-    // $rowCount = $stmt->rowCount();
+    $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-    if ($stmt->rowCount() == 1) { //account exists
+    if ($stmt->rowCount() == 1 && password_verify($password, $userdata['password'])) { //account exists
        // Retrieve the data and put it in the variable $userdata so that it can save the information
-        $userdata = $stmt->fetch(PDO::FETCH_ASSOC);
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
         

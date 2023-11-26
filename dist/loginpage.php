@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+    session_start();
+    //check if user is already logged redirect to user/home.php if yes
+    if(isset($_SESSION['auth_user'])){
+        header("Location: user/home.php");
+        exit();
+    }
+?>
 <head>
     <link rel="icon" href="image/icon.png" type="image/png">
     <meta charset="UTF-8">
