@@ -41,17 +41,32 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
       </div>
     </li>
     <?php
-      if(session_status() == PHP_SESSION_NONE){
-        // session has not started
-        session_start();
-      }
-      if (isset($_SESSION['auth']) && $_SESSION['auth']) {
+    if(session_status() == PHP_SESSION_NONE){
+      // session has not started
+      session_start();
+    }
+    if (isset($_SESSION['auth']) && $_SESSION['auth']) {
     ?>
-    <!-- put option here -->
+    <li class="profile-item">
+      <div class="dropdown">
+        <label for="profileDropdown" class="dropdown-btn">
+          <img class="icon-user" src="../icons/icons-user.png" alt="User Icon">
+        </label>
+        <input type="checkbox" id="profileDropdown" />
+        <div class="dropdown-content">
+          <label>
+            <a href="#">Profile</a>
+          </label>
+          <label>
+            <a href="../function/logout.php">Logout</a>
+          </label>
+        </div>
+      </div>
+    </li>
     <?php
       } else {
     ?>
-      <li class="join-btn"><a href="../loginpage.php">Join Us</a></li>
+        <li class="join-btn"><a href="../loginpage.php">Join Us</a></li>
     <?php
       }
     ?>

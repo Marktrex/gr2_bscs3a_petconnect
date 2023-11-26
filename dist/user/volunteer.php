@@ -21,6 +21,7 @@ $loggedIn = isset($_SESSION['auth_user']);
 </head>
 
 <body>
+  <!-- sobrang diff ng navbar dito dahil sa assigning of classes; d ko na sineperate -->
   <header>
     <nav class="navbar">
       <a href="#" class="logo">
@@ -28,18 +29,63 @@ $loggedIn = isset($_SESSION['auth_user']);
       </a>
 
       <ul class="menu-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Adopt</a></li>
-        <li><a href="#">Donate</a></li>
-        <li><a href="#" active = "true">Volunteer</a></li><li class="language-item">
-          <a href="#">
-            <span class="material-symbols-outlined">language</span>
-            English
-          </a>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="adoptpage.php">Adopt</a></li>
+        <li><a href="donatepage.php">Donate</a></li>
+        <li><a href="volunteer.php" active = "true">Volunteer</a></li>
+        <li class="language-item">
+          <div class="dropdown">
+            <label for="languageDropdown" class="dropdown-btn">
+              <span class="material-symbols-outlined">language</span>
+              English
+            </label>
+            <input type="checkbox" id="languageDropdown" />
+            <div class="dropdown-content">
+              <label for="English">
+                English
+                <input type="radio" name="language" id="English" data-language="en">
+              </label>
+              <label for="Spanish">
+                Spanish
+                <input type="radio" name="language" id="Spanish" data-language="es">
+              </label>
+              <label for="Filipino">
+                Filipino
+                <input type="radio" name="language" id="Filipino" data-language="fn">
+              </label>
+            </div>
+          </div>
         </li>
-          <a href="#">
-            <img class="icon-user" src="../icons/icons-user.png" alt="User Icon">
-          </a>
+        <?php
+            if(session_status() == PHP_SESSION_NONE){
+              // session has not started
+              session_start();
+            }
+            if (isset($_SESSION['auth']) && $_SESSION['auth']) {
+            ?>
+            <li class="profile-item">
+              <div class="dropdown">
+                <label for="profileDropdown" class="dropdown-btn">
+                  <img class="icon-user" src="../icons/icons-user.png" alt="User Icon">
+                </label>
+                <input type="checkbox" id="profileDropdown" />
+                <div class="dropdown-content">
+                  <label>
+                    <a href="#">Profile</a>
+                  </label>
+                  <label>
+                    <a href="../function/logout.php">Logout</a>
+                  </label>
+                </div>
+              </div>
+            </li>
+            <?php
+              } else {
+            ?>
+               <li class="join-btn"><a href="../loginpage.php">Join Us</a></li>
+            <?php
+              }
+            ?>
         <span id="close-menu-btn" class="material-symbols-outlined">close</span>
       </ul>
       <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
@@ -92,5 +138,7 @@ $loggedIn = isset($_SESSION['auth_user']);
 </div>
 
 <?php require_once "../components/footer.html"?>
+<script src="..\script\user-navbar-change.js"></script>
+<script type="module" src="..\script\translation.js"></script>
 </body>
 </html>
