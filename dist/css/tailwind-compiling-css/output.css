@@ -568,6 +568,22 @@ video {
   }
 }
 
+.visible {
+  visibility: visible;
+}
+
+.collapse {
+  visibility: collapse;
+}
+
+.static {
+  position: static;
+}
+
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -593,6 +609,10 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -609,8 +629,16 @@ video {
   margin-top: 1rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .block {
   display: block;
+}
+
+.inline {
+  display: inline;
 }
 
 .flex {
@@ -619,6 +647,10 @@ video {
 
 .table {
   display: table;
+}
+
+.contents {
+  display: contents;
 }
 
 .hidden {
@@ -650,12 +682,16 @@ video {
   width: 100vw;
 }
 
-.flex-1 {
-  flex: 1 1 0%;
+.w-\[150px\] {
+  width: 150px;
 }
 
-.grow {
-  flex-grow: 1;
+.w-\[100px\] {
+  width: 100px;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
 }
 
 .transform {
@@ -672,8 +708,16 @@ video {
           user-select: none;
 }
 
+.resize {
+  resize: both;
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -704,6 +748,10 @@ video {
   border-radius: 0px;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;
@@ -714,8 +762,17 @@ video {
   padding-bottom: 4rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .ps-8 {
   padding-inline-start: 2rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-center {
@@ -731,8 +788,21 @@ video {
   font-weight: 700;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
 .underline-offset-2 {
   text-underline-offset: 2px;
+}
+
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .filter {
@@ -750,7 +820,7 @@ video {
 :root
     {
   --background-text-color: #f5dfbb;
-  --navbar-color: #fdf7ec;
+  --navbar-color: transparent;
   --frame-shadow: brown;
   --frame-color: #f2542d;
   --text-color: #f5dfbb;

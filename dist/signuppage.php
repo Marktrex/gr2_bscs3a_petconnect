@@ -27,12 +27,12 @@ if(isset($_SESSION['auth_user'])){
 <body class="h-screen w-screen
             custom-background-color">
 
-    <div class = "h-[5rem] flex justify-start items-center ps-8 custom-navbar-color">
+    <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
         <a href="#">
-            <img src="image/logo.png" alt="icon" class="w-[75px]" id = "logIcon">
+            <img src="image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
         </a>
     </div>
-    <div class = "flex items-center justify-center mt-10">
+    <div class = "flex items-center justify-center mt-10 mb-10">
         <div class="flex gap-12
             min-h-fit w-full
             md:w-3/4

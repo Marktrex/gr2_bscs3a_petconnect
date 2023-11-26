@@ -8,7 +8,7 @@
     :root
     {
         --background-text-color: #f5dfbb;
-        --navbar-color: #fdf7ec;
+        --navbar-color: transparent;
         --frame-shadow: brown;
         --frame-color: #f2542d;
         --text-color: #f5dfbb;
