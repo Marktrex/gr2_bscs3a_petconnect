@@ -102,17 +102,20 @@ if (!isset($_SESSION['auth_user'])) {
 
       <div class="container8">
         <h3><p class="description1">For Other Options</p></h3>
-
-        <p class="description2">
-          Contact us via Gmail: &nbsp; PetConnect@gmail.com
-        </p>
-        <p class="description3">
-          Contact us via Phone Number:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;09123456789
-        </p>
-        <p class="description4">
-          Contact us via
-          Viber:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09123456789
-        </p>
+        <div class="description">
+          <span>Contact us via Gmail:</span><span> PetConnect@gmail.com</span>
+        </div>
+        <div class="description">
+          
+          Contact us via Phone Number:<span>09123456789</span>
+        </div>
+        <div class="description">
+          
+          <span>
+            Contact us via
+            Viber:
+          </span><span>09123456789</span>
+        </div>
       </div>
     </main>
     <?php require_once "../components/footer.html"?>

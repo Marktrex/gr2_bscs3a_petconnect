@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 
-@font-face{
-  font-family: 'dairantou';
+@font-face {
+  font-family: "dairantou";
   src: url(../../fonts/Dairantou.ttf);
 }
 
@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 body {
@@ -35,10 +35,9 @@ header .navbar {
   justify-content: space-between;
 }
 
-
-.logo img{
-    width: 130px;
-    image-resolution: 300px;
+.logo img {
+  width: 130px;
+  image-resolution: 300px;
 }
 
 .navbar .menu-links {
@@ -99,7 +98,7 @@ header .navbar {
   margin-top: 50px;
 }
 
-.hero-section .photodecor img{
+.hero-section .photodecor img {
   height: 87vh;
   margin-top: -20px;
   margin-right: 120px;
@@ -107,7 +106,7 @@ header .navbar {
 
 .hero-section .content h1 {
   color: #0e9594;
-  font-family: 'dairantou';
+  font-family: "dairantou";
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
@@ -123,17 +122,17 @@ header .navbar {
   margin-left: 20vh;
 }
 
-.hero-section .register-button{
+.hero-section .register-button {
   margin-top: 25px;
   margin-left: 20vh;
-} 
+}
 
-.register-button{
+.register-button {
   border-radius: 30px;
   background-color: #f2542d;
   border: none;
   box-shadow: -2px 5px 0px #7a1d05;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 28px;
   padding: 10px;
   padding-bottom: 15px;
@@ -143,7 +142,7 @@ header .navbar {
   justify-content: center;
 }
 
-.register-button span{
+.register-button span {
   font-size: 22px;
   cursor: pointer;
   display: inline;
@@ -151,8 +150,8 @@ header .navbar {
   transition: 0.3s;
 }
 
-.register-button span:after{
-  content: '\00bb';
+.register-button span:after {
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   top: 0;
@@ -210,25 +209,23 @@ header .navbar {
   font-size: 1.7rem;
 }
 
-
 /*--------------------------------------------------------------------------------------------*/
 
-
-.container1 h1{
-  font-family: 'dairantou';
+.container1 h1 {
+  font-family: "dairantou";
   color: #ff653e;
   font-size: 55px;
   text-align: center;
   padding-top: 45px;
 }
 
-.services{
+.services {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.services .item{
+.services .item {
   margin-top: 2.5rem;
   width: 350px;
   height: 510px;
@@ -237,7 +234,7 @@ header .navbar {
   border-radius: 12px;
 }
 
-.services .item:hover{
+.services .item:hover {
   margin-top: 2rem;
   transition: 0.3s;
   box-shadow: -10px 10px 0px #127475;
@@ -245,7 +242,7 @@ header .navbar {
 
 /*--------------------------------------------------------------------------------------------*/
 
-.container2{
+.container2 {
   display: flex;
   padding: 0;
   height: 935px;
@@ -253,13 +250,13 @@ header .navbar {
   background: #ff653e;
 }
 
-.container2 .item{
+.container2 .item {
   width: 950px;
   height: auto;
 }
 
-.container2 h1{
-  font-family: 'dairantou';
+.container2 h1 {
+  font-family: "dairantou";
   color: #ffb845;
   font-size: 75px;
   text-align: left;
@@ -267,7 +264,7 @@ header .navbar {
   margin-left: 150px;
 }
 
-.container2 p{
+.container2 p {
   color: wheat;
   font-size: 24px;
   max-width: 630px;
@@ -277,51 +274,50 @@ header .navbar {
   text-align: justify;
 }
 
-
 /*--------------------------------------------------------------------------------------------*/
-.container3{
+.container3 {
   width: 90%;
   height: 730px;
   margin-top: 135px;
   margin-left: 90px;
 }
 
-.container3 h1{
+.container3 h1 {
   text-align: center;
-  font-family: 'dairantou';
+  font-family: "dairantou";
   color: #0e9594;
   font-size: 55px;
 }
 
-.testimonials{
+.testimonials {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 50px;
 }
 
-.testimonials .item{
+.testimonials .item {
   background: #f5dfbb;
   height: 350px;
   width: 800px;
   border-radius: 26px;
-  box-shadow: 0px 3px 10px rgb(110, 109, 109)
+  box-shadow: 0px 3px 10px rgb(110, 109, 109);
 }
 
-.testimonials .item:hover{
+.testimonials .item:hover {
   background: #d3c3a9;
-  transition:  0.2s ease;
+  transition: 0.2s ease;
 }
 
 /*--- Customize Scrollbar ---*/
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 10px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   background-color: #fdf7ec;
 }
-::-webkit-scrollbar-thumb{
-  background: linear-gradient(#ffb845,#0e9594);
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ffb845, #0e9594);
   border-radius: 20px;
 }
 
@@ -366,8 +362,7 @@ header .navbar {
 
   .navbar .menu-links .join-btn a {
     padding: 0;
-    background-color: #FFFFFF;
-    
+    background-color: #ffffff;
   }
 
   .navbar .menu-links .join-btn a:hover {
@@ -402,35 +397,33 @@ header .navbar {
     margin-left: 10vh;
   }
 
-/* content*/
-
+  /* content*/
 }
-.container{
-  height: clamp(400px, 80vh ,600px);
+.container {
+  height: clamp(400px, 80vh, 600px);
   padding: 20px;
   margin-bottom: 5px;
   background-image: url(../../icons/picture-donate.png);
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.text1{
+.text1 {
   color: white;
-  font-size:50px;
-  font-family:'dairantou';
+  font-size: 50px;
+  font-family: "dairantou";
 }
-.text2{
+.text2 {
   color: white;
-  font-size:25px;
-  font-family:'lato';
+  font-size: 25px;
+  font-family: "lato";
 }
-
 
 /*content boxes*/
-.container5{
+.container5 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -441,7 +434,7 @@ header .navbar {
 .content-box {
   flex-wrap: wrap;
   padding: 3rem 2rem;
-  background-color: #F5DFBB;
+  background-color: #f5dfbb;
   border-radius: 30px;
   display: flex;
   text-align: center;
@@ -450,91 +443,85 @@ header .navbar {
   width: 70%;
   height: auto;
 }
-.content-box > div
-{
+.content-box > div {
   height: 80%;
   flex: 1 0 30%;
 }
 
 /* icons/image to be put on the floating div */
-.content-box > div > img /*change as you see fit */
-{
+.content-box > div > img /*change as you see fit */ {
   aspect-ratio: 1/1;
-  width: clamp(100px,100%, 180px);
+  width: clamp(100px, 100%, 180px);
 }
 
-.logo3{
-  max-width:110%;
+.logo3 {
+  max-width: 110%;
   height: 15%;
-  margin-bottom:5px;
-
+  margin-bottom: 5px;
 }
-.logo4{
-  max-width:10%;
+.logo4 {
+  max-width: 10%;
   height: 5%;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.logo5{
-  max-width:50%;
+.logo5 {
+  max-width: 50%;
   height: 10%;
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
-.logo-with-text{
+.logo-with-text {
   text-align: center;
   width: 200px;
-  color:#0e9594;
-  font-family:'lato';
+  color: #0e9594;
+  font-family: "lato";
 }
 
-
-.logo-with-text p{
-margin-top: 5px;
-width:200px;
-letter-spacing: 1px;
-max-height: 100px;
-overflow: hidden;
-word-wrap: break-word;
+.logo-with-text p {
+  margin-top: 5px;
+  width: 200px;
+  letter-spacing: 1px;
+  max-height: 100px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
-
-
-
-
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.container6{
+.container6 {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
   height: auto;
-  margin-top: 2rem;
+  width: 60%;
+  margin: 10vh auto;
 }
 
 .flexbox1 {
+  flex: 1 0 250px;
   display: flex;
   flex-direction: column;
   align-items: center; /* Align items to the left within the flex container */
   justify-content: space-between;
-  background-color: #f2542d ;
+  background-color: #f2542d;
   padding: 20px;
   border-radius: 30px;
   height: clamp(450px, 60vh, 600px);
 }
 
-.text-center1{
+.text-center1 {
   text-align: center;
-  font-family: 'dairantou';
-  color:#fff6e0;
+  font-family: "dairantou";
+  color: #fff6e0;
 }
 
-.logo6{
+.logo6 {
   text-align: center; /* Center the logo */
   margin-bottom: 10px; /* Adjust spacing between logo and text */
 }
@@ -542,33 +529,45 @@ box-sizing: border-box;
 .text-under-logo1 {
   text-align: center;
   margin-bottom: 20px;
-  font-family:'lato' ;
+  font-family: "lato";
   font-size: 16px;
   color: #fff6e8;
 }
 
-.container7{
+.container7 {
   display: flex;
-  justify-content:flex start; /* Align flex items to the left */
+  justify-content: flex start; /* Align flex items to the left */
   align-items: center; /* Center items vertically */
   height: 25vh;
- 
 }
 
-.logo8{
+.logo8 {
   text-align: center; /* Center the logo */
   margin-bottom: 15px; /* Adjust spacing between logo and text */
 }
 
-.container{
+.container {
   text-align: center;
 }
 
-.container8
-{
-  & > *
-  {
+.container8 {
+  background-color: #f2542d;
+  margin: 10vh auto;
+  width: 60%;
+  border-radius: 30px;
+  padding: 5vw;
+  font-size: 25px;
+  text-align: center;
+  color: #fff6e0;
+  font-family: "lato";
+
+  & > * {
     margin-bottom: 5px;
+  }
+  .description {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 
@@ -576,27 +575,14 @@ box-sizing: border-box;
   font-size: 40px;
   text-align: center;
   color: #fff6e0;
-  font-family: 'dairantou';
+  font-family: "dairantou";
 }
 
-.description2 {
-  font-size: 25px;
-  text-align: center;
-  color: #fff6e0;
-  font-family: 'lato';
+@media only screen and (max-width: 900px) {
+  .container8 {
+    .description {
+      margin-bottom: 1.5rem;
+      justify-content: center;
+    }
+  }
 }
-
-.description3 {
-  font-size: 25px;
-  text-align: center;
-  color: #fff6e0;
-  font-family: 'lato';
-}
-
-.description4 {
-  font-size: 25px;
-  text-align: center;
-  color: #fff6e0;
-  font-family: 'lato';
-}
-
