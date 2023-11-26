@@ -56,7 +56,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <title>Admin Dashboard</title>
     
     <!-- content style position -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css?v=2" />
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css" />
 
     <!-- for layout color -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
@@ -100,24 +100,62 @@ $countVolunteer = $rowVolunteer['volunteer'];
         </header>
         <main class="content">
             <div class="cards">
-                <div class="card">
-                    <i class="fa fa-calendar fa-5x"></i>
+                <!--Calendar-->
+                <div class="card-date">
                     <div class="box">
-                        <h1>APPOINTMENTS</h1>
+                    <div class="calendar-container"></div>
                     </div>
                 </div>
+                <!--Appointments-->
+                <div class="card">
+                <i class="fa fa-calendar fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        100
+                    </div>
+                    <h1>APPOINTMENTS</h1>
+                </div>
+                </div>
+                <!--Adopt-->
                 <div class="card">
                 <i class="fa fa-paw fa-5x"></i>
-                    <div class="box">
-                        <h1>ADOPT</h1>
+                <div class="box">
+                    <div class="card-number">
+                        99
                     </div>
+                    <h1>ADOPT</h1>
                 </div>
+                </div>
+            <!--Volunteer-->
                 <div class="card">
-                    <i class="fa fa-users fa-5x"></i>
-                    <div class="box">
-                        <h1>VOLUNTEER</h1>
+                <i class="fa fa-users fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        10
                     </div>
+                    <h1>VOLUNTEER</h1>
                 </div>
+                </div>
+            <!--donate-->
+                <div class="card">
+                <i class="fa fa-money fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        5
+                    </div>
+                    <h1>Donate</h1>
+                </div>
+                </div>
+            <!--Visit-->
+                <div class="card">
+                <i class="fa fa-eye fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        8
+                    </div>
+                    <h1>Visit</h1>
+                </div>
+                </div>            
             </div>
             <!-- tables for sessions -->
             <!-- morning -->
@@ -136,6 +174,19 @@ $countVolunteer = $rowVolunteer['volunteer'];
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Data1</td>
+                            <td>Data2</td>
+                            <td>Data3</td>
+                            <td>Data4</td>
+                            <td>Data5</td>
+                            <td>
+                            <span class="action-btn">
+                                <a href="#">Accept</a>
+                                <a href="#" class="delete-link">Delete</a>
+                            </span>
+                            </td>
+                        </tr>
                         <?php
                         // Check if the date-input field is submitted //code for accepting appointments in the morning session
                         if (isset($_POST['date-input'])) {
@@ -229,6 +280,19 @@ $countVolunteer = $rowVolunteer['volunteer'];
                         </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                        <td>Data4</td>
+                        <td>Data5</td>
+                        <td>
+                        <span class="action-btn">
+                            <a href="#">Accept</a>
+                            <a href="#" class="delete-link">Delete</a>
+                        </span>
+                        </td>
+                    </tr>
                         <?php
                         // Check if the date-input field is submitted
                         if (isset($_POST['date-input'])) {
@@ -365,6 +429,88 @@ $countVolunteer = $rowVolunteer['volunteer'];
     }
 </script>
 
+<!-- calendar script -->
+<script>
+    // Function to generate a calendar
+    function generateCalendar() {
+        const calendarContainer = document.querySelector(
+        ".calendar-container"
+        );
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate(); // Get the current day of the month
+
+        const firstDayOfMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+        ).getDay();
+        const daysInMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        0
+        ).getDate();
+        const currentMonth = currentDate.toLocaleString("default", {
+        month: "long",
+        });
+        const currentYear = currentDate.getFullYear();
+
+        let calendarHTML = `<h2>${currentMonth} ${currentYear}</h2>`;
+
+        // Add days of the week with red color for Sundays
+        calendarHTML += `<div class="days-of-week">
+                            <span class="day red">Sun</span>
+                            <span class="day">Mon</span>
+                            <span class="day">Tue</span>
+                            <span class="day">Wed</span>
+                            <span class="day">Thu</span>
+                            <span class="day">Fri</span>
+                            <span class="day">Sat</span>
+                        </div>`;
+
+        calendarHTML += "<table>";
+
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < firstDayOfMonth; i++) {
+        calendarHTML += "<td></td>";
+        }
+
+        let dayCounter = 1;
+        for (let day = 1; day <= daysInMonth; day++) {
+        if (
+            new Date(currentYear, currentDate.getMonth(), day).getDay() === 0
+        ) {
+            calendarHTML += "</tr><tr>";
+        }
+
+        if (day === currentDay) {
+            calendarHTML += `<td class="today">${day}</td>`;
+        } else {
+            // Add the "red" class for Sundays
+            calendarHTML += `<td class="${
+            new Date(currentYear, currentDate.getMonth(), day).getDay() ===
+            0
+                ? "red"
+                : ""
+            }">${day}</td>`;
+        }
+
+        dayCounter++;
+        }
+
+        // Add empty cells for remaining days in the last week
+        for (let i = dayCounter; i <= 7; i++) {
+        calendarHTML += "<td></td>";
+        }
+
+        calendarHTML += "</tr></table>";
+        calendarContainer.innerHTML = calendarHTML;
+    }
+
+    // Call the function to generate the calendar
+    document.addEventListener("DOMContentLoaded", function () {
+        generateCalendar();
+    });
+</script>
 
 <script>
     // Get all the "Accept" buttons
