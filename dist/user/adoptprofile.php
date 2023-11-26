@@ -60,7 +60,7 @@ $loggedIn = isset($_SESSION['auth_user']);
         <span class="aboutinfo">About:</b></span>
         <span><?php echo $row['about']; ?></span>
         <div>
-            <button class="bookbutton">
+            <button class="bookbutton" onclick="window.location.href='book-appointment.php'"> 
                 <span>Book Appointment</span>
             </button>
         </div>

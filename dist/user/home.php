@@ -19,7 +19,7 @@ if (!isset($_SESSION['auth_user'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PetConnect Homepage</title>
+  <title>PetConnect | Homepage</title>
   <link rel="stylesheet" href="../css/newlyAdded/home-page-light.css">
   <link rel="stylesheet" href="../css/newlyAdded/footer.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
@@ -104,7 +104,7 @@ if (!isset($_SESSION['auth_user'])) {
           <i class="fa fa-handshake-o"></i> Help us to cover the cost of important pet resources and other materials.
         </div>
       </div>
-      <button class="button-donations" a href="donatepage.php">Go to Donations</button>
+      <button class="button-donations" onclick="window.location.href='donatepage.php'">Go to Donations</button>
   </div>
 <!-- Become a voluteers -->
   <div class="about-volunteer">
