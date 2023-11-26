@@ -64,6 +64,9 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
           </div>
         </div>
       </li>
+
+      <li class="hidden"><a href="edit-profile.php">Profile</a></li>
+      <li class="hidden"><a href="../function/logout.php">Logout</a></li>
       <?php
         } else {
       ?>
@@ -72,8 +75,6 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
         }
       ?>
   
-      <li class="hidden"><a href="edit-profile.php">Profile</a></li>
-      <li class="hidden"><a href="../function/logout.php">Logout</a></li>
       <span id="close-menu-btn" class="material-symbols-outlined">close</span>
     </ul>
     <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
