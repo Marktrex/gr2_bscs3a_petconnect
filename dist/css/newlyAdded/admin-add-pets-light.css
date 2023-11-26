@@ -114,6 +114,7 @@ textarea{
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
+    min-height: 30vh !important;
 }
 
 #label-about{

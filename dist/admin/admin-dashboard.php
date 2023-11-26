@@ -71,86 +71,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <!-- calendar -->
-    <script>
-        $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
-                },
-                selectable: true,
-                select: function (start, end) {
-                    var selectedDate = moment(start).format('YYYY-MM-DD');
-                    var today = moment().startOf('day'); // Get the start of the current day
 
-
-                    $('#date-input').val(selectedDate).change(); // Update the input value and trigger change event
-                },
-                events: [
-                    // Example of dynamically generated events from the database
-                    <?php
-                    // Retrieve the dates from the appointment table in the database
-                    $sql = "SELECT appointment_date, time_slot FROM appointment";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
-                    $events = [];
-
-                    // Generate event objects for each date
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {  //We fetch the result using fetch(PDO::FETCH_ASSOC) to get an associative array.
-                        $date = $row['appointment_date'];
-                        $time_slot = $row['time_slot'];
-
-                        $event = [
-                            "title" => "$time_slot",
-                            "start" => $date,
-                            "end" => $date,
-                            "color" => "#378006"
-                        ];
-                        echo json_encode($event) . ",";
-                    }
-                    ?>
-                ],
-                eventRender: function (event, element) {
-                    // Check if there are two events on the same day
-                    if (event.title === 'Morning Session' && hasAfternoonSession(event.start)) {
-                        element.css('background-color', '#fad046'); // Set background color to #fad046
-                        element.css('border-color', '#fad046');
-                        element.addClass('unselectable'); // Add a class to disable selection of the date
-                    } else if (event.title === 'Afternoon Session' && hasMorningSession(event.start)) {
-                        element.css('background-color', '#fad046'); // Set background color to #fad046
-                        element.css('border-color', '#fad046');
-                        element.addClass('unselectable'); // Add a class to disable selection of the date
-                    }
-                },
-
-            });
-
-            // Check if there is a Morning Session on the given date
-            function hasMorningSession(date) {
-                var events = $('#calendar').fullCalendar('clientEvents');
-                for (var i = 0; i < events.length; i++) {
-                    if (events[i].title === 'Morning Session' && moment(events[i].start).isSame(date, 'day')) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            // Check if there is an Afternoon Session on the given date
-            function hasAfternoonSession(date) {
-                var events = $('#calendar').fullCalendar('clientEvents');
-                for (var i = 0; i < events.length; i++) {
-                    if (events[i].title === 'Afternoon Session' && moment(events[i].start).isSame(date, 'day')) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
-
-    </script>
 </head>
 
 <body>
@@ -179,18 +100,6 @@ $countVolunteer = $rowVolunteer['volunteer'];
         </header>
         <main class="content">
             <div class="cards">
-                <div class="card-date">
-                    <div class="box">
-                        <!-- calendar(js process above) -->
-                        <div class="calendar-container">
-                            <div id="calendar">
-
-                            </div>
-                        </div>
-
-   
-                    </div>
-                </div>
                 <div class="card">
                     <i class="fa fa-calendar fa-5x"></i>
                     <div class="box">
@@ -404,7 +313,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -441,92 +350,6 @@ $countVolunteer = $rowVolunteer['volunteer'];
             >&#9776;</span
             >
         </aside>
-    </div>
-    <!-- old structure inside settings -->
-    <div class="setting">
-        
-        <div class="main">
-            <!-- appointments -->
-            <div class="dashboard">
-                <div class="card total">
-                    <i class="fas fa-calendar-check card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $totalAppointments; ?>
-                    </div>
-                    <div class="card-text">Total Appointments</div>
-                </div>
-            </div>
-            <!-- adopt -->
-            <div class="dashboard2">
-                <div class="card adopt">
-                    <i class="fas fa-paw card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countAdopt; ?>
-                    </div>
-                    <div class="card-text">Adopt</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hand-holding-heart card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countDonate; ?>
-                    </div>
-                    <div class="card-text">Donate</div>
-                </div>
-            </div>
-            <!-- visit -->
-            <div class="dashboard3">
-                <div class="card adopt">
-                    <i class="fas fa-eye card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVisit; ?>
-                    </div>
-                    <div class="card-text">Visit</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hands-helping card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVolunteer; ?>
-                    </div>
-                    <div class="card-text">Volunteer</div>
-                </div>
-            </div>
-            <!-- calendar(js process above) -->
-            <div class="content">
-                <div class="calendar-container">
-                    <div id="calendar"></div>
-                </div>
-            </div>
-            <!--this form accepts the change(or click) on the calendar  -->
-            <form action="" method="post">
-                <input type="date" class="form-control" name="date-input" id="date-input" required
-                    onchange="submitForm()">
-            </form>
-
-            <script>
-                // Define the submitForm function
-                function submitForm() {
-                    // Submit the form
-                    document.getElementById('date-input').closest('form').submit();
-                }
-            </script>
-
-            <!-- display the date selected on the calendar -->
-            <?php
-            if (isset($_POST['date-input'])) {
-                $date = $_POST['date-input'];
-            } else {
-                $date = date("Y-m-d"); // Get today's date
-            }
-
-            // Convert the date to words
-            $dateInWords = date("F j, Y", strtotime($date));
-
-            echo '<div class="date-container">';
-            echo '<div class="date">' . $dateInWords . '</div>';
-            echo '</div>';
-            ?>
-        </div>
-
     </div>
 </body>
 

@@ -74,7 +74,7 @@ else
                             <label for="action"><span>Search Action</span></label>
                             <input type="text" id="action" class="action" name = "action" placeholder="Search Action"/>
                         </div>
-                        <button type = "submit" name="search">Sample</button>
+                        <button type = "submit" name="search" class = "searchButton">Sample</button>
                     </form>
                 </div>
                 <section class="list-body">
@@ -130,7 +130,7 @@ else
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -150,7 +150,7 @@ else
                 >
             </li>
             <li>
-                <a id="add" href="admin-audit-trail.php">
+                <a id="add" href="admin-audit-trail.php" >
                 <i class="fa fa-clock-o"></i>
                 &nbsp;&nbsp;&nbsp;Audit Trail</a>
             </li>

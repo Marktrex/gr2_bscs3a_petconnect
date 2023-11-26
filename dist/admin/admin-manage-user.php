@@ -358,7 +358,7 @@ $conn = null;
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -432,6 +432,7 @@ $conn = null;
         });
     </script>
 
+<script src="../script/admin-general.js"></script>
 
 </body>
 

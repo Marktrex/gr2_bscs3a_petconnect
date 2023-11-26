@@ -131,6 +131,16 @@ td,th
     padding: 15px;
 }
 
+.searchButton{
+    background-color: #ffb845ba;
+    color: black;
+    padding: 0.5rem;
+    --webkit-appearance: button;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
 
 /*--- Customize Scrollbar ---*/
 ::-webkit-scrollbar{
