@@ -9,6 +9,9 @@
   top: 0;
   width: 100%;
   z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .navbar {
   /* navbar general style */
@@ -17,10 +20,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position:relative;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   transition: all 0.5s ease;
   padding: 3vh;
   z-index: 99;
