@@ -389,7 +389,6 @@ h2 {
 .about-volunteer{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   background-color: #f2542d;
   width: auto;
   gap: 3vw;
@@ -405,6 +404,9 @@ h2 {
 }
 .content-volunteer{
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .content-volunteer p{
   font-size: 20px;
@@ -429,6 +431,7 @@ h3 {
   font-size: 25px;
   border-radius: 30px;
   color: #f2542d;
+  width: fit-content;
 }
 .learn-more:hover{
   transform: scale(1.05);

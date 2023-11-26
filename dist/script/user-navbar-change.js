@@ -75,7 +75,7 @@ function activeLink() {
     if (link.href === currentUrl) {
       // If they match, add an attribute 'active' with the value 'true'
       link.setAttribute("active", "true");
-      link.style.color = "#127475";
+      link.style.color = "orange";
     }
   });
 }
