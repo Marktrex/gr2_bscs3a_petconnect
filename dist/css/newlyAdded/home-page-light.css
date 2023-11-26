@@ -281,30 +281,24 @@ h2 {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
     border-radius: 15px;
-    min-height: 100px;
+    height: 300px;
     width: 250px;
+    .pet-image{
+      height: 260px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .pet-name{
+
+    }
 }
 
 .pet-card:hover {
     transform: scale(1.05);
 }
-
-.pet-image {
-/*  object-position: bottom; [para ma position yung crop maayos] */
-    position: relative;
-    object-fit: cover;
-    width: 250px;
-    height: auto; /*backup tapos height: 100px;*/
-    overflow: hidden;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0
-}
 .pet-name {
     font-weight: bold;
     text-align: center;
-    padding: 20px;
     font-family: 'dairantou', sans-serif;
     color: #127475;
 }
