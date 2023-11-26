@@ -49,10 +49,8 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
         $imageName = $row['image'];
         $petName = $row['name'];
         ?>
-        <div class="pet-card">
-            <a href="adoptprofile.php?id=<?php echo $petId; ?>">
-                <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
-            </a>
+        <div class="pet-card" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
+            <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
             <div class="pet-name"><?php echo $petName; ?></div>
         </div>
     <?php
@@ -77,10 +75,8 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
         $imageName = $row['image'];
         $petName = $row['name'];
         ?>
-        <div class="pet-card">
-            <a href="adoptprofile.php?id=<?php echo $petId; ?>">
-                <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
-            </a>
+        <div class="pet-card" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
+            <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
             <div class="pet-name"><?php echo $petName; ?></div>
         </div>
     <?php

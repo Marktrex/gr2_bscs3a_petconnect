@@ -23,13 +23,6 @@ $loggedIn = isset($_SESSION['auth_user']);
 
   <body>
   <?php require_once "../components/userNavbar.php"?>
-    
-    <div class="navbar">
-      <a href="home.php" class="back">
-        <span>• Back</span>
-      </a>
-      <input type="text" class="searchbox" placeholder="Search" />
-    </div>
 
     <!-- Pet Content -->
     <?php
@@ -54,9 +47,9 @@ $loggedIn = isset($_SESSION['auth_user']);
             <span>Breed: <?php echo $row['breed']; ?></span>
             <span>Age: <?php echo $row['age']; ?></span>
             <span>Sex: <?php echo $row['sex']; ?></span>
-            <span>Date of Rescue: <?php echo $row['rescue_date']; ?></span>
+            <span>Date of Rescue: <?php echo $row['date']; ?></span>
         </div>
-        <span class="aboutinfo">About <b><?php echo $row['name']; ?></b>:</span>
+        <span class="aboutinfo">About:</b></span>
         <span><?php echo $row['about']; ?></span>
         <div>
             <button class="bookbutton">

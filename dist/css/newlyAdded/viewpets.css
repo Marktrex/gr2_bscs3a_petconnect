@@ -68,7 +68,7 @@ body {
   width: clamp(300px,30%,400px);
 }
 
-.navbar {
+.secondNavbar {
   background-color: #127475;
   padding: 1.5rem;
   display: flex;
@@ -101,8 +101,8 @@ ul{
   background-color:#f5dfbb ;
   border-radius: 2rem;
   z-index: 0;
-  width: 130vh;
-  height: 80vh;
+  width: 80%;
+  min-height: 80vh;
   display: flex;  
   overflow: hidden;
   box-shadow: 0 .4rem .8rem #0005;
@@ -171,7 +171,7 @@ div:not(.petcontent):has(.petimg)
   div:not(.petcontent):has(.petimg)
   {
     display: block;
-    height: 50vh;
+    height: 80vh;
     overflow: hidden;
     .petimg
     {
@@ -184,11 +184,16 @@ div:not(.petcontent):has(.petimg)
   .petcontent
   {
     position: relative;
-    margin-top: -10vh;
+    margin-top: -30vh;
     z-index: 100;
     .petimg
     {
-      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: clamp(80px, 10vh,150px);
+      width: clamp(80px, 10vh,150px);
+      aspect-ratio: 1/1;
     }
     .pettxt
     {
@@ -200,5 +205,16 @@ div:not(.petcontent):has(.petimg)
   .animal{
     margin-top: -30px;
     margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 400px)
+{
+  .petcontent
+  {
+    .petimg
+    {
+      display: none;
+    }
   }
 }
