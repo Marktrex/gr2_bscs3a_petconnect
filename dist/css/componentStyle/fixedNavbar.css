@@ -47,6 +47,7 @@
         }
         &[active="true"] {
           color: orange;
+          font-weight: bold;
         }
       }
     }
