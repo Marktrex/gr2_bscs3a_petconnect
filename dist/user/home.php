@@ -22,11 +22,11 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 <?php require_once "../components/userNavbar.php"?>
 <!-- content-Buttons -->
     <div class="button-container">
-        <a href="adoptpage-dog.php" class="button button-find-dog">
+        <a href="adoptpage.php?type=Dog" class="button button-find-dog">
           Find a <br> Dog
           <img src="../icons/btn-dog.png" alt="Dog Icon" class="dog-icon">
         </a>
-        <a href="adoptpage-cat.php" class="button button-find-cat">
+        <a href="adoptpage.php?type=Cat" class="button button-find-cat">
           Find a <br>Cat
           <img src="../icons/btn-cat.png" alt="Dog Icon" class="cat-icon">
         </a>
@@ -116,24 +116,6 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
   </div>
 
   
-  <?php require_once "../components/footer.html"?>
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Hide pet cards with names "Cheese" and "Stacy" when screen width is 900 pixels or less
-            if ($(window).width() <= 900) {
-                $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
-            }
-            // Adjust visibility on window resize
-            $(window).resize(function () {
-                if ($(window).width() <= 900) {
-                    $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
-                } else {
-                    $(".pet-card").show();
-                }
-            });
-        });
-    </script>
-    
+  <?php require_once "../components/footer.html"?>    
 </body>
 </html>

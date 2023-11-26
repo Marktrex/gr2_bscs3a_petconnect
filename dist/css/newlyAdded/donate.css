@@ -409,7 +409,7 @@ header .navbar {
   height: clamp(400px, 80vh ,600px);
   padding: 20px;
   margin-bottom: 5px;
-  background-image: url(../src/icons/picture-donate.png);
+  background-image: url(../../icons/picture-donate.png);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex; 

@@ -269,10 +269,6 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 0%;
     margin-bottom: 3%;
 }
 
@@ -285,6 +281,8 @@ h2 {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
     border-radius: 15px;
+    min-height: 100px;
+    width: 250px;
 }
 
 .pet-card:hover {
@@ -337,7 +335,7 @@ h2 {
   flex-direction: row; 
   gap: 10px; 
   text-align: center;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 .title {
   color: #127475;
@@ -350,6 +348,7 @@ h2 {
   padding: 30px;
   color: #127475;
   font-size: 20px;
+  flex: 1 0 300px;
 }
 .description i {
   font-size: 500%; 
@@ -491,7 +490,7 @@ header {
     font-size: 80px; 
   }
   .button-donations {
-    width: 30%;
+    width: 60%;
     padding: 20px;
   }
 /* volunteer container */
@@ -504,4 +503,15 @@ header {
 h3{
   font-size: 40px;
 }
+}
+
+@media (max-width: 600px)
+{
+  .button-container{
+    & a{
+      & img {
+        display: none;
+      }
+    }
+  }
 }
