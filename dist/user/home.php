@@ -26,30 +26,8 @@ if (!isset($_SESSION['auth_user'])) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
+<?php require_once "../components/fixedNavbar.php"?>
 <header>
-    <nav class="navbar">
-      <a href="#" class="logo">
-        <img src="../icons/logo.png" alt="Logo">
-      </a>
-
-      <ul class="menu-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Adopt</a></li>
-        <li><a href="#">Donate</a></li>
-        <li><a href="#">Volunteer</a></li><li class="language-item">
-          <a href="#">
-            <span class="material-symbols-outlined">language</span>
-            English
-          </a>
-        </li>
-          <a href="#">
-            <img class="icon-user" src="../icons/icons-user.png" alt="User Icon">
-          </a>
-        <span id="close-menu-btn" class="material-symbols-outlined">close</span>
-      </ul>
-      <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
-    </nav>
      <div class="title-container">
           <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
           <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>

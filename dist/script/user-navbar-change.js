@@ -35,7 +35,7 @@ function changeHeaderColor(textColor) {
     return; // Exit the function
   }
 
-  const header = document.querySelector(".navbar");
+  const header = document.querySelector(".navbarContainer");
   
   let scrollPosition = window.scrollY;
 

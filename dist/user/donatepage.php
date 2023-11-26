@@ -33,7 +33,7 @@ if (!isset($_SESSION['auth_user'])) {
   </head>
 
   <body>
-  <?php require_once "../components/userNavbar.php"?>
+  <?php require_once "../components/fixedNavbar.php"?>
     <main>
       <div class="container">
         <div class="text1">

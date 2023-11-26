@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/componentStyle/userNavbar.css">
+<link rel="stylesheet" href="../css/componentStyle/fixedNavbar.css">
 <link
 rel="stylesheet"
 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -71,7 +71,6 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
       <?php
         }
       ?>
-  
       <li class="hidden"><a href="edit-profile.php">Profile</a></li>
       <li class="hidden"><a href="../function/logout.php">Logout</a></li>
       <span id="close-menu-btn" class="material-symbols-outlined">close</span>

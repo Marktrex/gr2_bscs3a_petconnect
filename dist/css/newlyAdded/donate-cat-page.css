@@ -416,9 +416,6 @@ main {
     height: auto;
     gap: 9rem;
   }
-  .dropdown .dropdown-btn {
-    justify-content: center;
-  }
   .dropdown-btn img {
     max-width: 35px;
     height: auto;
