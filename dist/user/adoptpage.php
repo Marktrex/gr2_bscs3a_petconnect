@@ -89,7 +89,7 @@ try { //research this try catch method
       
       <section class="content">
         <!--Dropdown menu-->
-        <div class="menu">
+        <div class="menu max-width">
           <div class="dropdown">
             <label for="dropdown" class="dropdown-btn">
               <img src="../icons/kitty-icon.png" alt="icon" />
@@ -123,10 +123,10 @@ try { //research this try catch method
           </div>
         </div>
       </section>
-      <main class="main-content">
+      <main class="main-content max-width">
         <!--For Cats-->
         <div class="cat-content">
-          <h1>Meet our dogs and cats</h1>
+          <h1>Meet our <?php echo $type."s" ?></h1>
           <ul class="cat-select">
             <li>
               <label for="breed">Breed:</label>
@@ -228,6 +228,7 @@ try { //research this try catch method
         ?>
       </main>
     </form>
+    
     <?php require_once "../components/footer.html"?>
   </body>
 </html>
