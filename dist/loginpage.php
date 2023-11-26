@@ -28,7 +28,7 @@
             <img src="image/logo.png" alt="icon" class="w-[75px]" id = "logIcon">
         </a>
     </div>
-    <div class = "flex items-center justify-center mt-10">
+    <div class = "flex items-center justify-center mt-10 mb-10">
         <div class="flex gap-12
                     min-h-fit w-full
                     md:w-3/4

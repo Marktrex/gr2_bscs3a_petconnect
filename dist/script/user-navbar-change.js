@@ -31,7 +31,7 @@ window.addEventListener("scroll", function () {
 
 function changeHeaderColor(textColor) {
   // Check if the viewport width exceeds 800px
-  if (window.innerWidth > 800) {
+  if (window.innerWidth < 1024) {
     return; // Exit the function
   }
 
