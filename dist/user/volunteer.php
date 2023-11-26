@@ -11,85 +11,84 @@ $loggedIn = isset($_SESSION['auth_user']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="icon" href="../image/icon.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rePaw City</title>
-    <link rel="stylesheet" href="../css/volunteer.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetConnet Volunteer</title>
+  <link rel="stylesheet" href="../css//newlyAdded/volunteer-page.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <?php include '../function/navbar.php' ?>
+  <header>
+    <nav class="navbar">
+      <a href="#" class="logo">
+        <img src="../icons/logo.png" alt="Logo">
+      </a>
 
-    <section class="home">
-        <div class="content">
-            <img src="..\image\volunteer\img1.jpg" alt="Image 1">
-        </div>
-        <div class="title">
-            <h1>Join a passionate community of animal lovers and contribute to a meaningful cause.</h1>
-        </div>
-        <div class="content2">
-        <a href="<?php echo $loggedIn ? 'book-appointment.php' : '../loginpage.php'; ?>" <?php echo $loggedIn ? 'target="_blank"' : ''; ?>><img src="..\image\volunteer\title1.png" alt="Image 1"></a>
-        </div>
-        <div class="content3">
-            <img src="..\image\volunteer\img2.jpg" alt="Image 1">
-            <img src="..\image\volunteer\img3.jpg" alt="Image 1">
-        </div>
-        <div class="requirement">
-            <h1>Volunteer Requirements:</h1>
-            <img class="b1" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b2" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b3" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b4" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <div class="content">
-                <p>Compassion and respect for animals, with a commitment to their well-being.</p>
-                <br>
-                <p>Availability to commit to a regular schedule or specific event dates.</p>
-                <br>
-                <p>No age limit</p>
-                <br>
-                <p>Want to learn and grow</p>
-            </div>
-        </div>
-        <div class="opportunity">
-            <h1>Volunteer Opportunities:</h1>
-            <img class="b1" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b2" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b3" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <div class="content">
-                <p>Support adoption events and assist potential adopters in meeting our animals.</p>
-                <br>
-                <p>Help with socializing, grooming, and exercising the animals in preparation for adoption.</p>
-                <br>
-                <p>Assist with feeding, cleaning, and providing enrichment activities for the animals.</p>
-            </div>
-        </div>
-        <div class="benefits">
-            <h1>Benefits:</h1>
-            <img class="b1" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b2" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <img class="b3" src="..\image\volunteer\bullet.png" alt="Image 1">
-            <div class="content">
-                <p>Gain valuable experience working with animals and developing essential skills.</p>
-                <br>
-                <p>Join a passionate community of animal lovers and contribute to a meaningful cause.</p>
-                <br>
-                <p>Personal fulfillment and the joy of seeing animals thrive in their new homes.</p>
-            </div>
-        </div>
-        <div class="button">
-            <a href="<?php echo $loggedIn ? 'book-appointment.php' : '../loginpage.php'; ?>" <?php echo $loggedIn ? 'target="_blank"' : ''; ?>><img src="..\image\volunteer\title2.png" alt="Image 1"></a>
-        </div>
+      <ul class="menu-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Adopt</a></li>
+        <li><a href="#">Donate</a></li>
+        <li><a href="#" active = "true">Volunteer</a></li><li class="language-item">
+          <a href="#">
+            <span class="material-symbols-outlined">language</span>
+            English
+          </a>
+        </li>
+          <a href="#">
+            <img class="icon-user" src="../icons/icons-user.png" alt="User Icon">
+          </a>
+        <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+      </ul>
+      <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+    </nav>
+     <div class="title-container">
+          <h1 id="petsTitle">Join PetConnect<br>and help us by<br>Volunteering</h1>
+        </div>  
+    </div>
+  </header>
+<!-- Content --> 
+  <div class="about-container">
+    <div class="volunteer-container">
+      <img class="custom-image" src="icons/picture2-volunteer.png" alt="picture2">
+    </div>
+    <div class="text-container">
+      <div class="volunteer-title">Benefits</div>
+      <p class="custom1-paragraph">Animal Welfare</p>
+      <p class="custom2-paragraph">Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.</p>
+      <p class="custom1-paragraph">Professional and Skill Development</p>
+      <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enchance a variety of skills. Helps build a network of contracts, and may open doors to future employment opportunities.</p>
+      <p class="custom1-paragraph">Personal Fulfillment</p>
+      <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a diffrence in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
+    </div>
+  </div>
 
-    </section>
+  <div class="about-container-1">
+    <div class="text-container-1">
+      <div class="volunteer-title-1">Requirements</div>
+      <p class="custom1-paragraph-1">Age Limit</p>
+      <p class="custom2-paragraph-1">Requires volunteers to be a certain age, often 15 or older.</p>
+      <p class="custom1-paragraph-1">Time Commitment</p>
+      <p class="custom2-paragraph-1">PetConnect has a specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.</p>
+      <p class="custom1-paragraph-1">Passion for Animals</p>
+      <p class="custom2-paragraph-1">A passion for helping animals and creating a positive environment is often a key requirements.</p>
+      <p class="custom1-paragraph-1">Responsible Behavior</p>
+      <p class="custom2-paragraph-1">Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.</p>
+    </div>
+      <div class="volunteer-container-1">
+        <img class="custom-image-1" src="icons/picture3-volunteer.png" alt="picture2">
+      </div>
+  </div>
 
-    <?php include '../function/footer.php' ?>
-
+<!-- Apply now -->
+<div class="applynow">
+  <div class="applynow-container">
+      <div class="applynow-title">Apply now!</div>
+      <div class="applynow-text">Send us your Email and we will send the Instructions for your Application Process.</div>
+    <input type="text" class="applynow-input" placeholder="Enter your Email">
+  </div>
+</div>
 </body>
-
 </html>
