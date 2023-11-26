@@ -87,14 +87,9 @@ if (!isset($_SESSION['auth_user'])) {
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" class="btnn" onclick="closePage()">Exit</button>
+                    <button type="submit" class="btnn" onclick="window.location.href='home.php'">Exit</button>
                 </div>
 
-                <script>
-                    function closePage() {
-                        window.close();
-                    }
-                </script>
             </div>
 
 
