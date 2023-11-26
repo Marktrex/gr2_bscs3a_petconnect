@@ -55,7 +55,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
         <input type="checkbox" id="profileDropdown" />
         <div class="dropdown-content">
           <label>
-            <a href="#">Profile</a>
+            <a href="edit-profile.php">Profile</a>
           </label>
           <label>
             <a href="../function/logout.php">Logout</a>
