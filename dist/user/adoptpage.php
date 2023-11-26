@@ -119,7 +119,7 @@ try { //research this try catch method
       <main class="main-content">
         <!--For Cats-->
         <div class="cat-content">
-          <h1>Meet our cats</h1>
+          <h1>Meet our dogs and cats</h1>
           <ul class="cat-select">
             <li>
               <label for="breed">Breed:</label>
@@ -182,8 +182,9 @@ try { //research this try catch method
         <div class="display-cat">
         <?php
         foreach ($pet_data as $pet) {
+          $petId = $pet['pets_id'];
         ?>
-          <div class="img-bg">
+          <div class="img-bg" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
               <img src="../upload/<?php echo $pet['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
               <p class="img-text"><?php echo $pet['name']; ?></p>
               <div class="overlay">
