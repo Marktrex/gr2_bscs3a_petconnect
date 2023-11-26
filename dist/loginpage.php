@@ -31,7 +31,7 @@
     <div class = "flex items-center justify-center mt-10 mb-10">
         <div class="flex gap-12
                     min-h-fit w-full
-                    md:w-3/4
+                    md:max-w-[65%]
                     py-16 px-20
                     custom-frame
                     relative
@@ -40,7 +40,7 @@
                 <img src="./image/LoginSignup/photo-deco-1.png" alt="design photo"
                 class= "">
             </div>
-            <form class="flex flex-col justify-center flex-1 gap-7"
+            <form class="flex flex-col justify-center flex-1 gap-[3vh]"
              name="login" action="./function/authcode.php" method="post">
              <!-- intro -->
                 <div class="custom-text">

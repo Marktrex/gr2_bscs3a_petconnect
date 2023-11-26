@@ -629,10 +629,6 @@ video {
   margin-top: 1rem;
 }
 
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
 .block {
   display: block;
 }
@@ -670,6 +666,10 @@ video {
   min-height: fit-content;
 }
 
+.w-\[100px\] {
+  width: 100px;
+}
+
 .w-\[75px\] {
   width: 75px;
 }
@@ -680,14 +680,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-\[150px\] {
-  width: 150px;
-}
-
-.w-\[100px\] {
-  width: 100px;
 }
 
 .flex-1 {
@@ -744,6 +736,14 @@ video {
   gap: 1.75rem;
 }
 
+.gap-\[5vh\] {
+  gap: 5vh;
+}
+
+.gap-\[3vh\] {
+  gap: 3vh;
+}
+
 .rounded-none {
   border-radius: 0px;
 }
@@ -769,10 +769,6 @@ video {
 
 .ps-8 {
   padding-inline-start: 2rem;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
 }
 
 .text-center {
@@ -922,6 +918,18 @@ input[type="checkbox"]
 @media (min-width: 768px) {
   .md\:w-3\/4 {
     width: 75%;
+  }
+
+  .md\:max-w-\[75\] {
+    max-width: 75;
+  }
+
+  .md\:max-w-\[75\%\] {
+    max-width: 75%;
+  }
+
+  .md\:max-w-\[65\%\] {
+    max-width: 65%;
   }
 
   .md\:rounded-\[48px\] {
