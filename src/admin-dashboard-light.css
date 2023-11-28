@@ -17,17 +17,17 @@
 .content .cards .card{
     width: 320px;
     height: 320px;
-    background: #9d4df7;
+    background: white;
     margin: 20px 10px;
     flex-direction: column; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    color: #c3fdfa;
 }
 h1 {
-    color: #a3fffa;
+    color: #818996;
 }
 .card-number{
     text-align: center;
@@ -39,17 +39,16 @@ h1 {
 .content .cards .card-date{
     width: 320px;
     height: 320px;
-    background: #9d4df7;
+    background: white;
     margin: 20px 10px;
     flex-direction: column; 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.99), 0 6px 22px 0 rgba(0, 0, 0, 0.99);
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 22px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     text-align: center;
     font-size: 24px;
-    color: #c6fffb;
 }
 .calendar-container td {
     font-size: 20px;
@@ -69,7 +68,7 @@ h1 {
         padding: 5px;
     }
 .red {
-        color: #08e0d6;
+        color: red
     }
 .days-of-week {
             display: flex;
@@ -80,8 +79,8 @@ a{
     color: black;
 }
 .today {
-    background-color: #1EDDD4; 
-    color: #ab62ff; 
+    background-color: #007bff; 
+    color: white; 
     border-radius: 50%; 
     padding: 5px;
 }
@@ -89,7 +88,7 @@ a{
 .table_responsive{
     max-width: 150vh;
     border: 1px solid #29252B;
-    background-color: #ab62ff;
+    background-color: white;
     padding: 15px;
     overflow: auto;
     margin: auto;
@@ -106,8 +105,8 @@ a{
     border-collapse: collapse;
 }
 thead{
-    background-color: #1EDDD4;
-    color: #090b29 ;
+    background-color: #0e9594;
+    color: black;
 }
 .tables, thead th{
     padding: 8px;
@@ -126,25 +125,26 @@ thead{
 }
 .action-btn>a{
     text-decoration: none;
-    background: #00fff2;
+    background: #f5dfbb;
     border: 1px solid #e66155;
     display: inline-block;
     padding: 6px 8px;
     font-weight: bold;
     border-radius: 10px;
-    border-color: #1EDDD4;
+    border-color: black;
 }
 .action-btn a:hover{
-    color: #ab62ff;
-    border-color: #ab62ff;
+    color: #f2542d;
+    border-color: #f2542d;
     transition: 0.3s ease-in-out;
 }
 .tables>tbody>tr{
-    background-color: #c3fdfa ;
+    background-color: white;
     transition: 0.3s ease-in-out;
 }
 @media only screen and (max-width:678px){
 
+   
 }
 
 
