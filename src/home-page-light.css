@@ -20,8 +20,8 @@ body {
   justify-content: center;
 }
 
-header {
-  background: url('icons/close-up-portrait.png');
+header{
+  background: url('icons/close-up-portrait-beautiful-cat-low-brightness.png');
   position: relative;
   left: 0;
   top: 0;
@@ -31,7 +31,7 @@ header {
   padding: 20px;
   margin-bottom: 100;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;  
 }
 
 header .navbar {
@@ -182,23 +182,25 @@ a .icon-user{
 /* for title */
 #petsTitle, #UnderpetsTitle {
   font-family: 'dairantou', sans-serif;
-  color: #fff6e8;
-  }
+  color: #c3fdfa;
+}
+
 .title-container {
   text-align: center;
   padding: 20px;
   margin-top: 15vh; 
-  justify-content: center;
-  }
+  justify-content: center; 
+}
 
 h1 {
-   font-size: 4em; 
-  }
+   font-size: 4em;
+  
+}
 
 h2 {
   font-size: 1.8em; 
-  color: white; 
-  }
+}
+
 /* Search bar */
 .search-container {
     margin-top: 20px; 
@@ -209,7 +211,7 @@ h2 {
   border-radius: 20px; 
   padding: 10px 20px; 
   width: 500px; 
-  background: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
+  background: rgb(140, 206, 203,0.5); /* Adjust the alpha value for transparency */
   outline: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
   }
@@ -223,7 +225,7 @@ h2 {
   position: relative;
   width: 250px;
   height: 100px;
-  background-color: #f2542d;
+  background-color: #ab62ff;
   border: none;
   font-family: 'dairantou', sans-serif;
   text-align: center;
@@ -238,7 +240,7 @@ h2 {
   line-height: 50px;
 }
 .button:hover {
-  background-color: rgba(242, 84, 45, 0.8); /* #f2542d; */
+  background-color: #7543af; /* #f2542d; */
   transform: scale(1.05);
 }
 /* Icon adjustments */
@@ -280,7 +282,7 @@ h2 {
     text-align: center;
     margin: 15px;
     padding: 0px;
-    background-color: #f5dfbb;
+    background-color: #ab62ff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
@@ -304,15 +306,14 @@ h2 {
     border-bottom-right-radius: 0
 }
 .pet-name {
-    font-weight: bold;
     text-align: center;
     padding: 20px;
     font-family: 'dairantou', sans-serif;
-    color: #127475;
+    color: #c3fdfa;
 }
 #available-pet {
     font-family: 'dairantou', sans-serif;
-    color: #127475;
+    color: #1EDDD4;
     text-align: center;
     font-size: 30px;
 }
@@ -324,7 +325,7 @@ h2 {
     /* Style for the container */
 .overall-description-container{
   padding: 2%;
-  background-color: #f5dfbb;
+  background-color: #691eb9;
   margin: 5% auto;
   text-align: center;
   border-radius: 15px;
@@ -340,15 +341,15 @@ h2 {
   
 }
 .title {
-  color: #127475;
+  color: #1EDDD4;
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
-  font-family: 'dairantou', sans-seri;
+  font-family: 'dairantou', sans-serif;
 }
 .description {
   padding: 30px;
-  color: #127475;
+  color:#1EDDD4;
   font-size: 20px;
 }
 .description i {
@@ -361,14 +362,13 @@ h2 {
 
 .button-donations {
   padding: 10px;
-  background-color: #127475;
-  color: white;
+  background-color: #ab62ff;
   border: none;
   border-radius: 20px;
   font-size: 1.2rem;
   cursor: pointer;
   width: 25%;
-  color: #f5dfbb;
+  color: #c3fdfa;
 }
 .button-donations:hover{
   transform: scale(1.05);
@@ -385,18 +385,22 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background-color: #f2542d;
+  background-color: #381162;
   width: auto;
-  height: 66.7vh;
+  background-attachment: fixed;
+  height: 69.2vh;
 }
+
 .image-volunteer{
   flex: 1;
   margin-right: 30px;
   overflow: hidden;
 }
+
 .image-volunteer img{
   width: 100%;
 }
+
 .content-volunteer{
   flex: 1;
   margin-left: 50px;
@@ -404,11 +408,11 @@ h2 {
 .content-volunteer p{
   font-size: 20px;
   line-height: 1.3;
-  color: #f5dfbb;
+  color: #c3fdfa;
   margin-right: 100px;
 }
 h3 {
-  color: #f5dfbb;
+  color: #c3fdfa;
   margin-top: 10px;
   margin-bottom: 30px;
   font-size: 35px;
@@ -419,15 +423,15 @@ h3 {
   margin-top: 20px;
   display: inline-block;
   padding: 10px 25px;
-  background-color: #fdc161;
+  background-color: #ab62ff;
   text-decoration: none;
   font-size: 25px;
   border-radius: 30px;
-  color: #f2542d;
+  color: #381162;
 }
 .learn-more:hover{
   transform: scale(1.05);
-  color: #0e9594;
+  color: #1EDDD4;
 }
 /* Content Responsive*/
 @media (max-width: 900px) {
