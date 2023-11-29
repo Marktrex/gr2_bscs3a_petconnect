@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
 :root{
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:#c3fdfa94;
+    --main-input-color:rgba(195, 253, 250, 0.776);
 }
 
 main{

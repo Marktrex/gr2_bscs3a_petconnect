@@ -2,7 +2,7 @@
 :root{
     --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:#c3fdfa94;
+    --main-input-color:rgba(195, 253, 250, 0.776);
 }
 
 
@@ -95,16 +95,16 @@ table{
 
 table{
     border-collapse: collapse;
-    background-color: #b98aee;
+    background-color: #ab62ff;
     color: #eee;
 }
 
 table tr:nth-child(even){
-    background-color: #ab62ff;
+    background-color: #7f36d2;
 }
 
 table tr:hover {
-    background-color: #7f36d2;
+    background-color: #582790;
     transition: all 0.2s ease;
 }
 
