@@ -1,6 +1,3 @@
-const APP_ID = "70bdc98b892240818232af5bc5c7a9ce"
-const TOKEN = "007eJxTYNj3yT+We0WG9+7JUtbJ+xJUY1+LvPl9tNenq+cX87Mj/dMUGMwNklKSLS2SLCyNjEwMLAwtjIyNEtNMk5JNk80TLZNTp5yJTG0IZGRg2racgREKQXwuhrDMlNR8BefEnBwGBgBo8SKX"
-const CHANNEL = "Video Call"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
@@ -9,22 +6,39 @@ let remoteUsers = {}
 
 let joinAndDisplayLocalStream = async () => {
 
-    client.on('user-published', handleUserJoined)
+    client.on('user-published', handleUserJoined);
     
-    client.on('user-left', handleUserLeft)
-    
-    let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
+    client.on('user-left', handleUserLeft);
 
-    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks() 
+    let response = await fetch('..\\function\\generateTokenCall.php');
+    let data = await response.json();
+    let { token, channelName, appId } = data;
 
-    let player = `<div class="video-container" id="user-container-${UID}">
-                        <div class="video-player" id="user-${UID}"></div>
-                  </div>`
-    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+    let UID = await client.join(appId, channelName, token, null);
 
-    localTracks[1].play(`user-${UID}`)
-    
-    await client.publish([localTracks[0], localTracks[1]])
+
+    let audioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+
+    let videoTrack;
+    let devices = await AgoraRTC.getDevices();
+    let videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+    if (videoDevices.length > 0) {
+        videoTrack = await AgoraRTC.createCameraVideoTrack();
+    }
+
+    localTracks = [audioTrack, videoTrack].filter(track => track !== undefined);
+
+    if (videoTrack) {
+        let player = `<div class="video-container" id="user-container-${UID}">
+                            <div class="video-player" id="user-${UID}"></div>
+                      </div>`;
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
+
+        videoTrack.play(`user-${UID}`);
+    }
+
+    await client.publish(localTracks);
 }
 
 let joinStream = async () => {
@@ -32,27 +46,30 @@ let joinStream = async () => {
     document.getElementById('join-btn').style.display = 'none'
     document.getElementById('stream-controls').style.display = 'flex'
 }
-
 let handleUserJoined = async (user, mediaType) => {
-    remoteUsers[user.uid] = user 
-    await client.subscribe(user, mediaType)
+    let currentUsers = Object.keys(remoteUsers).length;
 
-    if (mediaType === 'video'){
-        let player = document.getElementById(`user-container-${user.uid}`)
-        if (player != null){
-            player.remove()
+    if (currentUsers < 2) {
+        remoteUsers[user.uid] = user;
+        await client.subscribe(user, mediaType);
+
+        if (mediaType === 'video'){
+            let player = document.getElementById(`user-container-${user.uid}`);
+            if (player != null){
+                player.remove();
+            }
+
+            player = `<div class="video-container" id="user-container-${user.uid}">
+                            <div class="video-player" id="user-${user.uid}"></div> 
+                     </div>`;
+            document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
+
+            user.videoTrack.play(`user-${user.uid}`);
         }
 
-        player = `<div class="video-container" id="user-container-${user.uid}">
-                        <div class="video-player" id="user-${user.uid}"></div> 
-                 </div>`
-        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
-
-        user.videoTrack.play(`user-${user.uid}`)
-    }
-
-    if (mediaType === 'audio'){
-        user.audioTrack.play()
+        if (mediaType === 'audio'){
+            user.audioTrack.play();
+        }
     }
 }
 
