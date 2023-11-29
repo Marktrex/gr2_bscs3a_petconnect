@@ -273,7 +273,7 @@ a{
   font-size: 25px;
   border-radius: 30px;
   color: #f5dfbb;
-  width: 18%;
+  width: 300px;
   text-align: center;
 }
 .save-container:hover{
@@ -331,6 +331,10 @@ a{
     }
     .title-4, .title, .title-2{
       font-size: 1.2rem;
+    }
+    .save-container{
+      font-size: 18px;
+      width: 250px;
     }
  
 }
