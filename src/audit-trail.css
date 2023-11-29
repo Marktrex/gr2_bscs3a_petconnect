@@ -2,7 +2,7 @@
 :root{
     --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:rgba(37, 141, 141, 0.248);
+    --main-input-color:#c3fdfa94;
 }
 
 
@@ -21,7 +21,7 @@ main{
 }
 
 .wrapper{
-    background-color: #fdf7ec;
+    background-color: #381162;
     border-radius: 10px;
     box-shadow: var(--main-content-shadow);
 }
@@ -33,9 +33,13 @@ main{
 .wrapper h1{
     font-size: 30px;
     padding: 5px;
-    color: #127475;
+    color: #c3fdfa;
     text-align: center;
-    border-bottom: 2px solid #127475;;
+    border-bottom: 2px solid #c3fdfa;
+}
+
+span{
+    color: #eee;
 }
 
 input
@@ -91,15 +95,16 @@ table{
 
 table{
     border-collapse: collapse;
-    background-color: #feeed3;
+    background-color: #b98aee;
+    color: #eee;
 }
 
 table tr:nth-child(even){
-    background-color: #f2dab2;
+    background-color: #ab62ff;
 }
 
 table tr:hover {
-    background-color: #fbd08c;
+    background-color: #7f36d2;
     transition: all 0.2s ease;
 }
 
@@ -113,8 +118,8 @@ table, td, th{
 th{
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #fdf7ec;
-    background-color: #0e9594;
+    color: #c3fdfa;
+    background-color: #552b86;
     text-align: left;
 }
 
