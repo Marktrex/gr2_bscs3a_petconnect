@@ -397,7 +397,7 @@ $conn = null;
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -440,8 +440,6 @@ $conn = null;
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="../script/admin-general.js"></script>
     <!-- adding active state to rows -->
     <script>
         $(document).ready(function () {
@@ -482,7 +480,7 @@ $conn = null;
             });
         });
     </script>
-
+<script src="../script/admin-general.js"></script>
 
 </body>
 

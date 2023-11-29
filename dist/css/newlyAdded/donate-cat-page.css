@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 
-@font-face {
-  font-family: "dairantou";
-  src: url(/src/fonts/Dairantou.ttf);
+@font-face{
+  font-family: 'dairantou';
+  src: url(../../fonts/Dairantou.ttf);
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: auto;
   position: relative;
   background: #fdc161;
 }
@@ -278,7 +278,7 @@ main {
   width: 100%;
   padding: 20px;
   gap: 50px;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 2rem;
 }
 
@@ -325,11 +325,11 @@ main {
 
 .display-cat {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, 200px);
   grid-auto-rows: 1fr;
   column-gap: 20px;
   row-gap: 40px;
-  width: clamp(300px, 70%, 1000px);
+  width: clamp(300px, 70%, 900px);
 }
 
 .cat-content h1 {
@@ -416,11 +416,6 @@ main {
     height: auto;
     gap: 9rem;
   }
-  .dropdown .dropdown-btn {
-    justify-content: center;
-    max-width: 10px;
-    height: 40px;
-  }
   .dropdown-btn img {
     max-width: 35px;
     height: auto;
@@ -467,7 +462,8 @@ main {
     /*2 columns dapat pero ayaw magwork*/
     /* grid-template-columns: repeat(2, 1fr); */
     column-gap: 30px;
-    width: clamp(300px, 100%, 1000px);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: clamp(200px, 100%, 1000px);
   }
 
   .display-cat h1 {
@@ -481,4 +477,20 @@ main {
       flex: 1 0 40%;
     }
   }
+
+}
+
+@media only screen and (max-width: 600px) 
+{
+
+  .menu {
+    flex-direction: column;
+    height: auto;
+    gap: 1rem;
+  }
+}
+.max-width
+{
+  max-width: 1500px;
+  margin: auto;
 }

@@ -131,6 +131,16 @@ td,th
     padding: 15px;
 }
 
+.searchButton{
+    background-color: #ffb845ba;
+    color: black;
+    padding: 0.5rem;
+    --webkit-appearance: button;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
 
 /*--- Customize Scrollbar ---*/
 ::-webkit-scrollbar{
@@ -190,4 +200,15 @@ td,th
     td:nth-of-type(5):before { content: "Short Description"; }
     td:nth-of-type(6):before { content: "Date and Time"; }
 
+}
+
+
+.search form{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    & > * {
+        flex: 1;;
+    }
 }

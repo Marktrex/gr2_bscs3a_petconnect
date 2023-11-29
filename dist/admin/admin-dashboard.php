@@ -56,7 +56,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <title>Admin Dashboard</title>
     
     <!-- content style position -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css?v=2" />
+    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css" />
 
     <!-- for layout color -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
@@ -71,86 +71,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <!-- calendar -->
-    <script>
-        $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
-                },
-                selectable: true,
-                select: function (start, end) {
-                    var selectedDate = moment(start).format('YYYY-MM-DD');
-                    var today = moment().startOf('day'); // Get the start of the current day
 
-
-                    $('#date-input').val(selectedDate).change(); // Update the input value and trigger change event
-                },
-                events: [
-                    // Example of dynamically generated events from the database
-                    <?php
-                    // Retrieve the dates from the appointment table in the database
-                    $sql = "SELECT appointment_date, time_slot FROM appointment";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
-                    $events = [];
-
-                    // Generate event objects for each date
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {  //We fetch the result using fetch(PDO::FETCH_ASSOC) to get an associative array.
-                        $date = $row['appointment_date'];
-                        $time_slot = $row['time_slot'];
-
-                        $event = [
-                            "title" => "$time_slot",
-                            "start" => $date,
-                            "end" => $date,
-                            "color" => "#378006"
-                        ];
-                        echo json_encode($event) . ",";
-                    }
-                    ?>
-                ],
-                eventRender: function (event, element) {
-                    // Check if there are two events on the same day
-                    if (event.title === 'Morning Session' && hasAfternoonSession(event.start)) {
-                        element.css('background-color', '#fad046'); // Set background color to #fad046
-                        element.css('border-color', '#fad046');
-                        element.addClass('unselectable'); // Add a class to disable selection of the date
-                    } else if (event.title === 'Afternoon Session' && hasMorningSession(event.start)) {
-                        element.css('background-color', '#fad046'); // Set background color to #fad046
-                        element.css('border-color', '#fad046');
-                        element.addClass('unselectable'); // Add a class to disable selection of the date
-                    }
-                },
-
-            });
-
-            // Check if there is a Morning Session on the given date
-            function hasMorningSession(date) {
-                var events = $('#calendar').fullCalendar('clientEvents');
-                for (var i = 0; i < events.length; i++) {
-                    if (events[i].title === 'Morning Session' && moment(events[i].start).isSame(date, 'day')) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            // Check if there is an Afternoon Session on the given date
-            function hasAfternoonSession(date) {
-                var events = $('#calendar').fullCalendar('clientEvents');
-                for (var i = 0; i < events.length; i++) {
-                    if (events[i].title === 'Afternoon Session' && moment(events[i].start).isSame(date, 'day')) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-        });
-
-    </script>
 </head>
 
 <body>
@@ -179,36 +100,62 @@ $countVolunteer = $rowVolunteer['volunteer'];
         </header>
         <main class="content">
             <div class="cards">
+                <!--Calendar-->
                 <div class="card-date">
                     <div class="box">
-                        <!-- calendar(js process above) -->
-                        <div class="calendar-container">
-                            <div id="calendar">
-
-                            </div>
-                        </div>
-
-   
+                    <div class="calendar-container"></div>
                     </div>
                 </div>
+                <!--Appointments-->
                 <div class="card">
-                    <i class="fa fa-calendar fa-5x"></i>
-                    <div class="box">
-                        <h1>APPOINTMENTS</h1>
+                <i class="fa fa-calendar fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        100
                     </div>
+                    <h1>APPOINTMENTS</h1>
                 </div>
+                </div>
+                <!--Adopt-->
                 <div class="card">
                 <i class="fa fa-paw fa-5x"></i>
-                    <div class="box">
-                        <h1>ADOPT</h1>
+                <div class="box">
+                    <div class="card-number">
+                        99
                     </div>
+                    <h1>ADOPT</h1>
                 </div>
+                </div>
+            <!--Volunteer-->
                 <div class="card">
-                    <i class="fa fa-users fa-5x"></i>
-                    <div class="box">
-                        <h1>VOLUNTEER</h1>
+                <i class="fa fa-users fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        10
                     </div>
+                    <h1>VOLUNTEER</h1>
                 </div>
+                </div>
+            <!--donate-->
+                <div class="card">
+                <i class="fa fa-money fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        5
+                    </div>
+                    <h1>Donate</h1>
+                </div>
+                </div>
+            <!--Visit-->
+                <div class="card">
+                <i class="fa fa-eye fa-5x"></i>
+                <div class="box">
+                    <div class="card-number">
+                        8
+                    </div>
+                    <h1>Visit</h1>
+                </div>
+                </div>            
             </div>
             <!-- tables for sessions -->
             <!-- morning -->
@@ -227,6 +174,19 @@ $countVolunteer = $rowVolunteer['volunteer'];
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>Data1</td>
+                            <td>Data2</td>
+                            <td>Data3</td>
+                            <td>Data4</td>
+                            <td>Data5</td>
+                            <td>
+                            <span class="action-btn">
+                                <a href="#">Accept</a>
+                                <a href="#" class="delete-link">Delete</a>
+                            </span>
+                            </td>
+                        </tr>
                         <?php
                         // Check if the date-input field is submitted //code for accepting appointments in the morning session
                         if (isset($_POST['date-input'])) {
@@ -320,6 +280,19 @@ $countVolunteer = $rowVolunteer['volunteer'];
                         </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td>Data1</td>
+                        <td>Data2</td>
+                        <td>Data3</td>
+                        <td>Data4</td>
+                        <td>Data5</td>
+                        <td>
+                        <span class="action-btn">
+                            <a href="#">Accept</a>
+                            <a href="#" class="delete-link">Delete</a>
+                        </span>
+                        </td>
+                    </tr>
                         <?php
                         // Check if the date-input field is submitted
                         if (isset($_POST['date-input'])) {
@@ -404,7 +377,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -442,92 +415,6 @@ $countVolunteer = $rowVolunteer['volunteer'];
             >
         </aside>
     </div>
-    <!-- old structure inside settings -->
-    <div class="setting">
-        
-        <div class="main">
-            <!-- appointments -->
-            <div class="dashboard">
-                <div class="card total">
-                    <i class="fas fa-calendar-check card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $totalAppointments; ?>
-                    </div>
-                    <div class="card-text">Total Appointments</div>
-                </div>
-            </div>
-            <!-- adopt -->
-            <div class="dashboard2">
-                <div class="card adopt">
-                    <i class="fas fa-paw card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countAdopt; ?>
-                    </div>
-                    <div class="card-text">Adopt</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hand-holding-heart card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countDonate; ?>
-                    </div>
-                    <div class="card-text">Donate</div>
-                </div>
-            </div>
-            <!-- visit -->
-            <div class="dashboard3">
-                <div class="card adopt">
-                    <i class="fas fa-eye card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVisit; ?>
-                    </div>
-                    <div class="card-text">Visit</div>
-                </div>
-                <div class="card adopt">
-                    <i class="fas fa-hands-helping card-icon"></i>
-                    <div class="card-number">
-                        <?php echo $countVolunteer; ?>
-                    </div>
-                    <div class="card-text">Volunteer</div>
-                </div>
-            </div>
-            <!-- calendar(js process above) -->
-            <div class="content">
-                <div class="calendar-container">
-                    <div id="calendar"></div>
-                </div>
-            </div>
-            <!--this form accepts the change(or click) on the calendar  -->
-            <form action="" method="post">
-                <input type="date" class="form-control" name="date-input" id="date-input" required
-                    onchange="submitForm()">
-            </form>
-
-            <script>
-                // Define the submitForm function
-                function submitForm() {
-                    // Submit the form
-                    document.getElementById('date-input').closest('form').submit();
-                }
-            </script>
-
-            <!-- display the date selected on the calendar -->
-            <?php
-            if (isset($_POST['date-input'])) {
-                $date = $_POST['date-input'];
-            } else {
-                $date = date("Y-m-d"); // Get today's date
-            }
-
-            // Convert the date to words
-            $dateInWords = date("F j, Y", strtotime($date));
-
-            echo '<div class="date-container">';
-            echo '<div class="date">' . $dateInWords . '</div>';
-            echo '</div>';
-            ?>
-        </div>
-
-    </div>
 </body>
 
 <script src="../script/admin-general.js"></script>
@@ -542,6 +429,88 @@ $countVolunteer = $rowVolunteer['volunteer'];
     }
 </script>
 
+<!-- calendar script -->
+<script>
+    // Function to generate a calendar
+    function generateCalendar() {
+        const calendarContainer = document.querySelector(
+        ".calendar-container"
+        );
+        const currentDate = new Date();
+        const currentDay = currentDate.getDate(); // Get the current day of the month
+
+        const firstDayOfMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        1
+        ).getDay();
+        const daysInMonth = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        0
+        ).getDate();
+        const currentMonth = currentDate.toLocaleString("default", {
+        month: "long",
+        });
+        const currentYear = currentDate.getFullYear();
+
+        let calendarHTML = `<h2>${currentMonth} ${currentYear}</h2>`;
+
+        // Add days of the week with red color for Sundays
+        calendarHTML += `<div class="days-of-week">
+                            <span class="day red">Sun</span>
+                            <span class="day">Mon</span>
+                            <span class="day">Tue</span>
+                            <span class="day">Wed</span>
+                            <span class="day">Thu</span>
+                            <span class="day">Fri</span>
+                            <span class="day">Sat</span>
+                        </div>`;
+
+        calendarHTML += "<table>";
+
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < firstDayOfMonth; i++) {
+        calendarHTML += "<td></td>";
+        }
+
+        let dayCounter = 1;
+        for (let day = 1; day <= daysInMonth; day++) {
+        if (
+            new Date(currentYear, currentDate.getMonth(), day).getDay() === 0
+        ) {
+            calendarHTML += "</tr><tr>";
+        }
+
+        if (day === currentDay) {
+            calendarHTML += `<td class="today">${day}</td>`;
+        } else {
+            // Add the "red" class for Sundays
+            calendarHTML += `<td class="${
+            new Date(currentYear, currentDate.getMonth(), day).getDay() ===
+            0
+                ? "red"
+                : ""
+            }">${day}</td>`;
+        }
+
+        dayCounter++;
+        }
+
+        // Add empty cells for remaining days in the last week
+        for (let i = dayCounter; i <= 7; i++) {
+        calendarHTML += "<td></td>";
+        }
+
+        calendarHTML += "</tr></table>";
+        calendarContainer.innerHTML = calendarHTML;
+    }
+
+    // Call the function to generate the calendar
+    document.addEventListener("DOMContentLoaded", function () {
+        generateCalendar();
+    });
+</script>
 
 <script>
     // Get all the "Accept" buttons

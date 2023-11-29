@@ -2,7 +2,7 @@
 
 @font-face{
   font-family: 'dairantou';
-  src: url(fonts/Dairantou.ttf);
+  src: url(../../fonts/Dairantou.ttf);
 }
 
 * {
@@ -21,12 +21,11 @@ body {
 }
 
 header {
-  background: url('icons/close-up-portrait.png');
+  background: url('../../icons/close-up-portrait.png');
   position: relative;
   left: 0;
   top: 0;
   width: 100%;
-  height: 720px;
   z-index: 1;
   padding: 20px;
   margin-bottom: 100;
@@ -217,7 +216,9 @@ h2 {
 /* dog and cat buttons*/
 .button-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  padding: 10vh;
+  gap: 4vw;
 }
 .button {
   position: relative;
@@ -230,7 +231,6 @@ h2 {
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
-  margin: 40px 0px 120px 0px;  /* top,right,bottom,left */
   cursor: pointer;
   color: white;
   border-radius: 15px;
@@ -268,12 +268,11 @@ h2 {
 .pet-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 0%;
+    justify-content: center;
+    gap: 3vw;
     margin-bottom: 3%;
+    width: 80%;
+    margin: auto;
 }
 
 .pet-card {
@@ -285,30 +284,35 @@ h2 {
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
     border-radius: 15px;
+    height: 300px;
+    max-width: 250px;
+    flex: 1 0 250px;
+    overflow: hidden;
+    position: relative;
+    .pet-image{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
 }
 
 .pet-card:hover {
     transform: scale(1.05);
 }
-
-.pet-image {
-/*  object-position: bottom; [para ma position yung crop maayos] */
-    position: relative;
-    object-fit: cover;
-    width: 250px;
-    height: auto; /*backup tapos height: 100px;*/
-    overflow: hidden;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0
-}
 .pet-name {
     font-weight: bold;
-    text-align: center;
-    padding: 20px;
+    /* text-align: center; */
     font-family: 'dairantou', sans-serif;
     color: #127475;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: #f5dfbb;
 }
 #available-pet {
     font-family: 'dairantou', sans-serif;
@@ -323,7 +327,7 @@ h2 {
 }
     /* Style for the container */
 .overall-description-container{
-  padding: 2%;
+  padding: 10vh;
   background-color: #f5dfbb;
   margin: 5% auto;
   text-align: center;
@@ -337,7 +341,7 @@ h2 {
   flex-direction: row; 
   gap: 10px; 
   text-align: center;
-  padding: 20px;
+  flex-wrap: wrap;
 }
 .title {
   color: #127475;
@@ -350,6 +354,7 @@ h2 {
   padding: 30px;
   color: #127475;
   font-size: 20px;
+  flex: 1 0 300px;
 }
 .description i {
   font-size: 500%; 
@@ -384,27 +389,30 @@ h2 {
 .about-volunteer{
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   background-color: #f2542d;
   width: auto;
+  gap: 3vw;
 }
 .image-volunteer{
-  flex: 1;
-  margin-right: 30px;
+  width: 50%;
   overflow: hidden;
 }
 .image-volunteer img{
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .content-volunteer{
   flex: 1;
-  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .content-volunteer p{
   font-size: 20px;
   line-height: 1.3;
   color: #f5dfbb;
-  margin-right: 100px;
+  margin-right: 3vw;
 }
 h3 {
   color: #f5dfbb;
@@ -423,6 +431,7 @@ h3 {
   font-size: 25px;
   border-radius: 30px;
   color: #f2542d;
+  width: fit-content;
 }
 .learn-more:hover{
   transform: scale(1.05);
@@ -444,7 +453,6 @@ h2 {
 header {
   background-size: auto; /* Adjust as needed for mobile view */
   margin-bottom: 50px; /* Adjust margin for mobile view */
-  height: 80vh; /* background */
 }
 .logo img {
   width: 70%; 
@@ -467,10 +475,6 @@ header {
 #available-pet {
   font-size: 1.5em;
 }
-.pet-container {
-  margin-left: 5%;
-  margin-right: 5%;
-  }
 .pet-card {
   width: 35%; /* Adjust the width of pet cards for better layout on smaller screens */
   }
@@ -491,7 +495,7 @@ header {
     font-size: 80px; 
   }
   .button-donations {
-    width: 30%;
+    width: 60%;
     padding: 20px;
   }
 /* volunteer container */
@@ -504,4 +508,15 @@ header {
 h3{
   font-size: 40px;
 }
+}
+
+@media (max-width: 600px)
+{
+  .button-container{
+    & a{
+      & img {
+        display: none;
+      }
+    }
+  }
 }

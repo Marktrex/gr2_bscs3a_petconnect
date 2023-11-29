@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 15, 2023 at 06:36 PM
+-- Host: localhost
+-- Generation Time: Nov 26, 2023 at 07:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -130,7 +130,34 @@ INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `short_description`, `d
 (56, 1, 'admin modified pet', 'admin change the content of pet: 1 id: 1', '2023-11-16 01:12:01'),
 (57, 1, 'admin modified pet', 'admin change the content of pet: admin123 id: 7', '2023-11-16 01:13:15'),
 (58, 1, 'admin modified pet', 'admin change the content of pet: admin123 id: 8', '2023-11-16 01:13:24'),
-(59, 1, 'Logout', 'User has logged out', '2023-11-16 01:22:16');
+(59, 1, 'Logout', 'User has logged out', '2023-11-16 01:22:16'),
+(60, 3, 'Register', 'Created a new user account', '2023-11-26 18:01:47'),
+(61, 3, 'Login', 'Admin Logged In', '2023-11-26 18:01:56'),
+(62, 3, 'Logout', 'User has logged out', '2023-11-26 18:12:48'),
+(63, 3, 'Login', 'Admin Logged In', '2023-11-26 19:39:14'),
+(64, 3, 'Logout', 'User has logged out', '2023-11-26 19:46:41'),
+(65, 3, 'Login', 'User Logged In', '2023-11-26 19:47:31'),
+(66, 3, 'admin deleted a pet', 'admin deleted id: ', '2023-11-26 19:48:17'),
+(67, 3, 'add pets', 'admin added pets named:123', '2023-11-26 19:52:04'),
+(68, 3, 'Logout', 'User has logged out', '2023-11-26 19:52:33'),
+(69, 3, 'Login', 'Admin Logged In', '2023-11-26 19:53:13'),
+(70, 3, 'Logout', 'User has logged out', '2023-11-26 22:03:20'),
+(71, 3, 'Login', 'Admin Logged In', '2023-11-26 22:13:26'),
+(72, 3, 'Logout', 'User has logged out', '2023-11-26 22:13:40'),
+(73, 3, 'Login', 'Admin Logged In', '2023-11-26 22:29:06'),
+(74, 3, 'Logout', 'User has logged out', '2023-11-27 00:06:53'),
+(75, 3, 'Login', 'User Logged In', '2023-11-27 00:07:43'),
+(76, 3, 'Logout', 'User has logged out', '2023-11-27 00:08:39'),
+(77, 3, 'Login', 'Admin Logged In', '2023-11-27 00:09:01'),
+(78, 3, 'Logout', 'User has logged out', '2023-11-27 00:16:17'),
+(79, 3, 'Login', 'Admin Logged In', '2023-11-27 00:19:03'),
+(80, 3, 'Logout', 'User has logged out', '2023-11-27 00:19:26'),
+(81, 3, 'Login', 'User Logged In', '2023-11-27 00:19:56'),
+(82, 3, 'admin deleted a pet', 'admin deleted id: 10', '2023-11-27 02:09:27'),
+(83, 3, 'add pets', 'admin added pets named:boy good', '2023-11-27 02:11:16'),
+(84, 3, 'admin deleted a pet', 'admin deleted id: 11', '2023-11-27 02:11:44'),
+(85, 3, 'Logout', 'User has logged out', '2023-11-27 02:18:35'),
+(86, 4, 'Login', 'Admin Logged In', '2023-11-27 02:19:34');
 
 -- --------------------------------------------------------
 
@@ -289,7 +316,7 @@ CREATE TABLE `pets` (
   `about` text NOT NULL,
   `image` varchar(250) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `is_featured` varchar(10) NOT NULL
+  `is_featured` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -302,7 +329,9 @@ INSERT INTO `pets` (`pets_id`, `name`, `type`, `breed`, `sex`, `weight`, `age`, 
 (6, 'wew', 'Cat', 'Rottweiler', 'Female', 'Less than 5 lbs', 'Less than 6 months', '2023-10-24', 'sheesh pogi ni aries', '65376a95c15e7.png', 1, '3'),
 (7, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc2b82705.jpg', 1, '0'),
 (8, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc342f8ff.png', 1, '0'),
-(9, 'negneg', 'Cat', 'Labrador Retriever', 'Female', '20-50 lbs', '5 to 10 years', '2023-11-15', 'xd', '6554dec40c41e.jpg', 1, '1');
+(9, 'negneg', 'Cat', 'Labrador Retriever', 'Female', '20-50 lbs', '5 to 10 years', '2023-11-15', 'xd', '6554dec40c41e.jpg', 1, '1'),
+(12, 'boy good', 'Dog', 'Shih Tzu', 'Female', '5-10 lbs', 'Less than 6 months', '2023-11-07', 'sample about', 'BichonFrise.jpeg', 1, '0'),
+(13, 'bad cat', 'Cat', 'Shih Tzu', 'Male', '5-10 lbs', 'Less than 6 months', '2023-11-01', 'cat sample about', 'AustralianMist.jpeg', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -326,7 +355,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`) VALUES
 (1, 'AdminPogi', 'Marc', 'admin@gmail.com', '123', '1', '2023-11-15 16:20:45'),
-(2, 'Fiona', 'Malakas', 'fiona@gmail.com', 'marc', '2', '2023-11-15 17:06:04');
+(2, 'Fiona', 'Malakas', 'fiona@gmail.com', 'marc', '2', '2023-11-15 17:06:04'),
+(3, 'sample', 'sample', 'admin@sample', '$2y$10$fi19ddGhNVTKGcDbCgxcgeiYK5qy23cOzHBkgaaEPhBYjO2jJMnu6', '1', '2023-11-26 18:19:25'),
+(4, 'sample', 'sample', 'user@sample', '$2y$10$fi19ddGhNVTKGcDbCgxcgeiYK5qy23cOzHBkgaaEPhBYjO2jJMnu6', '2', '2023-11-26 18:19:18');
 
 --
 -- Indexes for dumped tables
@@ -388,7 +419,7 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `chat_message`
@@ -412,13 +443,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

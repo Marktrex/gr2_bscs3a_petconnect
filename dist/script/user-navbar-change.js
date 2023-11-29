@@ -30,8 +30,13 @@ window.addEventListener("scroll", function () {
 });
 
 function changeHeaderColor(textColor) {
-  const header = document.querySelector(".navbar");
+  // Check if the viewport width exceeds 800px
+  if (window.innerWidth < 1024) {
+    return; // Exit the function
+  }
 
+  const header = document.querySelector(".navbarContainer");
+  
   let scrollPosition = window.scrollY;
 
   // Change the background color of the navbar based on the scroll position
@@ -51,7 +56,7 @@ function changeHeaderColor(textColor) {
   if (header.classList.contains("show-mobile-menu")) {
     textColor = "#e89003";
   }
-  header.querySelectorAll("a,span,label").forEach(function (a) {
+  header.querySelectorAll("li > a, li > .dropdown > label, li > .dropdown > label > span").forEach(function (a) {
     a.style.cssText = `color: ${textColor}`; // Change to your desired text color
   });
   activeLink();
@@ -70,7 +75,7 @@ function activeLink() {
     if (link.href === currentUrl) {
       // If they match, add an attribute 'active' with the value 'true'
       link.setAttribute("active", "true");
-      link.style.color = "#127475";
+      link.style.color = "#f2542d";
     }
   });
 }

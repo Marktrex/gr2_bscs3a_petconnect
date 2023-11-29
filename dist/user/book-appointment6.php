@@ -6,7 +6,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
-if (isset($_SESSION['auth_user'])) { 
+if (!isset($_SESSION['auth_user'])) { 
     echo '<script language="javascript">';
     echo 'alert("You do not have access to this page");';
     echo '</script>';
@@ -87,14 +87,9 @@ if (isset($_SESSION['auth_user'])) {
                 </div>
 
                 <div class="button-container">
-                    <button type="submit" class="btnn" onclick="closePage()">Exit</button>
+                    <button type="submit" class="btnn" onclick="window.location.href='home.php'">Exit</button>
                 </div>
 
-                <script>
-                    function closePage() {
-                        window.close();
-                    }
-                </script>
             </div>
 
 

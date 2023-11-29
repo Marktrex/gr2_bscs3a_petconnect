@@ -1,10 +1,26 @@
+<?php
+session_start();
+require '../function/config.php';
+
+// print_r($_SESSION);
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+}
+if (!isset($_SESSION['auth_user'])) { 
+  echo '<script language="javascript">';
+  echo 'alert("You do not have access to this page");';
+  echo '</script>';
+  header("Location: ../loginpage.php");
+  exit();
+} ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetConnet Homepage</title>
-    <link rel="stylesheet" href="../css/donate.css" />
+    <link rel="stylesheet" href="../css/newlyAdded/donate.css" />
     <link rel="stylesheet" href="../css/newlyAdded/footer.css" />
     <link
       rel="stylesheet"
@@ -17,7 +33,7 @@
   </head>
 
   <body>
-  <?php require_once "../components/userNavbar.php"?>
+  <?php require_once "../components/fixedNavbar.php"?>
     <main>
       <div class="container">
         <div class="text1">
@@ -78,25 +94,28 @@
             <img src="" alt="" />
           </div>
           <div class="text-under-logo1">
-            <p>Account Number: 1234-678-91011</p>
-            <p>Account Name: PetConnect</p>
+            <p>Account Number: 09293883802</p>
+            <p>Account Name: MarcMarc</p>
           </div>
         </div>
       </div>
 
       <div class="container8">
         <h3><p class="description1">For Other Options</p></h3>
-
-        <p class="description2">
-          Contact us via Gmail: &nbsp; PetConnect@gmail.com
-        </p>
-        <p class="description3">
-          Contact us via Phone Number:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;09123456789
-        </p>
-        <p class="description4">
-          Contact us via
-          Viber:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09123456789
-        </p>
+        <div class="description">
+          <span>Contact us via Gmail:</span><span> PetConnect@gmail.com</span>
+        </div>
+        <div class="description">
+          
+          Contact us via Phone Number:<span>09123456789</span>
+        </div>
+        <div class="description">
+          
+          <span>
+            Contact us via
+            Viber:
+          </span><span>09123456789</span>
+        </div>
       </div>
     </main>
     <?php require_once "../components/footer.html"?>

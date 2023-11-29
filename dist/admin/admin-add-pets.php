@@ -255,7 +255,7 @@ if (isset($_POST["submit"])) {
                             <!-- about -->
                             <div class="">
                                 <label for="about"><a id="label-about">About</a></label>
-                                <textarea id="about" name="about" cols="100" rows="12" required></textarea>
+                                <textarea id="about" name="about" required></textarea>
                             </div>
                             <br>
                         </div>
@@ -282,7 +282,7 @@ if (isset($_POST["submit"])) {
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>

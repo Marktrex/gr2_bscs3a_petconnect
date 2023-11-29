@@ -2,7 +2,7 @@
 
 @font-face{
   font-family: 'dairantou';
-  src: url(/src/fonts/Dairantou.ttf);
+  src: url(../../fonts/Dairantou.ttf);
 }
 
 * {
@@ -63,19 +63,13 @@ header .navbar {
 }
 
 .navbar .menu-links li a:hover {
-  color: #127475 !important;
+  color: #127475;
 }
 
 .navbar .menu-links .join-btn a {
   padding: 8px 15px;
   border-radius: 4px;
   background-color: #127475;
-}
-
-.navbar .menu-links .join-btn a:hover {
-  color: #fff !important;
-  border-color: transparent !important;
-  background: #f2542d !important;
 }
 
 /*-----------------------------------------content---------------------------------------------------*/
@@ -108,7 +102,6 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
-  margin-top: -50px;
 }
 
 .hero-section .content p {
@@ -205,15 +198,17 @@ header .navbar {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  gap: 3vw;
+  padding: 0 3vw;
 }
 
 .services .item{
   margin-top: 2.5rem;
-  width: 450px;
   min-height: 510px;
   text-align: center;
   background-color: #0e9594;
   border-radius: 12px;
+  flex: 1 0 320px;
 }
 
 .item img{

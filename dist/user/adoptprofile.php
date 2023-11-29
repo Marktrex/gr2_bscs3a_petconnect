@@ -1,11 +1,19 @@
 <?php
-session_start(); // Add this line to start the session
+session_start();
 require '../function/config.php';
-//this checks the session if the admin is logged in
+
+// print_r($_SESSION);
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
-} 
+}
+if (!isset($_SESSION['auth_user'])) { 
+  echo '<script language="javascript">';
+  echo 'alert("You do not have access to this page");';
+  echo '</script>';
+  header("Location: ../loginpage.php");
+  exit();
+}
 $loggedIn = isset($_SESSION['auth_user']);
 ?>
 <!DOCTYPE html>
@@ -23,13 +31,6 @@ $loggedIn = isset($_SESSION['auth_user']);
 
   <body>
   <?php require_once "../components/userNavbar.php"?>
-    
-    <div class="navbar">
-      <a href="home.php" class="back">
-        <span>• Back</span>
-      </a>
-      <input type="text" class="searchbox" placeholder="Search" />
-    </div>
 
     <!-- Pet Content -->
     <?php
@@ -41,7 +42,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<div>
+<div class="not-petcontent">
     <img class="petimg" src="../upload/<?php echo $row['image']; ?>" alt="">
 </div>
 
@@ -49,17 +50,17 @@ $loggedIn = isset($_SESSION['auth_user']);
     <img src="../upload/<?php echo $row['image']; ?>" class="petimg" alt="" />
     <div class="pettxt">
         <span class="petname"><?php echo $row['name']; ?></span>
-        <p class="animal"><?php echo $row['type']; ?></p>
+        <p class="animal">Animal: <?php echo $row['type']; ?></p>
         <div class="list">
             <span>Breed: <?php echo $row['breed']; ?></span>
             <span>Age: <?php echo $row['age']; ?></span>
             <span>Sex: <?php echo $row['sex']; ?></span>
-            <span>Date of Rescue: <?php echo $row['rescue_date']; ?></span>
+            <span>Date of Rescue: <?php echo $row['date']; ?></span>
         </div>
-        <span class="aboutinfo">About <b><?php echo $row['name']; ?></b>:</span>
+        <span class="aboutinfo">About:</b></span>
         <span><?php echo $row['about']; ?></span>
         <div>
-            <button class="bookbutton">
+            <button class="bookbutton" onclick="window.location.href='book-appointment.php'"> 
                 <span>Book Appointment</span>
             </button>
         </div>

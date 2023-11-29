@@ -32,7 +32,7 @@ if (isset($_POST["register"])) { //code ni marc
         $conn = null;
     } 
     else {
-        echo "Data does not exist.";
+        
         if ($password == $passwordRepeat) {
             // Passwords match, proceed with insertion
             $password = password_hash($password, PASSWORD_DEFAULT);

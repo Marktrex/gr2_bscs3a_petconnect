@@ -6,27 +6,43 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 }
+if (!isset($_SESSION['auth_user'])) { 
+  echo '<script language="javascript">';
+  echo 'alert("You do not have access to this page");';
+  echo '</script>';
+  header("Location: ../loginpage.php");
+  exit();
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PetConnect Homepage</title>
+  <title>PetConnect | Homepage</title>
   <link rel="stylesheet" href="../css/newlyAdded/home-page-light.css">
   <link rel="stylesheet" href="../css/newlyAdded/footer.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<?php require_once "../components/userNavbar.php"?>
+<?php require_once "../components/fixedNavbar.php"?>
+<header>
+     <div class="title-container">
+          <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
+          <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search dogs, cats, etc.">
+        </div>
+    </div>
+  </header>
 <!-- content-Buttons -->
     <div class="button-container">
-        <a href="adoptpage-dog.php" class="button button-find-dog">
+        <a href="adoptpage.php?type=Dog" class="button button-find-dog">
           Find a <br> Dog
           <img src="../icons/btn-dog.png" alt="Dog Icon" class="dog-icon">
         </a>
-        <a href="adoptpage-cat.php" class="button button-find-cat">
+        <a href="adoptpage.php?type=Cat" class="button button-find-cat">
           Find a <br>Cat
           <img src="../icons/btn-cat.png" alt="Dog Icon" class="cat-icon">
         </a>
@@ -45,14 +61,13 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($rows as $row) {
+
         $petId = $row['pets_id'];
         $imageName = $row['image'];
         $petName = $row['name'];
         ?>
-        <div class="pet-card">
-            <a href="adoptprofile.php?id=<?php echo $petId; ?>">
-                <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
-            </a>
+        <div class="pet-card" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
+            <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
             <div class="pet-name"><?php echo $petName; ?></div>
         </div>
     <?php
@@ -77,10 +92,8 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
         $imageName = $row['image'];
         $petName = $row['name'];
         ?>
-        <div class="pet-card">
-            <a href="adoptprofile.php?id=<?php echo $petId; ?>">
-                <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
-            </a>
+        <div class="pet-card" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
+            <img class="pet-image" src="../upload/<?php echo $imageName; ?>" alt="<?php echo $petName; ?>">
             <div class="pet-name"><?php echo $petName; ?></div>
         </div>
     <?php
@@ -101,7 +114,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
           <i class="fa fa-handshake-o"></i> Help us to cover the cost of important pet resources and other materials.
         </div>
       </div>
-      <button class="button-donations" a href="donatepage.php">Go to Donations</button>
+      <button class="button-donations" onclick="window.location.href='donatepage.php'">Go to Donations</button>
   </div>
 <!-- Become a voluteers -->
   <div class="about-volunteer">
@@ -116,24 +129,6 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
   </div>
 
   
-  <?php require_once "../components/footer.html"?>
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Hide pet cards with names "Cheese" and "Stacy" when screen width is 900 pixels or less
-            if ($(window).width() <= 900) {
-                $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
-            }
-            // Adjust visibility on window resize
-            $(window).resize(function () {
-                if ($(window).width() <= 900) {
-                    $(".pet-name:contains('Cheese'), .pet-name:contains('Stacy'), .pet-name:contains('Cali'), .pet-name:contains('Doja')").closest('.pet-card').hide();
-                } else {
-                    $(".pet-card").show();
-                }
-            });
-        });
-    </script>
-    
+  <?php require_once "../components/footer.html"?>    
 </body>
 </html>

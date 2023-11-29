@@ -4,25 +4,25 @@
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
 }
-
 .navbarContainer{
-  position: sticky;
-  left: 0;
+  position: fixed;
   top: 0;
-  z-index: 1;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .navbar {
   /* navbar general style */
-  
-  padding: 3vh;
-  transition: all 0.5s ease;
-  max-width: 1500px;
+  width: min(100%, 1500px);
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent;
+  transition: all 0.5s ease;
+  padding: 3vh;
+  z-index: 99;
   /* navbar logo image */
   .logo {
     & img {
@@ -155,7 +155,6 @@
     display: none;
     font-size: 1.7rem;
   }
-
   .hidden{
     display: none;
   }
@@ -213,7 +212,6 @@
           &:hover {
             padding: 0;
             color: #127475;
-            background-color: transparent;
           }
         }
       }
@@ -221,7 +219,7 @@
     :is(#close-menu-btn, #hamburger-btn) {
       display: block;
     }
-
+  
     .profile-item{
       display: none;
     }

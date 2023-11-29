@@ -1,22 +1,17 @@
 <?php
+session_start();
+require '../function/config.php';
 use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-session_start();
-require '../function/config.php';
+
 // print_r($_SESSION);
 //this checks the session if the admin is logged in
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
-if (isset($_SESSION['auth_user'])) { 
-    echo '<script language="javascript">';
-    echo 'alert("You do not have access to this page");';
-    echo '</script>';
-    header("Location: ../user/home.php");
-    exit();
-} 
+
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $firstName = $_POST["fname"];

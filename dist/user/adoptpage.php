@@ -7,6 +7,13 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 }
+if (!isset($_SESSION['auth_user'])) { 
+  echo '<script language="javascript">';
+  echo 'alert("You do not have access to this page");';
+  echo '</script>';
+  header("Location: ../loginpage.php");
+  exit();
+} 
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
@@ -82,7 +89,7 @@ try { //research this try catch method
       
       <section class="content">
         <!--Dropdown menu-->
-        <div class="menu">
+        <div class="menu max-width">
           <div class="dropdown">
             <label for="dropdown" class="dropdown-btn">
               <img src="../icons/kitty-icon.png" alt="icon" />
@@ -116,55 +123,77 @@ try { //research this try catch method
           </div>
         </div>
       </section>
-      <main class="main-content">
+      <main class="main-content max-width">
         <!--For Cats-->
         <div class="cat-content">
-          <h1>Meet our cats</h1>
+          <h1>Meet our <?php echo $type."s" ?></h1>
           <ul class="cat-select">
             <li>
               <label for="breed">Breed:</label>
               <select id="breed" name="breed">
                 <option value=""></option>
-                <option value="American Shorthair">American Shorthair</option>
-                <option value="Bengal">Bengal</option>
-                <option value="British Shorthair">British Shorthair</option>
-                <option value="Burmese">Burmese</option>
-                <option value="Bombay">Bombay</option>
-                <option value="Calico">Calico</option>
-                <option value="Chinchilla">Chinchilla</option>
-                <option value="Domestic Long Hair">Domestic Long Hair</option>
-                <option value="Devon Rex">Devon Rex</option>
-                <option value="Exotic Shorthair">Exotic Shorthair</option>
-                <option value="Himalayan">Himalayan</option>
-                <option value="Main Coon">Main Coon</option>
-                <option value="Munchkin">Munchkin</option>
-                <option value="Persian">Persian</option>
-                <option value="Puspin">Puspin</option>
-                <option value="Ragdoll">Ragdoll</option>
-                <option value="Russian Blue">Russian Blue</option>
-                <option value="Scottish Fold">Scottish Fold</option>
-                <option value="Siamese">Siamese</option>
-                <option value="Sphynx">Sphynx</option>
-                <option value="Other breed:">Other breed:</option>
+                <optgroup label="Dog Breeds">
+                                        <option value="Aspin">Aspin</option>
+                                        <option value="Shih Tzu">Shih Tzu</option>
+                                        <option value="Pomeranian">Pomeranian</option>
+                                        <option value="Labrador Retriever">Labrador Retriever</option>
+                                        <option value="German Shepherd">German Shepherd</option>
+                                        <option value="Golden Retriever">Golden Retriever</option>
+                                        <option value="Rottweiler">Rottweiler</option>
+                                        <option value="Chihuahua">Chihuahua</option>
+                                        <option value="Bulldog">Bulldog</option>
+                                        <option value="Dalmatian">Dalmatian</option>
+                                        <option value="Beagle">Beagle</option>
+                                        <option value="Boxer">Boxer</option>
+                                        <option value="Doberman Pinscher">Doberman Pinscher</option>
+                                        <option value="Siberian Husky">Siberian Husky</option>
+                                        <option value="Pug">Pug</option>
+                                        <option value="Cocker Spaniel">Cocker Spaniel</option>
+                                        <option value="Australian Shepherd">Australian Shepherd</option>
+                                        <option value="Poodle">Poodle</option>
+                                        <option value="Bichon Frise">Bichon Frise</option>
+                                        <optgroup label="Cat Breeds">
+                                        <option value="Persian">Persian</option>
+                                        <option value="Siamese">Siamese</option>
+                                        <option value="Maine Coon">Maine Coon</option>
+                                        <option value="Bengal">Bengal</option>
+                                        <option value="Puspin">Puspin</option>
+                                        <option value="Scottish Fold">Scottish Fold</option>
+                                        <option value="British Shorthair">British Shorthair</option>
+                                        <option value="Ragdoll">Ragdoll</option>
+                                        <option value="Sphynx">Sphynx</option>
+                                        <option value="Norwegian Forest Cat">Norwegian Forest Cat</option>
+                                        <option value="Russian Blue">Russian Blue</option>
+                                        <option value="Exotic Shorthair">Exotic Shorthair</option>
+                                        <option value="Persian Chinchilla">Persian Chinchilla</option>
+                                        <option value="Himalayan">Himalayan</option>
+                                        <option value="Devon Rex">Devon Rex</option>
+                                        <option value="Manx">Manx</option>
+                                        <option value="Cornish Rex">Cornish Rex</option>
+                                        <option value="Tonkinese">Tonkinese</option>
+                                        <option value="Burmese">Burmese</option>
+                                        <option value="Abyssinian">Abyssinian</option>
               </select>
             </li>
             <li>
               <label for="age">Age:</label>
               <select id="age" name="age">
                 <option value=""></option>
-                <option value="Kitten (0-1 year)">Kitten (0-1 year)</option>
-                <option value="Adult (1-10 years)">Adult (1-10 years)</option>
-                <option value="Senior (>11 years)">Senior (>11 years)</option>
+                                    <option value="Less than 6 months">Less than 6 months</option>
+                                    <option value="6 months to 5 years">6 months to 5 years</option>
+                                    <option value="5 to 10 years">5 to 10 years</option>
+                                    <option value="over 10 years">over 10 years</option>
               </select>
             </li>
             <li>
               <label for="weight">Weight:</label>
               <select id="weight" name="weight">
                 <option value=""></option>
-                <option value="0-20 lbs">0-20 lbs</option>
-                <option value="20-50 lbs">20-50 lbs</option>
-                <option value="50-90 lbs">50-90 lbs</option>
-                <option value=">90 lbs">>90 lbs</option>
+                                    <option value="Less than 5 lbs">Less than 5 lbs</option>
+                                    <option value="5-10 lbs">5-10 lbs</option>
+                                    <option value="10-20 lbs">10-20 lbs</option>
+                                    <option value="20-50 lbs">20-50 lbs</option>
+                                    <option value="over 50 lbs">over 50 lbs</option>
               </select>
             </li>
             <li>
@@ -182,8 +211,9 @@ try { //research this try catch method
         <div class="display-cat">
         <?php
         foreach ($pet_data as $pet) {
+          $petId = $pet['pets_id'];
         ?>
-          <div class="img-bg">
+          <div class="img-bg" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
               <img src="../upload/<?php echo $pet['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
               <p class="img-text"><?php echo $pet['name']; ?></p>
               <div class="overlay">
@@ -198,6 +228,7 @@ try { //research this try catch method
         ?>
       </main>
     </form>
+    
     <?php require_once "../components/footer.html"?>
   </body>
 </html>

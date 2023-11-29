@@ -1,12 +1,19 @@
-<?php 
+<?php
+session_start();
 require '../function/config.php';
-session_start(); // Add this line to start the session
-//this checks the session if the admin is logged in
+
+// print_r($_SESSION);
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
-} 
-?>
+}
+if (!isset($_SESSION['auth_user'])) { 
+  echo '<script language="javascript">';
+  echo 'alert("You do not have access to this page");';
+  echo '</script>';
+  header("Location: ../loginpage.php");
+  exit();
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 

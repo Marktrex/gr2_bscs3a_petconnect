@@ -16,7 +16,7 @@ function updateLanguage(lang) {
 
   //update the language dropdown
   // Get the label of the checkbox
-  let languageLabel = document.querySelector(".navbar .dropdown-btn");
+  let languageLabel = document.querySelector(".navbar .language-item .dropdown-btn");
   let span = document.createElement("span");
   span.className = "material-symbols-outlined";
   span.textContent = "language";

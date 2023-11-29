@@ -106,7 +106,6 @@ if (isset($_POST['update'])) {
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
 
     // Update the data in both tables
     $conn->beginTransaction();
@@ -114,7 +113,7 @@ try {
     // Update user table
     $query2 = "
         UPDATE user
-        SET fname = :firstName, lname = :lastName, email = :email, password = :password
+        SET fname = :firstName, lname = :lastName, email = :email
         WHERE user_id = :id
     ";
     $statement2 = $conn->prepare($query2);
@@ -122,7 +121,6 @@ try {
     $statement2->bindParam(':lastName', $lastName, PDO::PARAM_STR);
     $statement2->bindParam(':email', $email, PDO::PARAM_STR);
     $statement2->bindParam(':id', $id, PDO::PARAM_INT);
-    $statement2->bindParam(':password', $password, PDO::PARAM_STR);
     if (!$statement2->execute()) {
         print_r($statement2->errorInfo());
         exit;
@@ -238,11 +236,6 @@ $conn = null;
                             <label for="email">Email</label>
                             <input placeholder="Enter Email" type="email" class="user-email" id="email" name="email" required>
                         </div>
-                        <!-- password -->
-                        <div>
-                            <label for="password">Password</label>
-                            <input placeholder="Enter Password" type="text" class="Password" id="password" name="password" required>
-                        </div>
                     </div>
                     <div class="details3">
                         <!-- firstname -->
@@ -291,7 +284,6 @@ $conn = null;
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
-                                <th>Password</th>
                                 <th>User Type</th>
                                 <th>Date Created</th>
                             </tr>
@@ -300,7 +292,7 @@ $conn = null;
                             <?php
                             require '../function/config.php';
                             // Query the database table
-                            $sql = "SELECT user_id, fname ,lname , email, password, user_type, created_at FROM user";
+                            $sql = "SELECT user_id, fname ,lname , email, user_type, created_at FROM user";
                             $stmt = $conn->query($sql);
                             $stmt -> execute();
                             // $result = $conn->query($sql);
@@ -320,9 +312,6 @@ $conn = null;
                                         </td>
                                         <td>
                                             <?php echo $row["email"]; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $row["password"]; ?>
                                         </td>
                                         <td>
                                             <?php echo $row["user_type"]; ?>
@@ -358,7 +347,7 @@ $conn = null;
                 >
             </li>
             <li>
-                <a id="db" href="../../privatechat.php"
+                <a id="db" href="#"
                 ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
                 >
             </li>
@@ -416,22 +405,21 @@ $conn = null;
                 var fname = $(this).find("td:nth-child(2)").html().trim();
                 var lname = $(this).find("td:nth-child(3)").text().trim();
                 var email = $(this).find("td:nth-child(4)").text().trim();
-                var password = $(this).find("td:nth-child(5)").text().trim();
-                var user_type = $(this).find("td:nth-child(6)").text().trim();
-                var date_created = $(this).find("td:nth-child(7)").text().trim();
+                var user_type = $(this).find("td:nth-child(5)").text().trim();
+                var date_created = $(this).find("td:nth-child(6)").text().trim();
 
                 // Populate the input fields with the selected row data
                 $("#id").val(id);
                 $("#fname").val(fname);
                 $("#lname").val(lname);
                 $("#email").val(email);
-                $("#password").val(password);
                 $("#user_type").val(user_type);
                 $("#date_created").val(date_created);
             });
         });
     </script>
 
+<script src="../script/admin-general.js"></script>
 
 </body>
 

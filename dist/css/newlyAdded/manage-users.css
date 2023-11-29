@@ -19,7 +19,19 @@ td,th
     td:nth-of-type(2):before { content: "Email"; }
     td:nth-of-type(3):before { content: "First Name"; }
     td:nth-of-type(4):before { content: "Last Name"; }
-    td:nth-of-type(5):before { content: "Password"; }
-    td:nth-of-type(6):before { content: "User Type"; }
-    td:nth-of-type(7):before { content: "Date Created"; }
+    td:nth-of-type(5):before { content: "User Type"; }
+    td:nth-of-type(6):before { content: "Date Created"; }
+
+    .details4{
+        grid-column: span 2;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .profile{
+        grid-template-rows: 130px repeat(auto-fit,minmax(200px, 1fr));;
+    }
+    .details4{
+        grid-column: span 1;
+    }
 }

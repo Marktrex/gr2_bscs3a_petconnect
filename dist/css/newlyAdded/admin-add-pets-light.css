@@ -17,12 +17,16 @@ main{
 }
 
 .wrapper .form .form-input {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: auto;
-    grid-auto-rows: 1fr;
-    column-gap: 50px;
+    display: flex;
     margin-top: 1rem;
+    flex-wrap: wrap;
+    & > :nth-child(1){
+        flex: 1 0 300px;
+    }
+
+    & > :nth-child(2){
+        flex: 2 0 300px;
+    }
 }
 
 form .form-title {
@@ -114,6 +118,7 @@ textarea{
     border-radius: 5px;
     border: none;
     background-color: var(--main-input-color);
+    min-height: 30vh !important;
 }
 
 #label-about{
