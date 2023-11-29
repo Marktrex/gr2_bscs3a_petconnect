@@ -15,7 +15,7 @@
 body {
     min-height: 100vh;
     position: relative;
-    background: #fdc161;
+    background: #090b29;
 }
 
 header {
@@ -184,7 +184,7 @@ header .navbar {
     width: 100%;
     z-index: 1;
     padding: 15px;
-    background: #0e9594;   
+    background: #240155;   
 }
 
 .menu {
@@ -203,7 +203,7 @@ header .navbar {
     gap: 5px;
     align-items: center;
     padding: 0 60px;
-    border: 2px solid #f9f9f9;
+    border: 2px solid #1EDDD4;
     border-radius: 40px;
     color: #f9f9f9;
     font-size: 18px;
@@ -219,12 +219,12 @@ header .navbar {
     display: none;
     position: absolute;
     top: 4rem;
-    background: #0e9594;
+    background: #240155;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     width: 100%;
     text-align: center;
-    border: 2px solid #f9f9f9;
+    border: 2px solid #1EDDD4;
     border-radius: 40px;
 }
 
@@ -324,13 +324,13 @@ main {
 .cat-select label{
     font-weight: 700;
     font-size: 19px;
-    color: #0e9594;
+    color: #1EDDD4;
 }
 
 .cat-select select{
     padding: 14px;
     border-radius: 10px;
-    color: #0e9594;
+    color: #1EDDD4;
     border: none;
     appearance: none;
 }
@@ -348,7 +348,7 @@ main {
     flex-direction: column;
     text-align: left;
     font-size: 45px;
-    color: #0e9594;
+    color: #1EDDD4;
     margin-top: 1%;
 }
 
@@ -367,7 +367,7 @@ main {
     position: relative;
     overflow: hidden;
     height: 300px;
-    background: #fff6e8;
+    background: #ab62ff;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
 }
@@ -377,7 +377,7 @@ main {
     margin-top: 2%;
     font-size: 20px;
     font-weight: 700;
-    color: #0e9594;
+    color: #c3fdfa;
 }
 
  .img-bg .overlay{
@@ -406,7 +406,7 @@ main {
 .img-bg h2{
     font-size: 20px;
     margin-top: 20%;
-    color: #fdc161;
+    color: #1EDDD4;
 }
 
 .overlay p{
