@@ -36,8 +36,8 @@ function changeHeaderColor(textColor)
     let backgroundColor = null;
     if (scrollPosition > 50) {
         // scroll below
-        backgroundColor = '#fff6e8';
-        textColor = "#e89003";
+        backgroundColor = '#40386B';
+        textColor = "#c3fdfa";
     } else {
         // on top
         backgroundColor = 'transparent';

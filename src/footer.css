@@ -15,8 +15,8 @@
 footer .footer-content{
     display: flex;
     justify-content: space-around;
-    background: #0e9594;
-    color: #c9e6e7;; 
+    background: #1c0142;
+    color: #c3fdfa; 
     padding: 2em; 
     font-size: 1.2rem;
 }
@@ -55,7 +55,7 @@ footer .item.logo>a
 
 
 footer .item, .quick-links ul, .about ul, .Services ul{
-    color: #c9e6e7;
+    color: #c3fdfa;
     list-style: none; 
     margin-top: 15px;
 }
@@ -82,10 +82,10 @@ footer .item .socmed ul{
 }
 
 footer .item .socmed ul a{
-    color: #0e9594;
+    color: #1c0142;
     text-decoration: none;    
     border-radius: 50%;
-    background-color:#9bbfc0;
+    background-color:#c3fdfa;
 }
 
 footer .item .socmed ul a:hover{
@@ -118,7 +118,7 @@ footer .info{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: #127475;
+    background: #312768;
     color: #fff; 
     font-size: 0.9rem;
 }

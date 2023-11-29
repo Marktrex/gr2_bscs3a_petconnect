@@ -13,7 +13,7 @@
 }
 
 body {
-  background: #fdc161;
+  background: #090b29;
 }
 
 header {
@@ -63,19 +63,19 @@ header .navbar {
 }
 
 .navbar .menu-links li a:hover {
-  color: #127475 !important;
+  color: #1EDDD4 !important;
 }
 
 .navbar .menu-links .join-btn a {
   padding: 8px 15px;
   border-radius: 4px;
-  background-color: #127475;
+  background-color: #ab62ff;
 }
 
 .navbar .menu-links .join-btn a:hover {
-  color: #fff !important;
+  color: #ab62ff !important;
   border-color: transparent !important;
-  background: #f2542d !important;
+  background: #1EDDD4 !important;
 }
 
 /*-----------------------------------------content---------------------------------------------------*/
@@ -103,7 +103,7 @@ header .navbar {
 }
 
 .hero-section .content h1 {
-  color: #0e9594;
+  color: #1EDDD4;
   font-family: 'dairantou';
   font-size: 350%;
   max-width: 200vh;
@@ -121,9 +121,9 @@ header .navbar {
 
 .register-button{
   border-radius: 30px;
-  background-color: #f2542d;
+  background-color: #ab62ff;
   border: none;
-  box-shadow: -2px 5px 0px #7a1d05;
+  box-shadow: -2px 5px 0px #352B71;
   color: #FFFFFF;
   font-size: 28px;
   padding: 10px;
@@ -186,17 +186,17 @@ header .navbar {
 }
 .container1>div
 {
-  background: #f5dfbb;
+  background: #381162;
   width: 90%;
   border-radius: 26px;
-  box-shadow: 0px 3px 10px rgb(110, 109, 109);
+  box-shadow: 0 .4rem .8rem #0005;
   padding: 5rem clamp(2rem,5vw,3rem);
   margin: auto;
 }
 
 .container1 h1{
   font-family: 'dairantou';
-  color: #ff653e;
+  color: #1EDDD4;
   font-size: 55px;
   text-align: center;
 }
@@ -212,7 +212,7 @@ header .navbar {
   width: 450px;
   min-height: 510px;
   text-align: center;
-  background-color: #0e9594;
+  background-color: #ab62ff;
   border-radius: 12px;
 }
 
@@ -232,20 +232,20 @@ header .navbar {
   font-size: 50px;
   text-align: center;
   margin: 20px;
-  color: #f5dfbb;
+  color: rgb(177, 232, 229);
 }
 
  .item p{
   font-size: 20px;
   text-align: center;
   margin: 20px;
-  color: #f5dfbb;
+  color: rgb(177, 232, 229);
  }
 
 .services .item:hover{
   margin-top: 2rem;
   transition: 0.3s;
-  box-shadow: -10px 10px 0px #127475;
+  box-shadow: -10px 10px 0px #5344ab;
 }
 
 /*-----------------------------------content---------------------------------------------------------*/
@@ -255,7 +255,7 @@ header .navbar {
   padding: 0;
   min-height: auto;
   margin-top: 145px;
-  background: #ff653e;
+  background: #381162;
 }
 
 .container2 .item{
@@ -268,13 +268,13 @@ header .navbar {
 }
 .container2 h1{
   font-family: 'dairantou';
-  color: #ffb845;
+  color: #1EDDD4;
   font-size: 75px;
   text-align: center;
 }
 
 .container2 p{
-  color: wheat;
+  color: aliceblue;
   font-size: 24px;
   line-height: 30px;
   text-align: justify;
@@ -320,10 +320,10 @@ header .navbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track{
-  background-color: #fdf7ec;
+  background-color: #48345d;
 }
 ::-webkit-scrollbar-thumb{
-  background: linear-gradient(#ffb845,#0e9594);
+  background: linear-gradient(#ab62ff, #1EDDD4);
   border-radius: 20px;
 }
 
