@@ -16,7 +16,7 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: 'Lato', sans-serif; /*samp*/
-  background-color: #fdc161;
+  background-color: #090b29;
   justify-content: center;
 }
 
@@ -387,6 +387,7 @@ h2 {
   align-items: center;
   background-color: #f2542d;
   width: auto;
+  height: 66.7vh;
 }
 .image-volunteer{
   flex: 1;
