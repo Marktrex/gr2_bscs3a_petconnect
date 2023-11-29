@@ -14,11 +14,11 @@ if(isset($_POST['action']) && $_POST['action'] == 'leave')
 
 	$user_object->setUserLoginStatus('Logout');
 
-	$user_object->setUserToken($_SESSION['user_data'][$_POST['user_id']]['token']);
+	$user_object->setUserToken($_SESSION['auth_user']['token']);
 
 	if($user_object->update_user_login_data())
 	{
-		unset($_SESSION['user_data']);
+		unset($_SESSION['auth_user']);
 
 		session_destroy();
 
