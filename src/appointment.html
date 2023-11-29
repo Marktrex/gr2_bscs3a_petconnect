@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PetConnet Appointment</title>
+  	<link rel="stylesheet" href="appointment.css">
+  	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<header>
+		<h1>Book an Appointment</h1>
+	</header>
+	<div class="container-1">
+        <form action="#">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Information</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>First name</label>
+                            <input type="text" placeholder="First name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Last name</label>
+                            <input type="text" placeholder="Last name" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Phone Number</label>
+                            <input type="text" placeholder="Phone Number" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email Address</label>
+                            <input type="text" placeholder="Email Address" required>
+                        </div>
+
+                        <div class="input-field-1">
+                            <label>Home Address</label>
+                            <input type="text" placeholder="Home Address" required>
+                        </div>
+
+                    </div>
+                    <p>PetConnect values data confientially. Your information well be only used in appoinment purposes.</p>
+                    <br><br>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Appointment Type</label>
+                            <select required>
+                                <option disabled selected>Select</option>
+                                <option>Adopt</option>
+                                <option>Donate</option>
+                                <option>Visit</option>
+                                <option>Volunteer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container-2">
+        <span class="title-2">Choose an Appointment Date</span>
+        <span class="title-3">Available slot</span>
+        <div class="content-wrapper">
+            <div class="cards">
+                <div class="card">
+                    <div class="calendar-container">
+                        <!-- Add your calendar content here -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-second">
+                <form action="#">
+                    <div class="fields-2">
+                        <label for="dates">Date</label>
+                        <input type="date" placeholder="date" required>
+                    </div>
+    
+                    <div class="fields-2">
+                        <label for="sessions">Session</label>
+                        <select required>
+                            <option disabled selected>Select</option>
+                            <option>Morning Session</option>
+                            <option>Afternoon Session</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-3">
+        <span class="title-4">Confirmation</span>
+        <p>I hereby certify I am available on the allotted date and session.</p>
+        <p>I understand where the appointment will be held-the adress and location. </p>
+        <p>Any changes or the need to reschedule the appointment will be communicated to the organization.</p>
+    </div>
+
+    <div class="center-save">
+        <a href="#" class="save-container">Save Changes</a>
+    </div>
+
+     <script>
+        // Function to generate a calendar
+        function generateCalendar() {
+          const calendarContainer = document.querySelector(
+            ".calendar-container"
+          );
+          const currentDate = new Date();
+          const currentDay = currentDate.getDate(); // Get the current day of the month
+          const firstDayOfMonth = new Date(
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            1
+          ).getDay();
+          const daysInMonth = new Date(
+            currentDate.getFullYear(),
+            currentDate.getMonth() + 1,
+            0
+          ).getDate();
+          const currentMonth = currentDate.toLocaleString("default", {
+            month: "long",
+          });
+          const currentYear = currentDate.getFullYear();
+          let calendarHTML = `<h2>${currentMonth} ${currentYear}</h2>`;
+          // Add days of the week with red color for Sundays
+          calendarHTML += `<div class="days-of-week">
+                                <span class="day red">Sun</span>
+                                <span class="day">Mon</span>
+                                <span class="day">Tue</span>
+                                <span class="day">Wed</span>
+                                <span class="day">Thu</span>
+                                <span class="day">Fri</span>
+                                <span class="day">Sat</span>
+                            </div>`;
+          calendarHTML += "<table>";
+          // Add empty cells for days before the first day of the month
+          for (let i = 0; i < firstDayOfMonth; i++) {
+            calendarHTML += "<td></td>";
+          }
+          let dayCounter = 1;
+          for (let day = 1; day <= daysInMonth; day++) {
+            if (
+              new Date(currentYear, currentDate.getMonth(), day).getDay() === 0
+            ) {
+              calendarHTML += "</tr><tr>";
+            }
+            if (day === currentDay) {
+              calendarHTML += `<td class="today">${day}</td>`;
+            } else {
+              // Add the "red" class for Sundays
+              calendarHTML += `<td class="${
+                new Date(currentYear, currentDate.getMonth(), day).getDay() ===
+                0
+                  ? "red"
+                  : ""
+              }">${day}</td>`;
+            }
+            dayCounter++;
+          }
+          // Add empty cells for remaining days in the last week
+          for (let i = dayCounter; i <= 7; i++) {
+            calendarHTML += "<td></td>";
+          }
+          calendarHTML += "</tr></table>";
+          calendarContainer.innerHTML = calendarHTML;
+        }
+        // Call the function to generate the calendar
+        document.addEventListener("DOMContentLoaded", function () {
+          generateCalendar();
+        });
+      </script>
+</body>
+</html>
