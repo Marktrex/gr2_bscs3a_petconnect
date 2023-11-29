@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
 :root{
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:rgba(37, 141, 141, 0.248);
+    --main-input-color:#c3fdfa94;
 }
 
 main{
@@ -10,7 +10,7 @@ main{
 }
 
 .wrapper {
-    background-color:#fdf7ec;
+    background-color:#381162;
     padding: 20px;
     border-radius: 10px;
     box-shadow: var(--main-content-shadow);
@@ -29,8 +29,8 @@ form .form-title {
     text-align: center;
     font-size: 32px;
     position: relative;
-    color: #0e9594;
-    border-bottom: 2px solid #0e9594;
+    color: #c3fdfa;
+    border-bottom: 2px solid #c3fdfa;
 }
 
 h1{
@@ -45,7 +45,7 @@ h1{
 }
 
 .pet-container a{
-    color: #6a6262;
+    color: #c3fdfa;
 }
 
 .form .image-container label {
