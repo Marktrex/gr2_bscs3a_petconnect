@@ -84,7 +84,7 @@ class PrivateChat
 	function get_all_chat_data()
 	{
 		$query = "
-		SELECT a.lname as from_user_lname, a.fname as from_user_fname, b.user_lname as to_user_lname,b.user_fname as to_user_fname, chat_message, timestamp, status, to_user_id, from_user_id  
+		SELECT a.lname as from_user_lname, a.fname as from_user_fname, b.lname as to_user_lname,b.fname as to_user_fname, chat_message, timestamp, status, to_user_id, from_user_id  
 			FROM chat_message 
 		INNER JOIN user a 
 			ON chat_message.from_user_id = a.user_id 

@@ -300,6 +300,7 @@ require('database/ChatRooms.php');
 				{
 					if(data.length > 0)
 					{
+						console.log("hello");
 						var html_data = '';
 
 						for(var count = 0; count < data.length; count++)
@@ -307,6 +308,7 @@ require('database/ChatRooms.php');
 							var row_class= ''; 
 							var background_class = '';
 							var user_name = '';
+							
 
 							if(data[count].from_user_id == from_user_id)
 							{
@@ -315,6 +317,7 @@ require('database/ChatRooms.php');
 								background_class = 'alert-primary';
 
 								user_name = 'Me';
+								
 							}
 							else
 							{
@@ -329,7 +332,7 @@ require('database/ChatRooms.php');
 							<div class="`+row_class+`">
 								<div class="col-sm-10">
 									<div class="shadow alert `+background_class+`">
-										<b>`+user_lname+` - </b>
+										<b>`+user_name+` - </b>
 										`+data[count].chat_message+`<br />
 										<div class="text-right">
 											<small><i>`+data[count].timestamp+`</i></small>
@@ -346,6 +349,9 @@ require('database/ChatRooms.php');
 
 						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
 				}
 			})
 
