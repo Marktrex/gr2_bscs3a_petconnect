@@ -6,13 +6,13 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-require('dist/function/config.php'); //PDO connection to the database
+require 'dist/function/config.php'; //PDO connection to the database
 
 //check if user is already logged redirect to user/home.php if yes
-if(isset($_SESSION['auth_user'])){
-    header("Location: dist/user/home.php");
-    exit();
-}
+// if(isset($_SESSION['auth_user'])){
+//     header("Location: dist/user/home.php");
+//     exit();
+// }
 
 //email verification
 // $log = new AuditModelController();
@@ -22,8 +22,10 @@ if (isset($_POST["register"])) { //code ni marc
     $email = $_POST["email"];
     $password = $_POST["password"];
     $passwordRepeat = $_POST["cpassword"];
-    
-    
+     // $log->activity_log($lastId, 'Register', 'Created a new user account'); the rollback is from the mayor not me, im glad it oks
+    //  echo '<script language="javascript">';
+    //  echo 'alert("Sign up successfully");';
+
     //php using PDO
     $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);
@@ -71,32 +73,29 @@ if (isset($_POST["register"])) { //code ni marc
                 $lastId = $conn->lastInsertId();
                 // If both queries are successful, commit the transaction
                 $conn->commit();
-                // $log->activity_log($lastId, 'Register', 'Created a new user account'); the rollback is from the mayor not me, im glad it oks
-                echo '<script language="javascript">';
-                echo 'alert("Sign up successfully");';
                 $otp = rand(100000,999999);
                 $_SESSION['otp'] = $otp;
                 $_SESSION['mail'] = $email;
-                require "vendor/phpmailer/PHPMailerAutoload.php";
+                // require "vendor/phpmailer/PHPMailerAutoload.php";
                 $mail = new PHPMailer(true);
-
+            
                 $mail->isSMTP();
-
+            
                 $mail->Host = 'smtp.gmail.com';
-
+            
                 $mail->SMTPAuth = true;
-
+            
                 $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
                 $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
-
+            
                 $mail->SMTPSecure = 'tls';
-
+            
                 $mail->Port = 587;
-
+            
                 $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
-
+            
                 $mail->addAddress($_POST['email']);
-
+            
                 $mail->isHTML(true);
                 $mail->Subject="Your verify code";
                 $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
@@ -104,22 +103,22 @@ if (isset($_POST["register"])) { //code ni marc
                 <p>With regrads,</p>
                 <b>Programming with Lam</b>
                 https://www.youtube.com/channel/UCKRZp3mkvL1CBYKFIlxjDdg";
-
-                        if(!$mail->send()){
-                            ?>
-                                <script>
-                                    alert("<?php echo "Register Failed, Invalid Email "?>");
-                                </script>
-                            <?php
-                        }else{
-                            ?>
-                            <script>
-                                alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                                window.location.replace('verification.php');
-                            </script>
-                            <?php
-                        }
-
+            
+                     if(!$mail->send()){
+                         ?>
+                             <script>
+                                 alert("<?php echo "Register Failed, Invalid Email "?>");
+                             </script>
+                         <?php
+                     }else{
+                         ?>
+                         <script>
+                             alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                             window.location.replace('signuppage.php');
+                         </script>
+                         <?php
+                     }  
+               
               
                 // echo 'window.location = "../../loginpage.php";'; 
                 // echo '</script>';
