@@ -1,7 +1,11 @@
 <?php 
 // use MyApp\Controller\AuditModelController;
-
 session_start();
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
 require('dist/function/config.php'); //PDO connection to the database
 
 //check if user is already logged redirect to user/home.php if yes
