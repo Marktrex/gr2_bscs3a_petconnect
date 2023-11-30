@@ -76,6 +76,12 @@ class Chat implements MessageComponentInterface {
 
             $private_chat_object->setChatMessage($data['msg']);
 
+            $private_chat_object->setMessageType($data['type']);
+            
+            $private_chat_object->setToken($data['token']);
+            
+            $private_chat_object->setChannel($data['channel']);
+
             $timestamp = date('Y-m-d h:i:s');
 
             $private_chat_object->setTimestamp($timestamp);

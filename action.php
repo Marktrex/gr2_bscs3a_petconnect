@@ -41,5 +41,10 @@ if(isset($_POST["action"]) && $_POST["action"] == 'fetch_chat')
 	echo json_encode($private_chat_object->get_all_chat_data());
 }
 
-
+if(isset($_POST["action"]) && $_POST["action"] == 'join_call')
+{
+	$_SESSION['token'] = $_POST['token'];
+	$_SESSION['channel'] = $_POST['channel'];
+	$_SESSION['userId'] = $_POST['userId'];
+}
 ?>

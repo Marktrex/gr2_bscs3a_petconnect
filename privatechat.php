@@ -195,7 +195,7 @@ require('database/ChatRooms.php');
 
 				var row_class = '';
 				var background_class = '';
-
+				
 				if(data.from == 'Me')
 				{
 					row_class = 'row justify-content-start';
@@ -211,11 +211,25 @@ require('database/ChatRooms.php');
 				{
 					if($('#is_active_chat').val() == 'Yes')
 					{
+						var count = 0;
+						count--;
+						var output;
+						if(data.type == 'call') {
+							output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'>';
+								output += '<input type="hidden" name="token' +count+'" value="' + data.token + '">';
+								output += '<input type="hidden" name="channel' +count+'" value="' + data.channel + '">';
+								output += '<input type="hidden" name="userId' +count+'" value="' + $("#login_user_id") + '">';
+								output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
+							output += '</form>';
+						} else {
+							output = data.msg;
+						}
+
 						var html_data = `
 						<div class="`+row_class+`">
 							<div class="col-sm-10">
 								<div class="shadow-sm alert `+background_class+`">
-									<b>`+data.from+` - </b>`+data.msg+`<br />
+									<b>`+data.from+` - </b>`+output+`<br />
 									<div class="text-right">
 										<small><i>`+data.datetime+`</i></small>
 									</div>
@@ -326,6 +340,18 @@ require('database/ChatRooms.php');
 							var row_class= ''; 
 							var background_class = '';
 							var user_name = '';
+							var message_type = data[count].message_type;
+
+							if(data[count].message_type == 'call') {
+								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'>';
+									output += '<input type="hidden" name="token' +count+'" value="' + data[count].token + '">';
+									output += '<input type="hidden" name="channel' +count+'" value="' + data[count].channel + '">';
+									output += '<input type="hidden" name="userId' +count+'" value="' + from_user_id + '">';
+									output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
+								output += '</form>';
+							} else {
+								output = data[count].chat_message;
+							}
 
 							if(data[count].from_user_id == from_user_id)
 							{
@@ -343,13 +369,12 @@ require('database/ChatRooms.php');
 
 								user_name = data[count].from_user_name;
 							}
-
 							html_data += `
 							<div class="`+row_class+`">
 								<div class="col-sm-10">
 									<div class="shadow alert `+background_class+`">
 										<b>`+user_name+` - </b>
-										`+data[count].chat_message+`<br />
+										`+output+`<br />
 										<div class="text-right">
 											<small><i>`+data[count].timestamp+`</i></small>
 										</div>
@@ -357,6 +382,7 @@ require('database/ChatRooms.php');
 								</div>
 							</div>
 							`;
+							
 						}
 
 						$('#userid_'+receiver_userid).html('');
@@ -368,6 +394,26 @@ require('database/ChatRooms.php');
 				}
 			})
 
+		});
+		$(document).on('submit', '.join_call_form', function(event){
+			event.preventDefault();
+
+			var form = $(this);
+			var count = form.data('count');
+
+			$.ajax({
+				url: 'action.php',
+				method: 'POST',
+				data: {
+					userId: form.find('input[name="userId'+count+'"]').val(),
+					token: form.find('input[name="token'+count+'"]').val(),
+					channel: form.find('input[name="channel'+count+'"]').val(),
+					action: 'join_call'
+				},
+				success: function() {
+					window.open('dist/user/VideoCall.html', '_blank');
+				}
+			});
 		});
 
 		$(document).on('click', '#close_chat_area', function(){
@@ -392,14 +438,16 @@ require('database/ChatRooms.php');
 
 				var message = $('#chat_message').val();
 
+				var message_type=  $('#message_type').val();
 				var data = {
 					userId: user_id,
 					msg: message,
 					receiver_userid:receiver_userid,
 					command:'private',
-					
+					type:message_type,
+					token:$('#token').val(),
+					channel:$('#channel').val()
 				};
-
 				conn.send(JSON.stringify(data));
 			}
 
@@ -407,6 +455,7 @@ require('database/ChatRooms.php');
 		$(document).on('click', '#video_call_button', function(event){
 			event.preventDefault();
 			$('#message_type').val('call');
+			$('#chat_message').val('this is a call');
 			// Your code for initiating a video call goes here
 			// Use AJAX to generate the token and channel and store them in the database
 			$.ajax({
@@ -416,10 +465,23 @@ require('database/ChatRooms.php');
 				success: function(data) {
 					// Set the values of the hidden fields
 					$('#token').val(data.token);
-					$('#channel').val(data.channel);
+					$('#channel').val(data.channelName);
 
 					// Submit the form
 					$('#chat_form').submit();
+				}
+			});
+			$.ajax({
+				url: 'action.php',
+				method: 'POST',
+				data: {
+					userId: $('#login_user_id').val(),
+					token: $('#token').val(),
+					channel: $('#channel').val(),
+					action: 'join_call'
+				},
+				success: function() {
+					window.open('dist/user/VideoCall.html', '_blank');
 				}
 			});
 		});
