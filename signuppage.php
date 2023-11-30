@@ -52,8 +52,8 @@ if (isset($_POST["register"])) { //code ni marc
         
             // Insert into user table with user_status set to 'Disabled'
             $query2 = "
-                INSERT INTO user (fname, lname, email, password, user_type, user_status, user_verification_code) 
-                VALUES (:fname, :lname, :email, :password, :user_type, :user_status, :user_verification_code)
+                INSERT INTO user (fname, lname, email, password, user_type, user_status) 
+                VALUES (:fname, :lname, :email, :password, :user_type, :user_status)
             ";
 
             $statement2 = $conn->prepare($query2);
@@ -63,7 +63,6 @@ if (isset($_POST["register"])) { //code ni marc
             $statement2->bindParam(':password', $password);
             $statement2->bindParam(':user_type', $user_type);
             $statement2->bindParam(':user_status', $user_status);
-            $statement2->bindParam(':user_verification_code', $user_verification_code); // Bind user_verification_code parameter
         
             // Execute both queries
             $conn->beginTransaction();
@@ -222,7 +221,7 @@ if (isset($_POST["register"])) { //code ni marc
                 <section class="custom-text">
                     <div class="sign-up-container">
                         <p data-translate="Already have an Account?">Already have an Account? </p>
-                            <a href="loginpage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="login">Log in </span></a>
+                            <a href="dist/loginpage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="login">Log in </span></a>
                     </div>
                 </section>
             </form>

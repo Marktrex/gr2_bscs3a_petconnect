@@ -16,7 +16,7 @@ $log = new AuditModelController();
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
-        
+    
     // loging in
     $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);
@@ -54,8 +54,12 @@ if (isset($_POST["login"])) {
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
                 'role' => "1",
-                'token' =>  $user_token
+                'token' =>  $user_token,
+                'user_status' => $user_status // assuming 'user_status' is part of the session data
+
             ];
+
+
             $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'User Logged In');
             echo '<script language="javascript">';
            
@@ -74,8 +78,12 @@ if (isset($_POST["login"])) {
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
                 'role' => "2",
-                'token' =>  $user_token
+                'token' =>  $user_token,
+                'user_status' => $user_status // assuming 'user_status' is part of the session data
+
             ];
+    
+
             $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';
             header("Location: ../user/home.php");

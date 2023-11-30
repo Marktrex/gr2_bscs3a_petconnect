@@ -5,7 +5,7 @@ require '../function/config.php';
 if (isset($_POST["verify"])) {
     $otp = $_SESSION['otp'];
     $email = $_SESSION['mail'];
-    $otp_code = $_POST['user_verification_code'];
+    $otp_code = $_POST['otp_code'];
 
     if ($otp != $otp_code) {
         ?>
@@ -84,7 +84,7 @@ if (isset($_POST["verify"])) {
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">OTP Code</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="user_verification_code" required autofocus>
+                                    <input type="text" id="otp" class="form-control" name="otp_code" required autofocus>
                                 </div>
                             </div>
 

@@ -2,7 +2,7 @@
 session_start();
 require '../function/config.php';
 
-// print_r($_SESSION);
+print_r($_SESSION);
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();

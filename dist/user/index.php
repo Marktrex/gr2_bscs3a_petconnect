@@ -29,7 +29,7 @@
             Adopting rescued animals not only saves lives but also fills your
             heart with boundless love and gratitude.
           </p>
-          <button class="register-button" onclick="window.location.href='../../register.php'">
+          <button class="register-button" onclick="window.location.href='../../signuppage.php'">
             <span>Get Started</span>
           </button>
         </div>
