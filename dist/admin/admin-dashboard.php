@@ -83,7 +83,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
                 /></a>
                 <ul class="items">
                     <li>
-                    <a class="" id="messages" href="#"
+                    <a class="" id="messages" href="../../privatechat.php"
                         ><i class="fa fa-envelope"></i
                     ></a>
                     </li>
