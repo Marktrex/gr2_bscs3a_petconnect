@@ -1,15 +1,16 @@
 <?php
 require_once '../../vendor/autoload.php';
-use Agora\AccessToken\RtcTokenBuilder;
 use Dotenv\Dotenv;
+use Yasser\Agora\RtcTokenBuilder;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
 $dotenv->load();
 
-$appID = getenv('APP_ID');
-$appCertificate = getenv('APP_CERTIFICATE');
+$appID = $_ENV['APP_ID'];
+$appCertificate = $_ENV['APP_CERTIFICATE'];
+
 $channelName = uniqid('channel_');
-$uid = $_POST['uid'];
+$uid = isset($_POST['uid']) ? $_POST['uid'] : 0;
 $role = RtcTokenBuilder::RolePublisher;
 $expireTimeInSeconds = 3600;
 $currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();

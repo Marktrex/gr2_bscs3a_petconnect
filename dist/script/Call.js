@@ -10,7 +10,14 @@ let joinAndDisplayLocalStream = async () => {
     
     client.on('user-left', handleUserLeft);
 
-    let response = await fetch('..\\function\\generateTokenCall.php');
+    let uid = null; // Replace with your actual uid
+    let response = await fetch('..\\function\\generateTokenCall.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `uid=${encodeURIComponent(uid)}`
+    });
     let data = await response.json();
     let { token, channelName, appId } = data;
 
