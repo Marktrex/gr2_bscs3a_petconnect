@@ -10,7 +10,6 @@
 <body>
 
     <button id="join-btn">Join Stream</button>
-
     <div id="stream-wrapper">
         <div id="video-streams"></div>
 

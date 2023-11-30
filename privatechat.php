@@ -215,10 +215,10 @@ require('database/ChatRooms.php');
 						count--;
 						var output;
 						if(data.type == 'call') {
-							output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'>';
+							output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
 								output += '<input type="hidden" name="token' +count+'" value="' + data.token + '">';
 								output += '<input type="hidden" name="channel' +count+'" value="' + data.channel + '">';
-								output += '<input type="hidden" name="userId' +count+'" value="' + $("#login_user_id") + '">';
+								output += '<input type="hidden" name="userId' +count+'" value="' + $("#login_user_id").val() + '">';
 								output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
 							output += '</form>';
 						} else {
@@ -343,7 +343,7 @@ require('database/ChatRooms.php');
 							var message_type = data[count].message_type;
 
 							if(data[count].message_type == 'call') {
-								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'>';
+								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
 									output += '<input type="hidden" name="token' +count+'" value="' + data[count].token + '">';
 									output += '<input type="hidden" name="channel' +count+'" value="' + data[count].channel + '">';
 									output += '<input type="hidden" name="userId' +count+'" value="' + from_user_id + '">';
@@ -411,7 +411,7 @@ require('database/ChatRooms.php');
 					action: 'join_call'
 				},
 				success: function() {
-					window.open('dist/user/VideoCall.html', '_blank');
+					window.open('dist/user/VideoCall.php', '_blank');
 				}
 			});
 		});
@@ -481,7 +481,7 @@ require('database/ChatRooms.php');
 					action: 'join_call'
 				},
 				success: function() {
-					window.open('dist/user/VideoCall.html', '_blank');
+					window.open('dist/user/VideoCall.php', '_blank');
 				}
 			});
 		});

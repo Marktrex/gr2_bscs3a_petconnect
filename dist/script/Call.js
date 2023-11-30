@@ -10,19 +10,13 @@ let joinAndDisplayLocalStream = async () => {
     
     client.on('user-left', handleUserLeft);
 
-    let uid = null; // Replace with your actual uid
-    let response = await fetch('..\\function\\generateTokenCall.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `uid=${encodeURIComponent(uid)}`
-    });
+    // Fetch session data from the server
+    let response = await fetch('../function/get_call_function.php');
     let data = await response.json();
+
     let { token, channelName, appId } = data;
 
     let UID = await client.join(appId, channelName, token, null);
-
 
     let audioTrack = await AgoraRTC.createMicrophoneAudioTrack();
 

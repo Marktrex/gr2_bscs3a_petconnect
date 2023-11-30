@@ -18,5 +18,5 @@ $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
 $token = RtcTokenBuilder::buildTokenWithUid($appID, $appCertificate, $channelName, $uid, $role, $privilegeExpiredTs);
 header('Content-Type: application/json');
-echo json_encode(['token' => $token, 'channelName' => $channelName, 'appId' => $appID]);
+echo json_encode(['token' => $token, 'channelName' => $channelName]);
 ?>
