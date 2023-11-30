@@ -262,7 +262,7 @@ require('database/ChatRooms.php');
 							<b>Chat with <span class="text-danger" id="chat_user_name">`+user_name+`</span></b>
 						</div>
 						<div class="col col-sm-6 text-right">
-							<a href="chatroom.php" class="btn btn-success btn-sm">Group Chat</a>&nbsp;&nbsp;&nbsp;
+							<a href="#" id="video_call_button" class="btn btn-success btn-sm">Call</a>&nbsp;&nbsp;&nbsp;
 							<button type="button" class="close" id="close_chat_area" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -276,6 +276,9 @@ require('database/ChatRooms.php');
 
 			<form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
 				<div class="input-group mb-3" style="height:7vh">
+					<input type="hidden" id="message_type" name="message_type" value="message">
+					<input type="hidden" id="token" name="token">
+					<input type="hidden" id="channel" name="channel">
 					<textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
 					<div class="input-group-append">
 						<button type="submit" name="send" id="send" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
@@ -393,12 +396,39 @@ require('database/ChatRooms.php');
 					userId: user_id,
 					msg: message,
 					receiver_userid:receiver_userid,
-					command:'private'
+					command:'private',
+					
 				};
 
 				conn.send(JSON.stringify(data));
 			}
 
+		});
+		$(document).on('click', '#video_call_button', function(event){
+			event.preventDefault();
+			$('#message_type').val('call');
+			// Your code for initiating a video call goes here
+			// Use AJAX to generate the token and channel and store them in the database
+			$.ajax({
+				url: 'dist\\function\\generateTokenCall.php',
+				method: 'POST',
+				data: { uid: $('#login_user_id').val() },
+				success: function(data) {
+					// Set the values of the hidden fields
+					$('#token').val(data.token);
+					$('#channel').val(data.channel);
+
+					// Submit the form
+					$('#chat_form').submit();
+				}
+			});
+		});
+
+		$(document).on('click', '#send', function(event){
+			event.preventDefault();
+			//change the value of the message_type to message
+			$('#message_type').val('message');
+			$('#chat_form').submit();
 		});
 
 		$('#logout').click(function(){
