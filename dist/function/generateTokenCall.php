@@ -1,7 +1,7 @@
 <?php
 require_once '../../vendor/autoload.php';
 use Dotenv\Dotenv;
-use Yasser\Agora\RtcTokenBuilder;
+use MyApp\Class\AgoraDynamicKey\RtcTokenBuilder;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
 $dotenv->load();
