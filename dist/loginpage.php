@@ -72,7 +72,7 @@
                 <section class="custom-text">
                     <div class="sign-up-container">
                     <p data-translate="Don't have an account?">Don't have an account?</p>
-                   <a href="signuppage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="Sign up">Sign up</span></a>
+                   <a href="../signuppage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="Sign up">Sign up</span></a>
                     </div>
                 </section>
             </form>
