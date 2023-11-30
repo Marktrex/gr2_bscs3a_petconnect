@@ -161,7 +161,7 @@ class PrivateChat
 
 		$statement->bindParam(':message_type', $this->message_type);
 
-		$statement->bindParam(':token', $this->token);
+		$statement->bindParam(':token', addslashes($this->token));
 
 		$statement->bindParam(':channel', $this->channel);
 
