@@ -105,12 +105,14 @@ form .fields .input-field-1{
     margin: 50px auto;
     border-radius: 15px;
     background-color: #f5dfbb; 
-    overflow-y: auto;
+    overflow: hidden;
     height: 600px;
     align-items: center;
+    padding-top: 100px;
 }
 
 .title-2 {
+    margin-top: 20px;
     font-weight: 800;
     color: #127475;
     font-size: 1.4rem;
@@ -132,25 +134,27 @@ form .fields .input-field-1{
 
 .cards {
     flex: 1;
-    padding: 10px;
     box-sizing: border-box;
-    align-items: center;
+    text-align: center;
 }
 
 .card {
     border-radius: 15px;
+    max-width: 320px;
     width: 100%;
     height: 100%;
     border: solid 1px;
     border-color: #aaa;
     background: white;
-    text-align: center;
     font-size: 24px;
     margin-top: 20px; 
+    padding: 10px;
+    margin-left: 80px;
 }
 
 .calendar-container {
     /* Add your calendar content here */
+
 }
 
 .form-second {
@@ -186,15 +190,6 @@ form .fields .input-field-1{
     width: 70%;
 }
 /* --------------------------------------CALENDAR----------------------------------------- */
-.cards .card{
-    border: solid 1px;
-    border-color: #aaa;
-    width: 320px;
-    height: 320px;
-    background: white;
-    text-align: center;
-    font-size: 21px;
-}
 .calendar-container td {
     font-size: 20px;
     border-radius: 40%;
@@ -235,7 +230,7 @@ a{
     margin: 30px auto;
     border-radius: 15px;
     background-color: #f5dfbb;  
-    overflow-y: auto;
+    overflow: hidden;
     height: auto;
     padding-bottom: 50px;
 }
@@ -321,11 +316,12 @@ a{
     .calendar-container td {
         font-size: 13px;
         border-radius: 40%;
-        padding: 8px 11px;
+        padding: 8px 9px;
     }
     .cards .card{
       width: 270px;
       height: 270px;
+      margin-left:0px;
     }
     .fields-2 input,
     .fields-2 select {
@@ -334,13 +330,22 @@ a{
     .container-3 p{
       font-size: 16px;
     }
-    .title-4, .title, .title-2{
+    .title-4, .title{
       font-size: 1.2rem;
     }
     .save-container{
       font-size: 18px;
       width: 250px;
     }
+    .title-2{
+      font-size: 12px;
+    }
+    .container-2{
+      padding-top: 60px;
+    }
+    .month-heading {
+    font-size: 20px;
+  }
  
 }
 @media (max-width: 1000px){
@@ -354,12 +359,13 @@ a{
         padding: 0;
     }
     .card {
-        margin-top: 0;
+        margin-top: 0px;
+        margin-left:0px;
     }
     .calendar-container td {
         font-size: 13px;
         border-radius: 40%;
-        padding: 8px 11px;
+        padding: 8px 9px;
     }
     .cards .card{
       width: 270px;
@@ -369,4 +375,10 @@ a{
     .fields-2 select {
       width: 100%;
     }
+    .container-2{
+      padding-top: 60px;
+    }
+    .month-heading {
+    font-size: 20px;
+    }    
 }
