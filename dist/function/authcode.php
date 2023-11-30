@@ -10,11 +10,13 @@ require('config.php'); //PDO connection to the database
 require('../../database/ChatUser.php');
 
 
+$log = new AuditModelController();
 
 // LOG IN
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
+        
     // loging in
     $sql_check = "SELECT * FROM user WHERE email = :email";
     $stmt = $conn->prepare($sql_check);

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetConnect | Index</title>
-    <link rel="stylesheet" href="css/newlyAdded/landing-page-light.css" />
-    <link rel="stylesheet" href="css/newlyAdded/slider.css" />  
+    <link rel="stylesheet" href="../css/newlyAdded/landing-page-light.css" />
+    <link rel="stylesheet" href="../css/newlyAdded/slider.css" />  
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
@@ -29,7 +29,7 @@
             Adopting rescued animals not only saves lives but also fills your
             heart with boundless love and gratitude.
           </p>
-          <button class="register-button" onclick="window.location.href='../../signuppage.php'">
+          <button class="register-button" onclick="window.location.href='../../register.php'">
             <span>Get Started</span>
           </button>
         </div>

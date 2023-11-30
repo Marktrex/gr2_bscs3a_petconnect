@@ -15,7 +15,6 @@ require 'dist/function/config.php'; //PDO connection to the database
 // }
 
 //email verification
-// $log = new AuditModelController();
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
@@ -48,22 +47,23 @@ if (isset($_POST["register"])) { //code ni marc
         if ($password == $passwordRepeat) {
             // Passwords match, proceed with insertion
             $password = password_hash($password, PASSWORD_DEFAULT);
-            // Set the common user_type for both queries
-            $user_status = 'Enable';
-            $user_type = '2';
-            $type = 'User';
-            // Insert into user table
-            $query2 = "
-                INSERT INTO user (fname, lname, email, password, user_type) 
-                VALUES (:fname, :lname , :email, :password, :user_type)
-            ";
+            $user_type = '2'; // Assuming user_type '2' is a regular user
+            $user_status = 'Disabled'; // Set user_status to 'Disabled'
         
+            // Insert into user table with user_status set to 'Disabled'
+            $query2 = "
+                INSERT INTO user (fname, lname, email, password, user_type, user_status, user_verification_code) 
+                VALUES (:fname, :lname, :email, :password, :user_type, :user_status, :user_verification_code)
+            ";
+
             $statement2 = $conn->prepare($query2);
             $statement2->bindParam(':fname', $fname);
             $statement2->bindParam(':lname', $lname);
             $statement2->bindParam(':email', $email);
             $statement2->bindParam(':password', $password);
             $statement2->bindParam(':user_type', $user_type);
+            $statement2->bindParam(':user_status', $user_status);
+            $statement2->bindParam(':user_verification_code', $user_verification_code); // Bind user_verification_code parameter
         
             // Execute both queries
             $conn->beginTransaction();
@@ -97,13 +97,16 @@ if (isset($_POST["register"])) { //code ni marc
                 $mail->addAddress($_POST['email']);
             
                 $mail->isHTML(true);
-                $mail->Subject="Your verify code";
-                $mail->Body="<p>Dear user, </p> <h3>Your verify OTP code is $otp <br></h3>
-                <br><br>
-                <p>With regrads,</p>
-                <b>Programming with Lam</b>
-                https://www.youtube.com/channel/UCKRZp3mkvL1CBYKFIlxjDdg";
-            
+                $mail->Subject = 'Welcome to PetConnect!';
+
+                $mail->Body = '
+                <p>Congratulations, your account has been successfully created.</p>
+                <p>This is your OTP Code:</p> 
+                <h3>' . $otp . '</h3>
+                <p>Please click the link to verify your email address:</p>
+                <p><a href="http://localhost/petconnect/dist/user/verify.php">Click to Verify</a></p>
+                <p>Thank you for signing up.</p>';
+          
                      if(!$mail->send()){
                          ?>
                              <script>
