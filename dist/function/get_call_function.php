@@ -1,7 +1,7 @@
 <?php
 
-use Dotenv\Dotenv;
 session_start();
+use Dotenv\Dotenv;
 
 require '../../vendor/autoload.php';
 

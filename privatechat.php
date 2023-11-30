@@ -466,24 +466,22 @@ require('database/ChatRooms.php');
 					// Set the values of the hidden fields
 					$('#token').val(data.token);
 					$('#channel').val(data.channelName);
-
+					$.ajax({
+						url: 'action.php',
+						method: 'POST',
+						data: {
+							userId: $('#login_user_id').val(),
+							token: $('#token').val(),
+							channel: $('#channel').val(),
+							action: 'join_call'
+						}
+					});
 					// Submit the form
 					$('#chat_form').submit();
-				}
-			});
-			$.ajax({
-				url: 'action.php',
-				method: 'POST',
-				data: {
-					userId: $('#login_user_id').val(),
-					token: $('#token').val(),
-					channel: $('#channel').val(),
-					action: 'join_call'
-				},
-				success: function() {
 					window.open('dist/user/VideoCall.php', '_blank');
 				}
 			});
+			
 		});
 
 		$(document).on('click', '#send', function(event){
