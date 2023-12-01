@@ -5,7 +5,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1130px) {
     .chat-sidebar {
         top: unset;
         bottom: 0;
