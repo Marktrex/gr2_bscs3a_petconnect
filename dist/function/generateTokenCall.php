@@ -12,9 +12,9 @@ $appCertificate = $_ENV['APP_CERTIFICATE'];
 
 $channelName = uniqid('channel_');
 $uid = isset($_POST['uid']) ? $_POST['uid'] : 0;
-$role = RtcTokenBuilder2::RolePublisher;
+$role = RtcTokenBuilder2::ROLE_PUBLISHER;
 $expireTimeInSeconds = 3600;
-$currentTimestamp = (new \DateTime("now", new \DateTimeZone('UTC')))->getTimestamp();
+$currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();
 $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
 $token = RtcTokenBuilder2::buildTokenWithUid($appID, $appCertificate, $channelName, $uid, $role, $privilegeExpiredTs);
