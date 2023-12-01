@@ -6,6 +6,7 @@
 }
 
 /* start: Chat */
+
 .chat-container {
     max-width: 1590px;
     width: 100%;
@@ -35,7 +36,6 @@
     padding-left: 64px;
     height: 100%;
     position: relative;
-  
 }
 
 .chat-content a{
@@ -51,12 +51,14 @@
     position: absolute;
     top: 0;
     left: 64px;
+    border-radius: 15px 0px 0px 15px;
 }
 
 .content-sidebar-title {
     font-size: 20px;
     font-weight: 600;
     padding: 16px;
+    
 }
 .content-sidebar-form {
     position: relative;

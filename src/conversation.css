@@ -1,21 +1,25 @@
-
-
 .conversation {
     background-color: #fdf7ec;
     height: 100%;
     padding-left: 256px;
     display: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow-content);
 }
+
 .conversation.active {
     display: flex;
     flex-direction: column;
 }
+
 .conversation-top {
     padding: 8px 16px;
     background-color:#0e9594;
     display: flex;
     align-items: center;
+    border-radius: 0px 15px 0px 0px;
 }
+
 .conversation-back {
     background-color: transparent;
     border: none;
@@ -31,6 +35,7 @@
     margin-right: 12px;
     display: none;
 }
+
 .conversation-back:hover {
     background-color: aliceblue;
     color: #127475;
@@ -257,7 +262,7 @@
 }
 
 .conversation-item-dropdown-list a:active {
-    background-color: var(--slate-200);
+    background-color: black;
 }
 .conversation-item-dropdown-list a i {
     font-size: 16px;
@@ -283,17 +288,18 @@
 .coversation-divider span {
     display: inline-block;
     padding: 0 8px;
-    background-color: #fdf7ec;
     position: relative;
     z-index: 1;
 }
 
 .conversation-form {
     padding: 8px 16px;
-    background-color: var(--white);
+    background-color: #ffe0b0;
     display: flex;
     align-items: flex-end;
+    border-radius: 0px 0px 15px 0px;
 }
+
 .conversation-form-group {
     width: 100%;
     position: relative;
@@ -314,10 +320,6 @@
     display: block;
     line-height: 1.5;
     max-height: calc(20px + ((14px * 2) * 6));
-}
-
-.conversation-form-input:focus {
-    border-color: var(--slate-400);
 }
 
 .conversation-form-record {
