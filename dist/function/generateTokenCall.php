@@ -11,7 +11,7 @@ $appID = $_ENV['APP_ID'];
 $appCertificate = $_ENV['APP_CERTIFICATE'];
 
 $channelName = uniqid('channel_');
-$uid = isset($_POST['uid']) ? $_POST['uid'] : 0;
+$uid = 0;
 $role = RtcTokenBuilder2::ROLE_PUBLISHER;
 $expireTimeInSeconds = 3600;
 $currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();
