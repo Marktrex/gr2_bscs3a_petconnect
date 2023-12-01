@@ -337,7 +337,7 @@ h2 {
   flex-direction: row; 
   gap: 10px; 
   text-align: center;
-  padding: 20px;
+  
 }
 .title {
   color: #127475;
@@ -482,7 +482,7 @@ header {
     .pet-name:contains('Stacy') {
         display: none;
     }
-/* Donation container */
+/* Donation container 900px */
   .overall-description-container {
     width: 80%; /* Adjust the width for smaller screens */
   }
@@ -491,7 +491,7 @@ header {
     font-size: 80px; 
   }
   .button-donations {
-    width: 30%;
+    width: 50%;
     padding: 20px;
   }
 /* volunteer container */
@@ -503,5 +503,37 @@ header {
 }
 h3{
   font-size: 40px;
+  }
 }
+  /* Donation container 1080px */
+@media (max-width: 1080px) {
+ .overall-description-container {
+    width: 80%; /* Adjust the width for smaller screens */
+  }
+
+  .description i {
+    font-size: 80px; 
+  }
+  .button-donations {
+    width: 50%;
+    padding: 20px;
+  }  
+}
+@media (max-width: 780px){
+  /* Donation container 780px */
+  .overall-description-container {
+    width: 80%; /* Adjust the width for smaller screens */
+  }
+
+  .description i {
+    font-size: 50px; 
+  }
+  .button-donations {
+    width: 50%;
+    padding: 20px;
+  }
+  .description{
+    padding: 2px;
+    font-size: 18px;
+  }
 }

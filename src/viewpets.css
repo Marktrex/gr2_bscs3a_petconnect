@@ -2,28 +2,22 @@
 
 @font-face{
   font-family: 'dairantou';
-  src: url(/src/fonts/Dairantou.ttf);
-  src: url(/src/fonts/Lato.ttf);
+  src: url(/fonts/Dairantou.ttf);
+  src: url(/fonts/Lato.ttf);
 }
 
 * {
   box-sizing: border-box;
-  /* font-family: 'Lato', sans-serif; */
+  font-family: 'Lato', sans-serif;
 }
 
-header {
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  padding: 15px;
-}
 
 body {
   margin: auto;
   min-height: 100vh;
   background: #fdc161;
 }
+
 
 /* Logo, Back and Searchbox */
 
@@ -37,23 +31,34 @@ body {
 .back{
   font-size: 1.5rem;
   font-weight: bold;
-  align-items: center;
   color:#fff;
   padding: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
   border: 1px solid #c9e6e7;
   border-radius: 2rem;
   background-color: #127475;
-  margin-left: 28rem;
+  display: inline-block;
+  text-align: center;
+  width: clamp(180px,30%,250px);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
 }
 
+.back:hover:after
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  left: 0 ;
+}
 
 .searchbox{
-  overflow: hidden;
   border: 1px solid #c9e6e7;
   border-radius: 2rem;
-  margin-right: 28rem;
   float: right;
   display: flex;
   color: black;
@@ -61,12 +66,23 @@ body {
   padding: 20px;
   text-decoration: none;
   font-size: 17px; 
+  width: clamp(300px,30%,400px);
 }
 
 .navbar {
-  margin-top: 0.5rem;
   background-color: #127475;
   padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list span{
+  margin: 0.05rem 0rem 0.5rem 0rem;
+  font-size: 20px;
+}
+
+.aboutinfo span{
+  
 }
 
 /* Logo, Back and Searchbox */
@@ -79,26 +95,24 @@ ul{
 .list{
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
 }
 
 .petcontent{ /* Content Container */
-  margin: 1rem auto;
+  margin: 2.5rem auto;
   background-color:#f5dfbb ;
   border-radius: 2rem;
-  overflow: hidden;
   z-index: 0;
-  width: 50%;
-  display: flex;
-  flex-direction: row;
+  width: 130vh;
+  height: 80vh;
+  display: flex;  
+  overflow: hidden;
+  box-shadow: 0 .4rem .8rem #0005;
 }
 
 .petimg{
-  position:inherit;
   border-radius: 0px 2rem  2rem 0px;
   display: flex;
-  align-self: flex-start;
-  width: 40%;
+  width: 50%;
   height: auto;
 }
 
@@ -107,18 +121,29 @@ ul{
   font-family: 'Lato', sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   color: #127475;
   padding: 2rem;
+  width: 60%;
+  row-gap: 2rem;
 }
 
 .bookbutton{
-  margin-top: 5rem;
-  padding: 1rem 12rem 1rem 12rem;
   border: 0px;
-  border-radius: 1rem;
+  padding: 1rem;
+  border-radius: 2rem;
   color: #f5dfbb;
   background-color: #f2542d;
   font-weight: bold;
+  width: 100%;
+}
+
+.bookbutton:hover{
+  background-color: #c43917;
+}
+
+.bookbutton span{
+  font-size: 20px;
 }
 
 .petname{
@@ -127,146 +152,54 @@ ul{
   font-weight: bold;
 }
 
+.animal {
+    margin-top: -50px;
+    margin-bottom: 10px;
+  
+}
+
 .aboutinfo{
   margin-top: 1rem;
 }
-
+div:not(.petcontent):has(.petimg)
+  {
+    display: none;
+  }
 /* Content of Pet (Card-Type) */
 
-/* Footer */
+@media only screen and (max-width: 1024px)
+{
+  div:not(.petcontent):has(.petimg)
+  {
+    display: block;
+    height: 50vh;
+    overflow: hidden;
+    .petimg
+    {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0%;
+      aspect-ratio: 1/1;
+    }
+  }
+  .petcontent
+  {
+    position: relative;
+    margin-top: -10vh;
+    z-index: 100;
+    .petimg
+    {
+      display: none;
+    }
+    .pettxt
+    {
+      width: 100%;
+      text-align: center;
+    }
+  }
 
-footer{
-  min-height: 100%;
-  top: 100vh;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: sticky; 
+  .animal{
+    margin-top: -30px;
+    margin-bottom: 10px;
+  }
 }
-
-footer .footer-content{
-  display: flex;
-  width: 100%;
-  background: #0e9594;
-  color: #c9e6e7;; 
-  padding: 2em; 
-  font-size: 1.2rem; 
-
-}
-
-
-footer .footer-content .item{
-  width: 700px;
-  padding-top: 1em;
-  padding: 1em;
-  padding-left: 7em;
-  padding-right: 7em;
-}
-
-footer .item img{
-  width: 200px;
-  margin-left: 19px;
-}
-
-footer strong{
-  padding: 30px;
-}
-
-footer .item, .quick-links ul, .about ul{
-  color: #c9e6e7;
-  list-style: none; 
-  margin-top: 15px;
-}
-
-.quick-links a, .about a{
-  margin-left: 30px;
-  color: #c9e6e7c8;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.about a:hover{
-color: #fff;
-}
-
-.quick-links a:hover{
-  color: #fff;
-}
-
-footer .item .socmed ul{
-  display: flex;
-  text-decoration: none;
-  list-style: none;
-  gap: 15px;
-  margin: 10px;
-  margin-left: 30px;
-}
-
-footer .item .socmed ul a{
-  color: #0e9594;
-  text-decoration: none;    
-  border-radius: 50%;
-  background-color:#9bbfc0;
-}
-
-footer .item .socmed ul a:hover{
-  background-color:#fff;
-}
-
-footer .item .socmed ul .fa-facebook{
-  padding-top: 7px;
-  padding-left: 11.5px;
-  padding-right: 11.5px;
-  padding-bottom: 7px;
-}
-
-footer .item .socmed ul .fa-instagram{
-  padding-top: 7px;
-  padding-left: 9px;
-  padding-right: 9px;
-  padding-bottom: 7px;
-}
-
-footer .item .socmed ul .fa-twitter{
-  padding-top: 7px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-bottom: 7px;
-}
-
-footer .info{
-  display: flex;
-  width: 100%;
-  background: #127475;
-  color: #fff; 
-  padding: 1.5em;
-  padding-left: 13.5em;
-  padding-right: 7em; 
-  font-size: 0.9rem;
-}
-
-footer .info .item{
-  width: 755px;
-}
-
-.info ul{
-  display: flex;
-  list-style: none;
-  gap: 30px;
-}
-
-.info a{
-  color:#9bbfc0ec;
-  text-decoration: none;
-}
-
-.info a:hover{
-  color: #fff;
-}
-
-.info .content2 p{
- text-align:right;
-  color: #9bbfc0ec;
-}
-
-/* Footer */
