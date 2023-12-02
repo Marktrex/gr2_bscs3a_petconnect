@@ -135,7 +135,7 @@ if (isset($_POST["register"])) { //code ni marc
         {
             echo '<script language="javascript">';
             echo 'alert("Password and confirm password must be the same");';
-            echo 'window.location = "../signupage.php";';
+            echo 'window.location = "signupage.php";';
             echo '</script>';
         }
     }
@@ -151,7 +151,7 @@ if (isset($_POST["register"])) { //code ni marc
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Connect</title>
+    <title>PetConnect</title>
 
 
     <link rel="stylesheet" href="dist/css/tailwind-compiling-css/output.css">
@@ -221,7 +221,7 @@ if (isset($_POST["register"])) { //code ni marc
                 <section class="custom-text">
                     <div class="sign-up-container">
                         <p data-translate="Already have an Account?">Already have an Account? </p>
-                            <a href="dist/loginpage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="login">Log in </span></a>
+                            <a href="loginpage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="login">Log in </span></a>
                     </div>
                 </section>
             </form>
