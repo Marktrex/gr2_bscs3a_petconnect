@@ -106,12 +106,13 @@ main{
   background: #f5dfbb;
   width: 90%;
   height: auto;
-  margin-top: 13%;
+  margin-top: 9%;
   position: relative;
   margin-left: 5%;
   padding: 50px;
   border-radius: 26px;
-  margin-bottom: 15%;
+  margin-bottom: 4%;
+  box-shadow:0 .4rem .8rem #0005;
 }
 
 h1{
@@ -187,7 +188,7 @@ hr {
 }
 
 .buttons .edit-profile{
-  color: #0e9594;
+  color: #127475;
   background: #ffb845;
 }
 
@@ -293,7 +294,7 @@ hr {
   main{
     height: auto;
     max-width: 740px;
-    margin-top: 35%;
+    margin-top: 30%;
     padding: 20px;
   }
 
