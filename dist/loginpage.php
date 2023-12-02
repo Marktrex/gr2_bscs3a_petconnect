@@ -66,7 +66,7 @@
                         <input type="checkbox" id="check"/>
                         <label for="check" class="cursor-pointer" data-translate="Remember me">Remember me</label>
                     </div>
-                    <a href="#" class="custom-important-text hover:underline underline-offset-2" data-translate="Forgot Password?">Forgot Password?</a>
+                    <a href="user/forgotpassword.php" class="custom-important-text hover:underline underline-offset-2" data-translate="Forgot Password?">Forgot Password?</a>
                 </div>
                 <input type="submit" name="login" value="Login" class="custom-button">
                 <section class="custom-text">
