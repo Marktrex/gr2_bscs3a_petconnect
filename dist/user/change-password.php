@@ -1,22 +1,22 @@
 <?php
-use MyApp\Controller\AuditModelController;
+// use MyApp\Controller\AuditModelController;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+// require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require '../function/config.php';
 // print_r($_SESSION);
 //this checks the session if the admin is logged in
-if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
-    header("Location: ../admin/admin-dashboard.php");
-    exit();
-} 
-if (!isset($_SESSION['auth_user'])) { 
-    echo '<script language="javascript">';
-    echo 'alert("You do not have access to this page");';
-    echo '</script>';
-    header("Location: ../user/home.php");
-    exit();
-} 
+// if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+//     header("Location: ../admin/admin-dashboard.php");
+//     exit();
+// } 
+// if (!isset($_SESSION['auth_user'])) { 
+//     echo '<script language="javascript">';
+//     echo 'alert("You do not have access to this page");';
+//     echo '</script>';
+//     header("Location: ../user/home.php");
+//     exit();
+// } 
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $oldpassword = $_POST['oldpassword'];
@@ -51,11 +51,11 @@ if (isset($_POST['update'])) {
 
         // If both updates are successful, commit the transaction
         $conn->commit();
-        $log = new AuditModelController();
-        $log->activity_log($currentUserId,"Change password","User has change password");
+        // $log = new AuditModelController();
+        // $log->activity_log($currentUserId,"Change password","User has change password");
         echo '<script language="javascript">';
         echo 'alert("Password updated successfully");';
-        echo 'window.location = "change-password.php";';
+        echo 'window.location = "../function/logout.php";';
         echo '</script>';
     } catch (PDOException $e) {
         // An error occurred, rollback the transaction
@@ -112,15 +112,19 @@ if (isset($_POST['update'])) {
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // Retrieve user data from the session
-        const userData = <?php echo json_encode($_SESSION['auth_user']); ?>;
+        const userData = 
+        <?php 
+        // echo json_encode($_SESSION['auth_user']); 
+        ?>
+        //;
 
         // Populate input fields with user data
         document.getElementById('fname').value = userData.fname;
         document.getElementById('lname').value = userData.lname;
         document.getElementById('email').value = userData.email;
-    </script>
+    </script> -->
 </body>
 
 </html>
