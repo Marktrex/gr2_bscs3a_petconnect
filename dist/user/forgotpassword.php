@@ -1,15 +1,21 @@
 <?php 
 session_start(); 
-print_r($_SESSION);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
 require '../function/config.php';
+print_r($_SESSION);
+
 
 
     if(isset($_POST["recover"])){
         $email = $_POST["email"];
        
 
-        $stmt = $pdo->prepare("SELECT * FROM user WHERE email= :email");
-        $stmt = bindParam(':email',$email);
+        $stmt = $conn->prepare("SELECT * FROM user WHERE email= :email");
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
 
 
@@ -37,7 +43,6 @@ require '../function/config.php';
             $_SESSION['token'] = $token;
             $_SESSION['email'] = $email;
 
-            require "Mail/phpmailer/PHPMailerAutoload.php";
             $mail = new PHPMailer(true);
 
             $mail->isSMTP();
