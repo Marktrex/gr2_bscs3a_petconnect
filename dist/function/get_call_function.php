@@ -17,8 +17,7 @@ foreach($_SESSION['user_data'] as $key => $value)
 $data = array(
     // 'uid' => $_SESSION['auth_user']['id'], - kapag user table eto, pag chatuser table sa baba
     'uid' => $login_user_id,
-    'channelName' => $_SESSION['channel'],
-    'appId' => $_ENV['APP_ID']
+    'channel' => $_SESSION['channel']
 );
 echo json_encode($data);
 ?>

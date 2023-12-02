@@ -10,8 +10,8 @@ $dotenv->load();
 $appID = $_ENV['APP_ID'];
 $appCertificate = $_ENV['APP_CERTIFICATE'];
 
-$channelName = $_POST['channelName'];
-$uid = $_POST['id'];
+$channelName = $_POST['channel'];
+$uid = $_POST['userId'];
 $role = RtcTokenBuilder2::ROLE_PUBLISHER;
 $expireTimeInSeconds = 3600;
 $currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();
@@ -19,5 +19,5 @@ $privilegeExpiredTs = $currentTimestamp + $expireTimeInSeconds;
 
 $token = RtcTokenBuilder2::buildTokenWithUid($appID, $appCertificate, $channelName, $uid, $role, $privilegeExpiredTs);
 header('Content-Type: application/json');
-echo json_encode(['token' => $token, 'channelName' => $channelName]);
+echo json_encode(['token' => $token, 'appId' => $appID]);
 ?>
