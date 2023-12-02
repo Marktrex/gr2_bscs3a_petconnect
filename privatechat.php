@@ -423,27 +423,36 @@ require('database/ChatRooms.php');
 		});
 
 		$(document).on('submit', '#chat_form', function(event){
-
 			event.preventDefault();
+			
+			$.ajax({
+				url: 'dist/function/check_login_status.php', // replace with your PHP script
+				method: 'POST',
+				success: function(response) {
+					if (response.loggedIn) { // replace with the actual response field
+						if($('#chat_form').parsley().isValid())
+						{
+							var user_id = parseInt($('#login_user_id').val());
 
-			if($('#chat_form').parsley().isValid())
-			{
-				var user_id = parseInt($('#login_user_id').val());
+							var message = $('#chat_message').val();
 
-				var message = $('#chat_message').val();
-
-				var message_type=  $('#message_type').val();
-				var data = {//save it in the database
-					userId: user_id,
-					msg: message,
-					receiver_userid:receiver_userid,
-					command:'private',
-					type:message_type,
-					channel:$('#channel').val()
-				};
-				conn.send(JSON.stringify(data));
-			}
-
+							var message_type=  $('#message_type').val();
+							var data = {//save it in the database
+								userId: user_id,
+								msg: message,
+								receiver_userid:receiver_userid,
+								command:'private',
+								type:message_type,
+								channel:$('#channel').val()
+							};
+							conn.send(JSON.stringify(data));
+						}
+					} else {
+						alert("session expired, log in again");
+						location.reload();
+					}
+				}
+			});
 		});
 		$(document).on('click', '#video_call_button', function(event){
 			event.preventDefault();
