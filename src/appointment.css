@@ -261,25 +261,6 @@ a{
     padding-left: 18vw;
     padding-right: 18vw;
 }
-.confirmationCheckbox {
-    display: none;
-}
-.confirmationCheckbox + label {
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.confirmationCheckbox + label:before {
-    content: '\2610'; 
-    font-size: 1.2em;
-    margin-right: 5px;
-}
-
-.confirmationCheckbox:checked + label:before {
-    content: '\2611'; 
-    margin-right: 5px;
-}
 /* --------------------------------------SAVE BUTTON----------------------------------------- */
 .save-container{
   margin-top: 20px;
@@ -352,7 +333,6 @@ a{
     .month-heading {
     font-size: 20px;
   }
- 
 }
 @media (max-width: 1000px){
   .content-wrapper {
