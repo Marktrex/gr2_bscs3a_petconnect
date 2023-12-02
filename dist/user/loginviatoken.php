@@ -10,16 +10,25 @@ require '../function/config.php';
         if(isset($_POST["login"])){
             $token = $_SESSION['token'];
             $email = $_SESSION['email'];
+            $user_email = $_POST['user_email'];
             $recover_code = $_POST['recover_code'];
             
     
             if($token != $recover_code){
                 ?>
                <script>
-                   alert("Invalid Recovery Code");
+                   alert("Invalid Email or Recovery Code");
                </script>
                <?php
-            }else{
+            }
+            elseif ($email != $user_email) {
+                ?>
+                <script>
+                    alert("Invalid Email or Recovery Code");
+                </script>
+                <?php
+            }
+            else{
 
                 ?>
                  <script>
@@ -93,7 +102,7 @@ require '../function/config.php';
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email" required autofocus>
+                                    <input type="text" id="email_address" class="form-control" name="user_email" required autofocus>
                                 </div>
                             </div>
 

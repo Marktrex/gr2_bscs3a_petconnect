@@ -12,7 +12,7 @@ if (!isset($_SESSION['auth_user'])) {
 echo '<script language="javascript">';
 echo 'alert("You do not have access to this page");';
 echo '</script>';
-header("Location: ../loginpage.php");
+header("Location: ../../loginpage.php");
 exit();
 }
 

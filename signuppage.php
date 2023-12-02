@@ -116,7 +116,7 @@ if (isset($_POST["register"])) { //code ni marc
                          ?>
                          <script>
                              alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                             window.location.replace('signuppage.php');
+                             window.location.replace('loginpage.php');
                          </script>
                          <?php
                      }  

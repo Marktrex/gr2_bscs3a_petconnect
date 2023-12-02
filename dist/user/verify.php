@@ -26,7 +26,7 @@ if (isset($_POST["verify"])) {
             ?>
             <script>
                 alert("Verify account done, you may sign in now");
-                window.location.replace("../loginpage.php");
+                window.location.replace("../../loginpage.php");
             </script>
             <?php
         } catch (PDOException $e) {

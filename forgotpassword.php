@@ -32,7 +32,7 @@ print_r($_SESSION);
             ?>
         <script>
             alert("Sorry, your account must be verified first before you recover your password!");
-            window.location.replace("../../signuppage.php");
+            window.location.replace("loginpage.php");
         </script>
         <?php
         }else{
@@ -40,6 +40,7 @@ print_r($_SESSION);
             $token = bin2hex(random_bytes(10));
 
             //session_start ();
+            $_SESSION['auth'] = true;
             $_SESSION['token'] = $token;
             $_SESSION['email'] = $email;
 
@@ -137,7 +138,7 @@ print_r($_SESSION);
                 <div class="card">
                 <div class="card-header">Enter Your Email</div>
                     <div class="card-body">
-                        <form action="#" method="POST" name="recover_psw">
+                        <form action="#" method="POST" name="forgotpassword">
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
