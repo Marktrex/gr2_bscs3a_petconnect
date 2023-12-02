@@ -2,7 +2,7 @@
 session_start();
 print_r($_SESSION);
 
-include('connect/connection.php');
+require '../function/config.php';
            
 
     
@@ -24,7 +24,7 @@ include('connect/connection.php');
                 ?>
                  <script>
                      alert("Recovery succes! you can now reset your password");
-                       window.location.replace("reset_psw.php");
+                       window.location.replace("change-password.php");
                  </script>
                  <?php
             }
@@ -57,7 +57,7 @@ include('connect/connection.php');
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-    <title>Login Form</title>
+    <title>PetConnect | Forgot Password</title>
 </head>
 <body>
 
@@ -101,25 +101,14 @@ include('connect/connection.php');
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Recover Code</label>
                                 <div class="col-md-6">
                                     <input type="text" id="recover_code" class="form-control" name="recover_code" required>
-                                    <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                    
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                           
 
                             <div class="col-md-6 offset-md-4">
                                 <input type="submit" value="Login" name="login">
-                                <a href="recover_psw.php" class="btn btn-link">
-                                    Forgot Your Password?
-                                </a>
                             </div>
                     </div>
                     </form>

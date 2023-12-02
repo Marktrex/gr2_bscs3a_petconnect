@@ -95,7 +95,7 @@ if (isset($_POST["login"])) {
         // Login failed
         echo '<script language="javascript">';
         echo 'alert("Invalid username or password. Please try again.");';
-        echo 'window.location = "../loginpage.php";';
+        echo 'window.location = "../../loginpage.php";';
         echo '</script>';
         $conn = null;
     }

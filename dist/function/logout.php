@@ -27,5 +27,5 @@ if (isset($_SESSION['auth'])) {
     
 }
 
-header('Location: ../user/index.php');
+header('Location: ../../loginpage.php');
 ?>

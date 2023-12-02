@@ -4,19 +4,19 @@
 // require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require '../function/config.php';
-// print_r($_SESSION);
+print_r($_SESSION);
 //this checks the session if the admin is logged in
 // if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
 //     header("Location: ../admin/admin-dashboard.php");
 //     exit();
 // } 
-// if (!isset($_SESSION['auth_user'])) { 
-//     echo '<script language="javascript">';
-//     echo 'alert("You do not have access to this page");';
-//     echo '</script>';
-//     header("Location: ../user/home.php");
-//     exit();
-// } 
+if (!isset($_SESSION['token'])) { 
+    echo '<script language="javascript">';
+    echo 'alert("You do not have access to this page");';
+    echo '</script>';
+    header("Location: home.php");
+    exit();
+} 
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $oldpassword = $_POST['oldpassword'];
@@ -75,7 +75,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rePaw City</title>
+    <title>PetConnect | Change Password</title>
     <link rel="stylesheet" href="../css/change-password.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
