@@ -13,7 +13,6 @@ class PrivateChat
 	protected $connect;
 	// for call
 	private $message_type;
-	private $token;
 	private $channel;
 
 	public function __construct()
@@ -95,16 +94,6 @@ class PrivateChat
 		return $this->message_type;
 	}
 
-	function setToken($token)
-	{
-		$this->token = $token;
-	}
-
-	function getToken()
-	{
-		return $this->token;
-	}
-
 	function setChannel($channel)
 	{
 		$this->channel = $channel;
@@ -118,7 +107,7 @@ class PrivateChat
 	function get_all_chat_data()
 	{
 		$query = "
-		SELECT a.user_name as from_user_name, b.user_name as to_user_name, chat_message, timestamp, status, to_user_id, from_user_id, message_type, chat_message.token, channel
+		SELECT a.user_name as from_user_name, b.user_name as to_user_name, chat_message, timestamp, status, to_user_id, from_user_id, message_type, channel
 			FROM chat_message 
 		INNER JOIN chat_user_table a 
 			ON chat_message.from_user_id = a.user_id 
@@ -143,8 +132,8 @@ class PrivateChat
 	{
 		$query = "
 		INSERT INTO chat_message 
-			(to_user_id, from_user_id, chat_message, timestamp, status, message_type, token, channel) 
-			VALUES (:to_user_id, :from_user_id, :chat_message, :timestamp, :status, :message_type, :token, :channel)
+			(to_user_id, from_user_id, chat_message, timestamp, status, message_type, channel) 
+			VALUES (:to_user_id, :from_user_id, :chat_message, :timestamp, :status, :message_type, :channel)
 		";
 
 		$statement = $this->connect->prepare($query);
@@ -160,8 +149,6 @@ class PrivateChat
 		$statement->bindParam(':status', $this->status);
 
 		$statement->bindParam(':message_type', $this->message_type);
-
-		$statement->bindParam(':token', $this->token);
 
 		$statement->bindParam(':channel', $this->channel);
 

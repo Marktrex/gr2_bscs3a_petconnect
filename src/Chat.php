@@ -78,8 +78,6 @@ class Chat implements MessageComponentInterface {
 
             $private_chat_object->setMessageType($data['type']);
             
-            $private_chat_object->setToken($data['token']);
-            
             $private_chat_object->setChannel($data['channel']);
 
             $timestamp = date('Y-m-d h:i:s');
@@ -128,49 +126,6 @@ class Chat implements MessageComponentInterface {
 
                     $private_chat_object->update_chat_status();
                 }
-            }
-        }
-        else
-        {
-            //group chat
-
-            $chat_object = new \ChatRooms;
-
-            $chat_object->setUserId($data['userId']);
-
-            $chat_object->setMessage($data['msg']);
-
-            $chat_object->setCreatedOn(date("Y-m-d h:i:s"));
-
-            $chat_object->save_chat();
-
-            $user_object = new \ChatUser;
-
-            $user_object->setUserId($data['userId']);
-
-            $user_data = $user_object->get_user_data_by_id();
-
-            $user_name = $user_data['user_name'];
-
-            $data['dt'] = date("d-m-Y h:i:s");
-
-
-            foreach ($this->clients as $client) {
-                /*if ($from !== $client) {
-                    // The sender is not the receiver, send to each client connected
-                    $client->send($msg);
-                }*/
-
-                if($from == $client)
-                {
-                    $data['from'] = 'Me';
-                }
-                else
-                {
-                    $data['from'] = $user_name;
-                }
-
-                $client->send(json_encode($data));
             }
         }
     }

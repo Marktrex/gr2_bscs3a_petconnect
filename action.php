@@ -43,11 +43,7 @@ if(isset($_POST["action"]) && $_POST["action"] == 'fetch_chat')
 
 if(isset($_POST["action"]) && $_POST["action"] == 'join_call')
 {
-	$_SESSION['token'] = $_POST['token'];
 	$_SESSION['channel'] = $_POST['channel'];
-	$_SESSION['userId'] = $_POST['userId'];
-
-	echo json_encode($_SESSION['token']);
 	echo json_encode($_SESSION['channel']);
 }
 ?>

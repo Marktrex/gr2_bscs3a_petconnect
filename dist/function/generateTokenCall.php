@@ -10,8 +10,8 @@ $dotenv->load();
 $appID = $_ENV['APP_ID'];
 $appCertificate = $_ENV['APP_CERTIFICATE'];
 
-$channelName = uniqid('channel_');
-$uid = 0;
+$channelName = $_POST['channelName'];
+$uid = $_POST['id'];
 $role = RtcTokenBuilder2::ROLE_PUBLISHER;
 $expireTimeInSeconds = 3600;
 $currentTimestamp = (new DateTime("now", new DateTimeZone('UTC')))->getTimestamp();

@@ -10,6 +10,11 @@ let joinAndDisplayLocalStream = async () => {
     
     client.on('user-left', handleUserLeft);
 
+    //get the channel(in the session - php make ajax)
+    //check if the user is either the sender or the receiver(assign the uid here too)
+    //if its not; show error message
+    //if it is, generate the token and join the channel
+
     // Fetch session data from the server
     let response = await fetch('../function/get_call_function.php');
     let data = await response.json();

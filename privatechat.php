@@ -98,6 +98,7 @@ require('database/ChatRooms.php');
 				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
 				<div class="mt-3 mb-3 text-center">
+					
 					<h3 class="mt-2"><?php echo $value['name']; ?></h3>
 					<a href="dist/user/home.php" class="btn btn-secondary mt-2 mb-2">Back</a>
 					<input type="button" class="btn btn-primary mt-2 mb-2" id="logout" name="logout" value="Logout" />
@@ -216,9 +217,7 @@ require('database/ChatRooms.php');
 						var output;
 						if(data.type == 'call') {
 							output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
-								output += '<input type="hidden" name="token' +count+'" value="' + data.token + '">';
 								output += '<input type="hidden" name="channel' +count+'" value="' + data.channel + '">';
-								output += '<input type="hidden" name="userId' +count+'" value="' + $("#login_user_id").val() + '">';
 								output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
 							output += '</form>';
 						} else {
@@ -291,7 +290,6 @@ require('database/ChatRooms.php');
 			<form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
 				<div class="input-group mb-3" style="height:7vh">
 					<input type="hidden" id="message_type" name="message_type" value="message">
-					<input type="hidden" id="token" name="token">
 					<input type="hidden" id="channel" name="channel">
 					<textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
 					<div class="input-group-append">
@@ -344,9 +342,7 @@ require('database/ChatRooms.php');
 
 							if(data[count].message_type == 'call') {
 								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
-									output += '<input type="hidden" name="token' +count+'" value="' + data[count].token + '">';
 									output += '<input type="hidden" name="channel' +count+'" value="' + data[count].channel + '">';
-									output += '<input type="hidden" name="userId' +count+'" value="' + from_user_id + '">';
 									output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
 								output += '</form>';
 							} else {
@@ -405,8 +401,6 @@ require('database/ChatRooms.php');
 				url: 'action.php',
 				method: 'POST',
 				data: {
-					userId: form.find('input[name="userId'+count+'"]').val(),
-					token: form.find('input[name="token'+count+'"]').val(),
 					channel: form.find('input[name="channel'+count+'"]').val(),
 					action: 'join_call'
 				},
@@ -439,13 +433,12 @@ require('database/ChatRooms.php');
 				var message = $('#chat_message').val();
 
 				var message_type=  $('#message_type').val();
-				var data = {
+				var data = {//save it in the database
 					userId: user_id,
 					msg: message,
 					receiver_userid:receiver_userid,
 					command:'private',
 					type:message_type,
-					token:$('#token').val(),
 					channel:$('#channel').val()
 				};
 				conn.send(JSON.stringify(data));
@@ -457,21 +450,18 @@ require('database/ChatRooms.php');
 			$('#message_type').val('call');
 			$('#chat_message').val('this is a call');
 			// Your code for initiating a video call goes here
-			// Use AJAX to generate the token and channel and store them in the database
+			// Use AJAX to generate the channel
 			$.ajax({
-				url: 'dist\\function\\generateTokenCall.php',
+				url: 'dist\\function\\generateChannelForCall.php',
 				method: 'POST',
 				data: { uid: $('#login_user_id').val() },
 				success: function(data) {
 					// Set the values of the hidden fields
-					$('#token').val(data.token);
 					$('#channel').val(data.channelName);
 					$.ajax({
 						url: 'action.php',
 						method: 'POST',
 						data: {
-							userId: $('#login_user_id').val(),
-							token: $('#token').val(),
 							channel: $('#channel').val(),
 							action: 'join_call'
 						}
