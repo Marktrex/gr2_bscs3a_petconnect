@@ -4,7 +4,7 @@
 --
 -- Host: 127.0.0.1
 
--- Generation Time: Dec 03, 2023 at 05:52 AM
+-- Generation Time: Dec 02, 2023 at 01:13 AM
 
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `petconnect`
 --
+
 CREATE DATABASE IF NOT EXISTS `petconnect` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `petconnect`;
 
@@ -281,7 +282,8 @@ CREATE TABLE `user` (
   `password` varchar(250) NOT NULL,
   `user_type` varchar(25) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_status` enum('Disabled','Enable') NOT NULL,
+  `user_verification_code` varchar(250) NOT NULL,
+  `user_status` varchar(25) NOT NULL,
   `user_login_status` enum('Logout','Login') NOT NULL,
   `user_token` varchar(100) NOT NULL,
   `user_connection_id` int(5) NOT NULL
@@ -291,17 +293,17 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`) VALUES
-(1, 'AdminPogi', 'Marc', 'admin@gmail.com', '123', '1', '2023-11-15 16:20:45', 'Disabled', 'Logout', '', 0),
-(2, 'Fiona', 'Malakas', 'fiona@gmail.com', 'marc', '2', '2023-11-15 17:06:04', 'Disabled', 'Logout', '', 0),
-(3, 'sanoke', 'sample', 'user@sample', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-11-29 16:48:30', 'Disabled', 'Login', '63f39559da1b378933a82f1a93910c20', 195),
-(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-11-29 16:27:36', 'Disabled', 'Login', '3e589ec31069c1fc74f9010f548565cb', 113);
+INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_verification_code`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`) VALUES
+(3, 'sanoke', 'sample', 'user@sample', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-12-01 15:21:25', '', 'Disabled', 'Login', '311e51959613dc62a38e0d4be7e8b41a', 92),
+(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-01 15:21:23', '', 'Disabled', 'Login', '1e5d8907d06713b3b5a8010975ad61f0', 88),
+(26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$Fhk9/MQjYUMeVrq44H0uZO0veXRch59wmy4qMtNAl6wiqyxgeYsqm', '2', '2023-11-30 19:26:22', '', 'Enabled', 'Login', 'e986f62136b056817609fb25367191f7', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
@@ -338,6 +340,7 @@ ALTER TABLE `pets`
   ADD PRIMARY KEY (`pets_id`);
 
 --
+
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -348,6 +351,7 @@ ALTER TABLE `user`
 --
 
 --
+
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
@@ -389,10 +393,11 @@ ALTER TABLE `pets`
   MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

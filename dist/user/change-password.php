@@ -1,71 +1,81 @@
 <?php
-use MyApp\Controller\AuditModelController;
+// use MyApp\Controller\AuditModelController;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+// require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require '../function/config.php';
-// print_r($_SESSION);
-//this checks the session if the admin is logged in
+print_r($_SESSION);
+// this checks the session if the admin is logged in
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
 } 
-if (!isset($_SESSION['auth_user'])) { 
+if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';
     echo 'alert("You do not have access to this page");';
     echo '</script>';
-    header("Location: ../user/home.php");
+    header("Location: home.php");
     exit();
 } 
-if (isset($_POST['update'])) {
+
+if (isset($_POST['changepass'])) {
     // Retrieve the data from the form
-    $oldpassword = $_POST['oldpassword'];
+    $token = $_SESSION['token'];
     $newpassword = $_POST['newpassword'];
-    // Get the currently logged-in user's id
-    $currentUserId = $_SESSION['auth_user']['id'];
+    // Get the currently logged-in user's email
+    $email = $_SESSION['email'];
 
-    // Check if the old password is equal to the new password
-    if ($oldpassword === $newpassword) {
-        echo '<script language="javascript">';
-        echo 'alert("Old password and new password cannot be the same");';
-        echo 'window.location = "change-password.php";';
-        echo '</script>';
-        exit; // Stop execution if passwords are the same
-    }
+    $stmt = $conn->prepare("SELECT * FROM user WHERE email= :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    $rowCount = $stmt->rowCount();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Update the data in both tables
-    $conn->beginTransaction();
-    try {
+    if ($rowCount <= 0) {
+        ?>
+        <script>
+            alert("<?php echo "Sorry, no emails exist"; ?>");
+        </script>
+        <?php
+    } elseif ($user) {
         $query2 = "
             UPDATE user
             SET password = :newpassword
-            WHERE user_id = :currentUserId
+            WHERE email = :email
         ";
+
+        $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
+
         $statement2 = $conn->prepare($query2);
         $statement2->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-        $statement2->bindParam(':currentUserId', $currentUserId, PDO::PARAM_INT);
+        $statement2->bindParam(':email', $email, PDO::PARAM_STR); // Corrected this line
+
         if (!$statement2->execute()) {
             print_r($statement2->errorInfo());
-            exit;
+            exit();
+        } else {
+            ?>
+            <script>
+                alert("Your Password has been successfully changed!");
+                window.location.replace("../function/logout.php");
+            </script>
+            <?php
         }
-
-        // If both updates are successful, commit the transaction
-        $conn->commit();
-        $log = new AuditModelController();
-        $log->activity_log($currentUserId,"Change password","User has change password");
-        echo '<script language="javascript">';
-        echo 'alert("Password updated successfully");';
-        echo 'window.location = "change-password.php";';
-        echo '</script>';
-    } catch (PDOException $e) {
-        // An error occurred, rollback the transaction
-        $conn->rollBack();
-        echo "Error updating data: " . $e->getMessage();
     }
 }
-
 ?>
 
+
+
+
+
+
+
+
+
+
+    
+   
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +85,7 @@ if (isset($_POST['update'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rePaw City</title>
+    <title>PetConnect | Change Password</title>
     <link rel="stylesheet" href="../css/change-password.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
@@ -86,22 +96,19 @@ if (isset($_POST['update'])) {
 
 <body>
     <div class="main">
-        <a href="home.php" class="btn back">Back</a>
+        <a href="../function/logout.php" class="btn back">Exit</a>
         <div class="content">
 
             <div class="container">
-                <form class="edit" method="POST">
+                <form action="#" class="edit" method="POST"     >
                     <h1>Change Password</h1>
-                    <div class="form-group">
-                        <label for="oldpassword">Old Password:</label>
-                        <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Enter Old Password" required>
-                    </div>
+                    
                     <div class="form-group">
                         <label for="newpassword">New Password:</label>
                         <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Enter New Password" required>
                     </div>
                     <div class="text-center">
-                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <button type="submit" name="changepass" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -112,15 +119,19 @@ if (isset($_POST['update'])) {
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // Retrieve user data from the session
-        const userData = <?php echo json_encode($_SESSION['auth_user']); ?>;
+        const userData = 
+        <?php 
+        // echo json_encode($_SESSION['auth_user']); 
+        ?>
+        //;
 
         // Populate input fields with user data
         document.getElementById('fname').value = userData.fname;
         document.getElementById('lname').value = userData.lname;
         document.getElementById('email').value = userData.email;
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -1,18 +1,30 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
+print_r($_SESSION);
+
 // print_r($_SESSION);
-if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
-    header("Location: ../admin/admin-dashboard.php");
-    exit();
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+  header("Location: ../admin/admin-dashboard.php");
+  exit();
 }
 if (!isset($_SESSION['auth_user'])) { 
-  echo '<script language="javascript">';
-  echo 'alert("You do not have access to this page");';
-  echo '</script>';
-  header("Location: ../loginpage.php");
-  exit();
-} 
+echo '<script language="javascript">';
+echo 'alert("You do not have access to this page");';
+echo '</script>';
+header("Location: ../../loginpage.php");
+exit();
+}
+
+// if ($_SESSION['user_status'] === "Disabled") {
+//   // Redirect to login page if the user status is 'Disabled'
+//   echo '<script language="javascript">';
+//   echo 'alert("Your account is not verified! Please verify it first!");';
+//   echo '</script>';
+//   header("Location: ../loginpage.php");
+//   exit();
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

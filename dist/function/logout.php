@@ -22,10 +22,13 @@ if (isset($_SESSION['auth'])) {
 	{
 		unset($_SESSION['auth_user']);
         unset($_SESSION['auth']);
+		unset($_SESSION['token']);
+		unset($_SESSION['email']);
+
 		session_destroy();
     }
     
 }
 
-header('Location: ../user/index.php');
+header('Location: ../../loginpage.php');
 ?>
