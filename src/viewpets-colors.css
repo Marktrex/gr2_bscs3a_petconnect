@@ -1,0 +1,56 @@
+:root {
+  --body-bg-color: #fdc161;
+  --back-text-color: #fff;
+  --back-border-color: #c9e6e7;
+  --back-bg-color: #127475;
+  --back-hover-after-bg-color: rgba(255, 255, 255, 0.5);
+  --searchbox-border-color: #c9e6e7;
+  --searchbox-text-color: black;
+  --navbar-bg-color: #127475;
+  --petcontent-bg-color: #f5dfbb;
+  --pettxt-text-color: #127475;
+  --bookbutton-text-color: #f5dfbb;
+  --bookbutton-bg-color: #f2542d;
+  --bookbutton-hover-bg-color: #c43917;
+}
+
+body {
+  background: var(--body-bg-color);
+}
+
+.back{
+  color: var(--back-text-color);
+  border: 1px solid var(--back-border-color);
+  background-color: var(--back-bg-color);
+}
+
+.back:hover:after
+{
+  background-color: var(--back-hover-after-bg-color);
+}
+
+.searchbox{
+  border: 1px solid var(--searchbox-border-color);
+  color: var(--searchbox-text-color);
+}
+
+.navbar {
+  background-color: var(--navbar-bg-color);
+}
+
+.petcontent{ /* Content Container */
+  background-color: var(--petcontent-bg-color);
+}
+
+.pettxt{
+  color: var(--pettxt-text-color);
+}
+
+.bookbutton{
+  color: var(--bookbutton-text-color);
+  background-color: var(--bookbutton-bg-color);
+}
+
+.bookbutton:hover{
+  background-color: var(--bookbutton-hover-bg-color);
+}

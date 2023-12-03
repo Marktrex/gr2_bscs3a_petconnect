@@ -14,7 +14,18 @@
 }
 
 [data-theme="dark"]{
-  
+  --body-bg-color: #fdc161;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+  --text1-text-color: white;
+  --text2-text-color: white;
+  --content-box-bg-color: #F5DFBB;
+  --logo-with-text-text-color: #0e9594;
+  --flexbox1-bg-color: #f2542d;
+  --text-center1-text-color: #fff6e0;
+  --text-under-logo1-text-color: #fff6e8;
+  --description-text-color: #fff6e0;
 }
 
 body {
