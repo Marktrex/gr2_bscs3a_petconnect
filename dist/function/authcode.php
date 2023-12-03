@@ -5,6 +5,11 @@ use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require('config.php'); //PDO connection to the database
+
+// for chat user
+require('../../database/ChatUser.php');
+
+
 $log = new AuditModelController();
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
@@ -99,6 +104,18 @@ else if (isset($_POST["login"])) {
        // Retrieve the data and put it in the variable $userdata so that it can save the information
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
+
+        $user_object = new ChatUser;
+        $user_object->setUserEmail($email);
+        $user_data = $user_object->get_user_data_by_email();
+        $user_object->setUserId($userID);
+
+        $user_object->setUserLoginStatus('Login');
+
+        $user_token = md5(uniqid());
+
+        $user_object->setUserToken($user_token);
+        $user_object->update_user_login_data();
         
         if ($userType === '1') {
             // Redirect admin to an admin dashboard
@@ -110,7 +127,8 @@ else if (isset($_POST["login"])) {
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
-                'role' => "1"
+                'role' => "1",
+                'token' =>  $user_token
             ];
             $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'User Logged In');
             echo '<script language="javascript">';
@@ -129,7 +147,8 @@ else if (isset($_POST["login"])) {
                 'fname' => $userdata['fname'],
                 'lname' => $userdata['lname'],
                 'email' => $userdata['email'],
-                'role' => "2"
+                'role' => "2",
+                'token' =>  $user_token
             ];
             $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';

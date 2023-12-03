@@ -3,9 +3,9 @@
 //privatechat.php
 
 session_start();
-if(!isset($_SESSION['user_data']))
+if(!isset($_SESSION['auth_user']))
 {
-	header('location:index.php');
+	header('location:dist/loginpage.php');
 }
 
 require('database/ChatUser.php');
@@ -82,15 +82,10 @@ require('database/ChatRooms.php');
 			<div class="col-lg-3 col-md-4 col-sm-5" style="background-color: #f1f1f1; height: 100vh; border-right:1px solid #ccc;">
 				<?php
 				
-				$login_user_id = '';
+				$login_user_id = $_SESSION['auth_user']["id"];
 
-				$token = '';
-
-				foreach($_SESSION['user_data'] as $key => $value)
-				{
-					$login_user_id = $value['id'];
-
-					$token = $value['token'];
+				$token = $_SESSION['auth_user']["token"];
+				$name = $_SESSION['auth_user']["fname"] . ' ' . $_SESSION['auth_user']["lname"];
 
 				?>
 				<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
@@ -98,12 +93,11 @@ require('database/ChatRooms.php');
 				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
 				<div class="mt-3 mb-3 text-center">
-					<h3 class="mt-2"><?php echo $value['name']; ?></h3>
+					<h3 class="mt-2"><?php echo $name; ?></h3>
 					<a href="dist/user/home.php" class="btn btn-secondary mt-2 mb-2">Back</a>
-					<input type="button" class="btn btn-primary mt-2 mb-2" id="logout" name="logout" value="Logout" />
+					<input type="button" class="btn btn-primary mt-2 mb-2" id="logout" name="logout" value="Logout" onclick="window.location.href='dist/function/logout.php'"/>
 				</div>
 				<?php
-				}
 
 				$user_object = new ChatUser;
 
@@ -140,7 +134,7 @@ require('database/ChatRooms.php');
 								
 								<span class='ml-1'>
 									<strong>
-										<span id='list_user_name_".$user["user_id"]."'>".$user['user_name']."</span>
+										<span id='list_user_name_".$user["user_id"]."'>".$user['lname']."</span>
 										<span id='userid_".$user['user_id']."'>".$total_unread_message."</span>
 									</strong>
 								</span>
@@ -257,17 +251,7 @@ require('database/ChatRooms.php');
 			var html = `
 			<div class="card">
 				<div class="card-header">
-					<div class="row">
-						<div class="col col-sm-6">
-							<b>Chat with <span class="text-danger" id="chat_user_name">`+user_name+`</span></b>
-						</div>
-						<div class="col col-sm-6 text-right">
-							<a href="chatroom.php" class="btn btn-success btn-sm">Group Chat</a>&nbsp;&nbsp;&nbsp;
-							<button type="button" class="close" id="close_chat_area" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					</div>
+					
 				</div>
 				<div class="card-body" id="messages_area">
 
@@ -292,8 +276,8 @@ require('database/ChatRooms.php');
 		}
 
 		$(document).on('click', '.select_user', function(){
-
 			receiver_userid = $(this).data('userid');
+			
 
 			var from_user_id = $('#login_user_id').val();
 
@@ -316,6 +300,7 @@ require('database/ChatRooms.php');
 				{
 					if(data.length > 0)
 					{
+						console.log("hello");
 						var html_data = '';
 
 						for(var count = 0; count < data.length; count++)
@@ -323,6 +308,7 @@ require('database/ChatRooms.php');
 							var row_class= ''; 
 							var background_class = '';
 							var user_name = '';
+							
 
 							if(data[count].from_user_id == from_user_id)
 							{
@@ -331,6 +317,7 @@ require('database/ChatRooms.php');
 								background_class = 'alert-primary';
 
 								user_name = 'Me';
+								
 							}
 							else
 							{
@@ -338,7 +325,7 @@ require('database/ChatRooms.php');
 
 								background_class = 'alert-success';
 
-								user_name = data[count].from_user_name;
+								user_name = data[count].from_user_lname;
 							}
 
 							html_data += `
@@ -362,6 +349,9 @@ require('database/ChatRooms.php');
 
 						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
 					}
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
 				}
 			})
 
@@ -400,29 +390,6 @@ require('database/ChatRooms.php');
 			}
 
 		});
-
-		$('#logout').click(function(){
-
-			user_id = $('#login_user_id').val();
-
-			$.ajax({
-				url:"action.php",
-				method:"POST",
-				data:{user_id:user_id, action:'leave'},
-				success:function(data)
-				{
-					var response = JSON.parse(data);
-					if(response.status == 1)
-					{
-						conn.close();
-
-						location = 'dist/user/home.php';
-					}
-				}
-			})
-
-		});
-
 	})
 </script>
 </html>

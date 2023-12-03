@@ -157,8 +157,8 @@ class ChatUser
 	function get_user_data_by_email()
 	{
 		$query = "
-		SELECT * FROM chat_user_table 
-		WHERE user_email = :user_email
+		SELECT * FROM user 
+		WHERE email = :user_email
 		";
 
 		$statement = $this->connect->prepare($query);
@@ -172,37 +172,11 @@ class ChatUser
 		return $user_data;
 	}
 
-	function save_data()
-	{
-		$user_status = $this->user_status = 'Enable';
-		$user_type = $this->user_type = 'User'; // automatically set the user_type to "User" when creating an account
-		$query = "
-		INSERT INTO chat_user_table (user_name, user_email, user_password, user_status, user_created_on,  user_type) 
-		VALUES (:user_name, :user_email, :user_password, :user_status, :user_created_on, :user_type)
-		";
-	
-		$statement = $this->connect->prepare($query);
-		$statement->bindParam(':user_name', $this->user_name);
-		$statement->bindParam(':user_email', $this->user_email);
-		$statement->bindParam(':user_password', $this->user_password);
-		$statement->bindParam(':user_status', $this->user_status);
-		$statement->bindParam(':user_created_on', $this->user_created_on);
-		// $statement->bindParam(':user_verification_code', $this->user_verification_code);
-		$statement->bindParam(':user_type', $this->user_type); // Set user_type to 'User'
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	function is_valid_email_verification_code()
 	{
+		// error here
 		$query = "
-		SELECT * FROM chat_user_table 
+		SELECT * FROM user 
 		WHERE user_verification_code = :user_verification_code
 		";
 
@@ -225,7 +199,7 @@ class ChatUser
 	function enable_user_account()
 	{
 		$query = "
-		UPDATE chat_user_table 
+		UPDATE user 
 		SET user_status = :user_status 
 		WHERE user_verification_code = :user_verification_code
 		";
@@ -249,7 +223,7 @@ class ChatUser
 	function update_user_login_data()
 	{
 		$query = "
-		UPDATE chat_user_table 
+		UPDATE user 
 		SET user_login_status = :user_login_status, user_token = :user_token  
 		WHERE user_id = :user_id
 		";
@@ -275,7 +249,7 @@ class ChatUser
 	function get_user_data_by_id()
 	{
 		$query = "
-		SELECT * FROM chat_user_table 
+		SELECT * FROM user 
 		WHERE user_id = :user_id";
 
 		$statement = $this->connect->prepare($query);
@@ -300,51 +274,10 @@ class ChatUser
 		return $user_data;
 	}
 
-	// function upload_image($user_profile)
-	// {
-	// 	$extension = explode('.', $user_profile['name']);
-	// 	$new_name = rand() . '.' . $extension[1];
-	// 	$destination = 'images/' . $new_name;
-	// 	move_uploaded_file($user_profile['tmp_name'], $destination);
-	// 	return $destination;
-	// }
-
-	function update_data()
-	{
-		$query = "
-		UPDATE chat_user_table 
-		SET user_name = :user_name, 
-		user_email = :user_email, 
-		user_password = :user_password, 
-		WHERE user_id = :user_id
-		";
-
-		$statement = $this->connect->prepare($query);
-
-		$statement->bindParam(':user_name', $this->user_name);
-
-		$statement->bindParam(':user_email', $this->user_email);
-
-		$statement->bindParam(':user_password', $this->user_password);
-
-		// $statement->bindParam(':user_profile', $this->user_profile);
-
-		$statement->bindParam(':user_id', $this->user_id);
-
-		if($statement->execute())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	function get_user_all_data()
 	{
 		$query = "
-		SELECT * FROM chat_user_table 
+		SELECT * FROM user 
 		";
 
 		$statement = $this->connect->prepare($query);
@@ -358,27 +291,27 @@ class ChatUser
 
 	function get_user_all_data_with_status_count()
 	{
-		if (isset($_SESSION['user_data'][$this->user_id]['user_type'])) {
-			$user_type = $_SESSION['user_data'][$this->user_id]['user_type'];
+		if (isset($_SESSION['auth_user']['role'])) {
+			$user_type = $_SESSION['auth_user']['role'];
 	
-			if ($user_type === 'Admin') {
+			if ($user_type === '1') {
 				// User is an admin, execute the admin query
 				$query = "
-					SELECT user_id, user_name, user_login_status, 
+					SELECT user_id, lname, fname, user_login_status, 
 						(SELECT COUNT(*) FROM chat_message 
-						 WHERE to_user_id = :user_id AND from_user_id = chat_user_table.user_id AND status = 'No') AS count_status 
-					FROM chat_user_table
-					WHERE user_type = 'User'
+						 WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status 
+					FROM user
+					WHERE user_type = 2
 
 				";
-			} elseif ($user_type === 'User') {
+			} elseif ($user_type === '2') {
 			//User is a regular user, execute the user query
 				$query = "
-					SELECT user_id, user_name, user_login_status, 
+					SELECT user_id, lname, fname, user_login_status, 
 						(SELECT COUNT(*) FROM chat_message 
-						 WHERE to_user_id = :user_id AND from_user_id = chat_user_table.user_id AND status = 'No') AS count_status 
-					FROM chat_user_table
-					WHERE user_type = 'Admin'
+						 WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status 
+					FROM user
+					WHERE user_type = '1'
 				";
 				
 			} else {
@@ -404,7 +337,7 @@ class ChatUser
 	function update_user_connection_id()
 	{
 		$query = "
-		UPDATE chat_user_table 
+		UPDATE user 
 		SET user_connection_id = :user_connection_id 
 		WHERE user_token = :user_token
 		";
@@ -421,7 +354,7 @@ class ChatUser
 	function get_user_id_from_token()
 	{
 		$query = "
-		SELECT user_id FROM chat_user_table 
+		SELECT user_id FROM user 
 		WHERE user_token = :user_token
 		";
 
