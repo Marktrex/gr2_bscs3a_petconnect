@@ -1,12 +1,12 @@
 <?php
 
-// use MyApp\Controller\AuditModelController;
+use MyApp\Controller\AuditModelController;
 session_start();
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 if (isset($_SESSION['auth'])) {
-    // $log = new AuditModelController();
-    // $log->activity_log($_SESSION['auth_user']['id'],"Logout","User has logged out");
+    $log = new AuditModelController();
+    $log->activity_log($_SESSION['auth_user']['id'],"Logout","User has logged out");
 
     require('../../database/ChatUser.php');
 

@@ -1,5 +1,13 @@
 <?php 
 session_start();
+
+if (!isset($_SESSION['token'])) { 
+    echo '<script language="javascript">';
+    echo 'alert("You do not have access to this page");';
+    echo '</script>';
+    header("Location: home.php");
+    exit();
+} 
 print_r($_SESSION);
 require '../function/config.php';
 
