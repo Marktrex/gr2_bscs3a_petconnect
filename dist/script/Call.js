@@ -1,58 +1,130 @@
-const APP_ID = "70bdc98b892240818232af5bc5c7a9ce"
-const TOKEN = "007eJxTYNj3yT+We0WG9+7JUtbJ+xJUY1+LvPl9tNenq+cX87Mj/dMUGMwNklKSLS2SLCyNjEwMLAwtjIyNEtNMk5JNk80TLZNTp5yJTG0IZGRg2racgREKQXwuhrDMlNR8BefEnBwGBgBo8SKX"
-const CHANNEL = "Video Call"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
 let remoteUsers = {}
 
+let isSender;
+
 let joinAndDisplayLocalStream = async () => {
 
-    client.on('user-published', handleUserJoined)
+    client.on('user-published', handleUserJoined);
     
-    client.on('user-left', handleUserLeft)
-    
-    let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
+    client.on('user-left', handleUserLeft);
 
-    localTracks = await AgoraRTC.createMicrophoneAndCameraTracks() 
+    //get channel and serveruid
+    let channel, uid;
 
-    let player = `<div class="video-container" id="user-container-${UID}">
-                        <div class="video-player" id="user-${UID}"></div>
-                  </div>`
-    document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+    try {
+        ({ channel, uid } = await getChannelAndUid());
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+    let belongsToCall;
+    try {
+        belongsToCall = await checkUserInCall(uid, channel);
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+    if (belongsToCall.toLowerCase() === "You do not have access to this call".toLowerCase() || 
+        belongsToCall.toLowerCase() === "Sender has already joined".toLowerCase() || 
+        belongsToCall.toLowerCase() === "Receiver has already joined".toLowerCase()) 
+    {
 
-    localTracks[1].play(`user-${UID}`)
-    
-    await client.publish([localTracks[0], localTracks[1]])
+        alert(belongsToCall);
+        return false;
+    }
+
+    let firstWord = belongsToCall.split(' ')[0];
+
+    if (firstWord.toLowerCase() === "sender") {
+        isSender = true;
+    } else if (firstWord.toLowerCase() === "receiver") {
+        isSender = false;
+    }
+    //if it is, generate the token
+    let token, appId;
+
+    try {
+        ({token, appId} = await generateToken(channel, uid));
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+    //and then do the process of joining
+    let UID = await client.join(appId, channel, token, uid);
+
+    let audioTrack = await AgoraRTC.createMicrophoneAudioTrack();
+
+    let videoTrack;
+    let devices = await AgoraRTC.getDevices();
+    let videoDevices = devices.filter(device => device.kind === 'videoinput');
+
+    if (videoDevices.length > 0) {
+        videoTrack = await AgoraRTC.createCameraVideoTrack();
+    }
+
+    localTracks = [audioTrack, videoTrack].filter(track => track !== undefined);
+
+    if (videoTrack) {
+        let player = `<div class="video-container" id="user-container-${UID}">
+                            <div class="video-player" id="user-${UID}"></div>
+                      </div>`;
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
+
+        videoTrack.play(`user-${UID}`);
+    }
+
+    await client.publish(localTracks);
+    return true;
 }
 
 let joinStream = async () => {
-    await joinAndDisplayLocalStream()
-    document.getElementById('join-btn').style.display = 'none'
-    document.getElementById('stream-controls').style.display = 'flex'
-}
+    let hasJoined = await joinAndDisplayLocalStream();
+    if (!hasJoined) {
+        return;
+    }
+    
+    document.getElementById('join-btn').style.display = 'none';
+    document.getElementById('stream-controls').style.display = 'flex';
 
+     //get the uid
+    let channel, uid;
+
+    try {
+        ({ channel, uid } = await getChannelAndUid());
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+    
+    updateJoinStatus(uid, true, channel);
+}
 let handleUserJoined = async (user, mediaType) => {
-    remoteUsers[user.uid] = user 
-    await client.subscribe(user, mediaType)
+    let currentUsers = Object.keys(remoteUsers).length;
+
+
+    remoteUsers[user.uid] = user;
+    await client.subscribe(user, mediaType);
 
     if (mediaType === 'video'){
-        let player = document.getElementById(`user-container-${user.uid}`)
+        let player = document.getElementById(`user-container-${user.uid}`);
         if (player != null){
-            player.remove()
+            player.remove();
         }
 
         player = `<div class="video-container" id="user-container-${user.uid}">
                         <div class="video-player" id="user-${user.uid}"></div> 
-                 </div>`
-        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
+                    </div>`;
+        document.getElementById('video-streams').insertAdjacentHTML('beforeend', player);
 
-        user.videoTrack.play(`user-${user.uid}`)
+        user.videoTrack.play(`user-${user.uid}`);
     }
 
     if (mediaType === 'audio'){
-        user.audioTrack.play()
+        user.audioTrack.play();
     }
 }
 
@@ -70,7 +142,18 @@ let leaveAndRemoveLocalStream = async () => {
     await client.leave()
     document.getElementById('join-btn').style.display = 'block'
     document.getElementById('stream-controls').style.display = 'none'
-    document.getElementById('video-streams').innerHTML = ''
+    document.getElementById('video-streams').innerHTML = '';
+    
+    //get the uid
+    let channel, uid;
+
+    try {
+        ({ channel, uid } = await getChannelAndUid());
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
+    updateJoinStatus(uid, false, channel);
 }
 
 let toggleMic = async (e) => {
@@ -95,6 +178,96 @@ let toggleCamera = async (e) => {
         e.target.innerText = 'Camera off'
         e.target.style.backgroundColor = '#EE4B2B'
     }
+}
+
+// function to get channel and uid
+async function getChannelAndUid() {
+    // Make an AJAX request to get_call_function.php
+    let response = await fetch('../function/get_call_function.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Parse the JSON response
+    let data = await response.json();
+
+    // The get_call_function.php script should return the channel and uid
+    let { channel, uid } = data;
+    return { channel, uid };
+}
+// check if the user belongs to the call
+let checkUserInCall = async (userId, channel) => {
+    // Make an AJAX request to check_user_in_call.php
+    let formData = new FormData();
+    formData.append('userId', userId);
+    formData.append('channel', channel); 
+
+    let response = await fetch('../function/check_user_in_call.php', {
+        method: 'POST',
+        body:formData
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Parse the JSON response
+    let data = await response.json();
+
+    // The check_user_in_call.php script should return whether the user belongs to the call
+    let { belongsToCall } = data;
+
+    return belongsToCall;
+}
+//generate the token
+let generateToken = async (channel, uid) => {
+    // Make an AJAX request to generateTokenCall.php
+    let formData = new FormData();
+    formData.append('userId', uid);
+    formData.append('channel', channel); 
+    let response = await fetch('../function/generateTokenCall.php', {
+        method: 'POST',
+        body: formData,
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    // Parse the JSON response
+    let data = await response.json();
+
+    // The generateTokenCall.php script should return the token and appId
+    let { token, appId } = data;
+
+    return { token, appId };
+}
+
+//update join status
+async function updateJoinStatus(userId, hasJoined, channel) {
+    let formData = new FormData();
+    formData.append('user_id', userId);
+    formData.append('has_joined', hasJoined ? 1 : 0);
+    formData.append('channel', channel);
+    formData.append('is_sender', isSender);
+
+    const response = await fetch('../function/update_join_status.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    if (!response.ok) {
+        console.error('Error:', response.status);
+        return;
+    }
+
+    console.log('Update successful');
 }
 
 document.getElementById('join-btn').addEventListener('click', joinStream)
