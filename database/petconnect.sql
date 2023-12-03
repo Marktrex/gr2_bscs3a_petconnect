@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2023 at 05:49 PM
+
+-- Generation Time: Dec 03, 2023 at 05:52 AM
+
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -152,6 +154,28 @@ INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `short_description`, `d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `call_table`
+--
+
+CREATE TABLE `call_table` (
+  `call_id` int(11) NOT NULL,
+  `channel` varchar(255) DEFAULT NULL,
+  `from_has_join` tinyint(1) NOT NULL DEFAULT 0,
+  `receiver_has_join` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `call_table`
+--
+
+INSERT INTO `call_table` (`call_id`, `channel`, `from_has_join`, `receiver_has_join`) VALUES
+(9, 'channel_656ace6cc8b2b', 1, 0),
+(10, 'channel_656acef2a31ed', 1, 0),
+(11, 'channel_656acfdf11d01', 0, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chat_message`
 --
 
@@ -161,88 +185,31 @@ CREATE TABLE `chat_message` (
   `from_user_id` int(11) NOT NULL,
   `chat_message` mediumtext NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('Yes','No') NOT NULL
+  `status` enum('Yes','No') NOT NULL,
+  `message_type` enum('message','call') NOT NULL DEFAULT 'message',
+  `call_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_message`
 --
 
-INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
-(8, 22, 20, 'hello', '2023-11-09 18:05:07', 'Yes'),
-(9, 21, 22, 'g', '2023-11-09 18:12:06', 'Yes'),
-(10, 1, 20, 'hey', '2023-11-09 18:23:04', 'Yes'),
-(11, 1, 20, 'hey', '2023-11-09 18:24:02', 'Yes'),
-(12, 1, 23, 'hello', '2023-11-09 18:54:09', 'Yes'),
-(13, 23, 1, 'huh', '2023-11-09 19:03:05', 'Yes'),
-(14, 21, 1, 'bug', '2023-11-09 19:03:15', 'Yes'),
-(15, 1, 23, 'ewan ko', '2023-11-09 19:03:34', 'Yes'),
-(16, 23, 1, 'what is status', '2023-11-09 19:07:58', 'Yes'),
-(17, 1, 23, 'test', '2023-11-09 19:18:11', 'Yes'),
-(18, 1, 23, 'owshee', '2023-11-09 19:20:48', 'Yes'),
-(19, 21, 1, 'hey', '2023-11-09 20:18:19', 'Yes'),
-(20, 21, 1, 'heeu', '2023-11-09 20:18:25', 'Yes'),
-(21, 23, 1, 'heuy', '2023-11-09 20:18:29', 'Yes'),
-(22, 21, 1, 'hey', '2023-11-09 20:19:15', 'Yes'),
-(23, 23, 1, 'hello', '2023-11-09 20:21:54', 'Yes'),
-(24, 21, 1, 'bakit ayaw lumitaw', '2023-11-09 20:22:33', 'Yes'),
-(25, 21, 1, 'eu', '2023-11-09 20:27:40', 'Yes'),
-(26, 1, 23, 'what', '2023-11-09 20:27:48', 'Yes'),
-(27, 23, 1, 'what', '2023-11-09 20:28:23', 'Yes'),
-(28, 21, 1, 'eu', '2023-11-09 20:30:28', 'Yes'),
-(29, 21, 1, 'hel', '2023-11-09 20:31:20', 'Yes'),
-(30, 23, 1, 'oi', '2023-11-09 20:31:24', 'Yes'),
-(31, 21, 23, 'heuy', '2023-11-09 20:31:58', 'Yes'),
-(32, 21, 23, 'what', '2023-11-09 20:32:03', 'Yes'),
-(33, 1, 23, 'hey', '2023-11-09 20:34:57', 'Yes'),
-(34, 21, 23, 'test', '2023-11-09 20:46:45', 'Yes'),
-(35, 21, 23, 'test', '2023-11-09 20:47:04', 'Yes'),
-(36, 1, 23, 'test', '2023-11-09 20:47:11', 'Yes'),
-(37, 1, 23, 'test naman', '2023-11-09 20:47:32', 'Yes'),
-(38, 1, 23, 'heu', '2023-11-09 20:49:32', 'Yes'),
-(39, 23, 1, 'gey', '2023-11-09 20:51:07', 'Yes'),
-(40, 1, 23, 'hello', '2023-11-09 20:56:15', 'Yes'),
-(41, 23, 1, 'hoy', '2023-11-09 20:59:18', 'Yes'),
-(42, 1, 21, 'test', '2023-11-09 21:22:01', 'Yes'),
-(43, 23, 1, 'test', '2023-11-10 19:02:09', 'Yes'),
-(44, 21, 1, 'hey', '2023-11-10 19:02:14', 'Yes'),
-(45, 1, 21, 'what', '2023-11-10 19:02:23', 'Yes'),
-(46, 23, 21, 'seeshg', '2023-11-10 19:02:26', 'No'),
-(47, 23, 1, 'ey', '2023-11-10 19:32:38', 'No'),
-(48, 21, 1, 'ey', '2023-11-10 19:32:50', 'Yes'),
-(49, 1, 21, 'what', '2023-11-10 19:32:59', 'Yes'),
-(50, 1, 21, 'test', '2023-11-10 19:33:12', 'Yes'),
-(51, 21, 1, 'whgat', '2023-11-10 19:33:18', 'Yes'),
-(52, 21, 1, 'what', '2023-11-10 19:33:24', 'Yes'),
-(53, 1, 21, 'nothing', '2023-11-10 19:33:31', 'Yes'),
-(54, 21, 1, 'tes', '2023-11-10 19:50:38', 'Yes'),
-(55, 21, 1, 'hey', '2023-11-10 19:56:01', 'Yes'),
-(56, 1, 21, 'hello', '2023-11-10 19:56:09', 'Yes'),
-(57, 21, 1, 'hey', '2023-11-10 20:02:17', 'Yes'),
-(58, 21, 1, 'ey', '2023-11-11 23:36:02', 'Yes'),
-(59, 1, 28, 'low', '2023-11-11 23:36:12', 'Yes'),
-(60, 1, 28, 'hey', '2023-11-12 22:34:22', 'Yes'),
-(61, 29, 1, 'hy', '2023-11-12 22:48:17', 'Yes'),
-(62, 29, 1, 'geuy', '2023-11-12 22:48:28', 'Yes'),
-(63, 1, 29, 'low', '2023-11-12 22:48:34', 'Yes'),
-(64, 1, 30, 'hello', '2023-11-13 00:10:36', 'Yes'),
-(65, 30, 1, 'fuck u', '2023-11-13 00:10:42', 'Yes'),
-(66, 1, 30, 'tagninamo', '2023-11-13 00:27:03', 'Yes'),
-(67, 30, 1, 'guk', '2023-11-13 00:27:21', 'Yes'),
-(68, 1, 30, 'test', '2023-11-13 01:02:10', 'Yes'),
-(69, 30, 1, 'hey', '2023-11-13 01:02:33', 'Yes'),
-(70, 1, 30, 'ewa', '2023-11-13 01:03:09', 'Yes'),
-(71, 1, 30, 'haha', '2023-11-13 01:03:16', 'Yes'),
-(72, 30, 1, 'sheesh', '2023-11-13 01:03:39', 'Yes'),
-(73, 1, 30, 'a', '2023-11-13 01:20:26', 'Yes'),
-(74, 1, 31, 'test', '2023-11-13 02:10:54', 'Yes'),
-(75, 31, 1, 'ay', '2023-11-13 02:11:00', 'Yes'),
-(76, 1, 36, 'hey', '2023-11-14 19:33:31', 'Yes'),
-(77, 4, 3, '123', '2023-11-28 21:26:02', 'Yes'),
-(78, 4, 3, 'ayo', '2023-11-28 21:27:01', 'Yes'),
-(79, 3, 4, 'wassup manerdizzle', '2023-11-28 21:27:09', 'Yes'),
-(80, 4, 3, '123', '2023-11-28 21:27:18', 'Yes'),
-(81, 4, 3, 'wassup', '2023-11-28 21:29:33', 'Yes');
+
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_user_table`
+--
+
+
+--
+-- Dumping data for table `chat_user_table`
+--
+
+
+
 
 -- --------------------------------------------------------
 
@@ -347,6 +314,12 @@ ALTER TABLE `audit_log`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `call_table`
+--
+ALTER TABLE `call_table`
+  ADD PRIMARY KEY (`call_id`);
+
+--
 -- Indexes for table `chat_message`
 --
 ALTER TABLE `chat_message`
@@ -387,10 +360,21 @@ ALTER TABLE `audit_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
+-- AUTO_INCREMENT for table `call_table`
+--
+ALTER TABLE `call_table`
+  MODIFY `call_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+
+--
+-- AUTO_INCREMENT for table `chat_user_table`
+--
 
 --
 -- AUTO_INCREMENT for table `news`

@@ -93,7 +93,11 @@ require('database/ChatRooms.php');
 				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
 				<div class="mt-3 mb-3 text-center">
+
+					
+	
 					<h3 class="mt-2"><?php echo $name; ?></h3>
+
 					<a href="dist/user/home.php" class="btn btn-secondary mt-2 mb-2">Back</a>
 					<input type="button" class="btn btn-primary mt-2 mb-2" id="logout" name="logout" value="Logout" onclick="window.location.href='dist/function/logout.php'"/>
 				</div>
@@ -189,7 +193,7 @@ require('database/ChatRooms.php');
 
 				var row_class = '';
 				var background_class = '';
-
+				
 				if(data.from == 'Me')
 				{
 					row_class = 'row justify-content-start';
@@ -205,11 +209,23 @@ require('database/ChatRooms.php');
 				{
 					if($('#is_active_chat').val() == 'Yes')
 					{
+						var count = 0;
+						count--;
+						var output;
+						if(data.type == 'call') {
+							output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
+								output += '<input type="hidden" name="channel' +count+'" value="' + data.channel + '">';
+								output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
+							output += '</form>';
+						} else {
+							output = data.msg;
+						}
+
 						var html_data = `
 						<div class="`+row_class+`">
 							<div class="col-sm-10">
 								<div class="shadow-sm alert `+background_class+`">
-									<b>`+data.from+` - </b>`+data.msg+`<br />
+									<b>`+data.from+` - </b>`+output+`<br />
 									<div class="text-right">
 										<small><i>`+data.datetime+`</i></small>
 									</div>
@@ -251,7 +267,19 @@ require('database/ChatRooms.php');
 			var html = `
 			<div class="card">
 				<div class="card-header">
-					
+
+					<div class="row">
+						<div class="col col-sm-6">
+							<b>Chat with <span class="text-danger" id="chat_user_name">`+user_name+`</span></b>
+						</div>
+						<div class="col col-sm-6 text-right">
+							<a href="#" id="video_call_button" class="btn btn-success btn-sm">Call</a>&nbsp;&nbsp;&nbsp;
+							<button type="button" class="close" id="close_chat_area" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+
 				</div>
 				<div class="card-body" id="messages_area">
 
@@ -260,6 +288,8 @@ require('database/ChatRooms.php');
 
 			<form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
 				<div class="input-group mb-3" style="height:7vh">
+					<input type="hidden" id="message_type" name="message_type" value="message">
+					<input type="hidden" id="channel" name="channel">
 					<textarea class="form-control" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
 					<div class="input-group-append">
 						<button type="submit" name="send" id="send" class="btn btn-primary"><i class="fa fa-paper-plane"></i></button>
@@ -308,7 +338,17 @@ require('database/ChatRooms.php');
 							var row_class= ''; 
 							var background_class = '';
 							var user_name = '';
-							
+
+							var message_type = data[count].message_type;
+
+							if(data[count].message_type == 'call') {
+								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
+									output += '<input type="hidden" name="channel' +count+'" value="' + data[count].channel + '">';
+									output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
+								output += '</form>';
+							} else {
+								output = data[count].chat_message;
+							}
 
 							if(data[count].from_user_id == from_user_id)
 							{
@@ -327,13 +367,12 @@ require('database/ChatRooms.php');
 
 								user_name = data[count].from_user_lname;
 							}
-
 							html_data += `
 							<div class="`+row_class+`">
 								<div class="col-sm-10">
 									<div class="shadow alert `+background_class+`">
 										<b>`+user_name+` - </b>
-										`+data[count].chat_message+`<br />
+										`+output+`<br />
 										<div class="text-right">
 											<small><i>`+data[count].timestamp+`</i></small>
 										</div>
@@ -341,6 +380,7 @@ require('database/ChatRooms.php');
 								</div>
 							</div>
 							`;
+							
 						}
 
 						$('#userid_'+receiver_userid).html('');
@@ -356,6 +396,24 @@ require('database/ChatRooms.php');
 			})
 
 		});
+		$(document).on('submit', '.join_call_form', function(event){
+			event.preventDefault();
+
+			var form = $(this);
+			var count = form.data('count');
+
+			$.ajax({
+				url: 'action.php',
+				method: 'POST',
+				data: {
+					channel: form.find('input[name="channel'+count+'"]').val(),
+					action: 'join_call'
+				},
+				success: function() {
+					window.open('dist/user/VideoCall.php', '_blank');
+				}
+			});
+		});
 
 		$(document).on('click', '#close_chat_area', function(){
 
@@ -370,25 +428,71 @@ require('database/ChatRooms.php');
 		});
 
 		$(document).on('submit', '#chat_form', function(event){
-
 			event.preventDefault();
+			
+			$.ajax({
+				url: 'dist/function/check_login_status.php', // replace with your PHP script
+				method: 'POST',
+				success: function(response) {
+					if (response.loggedIn) { // replace with the actual response field
+						if($('#chat_form').parsley().isValid())
+						{
+							var user_id = parseInt($('#login_user_id').val());
 
-			if($('#chat_form').parsley().isValid())
-			{
-				var user_id = parseInt($('#login_user_id').val());
+							var message = $('#chat_message').val();
 
-				var message = $('#chat_message').val();
+							var message_type=  $('#message_type').val();
+							var data = {//save it in the database
+								userId: user_id,
+								msg: message,
+								receiver_userid:receiver_userid,
+								command:'private',
+								type:message_type,
+								channel:$('#channel').val()
+							};
+							conn.send(JSON.stringify(data));
+						}
+					} else {
+						alert("session expired, log in again");
+						location.reload();
+					}
+				}
+			});
+		});
+		$(document).on('click', '#video_call_button', function(event){
+			event.preventDefault();
+			$('#message_type').val('call');
+			$('#chat_message').val('this is a call');
+			// Your code for initiating a video call goes here
+			// Use AJAX to generate the channel
+			$.ajax({
+				url: 'dist\\function\\generateChannelForCall.php',
+				method: 'POST',
+				data: { uid: $('#login_user_id').val() },
+				success: function(data) {
+					// Set the values of the hidden fields
+					$('#channel').val(data.channelName);
+					$.ajax({
+						url: 'action.php',
+						method: 'POST',
+						data: {
+							channel: $('#channel').val(),
+							action: 'join_call'
+						}
+					});
+					// Submit the form
+					$('#chat_form').submit();
+					window.open('dist/user/VideoCall.php', '_blank');
+				}
+			});
+			
+		});
 
-				var data = {
-					userId: user_id,
-					msg: message,
-					receiver_userid:receiver_userid,
-					command:'private'
-				};
-
-				conn.send(JSON.stringify(data));
-			}
-
+		$(document).on('click', '#send', function(event){
+			event.preventDefault();
+			//change the value of the message_type to message
+			$('#message_type').val('message');
+			$('#chat_form').submit();
 		});
 	})
 </script>

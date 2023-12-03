@@ -10,9 +10,10 @@
 <body>
 
     <button id="join-btn">Join Stream</button>
-
     <div id="stream-wrapper">
-        <div id="video-streams"></div>
+        <div id="video-streams">
+            
+        </div>
 
         <div id="stream-controls">
             <button id="leave-btn">Leave Stream</button>
