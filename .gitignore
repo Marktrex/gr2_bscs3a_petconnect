@@ -6,3 +6,5 @@ vendor/
 
 # Ignore tailwind output css
 ./dist/css/tailwind-compiling-css/output.css
+
+.env
