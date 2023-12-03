@@ -1,0 +1,65 @@
+:root {
+  --body-bg-color: #fdc161;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+  --text1-text-color: white;
+  --text2-text-color: white;
+  --content-box-bg-color: #F5DFBB;
+  --logo-with-text-text-color: #0e9594;
+  --flexbox1-bg-color: #f2542d;
+  --text-center1-text-color: #fff6e0;
+  --text-under-logo1-text-color: #fff6e8;
+  --description-text-color: #fff6e0;
+}
+
+[data-theme="dark"]{
+  
+}
+
+body {
+  background: var(--body-bg-color);
+}
+
+::-webkit-scrollbar-track{
+  background-color: var(--scrollbar-track-bg-color);
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
+}
+
+.text1{
+  color: var(--text1-text-color);
+}
+
+.text2{
+  color: var(--text2-text-color);
+}
+
+.content-box {
+  background-color: var(--content-box-bg-color);
+}
+
+.logo-with-text{
+  color: var(--logo-with-text-text-color);
+}
+
+.flexbox1 {
+  background-color: var(--flexbox1-bg-color);
+}
+
+.text-center1{
+  color: var(--text-center1-text-color);
+}
+
+.text-under-logo1 {
+  color: var(--text-under-logo1-text-color);
+}
+
+.description1,
+.description2,
+.description3,
+.description4 {
+  color: var(--description-text-color);
+}
