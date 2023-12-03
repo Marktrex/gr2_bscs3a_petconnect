@@ -1,0 +1,80 @@
+:root {
+  /* for light here */
+  --body-bg-color: #fdc161;
+  --about-section-child-bg-color: #0e9594;
+  --about-section-child-text-color: #f5dfbb;
+  --team-bg-color: #f2542d;
+  --team-text-color: #fdc161;
+  --team-flex-div-bg-color: #f5dfbb;
+  --team-flex-div-p-bg-color: #f5dfbb;
+  --team-flex-div-p-text-color: #0e9594;
+  --extraInfo-bg-color: #f5dfbb;
+  --extraInfo-div-bg-color: #0e9594;
+  --extraInfo-div-text-color: #f5dfbb;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+}
+
+[data-theme="dark"] {
+  /* for dark here */
+  --body-bg-color: #fdc161;
+  --about-section-child-bg-color: #0e9594;
+  --about-section-child-text-color: #f5dfbb;
+  --team-bg-color: #f2542d;
+  --team-text-color: #fdc161;
+  --team-flex-div-bg-color: #f5dfbb;
+  --team-flex-div-p-bg-color: #f5dfbb;
+  --team-flex-div-p-text-color: #0e9594;
+  --extraInfo-bg-color: #f5dfbb;
+  --extraInfo-div-bg-color: #0e9594;
+  --extraInfo-div-text-color: #f5dfbb;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+}
+
+body {
+  background: var(--body-bg-color);
+}
+
+/*--------------------------------------------------------------------------------------------*/
+
+main {
+  .about-section {
+    > :nth-child(1) {
+      background: var(--about-section-child-bg-color);
+      color: var(--about-section-child-text-color);
+    }
+  }
+  .team {
+    background: var(--team-bg-color);
+    color: var(--team-text-color);
+    .flex {
+      > div {
+        background: var(--team-flex-div-bg-color);
+        & p {
+          background-color: var(--team-flex-div-p-bg-color);
+          color: var(--team-flex-div-p-text-color);
+        }
+      }
+    }
+  }
+  .extraInfo {
+    background: var(--extraInfo-bg-color);
+    > div {
+      background: var(--extraInfo-div-bg-color);
+      color: var(--extraInfo-div-text-color);
+    }
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    var(--scrollbar-thumb-gradient-start),
+    var(--scrollbar-thumb-gradient-end)
+  );
+}
