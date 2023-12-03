@@ -4,10 +4,10 @@
     session_start();
     print_r($_SESSION);
     //check if user is already logged redirect to user/home.php if yes
-    // if(isset($_SESSION['auth'])){
-    //     header("Location: dist/user/home.php");
-    //     exit();
-    // }
+    if(isset($_SESSION['auth_user'])){
+        header("Location: dist/user/home.php");
+        exit();
+    }
 ?>
 <head>
     <link rel="icon" href="image/icon.png" type="image/png">
