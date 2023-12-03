@@ -1,5 +1,5 @@
 <?php 
-// use MyApp\Controller\AuditModelController;
+use MyApp\Controller\AuditModelController;
 session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -14,16 +14,15 @@ require 'dist/function/config.php'; //PDO connection to the database
 //     exit();
 // }
 
-//email verification
+$log = new AuditModelController();//email verification
 if (isset($_POST["register"])) { //code ni marc
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $passwordRepeat = $_POST["cpassword"];
-     // $log->activity_log($lastId, 'Register', 'Created a new user account'); the rollback is from the mayor not me, im glad it oks
-    //  echo '<script language="javascript">';
-    //  echo 'alert("Sign up successfully");';
+
+     
 
     //php using PDO
     $sql_check = "SELECT * FROM user WHERE email = :email";
@@ -70,7 +69,11 @@ if (isset($_POST["register"])) { //code ni marc
             try {
                 $statement2->execute();
                 $lastId = $conn->lastInsertId();
-                // If both queries are successful, commit the transaction
+                $log->activity_log($lastId, 'Register', 'Created a new user account'); //the rollback is from the mayor not me, im glad it oks
+                echo '<script language="javascript">';
+                echo 'alert("Sign up successfully");';
+                echo '</script>';
+                            // If both queries are successful, commit the transaction
                 $conn->commit();
                 $otp = rand(100000,999999);
                 $_SESSION['otp'] = $otp;

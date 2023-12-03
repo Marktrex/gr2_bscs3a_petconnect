@@ -1,5 +1,6 @@
 <?php 
 session_start();
+print_r($_SESSION);
 require '../function/config.php';
 
 if (isset($_POST["verify"])) {
