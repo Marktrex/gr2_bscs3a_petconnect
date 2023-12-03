@@ -3,9 +3,12 @@
 <?php 
     session_start();
     print_r($_SESSION);
-    //check if user is already logged redirect to user/home.php if yes
-    if(isset($_SESSION['auth_user'])){
-        header("Location: dist/user/home.php");
+    //check if user is already logged and verified, it will go to the home.php
+    if ($_SESSION['auth_user']['user_status'] === "Enable") { 
+        // Redirect to login page if the user status is 'Disabled'
+        echo '<script language="javascript">';
+        echo 'window.location.href = "dist/user/home.php";';  // Redirect using JavaScript
+        echo '</script>';
         exit();
     }
 ?>
