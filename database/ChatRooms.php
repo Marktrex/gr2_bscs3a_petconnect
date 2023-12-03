@@ -80,8 +80,8 @@ class ChatRooms
 	{
 		$query = "
 		SELECT * FROM chatrooms 
-			INNER JOIN chat_user_table 
-			ON chat_user_table.user_id = chatrooms.userid 
+			INNER JOIN user 
+			ON user.user_id = chatrooms.userid 
 			ORDER BY chatrooms.id ASC
 		";
 
