@@ -1,7 +1,13 @@
 <?php
 session_start();
 print_r($_SESSION);
-
+if (!isset($_SESSION['otp'])) { 
+    echo '<script language="javascript">';
+    echo 'alert("You do not have access to this page");';
+    echo '</script>';
+    header("Location: home.php");
+    exit();
+} 
 require '../function/config.php';
            
 
