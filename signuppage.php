@@ -8,11 +8,11 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 require 'dist/function/config.php'; //PDO connection to the database
 
-//check if user is already logged redirect to user/home.php if yes
-// if(isset($_SESSION['auth_user'])){
-//     header("Location: dist/user/home.php");
-//     exit();
-// }
+// check if user is already logged redirect to user/home.php if yes
+if(isset($_SESSION['auth_user'])){
+    header("Location: dist/user/home.php");
+    exit();
+}
 
 $log = new AuditModelController();//email verification
 if (isset($_POST["register"])) { //code ni marc
