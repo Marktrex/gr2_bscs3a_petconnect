@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php 
     session_start();
-    print_r($_SESSION);
+    
     //check if user is already logged and verified, it will go to the home.php
-    if ($_SESSION['auth_user']['user_status'] === "Enable") { 
-        // Redirect to login page if the user status is 'Disabled'
+    if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['user_status'] === "Enable") { 
+        // Redirect to home.php if the user status is 'Enable'
         echo '<script language="javascript">';
         echo 'window.location.href = "dist/user/home.php";';  // Redirect using JavaScript
         echo '</script>';
         exit();
     }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <link rel="icon" href="image/icon.png" type="image/png">
     <meta charset="UTF-8">

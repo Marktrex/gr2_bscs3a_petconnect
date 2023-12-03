@@ -1,6 +1,6 @@
 <?php 
-use MyApp\Controller\AuditModelController;
 session_start();
+use MyApp\Controller\AuditModelController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
