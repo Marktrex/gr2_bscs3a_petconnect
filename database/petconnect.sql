@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2023 at 04:33 PM
+-- Generation Time: Dec 03, 2023 at 05:52 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -162,15 +162,24 @@ INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `short_description`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `call`
+-- Table structure for table `call_table`
 --
 
-CREATE TABLE `call` (
+CREATE TABLE `call_table` (
   `call_id` int(11) NOT NULL,
-  `sender_token` varchar(255) DEFAULT NULL,
-  `receiver_token` varchar(255) NOT NULL,
-  `channel` varchar(255) NOT NULL
+  `channel` varchar(255) DEFAULT NULL,
+  `from_has_join` tinyint(1) NOT NULL DEFAULT 0,
+  `receiver_has_join` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `call_table`
+--
+
+INSERT INTO `call_table` (`call_id`, `channel`, `from_has_join`, `receiver_has_join`) VALUES
+(9, 'channel_656ace6cc8b2b', 1, 0),
+(10, 'channel_656acef2a31ed', 1, 0),
+(11, 'channel_656acfdf11d01', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -186,19 +195,16 @@ CREATE TABLE `chat_message` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('Yes','No') NOT NULL,
   `message_type` enum('message','call') NOT NULL DEFAULT 'message',
-  `call_id` int(11) DEFAULT NULL,
-  `token` varchar(255) DEFAULT NULL,
-  `channel` varchar(255) DEFAULT NULL
+  `call_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `chat_message`
 --
 
-INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`, `message_type`, `call_id`, `token`, `channel`) VALUES
-(135, 2, 1, 'this is a call', '2023-11-30 19:26:15', 'Yes', 'call', NULL, '007eJxTYJj2+e7c3ZFXDaS1ojnWmudvPbOwetLc1doMh+b/PbHDTu6tAkNiorlJooGpqZFxaoqJoYWxRZqhUaKlYWqKUTJQPNHS3SUzNTwoM7VBbS0TIwMjAwsQgwATmGQGkyxgUpQhOSMxLy81J97M1MzSxMTE3NzczMKYkcEAAC/kJD8=', 'channel_6569444777683'),
-(136, 2, 1, 'this is a call', '2023-11-30 19:26:15', 'Yes', 'call', NULL, '007eJxTYNjQv8F/UsS/2H2MPscstxyZEf/ejr3fWGfP61abU3+S/L4qMCQmmpskGpiaGhmnppgYWhhbpBkaJVoapqYYJQPFEy3dXTJTw4MyU9ObpJkZGRgZWIAYBJjAJDOYZAGTogzJGYl5eak58WamZpYmJibmFhZpFkmMDAYAJGgkYw==', 'channel_6569444788f8b'),
-(137, 2, 1, 'this is a call', '2023-11-30 19:38:42', 'Yes', 'call', NULL, '007eJxTYDi+ZseBE0HBxSlhUiqbs59vOusUVya0eFeThCGz2z535V8KDImJ5iaJBqamRsapKSaGFsYWaYZGiZaGqSlGyUBxIMs9M9UxNDM1QbyKiZGBkYEFiEGACUwyg0kWMCnKkJyRmJeXmhNvZmpmaWJubJhmlJRqyshgAABJzyJa', 'channel_65694731f2be5');
+INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`, `message_type`, `call_id`) VALUES
+(169, 1, 2, 'this is a call', '2023-12-01 23:30:10', 'Yes', 'call', 10),
+(170, 2, 1, 'this is a call', '2023-12-01 23:34:07', 'Yes', 'call', 11);
 
 -- --------------------------------------------------------
 
@@ -223,8 +229,10 @@ CREATE TABLE `chat_user_table` (
 --
 
 INSERT INTO `chat_user_table` (`user_id`, `user_name`, `user_email`, `user_password`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`, `user_type`) VALUES
-(1, 'AdminPogi', 'admin@gmail.com', '123', 'Enable', 'Login', '7858a3698d619384459dfaeee1376a6e', 55, 'Admin'),
-(2, 'Fiona', 'fiona@gmail.com', 'marc', 'Enable', 'Login', '2e04e1f76d766eaa43e44f76b1bccaf2', 92, 'User');
+(1, 'AdminPogi', 'admin@gmail.com', '123', 'Enable', 'Login', '878394a909770cb9007f798c4c501a99', 126, 'Admin'),
+(2, 'Fiona', 'fiona@gmail.com', 'marc', 'Enable', 'Login', 'b4ef83e21beae0c106e79d3302be9e4f', 133, 'User'),
+(3, 'Fiona', 'fiona2@gmail.com', 'marc', 'Enable', 'Login', '55885e1797e71279895d4e0b876793b6', 140, 'Admin'),
+(4, 'AdminPogi', 'admin2@gmail.com', '123', 'Enable', 'Logout', '87fbe3763647d02067aec52fbdd6b917', 182, 'User');
 
 -- --------------------------------------------------------
 
@@ -327,9 +335,9 @@ ALTER TABLE `audit_log`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `call`
+-- Indexes for table `call_table`
 --
-ALTER TABLE `call`
+ALTER TABLE `call_table`
   ADD PRIMARY KEY (`call_id`);
 
 --
@@ -379,22 +387,22 @@ ALTER TABLE `audit_log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `call`
+-- AUTO_INCREMENT for table `call_table`
 --
-ALTER TABLE `call`
-  MODIFY `call_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `call_table`
+  MODIFY `call_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- AUTO_INCREMENT for table `chat_user_table`
 --
 ALTER TABLE `chat_user_table`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `news`
