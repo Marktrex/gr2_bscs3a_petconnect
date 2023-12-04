@@ -2,12 +2,8 @@
 # Sql help
 1. open localhost/phpmyadmin
 2. import mo ung file ./database/petconnect.sql
-3. run mo eto sa terminal(folder ng project mo) - make sure na nakapag composer update ka muna
-```
-./vendor/bin/audit audit etc/audit.json
-```
 
-# Php help
+#Php help
 1. Download composer(<a href="https://www.youtube.com/watch?v=yCXfFZljKy8&ab_channel=Cairocoders">follow this kung may xampp ka </a>)
 2. type sa cmd(make sure na nasa working folder ka/vscode tas naka open ung project)
 ```
