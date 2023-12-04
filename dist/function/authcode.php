@@ -1,6 +1,6 @@
 <!-- Sign Up  -->
 <?php
-use MyApp\Controller\AuditModelController;
+
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
@@ -10,7 +10,6 @@ require('config.php'); //PDO connection to the database
 require('../../database/ChatUser.php');
 
 
-$log = new AuditModelController();
 
 // LOG IN
 if (isset($_POST["login"])) {
@@ -31,6 +30,7 @@ if (isset($_POST["login"])) {
         $userType = $userdata["user_type"];
         $userID = $userdata["user_id"]; // Get the ID of the logged-in user
         $userStatus = $userdata["user_status"];
+
         $user_object = new ChatUser;
         $user_object->setUserEmail($email);
         $user_data = $user_object->get_user_data_by_email();
@@ -55,12 +55,10 @@ if (isset($_POST["login"])) {
                 'email' => $userdata['email'],
                 'role' => "1",
                 'token' =>  $user_token,
-                'user_status' => $userStatus
+                'user_status' => $user_status // assuming 'user_status' is part of the session data
 
             ];
 
-
-            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'User Logged In');
             echo '<script language="javascript">';
            
             echo 'alert("Logged In Successfully as Admin");';
@@ -79,12 +77,11 @@ if (isset($_POST["login"])) {
                 'email' => $userdata['email'],
                 'role' => "2",
                 'token' =>  $user_token,
-                'user_status' => $userStatus
+                'user_status' => $userStatus // assuming 'user_status' is part of the session data
 
             ];
     
 
-            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';
             header("Location: ../user/home.php");
 
