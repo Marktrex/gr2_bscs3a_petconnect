@@ -65,13 +65,13 @@ if (isset($_POST["submit"])) {
             if ($stmt) {
                 $log = new AuditModelController();
                 $log->activity_log(
-                    $_SESSION['auth_user']['id'],
-                    "INSERT",
-                    "PET",
-                    "Null",
-                    $lastId,
-                    "Null",
-                    "Null",
+                    $_SESSION['auth_user']['id'],//responsible
+                    "INSERT",//type
+                    "PET",//table
+                    "All",//column
+                    $lastId,//id
+                    "None",//old
+                    "None",//new val
                 );
                 echo "
                 <script> 

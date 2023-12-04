@@ -22,7 +22,7 @@ if (isset($_POST['update'])) {
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-    $oldData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $oldData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $name = $_POST["name"];
     $type = $_POST["type"];
@@ -110,7 +110,7 @@ if (isset($_POST['update'])) {
         $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
         foreach ($oldData as $key => $value)  {
-            if($value != $newData[$key]){
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
                 $log->activity_log(
                     $_SESSION['auth_user']['id'],
                     "UPDATE",

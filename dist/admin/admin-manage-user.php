@@ -118,12 +118,13 @@ $conn = null;
 <?php
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
+    require '../function/config.php';
     $id = $_POST['id'];
-    $sql = "SELECT fname, lname, email, photo user WHERE pets_id = :id";
+    $sql = "SELECT fname, lname, email, photo FROM user WHERE user_id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
-    $oldData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $oldData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $newData = [
         'fname' => $_POST["fname"],
@@ -190,7 +191,7 @@ if (isset($_POST['update'])) {
         $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
         foreach ($oldData as $key => $value)  {
-            if($value != $newData[$key]){
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
                 $log->activity_log(
                     $_SESSION['auth_user']['id'],
                     "UPDATE",
@@ -501,10 +502,10 @@ $conn = null;
                 var id = $(this).find("td:nth-child(1)").text().trim();
                 var image = $(this).find("td:nth-child(2) img").attr("src");
                 var fname = $(this).find("td:nth-child(3)").contents().last().text().trim();
-                var lname = $(this).find("td:nth-child(3)").text().trim();
-                var email = $(this).find("td:nth-child(4)").text().trim();
-                var user_type = $(this).find("td:nth-child(5)").text().trim();
-                var date_created = $(this).find("td:nth-child(6)").text().trim();
+                var lname = $(this).find("td:nth-child(4)").text().trim();
+                var email = $(this).find("td:nth-child(5)").text().trim();
+                var user_type = $(this).find("td:nth-child(6)").text().trim();
+                var date_created = $(this).find("td:nth-child(7)").text().trim();
 
                 // Populate the input fields with the selected row data
                 $("#id").val(id);

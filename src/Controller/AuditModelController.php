@@ -27,8 +27,8 @@ class AuditModelController{
                 "table_affected" => $table_affected,
                 "column_affected" => $column_affected,
                 "id_affected" => $id_affected,
-                "old value" => $old_value,
-                "new value" => $new_value,
+                "old_value" => $old_value, // Changed "old value" to "old_value"
+                "new_value" => $new_value, // Changed "new value" to "new_value"
             ]
         );
     }
