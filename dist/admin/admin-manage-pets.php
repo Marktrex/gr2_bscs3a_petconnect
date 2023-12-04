@@ -347,7 +347,17 @@ $conn = null;
                                         <td>
                                             <?php echo $row["pets_id"]; ?>
                                         </td>
-                                        <td><img src="../upload/<?php echo $row['image']; ?>" alt="" height="50"><br><?php echo $row["name"]; ?></td>
+                                        <td>
+                                            <?php
+                                                $image = "../upload/petImages/".$row['image'];
+                                                if($row['image'] == null){
+                                                    $image = "../upload/petImages/default.jpg";
+                                                }
+                                            ?>
+                                            <img src="<?php echo $image; ?>" alt="" height="50">
+                                            <br>
+                                            <?php echo $row["name"]; ?>
+                                        </td>
                                         <td>
                                             <?php echo $row["type"]; ?>
                                         </td>

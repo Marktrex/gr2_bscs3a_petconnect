@@ -38,6 +38,10 @@
     padding: 3rem;
     gap: 15px;
     grid-auto-flow: row dense;
+
+    > div{
+        align-self: center;
+    }
 }
 
 .profile img{

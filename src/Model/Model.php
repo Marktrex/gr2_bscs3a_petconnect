@@ -62,6 +62,7 @@ class Model
     public function update($id, $data)
     {
         $table = $this->table;
+        $colId= $this->id;
 
         $sql = "UPDATE {$table} SET ";
         foreach ($data as $key => $value) {
@@ -117,7 +118,7 @@ class Model
 
     private function getIdColumn()
     {
-        return $this->table1 . '_id';
+        return $this->table . '_id';
     }
 
     public function search($searchWordsArray, $columnsArray) {
