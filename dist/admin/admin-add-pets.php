@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
             $newImageName = uniqid();
             $newImageName .= '.' . $imageExtension;
 
-            move_uploaded_file($tmpName, '../upload/' . $newImageName);
+            move_uploaded_file($tmpName, '../upload/petImages/' . $newImageName);
             $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image, :user_id)";
 
             $stmt = $conn->prepare($sql);

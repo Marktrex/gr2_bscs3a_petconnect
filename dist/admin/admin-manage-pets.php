@@ -48,7 +48,7 @@ if (isset($_POST['update'])) {
                 $image_new_name = uniqid('image_') . '.' . $image_ext;
 
                 // Upload the image to the server
-                $image_destination = '../upload/' . $image_new_name;
+                $image_destination = '../upload/petImages/' . $image_new_name;
                 move_uploaded_file($image_tmp, $image_destination);
 
                 // Update the image in the database
