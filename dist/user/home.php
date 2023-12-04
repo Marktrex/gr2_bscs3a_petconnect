@@ -23,9 +23,8 @@ if ($_SESSION['auth_user']['user_status'] === "Disabled") {
   exit();
 }
 
-// You can now use $_SESSION['auth_user'] safely knowing the user is authenticated
-// print_r($_SESSION['auth_user']);
 
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
