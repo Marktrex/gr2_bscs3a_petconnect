@@ -61,10 +61,18 @@ if (isset($_POST["submit"])) {
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
             // Execute the prepared statement
-      
+            $lastId = $conn->lastInsertId();
             if ($stmt) {
                 $log = new AuditModelController();
-                $log->activity_log($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name");
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "INSERT",
+                    "PET",
+                    "Null",
+                    $lastId,
+                    "Null",
+                    "Null",
+                );
                 echo "
                 <script> 
                     alert('Pets added successfully'); 

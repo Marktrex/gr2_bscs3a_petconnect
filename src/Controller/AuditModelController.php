@@ -17,14 +17,18 @@ class AuditModelController{
         return $audit->with("user")->all();
     }
 
-    public function activity_log($responsibleId, $type, $shortDescription)
+    public function activity_log($responsibleId, $type, $table_affected, $column_affected, $id_affected, $old_value, $new_value)
     {
         $audit = $this->audit;
         $audit->insert(
             [
                 "responsible_id" => $responsibleId,
                 "type" => $type,
-                "short_description" => $shortDescription
+                "table_affected" => $table_affected,
+                "column_affected" => $column_affected,
+                "id_affected" => $id_affected,
+                "old value" => $old_value,
+                "new value" => $new_value,
             ]
         );
     }

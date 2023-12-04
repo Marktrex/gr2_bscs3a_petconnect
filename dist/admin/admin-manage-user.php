@@ -34,7 +34,15 @@ if (isset($_POST['promote'])) {
         $stmt->execute();
         if ($stmt) {
             $log = new AuditModelController();
-            $log->activity_log($_SESSION['auth_user']['id'],"user promotion","admin promoted id:$id to admin");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "UPDATE",
+                "USER",
+                "user_type",
+                $id,
+                "2",
+                "1"
+            );
             echo '<script language="javascript">';
             echo 'alert("Promoted to Admin");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -79,7 +87,15 @@ if (isset($_POST['demote'])) {
 
         if ($stmt->execute()) {
             $log = new AuditModelController();
-            $log->activity_log($_SESSION['auth_user']['id'],"user demotion","admin demoted id:$id to admin");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "UPDATE",
+                "USER",
+                "user_type",
+                $id,
+                "1",
+                "2"
+            );
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -103,72 +119,97 @@ $conn = null;
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $id = $_POST['id'];
+    $sql = "SELECT fname, lname, email, photo user WHERE pets_id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $oldData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $newData = [
+        'fname' => $_POST["fname"],
+        'lname' => $_POST["lname"],
+        'email' => $_POST["email"],
+    ];
+
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
     $email = $_POST["email"];
-try {
-    // Check if the image is uploaded
-    if (!empty($_FILES['image']['name'])) {
-        // Retrieve the image file details
-        $image_name = $_FILES['image']['name'];
-        $image_tmp = $_FILES['image']['tmp_name'];
-        $image_size = $_FILES['image']['size'];
-        $image_error = $_FILES['image']['error'];
+    try {
+        // Check if the image is uploaded
+        if (!empty($_FILES['image']['name'])) {
+            // Retrieve the image file details
+            $image_name = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $image_size = $_FILES['image']['size'];
+            $image_error = $_FILES['image']['error'];
 
-        // Check if there is no upload error
-        if ($image_error === 0) {
-            // Get the file extension
-            $image_ext = pathinfo($image_name, PATHINFO_EXTENSION);
-            $image_ext = strtolower($image_ext);
+            // Check if there is no upload error
+            if ($image_error === 0) {
+                // Get the file extension
+                $image_ext = pathinfo($image_name, PATHINFO_EXTENSION);
+                $image_ext = strtolower($image_ext);
 
-            // Check if the file is a valid image
-            $allowed_extensions = ['jpg', 'jpeg', 'png'];
-            if (in_array($image_ext, $allowed_extensions)) {
-                // Generate a unique name for the image file
-                $image_new_name = uniqid('image_') . '.' . $image_ext;
+                // Check if the file is a valid image
+                $allowed_extensions = ['jpg', 'jpeg', 'png'];
+                if (in_array($image_ext, $allowed_extensions)) {
+                    // Generate a unique name for the image file
+                    $image_new_name = uniqid('image_') . '.' . $image_ext;
 
-                // Upload the image to the server
-                $image_destination = '../upload/userImages/' . $image_new_name;
-                move_uploaded_file($image_tmp, $image_destination);
-
-                // Update the image in the database
-                $user_update = new UserModelController();
-                $user_update->updateProfile($id, [
-                    'fname' => $firstName,
-                    'lname' => $lastName,
-                    'email' => $email,
-                    'photo' => $image_new_name
-                ]);
-                
+                    // Upload the image to the server
+                    $image_destination = '../upload/userImages/' . $image_new_name;
+                    move_uploaded_file($image_tmp, $image_destination);
+                    $newData['photo'] = $image_new_name;
+                    // Update the image in the database
+                    $user_update = new UserModelController();
+                    $user_update->updateProfile($id, [
+                        'fname' => $firstName,
+                        'lname' => $lastName,
+                        'email' => $email,
+                        'photo' => $image_new_name
+                    ]);
+                    
+                } else {
+                    echo "Invalid image format. Only JPG, JPEG, and PNG files are allowed.";
+                    exit;
+                }
             } else {
-                echo "Invalid image format. Only JPG, JPEG, and PNG files are allowed.";
+                echo "Error uploading image: " . $image_error;
                 exit;
             }
         } else {
-            echo "Error uploading image: " . $image_error;
-            exit;
+            // Update the data in the database without changing the image
+            
+            $user_update = new UserModelController();
+            $user_update->updateProfile($id, [
+                'fname' => $firstName,
+                'lname' => $lastName,
+                'email' => $email
+            ]);
         }
-    } else {
-        // Update the data in the database without changing the image
         
-        $user_update = new UserModelController();
-        $user_update->updateProfile($id, [
-            'fname' => $firstName,
-            'lname' => $lastName,
-            'email' => $email
-        ]);
+        $lastId = $conn->lastInsertId();
+        $log = new AuditModelController();
+        foreach ($oldData as $key => $value)  {
+            if($value != $newData[$key]){
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "UPDATE",
+                    "USER",
+                    $key,
+                    $id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
+        echo '<script language="javascript">';
+            echo 'alert("User updated successfully");';
+            echo 'window.location = "admin-manage-user.php";';
+            echo '</script>';
+    } catch (PDOException $e) {
+        // An error occurred, rollback the transaction
+        echo "Error updating data: " . $e->getMessage();
     }
-    
-    $log = new AuditModelController();
-    $log->activity_log($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
-    echo '<script language="javascript">';
-        echo 'alert("User updated successfully");';
-        echo 'window.location = "admin-manage-user.php";';
-        echo '</script>';
-} catch (PDOException $e) {
-    // An error occurred, rollback the transaction
-    echo "Error updating data: " . $e->getMessage();
-}
 }
 ?>
 
@@ -188,8 +229,17 @@ if (isset($_POST['delete'])) {
 
     if ($stmt) {
         // might change to update
+        $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
-        $log->activity_log($_SESSION['auth_user']['id'],"admin deletes account","admin deletes account:$id");
+        $log->activity_log(
+            $_SESSION['auth_user']['id'],
+            "DELETE",
+            "USER",
+            "ALL",
+            $id,
+            "Null",
+            "Null"
+        );
         echo "
         <script> 
             alert('Record deleted successfully'); 
