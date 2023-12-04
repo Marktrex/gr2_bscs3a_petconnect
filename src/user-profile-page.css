@@ -170,14 +170,14 @@ hr {
   padding: 15px;
   color: #127475;
 }
-.buttons {
+.buttons{
   display: flex;
   gap: 30px;
   justify-content: end;
   padding-right: 40px;
 }
 
-.buttons .edit-profile,
+.buttons .edit-profile ,
 .buttons .logout {
   padding: 10px;
   width: 28%;
@@ -195,6 +195,14 @@ hr {
 .buttons .logout{
   color: #f5dfbb;
   background: #f2542d;
+}
+.buttons .edit-profile:hover{
+  background:  #127475;
+  color: #ffb845;
+}
+
+.buttons .logout:hover{
+  transform: scale(1.05);
 }
 
 
@@ -339,5 +347,6 @@ hr {
     justify-content: space-evenly;
     font-size: 12px;
   }
+
 
 }
