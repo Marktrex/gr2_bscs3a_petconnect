@@ -17,6 +17,13 @@ if (isset($_POST['update'])) {
     // Retrieve the data from the form
 
     $id = $_POST['id'];  //this code is for PHP PDO (PHP Data Objects)
+    
+    $sql = "SELECT name, type, breed, sex, weight, age, date, about, image FROM pets WHERE pets_id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $oldData = $stmt->fetch(PDO::FETCH_ASSOC);
+
     $name = $_POST["name"];
     $type = $_POST["type"];
     $breed = $_POST["breed"];
@@ -25,7 +32,16 @@ if (isset($_POST['update'])) {
     $age = $_POST["age"];
     $date = $_POST["date"];
     $about = $_POST["about"];
-
+    $newData = [
+        "name" => $_POST["name"],
+        "type" => $_POST["type"],
+        "breed" => $_POST["breed"],
+        "sex" => $_POST["sex"],
+        "weight" => $_POST["weight"],
+        "age" => $_POST["age"],
+        "date" => $_POST["date"],
+        "about" => $_POST["about"],
+    ];
 
     // Check if the image is uploaded
     if (!empty($_FILES['image']['name'])) {
@@ -48,9 +64,10 @@ if (isset($_POST['update'])) {
                 $image_new_name = uniqid('image_') . '.' . $image_ext;
 
                 // Upload the image to the server
-                $image_destination = '../upload/' . $image_new_name;
+                $image_destination = '../upload/petImages/' . $image_new_name;
                 move_uploaded_file($image_tmp, $image_destination);
 
+                $newData["image"] = $image_new_name;
                 // Update the image in the database
                 $sql = "UPDATE pets SET name = :name, type = :type, breed = :breed, sex = :sex, weight = :weight, age = :age, date = :date, about = :about, image = :image_new_name WHERE pets_id = :id";
                 $stmt = $conn->prepare($sql);
@@ -90,9 +107,21 @@ if (isset($_POST['update'])) {
         
     // Perform the database query
     if ($stmt->execute()) {
+        $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
-        $log->activity_log($_SESSION['auth_user']['id'],"admin modified pet","admin change the content of pet: $name id: $id");
-        
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "UPDATE",
+                    "PET",
+                    $key,
+                    $id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
         echo "
         <script> 
             alert('Data updated successfully'); 
@@ -123,7 +152,15 @@ if (isset($_POST['delete'])) {
     $stmt->execute();
     if ($stmt) {
         $log = new AuditModelController();
-        $log->activity_log($_SESSION['auth_user']['id'],"admin deleted a pet","admin deleted id: $id");
+        $log->activity_log(
+            $_SESSION['auth_user']['id'],
+            "DELETE",
+            "PET",
+            "ALL",
+            $id,
+            "Null",
+            "Null"
+        );
         echo "
         <script> 
             alert('Record deleted successfully'); 
@@ -347,7 +384,17 @@ $conn = null;
                                         <td>
                                             <?php echo $row["pets_id"]; ?>
                                         </td>
-                                        <td><img src="../upload/<?php echo $row['image']; ?>" alt="" height="50"><br><?php echo $row["name"]; ?></td>
+                                        <td>
+                                            <?php
+                                                $image = "../upload/petImages/".$row['image'];
+                                                if($row['image'] == null){
+                                                    $image = "../upload/petImages/default.jpg";
+                                                }
+                                            ?>
+                                            <img src="<?php echo $image; ?>" alt="" height="50">
+                                            <br>
+                                            <?php echo $row["name"]; ?>
+                                        </td>
                                         <td>
                                             <?php echo $row["type"]; ?>
                                         </td>

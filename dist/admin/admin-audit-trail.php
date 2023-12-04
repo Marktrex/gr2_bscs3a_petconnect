@@ -83,9 +83,13 @@ else
                             <tr id="header">
                                 <th>ID</th>
                                 <th>Responsible ID</th>
-                                <th>User</th>
+                                <th>Name</th>
                                 <th>Type</th>
-                                <th>Short Description</th>
+                                <th>Affected Table</th>
+                                <th>Affected Column</th>
+                                <th>Affected ID</th>
+                                <th>Old Value</th>
+                                <th>New Value</th>
                                 <th>Date Time</th>
                             </tr>
                         </thead>
@@ -107,8 +111,23 @@ else
                                          ?>
                                     </td>
                                     <td><?= $log->type ?></td>
-                                    <td><?= $log->short_description ?></td>
-                                    <td><?= $log->date_time ?></td>
+                                    <td><?= $log->table_affected?></td>
+                                    <td>
+                                    <?= $log->column_affected ?>
+                                    </td>
+                                    <td>
+                                    <?= $log->id_affected ?>
+                                    </td>
+                                    
+                                    <td>
+                                    <?= $log->old_value ?>
+                                    </td>
+                                    <td>
+                                    <?= $log->new_value ?>
+                                    </td>
+                                    <td>
+                                        <?= $log->date_time ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

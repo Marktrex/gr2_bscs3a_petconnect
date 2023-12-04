@@ -16,9 +16,15 @@ require 'dist/function/config.php'; //PDO connection to the database
 
 $log = new AuditModelController();//email verification
 if (isset($_POST["register"])) { //code ni marc
+    $email = $_POST["email"];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo '<script language="javascript">';
+        echo 'alert("Invalid email format");';
+        echo 'window.location = "signuppage.php";';
+        echo '</script>';
+    }
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
-    $email = $_POST["email"];
     $password = $_POST["password"];
     $passwordRepeat = $_POST["cpassword"];
 
@@ -42,7 +48,6 @@ if (isset($_POST["register"])) { //code ni marc
         $conn = null;
     } 
     else {
-        
         if ($password == $passwordRepeat) {
             // Passwords match, proceed with insertion
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -69,7 +74,16 @@ if (isset($_POST["register"])) { //code ni marc
             try {
                 $statement2->execute();
                 $lastId = $conn->lastInsertId();
-                $log->activity_log($lastId, 'Register', 'Created a new user account'); //the rollback is from the mayor not me, im glad it oks
+                $log = new AuditModelController();
+                $log->activity_log(
+                    $lastId,//responsible
+                    "INSERT",//type
+                    "USER",//table
+                    "All",//column
+                    $lastId,//id
+                    "None",//old
+                    "None",//new val
+                );
                 echo '<script language="javascript">';
                 echo 'alert("Sign up successfully");';
                 echo '</script>';
@@ -109,20 +123,16 @@ if (isset($_POST["register"])) { //code ni marc
                 <p><a href="http://localhost/petconnect/dist/user/verify.php">Click to Verify</a></p>
                 <p>Thank you for signing up.</p>';
           
-                     if(!$mail->send()){
-                         ?>
-                             <script>
-                                 alert("<?php echo "Register Failed, Invalid Email "?>");
-                             </script>
-                         <?php
-                     }else{
-                         ?>
-                         <script>
-                             alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                             window.location.replace('loginpage.php');
-                         </script>
-                         <?php
-                     }  
+                if(!$mail->send()){
+                    throw new Exception("Mail failed to send");
+                } else {
+                    ?>
+                    <script>
+                        alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
+                        window.location.replace('loginpage.php');
+                    </script>
+                    <?php
+                }  
                
               
                 // echo 'window.location = "../../loginpage.php";'; 
@@ -131,7 +141,11 @@ if (isset($_POST["register"])) { //code ni marc
                 // If any query fails, roll back the transaction
                 $conn->rollBack();
         
-                echo "Error inserting record: " . $e->getMessage();
+                ?>
+                    <script>
+                        alert("<?php echo "Register Failed, " . $e->getMessage() ?>");
+                    </script>
+                <?php
             }
         }
         else

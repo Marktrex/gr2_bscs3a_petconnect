@@ -1,5 +1,6 @@
 <?php
 
+use MyApp\Controller\UserModelController;
 use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -33,7 +34,15 @@ if (isset($_POST['promote'])) {
         $stmt->execute();
         if ($stmt) {
             $log = new AuditModelController();
-            $log->activity_log($_SESSION['auth_user']['id'],"user promotion","admin promoted id:$id to admin");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "UPDATE",
+                "USER",
+                "user_type",
+                $id,
+                "2",
+                "1"
+            );
             echo '<script language="javascript">';
             echo 'alert("Promoted to Admin");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -78,7 +87,15 @@ if (isset($_POST['demote'])) {
 
         if ($stmt->execute()) {
             $log = new AuditModelController();
-            $log->activity_log($_SESSION['auth_user']['id'],"user demotion","admin demoted id:$id to admin");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "UPDATE",
+                "USER",
+                "user_type",
+                $id,
+                "1",
+                "2"
+            );
             echo '<script language="javascript">';
             echo 'alert("Demoted to Regular User");';
             echo 'window.location.href = "admin-manage-user.php";';
@@ -99,46 +116,101 @@ $conn = null;
 ?>
 
 <?php
-require '../function/config.php';
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
+    require '../function/config.php';
     $id = $_POST['id'];
+    $sql = "SELECT fname, lname, email, photo FROM user WHERE user_id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $oldData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $newData = [
+        'fname' => $_POST["fname"],
+        'lname' => $_POST["lname"],
+        'email' => $_POST["email"],
+    ];
+
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
     $email = $_POST["email"];
+    try {
+        // Check if the image is uploaded
+        if (!empty($_FILES['image']['name'])) {
+            // Retrieve the image file details
+            $image_name = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $image_size = $_FILES['image']['size'];
+            $image_error = $_FILES['image']['error'];
 
-    // Update the data in both tables
-    $conn->beginTransaction();
-try {
-    // Update user table
-    $query2 = "
-        UPDATE user
-        SET fname = :firstName, lname = :lastName, email = :email
-        WHERE user_id = :id
-    ";
-    $statement2 = $conn->prepare($query2);
-    $statement2->bindParam(':firstName', $firstName, PDO::PARAM_STR);
-    $statement2->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-    $statement2->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement2->bindParam(':id', $id, PDO::PARAM_INT);
-    if (!$statement2->execute()) {
-        print_r($statement2->errorInfo());
-        exit;
+            // Check if there is no upload error
+            if ($image_error === 0) {
+                // Get the file extension
+                $image_ext = pathinfo($image_name, PATHINFO_EXTENSION);
+                $image_ext = strtolower($image_ext);
+
+                // Check if the file is a valid image
+                $allowed_extensions = ['jpg', 'jpeg', 'png'];
+                if (in_array($image_ext, $allowed_extensions)) {
+                    // Generate a unique name for the image file
+                    $image_new_name = uniqid('image_') . '.' . $image_ext;
+
+                    // Upload the image to the server
+                    $image_destination = '../upload/userImages/' . $image_new_name;
+                    move_uploaded_file($image_tmp, $image_destination);
+                    $newData['photo'] = $image_new_name;
+                    // Update the image in the database
+                    $user_update = new UserModelController();
+                    $user_update->updateProfile($id, [
+                        'fname' => $firstName,
+                        'lname' => $lastName,
+                        'email' => $email,
+                        'photo' => $image_new_name
+                    ]);
+                    
+                } else {
+                    echo "Invalid image format. Only JPG, JPEG, and PNG files are allowed.";
+                    exit;
+                }
+            } else {
+                echo "Error uploading image: " . $image_error;
+                exit;
+            }
+        } else {
+            // Update the data in the database without changing the image
+            
+            $user_update = new UserModelController();
+            $user_update->updateProfile($id, [
+                'fname' => $firstName,
+                'lname' => $lastName,
+                'email' => $email
+            ]);
+        }
+        
+        $lastId = $conn->lastInsertId();
+        $log = new AuditModelController();
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "UPDATE",
+                    "USER",
+                    $key,
+                    $id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
+        echo '<script language="javascript">';
+            echo 'alert("User updated successfully");';
+            echo 'window.location = "admin-manage-user.php";';
+            echo '</script>';
+    } catch (PDOException $e) {
+        // An error occurred, rollback the transaction
+        echo "Error updating data: " . $e->getMessage();
     }
-    
-    // If both updates are successful, commit the transaction
-    $conn->commit();
-    $log = new AuditModelController();
-    $log->activity_log($_SESSION['auth_user']['id'],"admin modified user","admin change the content of user: $firstName id: $id");
-    echo '<script language="javascript">';
-        echo 'alert("User updated successfully");';
-        echo 'window.location = "admin-manage-user.php";';
-        echo '</script>';
-} catch (PDOException $e) {
-    // An error occurred, rollback the transaction
-    $conn->rollBack();
-    echo "Error updating data: " . $e->getMessage();
-}
 }
 ?>
 
@@ -158,8 +230,17 @@ if (isset($_POST['delete'])) {
 
     if ($stmt) {
         // might change to update
+        $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
-        $log->activity_log($_SESSION['auth_user']['id'],"admin deletes account","admin deletes account:$id");
+        $log->activity_log(
+            $_SESSION['auth_user']['id'],
+            "DELETE",
+            "USER",
+            "ALL",
+            $id,
+            "Null",
+            "Null"
+        );
         echo "
         <script> 
             alert('Record deleted successfully'); 
@@ -225,19 +306,18 @@ $conn = null;
         <main class="content">
             <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="profile">
-                    <div class="item details2">
-                        <!-- id -->
+                    <div class="item details1">
+                        <!-- image here -->
                         <div>
-                            <label for="id">ID</label>
-                            <input placeholder="Enter ID" type="text" class="id" id="id" name="id" readonly>
+                            <img src="../upload/userImages/default.jpg" id="profile-pic" alt="image here"/>
+                            <label class="img-label" for="image">Upload Image</label>
+                            <input type="file" accept="image/jpeg, image/jpg, image/png" id="image" name="image">
                         </div>
-                        <!-- email -->
-                        <div>
-                            <label for="email">Email</label>
-                            <input placeholder="Enter Email" type="email" class="user-email" id="email" name="email" required>
-                        </div>
+                        <!-- id here -->
+                        <label for="id"><a>ID</a></label>
+                        <input type="text" class="id" id="id" name="id" placeholder="Enter ID" readonly>
                     </div>
-                    <div class="details3">
+                    <div class="item details2">
                         <!-- firstname -->
                         <div>
                             <label for="fname">First Name</label>
@@ -247,6 +327,14 @@ $conn = null;
                         <div>
                             <label for="lname">Last Name</label>
                             <input placeholder="Enter Last Name" type="text" class="UserLname" id="lname" name="lname" required>
+                        </div>
+                    </div>
+                    <div class="details3">
+                        
+                         <!-- email -->
+                         <div>
+                            <label for="email">Email</label>
+                            <input placeholder="Enter Email" type="email" class="user-email" id="email" name="email" required>
                         </div>
                         <!-- user type -->
                         <div>
@@ -281,6 +369,7 @@ $conn = null;
                         <thead>
                             <tr>
                                 <th>User ID</th>
+                                <th>Photo</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Email</th>
@@ -292,7 +381,7 @@ $conn = null;
                             <?php
                             require '../function/config.php';
                             // Query the database table
-                            $sql = "SELECT user_id, fname ,lname , email, user_type, created_at FROM user";
+                            $sql = "SELECT * FROM user";
                             $stmt = $conn->query($sql);
                             $stmt -> execute();
                             // $result = $conn->query($sql);
@@ -303,6 +392,15 @@ $conn = null;
                                     <tr>
                                         <td>
                                             <?php echo $row["user_id"]; ?>
+                                        </td>
+                                        <td>
+                                            <?php 
+                                                $image = "../upload/userImages/".$row['photo'];
+                                                if($row['photo'] == null){
+                                                    $image = "../upload/userImages/default.jpg";
+                                                }
+                                            ?>
+                                        <img src="<?php echo $image; ?>" alt="" height="50"><br>
                                         </td>
                                         <td>
                                             <?php echo $row["fname"]; ?>
@@ -402,14 +500,16 @@ $conn = null;
 
                 // Get the selected row's data
                 var id = $(this).find("td:nth-child(1)").text().trim();
-                var fname = $(this).find("td:nth-child(2)").html().trim();
-                var lname = $(this).find("td:nth-child(3)").text().trim();
-                var email = $(this).find("td:nth-child(4)").text().trim();
-                var user_type = $(this).find("td:nth-child(5)").text().trim();
-                var date_created = $(this).find("td:nth-child(6)").text().trim();
+                var image = $(this).find("td:nth-child(2) img").attr("src");
+                var fname = $(this).find("td:nth-child(3)").contents().last().text().trim();
+                var lname = $(this).find("td:nth-child(4)").text().trim();
+                var email = $(this).find("td:nth-child(5)").text().trim();
+                var user_type = $(this).find("td:nth-child(6)").text().trim();
+                var date_created = $(this).find("td:nth-child(7)").text().trim();
 
                 // Populate the input fields with the selected row data
                 $("#id").val(id);
+                $("#profile-pic").attr("src", image);
                 $("#fname").val(fname);
                 $("#lname").val(lname);
                 $("#email").val(email);

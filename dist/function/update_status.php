@@ -2,12 +2,15 @@
 use MyApp\Controller\AuditModelController;
 require_once __DIR__ . '/../../vendor/autoload.php';
 require 'config.php';
+session_start();
 
 // Check if the appointment ID and status values are provided
 if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
     $appointmentId = $_POST['appointmentId'];
     $status = $_POST['status'];
 
+    
+    
     // TODO: Perform necessary validations and sanitization for the input values
 
     $message = '';
@@ -16,6 +19,16 @@ if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
     } elseif ($status == 'Cancelled') {
         $message = "Good Day, Ma'am/Sir,\n\nWe're sincerely sorry to cancel your appointment because of the sudden circumstances in our shelter. We hope for your consideration. Thank you.\n\nVery truly yours,\nRePaw City";
     }
+
+    $sql = "SELECT * FROM appointment WHERE appointment_id = :appointmentId";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $oldData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $newData = [
+        'status' => $status,
+        'message' => $message
+    ];
 
     // Create a PDO instance
     try {
@@ -39,8 +52,21 @@ if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
 
     if ($success) {
         // Return a success response
+        $lastId = $conn->lastInsertId();
         $log = new AuditModelController();
-        $log->activity_log($_SESSION['auth_user']['id'],"appointment","admin $status appointment of $appointmentId");
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "UPDATE",
+                    "APPOINTMENT",
+                    $key,
+                    $appointmentId,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
         http_response_code(200);
         echo "Status updated successfully";
     } else {

@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
             $newImageName = uniqid();
             $newImageName .= '.' . $imageExtension;
 
-            move_uploaded_file($tmpName, '../upload/' . $newImageName);
+            move_uploaded_file($tmpName, '../upload/petImages/' . $newImageName);
             $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image, :user_id)";
 
             $stmt = $conn->prepare($sql);
@@ -61,10 +61,18 @@ if (isset($_POST["submit"])) {
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
             // Execute the prepared statement
-      
+            $lastId = $conn->lastInsertId();
             if ($stmt) {
                 $log = new AuditModelController();
-                $log->activity_log($_SESSION['auth_user']['id'],"add pets","admin added pets named:$name");
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],//responsible
+                    "INSERT",//type
+                    "PET",//table
+                    "All",//column
+                    $lastId,//id
+                    "None",//old
+                    "None",//new val
+                );
                 echo "
                 <script> 
                     alert('Pets added successfully'); 

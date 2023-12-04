@@ -1,6 +1,6 @@
 <!-- Sign Up  -->
 <?php
-use MyApp\Controller\AuditModelController;
+
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
@@ -10,7 +10,6 @@ require('config.php'); //PDO connection to the database
 require('../../database/ChatUser.php');
 
 
-$log = new AuditModelController();
 
 // LOG IN
 if (isset($_POST["login"])) {
@@ -59,8 +58,6 @@ if (isset($_POST["login"])) {
 
             ];
 
-
-            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'User Logged In');
             echo '<script language="javascript">';
            
             echo 'alert("Logged In Successfully as Admin");';
@@ -84,7 +81,6 @@ if (isset($_POST["login"])) {
             ];
     
 
-            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';
             header("Location: ../user/home.php");
 

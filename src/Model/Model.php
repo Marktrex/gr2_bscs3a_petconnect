@@ -31,9 +31,11 @@ class Model
 
         $sql = "SELECT * FROM {$table} {$joins} WHERE {$colId} = :id;";
         try {
-            return $this->db->query($sql, [
-                ':id' => $id
-            ]);
+            $result = $this->db->query($sql, [':id' => $id]);
+            if ($result) {
+                return $result[0]; // Return the first object in the array
+            }
+            return null; // Return null if the query didn't return any results
         } catch (PDOException $e) {
             // Output detailed error information for debugging
             echo "Error: " . $e->getMessage();
@@ -62,6 +64,7 @@ class Model
     public function update($id, $data)
     {
         $table = $this->table;
+        $colId= $this->id;
 
         $sql = "UPDATE {$table} SET ";
         foreach ($data as $key => $value) {
@@ -117,7 +120,7 @@ class Model
 
     private function getIdColumn()
     {
-        return $this->table1 . '_id';
+        return $this->table . '_id';
     }
 
     public function search($searchWordsArray, $columnsArray) {
@@ -143,6 +146,19 @@ class Model
     
         try {
             return $this->db->query($sql);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function delete ($id){
+        $table = $this->table;
+        $colId= $this->id;
+        $sql = "DELETE FROM {$table} WHERE {$colId} = :id;";
+        try {
+            $this->db->query($sql, [':id' => $id]);
+            return;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;
