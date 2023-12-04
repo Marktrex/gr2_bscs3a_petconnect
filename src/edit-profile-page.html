@@ -16,8 +16,10 @@
     <hr>
     <div class="container">
         <div class="user-profile">
-            <img src="icons/default-user-icon-8.jpg" alt="user">
-            <button class="upload-pic">Upload Photo</button>
+            <img src="icons/default-user-icon-8.jpg" id="profile-pic">
+            <label for="input-file" class="img-label">Upload Photo</label>
+            <input
+                type="file" accept="image/jpeg, image/jpg, image/png" id="input-file"/>
         </div>
         
         <div class="info-box">
@@ -82,7 +84,7 @@
     </div>
   </main>
   <div class="save-button">
-        <button class="save">Save Changes</button>
+      <button class="save">Save Changes</button>
   </div>
 
 
@@ -99,6 +101,16 @@
 
     // Close mobile menu on close button click
     closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+  </script>
+  <script>
+
+    // updating profile
+    let profilePic = document.getElementById("profile-pic");
+    let inputFile = document.getElementById("input-file");
+
+    inputFile.onchange = function(){
+      profilePic.src = URL.createObjectURL(inputFile.files[0]);
+    }
   </script>
 
   

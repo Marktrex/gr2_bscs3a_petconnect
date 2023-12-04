@@ -60,16 +60,21 @@ hr {
   margin-bottom: 30px;
 }
 
-.user-profile button {
-  padding: 10px;
-  width: 85%;
-  border: none;
-  border-radius: 26px;
-  background: #FFB845;
+
+.user-profile label {
+  display: block;
+  background-color: #FFB845;
   color:#127475;
-  font-size: 15px;
+  padding: 10px;
+  --webkit-appearance: button;
+  cursor: pointer;
+  border-radius: 26px;
   font-weight: 700;
-  margin-left: 2%;
+  text-align: center;
+}
+
+.user-profile input {
+  display: none;
 }
 
 .info-box{
@@ -131,6 +136,12 @@ hr {
   font-weight: 700;
 }
 
+.save-button button:hover {
+  transform: scale(1.05);
+  background: #f2542d;
+}
+
+
 
 
 /*--------------------------------------------------------------------------------------------*/
@@ -187,8 +198,13 @@ hr {
     max-height: 180px;
   }
 
-  .user-profile button {
-    max-width: 50%;
+  .user-profile label {
+    margin-left: 20%;
+    max-width: 200px;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  
   }
 
   .acc-info {
