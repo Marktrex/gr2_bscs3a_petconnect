@@ -10,6 +10,7 @@
         "cboden/ratchet": "v0.4",
 		"yasserbelhimer/agora-access-token-generator": "^1.0",
 		"vlucas/phpdotenv": "^5.6",
-		"taylanunutmaz/agora-token-builder": "^1.1"
+		"taylanunutmaz/agora-token-builder": "^1.1",
+		"setbased/php-audit": "^1.9"
     }
 }

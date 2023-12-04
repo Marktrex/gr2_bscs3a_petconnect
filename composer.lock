@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebd3178874fce46940f6d58b0c4e5ee7",
+    "content-hash": "4f9e9b524c557fb2d524e93d45e3a7a5",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -280,6 +280,68 @@
             "time": "2023-04-17T16:00:37+00:00"
         },
         {
+            "name": "hassankhan/config",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hassankhan/config.git",
+                "reference": "8e1c07f4fdc2b986b8a781f0dcba155af2a579b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hassankhan/config/zipball/8e1c07f4fdc2b986b8a781f0dcba155af2a579b6",
+                "reference": "8e1c07f4fdc2b986b8a781f0dcba155af2a579b6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "scrutinizer/ocular": "^1.9",
+                "squizlabs/php_codesniffer": "^3.6",
+                "symfony/yaml": "^5.4"
+            },
+            "suggest": {
+                "symfony/yaml": "^5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Noodlehaus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hassan Khan",
+                    "homepage": "http://hassankhan.me/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightweight configuration file loader that supports PHP, INI, XML, JSON, and YAML files",
+            "homepage": "http://hassankhan.me/config/",
+            "keywords": [
+                "config",
+                "configuration",
+                "ini",
+                "json",
+                "microphp",
+                "unframework",
+                "xml",
+                "yaml",
+                "yml"
+            ],
+            "support": {
+                "issues": "https://github.com/hassankhan/config/issues",
+                "source": "https://github.com/hassankhan/config/tree/3.1.0"
+            },
+            "time": "2022-12-20T19:48:37+00:00"
+        },
+        {
             "name": "phpmailer/phpmailer",
             "version": "v6.9.1",
             "source": {
@@ -434,6 +496,59 @@
                 }
             ],
             "time": "2023-11-12T21:59:55+00:00"
+        },
+        {
+            "name": "psr/container",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/container.git",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common Container Interface (PHP FIG PSR-11)",
+            "homepage": "https://github.com/php-fig/container",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interface",
+                "container-interop",
+                "psr"
+            ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/2.0.2"
+            },
+            "time": "2021-11-05T16:47:00+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1038,6 +1153,765 @@
             "time": "2023-06-16T10:52:11+00:00"
         },
         {
+            "name": "setbased/antlr4-php-runtime",
+            "version": "0.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/antlr-php-runtime.git",
+                "reference": "7906677fa0bc854b28a416f07faf56410d6e5c88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/antlr-php-runtime/zipball/7906677fa0bc854b28a416f07faf56410d6e5c88",
+                "reference": "7906677fa0bc854b28a416f07faf56410d6e5c88",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=7.4"
+            },
+            "conflict": {
+                "antlr/antlr4-php-runtime": "*"
+            },
+            "require-dev": {
+                "ext-readline": "*",
+                "phing/phing": "^2.16",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Antlr\\Antlr4\\Runtime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "PHP 7 & 8 runtime for ANTLR 4",
+            "keywords": [
+                "antlr4",
+                "php",
+                "runtime"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/antlr-php-runtime/issues",
+                "source": "https://github.com/SetBased/antlr-php-runtime/tree/0.5.1"
+            },
+            "time": "2020-12-10T13:08:01+00:00"
+        },
+        {
+            "name": "setbased/error-handler",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-error-handler.git",
+                "reference": "7be212a877bb8b236cf1c5f1ef3d22fc2172677b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-error-handler/zipball/7be212a877bb8b236cf1c5f1ef3d22fc2172677b",
+                "reference": "7be212a877bb8b236cf1c5f1ef3d22fc2172677b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "setbased/exception": "^2.3.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\ErrorHandler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An error handler",
+            "keywords": [
+                "error",
+                "handler"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-error-handler/issues",
+                "source": "https://github.com/SetBased/php-error-handler/tree/1.3.0"
+            },
+            "time": "2023-01-26T05:40:39+00:00"
+        },
+        {
+            "name": "setbased/exception",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-exception.git",
+                "reference": "56aae5b4692e2f63539f860b6757439ada3e2d88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-exception/zipball/56aae5b4692e2f63539f860b6757439ada3e2d88",
+                "reference": "56aae5b4692e2f63539f860b6757439ada3e2d88",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Exception\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Exceptions with format string",
+            "keywords": [
+                "exception",
+                "format"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-exception/issues",
+                "source": "https://github.com/SetBased/php-exception/tree/2.3.0"
+            },
+            "time": "2023-01-25T13:16:18+00:00"
+        },
+        {
+            "name": "setbased/helper-cast",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-helper-cast.git",
+                "reference": "cf48662f2dbfeaf08e4b8e2337b6312918af5740"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-helper-cast/zipball/cf48662f2dbfeaf08e4b8e2337b6312918af5740",
+                "reference": "cf48662f2dbfeaf08e4b8e2337b6312918af5740",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Helper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Safely cast mixed values to bool, float, int, or string",
+            "keywords": [
+                "cast",
+                "safely"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-helper-cast/issues",
+                "source": "https://github.com/SetBased/php-helper-cast/tree/3.0.1"
+            },
+            "time": "2023-02-19T09:23:38+00:00"
+        },
+        {
+            "name": "setbased/helper-code-store",
+            "version": "2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-helper-code-store.git",
+                "reference": "577acd4074f7fad85f38386f0cf1aa5fcc1a1400"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-helper-code-store/zipball/577acd4074f7fad85f38386f0cf1aa5fcc1a1400",
+                "reference": "577acd4074f7fad85f38386f0cf1aa5fcc1a1400",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Helper\\CodeStore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Abstract helper class for indenting automatically generated code",
+            "keywords": [
+                "code",
+                "generation"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-helper-code-store/issues",
+                "source": "https://github.com/SetBased/php-helper-code-store/tree/2.4.0"
+            },
+            "time": "2023-01-25T14:52:24+00:00"
+        },
+        {
+            "name": "setbased/helper-code-store-mysql",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-helper-code-store-mysql.git",
+                "reference": "7f6e77a6affcc4c6ad780658efd90bdcc01ac75f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-helper-code-store-mysql/zipball/7f6e77a6affcc4c6ad780658efd90bdcc01ac75f",
+                "reference": "7f6e77a6affcc4c6ad780658efd90bdcc01ac75f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "setbased/helper-code-store": "^2.4.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Helper\\CodeStore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Helper class for indenting automatically generated MySQL compound syntax code",
+            "keywords": [
+                "code",
+                "compound",
+                "generation",
+                "mysql",
+                "syntax"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-helper-code-store-mysql/issues",
+                "source": "https://github.com/SetBased/php-helper-code-store-mysql/tree/2.2.0"
+            },
+            "time": "2023-01-26T04:17:50+00:00"
+        },
+        {
+            "name": "setbased/helper-code-store-php",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-helper-code-store-php.git",
+                "reference": "c8bd6b0a16412766ad2823efc2d24780e7be93fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-helper-code-store-php/zipball/c8bd6b0a16412766ad2823efc2d24780e7be93fc",
+                "reference": "c8bd6b0a16412766ad2823efc2d24780e7be93fc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "setbased/helper-code-store": "^2.4.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Helper\\CodeStore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Helper class for indenting automatically generated PHP code",
+            "keywords": [
+                "code",
+                "generation",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-helper-code-store-php/issues",
+                "source": "https://github.com/SetBased/php-helper-code-store-php/tree/2.6.0"
+            },
+            "time": "2023-01-26T04:07:09+00:00"
+        },
+        {
+            "name": "setbased/php-audit",
+            "version": "1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-audit.git",
+                "reference": "83c25991ebf1507ec458aa0f469167168b17d281"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-audit/zipball/83c25991ebf1507ec458aa0f469167168b17d281",
+                "reference": "83c25991ebf1507ec458aa0f469167168b17d281",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=8.1",
+                "setbased/error-handler": "^1.3.0",
+                "setbased/exception": "^2.3.0",
+                "setbased/helper-code-store-mysql": "^2.2.0",
+                "setbased/php-stratum-middle": "^5.11.0",
+                "setbased/php-stratum-mysql": "^6.6.0",
+                "setbased/typed-config": "^2.0.0",
+                "symfony/console": "^6.2.5"
+            },
+            "require-dev": {
+                "ext-pcntl": "*",
+                "ext-posix": "*",
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28",
+                "setbased/phing-extensions": "^3.1.0"
+            },
+            "bin": [
+                "bin/audit"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Audit\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A tool for creating audit tables and triggers for logging data changes in a MySQL database.",
+            "keywords": [
+                "Audit",
+                "mysql",
+                "triggers"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-audit/issues",
+                "source": "https://github.com/SetBased/php-audit/tree/1.9.0"
+            },
+            "time": "2023-01-26T14:45:22+00:00"
+        },
+        {
+            "name": "setbased/php-stratum-backend",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DatabaseStratum/php-stratum-backend.git",
+                "reference": "a92a352d83f315b551a53d118ee499bdf3417789"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DatabaseStratum/php-stratum-backend/zipball/a92a352d83f315b551a53d118ee499bdf3417789",
+                "reference": "a92a352d83f315b551a53d118ee499bdf3417789",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/console": "^6.2.5"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC3",
+                "phpstan/phpstan": "^1.9.14"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Stratum\\Backend\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpStratum Backend: The glue between PhpStratum and backends for RDBMS",
+            "keywords": [
+                "PhpStratum"
+            ],
+            "support": {
+                "issues": "https://github.com/DatabaseStratum/php-stratum-backend/issues",
+                "source": "https://github.com/DatabaseStratum/php-stratum-backend/tree/6.0.0"
+            },
+            "time": "2023-01-25T14:09:12+00:00"
+        },
+        {
+            "name": "setbased/php-stratum-common",
+            "version": "6.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DatabaseStratum/php-stratum-common.git",
+                "reference": "e4ca07a15e548d8053ee0adeb2adb7e6df6216a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DatabaseStratum/php-stratum-common/zipball/e4ca07a15e548d8053ee0adeb2adb7e6df6216a7",
+                "reference": "e4ca07a15e548d8053ee0adeb2adb7e6df6216a7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=8.1",
+                "setbased/antlr4-php-runtime": "^0.5.1",
+                "setbased/exception": "^2.3.0",
+                "setbased/helper-cast": "^3.0.0",
+                "setbased/php-stratum-backend": "^6.0.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Stratum\\Common\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpStratum Common",
+            "support": {
+                "issues": "https://github.com/DatabaseStratum/php-stratum-common/issues",
+                "source": "https://github.com/DatabaseStratum/php-stratum-common/tree/6.3.1"
+            },
+            "time": "2023-01-26T05:19:46+00:00"
+        },
+        {
+            "name": "setbased/php-stratum-middle",
+            "version": "5.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DatabaseStratum/php-stratum-middle.git",
+                "reference": "cdf0efc2e90583bab98af69482242a05fb1db8c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DatabaseStratum/php-stratum-middle/zipball/cdf0efc2e90583bab98af69482242a05fb1db8c3",
+                "reference": "cdf0efc2e90583bab98af69482242a05fb1db8c3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "setbased/exception": "^2.3.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Stratum\\Middle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpStratum Middle: The glue between a PhpStratum backend and your application",
+            "keywords": [
+                "PhpStratum"
+            ],
+            "support": {
+                "issues": "https://github.com/DatabaseStratum/php-stratum-middle/issues",
+                "source": "https://github.com/DatabaseStratum/php-stratum-middle/tree/5.11.0"
+            },
+            "time": "2023-01-25T14:29:01+00:00"
+        },
+        {
+            "name": "setbased/php-stratum-mysql",
+            "version": "6.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DatabaseStratum/php-stratum-mysql.git",
+                "reference": "d756ab918ff4d17cab39b6e3bededdb5895a79d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DatabaseStratum/php-stratum-mysql/zipball/d756ab918ff4d17cab39b6e3bededdb5895a79d9",
+                "reference": "d756ab918ff4d17cab39b6e3bededdb5895a79d9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mysqli": "*",
+                "php": ">=8.1",
+                "setbased/exception": "^2.3.0",
+                "setbased/helper-code-store-mysql": "^2.2.0",
+                "setbased/helper-code-store-php": "^2.6.0",
+                "setbased/php-stratum-backend": "^6.0.0",
+                "setbased/php-stratum-common": "^6.3.1",
+                "setbased/php-stratum-middle": "^5.11.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28",
+                "setbased/php-stratum": "^6.3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Stratum\\MySql\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PhpStratum MySQL: A stored procedure loader and wrapper generator for MySQL and MariaDB",
+            "keywords": [
+                "PhpStratum",
+                "Stored Routines",
+                "loader",
+                "mariadb",
+                "mysql",
+                "stored functions",
+                "stored procedures",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/DatabaseStratum/php-stratum-mysql/issues",
+                "source": "https://github.com/DatabaseStratum/php-stratum-mysql/tree/6.6.0"
+            },
+            "time": "2023-01-26T13:17:49+00:00"
+        },
+        {
+            "name": "setbased/typed-config",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SetBased/php-typed-config.git",
+                "reference": "752549d42a41b20b0a66ba6f96f8fbc2fe23a011"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SetBased/php-typed-config/zipball/752549d42a41b20b0a66ba6f96f8fbc2fe23a011",
+                "reference": "752549d42a41b20b0a66ba6f96f8fbc2fe23a011",
+                "shasum": ""
+            },
+            "require": {
+                "hassankhan/config": "^3.1.0",
+                "php": ">=8.1",
+                "setbased/helper-cast": "^3.0.0"
+            },
+            "require-dev": {
+                "phing/phing": "^3.0.0-RC4",
+                "phpunit/phpunit": "^9.5.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SetBased\\Config\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A lightweight and strong typed that supports PHP, INI, XML, JSON, and YAML files",
+            "keywords": [
+                "config",
+                "configuration",
+                "ini",
+                "json",
+                "strong typed",
+                "xml",
+                "yaml",
+                "yml"
+            ],
+            "support": {
+                "issues": "https://github.com/SetBased/php-typed-config/issues",
+                "source": "https://github.com/SetBased/php-typed-config/tree/2.0.0"
+            },
+            "time": "2023-01-26T05:04:55+00:00"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v6.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "a550a7c99daeedef3f9d23fb82e3531525ff11fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a550a7c99daeedef3f9d23fb82e3531525ff11fd",
+                "reference": "a550a7c99daeedef3f9d23fb82e3531525ff11fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/service-contracts": "^2.5|^3",
+                "symfony/string": "^5.4|^6.0|^7.0"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<5.4",
+                "symfony/dotenv": "<5.4",
+                "symfony/event-dispatcher": "<5.4",
+                "symfony/lock": "<5.4",
+                "symfony/process": "<5.4"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0|2.0|3.0"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/http-foundation": "^6.4|^7.0",
+                "symfony/http-kernel": "^6.4|^7.0",
+                "symfony/lock": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0",
+                "symfony/stopwatch": "^5.4|^6.0|^7.0",
+                "symfony/var-dumper": "^5.4|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Console\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Eases the creation of beautiful and testable command line interfaces",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "cli",
+                "command-line",
+                "console",
+                "terminal"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/console/tree/v6.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-30T10:54:28+00:00"
+        },
+        {
+            "name": "symfony/deprecation-contracts",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/deprecation-contracts.git",
+                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.4-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "function.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A generic function and convention to trigger deprecation notices",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-05-23T14:45:45+00:00"
+        },
+        {
             "name": "symfony/http-foundation",
             "version": "v3.4.47",
             "source": {
@@ -1168,6 +2042,171 @@
             ],
             "support": {
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-26T09:26:14+00:00"
+        },
+        {
+            "name": "symfony/polyfill-intl-grapheme",
+            "version": "v1.28.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
+                "reference": "875e90aeea2777b6f135677f618529449334a612"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/875e90aeea2777b6f135677f618529449334a612",
+                "reference": "875e90aeea2777b6f135677f618529449334a612",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.28-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's grapheme_* functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "grapheme",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.28.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-01-26T09:26:14+00:00"
+        },
+        {
+            "name": "symfony/polyfill-intl-normalizer",
+            "version": "v1.28.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
+                "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
+                "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.28-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's Normalizer class and related functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "intl",
+                "normalizer",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1506,6 +2545,174 @@
                 }
             ],
             "time": "2020-10-24T10:57:07+00:00"
+        },
+        {
+            "name": "symfony/service-contracts",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/service-contracts.git",
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/container": "^2.0"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.4-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Service\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Test/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to writing services",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-07-30T20:28:31+00:00"
+        },
+        {
+            "name": "symfony/string",
+            "version": "v7.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "92bd2bfbba476d4a1838e5e12168bef2fd1e6620"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/92bd2bfbba476d4a1838e5e12168bef2fd1e6620",
+                "reference": "92bd2bfbba476d4a1838e5e12168bef2fd1e6620",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-intl-grapheme": "~1.0",
+                "symfony/polyfill-intl-normalizer": "~1.0",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/translation-contracts": "<2.5"
+            },
+            "require-dev": {
+                "symfony/error-handler": "^6.4|^7.0",
+                "symfony/http-client": "^6.4|^7.0",
+                "symfony/intl": "^6.4|^7.0",
+                "symfony/translation-contracts": "^2.5|^3.0",
+                "symfony/var-exporter": "^6.4|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\String\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an object-oriented API to strings and deals with bytes, UTF-8 code points and grapheme clusters in a unified way",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "grapheme",
+                "i18n",
+                "string",
+                "unicode",
+                "utf-8",
+                "utf8"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/string/tree/v7.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-11-29T08:40:23+00:00"
         },
         {
             "name": "taylanunutmaz/agora-token-builder",
