@@ -19,5 +19,12 @@ class UserModelController{
         $user = $this->user;
         $user->update($user_id, $data);
     }
+
+    public function get_user_data_by_id($user_id)
+    {
+        $user = $this->user;
+        $user_data = $user->find($user_id);
+        return $user_data;
+    }
 }
 ?>

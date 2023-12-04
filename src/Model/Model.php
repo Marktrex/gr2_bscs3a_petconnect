@@ -31,9 +31,11 @@ class Model
 
         $sql = "SELECT * FROM {$table} {$joins} WHERE {$colId} = :id;";
         try {
-            return $this->db->query($sql, [
-                ':id' => $id
-            ]);
+            $result = $this->db->query($sql, [':id' => $id]);
+            if ($result) {
+                return $result[0]; // Return the first object in the array
+            }
+            return null; // Return null if the query didn't return any results
         } catch (PDOException $e) {
             // Output detailed error information for debugging
             echo "Error: " . $e->getMessage();
