@@ -26,5 +26,11 @@ class UserModelController{
         $user_data = $user->find($user_id);
         return $user_data;
     }
+
+    public function deleteUser($user_id)
+    {
+        $user = $this->user;
+        $user->delete($user_id);
+    }
 }
 ?>

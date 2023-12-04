@@ -151,5 +151,18 @@ class Model
             return false;
         }
     }
+
+    public function delete ($id){
+        $table = $this->table;
+        $colId= $this->id;
+        $sql = "DELETE FROM {$table} WHERE {$colId} = :id;";
+        try {
+            $this->db->query($sql, [':id' => $id]);
+            return;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

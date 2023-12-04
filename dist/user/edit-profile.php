@@ -82,7 +82,36 @@ if (isset($_POST['update'])) {
     }
 }
 
+if (isset($_POST['changePassword'])) {
+    $currentUserId = $_SESSION['auth_user']['id'];
+    $password = $_POST['password'];
+    $newPassword = $_POST['newPassword'];
+    $conPassword = $_POST['conPassword'];
+    $user_data = $user->get_user_data_by_id($currentUserId);
+    if (password_verify($password, $user_data->password)) {
+        if ($newPassword === $conPassword) {
+            $user->updateProfile($currentUserId, [
+                'password' => password_hash($newPassword, PASSWORD_DEFAULT)
+            ]);
+            $log = new AuditModelController();
+            $log->activity_log($currentUserId,"Change Password","User has changed his/her password");
+        } else {
+            echo "<script>alert('New password and confirm password must be same')</script>";
+        }
+    } else {
+        echo "<script>alert('Current password is incorrect')</script>";
+    }
+}
 
+
+if (isset($_POST['delete'])) {
+    $currentUserId = $_SESSION['auth_user']['id'];
+    $user->deleteUser($currentUserId);
+    $log = new AuditModelController();
+    $log->activity_log($currentUserId,"Delete Account","User has deleted his/her account");
+    header("Location: ../function/logout.php");
+    exit();
+}
 ?>
 
 
@@ -132,7 +161,7 @@ if (isset($_POST['update'])) {
                             placeholder="Enter your last name" required value="<?php echo $user_data->lname?>">
                     </div>
                     <div class="text-center">
-                        <button type="submit" name="update" class="btn btn-primary">Update</button>
+                        <button type="submit" name="update" id ="update" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -151,14 +180,14 @@ if (isset($_POST['update'])) {
                         <label for = "conPassword">Confirm Password</label>
                         <input type="password" name="conPassword" id="conPassword" class = "form-control">
                     </div>
-                    <button type="submit" name = "changePassword" class="btn btn-primary">Change Password</button>
+                    <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
                 </form>
             </div>
 
             <div class="container mt-5">
                 Warning You are trying to delete your account
                 <form action="" method="post">
-                    <button type="submit" name = "delete" class="btn btn-danger">Delete Account</button>
+                    <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
                 </form>
             </div>
 
@@ -176,6 +205,16 @@ if (isset($_POST['update'])) {
             profilePic.src = URL.createObjectURL(inputFile.files[0]);
         };
         
+    </script>
+    <script>
+        document.querySelector('#changePassword').addEventListener('submit', function(event) {
+            let password = document.querySelector('#newPassword').value;
+            let confirmPassword = document.querySelector('#confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert("Password and confirm password must be same");
+                event.preventDefault();
+            }
+        });
     </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
