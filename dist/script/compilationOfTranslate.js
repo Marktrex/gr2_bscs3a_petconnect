@@ -41,9 +41,18 @@ export const translations = {
       //footer
       "Connect with us": "Conecta con nosotros",
       "Quick Links": "enlaces rápidos",
+      About:"Acerca de",
       Team:"Equipo",
       Contact:"Contacto",
       Testimonials:"Testimonios",
+      Services:"Servicios",
+      "Video Conference":"Video conferencia",
+      "Online Booking":"Reserva en línea",
+      "Legal Documentation":"Documentacion legal",
+      "Privacy Policy":"Política de Privacidad",
+      "Terms of Use":"Condiciones de uso",
+
+
 
     },
     fn: {
@@ -83,11 +92,16 @@ export const translations = {
       //footer
       "Connect with us": "Kumonekta sa amin",
       "Quick Links": "Mga Mabilisang Link",
+      About:"Tungkol sa",
       Team:"Koponan",
       Contact:"Makipag-ugnayan",
       Testimonials:"Mga testimonial",
-
-
+      Services:"Mga serbisyo",
+      "Video Conference":"Video Conference",
+      "Online Booking":"Online Booking",
+      "Legal Documentation":"Legal na Dokumentasyon",
+      "Privacy Policy":"Patakaran sa Privacy",
+      "Terms of Use":"Mga Tuntunin ng Paggamit",
       
 
     },
