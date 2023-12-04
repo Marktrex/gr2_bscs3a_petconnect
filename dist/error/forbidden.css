@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'dairantou';
+    src: url('../fonts/Dairantou.ttf');
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    > .container{
+        font-family: 'dairantou';
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        > a{
+            text-decoration: none;
+            color: black;
+            background-color: #ffb845ba;
+            border-radius: 20px;
+            padding: 1rem;
+            display: inline-block;
+            &:hover{
+                display: inline;
+                &::before{
+                    opacity: 1;
+                }    
+            }
+
+            &::before{
+                content: "\00ab";
+                margin-right: 1rem;
+                opacity: 0;
+                transition: 0.5s ease-out ;
+            }
+        }
+    }
+}
+
