@@ -37,10 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':user_id', $_SESSION['auth_user']['id']);
     $stmt->bindParam(':message', $_SESSION['message']);    
     $stmt->execute();
+    $lastId = $conn->lastInsertId();
     $log = new AuditModelController();
-    $name = $_SESSION['first_name'];
-    $type = $_SESSION['appointment_type'];
-    $log->activity_log($_SESSION['auth_user']['id'], "appointment", "User:$name booked an appointment type: $type");
+    $log->activity_log(
+        $_SESSION['auth_user']['id'],
+        "INSERT",
+        "APPOINTMENT",
+        "ALL",
+        $lastId,
+        "ALL",
+        "ALL"
+    );
     // Close the database connection
     $stmt = null;
     $conn = null;

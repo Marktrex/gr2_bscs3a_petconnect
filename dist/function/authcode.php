@@ -81,7 +81,6 @@ if (isset($_POST["login"])) {
             ];
     
 
-            $log->activity_log($_SESSION['auth_user']['id'], 'Login', 'Admin Logged In');
             echo '<script language="javascript">';
             header("Location: ../user/home.php");
 

@@ -71,7 +71,7 @@ if (isset($_POST["register"])) { //code ni marc
                 $lastId = $conn->lastInsertId();
                 $log = new AuditModelController();
                 $log->activity_log(
-                    $_SESSION['auth_user']['id'],//responsible
+                    $lastId,//responsible
                     "INSERT",//type
                     "USER",//table
                     "All",//column
