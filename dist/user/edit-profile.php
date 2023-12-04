@@ -20,7 +20,11 @@ if (isset($_POST['update'])) {
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
     $currentUserId = $_SESSION['auth_user']['id'];
-
+    $oldData = $user->get_user_data_by_id($currentUserId);
+    $newData = [
+        'fname' => $firstName,
+        'lname' => $lastName
+    ];
     // Update the data in both tables
     $conn->beginTransaction();
     try {
@@ -49,7 +53,7 @@ if (isset($_POST['update'])) {
                     move_uploaded_file($image_tmp, $image_destination);
     
                     // Update the image in the database
-                    
+                    $newData['photo'] = $image_new_name;
                     $user->updateProfile($currentUserId, [
                         'fname' => $firstName,
                         'lname' => $lastName,
@@ -74,7 +78,19 @@ if (isset($_POST['update'])) {
             ]);
         }
         $log = new AuditModelController();
-        $log->activity_log($currentUserId,"Edit Profile","User has updated his/her profile");
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],
+                    "UPDATE",
+                    "USER",
+                    $key,
+                    $currentUserId,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
     } catch (PDOException $e) {
         // An error occurred, rollback the transaction
         $conn->rollBack();
@@ -94,7 +110,15 @@ if (isset($_POST['changePassword'])) {
                 'password' => password_hash($newPassword, PASSWORD_DEFAULT)
             ]);
             $log = new AuditModelController();
-            $log->activity_log($currentUserId,"Change Password","User has changed his/her password");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "UPDATE",
+                "USER",
+                "password",
+                $currentUserId,
+                "SECRET",
+                "SECRET"
+            );
         } else {
             echo "<script>alert('New password and confirm password must be same')</script>";
         }
@@ -108,7 +132,15 @@ if (isset($_POST['delete'])) {
     $currentUserId = $_SESSION['auth_user']['id'];
     $user->deleteUser($currentUserId);
     $log = new AuditModelController();
-    $log->activity_log($currentUserId,"Delete Account","User has deleted his/her account");
+            $log->activity_log(
+                $_SESSION['auth_user']['id'],
+                "DELETE",
+                "USER",
+                "ALL",
+                $currentUserId,
+                "ALL",
+                "DESTROY"
+            );
     header("Location: ../function/logout.php");
     exit();
 }

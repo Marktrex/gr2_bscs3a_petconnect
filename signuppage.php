@@ -69,7 +69,16 @@ if (isset($_POST["register"])) { //code ni marc
             try {
                 $statement2->execute();
                 $lastId = $conn->lastInsertId();
-                $log->activity_log($lastId, 'Register', 'Created a new user account'); //the rollback is from the mayor not me, im glad it oks
+                $log = new AuditModelController();
+                $log->activity_log(
+                    $_SESSION['auth_user']['id'],//responsible
+                    "INSERT",//type
+                    "USER",//table
+                    "All",//column
+                    $lastId,//id
+                    "None",//old
+                    "None",//new val
+                );
                 echo '<script language="javascript">';
                 echo 'alert("Sign up successfully");';
                 echo '</script>';
