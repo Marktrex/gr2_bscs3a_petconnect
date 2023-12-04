@@ -1,9 +1,7 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
-print_r($_SESSION);
 
-print_r($_SESSION);
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
   header("Location: ../../loginpage.php");
@@ -87,7 +85,7 @@ if ($_SESSION['auth_user']['user_status'] === "Disabled") {
     ?>
 </div>
 
-<h2 id="available-pet">Available Cats For Adaption</h2>
+<h2 id="available-pet">Available Cats For Adoption</h2>
 <div class="pet-container">
     <?php
     $type = 'Cat'; // Set the type to 'Dog'
