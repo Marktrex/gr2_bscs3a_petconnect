@@ -97,6 +97,8 @@ export const translations = {
       "Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.": "Los refugios confían a los voluntarios el cuidado de los animales, por lo que la responsabilidad es crucial. Esto incluye seguir protocolos de seguridad, respetar pautas y ser confiable.",
       "Apply now!": "¡Aplica ahora!",
       "Send us your Email and we will send the Instructions for your Application Process.": "Envíanos tu correo electrónico y te enviaremos las instrucciones para tu proceso de aplicación.",
+      //edit profile
+      "Edit Profile": "Editar Perfil", //wala palang option para sa change language lol pero ok lang kase dapat as a user alam mo english
 
 
     },
@@ -193,6 +195,9 @@ export const translations = {
       "Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.": "Ang mga tahanan para sa mga hayop ay ipinagkakatiwala sa mga boluntaryo ang pangangalaga sa mga alagang hayop, kaya ang responsibilidad ay mahalaga. Kasama dito ang pagsunod sa mga protokolong pangkaligtasan, paggalang sa mga gabay, at pagiging maaasahan.",
       "Apply now!": "Mag-apply na ngayon!",
       "Send us your Email and we will send the Instructions for your Application Process.": "Ipadala sa amin ang iyong Email at ipapadala namin ang mga Tagubilin para sa iyong Proseso ng Pag-aapply.",
+      //edit profile
+      "Edit Profile": "I-edit ang Profilo",
+
 
     },
   };
