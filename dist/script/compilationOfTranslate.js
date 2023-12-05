@@ -57,7 +57,13 @@ export const translations = {
       "Age:": "Edad:",
       "Weight:": "Peso:",
       "Sex:": "Sexo:",
+      //donatepage
+      "Help us Maintain our Purpose": "Ayúdanos a Mantener nuestro Propósito",
+      "Help us to Donate our Pets": "Ayúdanos a Donar a nuestras Mascotas",
 
+      
+      //volunteer
+      "Join PetConnect": "Únete a PetConnect",
 
 
 
@@ -111,11 +117,17 @@ export const translations = {
       "Terms of Use":"Mga Tuntunin ng Paggamit",
       //adoptpage
       "Meet our Cats": "Makipagkilala sa aming mga Pusa",
-      "Breed": "Lahi",
+      "Breed:": "Lahi:",
       "Age:": "Edad:",
       "Weight:": "Timbang:",
       "Sex:": "Kasarian:",
-
+      //donatepage
+      "Help us Maintain our Purpose": "Tulungan kami sa Pagpapanatili ng Aming Layunin",
+      "Help us to Donate our Pets": "Tulungan kami sa Pag-donate ng Aming Mga Alaga",
+      
+     
+      //volunteer
+      "Join PetConnect": "Sumali sa PetConnect",
 
     },
   };

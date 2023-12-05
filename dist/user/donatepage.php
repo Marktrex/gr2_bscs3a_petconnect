@@ -47,24 +47,21 @@ if (!isset($_SESSION['auth_user'])) {
           <div class="logo-with-text">
             <img src="https://picsum.photos/200/300" alt="">
             <h5>
-              Your Donations Helps us to expand our animal shelter to provide
-              more comfort
+              Your Donations Helps us to expand our animal shelter to provide more comfort
             </h5>
           </div>
 
           <div class="logo-with-text">
             <img src="https://picsum.photos/200/300" alt="">
             <h5>
-              Provides Medical Care such as vaccinations, spaying,neutering and
-              other Medical attentions
+              Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions
             </h5>
           </div>
 
           <div class="logo-with-text">
             <img src="https://picsum.photos/200/300" alt="">
             <h5>
-              Helps us to cover the cost of important pet resources and other
-              materials
+              Helps us to cover the cost of important pet resources and other materials
             </h5>
           </div>
         </div>
