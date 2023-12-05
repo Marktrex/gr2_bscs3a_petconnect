@@ -16,7 +16,7 @@ composer update
 composer dump-autoload
 ```
 
-# npm - Outdated
+# npm
 1. download node js
 2. run "npm install"
 3. run "npm run dev"
