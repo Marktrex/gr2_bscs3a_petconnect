@@ -20,9 +20,9 @@ class PetModelController{
         return $user_data;
     }
 
-    public function search(){
+    public function search($value, $columns = ['type','breed','sex','weight','age'], $userOperator){
         $pets = $this->pets;
-        return $pets->search($value, $columns);
+        return $pets->search($value, $columns,$userOperator);
     }
 
     public function get_four_latest_pet($pet_type){
