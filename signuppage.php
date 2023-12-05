@@ -1,6 +1,6 @@
 <?php 
-use MyApp\Controller\AuditModelController;
 session_start();
+use MyApp\Controller\AuditModelController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -87,7 +87,7 @@ if (isset($_POST["register"])) { //code ni marc
                 $conn->commit();
                 $otp = rand(100000,999999);
                 $_SESSION['otp'] = $otp;
-                $_SESSION['mail'] = $email;
+                $_SESSION['email'] = $email;
                 // require "vendor/phpmailer/PHPMailerAutoload.php";
                 $mail = new PHPMailer(true);
             
@@ -116,7 +116,7 @@ if (isset($_POST["register"])) { //code ni marc
                 <p>This is your OTP Code:</p> 
                 <h3>' . $otp . '</h3>
                 <p>Please click the link to verify your email address:</p>
-                <p><a href="http://localhost/petconnect/dist/user/verify.php">Click to Verify</a></p>
+                <p><a href="http://localhost/petconnect/verify.php">Click to Verify</a></p>
                 <p>Thank you for signing up.</p>';
           
                 if(!$mail->send()){
@@ -125,7 +125,7 @@ if (isset($_POST["register"])) { //code ni marc
                     ?>
                     <script>
                         alert("<?php echo "Register Successfully, OTP sent to " . $email ?>");
-                        window.location.replace('loginpage.php');
+                        window.location.replace('verify.php');
                     </script>
                     <?php
                 }  

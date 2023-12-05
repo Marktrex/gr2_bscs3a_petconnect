@@ -1,19 +1,73 @@
 <?php 
 session_start();
+use MyApp\Controller\AuditModelController;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-if (!isset($_SESSION['otp'])) { 
-    echo '<script language="javascript">';
-    echo 'alert("You do not have access to this page");';
-    echo '</script>';
-    header("Location: home.php");
-    exit();
-} 
+require 'vendor/autoload.php';
+require 'dist/function/config.php'; //PDO connection to the database
+
 print_r($_SESSION);
-require '../function/config.php';
+
+// if (!isset($_SESSION['otp'])) { 
+//     echo '<script language="javascript">';
+//     echo 'alert("You do not have access to this page");';
+//     echo '</script>';
+//     header("Location: dist/user/home.php");
+//     exit();
+// } 
+if (isset($_POST["resend"])){
+    $otp = rand(100000,999999);
+    $email =  $_SESSION['email'];  
+    $_SESSION['otp'] = $otp;
+        
+                // require "vendor/phpmailer/PHPMailerAutoload.php";
+                $mail = new PHPMailer(true);
+            
+                $mail->isSMTP();
+            
+                $mail->Host = 'smtp.gmail.com';
+            
+                $mail->SMTPAuth = true;
+            
+                $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
+                $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
+            
+                $mail->SMTPSecure = 'tls';
+            
+                $mail->Port = 587;
+            
+                $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
+            
+                $mail->addAddress($email);
+            
+                $mail->isHTML(true);
+                $mail->Subject = 'Welcome to PetConnect!';
+
+                $mail->Body = '
+                <p>Congratulations, your account has been successfully created.</p>
+                <p>This is your OTP Code:</p> 
+                <h3>' . $otp . '</h3>
+                <p>Please click the link to verify your email address:</p>
+                <p><a href="http://localhost/petconnect/verify.php">Click to Verify</a></p>
+                <p>Thank you for signing up.</p>';
+          
+                if(!$mail->send()){
+                    throw new Exception("Mail failed to send");
+                } else {
+                    ?>
+                    <script>
+                        alert("<?php echo "Resend Sucesfully, OTP sent to " . $email ?>");
+                        window.location.replace('verify.php');
+                    </script>
+                    <?php
+                }  
+}
 
 if (isset($_POST["verify"])) {
     $otp = $_SESSION['otp'];
-    $email = $_SESSION['mail'];
+    $email = $_SESSION['email'];
     $otp_code = $_POST['otp_code'];
 
     if ($otp != $otp_code) {
@@ -35,7 +89,7 @@ if (isset($_POST["verify"])) {
             ?>
             <script>
                 alert("Verify account done, you may sign in now");
-                window.location.replace("../../loginpage.php");
+                window.location.replace("loginpage.php");
             </script>
             <?php
         } catch (PDOException $e) {
@@ -93,12 +147,17 @@ if (isset($_POST["verify"])) {
                             <div class="form-group row">
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">OTP Code</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="otp_code" required autofocus>
+                                    <input type="text" id="otp" class="form-control" name="otp_code" >
                                 </div>
                             </div>
 
                             <div class="col-md-6 offset-md-4">
                                 <input type="submit" value="Verify" name="verify">
+                            </div>
+                            <form action="#" method="POST">
+                            
+                            <div class="col-md-6 offset-md-4">
+                                <input type="submit" value="Resend Code" name="resend">
                             </div>
                     </div>
                     </form>
