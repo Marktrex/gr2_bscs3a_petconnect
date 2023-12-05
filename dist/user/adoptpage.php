@@ -92,7 +92,7 @@ try { //research this try catch method
               class="input-field"
               type="text"
               name = "name"
-              placeholder="Search cats,etc..."
+              placeholder="Search for names..."
             />
           </div>
         </div>
