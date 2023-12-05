@@ -123,26 +123,28 @@ class Model
         return $this->table . '_id';
     }
 
-    public function search($searchWordsArray, $columnsArray) {
+    public function search($searchWordsArray, $columnsArray, $isAscending = true, $page = 1, $itemsPerPage = 10) {
         $searchSqlArray = [];
-
+    
         foreach ($searchWordsArray as $index => $searchWords) {
             $searchWords = $this->db->quote('%' . $searchWords . '%');
-
+    
             $searchConditions = [];
             foreach ($columnsArray[$index] as $column) {
                 $searchConditions[] = "{$column} LIKE {$searchWords}";
             }
-
+    
             $searchSqlArray[] = '(' . implode(' OR ', $searchConditions) . ')';
         }
-
+    
         $searchSql = implode(' AND ', $searchSqlArray);
-
+    
         $joins = implode(' ', $this->joins);
         $table = $this->table;
         $id = $this->id;
-        $sql = "SELECT * FROM {$table} {$joins} WHERE {$searchSql} ORDER BY {$id} ASC;";
+        $order = $isAscending ? 'ASC' : 'DESC';
+        $offset = ($page - 1) * $itemsPerPage;
+        $sql = "SELECT * FROM {$table} {$joins} WHERE {$searchSql} ORDER BY {$id} {$order} LIMIT {$offset}, {$itemsPerPage};";
     
         try {
             return $this->db->query($sql);

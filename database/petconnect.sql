@@ -3,9 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Dec 02, 2023 at 01:13 AM
-
+-- Generation Time: Dec 05, 2023 at 07:59 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `petconnect`
 --
-
 CREATE DATABASE IF NOT EXISTS `petconnect` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `petconnect`;
 
@@ -66,91 +63,20 @@ CREATE TABLE `audit_log` (
   `id` int(11) NOT NULL,
   `responsible_id` int(11) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `short_description` text DEFAULT NULL,
-  `date_time` datetime NOT NULL DEFAULT current_timestamp()
+  `date_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `old_value` text DEFAULT NULL,
+  `new_value` text DEFAULT NULL,
+  `table_affected` varchar(255) NOT NULL,
+  `id_affected` int(11) NOT NULL,
+  `column_affected` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `audit_log`
 --
 
-INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `short_description`, `date_time`) VALUES
-(1, 1, '0', '0', '2023-11-13 01:15:57'),
-(2, 1, 'login', 'User has logged in', '2023-11-13 01:17:01'),
-(3, 2, 'login', 'User has logged in', '2023-11-13 01:17:30'),
-(4, 13, 'register', 'new registration of user', '2023-11-13 01:29:26'),
-(5, 14, 'register', 'new registration of user', '2023-11-13 01:34:46'),
-(6, 1, 'login', 'User has logged in', '2023-11-13 01:37:27'),
-(7, 1, 'Logout', 'User has logged out', '2023-11-13 01:42:52'),
-(8, 1, 'login', 'User has logged in', '2023-11-13 01:51:52'),
-(9, 1, 'user promotion', 'admin promoted 2 to admin', '2023-11-13 02:00:54'),
-(10, 1, 'user demotion', 'admin demoted 2 to admin', '2023-11-13 02:00:59'),
-(11, 1, 'user promotion', 'admin promoted id:2 to admin', '2023-11-13 02:01:40'),
-(12, 1, 'admin modified user', 'admin change the content of user: marc123 id: 2', '2023-11-13 02:01:45'),
-(13, 1, 'admin modified user', 'admin change the content of user: 123123123 id: 14', '2023-11-13 02:04:26'),
-(14, 1, 'Logout', 'User has logged out', '2023-11-13 02:07:07'),
-(15, 1, 'login', 'User has logged in', '2023-11-13 02:07:12'),
-(16, 1, 'admin deletes account', 'admin deletes account:14', '2023-11-13 02:10:07'),
-(17, 1, 'admin modified pet', 'admin change the content of pet: pogi si marc21 id: ', '2023-11-13 18:39:40'),
-(18, 1, 'admin modified pet', 'admin change the content of pet: pogi si marc id: 2', '2023-11-13 18:40:28'),
-(19, 1, 'admin deleted a pet', 'admin deleted id: 2', '2023-11-13 18:41:28'),
-(20, 1, 'admin deleted a pet', 'admin deleted id: 3', '2023-11-13 18:41:40'),
-(21, 1, 'add pets', 'admin added pets named:admin123 on 1212-12-12', '2023-11-13 18:45:14'),
-(22, 1, 'add news', 'admin added news sample', '2023-11-13 18:46:25'),
-(23, 1, 'admin set headline', 'admin has set news id: 4 to headline', '2023-11-13 18:51:37'),
-(24, 1, 'admin deletes news', 'admin deleted news id: 4', '2023-11-13 18:51:56'),
-(25, 1, 'admin update news', 'admin updated news titled: testicle2 and id: 2', '2023-11-13 18:52:10'),
-(26, 15, 'login', 'User has logged in', '2023-11-13 21:40:57'),
-(27, 15, 'register', 'new registration of user', '2023-11-15 21:07:02'),
-(28, 15, 'login', 'User has logged in', '2023-11-15 21:07:12'),
-(29, 15, 'Logout', 'User has logged out', '2023-11-15 21:40:50'),
-(30, 15, 'login', 'User has logged in', '2023-11-15 21:40:58'),
-(31, 15, 'Logout', 'User has logged out', '2023-11-15 22:01:04'),
-(32, 15, 'login', 'User has logged in', '2023-11-15 22:01:33'),
-(33, 15, 'Logout', 'User has logged out', '2023-11-15 22:05:40'),
-(34, 15, 'login', 'User has logged in', '2023-11-15 22:05:47'),
-(35, 15, 'Logout', 'User has logged out', '2023-11-15 22:17:50'),
-(36, 1, 'Logout', 'User has logged out', '2023-11-15 22:42:50'),
-(37, 19, 'appointment', 'admin Accepted appointment of 2', '2023-11-15 22:51:39'),
-(38, 1, 'add pets', 'admin added pets named:negneg on 2023-11-15', '2023-11-15 23:07:48'),
-(39, 1, 'admin set featured pets', 'admin has set featured pets:9 , 5 , 6,  ', '2023-11-15 23:08:12'),
-(40, 1, 'admin modified user', 'admin change the content of user: marc id: 19', '2023-11-15 23:10:07'),
-(41, 1, 'admin modified user', 'admin change the content of user: marc id: 19', '2023-11-15 23:15:50'),
-(42, 1, 'admin modified user', 'admin change the content of user: marc id: 19', '2023-11-15 23:29:34'),
-(43, 1, 'Logout', 'User has logged out', '2023-11-15 23:47:54'),
-(44, 19, 'Logout', 'User has logged out', '2023-11-15 23:49:41'),
-(45, 1, 'Logout', 'User has logged out', '2023-11-16 00:16:08'),
-(46, 1, 'Logout', 'User has logged out', '2023-11-16 00:16:29'),
-(47, 19, 'Logout', 'User has logged out', '2023-11-16 00:18:53'),
-(48, 1, 'admin modified user', 'admin change the content of user: fionaxd id: 2', '2023-11-16 00:28:24'),
-(49, 2, 'Logout', 'User has logged out', '2023-11-16 00:32:03'),
-(50, 1, 'admin modified pet', 'admin change the content of pet: 1 id: 1', '2023-11-16 01:05:41'),
-(51, 1, 'admin modified user', 'admin change the content of user: Fiona id: 2', '2023-11-16 01:06:04'),
-(52, 1, 'admin modified user', 'admin change the content of user: Fiona id: 2', '2023-11-16 01:06:47'),
-(53, 1, 'admin modified user', 'admin change the content of user: Fiona id: 2', '2023-11-16 01:07:15'),
-(54, 2, 'Logout', 'User has logged out', '2023-11-16 01:07:58'),
-(55, 1, 'admin set featured pets', 'admin has set featured pets:9 , 5 , 6,  ', '2023-11-16 01:11:16'),
-(56, 1, 'admin modified pet', 'admin change the content of pet: 1 id: 1', '2023-11-16 01:12:01'),
-(57, 1, 'admin modified pet', 'admin change the content of pet: admin123 id: 7', '2023-11-16 01:13:15'),
-(58, 1, 'admin modified pet', 'admin change the content of pet: admin123 id: 8', '2023-11-16 01:13:24'),
-(59, 1, 'Logout', 'User has logged out', '2023-11-16 01:22:16'),
-(60, 18, 'Logout', 'User has logged out', '2023-11-29 23:46:13'),
-(61, 3, 'Register', 'Created a new user account', '2023-11-29 23:46:56'),
-(62, 4, 'Register', 'Created a new user account', '2023-11-29 23:47:14'),
-(63, 3, 'Login', 'Admin Logged In', '2023-11-29 23:50:41'),
-(64, 3, 'Logout', 'User has logged out', '2023-11-30 00:08:15'),
-(65, 3, 'Login', 'Admin Logged In', '2023-11-30 00:08:24'),
-(66, 3, 'Logout', 'User has logged out', '2023-11-30 00:17:01'),
-(67, 4, 'Login', 'User Logged In', '2023-11-30 00:17:10'),
-(68, 4, 'Logout', 'User has logged out', '2023-11-30 00:22:11'),
-(69, 3, 'Login', 'Admin Logged In', '2023-11-30 00:22:21'),
-(70, 3, 'Logout', 'User has logged out', '2023-11-30 00:25:44'),
-(71, 3, 'Login', 'Admin Logged In', '2023-11-30 00:25:53'),
-(72, 4, 'Login', 'User Logged In', '2023-11-30 00:26:39'),
-(73, 4, 'Logout', 'User has logged out', '2023-11-30 00:27:15'),
-(74, 4, 'Login', 'User Logged In', '2023-11-30 00:27:29'),
-(75, 3, 'Logout', 'User has logged out', '2023-11-30 00:30:44'),
-(76, 3, 'Login', 'Admin Logged In', '2023-11-30 00:31:11');
+INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `date_time`, `old_value`, `new_value`, `table_affected`, `id_affected`, `column_affected`) VALUES
+(108, 29, 'INSERT', '2023-12-04 19:57:42', 'None', 'None', 'USER', 29, 'All');
 
 -- --------------------------------------------------------
 
@@ -190,27 +116,6 @@ CREATE TABLE `chat_message` (
   `message_type` enum('message','call') NOT NULL DEFAULT 'message',
   `call_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `chat_message`
---
-
-
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `chat_user_table`
---
-
-
---
--- Dumping data for table `chat_user_table`
---
-
-
-
 
 -- --------------------------------------------------------
 
@@ -264,9 +169,8 @@ INSERT INTO `pets` (`pets_id`, `name`, `type`, `breed`, `sex`, `weight`, `age`, 
 (1, '1', 'Cat', 'Shih Tzu', 'Female', '10-20 lbs', '5 to 10 years', '2023-10-24', 'wkwwdwdwdwdwdwd', 'image_6554fbe161043.png', 0, '0'),
 (5, 'test', 'Dog', 'Shih Tzu', 'Male', '5-10 lbs', '5 to 10 years', '2023-10-24', 'barabida omsim', '65376a772b8f3.png', 1, '2'),
 (6, 'wew', 'Cat', 'Rottweiler', 'Female', 'Less than 5 lbs', 'Less than 6 months', '2023-10-24', 'sheesh pogi ni aries', '65376a95c15e7.png', 1, '3'),
-(7, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc2b82705.jpg', 1, '0'),
-(8, 'admin123', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc342f8ff.png', 1, '0'),
-(9, 'negneg', 'Cat', 'Labrador Retriever', 'Female', '20-50 lbs', '5 to 10 years', '2023-11-15', 'xd', '6554dec40c41e.jpg', 1, '1');
+(7, 'admin1', 'Dog', 'Shih Tzu', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc2b82705.jpg', 1, '0'),
+(8, 'admi', 'Cat', 'Shih Tzu', 'Female', 'Less than 5 lbs', 'Less than 6 months', '0222-02-22', '23333333', 'image_656db90821050.png', 1, '0');
 
 -- --------------------------------------------------------
 
@@ -286,24 +190,26 @@ CREATE TABLE `user` (
   `user_status` varchar(25) NOT NULL,
   `user_login_status` enum('Logout','Login') NOT NULL,
   `user_token` varchar(100) NOT NULL,
-  `user_connection_id` int(5) NOT NULL
+  `user_connection_id` int(5) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_verification_code`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`) VALUES
-(3, 'sanoke', 'sample', 'user@sample', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-12-01 15:21:25', '', 'Disabled', 'Login', '311e51959613dc62a38e0d4be7e8b41a', 92),
-(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-01 15:21:23', '', 'Disabled', 'Login', '1e5d8907d06713b3b5a8010975ad61f0', 88),
-(26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$Fhk9/MQjYUMeVrq44H0uZO0veXRch59wmy4qMtNAl6wiqyxgeYsqm', '2', '2023-11-30 19:26:22', '', 'Enabled', 'Login', 'e986f62136b056817609fb25367191f7', 0);
+INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_verification_code`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`, `photo`) VALUES
+(3, 'sanoke', 'sample', 'user@sample', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-12-04 11:42:07', '', 'Disabled', 'Logout', '12d9531a332d39daf8010773a044719d', 92, 'image_656dbad249834.png'),
+(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-04 11:55:37', '', 'Disabled', 'Logout', '9d90e833d765f0fdecdd28c63356687f', 88, NULL),
+(26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$Fhk9/MQjYUMeVrq44H0uZO0veXRch59wmy4qMtNAl6wiqyxgeYsqm', '2', '2023-11-30 19:26:22', '', 'Enabled', 'Login', 'e986f62136b056817609fb25367191f7', 0, NULL),
+(27, 'aras', 'aras', '1233@sample', '123', '1', '2023-12-04 10:13:22', '', '', 'Logout', '', 0, NULL),
+(29, '12', '12', '222@sample', '$2y$10$SC2jZScWWkAiY3BSqL3Ik.haX4lWicUNObLqIK33gM/f3Z3caz2HW', '2', '2023-12-04 11:57:42', '', 'Disabled', 'Logout', '', 0, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
-
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
@@ -340,7 +246,6 @@ ALTER TABLE `pets`
   ADD PRIMARY KEY (`pets_id`);
 
 --
-
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -351,7 +256,6 @@ ALTER TABLE `user`
 --
 
 --
-
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
@@ -361,7 +265,7 @@ ALTER TABLE `appointment`
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `call_table`
@@ -373,12 +277,7 @@ ALTER TABLE `call_table`
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-
   MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
-
---
--- AUTO_INCREMENT for table `chat_user_table`
---
 
 --
 -- AUTO_INCREMENT for table `news`
@@ -390,14 +289,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
-
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
