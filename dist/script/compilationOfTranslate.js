@@ -4,7 +4,8 @@ export const translations = {
     //  kahit wala ng laman to naka auto naman sa script
     },
     es: {
-  
+      "Profile": "Perfil",
+
       Address: "DirecciÃ³n",
       Adopt: "Adoptar",
       Chat: "Chat",
@@ -64,12 +65,44 @@ export const translations = {
       
       //volunteer
       "Join PetConnect": "Únete a PetConnect",
+      "and help us by": "y ayúdanos siendo",
+      "Volunteering": "Voluntariado",
+      "Benefits": "Beneficios",
+      "Animal Welfare": "Bienestar Animal",
+      "Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.": "Los voluntarios contribuyen a su bienestar brindando cuidado y atención. Esto ayuda a mejorar sus posibilidades de adopción y mejora su calidad de vida en general.",
+      "Professional and Skill Development": "Desarrollo Profesional y de Habilidades",
 
+      //ayaw neto ma translate
+      "Volunteering in a pet shelter offers opportunities to develop and enhance a variety of skills. Helps build a network of contacts, and may open doors to future employment opportunities.": "El voluntariado en un refugio de mascotas ofrece oportunidades para desarrollar y mejorar una variedad de habilidades. Ayuda a construir una red de contactos y puede abrir puertas a futuras oportunidades de empleo.",
+
+      "Personal Fulfillment": "Satisfacción Personal",
+
+      //ayaw neto ma translate
+      "Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a difference in the lives of animals can be emotionally rewarding and provide a sense of purpose.": "El voluntariado a menudo brinda una sensación de cumplimiento personal y satisfacción. Saber que estás haciendo una diferencia en la vida de los animales puede ser gratificante emocionalmente y proporcionar un sentido de propósito.",
+
+      "Requirements": "Requisitos",
+      "Age Limit": "Límite de Edad",
+      "Requires volunteers to be a certain age, often 15 or older.": "Requiere que los voluntarios tengan una cierta edad, a menudo 15 años o más.",
+      "Time Commitment": "Compromiso de Tiempo",
+
+      //ayaw neto ma translate fak
+      "PetConnect has specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.": "PetConnect tiene compromisos de tiempo específicos o horarios para los voluntarios. Asegúrate de poder comprometerte con las horas o turnos requeridos.",
+      
+      "Passion for Animals": "Pasión por los Animales",
+
+      //ayaw neto ma translate fak
+      "A passion for helping animals and creating a positive environment is often a key requirement.": "La pasión por ayudar a los animales y crear un entorno positivo suele ser un requisito clave.",
+      
+      "Responsible Behavior": "Comportamiento Responsable",
+      "Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.": "Los refugios confían a los voluntarios el cuidado de los animales, por lo que la responsabilidad es crucial. Esto incluye seguir protocolos de seguridad, respetar pautas y ser confiable.",
+      "Apply now!": "¡Aplica ahora!",
+      "Send us your Email and we will send the Instructions for your Application Process.": "Envíanos tu correo electrónico y te enviaremos las instrucciones para tu proceso de aplicación.",
 
 
     },
     fn: {
-     
+      "Profile": "Properlyo",
+
       Address: "Address",
       Adopt: "Mag-ampon",  
       Chat: "Chat",
@@ -128,6 +161,38 @@ export const translations = {
      
       //volunteer
       "Join PetConnect": "Sumali sa PetConnect",
+      "and help us by": "at tulungan kami sa pamamagitan ng pagiging",
+      "Volunteering": "Boluntaryo",
+      "Benefits": "Mga Benepisyo",
+      "Animal Welfare": "Kagalingan ng Hayop",
+      "Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.": "Ang mga boluntaryo ay nakakatulong sa kanilang kalusugan sa pamamagitan ng pagbibigay ng alaga at atensiyon. Ito ay nakakatulong sa pagpabuti ng kanilang tsansa sa pag-angkat at nagpapabuti ng kanilang kabuuang kalidad ng buhay.",
+      "Professional and Skill Development": "Pag-unlad sa Propesyonalismo at Kakayahan",
+
+      //ayaw neto ma translate
+      "Volunteering in a pet shelter offers opportunities to develop and enhance a variety of skills. Helps build a network of contacts, and may open doors to future employment opportunities.": "Ang pagiging boluntaryo sa isang pambansang tahanan para sa mga alagang hayop ay nagbibigay ng pagkakataon upang mag-develop at palakasin ang iba't ibang mga kasanayan. Tumutulong sa pagbuo ng isang network ng mga contact at maaaring magbukas ng mga pinto sa mga hinaharap na oportunidad sa trabaho.",
+
+      "Personal Fulfillment": "Personal na Pagtatagumpay",
+
+      //ayaw neto ma translate
+      "Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a difference in the lives of animals can be emotionally rewarding and provide a sense of purpose.": "Ang pagiging boluntaryo ay madalas na nagdadala ng pakiramdam ng personal na kasiyahan at satispaksyon. Ang pag-alam na ikaw ay nagbibigay ng kaibahan sa buhay ng mga hayop ay maaaring magbigay ng emosyonal na gantimpala at nagbibigay ng pakiramdam ng layunin.",
+
+      "Requirements": "Mga Kinakailangan",
+      "Age Limit": "Limitadong Edad",
+      "Requires volunteers to be a certain age, often 15 or older.": "Kinakailangang ang mga boluntaryo ay may tiyak na edad, madalas na 15 taon o mas matanda.",
+      "Time Commitment": "Pag-aalay ng Oras",
+
+      //ayaw neto ma translate fak
+      "PetConnect has specific time commitments or schedules for volunteers. Make sure you can commit to the required hours or shifts.": "Mayroon ang PetConnect ng mga tiyak na pag-aalay ng oras o iskedyul para sa mga boluntaryo. Siguruhing maari kang maglaan ng oras o sumunod sa mga kinakailangang oras o shift.",
+      
+      "Passion for Animals": "Pagmamahal sa mga Hayop",
+
+      //ayaw neto ma translate fak
+      "A passion for helping animals and creating a positive environment is often a key requirement.": "Ang pagmamahal sa pagtulong sa mga hayop at pagbuo ng isang positibong kapaligiran ay madalas na isang pangunahing kinakailangan.",
+
+      "Responsible Behavior": "Responsableng Ugali",
+      "Shelters entrust volunteers with the care of animals, so responsibility is crucial. This includes following safety protocols, respecting guidelines, and being reliable.": "Ang mga tahanan para sa mga hayop ay ipinagkakatiwala sa mga boluntaryo ang pangangalaga sa mga alagang hayop, kaya ang responsibilidad ay mahalaga. Kasama dito ang pagsunod sa mga protokolong pangkaligtasan, paggalang sa mga gabay, at pagiging maaasahan.",
+      "Apply now!": "Mag-apply na ngayon!",
+      "Send us your Email and we will send the Instructions for your Application Process.": "Ipadala sa amin ang iyong Email at ipapadala namin ang mga Tagubilin para sa iyong Proseso ng Pag-aapply.",
 
     },
   };
