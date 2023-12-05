@@ -26,8 +26,7 @@
             Give our Furry Companions <br />a chance to have their Forever Homes
           </h1>
           <p>
-            Adopting rescued animals not only saves lives but also fills your
-            heart with boundless love and gratitude.
+            Adopting rescued animals not only saves lives but also fills your heart with boundless love and gratitude.
           </p>
           <button class="register-button" onclick="window.location.href='../../signuppage.php'">
             <span>Get Started</span>
@@ -47,8 +46,7 @@
             <img src="../icons/vidconference.png" alt="" />
             <h1>Video Conference</h1>
             <p>
-              We utilized video conferencing platforms to conduct virtual
-              meet-and-greet sessions between the adopter and the pet.
+              We utilized video conferencing platforms to conduct virtual meet-and-greet sessions between the adopter and the pet.
             </p>
           </div>
           <div class="item service2">
@@ -62,8 +60,7 @@
             <img src="../icons/docu.png" alt="" />
             <h1>Legal Documentation</h1>
             <p>
-              It may include details such as the responsibilities of the adopter,
-              any adoption fees, and clauses related to the well-being of the pet.
+              It may include details such as the responsibilities of the adopter, any adoption fees, and clauses related to the well-being of the pet.
             </p>
           </div>
         </div>
@@ -77,24 +74,15 @@
         <h1>Our Purpose</h1>
 
         <p>
-          PetConnect raises awareness about the value of animal rescue and the
-          difficulties they encounter. We advocate responsible pet ownership and
-          emphasize issues related to animal overpopulation and abandonment.<br /><br />
+          PetConnect raises awareness about the value of animal rescue and the difficulties they encounter. We advocate responsible pet ownership and emphasize issues related to animal overpopulation and abandonment.<br /><br />
         </p>
 
         <p>
-          People can access our website from anywhere with an internet
-          connection, as compared to actual adoption centers, which have a
-          limited geographical reach. PetConnect broadens the pool of potential
-          adopters and increases the possibilities of the animals finding loving
-          homes.<br /><br />
+        People can access our website from anywhere with an internet connection, as compared to actual adoption centers, which have a limited geographical reach. PetConnect broadens the pool of potential adopters and increases the possibilities of the animals finding loving homes.<br /><br />
         </p>
 
         <p>
-          We also accepting donations, which can help cover the costs associated
-          with rescuing, rehabilitating, and caring for animals. We also provide
-          information on how supporters can contribute in other ways, such as
-          volunteering or providing supplies.<br />
+        We also accept donations, which can help cover the costs associated with rescuing, rehabilitating, and caring for animals. We also provide information on how supporters can contribute in other ways, such as volunteering or providing supplies.<br />
         </p>
       </div>
     </div>

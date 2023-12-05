@@ -21,6 +21,21 @@ export const translations = {
       Visit: "Visitar",
       Volunteer: "Voluntariado",
       login: "Iniciar sesiÃ³n",
+      //index or homepage
+      "Give our Furry Companions": "Dale a nuestros Compañeros Peludos",
+      "a chance to have their Forever Homes": "una oportunidad de tener sus Hogares para Siempre",
+      "Adopting rescued animals not only saves lives but also fills your heart with boundless love and gratitude.": "Adoptar animales rescatados no solo salva vidas, sino que también llena tu corazón de amor y gratitud infinitos.",
+      "Get Started": "Comenzar",
+      "Video Conference": "Videoconferencia",
+      "We utilized video conferencing platforms to conduct virtual meet-and-greet sessions between the adopter and the pet.": "Utilizamos plataformas de videoconferencia para llevar a cabo sesiones virtuales de encuentro entre el adoptante y la mascota.",
+      "Online Booking": "Reserva en línea",
+      "It may include details such as the responsibilities of the adopter, any adoption fees, and clauses related to the well-being of the pet.": "Puede incluir detalles como las responsabilidades del adoptante, cualquier tarifa de adopción y cláusulas relacionadas con el bienestar de la mascota.",
+      "This enables to choose a date in your comfort of your own schedule.": "Esto te permite elegir una fecha en la comodidad de tu propio horario.",
+      "Our Purpose": "Nuestro Propósito",
+      "PetConnect raises awareness about the value of animal rescue and the difficulties they encounter. We advocate responsible pet ownership and emphasize issues related to animal overpopulation and abandonment.": "PetConnect crea conciencia sobre el valor del rescate de animales y las dificultades que enfrentan. Abogamos por la tenencia responsable de mascotas y enfatizamos problemas relacionados con la sobrepoblación y el abandono de animales.",
+      "People can access our website from anywhere with an internet connection, as compared to actual adoption centers, which have a limited geographical reach. PetConnect broadens the pool of potential adopters and increases the possibilities of the animals finding loving homes.": "Las personas pueden acceder a nuestro sitio web desde cualquier lugar con una conexión a Internet, en comparación con los centros de adopción reales, que tienen un alcance geográfico limitado. PetConnect amplía el grupo de posibles adoptantes y aumenta las posibilidades de que los animales encuentren hogares llenos de amor.",
+      "We also accept donations, which can help cover the costs associated with rescuing, rehabilitating, and caring for animals. We also provide information on how supporters can contribute in other ways, such as volunteering or providing supplies.": "También aceptamos donaciones, las cuales pueden ayudar a cubrir los costos asociados con el rescate, rehabilitación y cuidado de los animales. También proporcionamos información sobre cómo los simpatizantes pueden contribuir de otras maneras, como voluntariado o suministro de materiales.",
+
       //user homepage
       "Our Pets are": "Nuestros animales son",
       "waiting for you!": "¡esperando por ti!",
@@ -61,8 +76,6 @@ export const translations = {
       //donatepage
       "Help us Maintain our Purpose": "Ayúdanos a Mantener nuestro Propósito",
       "Help us to Donate our Pets": "Ayúdanos a Donar a nuestras Mascotas",
-
-      
       //volunteer
       "Join PetConnect": "Únete a PetConnect",
       "and help us by": "y ayúdanos siendo",
@@ -119,6 +132,21 @@ export const translations = {
       Visit: "Bisitahin",
       Volunteer: "Mag-volunteer",
       login: "Mag-login",
+      //index or homepage
+      "Give our Furry Companions": "Ibigay sa aming Mga Kasamang May Buhok",
+      "a chance to have their Forever Homes": "isang pagkakataon na magkaruon ng kanilang Panghabang-buhay na Tahanan",
+      "Adopting rescued animals not only saves lives but also fills your heart with boundless love and gratitude.": "Ang pag-aampon ng mga inireskewang hayop ay hindi lamang nagliligtas ng buhay kundi nagpupuno rin ng iyong puso ng walang hanggang pagmamahal at pasasalamat.",
+      "Get Started": "Simulan",
+      "Our Services": "Ang Aming Mga Serbisyo",
+      "Video Conference": "Video Kumperensya",
+      "We utilized video conferencing platforms to conduct virtual meet-and-greet sessions between the adopter and the pet.": "Gumamit kami ng mga plataporma ng video conference upang magsagawa ng mga sesyon ng virtual na pagkikita at pakikipagkilala sa pagitan ng nag-aampon at ng alagang hayop.",
+      "Online Booking": "Online na Paggawa ng Reserbasyon",
+      "This enables to choose a date in your comfort of your own schedule.": "Ito ay nagbibigay-daan sa iyo na pumili ng petsa sa kaginhawahan ng iyong sariling iskedyul.",
+      "It may include details such as the responsibilities of the adopter, any adoption fees, and clauses related to the well-being of the pet.": "Maaaring maglaman ito ng mga detalye tulad ng mga responsibilidad ng nag-aampon, anumang bayad sa adopsyon, at mga klausula kaugnay sa kalagayan ng alagang hayop.",
+      "Our Purpose": "Ang Aming Layunin",
+      "PetConnect raises awareness about the value of animal rescue and the difficulties they encounter. We advocate responsible pet ownership and emphasize issues related to animal overpopulation and abandonment.": "Ang PetConnect ay nagbibigay kamalayan sa halaga ng pagliligtas ng hayop at sa mga hamon na kanilang kinakaharap. Itinataguyod namin ang responsableng pag-aari ng alagang hayop at binibigyang-diin ang mga isyu na may kinalaman sa sobra-sobrang bilang at pag-iwan ng hayop.",
+      "People can access our website from anywhere with an internet connection, as compared to actual adoption centers, which have a limited geographical reach. PetConnect broadens the pool of potential adopters and increases the possibilities of the animals finding loving homes.": "Ang mga tao ay maaaring mag-access sa aming website mula sa kahit saan na may internet connection, kumpara sa mga aktwal na sentro ng adopsyon, na may limitadong geograpikal na saklaw. Ang PetConnect ay nagpapalawak ng pool ng mga potensyal na nag-aampon at nagpapataas ng mga posibilidad na mahanap ng mga hayop ang mga tahanang puno ng pagmamahal.",
+      "We also accept donations, which can help cover the costs associated with rescuing, rehabilitating, and caring for animals. We also provide information on how supporters can contribute in other ways, such as volunteering or providing supplies.": "Tumatanggap din kami ng mga donasyon, na maaaring makatulong sa pag-cover ng mga gastos na kaugnay sa pagsagip, rehabilitasyon, at pangangalaga sa mga hayop. Nagbibigay din kami ng impormasyon kung paano maaaring mag-contribute ang mga taga-suporta sa iba't ibang paraan, tulad ng pagvo-volunteer o pagbibigay ng kagamitan.",
       //user homepage
       "Our Pets are": "Ang aming mga alagang hayop ay!",
       "waiting for you!": "naghihintay para sa iyo!",
@@ -145,8 +173,8 @@ export const translations = {
       Contact:"Makipag-ugnayan",
       Testimonials:"Mga testimonial",
       Services:"Mga serbisyo",
-      "Video Conference":"Video Conference",
-      "Online Booking":"Online Booking",
+      "Video Conference": "Video Kumperensya",
+      "Online Booking": "Online na Paggawa ng Reserbasyon",
       "Legal Documentation":"Legal na Dokumentasyon",
       "Privacy Policy":"Patakaran sa Privacy",
       "Terms of Use":"Mga Tuntunin ng Paggamit",
