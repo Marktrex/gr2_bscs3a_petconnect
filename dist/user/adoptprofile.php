@@ -43,11 +43,11 @@ $loggedIn = isset($_SESSION['auth_user']);
 ?>
 
 <div class="not-petcontent">
-    <img class="petimg" src="../upload/<?php echo $row['image']; ?>" alt="">
+    <img class="petimg" src="../upload/petImages/<?php echo $row['image']; ?>" alt="">
 </div>
 
 <div class="petcontent">
-    <img src="../upload/<?php echo $row['image']; ?>" class="petimg" alt="" />
+    <img src="../upload/petImages/<?php echo $row['image']; ?>" class="petimg" alt="" />
     <div class="pettxt">
         <span class="petname"><?php echo $row['name']; ?></span>
         <p class="animal">Animal: <?php echo $row['type']; ?></p>

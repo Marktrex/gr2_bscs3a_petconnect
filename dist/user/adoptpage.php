@@ -2,7 +2,7 @@
 session_start();
 require '../function/config.php';
 
-print_r($_SESSION);
+
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
@@ -17,45 +17,18 @@ if (!isset($_SESSION['auth_user'])) {
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
-$type = $_POST['type'] ?? $_GET['type'] ?? 'Cat';
-$breed = $_POST['breed'] ?? '';
-$sex = $_POST['sex'] ?? '';
-$weight = $_POST['weight'] ?? '';
-$age = $_POST['age'] ?? '';
+$type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
 
 try { //research this try catch method
    
     // Build the base query
-    $query = "SELECT * FROM pets WHERE 1=1";
+    $query = "SELECT * FROM pets WHERE type= :type";
 
-    // Create an array to hold the values for binding
-    $values = [];
 
-    // Add filters to the query if they are selected
-    if (!empty($type)) {
-        $query .= " AND type = :type";
-        $values[':type'] = $type;
-    }
-    if (!empty($sex)) {
-        $query .= " AND sex = :sex";
-        $values[':sex'] = $sex;
-    }
-    if (!empty($weight)) {
-        $query .= " AND weight = :weight";
-        $values[':weight'] = $weight;
-    }
-    if (!empty($age)) {
-        $query .= " AND age = :age";
-        $values[':age'] = $age;
-    }
 
     // Prepare the statement
     $stmt = $conn->prepare($query);
-
-    // Bind the values to the placeholders
-    foreach ($values as $key => $value) {
-        $stmt->bindValue($key, $value, PDO::PARAM_STR);
-    }
+    $stmt->bindParam(':type', $type);
 
     // Execute the statement
     $stmt->execute();
@@ -85,30 +58,30 @@ try { //research this try catch method
 
   <body>
   <?php require_once "../components/userNavbar.php"?>
-    <form action="" method="post">
+    <form action="" method="get" id= "searchForm">
       
       <section class="content">
         <!--Dropdown menu-->
         <div class="menu max-width">
           <div class="dropdown">
             <label for="dropdown" class="dropdown-btn">
-              <img src="../icons/kitty-icon.png" alt="icon" />
-              <span><?php echo $type ?></span>
+              <img src="../icons/kitty-icon.png" alt="icon" id = "iconType"/>
+              <span id = "selectedType"><?php echo $type ?></span>
               <i class="fa fa-chevron-circle-down" style="color: #f9f9f9"></i>
             </label>
             <input type="checkbox" id="dropdown" />
             <div class="dropdown-content">
               <label>
-                <img src="../icons/kitty-icon.png" alt="icon" />
-                <span>Cat</span>
+                <img  src="../icons/kitty-icon.png" alt="icon" />
+                <span >Cat</span>
                 <input <?php if($type == "Cat"){echo "checked";}?>
-                type="radio" name="type" id="cat" value = "Cat" onchange="this.form.submit()">
+                type="radio" name="type" id="cat" value = "Cat" >
               </label>
               <label>
                 <img src="../icons/puppy-icon.png" alt="icon" />
                 <span>Dog</span>
                 <input <?php if($type == "Dog"){echo "checked";}?>
-                type="radio" name="type" id="dog" value="Dog" onchange="this.form.submit()">
+                type="radio" name="type" id="dog" value="Dog" >
               </label>
             </div>
           </div>
@@ -118,7 +91,8 @@ try { //research this try catch method
             <input
               class="input-field"
               type="text"
-              placeholder="Search cats,etc..."
+              name = "name"
+              placeholder="Search for names..."
             />
           </div>
         </div>
@@ -130,7 +104,7 @@ try { //research this try catch method
           <ul class="cat-select">
             <li>
               <label for="breed">Breed:</label>
-              <select id="breed" name="breed">
+              <select id="breed" name="breed" >
                 <option value=""></option>
                 <optgroup label="Dog Breeds">
                                         <option value="Aspin">Aspin</option>
@@ -152,7 +126,7 @@ try { //research this try catch method
                                         <option value="Australian Shepherd">Australian Shepherd</option>
                                         <option value="Poodle">Poodle</option>
                                         <option value="Bichon Frise">Bichon Frise</option>
-                                        <optgroup label="Cat Breeds">
+                                      <optgroup label="Cat Breeds">
                                         <option value="Persian">Persian</option>
                                         <option value="Siamese">Siamese</option>
                                         <option value="Maine Coon">Maine Coon</option>
@@ -177,7 +151,7 @@ try { //research this try catch method
             </li>
             <li>
               <label for="age">Age:</label>
-              <select id="age" name="age">
+              <select id="age" name="age" >
                 <option value=""></option>
                                     <option value="Less than 6 months">Less than 6 months</option>
                                     <option value="6 months to 5 years">6 months to 5 years</option>
@@ -187,7 +161,7 @@ try { //research this try catch method
             </li>
             <li>
               <label for="weight">Weight:</label>
-              <select id="weight" name="weight">
+              <select id="weight" name="weight" >
                 <option value=""></option>
                                     <option value="Less than 5 lbs">Less than 5 lbs</option>
                                     <option value="5-10 lbs">5-10 lbs</option>
@@ -198,7 +172,7 @@ try { //research this try catch method
             </li>
             <li>
               <label for="sex">Sex:</label>
-              <select id="sex" name="sex">
+              <select id="sex" name="sex" >
                 <option value=""></option>
                 <option value="Female">Female</option>
                 <option value="Male">Male</option>
@@ -208,13 +182,13 @@ try { //research this try catch method
         </div>
         <!--Cat Info-->
         <!-- <h1>Meet Our cats</h1> -->
-        <div class="display-cat">
+        <div id="result" class="display-cat">
         <?php
         foreach ($pet_data as $pet) {
           $petId = $pet['pets_id'];
         ?>
           <div class="img-bg" onclick="window.location.href='adoptprofile.php?id=<?php echo $petId; ?>'">
-              <img src="../upload/<?php echo $pet['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
+              <img src="../upload/petImages/<?php echo $pet['image']; ?>" alt="" /> <!-- Use $cat instead of $row -->
               <p class="img-text"><?php echo $pet['name']; ?></p>
               <div class="overlay">
                   <h2>Hello, it's me <?php echo $pet['name']; ?>!</h2>
@@ -230,5 +204,51 @@ try { //research this try catch method
     </form>
     
     <?php require_once "../components/footer.html"?>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('searchForm');
+        const results = document.getElementById('result');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+        form.addEventListener('input', async function(e) {
+            e.preventDefault();
+
+            const url = '../function/search.php?' + new URLSearchParams(new FormData(form)).toString();
+            try {
+                const response = await fetch(url);
+                if (!response.ok) { // if HTTP-status is 200-299
+                    // get the error message from the server's response
+                    throw new Error(await response.text());
+                }
+                const data = await response.text();
+                results.innerHTML = data;
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+            }
+        });
+
+        const type = document.querySelectorAll("input[name='type']");
+        const iconType = document.getElementById('iconType');
+        const selectedType = document.getElementById('selectedType');
+
+        type.forEach(function (input) {
+            input.addEventListener('change', function (e) {
+              if (e.target.checked) {
+                  if (e.target.value == 'dog'){
+                    icon = '../icons/puppy-icon.png';
+                  } else {
+                    icon = "../icons/kitty-icon.png";
+                  }
+                  iconType.src = icon;
+                  selectedType.textContent = e.target.value;
+              }
+              const check = document.getElementById('dropdown');
+              check.checked = false;
+            });
+        });
+    });
+    </script>
   </body>
 </html>

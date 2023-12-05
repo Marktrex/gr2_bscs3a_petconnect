@@ -123,17 +123,22 @@ class Model
         return $this->table . '_id';
     }
 
-    public function search($searchWordsArray, $columnsArray, $isAscending = true, $page = 1, $itemsPerPage = 10) {
+    public function search($searchWordsArray, $columnsArray, $useLikeOperatorArray = null, $isAscending = true, $page = 1, $itemsPerPage = 10) {
         $searchSqlArray = [];
-    
+
         foreach ($searchWordsArray as $index => $searchWords) {
             $searchWords = $this->db->quote('%' . $searchWords . '%');
-    
+
             $searchConditions = [];
             foreach ($columnsArray[$index] as $column) {
-                $searchConditions[] = "{$column} LIKE {$searchWords}";
+                $operator = 'LIKE';
+                if ($useLikeOperatorArray !== null && !$useLikeOperatorArray[$index]) {
+                    $operator = '=';
+                    $searchWords = $this->db->quote($searchWordsArray[$index]);
+                }
+                $searchConditions[] = "{$column} {$operator} {$searchWords}";
             }
-    
+
             $searchSqlArray[] = '(' . implode(' OR ', $searchConditions) . ')';
         }
     
