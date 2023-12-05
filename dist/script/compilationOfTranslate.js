@@ -100,7 +100,9 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Envíanos tu correo electrónico y te enviaremos las instrucciones para tu proceso de aplicación.",
       //edit profile
       "Edit Profile": "Editar Perfil", //wala palang option para sa change language lol pero ok lang kase dapat as a user alam mo english
-
+      //adoptprofile
+      "Animal: ": "Animal:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Book Appointment": "Agendar Cita",
 
     },
     fn: {
@@ -200,6 +202,9 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Ipadala sa amin ang iyong Email at ipapadala namin ang mga Tagubilin para sa iyong Proseso ng Pag-aapply.",
       //edit profile
       "Edit Profile": "I-edit ang Profilo",
+      //adoptpage
+      "Animal: ": "Hayop:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Book Appointment": "Mag-Book ng Apointment",
 
 
     },

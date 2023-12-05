@@ -68,5 +68,7 @@ $loggedIn = isset($_SESSION['auth_user']);
 </div>
     
 <?php require_once "../components/footer.html"?>
+<script src="..\script\user-navbar-change.js"></script>
+<script type="module" src="..\script\translation.js"></script>
   </body>
 </html>
