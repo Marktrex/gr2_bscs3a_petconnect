@@ -19,6 +19,25 @@ $loggedIn = isset($_SESSION['auth_user']);
 // Retrieve the selected filter values from the form submission
 $type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
 
+try { //research this try catch method
+   
+    // Build the base query
+    $query = "SELECT * FROM pets WHERE type= :type";
+
+
+
+    // Prepare the statement
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':type', $type);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch the pet data
+    $pet_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
