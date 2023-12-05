@@ -14,11 +14,11 @@ $audit = new AuditModelController();
 if(isset($_POST['search']))
 {
     $auditLogs = $audit->search([
-        $_POST['search'],
+        $_POST['user'],
         $_POST['action']
     ],[
-        ['user.fname', 'user.lname'],
-        ['audit_log.type', 'audit_log.short_description']
+        ['responsible_id','fname', 'lname'],
+        ['type', 'table_affected']
     ]);
 }
 else
@@ -68,7 +68,7 @@ else
                     <form action="#" method="POST">
                         <div>
                             <label for="user"><span>Search User</span></label>
-                            <input type="text" id="user" class="user" name = "user" placeholder="Search User"/>
+                            <input type="text" id="user" class="user" name = "user" placeholder="Search User Responsible"/>
                         </div>
                         <div>
                             <label for="action"><span>Search Action</span></label>
