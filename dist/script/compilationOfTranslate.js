@@ -51,6 +51,13 @@ export const translations = {
       "Legal Documentation":"Documentacion legal",
       "Privacy Policy":"Política de Privacidad",
       "Terms of Use":"Condiciones de uso",
+      //adoptpage
+      "Meet our Cats": "Conoce a nuestros gatos",
+      "Breed:": "Raza:",
+      "Age:": "Edad:",
+      "Weight:": "Peso:",
+      "Sex:": "Sexo:",
+
 
 
 
@@ -102,7 +109,13 @@ export const translations = {
       "Legal Documentation":"Legal na Dokumentasyon",
       "Privacy Policy":"Patakaran sa Privacy",
       "Terms of Use":"Mga Tuntunin ng Paggamit",
-      
+      //adoptpage
+      "Meet our Cats": "Makipagkilala sa aming mga Pusa",
+      "Breed": "Lahi",
+      "Age:": "Edad:",
+      "Weight:": "Timbang:",
+      "Sex:": "Kasarian:",
+
 
     },
   };
