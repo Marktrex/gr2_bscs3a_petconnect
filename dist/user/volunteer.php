@@ -47,9 +47,9 @@ $loggedIn = isset($_SESSION['auth_user']);
         <p class="custom1-paragraph">Animal Welfare</p>
         <p class="custom2-paragraph">Volunteers contribute to their well-being by providing care and attention. This helps improve their chances of adoption and enhances their overall quality of life.</p>
         <p class="custom1-paragraph">Professional and Skill Development</p>
-        <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enchance a variety of skills. Helps build a network of contracts, and may open doors to future employment opportunities.</p>
+        <p class="custom2-paragraph">Volunteering in a pet shelter offers opportunities to develop and enhance a variety of skills. Helps build a network of contacts, and may open doors to future employment opportunities.</p>
         <p class="custom1-paragraph">Personal Fulfillment</p>
-        <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a diffrence in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
+        <p class="custom2-paragraph">Volunteering often brings a sense of personal fulfillment and satisfaction. Knowing that you are making a difference in the lives of animals can be emotionally rewarding and provide a sense of purpose.</p>
       </div>
     </div>
   </div>
