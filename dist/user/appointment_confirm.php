@@ -1,3 +1,28 @@
+<?php 
+session_start(); // Add this line to start the session
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+}
+if (!isset($_SESSION['auth_user'])) { 
+    header("Location: ../error/403-forbidden.html");
+    exit();
+}
+
+if (!isset($_POST['fname'])){
+    header("Location: ../user/appointment.php");
+    exit();
+}
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$mobile = $_POST['mobile'];
+$address = $_POST['address'];
+$type = $_POST['type'];
+$date = $_POST['date'];
+$time_slot = $_POST['time-slot'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,28 +33,19 @@
 
 </head>
 <body>
-    <input type="text" name="fname" id="fname" required readonly>
-    <input type="text" name="lname" id="lname"  required readonly>
-    <input type="text" name="mobile" id="mobile" required readonly>
-    <input type="text" name="address" id="address" required readonly>
-    <input type="text" name="email" id="email" required readonly>
-    <select name="type" id="type" style="width: 20rem; height: 3rem;" class="type" required  readonly>
-        <option value="">Select</option>
-        <option value="Adopt">Adopt</option>
-        <option value="Donate">Donate</option>
-        <option value="Visit">Visit</option>
-        <option value="Volunteer">Volunteer</option>
-    </select>
-    <div class="form-group">
+    Appointment Confirmation
+    <form action="../function/makeAppointment.php" method="post">
+        <input type="text" name="fname" id="fname" required readonly value = "<?php echo $fname?>">
+        <input type="text" name="lname" id="lname"  required readonly value = "<?php echo $lname?>">
+        <input type="tel" name="mobile" id="mobile" required readonly value = "<?php echo $mobile?>">
+        <input type="text" name="address" id="address" required readonly value = "<?php echo $address?>">
+        <input type="text" name="type" id="type" required readonly value = "<?php echo $type?>">
         <label for="date">Date:</label>
-        <input type="date" class="form-control" name="date" id="date-input" required readonly>
-    </div>
-    <div class="form-group">
-        <select id="time-slot" name="time-slot" class="form-control" required readonly>
-            <option value="">Select Session</option>
-            <option value="Morning Session">Morning Session (9:00 AM - 11:30 AM)</option>
-            <option value="Afternoon Session">Afternoon Session (1:00 PM - 4:30 PM)</option>
-        </select>
-    </div>
+        <input type="date" name="date" id="date-input" required readonly value = "<?php echo $date?>">
+        <input type="text" name = "time-slot" id="time-slot" required readonly value = "<?php echo $time_slot?>">
+        Make sure that the above confirmation is correct. You are welcome to go back to the previous page.
+        <button type="submit" name="go_back" id="submit">Go Back</button>
+        <button type="submit" name="appoint" id="submit">Confirm</button>
+    </form>
 </body>
 </html>
