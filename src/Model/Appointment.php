@@ -4,6 +4,7 @@ namespace MyApp\Model;
 
 use MyApp\Model\Model;
 
+
 class Appointment extends Model
 {
     protected $table = "appointment";
@@ -12,10 +13,6 @@ class Appointment extends Model
     protected function hasManyUser()
     {
         return "user_id";
-    }
-
-    public function makeAppointment($userId, $fname, $lname, ){
-
     }
 }
 ?>

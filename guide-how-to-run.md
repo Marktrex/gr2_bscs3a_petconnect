@@ -24,6 +24,7 @@ composer dump-autoload
 
 
 # setup - env
+## setting up agora
 1. ayoko mag share ng agora id + cert; dahil may bayad gawa kayo account
 2. copy paste ung file ng ".env.example"
 3. may lilitaw bago ".env copy.example"
@@ -37,3 +38,11 @@ composer dump-autoload
 9. delete mo ung no certifcate sa baba kung saan mo kinuha ung app cert mo(make sure to save)
 ![Alt text](image-1.png)
 10. good to go kana non
+
+## setting up email
+1. lagay mo email mo
+2. lagay mo password (follow this guide: https://netcorecloud.com/tutorials/send-an-email-via-gmail-smtp-server-using-php/)
+3. punta ka sa mga may email na page; palitan mo ung mga links
+- so far its signuppage.php
+- function/makeAppointment.php
+
