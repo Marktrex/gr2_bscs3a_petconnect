@@ -43,6 +43,35 @@ $stmtVolunteer->execute();
 $rowVolunteer = $stmtVolunteer->fetch(PDO::FETCH_ASSOC);
 $countVolunteer = $rowVolunteer['volunteer'];
 
+// Retrieve the dates from the appointment table in the database
+$query = "SELECT appointment_date, time_slot FROM appointment";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+
+// Fetch all the results
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Generate event objects for each date
+$events = [];
+foreach ($results as $row) {
+    $date = $row['appointment_date'];
+    $time_slot = $row['time_slot'];
+
+    $event = [
+        "title" => "$time_slot",
+        "start" => $date
+    ];
+    $events[] = $event;
+}
+
+// Sort the events based on the title
+usort($events, function($a, $b) {
+    return strcmp($a['title'], $b['title']);
+});
+
+// Encode the events array to a JSON string
+$eventsJson = json_encode($events);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,30 +94,71 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
 
     <!-- for calendar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     
+
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth'
-            });
-            calendar.render();
-            calendar.on('dateClick', function(info) {
-                alert('clicked on ' + info.dateStr);
-            });
-        });
-
-    </script>
+    
 </head>
 
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var dateInput = document.getElementById('date-input');
+
+            var events = <?php echo $eventsJson; ?>;
+            events = events.map(event => {
+                if ((event.title === 'Afternoon Session' && hasMorningSession(event.start))) {
+                    return {
+                        ...event,
+                        classNames: ['unselectable'],
+                        backgroundColor: 'green',
+                        borderColor: '#fad046'
+                    };
+                }
+                return event;
+            });
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                selectable: true,
+                select: function(info) {
+                    var selectedDate = info.startStr;
+                    var today = new Date().toISOString().slice(0, 10);
+
+                    if (selectedDate < today) {
+                        calendar.unselect();
+                        return;
+                    }
+
+                    dateInput.value = selectedDate;
+                    dateInput.dispatchEvent(new Event('change'));
+                },
+                events: events,
+            });
+
+            calendar.render();
+
+            function hasMorningSession(date) {
+                return events.some(function(event) {
+                    return event.title === 'Morning Session' && event.start.slice(0, 10) === date.slice(0, 10);
+                });
+            }
+
+            function hasAfternoonSession(date) {
+                return events.some(function(event) {
+                    return event.title === 'Afternoon Session' && event.start.slice(0, 10) === date.slice(0, 10);
+                });
+            }
+        });
+    </script>
     <div class="container">
         <header class="">
             <nav class="navbar">
@@ -113,6 +183,7 @@ $countVolunteer = $rowVolunteer['volunteer'];
             </nav>
         </header>
         <main class="content">
+            <input type="date" id="date-input">
         <div id='calendar'></div>
             <div class="cards">
                 
