@@ -42,7 +42,16 @@ if (isset($_POST["login"])) {
 
         $user_object->setUserToken($user_token);
         $user_object->update_user_login_data();
-        
+
+        if ($userStatus === 'Disabled') { 
+            $_SESSION['email'] = $email;
+            // Redirect to login page if the user status is 'Disabled'
+            echo '<script language="javascript">';
+              echo 'alert("Your account is not verified! Please verify it first!");';
+              echo 'window.location.href = "../../verify.php";';  // Redirect using JavaScript
+              echo '</script>';
+            exit();
+          }
         if ($userType === '1') {
             // Redirect admin to an admin dashboard
             $_SESSION['auth'] = true;

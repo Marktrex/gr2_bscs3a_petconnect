@@ -10,14 +10,8 @@ require 'dist/function/config.php'; //PDO connection to the database
 
 print_r($_SESSION);
 
-// if (!isset($_SESSION['otp'])) { 
-//     echo '<script language="javascript">';
-//     echo 'alert("You do not have access to this page");';
-//     echo '</script>';
-//     header("Location: dist/user/home.php");
-//     exit();
-// } 
 if (isset($_POST["resend"])){
+   
     $otp = rand(100000,999999);
     $email =  $_SESSION['email'];  
     $_SESSION['otp'] = $otp;
@@ -65,12 +59,16 @@ if (isset($_POST["resend"])){
                 }  
 }
 
-if (isset($_POST["verify"])) {
-    $otp = $_SESSION['otp'];
-    $email = $_SESSION['email'];
-    $otp_code = $_POST['otp_code'];
 
-    if ($otp != $otp_code) {
+if (isset($_POST["verify"])) {
+   
+    if (empty($otp_code)) {
+        ?>
+        <script>
+            alert("Please enter the OTP code.");
+        </script>
+        <?php
+    } elseif ($otp != $otp_code) {
         ?>
         <script>
             alert("Invalid OTP code");
@@ -78,13 +76,16 @@ if (isset($_POST["verify"])) {
         <?php
     } else {
         try {
+            // Start a transaction
             $conn->beginTransaction();
 
+            // Update user status in the database
             $updateQuery = "UPDATE user SET user_status = 'Enabled' WHERE email = :email";
             $updateStatement = $conn->prepare($updateQuery);
             $updateStatement->bindParam(':email', $email);
             $updateStatement->execute();
 
+            // Commit the transaction
             $conn->commit();
             ?>
             <script>
@@ -93,13 +94,19 @@ if (isset($_POST["verify"])) {
             </script>
             <?php
         } catch (PDOException $e) {
+            // Rollback the transaction in case of an error
             $conn->rollBack();
-            echo "Error updating record: " . $e->getMessage();
+            ?>
+            <script>
+                alert("Error updating record: <?php echo $e->getMessage(); ?>");
+            </script>
+            <?php
         }
     }
 }
-
 ?>
+
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

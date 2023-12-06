@@ -1,7 +1,7 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
-
+print_r($_SESSION);
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
   header("Location: ../../loginpage.php");
@@ -14,14 +14,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
   exit();
 }
 
-if ($_SESSION['auth_user']['user_status'] === "Disabled") { 
-  // Redirect to login page if the user status is 'Disabled'
-  echo '<script language="javascript">';
-    echo 'alert("Your account is not verified! Please verify it first!");';
-    echo 'window.location.href = "../../loginpage.php";';  // Redirect using JavaScript
-    echo '</script>';
-  exit();
-}
+
 
 ?>
 <!DOCTYPE html>

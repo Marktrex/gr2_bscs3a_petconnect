@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 require 'dist/function/config.php'; //PDO connection to the database
-
+print_r($_SESSION);
 
 
 $log = new AuditModelController();//email verification

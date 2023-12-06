@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php 
     session_start();
-    // print_r($_SESSION);
+    print_r($_SESSION);
     //check if user is already logged redirect to user/home.php if yes
     if(isset($_SESSION['auth_user'])){
-        header("Location: user/home.php");
+        header("Location: dist/user/home.php");
         exit();
     }
-?>
+    ?>
+<!DOCTYPE html>
+<html lang="en">
+
+
 <head>
     <link rel="icon" href="image/icon.png" type="image/png">
     <meta charset="UTF-8">
