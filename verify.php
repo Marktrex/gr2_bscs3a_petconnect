@@ -43,8 +43,6 @@ if (isset($_POST["resend"])){
                 <p>Congratulations, your account has been successfully created.</p>
                 <p>This is your OTP Code:</p> 
                 <h3>' . $otp . '</h3>
-                <p>Please click the link to verify your email address:</p>
-                <p><a href="http://localhost/petconnect/verify.php">Click to Verify</a></p>
                 <p>Thank you for signing up.</p>';
           
                 if(!$mail->send()){
