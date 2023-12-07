@@ -135,9 +135,36 @@ class AppointmentModelController{
 
     public function update_appointment_admin($responsibleId,$id, $status){
         //get old and new data
+        $oldData = $this->get_appointment_data_by_id($id);
+        $newData = [
+            "status" => $status
+        ];
         //update appointment
-        //get new data
+        $this->appointment->update($id, $newData);
         //audit log
+        $log = new AuditModelController();
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $responsibleId,
+                    "UPDATE",
+                    "APPOINTMENT",
+                    $key,
+                    $id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
         //send email to the user
+        $title = "Appointment Status Update";
+        $body = "Your appointment has been " . $status;
+        $this->make_email($oldData->email, $oldData->fname . ' ' . $oldData->lname, $title, $body);
+        return true;
+    }
+
+    public function search($value, $columns, $userOperator=null){
+        $appointment = $this->appointment;
+        return $appointment->with("user")->search($value, $columns,$userOperator);
     }
 }
