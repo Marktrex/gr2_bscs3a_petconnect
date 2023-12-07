@@ -39,7 +39,7 @@ class AuditModelController{
         return $audit->with("user")->find($number);
     }
 
-    public function search($value, $columns)
+    public function search($value, $columns, $userOperator=null)
     {
         $audit = $this->audit;
         return $audit->with("user")->search($value, $columns);

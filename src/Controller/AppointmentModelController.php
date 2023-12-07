@@ -1,10 +1,11 @@
 <?php
 namespace MyApp\Controller;
 
+use Dotenv\Dotenv;
 use MyApp\Model\Appointment;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use MyApp\Controller\UserModelController;
 use MyApp\Controller\AuditModelController;
 
@@ -73,7 +74,7 @@ class AppointmentModelController{
 
     public function get_appointment_data_by_id($id){
         $appointment = $this->appointment;
-        $appointment_data = $appointment->find($id);
+        $appointment_data = $appointment->with('user')->find($id);
         return $appointment_data;
     }
 
@@ -97,6 +98,9 @@ class AppointmentModelController{
 
 
     private function make_email($recipient, $fullname, $title, $body, $withAttachment=false){
+        $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+        $dotenv->load();
+
         $email = $_ENV['EMAIL'];
         $password = $_ENV['EMAIL_PASSWORD'];
         $mail = new PHPMailer(true);
@@ -135,9 +139,36 @@ class AppointmentModelController{
 
     public function update_appointment_admin($responsibleId,$id, $status){
         //get old and new data
+        $oldData = $this->get_appointment_data_by_id($id);
+        $newData = [
+            "status" => $status
+        ];
         //update appointment
-        //get new data
+        $this->appointment->update($id, $newData);
         //audit log
+        $log = new AuditModelController();
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $responsibleId,
+                    "UPDATE",
+                    "APPOINTMENT",
+                    $key,
+                    $id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
         //send email to the user
+        $title = "Appointment Status Update";
+        $body = "Your appointment has been " . $status;
+        $this->make_email($oldData->email, $oldData->fname . ' ' . $oldData->lname, $title, $body);
+        return true;
+    }
+
+    public function search($value, $columns, $userOperator=null){
+        $appointment = $this->appointment;
+        return $appointment->with("user")->search($value, $columns,$userOperator);
     }
 }

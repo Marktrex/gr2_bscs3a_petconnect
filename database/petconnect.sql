@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2023 at 07:59 AM
+-- Generation Time: Dec 07, 2023 at 01:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,24 +34,26 @@ CREATE TABLE `appointment` (
   `appointment_type` varchar(250) NOT NULL,
   `appointment_date` date DEFAULT NULL,
   `time_slot` varchar(250) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `middle_name` varchar(250) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `mobile_number` varchar(20) NOT NULL,
-  `home_address` varchar(255) NOT NULL,
-  `email_address` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `message` varchar(1000) NOT NULL
+  `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointment_id`, `appointment_type`, `appointment_date`, `time_slot`, `first_name`, `middle_name`, `last_name`, `mobile_number`, `home_address`, `email_address`, `user_id`, `status`, `message`) VALUES
-(1, 'Adopt', '2023-11-02', 'Morning Session', '1', '1', '1', '1', '1', '1@gmail.com', 2, 'Accepted', 'Good Day, Ma\'am/Sir,\n\nYour appointment is confirmed. Kindly message us within 24 hours if you would like to reschedule or cancel your appointment. Thank you!\n\nVery truly yours,\nRePaw City'),
-(2, 'Adopt', '2023-11-15', 'Afternoon Session', '123', '123', '123', '123', '123', '123@gmail.com', 15, 'Accepted', 'Good Day, Ma\'am/Sir,\n\nYour appointment is confirmed. Kindly message us within 24 hours if you would like to reschedule or cancel your appointment. Thank you!\n\nVery truly yours,\nRePaw City');
+INSERT INTO `appointment` (`appointment_id`, `appointment_type`, `appointment_date`, `time_slot`, `user_id`, `status`, `token`) VALUES
+(1, 'Adopt', '2023-12-20', 'Morning Session', 2, 'Accepted', NULL),
+(2, 'Adopt', '2023-12-20', 'Afternoon Session', 15, 'Accepted', NULL),
+(3, 'Adopt', '2023-12-21', 'Morning Session', 2, 'Accepted', NULL),
+(5, 'Donate', '2023-12-18', 'Morning Session', 3, 'Disabled', '8bb61ecc0da234a26eba7c3aaf9532de'),
+(6, 'Donate', '2024-01-01', 'Morning Session', 3, 'Disabled', 'bc0a4bf9fc3982630848e872f8847b07'),
+(7, 'Donate', '2023-12-25', 'Morning Session', 3, 'Disabled', '824a9b2cd7e73d31279d9f3c1b028421'),
+(8, 'Donate', '2023-12-26', 'Afternoon Session', 3, 'Disabled', 'd0c684b8e2289e8bb70bea926ae30c2c'),
+(9, 'Donate', '2023-12-26', 'Morning Session', 3, 'Disabled', 'd4dfa75e9da3932e1aad02248cecc5a3'),
+(10, 'Donate', '2023-12-27', 'Morning Session', 3, 'Disabled', '71c7f91d73c31320b34eedcc0f2a8a47'),
+(11, 'Donate', '2023-12-28', 'Morning Session', 3, 'Accepted', '936c25891186d13d8f6fb778c5a12e3c');
 
 -- --------------------------------------------------------
 
@@ -76,7 +78,22 @@ CREATE TABLE `audit_log` (
 --
 
 INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `date_time`, `old_value`, `new_value`, `table_affected`, `id_affected`, `column_affected`) VALUES
-(108, 29, 'INSERT', '2023-12-04 19:57:42', 'None', 'None', 'USER', 29, 'All');
+(108, 29, 'INSERT', '2023-12-04 19:57:42', 'None', 'None', 'USER', 29, 'All'),
+(109, 4, 'UPDATE', '2023-12-05 15:10:04', 'sanoke', 'sanoke2', 'USER', 3, 'fname'),
+(110, 4, 'UPDATE', '2023-12-05 15:10:05', 'sample', 'sample2', 'USER', 3, 'lname'),
+(111, 4, 'UPDATE', '2023-12-05 15:10:05', 'image_656dbad249834.png', 'image_656eccccd2256.png', 'USER', 3, 'photo'),
+(112, 4, 'UPDATE', '2023-12-05 15:10:10', '2', '1', 'USER', 3, 'user_type'),
+(113, 4, 'UPDATE', '2023-12-05 15:10:15', '1', '2', 'USER', 3, 'user_type'),
+(114, 4, 'UPDATE', '2023-12-05 15:21:47', 'sanoke2', 'sanoke', 'USER', 3, 'fname'),
+(115, 4, 'UPDATE', '2023-12-05 15:21:48', 'sample2', 'sample', 'USER', 3, 'lname'),
+(116, 4, 'UPDATE', '2023-12-05 15:21:48', 'user@sample', 'user1@sample', 'USER', 3, 'email'),
+(117, 4, 'UPDATE', '2023-12-05 15:21:48', 'image_656eccccd2256.png', 'image_656ecf8bd02c2.jpg', 'USER', 3, 'photo'),
+(118, 4, 'UPDATE', '2023-12-05 15:21:56', '2', '1', 'USER', 3, 'user_type'),
+(119, 4, 'UPDATE', '2023-12-05 15:21:59', '1', '2', 'USER', 3, 'user_type'),
+(120, 3, 'UPDATE', '2023-12-06 21:17:28', 'sanoke', 'sanoke2', 'USER', 3, 'fname'),
+(121, 4, 'UPDATE', '2023-12-07 12:55:30', 'Pending', 'Accepted', 'APPOINTMENT', 11, 'status'),
+(122, 4, 'UPDATE', '2023-12-07 12:56:46', 'Pending', 'Accepted', 'APPOINTMENT', 11, 'status'),
+(123, 4, 'UPDATE', '2023-12-07 12:57:58', 'Pending', 'Accepted', 'APPOINTMENT', 11, 'status');
 
 -- --------------------------------------------------------
 
@@ -191,19 +208,21 @@ CREATE TABLE `user` (
   `user_login_status` enum('Logout','Login') NOT NULL,
   `user_token` varchar(100) NOT NULL,
   `user_connection_id` int(5) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL
+  `photo` varchar(255) DEFAULT NULL,
+  `home_address` text DEFAULT NULL,
+  `mobile_number` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_verification_code`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`, `photo`) VALUES
-(3, 'sanoke', 'sample', 'user@sample', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-12-04 11:42:07', '', 'Disabled', 'Logout', '12d9531a332d39daf8010773a044719d', 92, 'image_656dbad249834.png'),
-(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-04 11:55:37', '', 'Disabled', 'Logout', '9d90e833d765f0fdecdd28c63356687f', 88, NULL),
-(26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$Fhk9/MQjYUMeVrq44H0uZO0veXRch59wmy4qMtNAl6wiqyxgeYsqm', '2', '2023-11-30 19:26:22', '', 'Enabled', 'Login', 'e986f62136b056817609fb25367191f7', 0, NULL),
-(27, 'aras', 'aras', '1233@sample', '123', '1', '2023-12-04 10:13:22', '', '', 'Logout', '', 0, NULL),
-(29, '12', '12', '222@sample', '$2y$10$SC2jZScWWkAiY3BSqL3Ik.haX4lWicUNObLqIK33gM/f3Z3caz2HW', '2', '2023-12-04 11:57:42', '', 'Disabled', 'Logout', '', 0, NULL);
+INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_verification_code`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`, `photo`, `home_address`, `mobile_number`) VALUES
+(3, 'sanoke2', 'sanoke2', 'ajtagle12@gmail.com', '$2y$10$GgCWeReImQYhoIFWr3Mv/.C.ukeU5FAEkLjN4qFDoDrkgUEpUji4G', '2', '2023-12-07 03:46:51', '', 'Enabled', 'Logout', '053f16c9df0d01295dec545596333714', 92, 'image_656ecf8bd02c2.jpg', '123123', '23123'),
+(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-07 03:48:08', '', 'Enabled', 'Login', '8de6504c265f537114d599cd29278c6e', 88, NULL, NULL, ''),
+(26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$Fhk9/MQjYUMeVrq44H0uZO0veXRch59wmy4qMtNAl6wiqyxgeYsqm', '2', '2023-11-30 19:26:22', '', 'Enabled', 'Login', 'e986f62136b056817609fb25367191f7', 0, NULL, NULL, ''),
+(27, 'aras', 'aras', '1233@sample', '123', '1', '2023-12-04 10:13:22', '', '', 'Logout', '', 0, NULL, NULL, ''),
+(29, '12', '12', '222@sample', '$2y$10$SC2jZScWWkAiY3BSqL3Ik.haX4lWicUNObLqIK33gM/f3Z3caz2HW', '2', '2023-12-04 11:57:42', '', 'Disabled', 'Logout', '', 0, NULL, NULL, '');
 
 --
 -- Indexes for dumped tables
@@ -259,13 +278,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `call_table`
