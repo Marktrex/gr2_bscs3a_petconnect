@@ -6,6 +6,14 @@
         header("Location: dist/user/home.php");
         exit();
     }
+    if(isset($_COOKIE['email']) && isset($_COOKIE['password'])){
+        $id=$_COOKIE['email'];
+        $pass=$_COOKIE['password'];
+    }
+    else{
+        $id="";
+        $pass="";
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,35 +55,34 @@
              name="login" action="dist/function/authcode.php" method="post">
              <!-- intro -->
                 <div class="custom-text">
-                <h2 class="text-5xl font-bold" data-translate="Login">Login</h2>
-                <p class="my-3" data-translate="Welcome back, some of our furry friends are looking for their forever home!">Welcome back, some of our furry friends are looking for their forever home!</p>
+                <h2 class="text-5xl font-bold">Login</h2>
+                <p class="my-3">Welcome back, some of our furry friends are looking for their forever home!</p>
                 </div>
                 <!-- inputs -->
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-envelope icon custom-important-text
                             absolute top-[3px] "></i>
-                    <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required >
+                    <input class="custom-input " type="email" placeholder="Email" name="email" id="username" required value="<?php echo $id?>">
                 </div>
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-lock icon custom-important-text
                             absolute top-[3px] "></i>
                     <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
-                        required>
+                        required value="<?php echo $pass?>">
                 </div>
                 <!-- checkbox -->
                 <div class="flex justify-between
                             custom-text">
                     <div class="select-none ">
-                        <input type="checkbox" id="check"/>
-                        <label for="check" class="cursor-pointer" data-translate="Remember me">Remember me</label>
+                        <input type="checkbox" name="remember_me" id="check"/> <label for="check" class="cursor-pointer">Remember me</label>
                     </div>
-                    <a href="forgotpassword.php" class="custom-important-text hover:underline underline-offset-2" data-translate="Forgot Password?">Forgot Password?</a>
+                    <a href="forgotpassword.php" class="custom-important-text hover:underline underline-offset-2">Forgot Password?</a>
                 </div>
                 <input type="submit" name="login" value="Login" class="custom-button">
                 <section class="custom-text">
                     <div class="sign-up-container">
-                    <p data-translate="Don't have an account?">Don't have an account?</p>
-                   <a href="signuppage.php" span class="custom-important-text hover:underline underline-offset-2" data-translate="Sign up">Sign up</span></a>
+                    <p>Don't have an account?</p>
+                   <a href="signuppage.php" span class="custom-important-text hover:underline underline-offset-2">Sign up</span></a>
                     </div>
                 </section>
             </form>

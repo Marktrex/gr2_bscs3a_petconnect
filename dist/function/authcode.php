@@ -89,12 +89,23 @@ if (isset($_POST["login"])) {
                 'user_status' => $userStatus // assuming 'user_status' is part of the session data
 
             ];
-    
-
+            if (isset($_POST['remember_me'])) {
+                // Set secure and HTTP-only cookies for remembering email and password
+                setcookie('email', $_POST['email'], time() + (60 * 60 * 24), '/', '', true, true);
+                setcookie('password', $_POST['password'], time() + (60 * 60 * 24), '/', '', true, true);
+           
             echo '<script language="javascript">';
             header("Location: ../user/home.php");
-
             echo '</script>';
+            }
+            else{
+                setcookie('email','', time() - (60 * 60 * 24), '/', '', false, false);
+                setcookie('password','', time() - (60 * 60 * 24), '/', '', false, false);
+
+            }
+        echo '<script language="javascript">';
+        header("Location: ../user/home.php");
+        echo '</script>';
         }
         
     } else {
