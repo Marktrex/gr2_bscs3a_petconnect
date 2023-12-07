@@ -183,7 +183,7 @@ $eventsJson = json_encode($events);
             </nav>
         </header>
         <main class="content">
-            <input type="date" id="date-input">
+            <input type="hidden" id="date-input">
         <div id='calendar'></div>
             <div class="cards">
                 
@@ -376,69 +376,68 @@ $eventsJson = json_encode($events);
                     </tr>
                         <?php
                         // Check if the date-input field is submitted
-                        if (isset($_POST['date-input'])) {
-                            // Retrieve the selected date from the input field
-                            $date = $_POST['date-input'];
+                            if (isset($_POST['date-input'])) {
+                                // Retrieve the selected date from the input field
+                                $date = $_POST['date-input'];
 
-                            // Retrieve the selected time slot
-                            $time_slot = 'Afternoon Session';
+                                // Retrieve the selected time slot
+                                $time_slot = 'Afternoon Session';
 
-                            // Query the database to fetch the appointments for the selected date and time slot
-                            $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-                            $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
-                            $stmt->execute();
-                            // $result = mysqli_query($conn, $query);
+                                // Query the database to fetch the appointments for the selected date and time slot
+                                $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+                                $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
+                                $stmt->execute();
+                                // $result = mysqli_query($conn, $query);
 
-                            // Check if there are any appointments
-                            if ($stmt->rowCount() > 0) {
-                                // Iterate over each appointment and create table rows
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    $type = $row['appointment_type'];
-                                    $firstName = $row['first_name'];
-                                    $middleName = $row['middle_name'];
-                                    $lastName = $row['last_name'];
-                                    $mobile = $row['mobile_number'];
-                                    $address = $row['home_address'];
-                                    $email = $row['email_address'];
-                                    $time = $row['time_slot'];
-                                    $status = $row['status'];
-                                    $appointmentId = $row['appointment_id'];
-                                    $userId = $row['user_id'];
+                                // Check if there are any appointments
+                                if ($stmt->rowCount() > 0) {
+                                    // Iterate over each appointment and create table rows
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        $type = $row['appointment_type'];
+                                        $firstName = $row['first_name'];
+                                        $middleName = $row['middle_name'];
+                                        $lastName = $row['last_name'];
+                                        $mobile = $row['mobile_number'];
+                                        $address = $row['home_address'];
+                                        $email = $row['email_address'];
+                                        $time = $row['time_slot'];
+                                        $status = $row['status'];
+                                        $appointmentId = $row['appointment_id'];
+                                        $userId = $row['user_id'];
 
-                                    // Combine the first name, middle name, and last name
-                                    $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
+                                        // Combine the first name, middle name, and last name
+                                        $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
 
-                                    // Output the table rows with appointment details
-                                    echo '<tr>';
-                                    echo '<td>' . $type . '</td>';
-                                    echo '<td>' . $fullName . '</td>';
-                                    echo '<td>' . $mobile . '</td>';
-                                    echo '<td>' . $address . '</td>';
-                                    echo '<td>' . $email . '</td>';
-                                    echo '<td>';
+                                        // Output the table rows with appointment details
+                                        echo '<tr>';
+                                        echo '<td>' . $type . '</td>';
+                                        echo '<td>' . $fullName . '</td>';
+                                        echo '<td>' . $mobile . '</td>';
+                                        echo '<td>' . $address . '</td>';
+                                        echo '<td>' . $email . '</td>';
+                                        echo '<td>';
 
-                                    if ($status == 'Pending') {
-                                        // Show the "Accept" and "Cancel" buttons
-                                        echo '<span class = "action-btn">';
-                                        echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                        echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
-                                        echo '</span>';
-                                    } else {
-                                        // Show the status value
-                                        echo $status;
+                                        if ($status == 'Pending') {
+                                            // Show the "Accept" and "Cancel" buttons
+                                            echo '<span class = "action-btn">';
+                                            echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
+                                            echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                            echo '</span>';
+                                        } else {
+                                            // Show the status value
+                                            echo $status;
+                                        }
+
+                                        echo '</td>';
+                                        echo '</tr>';
                                     }
-
-                                    echo '</td>';
-                                    echo '</tr>';
+                                } else {
+                                    // No appointments found for the selected date and time slot
+                                    echo '<tr><td colspan="8">No appointments available</td></tr>';
                                 }
-                            } else {
-                                // No appointments found for the selected date and time slot
-                                echo '<tr><td colspan="8">No appointments available</td></tr>';
                             }
-
-                        }
                         ?>
                     </tbody>
                 </table>

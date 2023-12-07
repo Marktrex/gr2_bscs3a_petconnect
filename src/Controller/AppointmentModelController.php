@@ -30,7 +30,7 @@ class AppointmentModelController{
         foreach ($oldData as $key => $value)  {
             if(array_key_exists($key, $newData) && $value != $newData[$key]){
                 $log->activity_log(
-                    $_SESSION['auth_user']['id'],
+                    $userId,
                     "UPDATE",
                     "USER",
                     $key,
@@ -59,6 +59,16 @@ class AppointmentModelController{
         ';
 
         $this->make_email($recipient, $fullname, "Appointment Confirmation", $body, true);
+
+        $log->activity_log(
+            $userId,
+            "INSERT",
+            "APPOINTMENT",
+            "All",
+            $userId,
+            "None",
+            "All"
+        );
     }
 
     public function get_appointment_data_by_id($id){
@@ -121,5 +131,13 @@ class AppointmentModelController{
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    public function update_appointment_admin($responsibleId,$id, $status){
+        //get old and new data
+        //update appointment
+        //get new data
+        //audit log
+        //send email to the user
     }
 }
