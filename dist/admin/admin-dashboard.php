@@ -1,4 +1,7 @@
 <?php
+
+use MyApp\Controller\AppointmentModelController;
+require_once __DIR__ . '/../../vendor/autoload.php';
 require '../function/config.php';
 session_start();
 
@@ -183,26 +186,17 @@ $eventsJson = json_encode($events);
             </nav>
         </header>
         <main class="content">
-            <input type="hidden" id="date-input">
+            <form action="" method="post" style = "display:none">
+                <input type="date" id="date-input" name="date-input" onchange = "this.form.submit()">
+            </form>
         <div id='calendar'></div>
             <div class="cards">
-                
-                <!--Appointments-->
-                <div class="card">
-                <i class="fa fa-calendar fa-5x"></i>
-                <div class="box">
-                    <div class="card-number">
-                        100
-                    </div>
-                    <h1>APPOINTMENTS</h1>
-                </div>
-                </div>
                 <!--Adopt-->
                 <div class="card">
                 <i class="fa fa-paw fa-5x"></i>
                 <div class="box">
                     <div class="card-number">
-                        99
+                        <?php echo $countAdopt?>
                     </div>
                     <h1>ADOPT</h1>
                 </div>
@@ -212,7 +206,7 @@ $eventsJson = json_encode($events);
                 <i class="fa fa-users fa-5x"></i>
                 <div class="box">
                     <div class="card-number">
-                        10
+                        <?php echo $countVolunteer?>
                     </div>
                     <h1>VOLUNTEER</h1>
                 </div>
@@ -222,7 +216,7 @@ $eventsJson = json_encode($events);
                 <i class="fa fa-money fa-5x"></i>
                 <div class="box">
                     <div class="card-number">
-                        5
+                        <?php echo $countDonate?>
                     </div>
                     <h1>Donate</h1>
                 </div>
@@ -232,7 +226,7 @@ $eventsJson = json_encode($events);
                 <i class="fa fa-eye fa-5x"></i>
                 <div class="box">
                     <div class="card-number">
-                        8
+                        <?php echo $countVisit?>
                     </div>
                     <h1>Visit</h1>
                 </div>
@@ -248,96 +242,64 @@ $eventsJson = json_encode($events);
                         <tr>
                             <th>Type</th>
                             <th>Name</th>
-                            <th>Mobile #</th>
-                            <th>Address</th>
                             <th>Email</th>
+                            <th>Mobile #</th>
+                            <th>Home Address</th>
                             <th>Status</th>
+                            <th>Option</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Data1</td>
-                            <td>Data2</td>
-                            <td>Data3</td>
-                            <td>Data4</td>
-                            <td>Data5</td>
-                            <td>
-                            <span class="action-btn">
-                                <a href="#">Accept</a>
-                                <a href="#" class="delete-link">Delete</a>
-                            </span>
-                            </td>
-                        </tr>
-                        <?php
-                        // Check if the date-input field is submitted //code for accepting appointments in the morning session
-                        if (isset($_POST['date-input'])) {
-                            // Retrieve the selected date from the input field
-                            $date = $_POST['date-input'];
+                            <?php
+                            // Check if the date-input field is submitted //code for accepting appointments in the morning session
+                            if (isset($_POST['date-input'])) {
+                                // Retrieve the selected date from the input field
+                                $date = $_POST['date-input'];
 
-                            // Retrieve the selected time slot
-                            $time_slot = 'Morning Session';
+                                // Retrieve the selected time slot
+                                $time_slot = 'Morning Session';
 
-                            // Query the database to fetch the appointments for the selected date and time slot
-                            // $query = "SELECT * FROM appointment WHERE appointment_date = '$date' AND time_slot = '$time_slot'";
-                            // $result = mysqli_query($conn, $query);
+                                // Check if there are any appointments
+                                $appointment = new AppointmentModelController();
+                                $result = $appointment->search([$date, $time_slot], [["appointment_date"], ["time_slot"]], [true, true]);
+                                if (count($result) > 0) {
+                                    foreach ($result as $row) {
+                                        // Combine the first name, middle name, and last name
+                                        $fullName = $row->fname . ' ' . $row->lname;
 
-                            $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
-                            $result = $conn->prepare($sql); // sql query of php pdo
-                            $result->bindParam(':date', $date, PDO::PARAM_STR);
-                            $result->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
-                            // Execute the query
-                            $result->execute();
+                                        // Output the table rows with appointment details
+                                        echo '<tr>';
+                                        echo '<td>' . $row->appointment_type . '</td>';
+                                        echo '<td>' . $fullName . '</td>';
+                                        echo '<td>' . $row->mobile_number . '</td>';
+                                        echo '<td>' . $row->home_address . '</td>';
+                                        echo '<td>' . $row->email . '</td>';
+                                        echo '<td>' .$row->status. '</td>';
+                                        echo '<td>';
+                                        if ($row->status == 'Pending') {
+                                            // Show the "Accept" and "Cancel" buttons
+                                            echo '<span class = "action-btn">';
+                                            echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
+                                            echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
+                                            echo '</span>';
+                                        } else {
+                                            // Show the status value
+                                            echo $row->status;
+                                        }
 
-                            // $result = mysqli_query($conn, $query);
-
-                            // Check if there are any appointments
-                            if ($result->rowCount() > 0) {
-                                // Iterate over each appointment and create table rows
-                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                    $type = $row['appointment_type'];
-                                    $firstName = $row['first_name'];
-                                    $middleName = $row['middle_name'];
-                                    $lastName = $row['last_name'];
-                                    $mobile = $row['mobile_number'];
-                                    $address = $row['home_address'];
-                                    $email = $row['email_address'];
-                                    $time = $row['time_slot'];
-                                    $status = $row['status'];
-                                    $appointmentId = $row['appointment_id'];
-
-                                    // Combine the first name, middle name, and last name
-                                    $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
-
-                                    // Output the table rows with appointment details
-                                    echo '<tr>';
-                                    echo '<td>' . $type . '</td>';
-                                    echo '<td>' . $fullName . '</td>';
-                                    echo '<td>' . $mobile . '</td>';
-                                    echo '<td>' . $address . '</td>';
-                                    echo '<td>' . $email . '</td>';
-                                    echo '<td>';
-
-                                    if ($status == 'Pending') {
-                                        // Show the "Accept" and "Cancel" buttons
-                                        echo '<span class = "action-btn">';
-                                        echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                        echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
-                                        echo '</span>';
-                                    } else {
-                                        // Show the status value
-                                        echo $status;
+                                        echo '</td>';
+                                        echo '</tr>';
                                     }
-
-                                    echo '</td>';
-                                    echo '</tr>';
+                                } else {
+                                    // No appointments found for the selected date and time slot
+                                    echo '<tr><td colspan="7">No appointments available</td></tr>';
                                 }
-                            } else {
-                                // No appointments found for the selected date and time slot
-                                echo '<tr><td colspan="8">No appointments available</td></tr>';
-                            }
 
-                        }
-                        ?>
+                            }
+                            ?>
+                        </tr>
+                        
                     </tbody>
                 </table>
 
@@ -352,30 +314,19 @@ $eventsJson = json_encode($events);
 
                     <thead>
                         <tr>
-                        <th data-translate="Type">Type</th>
-                        <th data-translate="Name">Name</th>
-                        <th data-translate="Mobile #">Mobile #</th>
-                        <th data-translate="Address">Address</th>
-                        <th data-translate="Email">Email</th>
-                        <th data-translate="Status">Status</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile #</th>
+                            <th>Home Address</th>
+                            <th>Status</th>
+                            <th>Option</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Data1</td>
-                        <td>Data2</td>
-                        <td>Data3</td>
-                        <td>Data4</td>
-                        <td>Data5</td>
-                        <td>
-                        <span class="action-btn">
-                            <a href="#">Accept</a>
-                            <a href="#" class="delete-link">Delete</a>
-                        </span>
-                        </td>
-                    </tr>
-                        <?php
-                        // Check if the date-input field is submitted
+                        <tr>
+                            <?php
+                            // Check if the date-input field is submitted //code for accepting appointments in the morning session
                             if (isset($_POST['date-input'])) {
                                 // Retrieve the selected date from the input field
                                 $date = $_POST['date-input'];
@@ -383,51 +334,32 @@ $eventsJson = json_encode($events);
                                 // Retrieve the selected time slot
                                 $time_slot = 'Afternoon Session';
 
-                                // Query the database to fetch the appointments for the selected date and time slot
-                                $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
-                                $stmt = $conn->prepare($sql);
-                                $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-                                $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
-                                $stmt->execute();
-                                // $result = mysqli_query($conn, $query);
-
                                 // Check if there are any appointments
-                                if ($stmt->rowCount() > 0) {
-                                    // Iterate over each appointment and create table rows
-                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        $type = $row['appointment_type'];
-                                        $firstName = $row['first_name'];
-                                        $middleName = $row['middle_name'];
-                                        $lastName = $row['last_name'];
-                                        $mobile = $row['mobile_number'];
-                                        $address = $row['home_address'];
-                                        $email = $row['email_address'];
-                                        $time = $row['time_slot'];
-                                        $status = $row['status'];
-                                        $appointmentId = $row['appointment_id'];
-                                        $userId = $row['user_id'];
-
+                                $appointment = new AppointmentModelController();
+                                $result = $appointment->search([$date, $time_slot], [["appointment_date"], ["time_slot"]], [true, true]);
+                                if (count($result) > 0) {
+                                    foreach ($result as $row) {
                                         // Combine the first name, middle name, and last name
-                                        $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
+                                        $fullName = $row->fname . ' ' . $row->lname;
 
                                         // Output the table rows with appointment details
                                         echo '<tr>';
-                                        echo '<td>' . $type . '</td>';
+                                        echo '<td>' . $row->appointment_type . '</td>';
                                         echo '<td>' . $fullName . '</td>';
-                                        echo '<td>' . $mobile . '</td>';
-                                        echo '<td>' . $address . '</td>';
-                                        echo '<td>' . $email . '</td>';
+                                        echo '<td>' . $row->mobile_number . '</td>';
+                                        echo '<td>' . $row->home_address . '</td>';
+                                        echo '<td>' . $row->email . '</td>';
+                                        echo '<td>' .$row->status. '</td>';
                                         echo '<td>';
-
-                                        if ($status == 'Pending') {
+                                        if ($row->status == 'Pending') {
                                             // Show the "Accept" and "Cancel" buttons
                                             echo '<span class = "action-btn">';
-                                            echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                            echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                            echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
+                                            echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
                                             echo '</span>';
                                         } else {
                                             // Show the status value
-                                            echo $status;
+                                            echo $row->status;
                                         }
 
                                         echo '</td>';
@@ -435,10 +367,13 @@ $eventsJson = json_encode($events);
                                     }
                                 } else {
                                     // No appointments found for the selected date and time slot
-                                    echo '<tr><td colspan="8">No appointments available</td></tr>';
+                                    echo '<tr><td colspan="7">No appointments available</td></tr>';
                                 }
+
                             }
-                        ?>
+                            ?>
+                        </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -497,7 +432,6 @@ $eventsJson = json_encode($events);
     </div>
 </body>
 
-<script src="../script/admin-general.js"></script>
 </html>
 
 <script>
@@ -513,22 +447,19 @@ $eventsJson = json_encode($events);
     
 
 <script>
-    // Get all the "Accept" buttons
-    const acceptButtons = document.querySelectorAll('.accept-btn');
-    acceptButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const appointmentId = this.dataset.appointmentId;
+    // Attach event listeners to the document
+    document.addEventListener('click', function(event) {
+        event.preventDefault();
+        // Check if the clicked element is an "Accept" button
+        if (event.target.matches('.accept-btn')) {
+            const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Accepted');
-        });
-    });
-
-    // Get all the "Cancel" buttons
-    const cancelButtons = document.querySelectorAll('.cancel-btn');
-    cancelButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const appointmentId = this.dataset.appointmentId;
+        }
+        // Check if the clicked element is a "Cancel" button
+        else if (event.target.matches('.cancel-btn')) {
+            const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Cancelled');
-        });
+        }
     });
 
     // Function to update the status via AJAX
@@ -541,9 +472,12 @@ $eventsJson = json_encode($events);
             // Check if the request was successful
             if (xhr.status === 200) {
                 // Reload the page to reflect the updated status
-                location.reload();
+                // location.reload();
             }
         };
         xhr.send('appointmentId=' + appointmentId + '&status=' + status);
     }
 </script>
+
+
+<script src="../script/admin-general.js"></script>

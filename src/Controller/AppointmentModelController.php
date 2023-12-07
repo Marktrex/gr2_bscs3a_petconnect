@@ -1,10 +1,11 @@
 <?php
 namespace MyApp\Controller;
 
+use Dotenv\Dotenv;
 use MyApp\Model\Appointment;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use MyApp\Controller\UserModelController;
 use MyApp\Controller\AuditModelController;
 
@@ -73,7 +74,7 @@ class AppointmentModelController{
 
     public function get_appointment_data_by_id($id){
         $appointment = $this->appointment;
-        $appointment_data = $appointment->find($id);
+        $appointment_data = $appointment->with('user')->find($id);
         return $appointment_data;
     }
 
@@ -97,6 +98,9 @@ class AppointmentModelController{
 
 
     private function make_email($recipient, $fullname, $title, $body, $withAttachment=false){
+        $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+        $dotenv->load();
+
         $email = $_ENV['EMAIL'];
         $password = $_ENV['EMAIL_PASSWORD'];
         $mail = new PHPMailer(true);

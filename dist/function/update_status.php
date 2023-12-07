@@ -10,9 +10,8 @@ if (isset($_POST['appointmentId']) && isset($_POST['status'])) {
     $appointmentId = $_POST['appointmentId'];
     $status = $_POST['status'];
     $appointment = new AppointmentModelController();
-    $success = $appointment->updateStatus($_SESSION['auth_user']['id'],$appointmentId, $status);
+    $success = $appointment->update_appointment_admin($_SESSION['auth_user']['id'],$appointmentId, $status);
     
-
     if ($success) {
         http_response_code(200);
         echo "Status updated successfully";

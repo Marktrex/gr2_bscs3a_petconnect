@@ -13,10 +13,12 @@ closeBtn.addEventListener("click", () => menuBtn.click());
 // updating profile
 let profilePic = document.getElementById("profile-pic");
 let inputFile = document.getElementById("image");
+if(profilePic && inputFile) {
+    inputFile.onchange = function () {
+      profilePic.src = URL.createObjectURL(inputFile.files[0]);
+  };
+}
 
-inputFile.onchange = function () {
-    profilePic.src = URL.createObjectURL(inputFile.files[0]);
-};
 
 
 function activeLink() {
