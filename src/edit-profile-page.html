@@ -1,118 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Profile   |   PetConnet</title>
-  <link rel="stylesheet" href="edit-profile-page.css">
-  <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile | PetConnet</title>
+    <link rel="stylesheet" href="edit-profile-page.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<body>
-  <main class="content">
-    <h1>My Profile</h1>
-    <hr>
-    <div class="container">
+  <body>
+    <main class="content">
+      <h1>My Profile</h1>
+      <hr />
+      <div class="container">
         <div class="user-profile">
-            <img src="icons/default-user-icon-8.jpg" id="profile-pic">
-            <label for="input-file" class="img-label">Upload Photo</label>
-            <input
-                type="file" accept="image/jpeg, image/jpg, image/png" id="input-file"/>
+          <img src="icons/default-user-icon-8.jpg" id="profile-pic" />
+          <label for="input-file" class="img-label">Upload Photo</label>
+          <input
+            type="file"
+            accept="image/jpeg, image/jpg, image/png"
+            id="input-file"
+          />
         </div>
-        
+
         <div class="info-box">
           <h3>Edit Account Information</h3>
-            <div class="info-box-2col">
-              <div class="acc-info">
-                <label for="fname">First Name</label>
-                <input type="text" class="fname" id="fname">
-              </div>
-              
-              <div class="acc-info">
-                <label for="lname">Last Name</label>
-                <input type="text" class="lname" id="lname">
-              </div>
-      
-              <div class="acc-info-gender">
-                <label for="gender">Gender</label><br>
-                <input type="text" class="gender" id="gender">
-              </div>
-      
-              <div class="acc-info">
-                <label for="bday">Birthdate</label><br>
-                <input type="date" class="bday" id="bday">
-              </div>
+          <div class="info-box-2col">
+            <div class="acc-info">
+              <label for="fname">First Name</label>
+              <input type="text" class="fname" id="fname" />
             </div>
 
-            <div class="info-box-1col">
-              <div class="acc-info">
-                <label for="num">Phone Number</label><br>
-                <input type="number" class="num" id="num" max="11">
-              </div>
+            <div class="acc-info">
+              <label for="lname">Last Name</label>
+              <input type="text" class="lname" id="lname" />
             </div>
-          
-            <h3>Change Email</h3>
 
-            <div class="info-box-2col">
-              <div class="acc-info">
-                <label for="email">Email</label><br>
-                <input type="email" class="email" id="email">
-              </div>
-  
-              <div class="acc-info">
-                <label for="cur-pass">Enter Current Password </label><br>
-                <input type="password" class="cur-pass" id="cur-pass">
-              </div>
+            <div class="acc-info-gender">
+              <label for="gender">Gender</label><br />
+              <input type="text" class="gender" id="gender" />
             </div>
-            
-            <h3>Change Password</h3>
-            <div class="info-box-1col">
-              <div class="acc-info">
-                <label for="new-pass">New Password</label><br>
-                <input type="password" class="new-pass" id="new-pass">
-              </div>
-  
-              <div class="acc-info">
-                <label for="con-pass">Confirm Password</label><br>
-                <input type="password" class="con-pass" id="con-pass">
-              </div>
+
+            <div class="acc-info">
+              <label for="bday">Birthdate</label><br />
+              <input type="date" class="bday" id="bday" />
             </div>
-            
+          </div>
+
+          <div class="info-box-1col">
+            <div class="acc-info">
+              <label for="num">Phone Number</label><br />
+              <input type="number" class="num" id="num" max="11" />
+            </div>
+          </div>
+
+          <h3>Change Email</h3>
+
+          <div class="info-box-2col">
+            <div class="acc-info">
+              <label for="email">Email</label><br />
+              <input type="email" class="email" id="email" />
+            </div>
+
+            <div class="acc-info">
+              <label for="cur-pass">Enter Current Password </label><br />
+              <input type="password" class="cur-pass" id="cur-pass" />
+            </div>
+          </div>
+
+          <h3>Change Password</h3>
+          <div class="info-box-1col">
+            <div class="acc-info">
+              <label for="new-pass">New Password</label><br />
+              <input type="password" class="new-pass" id="new-pass" />
+            </div>
+
+            <div class="acc-info">
+              <label for="con-pass">Confirm Password</label><br />
+              <input type="password" class="con-pass" id="con-pass" />
+            </div>
+          </div>
+        
         </div>
-    </div>
-  </main>
-  <div class="save-button">
+      </div>
+    </main>
+    <div class="save-button">
       <button class="save">Save Changes</button>
-  </div>
+    </div>
+    
+    <script>
+      const header = document.querySelector("header");
+      const hamburgerBtn = document.querySelector("#hamburger-btn");
+      const closeMenuBtn = document.querySelector("#close-menu-btn");
 
+      // Toggle mobile menu on hamburger button click
+      hamburgerBtn.addEventListener("click", () =>
+        header.classList.toggle("show-mobile-menu")
+      );
 
+      // Close mobile menu on close button click
+      closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+    </script>
+    <script>
+      // updating profile
+      let profilePic = document.getElementById("profile-pic");
+      let inputFile = document.getElementById("input-file");
 
-
-
-  <script>
-    const header = document.querySelector("header");
-    const hamburgerBtn = document.querySelector("#hamburger-btn");
-    const closeMenuBtn = document.querySelector("#close-menu-btn");
-
-    // Toggle mobile menu on hamburger button click
-    hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
-
-    // Close mobile menu on close button click
-    closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
-  </script>
-  <script>
-
-    // updating profile
-    let profilePic = document.getElementById("profile-pic");
-    let inputFile = document.getElementById("input-file");
-
-    inputFile.onchange = function(){
-      profilePic.src = URL.createObjectURL(inputFile.files[0]);
-    }
-  </script>
-
-  
-</body>
+      inputFile.onchange = function () {
+        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+      };
+    </script>
+  </body>
 </html>
