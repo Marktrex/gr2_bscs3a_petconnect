@@ -37,5 +37,10 @@ class DBConnect
     public function quote($value) {
         return $this->pdo->quote($value);
     }
+
+    public function lastInsertId()
+    {
+        return $this->pdo->lastInsertId();
+    }
 }
 ?>

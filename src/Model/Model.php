@@ -53,7 +53,7 @@ class Model
         $sql = "INSERT INTO {$table} ({$keys}) VALUES ({$placeholders});";
         try {
             $this->db->query($sql, $data);
-            return;
+            return $this->db->lastInsertId();
         } catch (PDOException $e) {
             // Output detailed error information for debugging
             echo "Error: " . $e->getMessage();

@@ -43,6 +43,35 @@ $stmtVolunteer->execute();
 $rowVolunteer = $stmtVolunteer->fetch(PDO::FETCH_ASSOC);
 $countVolunteer = $rowVolunteer['volunteer'];
 
+// Retrieve the dates from the appointment table in the database
+$query = "SELECT appointment_date, time_slot FROM appointment";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+
+// Fetch all the results
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Generate event objects for each date
+$events = [];
+foreach ($results as $row) {
+    $date = $row['appointment_date'];
+    $time_slot = $row['time_slot'];
+
+    $event = [
+        "title" => "$time_slot",
+        "start" => $date
+    ];
+    $events[] = $event;
+}
+
+// Sort the events based on the title
+usort($events, function($a, $b) {
+    return strcmp($a['title'], $b['title']);
+});
+
+// Encode the events array to a JSON string
+$eventsJson = json_encode($events);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,16 +94,71 @@ $countVolunteer = $rowVolunteer['volunteer'];
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
 
     <!-- for calendar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    
 
-
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    
 </head>
 
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var dateInput = document.getElementById('date-input');
+
+            var events = <?php echo $eventsJson; ?>;
+            events = events.map(event => {
+                if ((event.title === 'Afternoon Session' && hasMorningSession(event.start))) {
+                    return {
+                        ...event,
+                        classNames: ['unselectable'],
+                        backgroundColor: 'green',
+                        borderColor: '#fad046'
+                    };
+                }
+                return event;
+            });
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                headerToolbar: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                selectable: true,
+                select: function(info) {
+                    var selectedDate = info.startStr;
+                    var today = new Date().toISOString().slice(0, 10);
+
+                    if (selectedDate < today) {
+                        calendar.unselect();
+                        return;
+                    }
+
+                    dateInput.value = selectedDate;
+                    dateInput.dispatchEvent(new Event('change'));
+                },
+                events: events,
+            });
+
+            calendar.render();
+
+            function hasMorningSession(date) {
+                return events.some(function(event) {
+                    return event.title === 'Morning Session' && event.start.slice(0, 10) === date.slice(0, 10);
+                });
+            }
+
+            function hasAfternoonSession(date) {
+                return events.some(function(event) {
+                    return event.title === 'Afternoon Session' && event.start.slice(0, 10) === date.slice(0, 10);
+                });
+            }
+        });
+    </script>
     <div class="container">
         <header class="">
             <nav class="navbar">
@@ -99,13 +183,10 @@ $countVolunteer = $rowVolunteer['volunteer'];
             </nav>
         </header>
         <main class="content">
+            <input type="hidden" id="date-input">
+        <div id='calendar'></div>
             <div class="cards">
-                <!--Calendar-->
-                <div class="card-date">
-                    <div class="box">
-                    <div class="calendar-container"></div>
-                    </div>
-                </div>
+                
                 <!--Appointments-->
                 <div class="card">
                 <i class="fa fa-calendar fa-5x"></i>
@@ -295,69 +376,68 @@ $countVolunteer = $rowVolunteer['volunteer'];
                     </tr>
                         <?php
                         // Check if the date-input field is submitted
-                        if (isset($_POST['date-input'])) {
-                            // Retrieve the selected date from the input field
-                            $date = $_POST['date-input'];
+                            if (isset($_POST['date-input'])) {
+                                // Retrieve the selected date from the input field
+                                $date = $_POST['date-input'];
 
-                            // Retrieve the selected time slot
-                            $time_slot = 'Afternoon Session';
+                                // Retrieve the selected time slot
+                                $time_slot = 'Afternoon Session';
 
-                            // Query the database to fetch the appointments for the selected date and time slot
-                            $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
-                            $stmt = $conn->prepare($sql);
-                            $stmt->bindParam(':date', $date, PDO::PARAM_STR);
-                            $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
-                            $stmt->execute();
-                            // $result = mysqli_query($conn, $query);
+                                // Query the database to fetch the appointments for the selected date and time slot
+                                $sql = "SELECT * FROM appointment WHERE appointment_date = :date AND time_slot = :time_slot";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+                                $stmt->bindParam(':time_slot', $time_slot, PDO::PARAM_STR);
+                                $stmt->execute();
+                                // $result = mysqli_query($conn, $query);
 
-                            // Check if there are any appointments
-                            if ($stmt->rowCount() > 0) {
-                                // Iterate over each appointment and create table rows
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    $type = $row['appointment_type'];
-                                    $firstName = $row['first_name'];
-                                    $middleName = $row['middle_name'];
-                                    $lastName = $row['last_name'];
-                                    $mobile = $row['mobile_number'];
-                                    $address = $row['home_address'];
-                                    $email = $row['email_address'];
-                                    $time = $row['time_slot'];
-                                    $status = $row['status'];
-                                    $appointmentId = $row['appointment_id'];
-                                    $userId = $row['user_id'];
+                                // Check if there are any appointments
+                                if ($stmt->rowCount() > 0) {
+                                    // Iterate over each appointment and create table rows
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        $type = $row['appointment_type'];
+                                        $firstName = $row['first_name'];
+                                        $middleName = $row['middle_name'];
+                                        $lastName = $row['last_name'];
+                                        $mobile = $row['mobile_number'];
+                                        $address = $row['home_address'];
+                                        $email = $row['email_address'];
+                                        $time = $row['time_slot'];
+                                        $status = $row['status'];
+                                        $appointmentId = $row['appointment_id'];
+                                        $userId = $row['user_id'];
 
-                                    // Combine the first name, middle name, and last name
-                                    $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
+                                        // Combine the first name, middle name, and last name
+                                        $fullName = $firstName . ' ' . $middleName . ' ' . $lastName;
 
-                                    // Output the table rows with appointment details
-                                    echo '<tr>';
-                                    echo '<td>' . $type . '</td>';
-                                    echo '<td>' . $fullName . '</td>';
-                                    echo '<td>' . $mobile . '</td>';
-                                    echo '<td>' . $address . '</td>';
-                                    echo '<td>' . $email . '</td>';
-                                    echo '<td>';
+                                        // Output the table rows with appointment details
+                                        echo '<tr>';
+                                        echo '<td>' . $type . '</td>';
+                                        echo '<td>' . $fullName . '</td>';
+                                        echo '<td>' . $mobile . '</td>';
+                                        echo '<td>' . $address . '</td>';
+                                        echo '<td>' . $email . '</td>';
+                                        echo '<td>';
 
-                                    if ($status == 'Pending') {
-                                        // Show the "Accept" and "Cancel" buttons
-                                        echo '<span class = "action-btn">';
-                                        echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
-                                        echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
-                                        echo '</span>';
-                                    } else {
-                                        // Show the status value
-                                        echo $status;
+                                        if ($status == 'Pending') {
+                                            // Show the "Accept" and "Cancel" buttons
+                                            echo '<span class = "action-btn">';
+                                            echo '<button class="" data-appointment-id="' . $appointmentId . '">Accept</button>';
+                                            echo '<button class="delete-link" data-appointment-id="' . $appointmentId . '">Cancel</button>';
+                                            echo '</span>';
+                                        } else {
+                                            // Show the status value
+                                            echo $status;
+                                        }
+
+                                        echo '</td>';
+                                        echo '</tr>';
                                     }
-
-                                    echo '</td>';
-                                    echo '</tr>';
+                                } else {
+                                    // No appointments found for the selected date and time slot
+                                    echo '<tr><td colspan="8">No appointments available</td></tr>';
                                 }
-                            } else {
-                                // No appointments found for the selected date and time slot
-                                echo '<tr><td colspan="8">No appointments available</td></tr>';
                             }
-
-                        }
                         ?>
                     </tbody>
                 </table>
@@ -429,88 +509,8 @@ $countVolunteer = $rowVolunteer['volunteer'];
     }
 </script>
 
-<!-- calendar script -->
-<script>
-    // Function to generate a calendar
-    function generateCalendar() {
-        const calendarContainer = document.querySelector(
-        ".calendar-container"
-        );
-        const currentDate = new Date();
-        const currentDay = currentDate.getDate(); // Get the current day of the month
 
-        const firstDayOfMonth = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1
-        ).getDay();
-        const daysInMonth = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth() + 1,
-        0
-        ).getDate();
-        const currentMonth = currentDate.toLocaleString("default", {
-        month: "long",
-        });
-        const currentYear = currentDate.getFullYear();
-
-        let calendarHTML = `<h2>${currentMonth} ${currentYear}</h2>`;
-
-        // Add days of the week with red color for Sundays
-        calendarHTML += `<div class="days-of-week">
-                            <span class="day red">Sun</span>
-                            <span class="day">Mon</span>
-                            <span class="day">Tue</span>
-                            <span class="day">Wed</span>
-                            <span class="day">Thu</span>
-                            <span class="day">Fri</span>
-                            <span class="day">Sat</span>
-                        </div>`;
-
-        calendarHTML += "<table>";
-
-        // Add empty cells for days before the first day of the month
-        for (let i = 0; i < firstDayOfMonth; i++) {
-        calendarHTML += "<td></td>";
-        }
-
-        let dayCounter = 1;
-        for (let day = 1; day <= daysInMonth; day++) {
-        if (
-            new Date(currentYear, currentDate.getMonth(), day).getDay() === 0
-        ) {
-            calendarHTML += "</tr><tr>";
-        }
-
-        if (day === currentDay) {
-            calendarHTML += `<td class="today">${day}</td>`;
-        } else {
-            // Add the "red" class for Sundays
-            calendarHTML += `<td class="${
-            new Date(currentYear, currentDate.getMonth(), day).getDay() ===
-            0
-                ? "red"
-                : ""
-            }">${day}</td>`;
-        }
-
-        dayCounter++;
-        }
-
-        // Add empty cells for remaining days in the last week
-        for (let i = dayCounter; i <= 7; i++) {
-        calendarHTML += "<td></td>";
-        }
-
-        calendarHTML += "</tr></table>";
-        calendarContainer.innerHTML = calendarHTML;
-    }
-
-    // Call the function to generate the calendar
-    document.addEventListener("DOMContentLoaded", function () {
-        generateCalendar();
-    });
-</script>
+    
 
 <script>
     // Get all the "Accept" buttons
