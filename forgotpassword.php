@@ -67,7 +67,7 @@ print_r($_SESSION);
             $mail->Subject="Recover your password";
             $mail->Body="<b>Dear User</b>
             <h3>We received a request to reset your password.</h3>
-            <p>Kindly click the below link to reset your password</p> 
+            <p>Here is your Recovery code to reset your password</p> 
             <b>$token</b>
             <br>
             <p>With regrads,</p>
@@ -83,7 +83,7 @@ print_r($_SESSION);
                 ?>
                     <script>
                         alert("<?php echo " Email send out !  Kindly check your email inbox. "?>");
-                        window.location.replace("dist/user/loginviatoken.php");
+                        window.location.replace("loginviatoken.php");
                     </script>
                 <?php
             }
