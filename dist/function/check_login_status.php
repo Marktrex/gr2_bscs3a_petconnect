@@ -1,7 +1,7 @@
 <?php
 session_start();
 // change to $_SESSION['auth'] if user table
-if(isset($_SESSION['user_data'])) {
+if(isset($_SESSION['auth'])) {
     $response = true;
 } else {
     $response= false;
