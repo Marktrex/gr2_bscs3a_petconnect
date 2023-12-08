@@ -47,5 +47,6 @@ $time_slot = $_POST['time-slot'];
         <button type="submit" name="go_back" id="submit">Go Back</button>
         <button type="submit" name="appoint" id="submit">Confirm</button>
     </form>
+    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>

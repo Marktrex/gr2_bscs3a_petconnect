@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <button id="join-btn">Join Stream</button>
+    <button id="join-btn" style = "display:none">Join Stream</button>
     <div id="stream-wrapper">
         <div id="video-streams">
             
@@ -23,6 +23,16 @@
     </div>
     
 </body>
+<script>
+    const join = document.getElementById('join-btn');
+    document.addEventListener('DOMContentLoaded', () => {
+        join.click();
+    });
+    const leave = document.getElementById('leave-btn');
+    leave.addEventListener('click', () => {
+        window.close();
+    });
+</script>
 <script src="..\script\AgoraRTC_N-4.19.3.js"></script>
 <script src='..\script\Call.js'></script>
 </html>

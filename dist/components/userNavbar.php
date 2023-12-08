@@ -81,7 +81,6 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
   </nav>
 </div>
 
-<script src="..\script\detect-page.js"></script>
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>
 

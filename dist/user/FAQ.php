@@ -110,6 +110,7 @@ if (!isset($_SESSION['auth_user'])) {
         </div>
     </section>
     <?php include '../function/footer.php' ?>
+    <?php require_once "..\components\call_across_pages.php"?>
     <script src="..\script\translation.js"></script>  
 </body>
 

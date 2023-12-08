@@ -1,7 +1,7 @@
 <?php
 session_start();
 print_r($_SESSION);
-if (!isset($_SESSION['otp'])) { 
+if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';
     echo 'alert("You do not have access to this page");';
     echo '</script>';

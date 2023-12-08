@@ -1,7 +1,6 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
-print_r($_SESSION);
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
   header("Location: ../../loginpage.php");
@@ -24,7 +23,6 @@ if ($_SESSION['auth_user']['role'] === "1") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PetConnect | Homepage</title>
   <link rel="stylesheet" href="../css/newlyAdded/home-page-light.css">
-  <link rel="stylesheet" href="../css/newlyAdded/footer.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -137,7 +135,9 @@ if ($_SESSION['auth_user']['role'] === "1") {
     </div>
   </div>
 
-  
+
+  <?php require_once "..\components\call_across_pages.php"?>
   <?php require_once "../components/footer.html"?>    
+
 </body>
 </html>

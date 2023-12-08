@@ -250,5 +250,7 @@ try { //research this try catch method
         });
     });
     </script>
+
+  <?php require_once "..\components\call_across_pages.php"?>
   </body>
 </html>

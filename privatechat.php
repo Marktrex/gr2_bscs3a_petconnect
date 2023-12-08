@@ -307,7 +307,6 @@ require('database/ChatRooms.php');
 
 		$(document).on('click', '.select_user', function(){
 			receiver_userid = $(this).data('userid');
-			
 
 			var from_user_id = $('#login_user_id').val();
 
@@ -365,7 +364,7 @@ require('database/ChatRooms.php');
 
 								background_class = 'alert-success';
 
-								user_name = data[count].from_user_lname;
+								user_name = data[count].from_user_name;
 							}
 							html_data += `
 							<div class="`+row_class+`">

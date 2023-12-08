@@ -109,8 +109,8 @@ class PrivateChat
 		$query = "
 
 		SELECT 
-			a.user_name as from_user_name, 
-			b.user_name as to_user_name, 
+			CONCAT(a.fname, ' ', a.lname) as from_user_name,
+			CONCAT(b.fname, ' ', b.lname) as to_user_name, 
 			chat_message, 
 			timestamp, 
 			status, 
@@ -120,7 +120,6 @@ class PrivateChat
 			c.channel
 		FROM chat_message 
 		INNER JOIN user a 
-
 			ON chat_message.from_user_id = a.user_id 
 		INNER JOIN user b 
 			ON chat_message.to_user_id = b.user_id 

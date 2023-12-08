@@ -44,7 +44,7 @@ class AppointmentModelController{
 
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
-        $token = $appointment_data['token'];
+        $token = $appointmentData['token'];
         //send email
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
