@@ -34,19 +34,20 @@
         output = '<form class="join_call_form" id="join_call_form_"' + data.channel + '" method="POST" >';
         output += '<input type="hidden" name = "channel" value="' + data.channel + '">';
         output += '<button type="submit"  id="join_call_button">Join Call</button>';
-        output += '<button type="button"  id="decline_call_button">Decline Call</button>';
+        output += '<button type="button" class="decline_call_button" id="decline_call_button">Decline Call</button>';
         output += '</form>';
     }
     document.getElementById('placeForCall').innerHTML += output;
     
     });
+    //accept call
     document.addEventListener('submit', function(event) {
     if (event.target.matches('.join_call_form')) {
         event.preventDefault();
 
         var form = event.target;
         var channel = form.querySelector('input[type="hidden"]').value;
-
+        
         var formData = new FormData();
         formData.append('action', 'join_call');
         formData.append('channel', channel);
@@ -57,6 +58,7 @@
         })
         .then(response => response.text())
         .then(data => {
+            removeElement(form); // Remove the form
             window.open('../user/VideoCall.php', '_blank');
         })
         .catch((error) => {
@@ -64,4 +66,17 @@
         });
     }
     });
+    //decline call
+    document.addEventListener('click', function(event) {
+        if (event.target.matches('.decline_call_button')) {
+            var parentElement = event.target.parentElement;
+            removeElement(parentElement);
+        }
+    });
+
+    function removeElement(element) {
+        if (element && element.parentNode) {
+            element.parentNode.removeChild(element);
+        }
+    }
 </script>
