@@ -22,7 +22,7 @@
     const socket = new WebSocket('ws://localhost:8080?token=<?php echo $token; ?>');
 
     socket.addEventListener("open", (event) => {
-    console.log("Connection established!");
+        console.log("Connection established!");
     });
 
     // Listen for messages
@@ -38,6 +38,7 @@
         output += '</form>';
     }
     document.getElementById('placeForCall').innerHTML += output;
+    
     });
     document.addEventListener('submit', function(event) {
     if (event.target.matches('.join_call_form')) {

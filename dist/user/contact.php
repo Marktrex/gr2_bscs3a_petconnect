@@ -74,7 +74,7 @@ if (!isset($_SESSION['auth_user'])) {
     </section>
 
     <?php include '../function/footer.php' ?>
-
+    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 
 </html>

@@ -116,5 +116,6 @@ if (!isset($_SESSION['auth_user'])) {
       </div>
     </main>
     <?php require_once "../components/footer.html"?>
+    <?php require_once "..\components\call_across_pages.php"?>
   </body>
 </html>

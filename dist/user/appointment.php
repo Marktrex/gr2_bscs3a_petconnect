@@ -196,6 +196,7 @@ $eventsJson = json_encode($events);
         <p id="hint" style="color: red;"></p>
         <button type="submit">Confirm</button>
     </form>
+    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 
 </html>
