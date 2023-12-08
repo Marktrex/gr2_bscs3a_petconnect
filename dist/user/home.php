@@ -1,7 +1,6 @@
 <?php
 require '../function/config.php';
 session_start(); // Add this line to start the session
-print_r($_SESSION);
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
   header("Location: ../../loginpage.php");
@@ -137,7 +136,9 @@ if ($_SESSION['auth_user']['role'] === "1") {
     </div>
   </div>
 
-  
+
   <?php require_once "../components/footer.html"?>    
+ 
+
 </body>
 </html>
