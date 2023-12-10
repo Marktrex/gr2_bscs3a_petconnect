@@ -1,17 +1,18 @@
 <?php
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 // Include the database connection
 require '../function/config.php';
 
 // Function to get adoption data based on adoption ID
-function getAdoptionData($adoptionId) {
+function getAdoptionData($adoptionId, $token) {
     global $conn;
 
     try {
-        // Fetch data for the specific adoption ID
-        $stmt = $conn->prepare("SELECT adoption_id, user_id, pets_id, story, token FROM adoption WHERE adoption_id = :adoption_id");
+        // Fetch data for the specific adoption ID and token
+        $stmt = $conn->prepare("SELECT adoption_id, user_id, pets_id, story, token FROM adoption WHERE adoption_id = :adoption_id AND token = :token");
         $stmt->bindParam(':adoption_id', $adoptionId, PDO::PARAM_INT);
+        $stmt->bindParam(':token', $token, PDO::PARAM_STR);
         $stmt->execute();
         $adoptionData = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -22,46 +23,25 @@ function getAdoptionData($adoptionId) {
 }
 
 // Handle form submission
-if (isset($_GET['adoptionId'])) {
+if (isset($_GET['adoptionId']) && isset($_GET['token'])) {
     $specificAdoptionId = $_GET['adoptionId'];
-    $specificAdoptionData = getAdoptionData($specificAdoptionId);
+    $specificToken = $_GET['token'];
+    
+    // Check if the token matches
+    $specificAdoptionData = getAdoptionData($specificAdoptionId, $specificToken);
 
     if ($specificAdoptionData) {
         // Store the data in the session
         $_SESSION['specific_adoption_data'] = $specificAdoptionData;
     } else {
-        echo 'No data found for the specified Adoption ID.';
+        // Redirect to the error page
+        header('Location: ../error/403-forbidden.html');
+        exit();
     }
-}
-
-// Display the specific adoption data from the session
-if (isset($_SESSION['specific_adoption_data'])) {
-    $specificAdoptionData = $_SESSION['specific_adoption_data'];
-
-    echo '<table>';
-    echo '<thead>';
-    echo '<tr>';
-    echo '<th>Adoption ID</th>';
-    echo '<th>User ID</th>';
-    echo '<th>Pets ID</th>';
-    echo '<th>Story</th>';
-    echo '<th>Token</th>';
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
-
-    echo '<tr>';
-    echo '<td>' . $specificAdoptionData['adoption_id'] . '</td>';
-    echo '<td>' . $specificAdoptionData['user_id'] . '</td>';
-    echo '<td>' . $specificAdoptionData['pets_id'] . '</td>';
-    echo '<td>' . $specificAdoptionData['story'] . '</td>';
-    echo '<td>' . $specificAdoptionData['token'] . '</td>';
-    echo '</tr>';
-
-    echo '</tbody>';
-    echo '</table>';
 } else {
-    echo 'Please enter an Adoption ID.';
+
+    header('Location: ../error/403-forbidden.html');
+
 }
 
 // Function to update the "story" for a specific adoption ID
@@ -108,11 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['story'])) {
 <body>
 
 <!-- Display the form for user input -->
-<form method="get" action="add-adoption-story.php">
-    <label for="adoptionId">Enter Adoption ID:</label>
-    <input type="text" id="adoptionId" name="adoptionId" required>
-    <button type="submit">View Adoption Details</button>
-</form>
 
 <form action="#" method="POST">
     <label for="story"><a id="label-about">Story</a></label>
