@@ -21,7 +21,7 @@ class PetModelController{
         return $pet_data;
     }
 
-    public function search($value, $columns = ['type','breed','sex','weight','age'], $userOperator=null){
+    public function search($value, $columns, $userOperator=null){
         $pets = $this->pets;
         return $pets->search($value, $columns,$userOperator);
     }
