@@ -41,8 +41,9 @@ composer dump-autoload
 
 ## setting up email
 1. lagay mo email mo
-2. lagay mo password (follow this guide: https://netcorecloud.com/tutorials/send-an-email-via-gmail-smtp-server-using-php/)
-3. punta ka sa mga may email na page; palitan mo ung mga links
-- so far its signuppage.php
-- function/makeAppointment.php
+2. lagay mo password 
+    - https://support.google.com/accounts/answer/185833?hl=en
+    - https://myaccount.google.com/apppasswords
+3. change the root folder if necessary
+    - ung sa signup d pa napapalitan ung link
 

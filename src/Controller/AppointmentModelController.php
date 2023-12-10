@@ -42,9 +42,15 @@ class AppointmentModelController{
             }
         }
 
+        $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+        $dotenv->load();
+        $root = $_ENV['ROOT_FOLDER'];
+
+        
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
         $token = $appointmentData['token'];
+        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '';
         //send email
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
@@ -53,7 +59,7 @@ class AppointmentModelController{
             <h1>Appointment Confirmation</h1>
             <p>Dear ' . $fullname . ',</p>
             <p>Thank you for making an appointment with Pet Connect. To confirm your email address and enable your account, please click the link below:</p>
-            <p><a href="http://localhost/repos/gr2_bscs3a_petconnect/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '">Confirm Email</a></p>
+            <p><a href="">Confirm Email</a></p>
             <p>If you did not make this appointment, please ignore this email.</p>
             <p>Best regards,</p>
             <p>Pet Connect Team</p>
@@ -103,6 +109,7 @@ class AppointmentModelController{
 
         $email = $_ENV['EMAIL'];
         $password = $_ENV['EMAIL_PASSWORD'];
+        
         $mail = new PHPMailer(true);
 
         try {
