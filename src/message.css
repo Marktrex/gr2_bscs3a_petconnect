@@ -1,4 +1,4 @@
-0:root{
+:root{
     --shadow-content: 0 .4rem .8rem #0005;
     --shadow-main: 0px 3px 10px rgb(101, 101, 101);
     --searchbar-color: rgba(37, 141, 141, 0.248);
@@ -40,6 +40,8 @@
     background-color:#0e9594;
     display: flex;
     align-items: center;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: var(--shadow-content);
 }
 
 .conversation-back {
@@ -134,6 +136,7 @@
     overflow-x: hidden;
     height: 80vh;
     background-color: #fdf7ec;
+    box-shadow: var(--shadow-content);
 }
 
 .conversation-wrapper {
@@ -319,7 +322,10 @@
     background-color: #fdf7ec;
     display: flex;
     align-items: flex-end;
+    border-radius: 0px 0px 15px 15px;
+    box-shadow: var(--shadow-content);
 }
+
 .conversation-form-group {
     width: 100%;
     position: relative;
@@ -381,18 +387,15 @@
 }
 
 .conversation-form-submit {
-    background-color: #64748b;
+    background-color: #f2542d;
     box-shadow: 0 2px 8px -2px  #64748b;
     color: white;
 }
 .conversation-form-submit:hover {
-    background-color: #475569;
+    background-color: #a3391f;
     color: white;
 }
-.conversation-form-submit:active {
-    background-color: #334155;
-    color: white;
-}
+
 .conversation-default {
     align-items: center;
     justify-content: center;
@@ -446,6 +449,7 @@
     .chat-content {
         position: relative;
         height: calc(100% - 48px);
+        margin-right: 50px;
     }
     .conversation.active {
         position: relative;
