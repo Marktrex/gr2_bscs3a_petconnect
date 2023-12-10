@@ -43,7 +43,7 @@ class PetModelController{
                 $log->activity_log(
                     $responsibleId,
                     "UPDATE",
-                    "USER",
+                    "PETS",
                     $key,
                     $pet_id,
                     $value,

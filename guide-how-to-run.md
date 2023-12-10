@@ -44,7 +44,5 @@ composer dump-autoload
 2. lagay mo password 
     - https://support.google.com/accounts/answer/185833?hl=en
     - https://myaccount.google.com/apppasswords
-3. punta ka sa mga may email na page; palitan mo ung mga links
-- so far its signuppage.php
-- function/makeAppointment.php
+3. change the root folder if necessary
 
