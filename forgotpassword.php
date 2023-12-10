@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-print_r($_SESSION);
+// print_r($_SESSION);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -107,7 +107,7 @@ require 'dist/function/config.php';
     <div class="container">
         <h1>Forgot password?</h1>
         <p>
-            You can reset your password by entering the email linked to <br>your account, and we'll send you an email with instructions. 
+            You can reset your password by entering the email linked to <br>your account, and we'll send you the code to change your password. 
         </p>
         <form action="#" method="POST" >
         <div class="code-container">
@@ -115,7 +115,7 @@ require 'dist/function/config.php';
         </div>
 
         <div>
-        <button type="submit" class="btn btn-verify" name="recover">Send Instructions</button>
+        <button type="submit" class="btn btn-verify" name="recover">Send code</button>
         </div>
         </form>
     </div>

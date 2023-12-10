@@ -98,7 +98,7 @@ if (!isset($_SESSION['token'])) {
 
                 ?>
                  <script>
-                     alert("Recovery succes! you can now reset your password");
+                     alert("Recovery success! you can now reset your password");
                        window.location.replace("dist/user/change-password.php");
                  </script>
                  <?php

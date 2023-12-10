@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../function/config.php';
-print_r($_SESSION);
+// print_r($_SESSION);
 
 if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';
@@ -47,8 +47,9 @@ if (isset($_POST['changepass'])) {
         } else {
             ?>
             <script>
-                alert("Your Password has been successfully changed!");
-                window.location.replace("../function/logout.php");
+              
+                window.location.replace("confirm.html");
+
             </script>
             <?php
         }
