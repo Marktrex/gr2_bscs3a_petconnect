@@ -1,5 +1,7 @@
 <?php 
 
+use MyApp\Controller\Chat\ChatUser;
+
 //privatechat.php
 
 session_start();

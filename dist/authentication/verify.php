@@ -5,10 +5,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-require 'dist/function/config.php'; //PDO connection to the database
+require '../../vendor/autoload.php';
+require '../function/config.php'; //PDO connection to the database
 
-print_r($_SESSION);
 
 if (isset($_POST["resend"])){
    
@@ -120,11 +119,6 @@ if (isset($_POST["verify"])) {
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="icon" href="Favicon.png">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 

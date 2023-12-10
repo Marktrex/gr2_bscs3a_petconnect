@@ -4,8 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-require 'dist/function/config.php';
+require '../../vendor/autoload.php';
+require '../function/config.php';
 print_r($_SESSION);
 if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';

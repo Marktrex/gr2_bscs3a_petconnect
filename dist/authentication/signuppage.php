@@ -5,8 +5,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
-require 'dist/function/config.php'; //PDO connection to the database
+require '../../vendor/autoload.php';
+require '../function/config.php'; //PDO connection to the database
 
 
 
@@ -242,9 +242,9 @@ if (isset($_POST["register"])) { //code ni marc
         </div>
     </div>
 
-    <?php require_once "dist/components/light-switch.php"?>
-    <script src="dist/script/change-color-schema.js"></script>
-    <script src="dist/script/translate.js"></script>
-    <script src="dist/script/password-confirm.js"></script>
+    <?php require_once "../components/light-switch.php"?>
+    <script src="../script/change-color-schema.js"></script>
+    <script src="../script/translate.js"></script>
+    <script src="../script/password-confirm.js"></script>
 </body>
 </html>

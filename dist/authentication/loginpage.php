@@ -1,9 +1,8 @@
 <?php 
     session_start();
-    print_r($_SESSION);
     //check if user is already logged redirect to user/home.php if yes
     if(isset($_SESSION['auth_user'])){
-        header("Location: dist/user/home.php");
+        header("Location: ../user/home.php");
         exit();
     }
     if(isset($_COOKIE['email']) && isset($_COOKIE['password'])){
@@ -89,8 +88,8 @@
         </div>
     </div>
     
-    <?php require_once "dist/components/light-switch.php"?>
-    <script src="dist/script/change-color-schema.js"></script>
-    <script src="dist/script/translate.js"></script>
+    <?php require_once "../components/light-switch.php"?>
+    <script src="../script/change-color-schema.js"></script>
+    <script src="../script/translate.js"></script>
 </body>
 </html>
