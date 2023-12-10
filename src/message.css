@@ -1,4 +1,4 @@
-:root{
+0:root{
     --shadow-content: 0 .4rem .8rem #0005;
     --shadow-main: 0px 3px 10px rgb(101, 101, 101);
     --searchbar-color: rgba(37, 141, 141, 0.248);
@@ -316,7 +316,7 @@
 
 .conversation-form {
     padding: 8px 16px;
-    background-color: var(--white);
+    background-color: #fdf7ec;
     display: flex;
     align-items: flex-end;
 }
