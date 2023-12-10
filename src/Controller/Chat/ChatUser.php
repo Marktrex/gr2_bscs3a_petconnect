@@ -1,6 +1,8 @@
 <?php
 
 namespace MyApp\Controller\Chat;
+use PDO;
+use MyApp\Controller\Chat\Database_connection;
 
 class ChatUser
 {
@@ -19,9 +21,9 @@ class ChatUser
 	public function __construct()
 	{
 
-		$database_object = new Database_connection();
+		$db = new Database_connection();
 
-		$this->connect = $database_object->connect();
+		$this->connect = $db->connect();
 	}
 
 	function setUserId($user_id)
