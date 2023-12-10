@@ -2,6 +2,13 @@
 session_start();
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+if (!$_SESSION['auth'] || $_SESSION['auth_user']['role'] !== "1" )
+{
+    header("location: ../error/403-forbidden.html");
+    exit();
+}
+
+
 use MyApp\Controller\PetModelController;
 use MyApp\Controller\UserModelController;
 
@@ -17,7 +24,7 @@ $usersData = $userController->getAllUsers();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Adoption</title>
 </head>
 <body>
     <div id="content">
