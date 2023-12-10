@@ -2,6 +2,9 @@
 
 namespace MyApp\Controller\Chat;
 
+use PDO;
+use MyApp\Controller\Chat\Database_connection;
+
 class PrivateChat
 {
 	private $chat_message_id;
@@ -11,13 +14,12 @@ class PrivateChat
 	private $timestamp;
 	private $status;
 	protected $connect;
-	// for call
+	//for call
 	private $message_type;
 	private $channel;
 
 	public function __construct()
 	{
-		require_once('Database_connection.php');
 
 		$db = new Database_connection();
 

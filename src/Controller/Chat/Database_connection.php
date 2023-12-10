@@ -1,6 +1,6 @@
 <?php
 
-//Database_connection.php
+namespace MyApp\Controller\Chat;
 
 class Database_connection
 {

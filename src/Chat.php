@@ -3,11 +3,11 @@
 //Chat.php
 
 namespace MyApp;
-use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-require dirname(__DIR__) . "/database/ChatUser.php";
-require dirname(__DIR__) . "/database/ChatRooms.php";
-require dirname(__DIR__) . "/database/PrivateChat.php";
+use MyApp\Controller\Chat\ChatUser;
+use MyApp\Controller\Chat\PrivateChat;
+use Ratchet\MessageComponentInterface;
+
 
 class Chat implements MessageComponentInterface {
     protected $clients;
@@ -31,7 +31,7 @@ class Chat implements MessageComponentInterface {
         if(isset($queryarray['token']))
         {
 
-            $user_object = new \ChatUser;
+            $user_object = new ChatUser;
 
             $user_object->setUserToken($queryarray['token']);
 
@@ -68,7 +68,7 @@ class Chat implements MessageComponentInterface {
         {
             //private chat
 
-            $private_chat_object = new \PrivateChat;
+            $private_chat_object = new PrivateChat;
 
             $private_chat_object->setToUserId($data['receiver_userid']);
 
@@ -88,7 +88,7 @@ class Chat implements MessageComponentInterface {
 
             $chat_message_id = $private_chat_object->save_chat();
 
-            $user_object = new \ChatUser;
+            $user_object = new ChatUser;
 
             $user_object->setUserId($data['userId']);
 
@@ -139,7 +139,7 @@ class Chat implements MessageComponentInterface {
         if(isset($queryarray['token']))
         {
 
-            $user_object = new \ChatUser;
+            $user_object = new ChatUser;
 
             $user_object->setUserToken($queryarray['token']);
 

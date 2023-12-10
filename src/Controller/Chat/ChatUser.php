@@ -1,6 +1,6 @@
 <?php
 
-//ChatUser.php
+namespace MyApp\Controller\Chat;
 
 class ChatUser
 {
@@ -18,9 +18,8 @@ class ChatUser
 
 	public function __construct()
 	{
-		require_once('Database_connection.php');
 
-		$database_object = new Database_connection;
+		$database_object = new Database_connection();
 
 		$this->connect = $database_object->connect();
 	}
