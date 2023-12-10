@@ -156,7 +156,7 @@ if (isset($_POST['delete'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Connect</title>
-    <link rel="stylesheet" href="../css/edit-profile.css">
+    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
@@ -172,6 +172,7 @@ if (isset($_POST['delete'])) {
             <div class="container">
                 <form class="edit" method="POST" enctype="multipart/form-data">
                     <h1>Edit Profile</h1>
+                    <hr>
                     <div>
                         <?php $image = $user_data->photo;
                             if (!$image){
@@ -183,9 +184,8 @@ if (isset($_POST['delete'])) {
                         <input type="file" accept="image/jpeg, image/jpg, image/png" id="image" name="image">
                     </div>
                     <div class="form-group">
-                        <label for="fname">First Name:</label>
-                        <input type="text" class="form-control" id="fname" name="fname"
-                            placeholder="Enter your first name" required value = "<?php echo $user_data->fname?>">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="fname" id="fname" name="fname" required value ="<?php echo $user_data->fname?>">
                     </div>
                     <div class="form-group">
                         <label for="lname">Last Name:</label>
