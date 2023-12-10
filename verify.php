@@ -59,7 +59,8 @@ if (isset($_POST["resend"])){
 
 
 if (isset($_POST["verify"])) {
-   
+   $otp_code = $_POST["otp_code"];
+   $otp = $_SESSION["otp"];
     if (empty($otp_code)) {
         ?>
         <script>
@@ -162,7 +163,7 @@ if (isset($_POST["verify"])) {
                             <form action="#" method="POST">
                             
                             <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Resend Code" name="resend">
+                                <input type="submit" value="Send Code" name="resend">
                             </div>
                     </div>
                     </form>
