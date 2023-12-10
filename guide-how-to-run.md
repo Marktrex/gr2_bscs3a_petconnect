@@ -45,4 +45,5 @@ composer dump-autoload
     - https://support.google.com/accounts/answer/185833?hl=en
     - https://myaccount.google.com/apppasswords
 3. change the root folder if necessary
+    - ung sa signup d pa napapalitan ung link
 
