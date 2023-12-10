@@ -16,95 +16,95 @@ if (!isset($_SESSION['token'])) {
 } 
 
            
-        if(isset($_POST["resend"])){
-             // generate token by binaryhexa 
-             $token = bin2hex(random_bytes(10));
-            
-             //session_start ();
-             $_SESSION['auth'] = true;
-             $_SESSION['token'] = $token;
-             $email = $_SESSION['email'];
- 
-             $mail = new PHPMailer(true);
- 
-             $mail->isSMTP();
- 
-             $mail->Host = 'smtp.gmail.com';
- 
-             $mail->SMTPAuth = true;
- 
-             $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
-             $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
- 
-             $mail->SMTPSecure = 'tls';
- 
-             $mail->Port = 587;
- 
-             $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
- 
-             $mail->addAddress($email);
- 
-             $mail->isHTML(true);
-             $mail->Subject="Recover your password";
-             $mail->Body="<b>Dear User</b>
-             <h3>We received a request to reset your password.</h3>
-             <p>Here is your Recovery code to reset your password</p> 
-             <b>$token</b>
-             <br>
-             <p>With regrads,</p>
-             <b>PetConnect ^^</b>";
- 
-             if(!$mail->send()){
-                 ?>
-                     <script>
-                         alert("<?php echo " Invalid Email "?>");
-                     </script>
-                 <?php
-             }else{
-                 ?>
-                     <script>
-                         alert("<?php echo " Email send out !  Kindly check your email inbox. "?>");
-                         
-                     </script>
-                 <?php
-             }
-         }
-     
-
+if(isset($_POST["resend"])){
+        // generate token by binaryhexa 
+        $token = bin2hex(random_bytes(10));
     
+        //session_start ();
+        $_SESSION['auth'] = true;
+        $_SESSION['token'] = $token;
+        $email = $_SESSION['email'];
 
-        if(isset($_POST["login"])){
-            $token = $_SESSION['token'];
-            $email = $_SESSION['email'];
-            $user_email = $_POST['user_email'];
-            $recover_code = $_POST['recover_code'];
-            
-    
-            if($token != $recover_code){
-                ?>
-               <script>
-                   alert("Invalid Email or Recovery Code");
-               </script>
-               <?php
-            }
-            elseif ($email != $user_email) {
-                ?>
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();
+
+        $mail->Host = 'smtp.gmail.com';
+
+        $mail->SMTPAuth = true;
+
+        $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
+        $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
+
+        $mail->SMTPSecure = 'tls';
+
+        $mail->Port = 587;
+
+        $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
+
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject="Recover your password";
+        $mail->Body="<b>Dear User</b>
+        <h3>We received a request to reset your password.</h3>
+        <p>Here is your Recovery code to reset your password</p> 
+        <b>$token</b>
+        <br>
+        <p>With regrads,</p>
+        <b>PetConnect ^^</b>";
+
+        if(!$mail->send()){
+            ?>
                 <script>
-                    alert("Invalid Email or Recovery Code");
+                    alert("<?php echo " Invalid Email "?>");
                 </script>
-                <?php
-            }
-            else{
-
-                ?>
-                 <script>
-                     alert("Recovery success! you can now reset your password");
-                       window.location.replace("dist/user/change-password.php");
-                 </script>
-                 <?php
-            }
-    
+            <?php
+        }else{
+            ?>
+                <script>
+                    alert("<?php echo " Email send out !  Kindly check your email inbox. "?>");
+                    
+                </script>
+            <?php
         }
+    }
+
+
+
+
+if(isset($_POST["login"])){
+    $token = $_SESSION['token'];
+    $email = $_SESSION['email'];
+    $user_email = $_POST['user_email'];
+    $recover_code = $_POST['recover_code'];
+    
+
+    if($token != $recover_code){
+        ?>
+        <script>
+            alert("Invalid Email or Recovery Code");
+        </script>
+        <?php
+    }
+    elseif ($email != $user_email) {
+        ?>
+        <script>
+            alert("Invalid Email or Recovery Code");
+        </script>
+        <?php
+    }
+    else{
+
+        ?>
+            <script>
+                alert("Recovery success! you can now reset your password");
+                window.location.replace("../user/change-password.php");
+            </script>
+            <?php
+    }
+
+}
 
 ?>
 
@@ -192,7 +192,6 @@ if (!isset($_SESSION['token'])) {
                                 <input type="submit" value="Resend Code" name="resend">
                     </div>
                     </form>
-
                 </div>
             </div>
         </div>
