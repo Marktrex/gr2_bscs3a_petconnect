@@ -15,6 +15,10 @@ if($_POST['action'] == 'sendEmail') {
 if($_POST['action'] == 'deleteData') {
     deleteData();
 }
+if($_POST['action'] == 'displayData') {
+    displayData();
+}
+
 
 function sendEmail() {
     $manageAdoption = new AdoptionManage();
@@ -35,4 +39,12 @@ function deleteData(){
     echo $result;
 }
 
+function displayData(){
+    $manageAdoption = new AdoptionManage();
+    $adoptionId = $_POST['adoptionId'];
+
+    $result = $manageAdoption->get_adoption_data_by_id($adoptionId);
+
+    echo json_encode($result);
+}
 ?>
