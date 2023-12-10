@@ -15,8 +15,8 @@ class AdoptionAdd {
 
 
     public function addAdoption($responsibleId,$data)
-    {
-        if (isAdopted($data['pets_id'])) {
+    {   
+        if ($this->isAdopted($data['pets_id'])) {
             return "Pet Already Adopted";
         }
         $lastId = $this->adoption->insert($data);
@@ -40,7 +40,7 @@ class AdoptionAdd {
         $pets = new PetModelController();
         $findPet = $pets->get_pet_data_by_id($petsId);
 
-        if($findPet['isAdopted'] == 1){
+        if($findPet->isAdopted == 1){
             return true;
         }
         return false;

@@ -33,7 +33,7 @@ class PetModelController{
 
     public function updateProfileAdmin($responsibleId, $pet_id, $data){
         $pet = $this->pets;
-        $oldData = $user->get_pet_data_by_id($pet_id);
+        $oldData = $this->get_pet_data_by_id($pet_id);
         $newData = $data;
         $pet->update($pet_id, $data);
 
@@ -41,11 +41,11 @@ class PetModelController{
         foreach ($oldData as $key => $value)  {
             if(array_key_exists($key, $newData) && $value != $newData[$key]){
                 $log->activity_log(
-                    $userId,
+                    $responsibleId,
                     "UPDATE",
                     "USER",
                     $key,
-                    $userId,
+                    $pet_id,
                     $value,
                     $newData[$key]
                 );

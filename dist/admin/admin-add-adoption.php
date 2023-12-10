@@ -24,9 +24,11 @@ $usersData = $userController->getAllUsers();
         <form action="" method="post" id="add_adoption">
             <div>
                 Display Profile here
+                <input type="text" name="userId" id="userId" required readonly>
             </div>
             <div>
                 Display Pet here
+                <input type="text" name="petId" id="petId" required readonly>
             </div>
             <button type="submit" >Add to adoption</button>
         </form>
@@ -68,22 +70,52 @@ $usersData = $userController->getAllUsers();
         </table>
     </div>
     <script>
-        const addAdoption = document.querySelector('#add_adoption');
-        addAdoption.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(addAdoption);
-            formData.append('action', 'addAdoption');
-            fetch('../function/addAdoption.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error(error);
-            })
+        document.getElementById('add_adoption').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var userId = document.getElementById('userId');
+                var petId = document.getElementById('petId');
+
+                if (!userId.value || !petId.value) {
+                    alert('Please fill out all fields');
+                    return;
+                }
+                const add_adoption = document.querySelector("#add_adoption");
+                const formData = new FormData(add_adoption);
+                formData.append('action', 'addAdoption');
+                fetch('../function/addAdoption.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+
+        });
+
+        document.getElementById('userTable').addEventListener('click', function(event) {
+            let target = event.target;
+            let userId = target.parentNode.cells[0].textContent;
+
+            userId = +userId;
+            if (isNaN(userId)) {
+                return;
+            }
+            document.getElementById('userId').value = userId;
+        });
+
+        document.getElementById('petTable').addEventListener('click', function(event) {
+            let target = event.target;
+            let petsId = target.parentNode.cells[0].textContent;
+            
+            petsId = +petsId;
+            if (isNaN(petsId)) {
+                return;
+            }
+            document.getElementById('petId').value = petsId;
         });
     </script>
 </body>
