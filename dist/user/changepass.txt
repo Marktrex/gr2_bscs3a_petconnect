@@ -1,7 +1,11 @@
 <?php
+// use MyApp\Controller\AuditModelController;
+
+// require_once __DIR__ . '/../../vendor/autoload.php';
 session_start();
 require '../function/config.php';
 print_r($_SESSION);
+// this checks the session if the admin is logged in
 
 if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';
@@ -12,8 +16,10 @@ if (!isset($_SESSION['token'])) {
 } 
 
 if (isset($_POST['changepass'])) {
+    // Retrieve the data from the form
     $token = $_SESSION['token'];
     $newpassword = $_POST['newpassword'];
+    // Get the currently logged-in user's email
     $email = $_SESSION['email'];
 
     $stmt = $conn->prepare("SELECT * FROM user WHERE email= :email");
@@ -39,7 +45,7 @@ if (isset($_POST['changepass'])) {
 
         $statement2 = $conn->prepare($query2);
         $statement2->bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-        $statement2->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement2->bindParam(':email', $email, PDO::PARAM_STR); // Corrected this line
 
         if (!$statement2->execute()) {
             print_r($statement2->errorInfo());
@@ -56,6 +62,20 @@ if (isset($_POST['changepass'])) {
 }
 ?>
 
+
+
+
+
+
+
+
+
+
+    
+   
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,19 +83,6 @@ if (isset($_POST['changepass'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetConnect | Change Password</title>
     <link rel="stylesheet" href="..\css\newlyAdded\reset-password.css">
-    <script>
-        function validateForm() {
-            var newPassword = document.getElementById("new-password").value;
-            var confirmPassword = document.getElementById("confirm-password").value;
-
-            if (newPassword !== confirmPassword) {
-                alert("New password and confirm password do not match!");
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </head>
 <body>
     <div class="container">
@@ -83,16 +90,17 @@ if (isset($_POST['changepass'])) {
         <p>
             Enter your new password. 
             Make sure to not forget your new password!
-        <form action="#" method="POST" onsubmit="return validateForm();">
+        <form action="#" method="POST">
         <div class="code-container">
-            <input id="new-password" type="password" name="newpassword" placeholder="Enter your New Password" required>
-            <input id="confirm-password" type="password" placeholder="Confirm new Password" required>
+            <input id="new-password" type="password" placeholder="Enter your New Password" required>
+            <input id="confirm-password" type="newpassword" placeholder="Confirm new Password" required>
         </div>
 
         <div>
-            <button type="submit" class="btn btn-verify" name="changepass">Update Password</button>
+            <button type="submit" class="btn btn-verify">Update Password</button>
         </div>
         </form>
     </div>
 </body>
+
 </html>
