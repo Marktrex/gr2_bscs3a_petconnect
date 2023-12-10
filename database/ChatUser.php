@@ -8,7 +8,6 @@ class ChatUser
 	private $user_name;
 	private $user_email;
 	private $user_password;
-	// private $user_profile;
 	private $user_status;
 	private $user_created_on;
 	private $user_verification_code;
@@ -65,16 +64,6 @@ class ChatUser
 	{
 		return $this->user_password;
 	}
-
-	// function setUserProfile($user_profile)
-	// {
-	// 	$this->user_profile = $user_profile;
-	// }
-
-	// function getUserProfile()
-	// {
-	// 	return $this->user_profile;
-	// }
 
 	function setUserStatus($user_status)
 	{
@@ -135,24 +124,6 @@ class ChatUser
 	{
 		return $this->user_connection_id;
 	}
-
-	// function make_avatar($character)
-	// {
-	//     $path = "images/". time() . ".png";
-	// 	$image = imagecreate(200, 200);
-	// 	$red = rand(0, 255);
-	// 	$green = rand(0, 255);
-	// 	$blue = rand(0, 255);
-	//     imagecolorallocate($image, $red, $green, $blue);  
-	//     $textcolor = imagecolorallocate($image, 255,255,255);
-
-	//     $font = dirname(__FILE__) . '/font/arial.ttf';
-
-	//     imagettftext($image, 100, 0, 55, 150, $textcolor, $font, $character);
-	//     imagepng($image, $path);
-	//     imagedestroy($image);
-	//     return $path;
-	// }
 
 	function get_user_data_by_email()
 	{

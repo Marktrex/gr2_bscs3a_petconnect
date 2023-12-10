@@ -8,9 +8,7 @@ if(!isset($_SESSION['auth_user']))
 	header('location:dist/loginpage.php');
 }
 
-require('database/ChatUser.php');
-
-require('database/ChatRooms.php');
+require_once __DIR__ . '../vendor/autoload.php';
 
 ?>
 
@@ -344,7 +342,7 @@ require('database/ChatRooms.php');
 			})
 
 		});
-		
+
 		$(document).on('click', '#close_chat_area', function(){
 
 			$('#chat_area').html('');
