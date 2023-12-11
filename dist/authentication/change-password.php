@@ -4,10 +4,7 @@ require '../function/config.php';
 // print_r($_SESSION);
 
 if (!isset($_SESSION['token'])) { 
-    echo '<script language="javascript">';
-    echo 'alert("You do not have access to this page");';
-    echo '</script>';
-    header("Location: home.php");
+    header("Location: ../error/403-forbidden.html");
     exit();
 } 
 
@@ -47,9 +44,7 @@ if (isset($_POST['changepass'])) {
         } else {
             ?>
             <script>
-              
                 window.location.replace("confirm.html");
-
             </script>
             <?php
         }

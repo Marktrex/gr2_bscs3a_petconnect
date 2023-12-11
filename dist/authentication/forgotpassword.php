@@ -1,8 +1,9 @@
 <?php 
 session_start(); 
-use PHPMailer\PHPMailer\PHPMailer;
+use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 require '../../vendor/autoload.php';
 require '../function/config.php';
@@ -12,7 +13,8 @@ require '../function/config.php';
 
     if(isset($_POST["recover"])){
         $email = $_POST["email"];
-       
+
+        
 
         $stmt = $conn->prepare("SELECT * FROM user WHERE email= :email");
         $stmt->bindParam(':email', $email);
@@ -44,6 +46,12 @@ require '../function/config.php';
             $_SESSION['token'] = $token;
             $_SESSION['email'] = $email;
 
+            $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+            $dotenv->load();
+
+            $senderEmail = $_ENV['EMAIL'];
+            $senderPassword = $_ENV['EMAIL_PASSWORD'];
+
             $mail = new PHPMailer(true);
 
             $mail->isSMTP();
@@ -52,14 +60,14 @@ require '../function/config.php';
 
             $mail->SMTPAuth = true;
 
-            $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
-            $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
+            $mail->Username = $senderEmail; // your Gmail
+            $mail->Password = $senderPassword; // your Gmail App Password
 
             $mail->SMTPSecure = 'tls';
 
             $mail->Port = 587;
 
-            $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
+            $mail->setFrom($senderEmail, 'Pet Connect'); // your Gmail
 
             $mail->addAddress($_POST['email']);
 
@@ -100,7 +108,7 @@ require '../function/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forget Password</title>
-    <link rel="stylesheet" href="dist\css\newlyAdded\forget-password.css">
+    <link rel="stylesheet" href="..\css\newlyAdded\forget-password.css">
 </head>
 <body>
     <div class="container">
@@ -114,7 +122,7 @@ require '../function/config.php';
         </div>
 
         <div>
-        <button type="submit" class="btn btn-verify" name="recover">Send code</button>
+        <button type="submit" class="" name="recover">Send code</button>
         </div>
         </form>
     </div>

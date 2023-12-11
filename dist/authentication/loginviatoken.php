@@ -1,8 +1,9 @@
 <?php
 session_start();
-use PHPMailer\PHPMailer\PHPMailer;
+use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 require '../../vendor/autoload.php';
 require '../function/config.php';
@@ -25,6 +26,12 @@ if(isset($_POST["resend"])){
         $_SESSION['token'] = $token;
         $email = $_SESSION['email'];
 
+        $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+        $dotenv->load();
+
+        $senderEmail = $_ENV['EMAIL'];
+        $senderPassword = $_ENV['EMAIL_PASSWORD'];
+
         $mail = new PHPMailer(true);
 
         $mail->isSMTP();
@@ -33,14 +40,14 @@ if(isset($_POST["resend"])){
 
         $mail->SMTPAuth = true;
 
-        $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
-        $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
+        $mail->Username = $senderEmail; // your Gmail
+        $mail->Password = $senderPassword; // your Gmail App Password
 
         $mail->SMTPSecure = 'tls';
 
         $mail->Port = 587;
 
-        $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
+        $mail->setFrom($senderEmail, 'Pet Connect'); // your Gmail
 
         $mail->addAddress($email);
 
@@ -99,7 +106,7 @@ if(isset($_POST["login"])){
         ?>
             <script>
                 alert("Recovery success! you can now reset your password");
-                window.location.replace("../user/change-password.php");
+                window.location.replace("change-password.php");
             </script>
             <?php
     }

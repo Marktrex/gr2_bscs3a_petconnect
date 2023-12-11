@@ -1,5 +1,5 @@
 <?php
-    require_once 'config.php';
+    require_once '../config.php';
 
     $user_id = $_POST['user_id'];
     $has_joined = $_POST['has_joined'];

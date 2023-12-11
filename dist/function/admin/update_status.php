@@ -2,7 +2,8 @@
 
 use MyApp\Controller\AppointmentModelController;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
 session_start();
 
 // Check if the appointment ID and status values are provided

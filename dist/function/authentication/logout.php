@@ -1,7 +1,10 @@
 <?php
 
+use MyApp\Controller\Chat\ChatUser;
+
 session_start();
-require_once __DIR__ . '/../../vendor/autoload.php';
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 if (isset($_SESSION['auth'])) {
 

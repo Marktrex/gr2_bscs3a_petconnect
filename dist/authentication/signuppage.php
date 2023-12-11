@@ -88,6 +88,12 @@ if (isset($_POST["register"])) { //code ni marc
                 $otp = rand(100000,999999);
                 $_SESSION['otp'] = $otp;
                 $_SESSION['email'] = $email;
+
+                $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+                $dotenv->load();
+
+                $senderEmail = $_ENV['EMAIL'];
+                $senderPassword = $_ENV['EMAIL_PASSWORD'];
                 // require "vendor/phpmailer/PHPMailerAutoload.php";
                 $mail = new PHPMailer(true);
             
@@ -97,14 +103,14 @@ if (isset($_POST["register"])) { //code ni marc
             
                 $mail->SMTPAuth = true;
             
-                $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
-                $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
+                $mail->Username =  $senderEmail; // your Gmail
+                $mail->Password = $senderPassword; // your Gmail App Password
             
                 $mail->SMTPSecure = 'tls';
             
                 $mail->Port = 587;
             
-                $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
+                $mail->setFrom( $senderEmail, 'Pet Connect'); // your Gmail
             
                 $mail->addAddress($_POST['email']);
             
@@ -115,8 +121,6 @@ if (isset($_POST["register"])) { //code ni marc
                 <p>Congratulations, your account has been successfully created.</p>
                 <p>This is your OTP Code:</p> 
                 <h3>' . $otp . '</h3>
-                <p>Please click the link to verify your email address:</p>
-                <p><a href="http://localhost/petconnect/verify.php">Click to Verify</a></p>
                 <p>Thank you for signing up.</p>';
           
                 if(!$mail->send()){
@@ -167,7 +171,7 @@ if (isset($_POST["register"])) { //code ni marc
     <title>PetConnect</title>
 
 
-    <link rel="stylesheet" href="dist/css/tailwind-compiling-css/output.css">
+    <link rel="stylesheet" href="../css/tailwind-compiling-css/output.css">
 
 
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>

@@ -15,45 +15,51 @@ if (isset($_POST["resend"])){
     $email =  $_SESSION['email'];  
     $_SESSION['otp'] = $otp;
         
-                // require "vendor/phpmailer/PHPMailerAutoload.php";
-                $mail = new PHPMailer(true);
-            
-                $mail->isSMTP();
-            
-                $mail->Host = 'smtp.gmail.com';
-            
-                $mail->SMTPAuth = true;
-            
-                $mail->Username = 'marcdavid0902@gmail.com'; // your Gmail
-                $mail->Password = 'dwhe atbh euzo cnaf'; // your Gmail App Password
-            
-                $mail->SMTPSecure = 'tls';
-            
-                $mail->Port = 587;
-            
-                $mail->setFrom('marcdavid0902@gmail.com'); // your Gmail
-            
-                $mail->addAddress($email);
-            
-                $mail->isHTML(true);
-                $mail->Subject = 'Welcome to PetConnect!';
+    // require "vendor/phpmailer/PHPMailerAutoload.php";
+    $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+    $dotenv->load();
 
-                $mail->Body = '
-                <p>Congratulations, your account has been successfully created.</p>
-                <p>This is your OTP Code:</p> 
-                <h3>' . $otp . '</h3>
-                <p>Thank you for signing up.</p>';
-          
-                if(!$mail->send()){
-                    throw new Exception("Mail failed to send");
-                } else {
-                    ?>
-                    <script>
-                        alert("<?php echo "Resend Sucesfully, OTP sent to " . $email ?>");
-                        window.location.replace('verify.php');
-                    </script>
-                    <?php
-                }  
+    $senderEmail = $_ENV['EMAIL'];
+    $senderPassword = $_ENV['EMAIL_PASSWORD'];
+
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+
+    $mail->Host = 'smtp.gmail.com';
+
+    $mail->SMTPAuth = true;
+
+    $mail->Username = $senderEmail; // your Gmail
+    $mail->Password = $senderPassword; // your Gmail App Password
+
+    $mail->SMTPSecure = 'tls';
+
+    $mail->Port = 587;
+
+    $mail->setFrom($senderEmail, 'Pet Connect'); // your Gmail
+
+    $mail->addAddress($email);
+
+    $mail->isHTML(true);
+    $mail->Subject = 'Welcome to PetConnect!';
+
+    $mail->Body = '
+    <p>Congratulations, your account has been successfully created.</p>
+    <p>This is your OTP Code:</p> 
+    <h3>' . $otp . '</h3>
+    <p>Thank you for signing up.</p>';
+
+    if(!$mail->send()){
+        throw new Exception("Mail failed to send");
+    } else {
+        ?>
+        <script>
+            alert("<?php echo "Resend Sucesfully, OTP sent to " . $email ?>");
+            window.location.replace('verify.php');
+        </script>
+        <?php
+    }  
 }
 
 

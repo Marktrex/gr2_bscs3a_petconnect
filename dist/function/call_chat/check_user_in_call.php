@@ -1,6 +1,6 @@
 <?php
     // Include your database connection script here
-    require_once 'config.php';
+    require_once '../config.php';
 
     $userId = $_POST['userId'];
     $channel = $_POST['channel'];

@@ -7,7 +7,7 @@ use MyApp\Controller\Chat\ChatUser;
 session_start();
 if(!isset($_SESSION['auth_user']))
 {
-	header('location:dist/loginpage.php');
+	header('location:authentication/loginpage.php');
 }
 
 require_once __DIR__ . '../vendor/autoload.php';
@@ -270,7 +270,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 			$('#is_active_chat').val('Yes');
 
 			$.ajax({
-				url:"action.php",
+				url:"function/action.php",
 				method:"POST",
 				data:{action:'fetch_chat', to_user_id:receiver_userid, from_user_id:from_user_id},
 				dataType:"JSON",
@@ -361,7 +361,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 			event.preventDefault();
 			
 			$.ajax({
-				url: 'dist/function/check_login_status.php', // replace with your PHP script
+				url: 'function/check_login_status.php', // replace with your PHP script
 				method: 'POST',
 				success: function(response) {
 					if (response.loggedIn) { // replace with the actual response field
@@ -396,14 +396,14 @@ require_once __DIR__ . '../vendor/autoload.php';
 			// Your code for initiating a video call goes here
 			// Use AJAX to generate the channel
 			$.ajax({
-				url: 'dist\\function\\generateChannelForCall.php',
+				url: 'function\\generateChannelForCall.php',
 				method: 'POST',
 				data: { uid: $('#login_user_id').val() },
 				success: function(data) {
 					// Set the values of the hidden fields
 					$('#channel').val(data.channelName);
 					$.ajax({
-						url: 'action.php',
+						url: 'function/action.php',
 						method: 'POST',
 						data: {
 							channel: $('#channel').val(),
@@ -412,7 +412,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 					});
 					// Submit the form
 					$('#chat_form').submit();
-					window.open('dist/user/VideoCall.php', '_blank');
+					window.open('/user/VideoCall.php', '_blank');
 				}
 			});
 			

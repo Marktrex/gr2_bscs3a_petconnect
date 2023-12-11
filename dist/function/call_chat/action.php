@@ -1,12 +1,15 @@
 <?php
 
+use MyApp\Controller\Chat\ChatUser;
+use MyApp\Controller\Chat\PrivateChat;
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
 //action.php
 
 session_start();
 
 if(isset($_POST['action']) && $_POST['action'] == 'leave')
 {
-	require('database/ChatUser.php');
 
 	$user_object = new ChatUser;
 

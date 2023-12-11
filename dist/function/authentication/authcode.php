@@ -1,13 +1,12 @@
 <!-- Sign Up  -->
 <?php
 
+use MyApp\Controller\Chat\ChatUser;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+
+require_once __DIR__ . '/../../../vendor/autoload.php';
 session_start();
-require('config.php'); //PDO connection to the database
-
-// for chat user
-require('../../database/ChatUser.php');
+require('../config.php'); //PDO connection to the database
 
 
 
