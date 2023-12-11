@@ -173,22 +173,25 @@ class Model
     }
 
 
-    public function searchV2($searchWordsArray, $columnsArray, $operatorsArray = null, $isAscending = true, $page = 1, $itemsPerPage = 10) {
+    public function searchV2($searchWordsArray, $columnsArray, $tablesArray = null, $operatorsArray = null, $isAscending = true, $page = 1, $itemsPerPage = 10) {
         $searchSqlArray = [];
     
         foreach ($searchWordsArray as $index => $searchWords) {
-            $searchWords = $this->db->quote('%' . $searchWords . '%');
+            $operator = 'LIKE';
+            if ($operatorsArray !== null && in_array($operatorsArray[$index], ['=', '!=', 'LIKE', '<', '>', '<=', '>='])) {
+                $operator = $operatorsArray[$index];
+            }
+    
+            if ($operator == 'LIKE') {
+                $searchWords = $this->db->quote('%' . $searchWords . '%');
+            } else {
+                $searchWords = $this->db->quote($searchWords);
+            }
     
             $searchConditions = [];
-            foreach ($columnsArray[$index] as $column) {
-                $operator = 'LIKE';
-                if ($operatorsArray !== null && in_array($operatorsArray[$index], ['=', '!=', 'LIKE', '<', '>', '<=', '>='])) {
-                    $operator = $operatorsArray[$index];
-                    if ($operator != 'LIKE') {
-                        $searchWords = $this->db->quote($searchWordsArray[$index]);
-                    }
-                }
-                $searchConditions[] = "{$column} {$operator} {$searchWords}";
+            foreach ($columnsArray[$index] as $columnIndex => $column) {
+                $table = $tablesArray !== null ? $tablesArray[$index][$columnIndex] . '.' : '';
+                $searchConditions[] = "{$table}{$column} {$operator} {$searchWords}";
             }
             $searchSqlArray[] = '(' . implode(' OR ', $searchConditions) . ')';
         }

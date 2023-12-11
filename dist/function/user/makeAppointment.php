@@ -54,10 +54,7 @@ if (isset($_POST['appoint'])) {
     $_SESSION['auth_user']['lname'] = $lname;
 
     unset($_SESSION['appointment']);
-    echo '<script language="javascript">';
-    echo 'alert("Appointment has been made");';
-    echo '</script>';
-    header("Location: ../../user/home.php");
+    header("Location: ../../user/appointment_made.php");
 }
 
 ?>
