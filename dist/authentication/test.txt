@@ -130,15 +130,17 @@ if(isset($_POST["login"])){
         <div class="code-container">
         <form action="#" method="POST" name="login">
             <input id="email" type="email" placeholder="Enter your Email Address" name="user_email" required><br>
-            <input id="recovery-code" type="text" placeholder="Enter Recovery Code" name="recover_code"required> 
-        </div>
-        <div>
-            <button type="submit" class="btn btn-verify" name="login">login</button>
-        </div>
+            <input id="recovery-code" type="number" placeholder="Enter Recovery Code" name="recover_code"required> 
         </form>
         <form action="#" method="POST" name="resend">     
             <p>If you didn't recieve a code, <button type="submit" class="resend-btn" value="Resend Code" name="resend">Resend Code</button></strong></p>
         </form>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-verify" name="login">login</button>
+        </div>
+        
     </div>
 </body>
 

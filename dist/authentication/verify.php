@@ -170,7 +170,7 @@ if (isset($_POST["verify"])) {
             </div>
         </form>
         
-        </form>
+        
         <form action="#" method="POST">
         <small>
             If you didn't recieve a code, 
