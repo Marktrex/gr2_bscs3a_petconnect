@@ -122,7 +122,7 @@ require '../function/config.php';
         </div>
 
         <div>
-        <button type="submit" class="" name="recover">Send code</button>
+        <button type="submit" class="btn" name="recover">Send code</button>
         </div>
         </form>
     </div>
