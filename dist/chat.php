@@ -10,7 +10,7 @@ if(!isset($_SESSION['auth_user']))
 	header('location:authentication/loginpage.php');
 }
 
-require_once __DIR__ . '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 ?>
 
@@ -412,7 +412,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 					});
 					// Submit the form
 					$('#chat_form').submit();
-					window.open('/user/VideoCall.php', '_blank');
+					window.open('user/VideoCall.php', '_blank');
 				}
 			});
 			
