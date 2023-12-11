@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+  font-family: 'dairantou';
+  src: url(/src/fonts/Dairantou.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body{
+	background-color: #fdc161;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.content-box {
+  flex-wrap: wrap;
+  width: 80%; 
+  padding: 20px;
+  background-color: #F5DFBB;
+  border: -10px solid #ccc;
+  border-radius: 30px;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 950px;
+  margin-top: 20px;
+  margin-bottom: 70px;
+  box-shadow:0 .4rem .8rem #0005;
+}
+.text {
+  font-family: 'dairantou';
+  font-size: 25px;
+  color: #127457;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  
+}
+
+/* Style for the exit icon (adjust as needed) */
+.exit-box {
+  flex-wrap: wrap;
+  width: 80%; 
+  padding: 10px;
+  background-color: #f2542d;
+  border: -10px solid #ccc;
+  border-radius: 50px;
+  word-wrap: break-word;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 950px;
+  margin-top: -275px;
+  margin-left:305px;
+}
+
+.exit{
+  font-family: 'dairantou';
+  font-size: 25px;
+  color: #fff6e8;
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.text2 {
+  font-family: 'Lato';
+  font-size: 20px;
+  color: #0e9594;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.details {
+  font-family: 'dairantou';
+  font-size: 20px;
+  color: #127457;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: -600px;
+  margin-right: 50px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.stacks{
+  font-size: 18px;
+  line-height: 1.5;
+}
+.details{
+  display: block;
+  font-family: 'Lato';
+  color:#127475;
+}
+.apptype {
+  display: block;
+  font-family: 'Lato';
+  color:#0e9594;
+  margin-right: 573px;
+  margin-bottom: 20px;
+}
+.appdate{
+  display: block;
+  font-family: 'Lato';
+  color:#0e9594;
+  margin-right: 577px;
+  margin-bottom: 20px;
+}
+.sesstime{
+  display: block;
+  font-family: 'Lato';
+  color:#0e9594;
+  margin-right: 596px;
+  margin-bottom: 20px;
+}
+.address{
+  display: block;
+  font-family: 'Lato';
+  color:#0e9594;
+  margin-right: 648px;
+  margin-bottom: 65px;
+}
+
+.conditions{
+  display: block;
+  font-family: 'Lato';
+  color:#127475;
+  margin-right: 624px;
+  margin-bottom: 10px;
+}
+.text3{
+  font-family: 'Lato';
+  color:#127475;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.text4 {
+  font-family: 'Lato';
+  color:#127475;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.text5 {
+  font-family: 'Lato';
+  color:#127475;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.text6 {
+  font-family: 'Lato';
+  color:#127475;
+  text-align: center;
+  padding: 10px 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-bottom: 250px;
+}
+

@@ -5,10 +5,19 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use MyApp\Controller\AuditModelController;
-
+// print_r($_SESSION);
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-
+if(isset($_SESSION['auth_user'])){
+    header("Location: ../user/home.php");
+    exit();
+}
+  
+  if ($_SESSION['auth_user']['role'] === "1") { 
+    // Redirect to admin dashboard if the user has admin role
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+  }
 
 
 $log = new AuditModelController();//email verification
