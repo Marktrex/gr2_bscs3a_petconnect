@@ -1,9 +1,9 @@
 :root{
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:rgba(195, 253, 250, 0.776);
+    --main-input-color:rgba(37, 141, 141, 0.248);
 
-    --wrapper-background-color: #381162;
-    --form-title-text-color:#c3fdfa;
+    --wrapper-background-color: #fdf7ec;
+    --form-title-text-color:#0e9594;
     --form-title-border-color:var(--form-title-text-color);
     --form-label-image-background-color: #ffb845ba;
     --form-label-image-text-color:black;
@@ -14,7 +14,7 @@
 
     --clear-btn-color: var(--form-label-image-background-color);
     --clear-btn-hover-color: #ffb845;
-}
+} 
 
 [data-theme="dark"] {
     --main-content-shadow:0 .4rem .8rem #0005;
