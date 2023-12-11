@@ -1,5 +1,6 @@
 <?php 
-session_start();
+// session_start();
+print_r($_SESSION);
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -163,7 +164,7 @@ if (isset($_POST["verify"])) {
         <form action="#" method="POST">
         <small>
             If you didn't recieve a code, 
-            <input type="submit" class="" value="Send Code" name="resend">
+            <button type="submit" class="resend-btn" value="Send Code" name="resend">Resend Code</button>
         </small>
         </form>
     </div>

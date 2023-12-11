@@ -113,3 +113,14 @@ small a:hover{
     box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
 }
 
+.resend-btn{
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #fdc161;
+    cursor: pointer;
+}
+
+.resend-btn:hover{
+    color: #f6e9d4;
+}
