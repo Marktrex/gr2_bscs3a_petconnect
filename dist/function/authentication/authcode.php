@@ -47,7 +47,7 @@ if (isset($_POST["login"])) {
             // Redirect to login page if the user status is 'Disabled'
             echo '<script language="javascript">';
               echo 'alert("Your account is not verified! Please verify it first!");';
-              echo 'window.location.href = "../../verify.php";';  // Redirect using JavaScript
+              echo 'window.location.href = "../../authentication/verify.php";';  // Redirect using JavaScript
               echo '</script>';
             exit();
           }
