@@ -33,7 +33,7 @@ if (!isset($_SESSION['auth_user'])) {
   </head>
 
   <body>
-  <?php require_once "../components/fixedNavbar.php"?>
+  <?php require_once "../components/user/fixedNavbar.php"?>
     <main>
       <div class="container">
         <div class="text1">
@@ -115,7 +115,7 @@ if (!isset($_SESSION['auth_user'])) {
         </div>
       </div>
     </main>
-    <?php require_once "../components/footer.html"?>
+    <?php require_once "../components/user/footer.html"?>
     <?php require_once "..\components\call_across_pages.php"?>
   </body>
 </html>
