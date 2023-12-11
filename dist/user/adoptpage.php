@@ -54,10 +54,12 @@ try { //research this try catch method
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    
+    <link rel="stylesheet" href= "..\css\colorStyle\user\donate-pet-color.css">
   </head>
 
   <body>
-  <?php require_once "../components/userNavbar.php"?>
+  <?php require_once "../components/user/userNavbar.php"?>
     <form action="" method="get" id= "searchForm">
       
       <section class="content">
@@ -203,7 +205,8 @@ try { //research this try catch method
       </main>
     </form>
     
-    <?php require_once "../components/footer.html"?>
+    <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\light-switch.php"?>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
