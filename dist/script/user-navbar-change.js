@@ -8,6 +8,7 @@ function addEventOnNav() {
 
   // Toggle mobile menu on hamburger button click
   hamburgerBtn.addEventListener("click", function () {
+    console.log(header);
     header.classList.toggle("show-mobile-menu");
     changeHeaderColor("#fff");
   });
@@ -30,12 +31,15 @@ window.addEventListener("scroll", function () {
 });
 
 function changeHeaderColor(textColor) {
+  const header = document.querySelector(".navbarContainer");
   // Check if the viewport width exceeds 800px
   if (window.innerWidth < 1024) {
+    textColor = "#e89003";
+    header.querySelectorAll("li > a, li > .dropdown > label, li > .dropdown > label > span").forEach(function (a) {
+      a.style.cssText = `color: ${textColor}`; // Change to your desired text color
+    });
     return; // Exit the function
   }
-
-  const header = document.querySelector(".navbarContainer");
   
   let scrollPosition = window.scrollY;
 

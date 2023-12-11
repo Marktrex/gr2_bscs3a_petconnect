@@ -22,6 +22,5 @@ $status = $appointment->make_appointment_pending($_GET['id'], $_GET['token']);
 <body>
     Appointment is successful
     <?php echo $status?>
-    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>

@@ -104,11 +104,11 @@ a{
     white-space: nowrap;
     border-collapse: collapse;
 }
-.table_responsive thead{
+thead{
     background-color: #0e9594;
     color: black;
 }
-.tables, .table_responsive thead th{
+.tables, thead th{
     padding: 8px;
 }
 .tables th, .tables td{
@@ -142,49 +142,7 @@ a{
     background-color: white;
     transition: 0.3s ease-in-out;
 }
-
-
-@media only screen and (max-width:1024px){
-    .table_responsive {
-        & table, thead, tbody, th, td, tr { 
-            display: block; 
-        }
-        
-        /* Hide table headers (but not display: none;, for accessibility) */
-        & thead tr { 
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-        
-        & tr { border: 1px solid #ccc; }
-        
-        & td { 
-            /* Behave  like a "row" */
-            border: none;
-            border-bottom: 1px solid #eee; 
-            position: relative;
-            padding-left: 50%; 
-        }
-        
-        & td:before { 
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%; 
-            padding-right: 10px; 
-            white-space: nowrap;
-        }
-
-        & td:nth-of-type(1):before { content: "Type"; }
-        & td:nth-of-type(2):before { content: "Name"; }
-        & td:nth-of-type(3):before { content: "Mobile #"; }
-        & td:nth-of-type(4):before { content: "Address"; }
-        & td:nth-of-type(5):before { content: "Email"; }
-        & td:nth-of-type(6):before { content: "Status"; }
-    }
+@media only screen and (max-width:678px){
 }
 
 

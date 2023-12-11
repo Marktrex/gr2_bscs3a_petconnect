@@ -27,7 +27,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<?php require_once "../components/fixedNavbar.php"?>
+<?php require_once "../components/user/fixedNavbar.php"?>
 <header>
      <div class="title-container">
           <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
@@ -137,7 +137,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
 
 
   <?php require_once "..\components\call_across_pages.php"?>
-  <?php require_once "../components/footer.html"?>    
+  <?php require_once "../components/user/footer.html"?>    
 
 </body>
 </html>

@@ -340,7 +340,7 @@ if (isset($_POST["submit"])) {
     function logout() {
         if (confirm("Are you sure you want to log out?")) {
             // Perform logout action
-            window.location.href = "../function/logout.php";
+            window.location.href = "../function/authentication/logout.php";
         }
     }
 </script>

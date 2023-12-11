@@ -183,7 +183,7 @@ let toggleCamera = async (e) => {
 // function to get channel and uid
 async function getChannelAndUid() {
     // Make an AJAX request to get_call_function.php
-    let response = await fetch('../function/get_call_function.php', {
+    let response = await fetch('../function/call_chat/get_call_function.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -208,7 +208,7 @@ let checkUserInCall = async (userId, channel) => {
     formData.append('userId', userId);
     formData.append('channel', channel); 
 
-    let response = await fetch('../function/check_user_in_call.php', {
+    let response = await fetch('../function/call_chat/check_user_in_call.php', {
         method: 'POST',
         body:formData
     });
@@ -231,7 +231,7 @@ let generateToken = async (channel, uid) => {
     let formData = new FormData();
     formData.append('userId', uid);
     formData.append('channel', channel); 
-    let response = await fetch('../function/generateTokenCall.php', {
+    let response = await fetch('../function/call_chat/generateTokenCall.php', {
         method: 'POST',
         body: formData,
     });
@@ -257,7 +257,7 @@ async function updateJoinStatus(userId, hasJoined, channel) {
     formData.append('channel', channel);
     formData.append('is_sender', isSender);
 
-    const response = await fetch('../function/update_join_status.php', {
+    const response = await fetch('../function/call_chat/update_join_status.php', {
         method: 'POST',
         body: formData
     });

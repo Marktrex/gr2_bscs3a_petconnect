@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@font-face{
+  font-family: 'dairantou';
+  src: url(/src/fonts/Dairantou.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.main {
+    min-height: 100vh;
+    position: relative;
+    background: #fdc161;
+    padding: 70px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    background: #f5dfbb;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 45px;
+    border-radius: 26px;
+    margin-bottom: 5%;
+}
+
+h1 {
+    text-align: left;
+    font-size: 45px;
+    padding-bottom: 5px;
+    margin-left: 3%;
+    color: #127475;
+}
+
+hr {
+    background: #127475;
+    height: 5px;
+    border: none;
+    margin-bottom: 5%;
+}
+.container {
+    display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color:#127475;
+  width: 100%;
+    height: auto;
+}
+
+.container input {
+    padding: 7px;
+    border: none;
+    border-radius: 10px;
+    background: #6B9392;
+    opacity: 40%;
+    width: 100%;
+    margin-bottom: 2%;
+}

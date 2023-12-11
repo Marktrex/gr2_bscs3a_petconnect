@@ -34,7 +34,7 @@
 </head>
 <body>
     <div class="container-1">
-        <form action="../function/makeAppointment.php" method="post">
+        <form action="../function/user/makeAppointment.php" method="post">
             <div class="form first">
                 <div class="details personal">
                     <span class="title">Appoinment Confirmation</span>
@@ -80,6 +80,7 @@
             </div>
         </form>
     </div>
+
     <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>

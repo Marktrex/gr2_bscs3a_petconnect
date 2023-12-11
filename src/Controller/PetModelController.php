@@ -2,6 +2,7 @@
 namespace MyApp\Controller;
 
 use MyApp\Model\Pet;
+use MyApp\Controller\AuditModelController;
 
 
 class PetModelController{
@@ -13,14 +14,14 @@ class PetModelController{
     }
 
 
-    public function get_pet_data_by_id($user_id)
+    public function get_pet_data_by_id($pet_id)
     {
-        $user = $this->user;
-        $user_data = $user->find($user_id);
-        return $user_data;
+        $pet = $this->pets;
+        $pet_data = $pet->find($pet_id);
+        return $pet_data;
     }
 
-    public function search($value, $columns = ['type','breed','sex','weight','age'], $userOperator=null){
+    public function search($value, $columns, $userOperator=null){
         $pets = $this->pets;
         return $pets->search($value, $columns,$userOperator);
     }
@@ -28,6 +29,34 @@ class PetModelController{
     public function get_four_latest_pet($pet_type){
         $pets = $this->pets;
         return $pets->search($pet_type, ['pet_type'], false, 1, 4);
+    }
+
+    public function updateProfileAdmin($responsibleId, $pet_id, $data){
+        $pet = $this->pets;
+        $oldData = $this->get_pet_data_by_id($pet_id);
+        $newData = $data;
+        $pet->update($pet_id, $data);
+
+        $log = new AuditModelController();
+        foreach ($oldData as $key => $value)  {
+            if(array_key_exists($key, $newData) && $value != $newData[$key]){
+                $log->activity_log(
+                    $responsibleId,
+                    "UPDATE",
+                    "PETS",
+                    $key,
+                    $pet_id,
+                    $value,
+                    $newData[$key]
+                );
+            }
+        }
+        return;
+    }
+
+    public function getAllPets(){
+        $pets = $this->pets;
+        return $pets->all();
     }
 }
 ?>

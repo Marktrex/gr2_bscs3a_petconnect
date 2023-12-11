@@ -1,63 +1,88 @@
 <?php
-    use MyApp\Controller\UserModelController;
-    session_start(); // Add this line to start the session
-    if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
-        header("Location: ../admin/admin-dashboard.php");
-        exit();
-    }
-    if (!isset($_SESSION['auth_user'])) { 
-        header("Location: ../error/403-forbidden.html");
-        exit();
-    }
-    require_once __DIR__ . '/../../vendor/autoload.php';
-    require_once '../function/config.php';
 
-    //Retrieve the user information by id
-    $user = new UserModelController();
-    $id = $_SESSION['auth_user']['id'];
-    $resultUser = $user->get_user_data_by_id($id);
-    $date = date('Y-m-d');
-    $type = '';
-    $time_slot = '';
-    //Go back function for appointment confirmation
-    if (isset($_SESSION['appointment'])){
-        $resultUser->fname = $_SESSION['appointment']['fname'];
-        $resultUser->lname = $_SESSION['appointment']['lname'];
-        $resultUser->mobile_number = $_SESSION['appointment']['mobile'];
-        $resultUser->home_address = $_SESSION['appointment']['address'];
-        $type = $_SESSION['appointment']['type'];
-        $date = $_SESSION['appointment']['date'];
-        $time_slot = $_SESSION['appointment']['time-slot'];
-    }
 
-    // Retrieve the dates from the appointment table in the database
-    $query = "SELECT appointment_date, time_slot FROM appointment";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
+use MyApp\Controller\UserModelController;
+use MyApp\Controller\AppointmentModelController;
+session_start(); // Add this line to start the session
+//is admin
+if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+}
+//not logged in
+if (!isset($_SESSION['auth_user'])) { 
+    header("Location: ../error/403-forbidden.html");
+    exit();
+}
 
-    // Fetch all the results
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Generate event objects for each date
-    $events = [];
-    foreach ($results as $row) {
-        $date = $row['appointment_date'];
-        $time_slot = $row['time_slot'];
+require_once __DIR__ . '/../../vendor/autoload.php';
+require_once '../function/config.php';
 
-        $event = [
-            "title" => "$time_slot",
-            "start" => $date
-        ];
-        $events[] = $event;
-    }
+$defaultDate = date('Y-m-d');
+$userId = $_SESSION['auth_user']['id'];
+//check if user already has an appointment
+$appointmentController = new AppointmentModelController();
 
-    // Sort the events based on the title
-    usort($events, function($a, $b) {
-        return strcmp($a['title'], $b['title']);
-    });
+$searchWordsArray = [$userId, $defaultDate];
+$columnsArray = [['user_id'], ['appointment_date']];
+$tablesArray = [['appointment'], ['appointment']]; // replace 'appointments' with your actual table name
+$operatorsArray = ['=', '>='];
 
-    // Encode the events array to a JSON string
-    $eventsJson = json_encode($events);
+$result = $appointmentController->searchV2($searchWordsArray, $columnsArray, $tablesArray, $operatorsArray);
+
+// echo json_encode($result);
+if (!empty($result)){
+    header("Location: ../error/appointment.html");
+    exit();
+}
+
+//Retrieve the user information by id
+$user = new UserModelController();
+$id = $_SESSION['auth_user']['id'];
+$resultUser = $user->get_user_data_by_id($id);
+$type = '';
+$time_slot = '';
+//Go back function for appointment confirmation
+if (isset($_SESSION['appointment'])){
+    $resultUser->fname = $_SESSION['appointment']['fname'];
+    $resultUser->lname = $_SESSION['appointment']['lname'];
+    $resultUser->mobile_number = $_SESSION['appointment']['mobile'];
+    $resultUser->home_address = $_SESSION['appointment']['address'];
+    $type = $_SESSION['appointment']['type'];
+    $defaultDate = $_SESSION['appointment']['date'];
+    $time_slot = $_SESSION['appointment']['time-slot'];
+}
+
+
+// Retrieve the dates from the appointment table in the database
+$query = "SELECT appointment_date, time_slot FROM appointment";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+
+// Fetch all the results
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Generate event objects for each date
+$events = [];
+foreach ($results as $row) {
+    $date = $row['appointment_date'];
+    $time_slot = $row['time_slot'];
+
+    $event = [
+        "title" => "$time_slot",
+        "start" => $date
+    ];
+    $events[] = $event;
+}
+
+// Sort the events based on the title
+usort($events, function($a, $b) {
+    return strcmp($a['title'], $b['title']);
+});
+
+// Encode the events array to a JSON string
+$eventsJson = json_encode($events);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,38 +131,15 @@
                     dateInput.value = selectedDate;
                     dateInput.dispatchEvent(new Event('change'));
 
-                    // Check if there's a morning or afternoon session on the selected date
-                    var hasMorning = hasMorningSession(selectedDate);
-                    var hasAfternoon = hasAfternoonSession(selectedDate);
-
-                    // Get the time slot select box and the hint element
-                    var timeSlotSelect = document.getElementById('time-slot');
-                    var hint = document.getElementById('hint');
-
-                    timeSlotSelect.value = '';
-
-                    var disabledOptions = 0;
-                    for (var i = 0; i < timeSlotSelect.options.length; i++) {
-                        var option = timeSlotSelect.options[i];
-                        if ((option.value === 'Morning Session' && hasMorning) || 
-                            (option.value === 'Afternoon Session' && hasAfternoon)) {
-                            option.disabled = true;
-                            disabledOptions++;
-                        } else {
-                            option.disabled = false;
-                        }
-                    }
-                    // Update the hint text
-                    if (disabledOptions === timeSlotSelect.options.length - 1) {
-                        hint.textContent = 'This day has been fully booked, please select another date.';
-                    } else {
-                        hint.textContent = '';
-                    }
+                    updateOptions(selectedDate);
                 },
                 events: events,
             });
 
             calendar.render();
+
+            var today = new Date();
+            calendar.select(today.toISOString().slice(0, 10));
 
             function hasMorningSession(date) {
                 return events.some(function(event) {
@@ -149,6 +151,35 @@
                 return events.some(function(event) {
                     return event.title === 'Afternoon Session' && event.start.slice(0, 10) === date.slice(0, 10);
                 });
+            }
+            function updateOptions(selectedDate) {
+                // Check if there's a morning or afternoon session on the selected date
+                var hasMorning = hasMorningSession(selectedDate);
+                var hasAfternoon = hasAfternoonSession(selectedDate);
+
+                // Get the time slot select box and the hint element
+                var timeSlotSelect = document.getElementById('time-slot');
+                var hint = document.getElementById('hint');
+
+                timeSlotSelect.value = '';
+
+                var disabledOptions = 0;
+                for (var i = 0; i < timeSlotSelect.options.length; i++) {
+                    var option = timeSlotSelect.options[i];
+                    if ((option.value === 'Morning Session' && hasMorning) || 
+                        (option.value === 'Afternoon Session' && hasAfternoon)) {
+                        option.disabled = true;
+                        disabledOptions++;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+                // Update the hint text
+                if (disabledOptions === timeSlotSelect.options.length - 1) {
+                    hint.textContent = 'This day has been fully booked, please select another date.';
+                } else {
+                    hint.textContent = '';
+                }
             }
         });
     </script>
@@ -224,14 +255,10 @@
                     </select>
                 </div>
                 <p id="hint" style="color: red;"></p>
-
-                
-        
             </div>
         </div>
         <button type="submit" class="styled-button">CONFIRM</button>
     </div>
     </form>
 </body>
-
 </html>

@@ -42,9 +42,15 @@ class AppointmentModelController{
             }
         }
 
+        $dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+        $dotenv->load();
+        $root = $_ENV['ROOT_FOLDER'];
+
+        
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
         $token = $appointmentData['token'];
+        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '';
         //send email
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
@@ -53,7 +59,7 @@ class AppointmentModelController{
             <h1>Appointment Confirmation</h1>
             <p>Dear ' . $fullname . ',</p>
             <p>Thank you for making an appointment with Pet Connect. To confirm your email address and enable your account, please click the link below:</p>
-            <p><a href="http://localhost/repos/gr2_bscs3a_petconnect/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '">Confirm Email</a></p>
+            <p><a href="'.$link.'">Confirm Email</a></p>
             <p>If you did not make this appointment, please ignore this email.</p>
             <p>Best regards,</p>
             <p>Pet Connect Team</p>
@@ -103,11 +109,12 @@ class AppointmentModelController{
 
         $email = $_ENV['EMAIL'];
         $password = $_ENV['EMAIL_PASSWORD'];
+        
         $mail = new PHPMailer(true);
 
         try {
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->SMTPDebug = false;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -123,8 +130,8 @@ class AppointmentModelController{
             //Attachments
             if($withAttachment)
             {
-                $mail->addAttachment('../papers/Adoption-Paper.pdf', 'adoption_papers.pdf');    
-                $mail->addAttachment('../papers/Adoption-Paper-2.pdf', 'adoption_papers2.pdf');    
+                $mail->addAttachment('../../papers/Adoption-Paper.pdf', 'adoption_papers.pdf');    
+                $mail->addAttachment('../../papers/Adoption-Paper-2.pdf', 'adoption_papers2.pdf');    
             }
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
@@ -170,5 +177,10 @@ class AppointmentModelController{
     public function search($value, $columns, $userOperator=null){
         $appointment = $this->appointment;
         return $appointment->with("user")->search($value, $columns,$userOperator);
+    }
+
+    public function searchV2($value, $columns,$tablesArray, $userOperator=null){
+        $appointment = $this->appointment;
+        return $appointment->with("user")->searchV2($value, $columns, $tablesArray , $userOperator);
     }
 }

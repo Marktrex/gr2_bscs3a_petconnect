@@ -32,5 +32,10 @@ class UserModelController{
         $user = $this->user;
         $user->delete($user_id);
     }
+
+    public function getAllUsers(){
+        $user = $this->user;
+        return $user->all();
+    }
 }
 ?>

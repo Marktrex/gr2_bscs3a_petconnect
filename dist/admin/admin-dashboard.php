@@ -438,7 +438,7 @@ $eventsJson = json_encode($events);
     function logout() {
         if (confirm("Are you sure you want to log out?")) {
             // Perform logout action
-            window.location.href = "../function/logout.php";
+            window.location.href = "../function/authentication/logout.php";
         }
     }
 </script>
@@ -466,7 +466,7 @@ $eventsJson = json_encode($events);
     function updateStatus(appointmentId, status) {
         // Make an AJAX request to update the status
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '../function/update_status.php', true);
+        xhr.open('POST', '../function/admin/update_status.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
             // Check if the request was successful
