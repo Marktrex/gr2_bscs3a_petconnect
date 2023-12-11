@@ -4,7 +4,7 @@ use Dotenv\Dotenv;
 use MyApp\Class\AgoraDynamicKey\RtcTokenBuilder2;
 
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
+$dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\..\\');
 $dotenv->load();
 
 $appID = $_ENV['APP_ID'];
