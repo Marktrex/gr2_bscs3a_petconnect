@@ -1,5 +1,6 @@
 <?php
 
+
 use MyApp\Controller\UserModelController;
 use MyApp\Controller\AppointmentModelController;
 session_start(); // Add this line to start the session
@@ -90,7 +91,7 @@ $eventsJson = json_encode($events);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../image/logo.png" type="image/png">
     <title>Appointment</title>
-
+    <link rel="stylesheet" href="..\css\newlyAdded\appointment.css">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     
     <script>
@@ -184,47 +185,80 @@ $eventsJson = json_encode($events);
     </script>
 </head>
 <body>
-    Make an appointment
-    <form action="appointment_confirm.php" method="post">
-        <div>
-            <label for="fname">First Name:<span> *</span></label>
-            <input type="text" id="fname" name="fname" required value = "<?php echo $resultUser->fname?>">
+    <header>
+        <h1>Book an Appointment</h1>
+    </header>
+    <div class="container-1">
+        <form action="appointment_confirm.php" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Information</span>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="fname">Last Name:<span> *</span></label>
+                            <input type="text" placeholder="First name" id="fname" name="fname" required value = "<?php echo $resultUser->fname?>" >
+                        </div>        
+                        <div class="input-field">
+                            <label for="lname">Last Name:<span> *</span></label>
+                            <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->fname?>">
+                        </div>
+                        <div class="input-field">
+                            <label for="mobile">Mobile Number:<span> *</span></label>
+                            <input type="tel" placeholder="Mobile number" id="mobile" name="mobile" required value = "<?php echo $resultUser->mobile_number?>">
+                        </div>
+                        <div class="input-field">
+                            <label for="address">Home Address:<span> *</span></label>
+                            <input type="text" placeholder="Home Address" id="address" name="address" required value = "<?php echo $resultUser->home_address?>">
+                        </div>
+                    </div>
+                    <p>
+                        PetConnect values data confientially. Your information well be
+                        only used in appoinment purposes.
+                    </p>
+                    <br><br>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Appointment Type</label>
+                            <select name="type" id="type" required>
+                                <option value="">Select</option>
+                                <option value="Adopt" <?php echo $type == 'Adopt' ? 'selected' : ''; ?>>Adopt</option>
+                                <option value="Donate" <?php echo $type == 'Donate' ? 'selected' : ''; ?>>Donate</option>
+                                <option value="Visit" <?php echo $type == 'Visit' ? 'selected' : ''; ?>>Visit</option>
+                                <option value="Volunteer" <?php echo $type == 'Volunteer' ? 'selected' : ''; ?>>Volunteer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container-2">
+        <div class="content-wrapper">
+            <div class="cards">
+                <span class="title">CHOOSE APPOINTMENT DATE</span>
+                <h2 class="cl">Schedule Calendar</h2>
+                <div id="calendar"></div>
+            </div>
+
+            <div class="form-second">
+                <div class="fields-2">
+                    <label for="dates">Date</label>
+                    <input type="date"name="date" id="date-input" required
+                    value="<?php echo $date; ?>" readonly>
+                </div>
+
+                <div class="fields-2">
+                    <select id="time-slot" name="time-slot" class="form-control" required>
+                        <option value="">Select Session</option>
+                        <option value="Morning Session" <?php echo $time_slot == 'Morning Session' ? 'selected' : ''; ?>>Morning Session (9:00 AM - 11:30 AM)</option>
+                        <option value="Afternoon Session" <?php echo $time_slot == 'Afternoon Session' ? 'selected' : ''; ?>>Afternoon Session (1:00 PM - 4:30 PM)</option>
+                    </select>
+                </div>
+                <p id="hint" style="color: red;"></p>
+            </div>
         </div>
-        <div>
-            <label for="lname">Last Name:<span> *</span></label>
-            <input type="text" id="lname" name="lname" required value = "<?php echo $resultUser->fname?>">
-        </div>
-        <div>
-            <label for="mobile">Mobile Number:<span> *</span></label>
-            <input type="tel" id="mobile" name="mobile" required value = "<?php echo $resultUser->mobile_number?>">
-        </div>
-        <div>
-            <label for="address">Home Address:<span> *</span></label>
-            <input type="text" id="address" name="address" required value = "<?php echo $resultUser->home_address?>">
-        </div>
-        <select name="type" id="type" required>
-            <option value="">Select</option>
-            <option value="Adopt" <?php echo $type == 'Adopt' ? 'selected' : ''; ?>>Adopt</option>
-            <option value="Donate" <?php echo $type == 'Donate' ? 'selected' : ''; ?>>Donate</option>
-            <option value="Visit" <?php echo $type == 'Visit' ? 'selected' : ''; ?>>Visit</option>
-            <option value="Volunteer" <?php echo $type == 'Volunteer' ? 'selected' : ''; ?>>Volunteer</option>
-        </select>
-        <div class="calendar-container">
-            <h2 class="title">CHOOSE APPOINTMENT DATE</h2>
-            <h2 class="cl">Schedule Calendar</h2>
-            <div id="calendar"></div>
-        </div>
-        <label for="date">Date:</label>
-        <input type="date"name="date" id="date-input" required
-            value="<?php echo $defaultDate; ?>" readonly>
-        <select id="time-slot" name="time-slot" class="form-control" required>
-            <option value="">Select Session</option>
-            <option value="Morning Session" <?php echo $time_slot == 'Morning Session' ? 'selected' : ''; ?>>Morning Session (9:00 AM - 11:30 AM)</option>
-            <option value="Afternoon Session" <?php echo $time_slot == 'Afternoon Session' ? 'selected' : ''; ?>>Afternoon Session (1:00 PM - 4:30 PM)</option>
-        </select>
-        <p id="hint" style="color: red;"></p>
-        <button type="submit">Confirm</button>
+        <button type="submit" class="styled-button">CONFIRM</button>
+    </div>
     </form>
-    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>
