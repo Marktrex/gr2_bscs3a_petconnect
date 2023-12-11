@@ -141,7 +141,7 @@ if (isset($_POST['delete'])) {
                 "ALL",
                 "DESTROY"
             );
-    header("Location: ../function/logout.php");
+    header("Location: ../function/authnetication/logout.php");
     exit();
 }
 ?>

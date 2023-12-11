@@ -215,7 +215,7 @@ try { //research this try catch method
         form.addEventListener('input', async function(e) {
             e.preventDefault();
 
-            const url = '../function/search.php?' + new URLSearchParams(new FormData(form)).toString();
+            const url = '../function/user/pet_search.php?' + new URLSearchParams(new FormData(form)).toString();
             try {
                 const response = await fetch(url);
                 if (!response.ok) { // if HTTP-status is 200-299

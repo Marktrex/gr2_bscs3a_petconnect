@@ -48,7 +48,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 				<div class="">
 					<h3 class=""><?php echo $name; ?></h3>
 					<a href="user/home.php" class="">Back</a>
-					<input type="button" class="" id="logout" name="logout" value="Logout" onclick="window.location.href='dist/function/logout.php'"/>
+					<input type="button" class="" id="logout" name="logout" value="Logout" onclick="window.location.href='function/logout.php'"/>
 				</div>
 				<?php
 
@@ -270,7 +270,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 			$('#is_active_chat').val('Yes');
 
 			$.ajax({
-				url:"function/action.php",
+				url:"function/call_chat/action.php",
 				method:"POST",
 				data:{action:'fetch_chat', to_user_id:receiver_userid, from_user_id:from_user_id},
 				dataType:"JSON",
@@ -361,7 +361,7 @@ require_once __DIR__ . '../vendor/autoload.php';
 			event.preventDefault();
 			
 			$.ajax({
-				url: 'function/check_login_status.php', // replace with your PHP script
+				url: 'function/call_chat/check_login_status.php', // replace with your PHP script
 				method: 'POST',
 				success: function(response) {
 					if (response.loggedIn) { // replace with the actual response field
@@ -396,14 +396,14 @@ require_once __DIR__ . '../vendor/autoload.php';
 			// Your code for initiating a video call goes here
 			// Use AJAX to generate the channel
 			$.ajax({
-				url: 'function\\generateChannelForCall.php',
+				url: 'function/call_chat/generateChannelForCall.php',
 				method: 'POST',
 				data: { uid: $('#login_user_id').val() },
 				success: function(data) {
 					// Set the values of the hidden fields
 					$('#channel').val(data.channelName);
 					$.ajax({
-						url: 'function/action.php',
+						url: 'function/call_chat/action.php',
 						method: 'POST',
 						data: {
 							channel: $('#channel').val(),
