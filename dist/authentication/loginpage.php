@@ -35,7 +35,7 @@
             custom-background-color">
     <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
         <a href="#">
-            <img src="dist/image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
+            <img src="../image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
         </a>
     </div>
     <div class = "flex items-center justify-center mt-10 mb-10">
@@ -47,7 +47,7 @@
                     relative
                     rounded-none md:rounded-[48px]">
             <div class="hidden lg:flex items-center justify-center flex-1">
-                <img src="dist/image/LoginSignup/photo-deco-1.png" alt="design photo"
+                <img src="../image/LoginSignup/photo-deco-1.png" alt="design photo"
                 class= "">
             </div>
             <form class="flex flex-col justify-center flex-1 gap-[3vh]"
