@@ -1,3 +1,17 @@
+<?php
+require '../function/config.php';
+session_start(); // Add this line to start the session
+if (!isset($_SESSION['auth_user'])) {
+  // Redirect to login page if the user is not authenticated
+  header("Location: ../authentication/loginpage.php");
+  exit();
+}
+
+if ($_SESSION['auth_user']['role'] === "1") { 
+  // Redirect to admin dashboard if the user has admin role
+  header("Location: ../admin/admin-dashboard.php");
+  exit();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -163,7 +163,7 @@ if (isset($_POST["verify"])) {
         <form action="#" method="POST">
         <small>
             If you didn't recieve a code, 
-            <input type="submit" value="Send Code" name="resend">
+            <input type="submit" class="" value="Send Code" name="resend">
         </small>
         </form>
     </div>
