@@ -1,0 +1,37 @@
+:root {
+    --body-bg-color:#f6e9d4;
+    --container-bg-color: #f2542d;
+    --container-text-color: #f6e9d4;
+    --container-box-shadow: 0px 10px 40px brown;
+}
+ 
+[data-theme="dark"] {
+    --body-bg-color:#090b29;
+    --container-bg-color: #381162;
+    --container-text-color: #c3fdfa;
+    --container-box-shadow: 0px 10px 40px rgb(0, 0, 1);
+}
+
+body {
+    background: var(--body-bg-color);
+  }
+
+.container {
+    background: var(--container-bg-color);
+    color: var(--container-text-color);
+    box-shadow: var(--container-box-shadow);
+}
+
+.btn {
+    border: 2px solid var(--btn-border-color);
+    background-color: var(--btn-bg-color);
+}
+
+.btn-verify {
+    color: var(--btn-verify-text-color);
+    border-color: var(--btn-verify-border-color);  
+}
+
+.btn-verify:hover {
+    background-color: var(--btn-verify-hover-bg-color);
+}

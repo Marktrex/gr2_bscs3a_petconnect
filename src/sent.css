@@ -13,7 +13,6 @@
 }
 
 body {
-  background: #f6e9d4;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -22,13 +21,10 @@ body {
 }
 
 .container {
-    background: #f2542d;
     border-radius: 10px;
     padding: 30px;
     max-width: 1000px;
     text-align: center;
-    color: #f6e9d4;
-    box-shadow: 0px 10px 40px brown;
 }
 
 .container img{
@@ -61,7 +57,6 @@ p{
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
-    border: 2px solid #fdc161;
     margin: 0 0 20px 0;
     padding: 0.775rem 0.75rem;
     font-size: 1rem;
@@ -69,17 +64,13 @@ p{
     border-radius: 30px;
     text-transform: uppercase;
     letter-spacing: 0.7;
-    background-color: #f6e9d4;
 }
 
 .btn-verify {
-    color: black;
     font-weight: 600;
-    border-color: #fdc161;  
 }
 
 .btn-verify:hover{
-    background-color: #fdc161;
     transition: 0.3s ease;
 }
 

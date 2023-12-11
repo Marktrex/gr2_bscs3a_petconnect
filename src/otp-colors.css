@@ -1,0 +1,81 @@
+:root {
+ --body-bg-color: #f6e9d4;
+    --container-bg-color: #f2542d;
+    --container-text-color: #f6e9d4;
+    --container-box-shadow: 0px 10px 40px brown;
+    --code-caret-color: transparent;
+    --code-bg-color: rgba(255, 255, 255, 0.6);
+    --code-border-color: white;
+    --btn-border-color: #fdc161;
+    --btn-bg-color: #f6e9d4;
+    --btn-verify-text-color: black;
+    --btn-verify-border-color: #fdc161;
+    --btn-verify-hover-bg-color: #fdc161;
+    --resend-btn-text-color: #fdc161;
+    --resend-btn-hover-text-color: #f6e9d4;
+    --code-valid-border-color: #c5bdbc;
+    --code-valid-box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+  }
+ 
+  [data-theme="dark"] {
+      --body-bg-color: #090b29;
+    --container-bg-color: #381162;
+    --container-text-color: #c3fdfa;
+    --container-box-shadow:  0px 10px 40px rgb(0, 0, 1);
+    --code-caret-color: transparent;
+    --code-bg-color: #cffffdba;
+    --code-border-color: rgb(87, 245, 219);
+    --btn-border-color: #1EDDD4;
+    --btn-bg-color: #c3fdfa;
+    --btn-verify-text-color: black;
+    --btn-verify-border-color: #1EDDD4;
+    --btn-verify-hover-bg-color: #1EDDD4;
+    --resend-btn-text-color: #ab62ff;
+    --resend-btn-hover-text-color: #c3fdfa;
+    --code-valid-border-color: #cffffd;
+    --code-valid-box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+  }
+  
+  body {
+    background: var(--body-bg-color);
+  }
+  
+  .container {
+    background: var(--container-bg-color);
+    color: var(--container-text-color);
+    box-shadow: var(--container-box-shadow);
+  }
+  
+  .code {
+    caret-color: var(--code-caret-color);
+    background: var(--code-bg-color);
+    border: 1px solid var(--code-border-color);
+  }
+  
+  .btn {
+    border: 2px solid var(--btn-border-color);
+    background-color: var(--btn-bg-color);
+  }
+  
+  .btn-verify {
+    color: var(--btn-verify-text-color);
+    border-color: var(--btn-verify-border-color);
+  }
+  
+  .btn-verify:hover {
+    background-color: var(--btn-verify-hover-bg-color);
+  }
+  
+  .resend-btn {
+    color: var(--resend-btn-text-color);
+  }
+  
+  .resend-btn:hover {
+    color: var(--resend-btn-hover-text-color);
+  }
+  
+  .code:valid {
+    border-color: var(--code-valid-border-color);
+    box-shadow: var(--code-valid-box-shadow);
+  }
+  
