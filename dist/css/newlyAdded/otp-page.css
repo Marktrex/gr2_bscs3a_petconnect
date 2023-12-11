@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@font-face{
+  font-family: 'dairantou';
+  src: url(/src/fonts/Dairantou.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  background: #f6e9d4;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+    background: #f2542d;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 1000px;
+    text-align: center;
+    color: #f6e9d4;
+    box-shadow: 0px 10px 40px brown;
+}
+
+
+.code-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.code {
+    caret-color: transparent;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 1px solid white;
+    font-size: 30px;
+    width: 75px;
+    height: 80px;
+    margin: 10px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.btn {
+    min-width: 400px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    border: 2px solid #fdc161;
+    margin: 0 0 20px 0;
+    padding: 0.775rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.7;
+    background-color: #f6e9d4;
+}
+
+.btn-verify {
+    color: black;
+    font-weight: 600;
+    border-color: #fdc161;  
+}
+
+.btn-verify:hover{
+    background-color: #fdc161;
+    transition: 0.3s ease;
+}
+
+small a{
+    color: #fdc161;
+}
+
+small a:hover{
+    color: #f6e9d4;
+}
+
+
+@media (max-width: 680px) {
+     .code-container {
+        flex-wrap: wrap;
+     }
+     .code {
+        font-size: 24px;
+        height: 50px;
+        max-width: 50px;
+        font-size: bold;
+     }
+}
+
+.code::-webkit-outer-spin-button, 
+.code::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.code:valid{
+    border-color: #c5bdbc;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+}
+

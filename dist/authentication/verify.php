@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 use MyApp\Controller\AuditModelController;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -63,8 +63,22 @@ if (isset($_POST["resend"])){
 }
 
 
+// Assuming $conn and $email are defined elsewhere in your code
+
 if (isset($_POST["verify"])) {
-   
+    $email = $_SESSION['email']; // Add this line to set $email
+
+    $otp_code = '';
+    // Concatenate the values from each input field to form the complete OTP
+    $otp_code .= isset($_POST['otp_1']) ? $_POST['otp_1'] : '';
+    $otp_code .= isset($_POST['otp_2']) ? $_POST['otp_2'] : '';
+    $otp_code .= isset($_POST['otp_3']) ? $_POST['otp_3'] : '';
+    $otp_code .= isset($_POST['otp_4']) ? $_POST['otp_4'] : '';
+    $otp_code .= isset($_POST['otp_5']) ? $_POST['otp_5'] : '';
+    $otp_code .= isset($_POST['otp_6']) ? $_POST['otp_6'] : '';
+
+    $otp = $_SESSION["otp"];
+
     if (empty($otp_code)) {
         ?>
         <script>
@@ -85,7 +99,7 @@ if (isset($_POST["verify"])) {
             // Update user status in the database
             $updateQuery = "UPDATE user SET user_status = 'Enabled' WHERE email = :email";
             $updateStatement = $conn->prepare($updateQuery);
-            $updateStatement->bindParam(':email', $email);
+            $updateStatement->bindParam(':email', $email); // Assuming $email is defined somewhere
             $updateStatement->execute();
 
             // Commit the transaction
@@ -104,74 +118,70 @@ if (isset($_POST["verify"])) {
                 alert("Error updating record: <?php echo $e->getMessage(); ?>");
             </script>
             <?php
+            // Log the error for further analysis
+            error_log("Error updating record: " . $e->getMessage(), 0);
         }
     }
 }
 ?>
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<!doctype html>
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-    <title>Verification</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otp  |   Petconnect</title>
+    <link rel="stylesheet" href="../css/newlyAdded/otp-page.css">
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="#">Verification Account</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
-
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Verification Account</div>
-                    <div class="card-body">
-                        <form action="#" method="POST">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">OTP Code</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="otp" class="form-control" name="otp_code" >
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Verify" name="verify">
-                            </div>
-                            <form action="#" method="POST">
-                            
-                            <div class="col-md-6 offset-md-4">
-                                <input type="submit" value="Resend Code" name="resend">
-                            </div>
-                    </div>
-                    </form>
-                </div>
+        <h1>Verify Your Account</h1><br>
+        <p>
+            We emailed you the six digit code to your email account <br>
+            Enter the code below to confirm your email address
+        </p>
+        <form action="#" method="POST">
+            <div class="code-container">
+                <input type="number" class="code" name="otp_1" placeholder="0" min="0" max="9" required>
+                <input type="number" class="code" name="otp_2" placeholder="0" min="0" max="9" required>
+                <input type="number" class="code" name="otp_3" placeholder="0" min="0" max="9" required>
+                <input type="number" class="code" name="otp_4" placeholder="0" min="0" max="9" required>
+                <input type="number" class="code" name="otp_5" placeholder="0" min="0" max="9" required>
+                <input type="number" class="code" name="otp_6" placeholder="0" min="0" max="9" required>
             </div>
-        </div>
+            <div>
+                <button type="submit" class="btn btn-verify" name="verify">Verify</button>
+            </div>
+        </form>
+        
+        </form>
+        <form action="#" method="POST">
+        <small>
+            If you didn't recieve a code, 
+            <input type="submit" value="Send Code" name="resend">
+        </small>
+        </form>
     </div>
-    </div>
-
-</main>
 </body>
+
+<script>
+    const codes = document.querySelectorAll(".code")
+     
+     codes[0].focus()
+
+     codes.forEach((code, idx) => {
+        code.addEventListener('keydown', (e) => {
+            if(e.key >= 0 && e.key <=9) {
+                codes[idx].value = ''
+                setTimeout(() => codes[idx + 1].focus(), 10)
+            } else if(e.key === 'Backspace') {
+                setTimeout(() => codes[idx - 1].focus(), 10)
+            }
+        })
+     });
+</script>
 </html>
