@@ -6,7 +6,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
 <div class="navbarContainer">
   <nav class="navbar">
     <a href="index.php" class="logo">
-      <img src="../icons/logo.png" alt="Logo" />
+      <img src="../icons/logo.png" id="logIcon" alt="Logo" />
     </a>
   
     <ul class="menu-links">

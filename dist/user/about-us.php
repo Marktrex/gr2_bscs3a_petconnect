@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../css/newlyAdded/about-us.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="..\css\colorStyle\user\about-us-color.css">
 </head>
 
 <body>
@@ -84,5 +85,6 @@
       </div>
     </main>
     <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\light-switch.php"?>
 </body>
 </html>
