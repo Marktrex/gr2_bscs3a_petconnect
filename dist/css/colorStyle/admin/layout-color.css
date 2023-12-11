@@ -4,15 +4,15 @@
     /* Frame Shadow */;
 
      /* header */
-     --header-color: #450a88;
-     --header-notif-message-color:  #1EDDD4;
-     --message-notif-hover-color: #c3fdfa;
+     --header-color: #fff6e8;
+     --header-notif-message-color:  #fdc161;
+     --message-notif-hover-color: #f2542d;
  
      /* content color */
-     --main-con-color: #090b29 ;
+     --main-con-color: #f5dfbb ;
  
      /* sidebar color */
-     --sidebar-color: #240155 ;
+     --sidebar-color: #0e9594 ;
  
      /* menu links color */
      --menu-links-default-text-color: rgba(255, 255, 255, 0.738);
