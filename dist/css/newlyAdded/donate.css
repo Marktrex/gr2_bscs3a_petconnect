@@ -451,6 +451,8 @@ header .navbar {
 /* icons/image to be put on the floating div */
 .content-box > div > img /*change as you see fit */ {
   aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 300px;
 }
 
 .logo3 {
