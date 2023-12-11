@@ -182,7 +182,7 @@ class Model
             $searchConditions = [];
             foreach ($columnsArray[$index] as $column) {
                 $operator = 'LIKE';
-                if ($operatorsArray !== null && in_array($operatorsArray[$index], ['=', '!=', 'LIKE'])) {
+                if ($operatorsArray !== null && in_array($operatorsArray[$index], ['=', '!=', 'LIKE', '<', '>', '<=', '>='])) {
                     $operator = $operatorsArray[$index];
                     if ($operator != 'LIKE') {
                         $searchWords = $this->db->quote($searchWordsArray[$index]);
