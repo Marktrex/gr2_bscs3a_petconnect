@@ -34,7 +34,7 @@ $time_slot = $_POST['time-slot'];
 </head>
 <body>
     Appointment Confirmation
-    <form action="../function/makeAppointment.php" method="post">
+    <form action="../function/user/makeAppointment.php" method="post">
         <input type="text" name="fname" id="fname" required readonly value = "<?php echo $fname?>">
         <input type="text" name="lname" id="lname"  required readonly value = "<?php echo $lname?>">
         <input type="tel" name="mobile" id="mobile" required readonly value = "<?php echo $mobile?>">

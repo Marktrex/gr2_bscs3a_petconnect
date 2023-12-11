@@ -94,7 +94,7 @@ $adoptionData = $adoptionController->getAllAdoption();
             formData.append('action', 'sendEmail');
             formData.append('userId', userId);
             formData.append('adoptionId', adoptionId);
-            fetch('../function/manageAdoption.php', {
+            fetch('../function/admin/manageAdoption.php', {
                 method: 'POST',
                 body: formData
             })
@@ -116,7 +116,7 @@ $adoptionData = $adoptionController->getAllAdoption();
             const formData = new FormData();
             formData.append('action', 'deleteData');
             formData.append('adoptionId', adoptionId);
-            fetch('../function/manageAdoption.php', {
+            fetch('../function/admin/manageAdoption.php', {
                 method: 'POST',
                 body: formData
             })
@@ -145,7 +145,7 @@ $adoptionData = $adoptionController->getAllAdoption();
         const formData = new FormData();
         formData.append('action', 'displayData');
         formData.append('adoptionId', adoptionId);
-        fetch('../function/manageAdoption.php', {
+        fetch('../function/admin/manageAdoption.php', {
             method: 'POST',
             body: formData
         })

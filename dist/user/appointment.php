@@ -1,23 +1,45 @@
 <?php
 
 use MyApp\Controller\UserModelController;
+use MyApp\Controller\AppointmentModelController;
 session_start(); // Add this line to start the session
+//is admin
 if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
     header("Location: ../admin/admin-dashboard.php");
     exit();
 }
+//not logged in
 if (!isset($_SESSION['auth_user'])) { 
     header("Location: ../error/403-forbidden.html");
     exit();
 }
+
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 require_once '../function/config.php';
+
+$defaultDate = date('Y-m-d');
+$userId = $_SESSION['auth_user']['id'];
+//check if user already has an appointment
+$appointmentController = new AppointmentModelController();
+
+$searchWordsArray = [$userId, $defaultDate];
+$columnsArray = [['user_id'], ['appointment_date']];
+$tablesArray = [['appointment'], ['appointment']]; // replace 'appointments' with your actual table name
+$operatorsArray = ['=', '>='];
+
+$result = $appointmentController->searchV2($searchWordsArray, $columnsArray, $tablesArray, $operatorsArray);
+
+// echo json_encode($result);
+if (!empty($result)){
+    header("Location: ../error/appointment.html");
+    exit();
+}
 
 //Retrieve the user information by id
 $user = new UserModelController();
 $id = $_SESSION['auth_user']['id'];
 $resultUser = $user->get_user_data_by_id($id);
-$date = date('Y-m-d');
 $type = '';
 $time_slot = '';
 //Go back function for appointment confirmation
@@ -27,9 +49,10 @@ if (isset($_SESSION['appointment'])){
     $resultUser->mobile_number = $_SESSION['appointment']['mobile'];
     $resultUser->home_address = $_SESSION['appointment']['address'];
     $type = $_SESSION['appointment']['type'];
-    $date = $_SESSION['appointment']['date'];
+    $defaultDate = $_SESSION['appointment']['date'];
     $time_slot = $_SESSION['appointment']['time-slot'];
 }
+
 
 // Retrieve the dates from the appointment table in the database
 $query = "SELECT appointment_date, time_slot FROM appointment";
@@ -107,38 +130,15 @@ $eventsJson = json_encode($events);
                     dateInput.value = selectedDate;
                     dateInput.dispatchEvent(new Event('change'));
 
-                    // Check if there's a morning or afternoon session on the selected date
-                    var hasMorning = hasMorningSession(selectedDate);
-                    var hasAfternoon = hasAfternoonSession(selectedDate);
-
-                    // Get the time slot select box and the hint element
-                    var timeSlotSelect = document.getElementById('time-slot');
-                    var hint = document.getElementById('hint');
-
-                    timeSlotSelect.value = '';
-
-                    var disabledOptions = 0;
-                    for (var i = 0; i < timeSlotSelect.options.length; i++) {
-                        var option = timeSlotSelect.options[i];
-                        if ((option.value === 'Morning Session' && hasMorning) || 
-                            (option.value === 'Afternoon Session' && hasAfternoon)) {
-                            option.disabled = true;
-                            disabledOptions++;
-                        } else {
-                            option.disabled = false;
-                        }
-                    }
-                    // Update the hint text
-                    if (disabledOptions === timeSlotSelect.options.length - 1) {
-                        hint.textContent = 'This day has been fully booked, please select another date.';
-                    } else {
-                        hint.textContent = '';
-                    }
+                    updateOptions(selectedDate);
                 },
                 events: events,
             });
 
             calendar.render();
+
+            var today = new Date();
+            calendar.select(today.toISOString().slice(0, 10));
 
             function hasMorningSession(date) {
                 return events.some(function(event) {
@@ -150,6 +150,35 @@ $eventsJson = json_encode($events);
                 return events.some(function(event) {
                     return event.title === 'Afternoon Session' && event.start.slice(0, 10) === date.slice(0, 10);
                 });
+            }
+            function updateOptions(selectedDate) {
+                // Check if there's a morning or afternoon session on the selected date
+                var hasMorning = hasMorningSession(selectedDate);
+                var hasAfternoon = hasAfternoonSession(selectedDate);
+
+                // Get the time slot select box and the hint element
+                var timeSlotSelect = document.getElementById('time-slot');
+                var hint = document.getElementById('hint');
+
+                timeSlotSelect.value = '';
+
+                var disabledOptions = 0;
+                for (var i = 0; i < timeSlotSelect.options.length; i++) {
+                    var option = timeSlotSelect.options[i];
+                    if ((option.value === 'Morning Session' && hasMorning) || 
+                        (option.value === 'Afternoon Session' && hasAfternoon)) {
+                        option.disabled = true;
+                        disabledOptions++;
+                    } else {
+                        option.disabled = false;
+                    }
+                }
+                // Update the hint text
+                if (disabledOptions === timeSlotSelect.options.length - 1) {
+                    hint.textContent = 'This day has been fully booked, please select another date.';
+                } else {
+                    hint.textContent = '';
+                }
             }
         });
     </script>
@@ -187,7 +216,7 @@ $eventsJson = json_encode($events);
         </div>
         <label for="date">Date:</label>
         <input type="date"name="date" id="date-input" required
-            value="<?php echo $date; ?>" readonly>
+            value="<?php echo $defaultDate; ?>" readonly>
         <select id="time-slot" name="time-slot" class="form-control" required>
             <option value="">Select Session</option>
             <option value="Morning Session" <?php echo $time_slot == 'Morning Session' ? 'selected' : ''; ?>>Morning Session (9:00 AM - 11:30 AM)</option>
@@ -198,5 +227,4 @@ $eventsJson = json_encode($events);
     </form>
     <?php require_once "..\components\call_across_pages.php"?>
 </body>
-
 </html>

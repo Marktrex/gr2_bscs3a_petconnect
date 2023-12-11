@@ -9,7 +9,7 @@
   position: sticky;
   left: 0;
   top: 0;
-  z-index: 1;
+  z-index: 200;
 }
 
 .navbar {
@@ -162,6 +162,9 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .navbarContainer{
+    position: relative;
+  }
   .navbar {
     position: relative;
     &.show-mobile-menu {
@@ -177,6 +180,7 @@
       }
       .menu-links {
         left: 0;
+        color: rgb(232, 144, 3);
       }
     }
     .menu-links {

@@ -171,5 +171,46 @@ class Model
             return false;
         }
     }
+
+
+    public function searchV2($searchWordsArray, $columnsArray, $tablesArray = null, $operatorsArray = null, $isAscending = true, $page = 1, $itemsPerPage = 10) {
+        $searchSqlArray = [];
+    
+        foreach ($searchWordsArray as $index => $searchWords) {
+            $operator = 'LIKE';
+            if ($operatorsArray !== null && in_array($operatorsArray[$index], ['=', '!=', 'LIKE', '<', '>', '<=', '>='])) {
+                $operator = $operatorsArray[$index];
+            }
+    
+            if ($operator == 'LIKE') {
+                $searchWords = $this->db->quote('%' . $searchWords . '%');
+            } else {
+                $searchWords = $this->db->quote($searchWords);
+            }
+    
+            $searchConditions = [];
+            foreach ($columnsArray[$index] as $columnIndex => $column) {
+                $table = $tablesArray !== null ? $tablesArray[$index][$columnIndex] . '.' : '';
+                $searchConditions[] = "{$table}{$column} {$operator} {$searchWords}";
+            }
+            $searchSqlArray[] = '(' . implode(' OR ', $searchConditions) . ')';
+        }
+    
+        $searchSql = implode(' AND ', $searchSqlArray);
+    
+        $joins = implode(' ', $this->joins);
+        $table = $this->table;
+        $id = $this->id;
+        $order = $isAscending ? 'ASC' : 'DESC';
+        $offset = ($page - 1) * $itemsPerPage;
+        $sql = "SELECT * FROM {$table} {$joins} WHERE {$searchSql} ORDER BY {$id} {$order} LIMIT {$offset}, {$itemsPerPage};";
+    
+        try {
+            return $this->db->query($sql);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

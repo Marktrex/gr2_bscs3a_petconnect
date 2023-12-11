@@ -96,7 +96,7 @@ $usersData = $userController->getAllUsers();
             const add_adoption = document.querySelector("#add_adoption");
             const formData = new FormData(add_adoption);
             formData.append('action', 'addAdoption');
-            fetch('../function/addAdoption.php', {
+            fetch('../function/admin/addAdoption.php', {
                 method: 'POST',
                 body: formData
             })
@@ -124,7 +124,7 @@ $usersData = $userController->getAllUsers();
         const formData = new FormData();
         formData.append('action', 'displayUser');
         formData.append('userId', userId);
-        fetch('../function/addAdoption.php', {
+        fetch('../function/admin/addAdoption.php', {
             method: 'POST',
             body: formData
         })
@@ -157,7 +157,7 @@ $usersData = $userController->getAllUsers();
         const formData = new FormData();
         formData.append('action', 'displayPet');
         formData.append('petId', petsId);
-        fetch('../function/addAdoption.php', {
+        fetch('../function/admin/addAdoption.php', {
             method: 'POST',
             body: formData
         })

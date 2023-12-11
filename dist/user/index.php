@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <?php require_once "../components/userNavbar.php"?>
+    <?php require_once "../components/user/userNavbar.php"?>
 
     <section class="hero-section">
       <div>
@@ -87,6 +87,6 @@
       </div>
     </div>
 
-    <?php require_once "../components/footer.html"?>
+    <?php require_once "../components/user/footer.html"?>
   </body>
 </html>
