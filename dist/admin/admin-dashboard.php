@@ -189,7 +189,7 @@ $eventsJson = json_encode($events);
             <form action="" method="post" style = "display:none">
                 <input type="date" id="date-input" name="date-input" onchange = "this.form.submit()">
             </form>
-        <div id='calendar'></div>
+            <div id='calendar'></div>
             <div class="cards">
                 <!--Adopt-->
                 <div class="card">
@@ -378,7 +378,6 @@ $eventsJson = json_encode($events);
                 </table>
             </div>
         </main>
-        
         <?php require_once "../components/admin/adminSidebar.php"?>        
     </div>
 </body>
