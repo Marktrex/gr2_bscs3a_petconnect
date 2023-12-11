@@ -18,9 +18,9 @@
      --menu-links-default-text-color: rgba(255, 255, 255, 0.738);
  
      --menu-links-hover-text-color: white;
-     --menu-links-hover-background-color: #171939 ;
+     --menu-links-hover-background-color: #127475 ;
  
-     --menu-links-active-background-color: #121423;
+     --menu-links-active-background-color: #0B5354;
      --menu-links-active-text-color: var(--menu-links-hover-text-color);
      /* menu burger and mobile colors */
      --burger-AndClose-color: #1EDDD4;

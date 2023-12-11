@@ -8,14 +8,14 @@
     --wrapper-header-border-color: #127475;
     --span-color: #eee;
 
-    --table-background-color: #ab62ff;
-    --table-color: #eee;
+    --table-background-color: #feeed3;
+    --table-color: black;
 
-    --table-tr-even-bg-color: #7f36d2;
-    --table-tr-hover-bg-color: #582790;
+    --table-tr-even-bg-color: #f2dab2;
+    --table-tr-hover-bg-color: #a9926f;
 
-    --table-th-color: #c3fdfa;
-    --table-th-bg-color: #552b86;
+    --table-th-color: #fdf7ec;
+    --table-th-bg-color: #0e9594;;
 
     --scrollbar-track-bg-color: #fdf7ec;
     --scrollbar-thumb-start: #0e9594;
