@@ -230,39 +230,19 @@ form .fields .input-field-1{
   padding: 10px;
   border-radius: 10px;
 }
-.calendar-container td {
-    font-size: 20px;
-    border-radius: 40%;
-    padding: 8px 10px;
-    cursor: pointer;
-    transition: background-color 0.5s;
+
+.fc-day:hover {
+  background-color: #3498db; 
+  color: #fdc161;
+  transition: background-color 0.5s;
+  border-radius: 0.5s ease-in-out;
+  cursor: pointer;
 }
-.calendar-container td:hover {
-    background-color: rgba(45, 48, 64, 0.81); /* Background color for the hovered day */
-    color: white; /* Text color for the hovered day */
+.fc-day-today {
+  color: red;
 }
-.day {
-        font-size: 14px;
-        width: 40px;
-        text-align: center;
-        padding: 7px;
-    }
-.red {
-        color: red
-    }
-.days-of-week {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-a{
-    color: black;
-}
-.today {
-    background-color: #007bff; 
-    color: white; 
-    border-radius: 50%; 
-    padding: 5px;
+.fc-date-selected {
+  background-color: red;
 }
 /* --------------------------------------Content 3----------------------------------------- */
 .container-3 {
