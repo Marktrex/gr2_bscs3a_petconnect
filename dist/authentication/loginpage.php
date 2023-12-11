@@ -51,7 +51,7 @@
                 class= "">
             </div>
             <form class="flex flex-col justify-center flex-1 gap-[3vh]"
-             name="login" action="dist/function/authcode.php" method="post">
+             name="login" action="../function/authentication/authcode.php" method="post">
              <!-- intro -->
                 <div class="custom-text">
                 <h2 class="text-5xl font-bold">Login</h2>

@@ -60,18 +60,18 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
               <a href="edit-profile.php">Profile</a>
             </label>
             <label>
-              <a href="../function/logout.php">Logout</a>
+              <a href="../function/authentication/logout.php">Logout</a>
             </label>
           </div>
         </div>
       </li>
 
       <li class="hidden"><a href="#">Profile</a></li>
-      <li class="hidden"><a href="../function/logout.php">Logout</a></li>
+      <li class="hidden"><a href="../function/authentication/logout.php">Logout</a></li>
       <?php
         } else {
       ?>
-          <li class="join-btn"><a href="../signuppage.php">Join Us</a></li>
+          <li class="join-btn"><a href="../authentication/signuppage.php">Join Us</a></li>
       <?php
         }
       ?>

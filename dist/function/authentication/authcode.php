@@ -71,7 +71,7 @@ if (isset($_POST["login"])) {
            
             echo 'alert("Logged In Successfully as Admin");';
             echo '</script>';
-            header("Location: ../admin/admin-dashboard.php");
+            header("Location: ../../admin/admin-dashboard.php");
         } 
         else if ($userType === '2') {
             // Redirect user to a user dashboard
@@ -94,7 +94,7 @@ if (isset($_POST["login"])) {
                 setcookie('password', $_POST['password'], time() + (60 * 60 * 24), '/', '', true, true);
            
             echo '<script language="javascript">';
-            header("Location: ../user/home.php");
+            header("Location: ../../user/home.php");
             echo '</script>';
             }
             else{
@@ -103,7 +103,7 @@ if (isset($_POST["login"])) {
 
             }
         echo '<script language="javascript">';
-        header("Location: ../user/home.php");
+        header("Location: ../../user/home.php");
         echo '</script>';
         }
         
@@ -111,7 +111,7 @@ if (isset($_POST["login"])) {
         // Login failed
         echo '<script language="javascript">';
         echo 'alert("Invalid username or password. Please try again.");';
-        echo 'window.location = "../../loginpage.php";';
+        echo 'window.location = "../../authentication/loginpage.php";';
         echo '</script>';
         $conn = null;
     }

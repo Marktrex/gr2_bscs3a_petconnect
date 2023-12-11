@@ -2,12 +2,8 @@
 session_start();
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
-use Dotenv\Dotenv;
 
 use MyApp\Controller\AppointmentModelController;
-
-$dotenv = Dotenv::createImmutable(__DIR__ . '\..\..\\');
-$dotenv->load();
 
 
 if (isset($_POST['go_back'])) {
@@ -61,7 +57,7 @@ if (isset($_POST['appoint'])) {
     echo '<script language="javascript">';
     echo 'alert("Appointment has been made");';
     echo '</script>';
-    header("Location: ../user/home.php");
+    header("Location: ../../user/home.php");
 }
 
 ?>

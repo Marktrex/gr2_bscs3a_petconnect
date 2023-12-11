@@ -8,8 +8,6 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 if (isset($_SESSION['auth'])) {
 
-    require('../../database/ChatUser.php');
-
 	$user_object = new ChatUser;
 
 	$user_object->setUserId($_SESSION['auth_user']['id']);
@@ -30,5 +28,5 @@ if (isset($_SESSION['auth'])) {
     
 }
 
-header('Location: ../../loginpage.php');
+header('Location: ../authentication/loginpage.php');
 ?>

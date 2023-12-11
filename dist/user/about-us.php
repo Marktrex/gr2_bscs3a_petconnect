@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <?php require_once "../components/fixedNavbar.php"?>
+  <?php require_once "../components/user/fixedNavbar.php"?>
     <main>
       <div class="about-section">
         <div>
@@ -65,7 +65,7 @@
           </div>
 
           <div>
-            <img src="https://picsum.photos/200/300" alt="">
+            <img src="../image/team/Feliciano, EJ.jpg" alt="">
             <p>Ej</p>
           </div>
         </div>
@@ -83,6 +83,6 @@
         </div>
       </div>
     </main>
-    <?php require_once "../components/footer.html"?>
+    <?php require_once "../components/user/footer.html"?>
 </body>
 </html>
