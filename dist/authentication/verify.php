@@ -1,9 +1,10 @@
 <?php 
-// session_start();
-use MyApp\Controller\AuditModelController;
-use PHPMailer\PHPMailer\PHPMailer;
+session_start();
+use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database

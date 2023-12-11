@@ -28,5 +28,5 @@ if (isset($_SESSION['auth'])) {
     
 }
 
-header('Location: ../authentication/loginpage.php');
+header('Location: ../../authentication/loginpage.php');
 ?>

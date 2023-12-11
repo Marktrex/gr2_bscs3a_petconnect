@@ -30,7 +30,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   <!-- Back and Searchbox -->
 
   <body>
-  <?php require_once "../components/userNavbar.php"?>
+  <?php require_once "../components/user/userNavbar.php"?>
 
     <!-- Pet Content -->
     <?php
@@ -67,7 +67,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     </div>
 </div>
     
-<?php require_once "../components/footer.html"?>
+<?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>
