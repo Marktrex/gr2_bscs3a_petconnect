@@ -1,0 +1,125 @@
+:root{
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(195, 253, 250, 0.776);
+}
+
+[data-theme="dark"]{
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(195, 253, 250, 0.776);
+    --content-text-color: #eee;
+    --content-h1-text-color: #c3fdfa;
+
+    --profile-list-bg-color: #381162;
+    --profile-list-text-color: #eee;
+
+    --img-label-bg-color: #ffb845ba;
+    --img-label-text-color: black;
+
+    --update-btn-bg-color: #58c3c3;
+    --update-btn-hover-bg-color: #0e9594;
+    --update-btn-hover-shadow-color: #0e9594;
+
+    --delete-btn-bg-color: #e66155;
+    --delete-btn-hover-bg-color: #e34234;
+    --delete-btn-hover-shadow-color: #e34234;
+
+    --table-bg-color: #ab62ff;
+    --table-text-color: #eee;
+    --table-tr-even-bg-color: #7f36d2;
+    --table-tr-hover-bg-color: #582790;
+    --th-text-color: #c3fdfa;
+    --th-bg-color: #552b86;
+    --tr-border-color: #ccc;
+    --td-border-bottom-color: #eee;
+}
+
+
+
+.content {
+    color: var(--content-text-color);
+}
+
+.content h1{
+    color: var(--content-h1-text-color);
+}
+
+
+.profile, .list {
+    background-color: var(--profile-list-bg-color);
+    box-shadow: var(--main-content-shadow);
+    color: var(--profile-list-text-color);
+}
+
+
+#ID{
+    background-color : var(--main-input-color)
+}
+
+.details1 a{
+    color: #6a6262;
+}
+
+input{
+    background-color: var(--main-input-color);
+}
+
+select{
+    background-color: var(--main-input-color);
+}
+
+textarea{
+    background-color: var(--main-input-color);
+}
+.img-label{
+    background-color: var(--img-label-bg-color);
+    color: var(--img-label-text-color);
+}
+
+.upd-btn .update-btn{
+    background-color: var(--update-btn-bg-color);
+}
+
+.update-btn:hover{
+    box-shadow: 0px 0px 7px var(--update-btn-hover-shadow-color);
+    background-color: var(--update-btn-hover-bg-color);
+}
+
+.upd-btn .delete-btn{
+    background-color: var(--delete-btn-bg-color);
+}
+
+.delete-btn:hover{
+    box-shadow: 0px 0px 7px var(--delete-btn-hover-shadow-color);
+    background-color: var(--delete-btn-hover-bg-color);
+}
+
+table{
+    box-shadow: var(--main-content-shadow);
+}
+
+
+table{
+    background-color: var(--table-bg-color);
+    color: var(--table-text-color);
+}
+
+table tr:nth-child(even){
+    background-color: var(--table-tr-even-bg-color);
+}
+
+table tr:hover {
+    background-color: var(--table-tr-hover-bg-color);
+}
+
+th{
+    color: var(--th-text-color);
+    background-color: var(--th-bg-color);
+}
+
+@media only screen and (max-width: 1024px)  {
+    tr { border: 1px solid var(--tr-border-color); }
+    td { 
+        border-bottom: 1px solid var(--td-border-bottom-color); 
+    }
+}
+

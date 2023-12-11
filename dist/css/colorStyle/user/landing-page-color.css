@@ -1,0 +1,119 @@
+:root{
+
+}
+
+[data-theme="dark"]{
+    --body-bg-color: #090b29;
+
+    --hero-content-h1-text-color: #1EDDD4;
+    --hero-content-p-text-color: #fff6e8;
+
+    --register-btn-bg-color: #ab62ff;
+    --register-btn-box-shadow: #352B71;
+    --register-btn-text-color: #FFFFFF;
+
+    --container1-bg-color: #381162;
+    --container1-box-shadow: #0005;
+
+    --container1-h1-color: #1EDDD4;
+    --services-item-bg-color: #ab62ff;
+    --service-h1-color: rgb(177, 232, 229);
+
+    --item-p-color: rgb(177, 232, 229);
+    --services-item-hover-shadow-color: #5344ab;
+
+    --container2-bg-color: #381162;
+    --container2-h1-color: #1EDDD4;
+    --container2-p-color: aliceblue;
+
+    --container3-h1-color: #0e9594;
+
+    --testimonials-item-bg-color: #f5dfbb;
+    --testimonials-item-hover-bg-color: #d3c3a9;
+
+    --scrollbar-track-bg-color: #48345d;
+    --scrollbar-thumb-gradient-start: #ab62ff;
+    --scrollbar-thumb-gradient-end: #1EDDD4;
+}
+
+body {
+  background: var(--body-bg-color);
+}
+
+
+.hero-section .content h1 {
+  color: var(--hero-content-h1-text-color);
+}
+
+.hero-section .content p {
+  color: var(--hero-content-p-text-color);
+}
+
+
+.register-button{
+  background-color: var(--register-btn-bg-color);
+  box-shadow: -2px 5px 0px var(--register-btn-box-shadow);
+  color: var(--register-btn-text-color);
+  font-size: 28px;
+}
+
+
+.container1>div
+{
+  background: var(--container1-bg-color);
+  box-shadow: 0 .4rem .8rem var(--container1-box-shadow);
+}
+
+.container1 h1{
+  color: var(--container1-h1-color);
+}
+
+.services .item{
+  background-color: var(--services-item-bg-color);
+}
+
+.service1 h1,
+.service2 h1,
+.service3 h1{
+  color: var(--service-h1-color);
+}
+
+.item p{
+  color: var(--item-p-color);
+}
+
+.services .item:hover{
+  box-shadow: -10px 10px 0px var(--services-item-hover-shadow-color);
+}
+
+.container2{
+  background: var(--container2-bg-color);
+}
+
+.container2 h1{
+  color: var(--container2-h1-color);
+}
+
+.container2 p{
+  color: var(--container2-p-color);
+}
+
+.container3 h1{
+  color: var(--container3-h1-color);
+}
+
+.testimonials .item{
+  background: var(--testimonials-item-bg-color);
+}
+
+.testimonials .item:hover{
+  background: var(--testimonials-item-hover-bg-color);
+}
+
+::-webkit-scrollbar-track{
+  background-color: var(--scrollbar-track-bg-color);
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
+}

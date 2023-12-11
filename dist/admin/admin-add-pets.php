@@ -95,18 +95,14 @@ if (isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Pets</title>
 
-    <!-- for content color -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-colors.css" />
-
     <!-- content style position -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-add-pets-light.css?v=2" />
 
-    <!-- for layout color -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
-
     <!-- layout style position-->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
-    
+
+    <link rel="stylesheet" href="../css/colorStyle/admin/layout-color.css">
+    <link rel="stylesheet" href="..\css\colorStyle\admin\add-pets-color.css">
 </head>
 
 <body>
@@ -114,8 +110,8 @@ if (isset($_POST["submit"])) {
     <div class="container">
         <header class="">
             <nav class="navbar">
-            <a href="admin-dashboard.php" class="logo"
-                ><img src="../icons/logo.png" alt="Insert Logo"
+            <a href="admin-dashboard.php" class="logo" 
+                ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
             /></a>
             <ul class="items">
                 <li>
@@ -275,7 +271,9 @@ if (isset($_POST["submit"])) {
                 </form>
             </div>
         </main>
-        
+
+
+        <?php require_once '..\components\light-switch.php'?>
         <?php require_once "../components/admin/adminSidebar.php"?>        
     </div>
 

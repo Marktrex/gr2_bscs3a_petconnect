@@ -1,0 +1,126 @@
+:root {
+  --body-bg-color: #090b29;
+  --main-bg-color: #f5dfbb;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+  --petsTitle-text-color: #c3fdfa;
+  --search-bar-bg-color: rgba(140, 206, 203, 0.5);
+  --button-bg-color: #ab62ff;
+  --button-text-color: white;
+  --button-hover-bg-color: #7543af;
+  --pet-card-bg-color: #ab62ff;
+  --pet-name-text-color: #c3fdfa;
+  --available-pet-text-color: #1eddd4;
+  --overall-description-container-bg-color: #691eb9;
+}
+
+[data-theme="dark"] {
+  --body-bg-color: #090b29;
+  --main-bg-color: #f5dfbb;
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+  --petsTitle-text-color: #c3fdfa;
+  --search-bar-bg-color: rgba(140, 206, 203, 0.5);
+  --button-bg-color: #ab62ff;
+  --button-text-color: white;
+  --button-hover-bg-color: #7543af;
+  --pet-card-bg-color: #ab62ff;
+  --pet-name-text-color: #c3fdfa;
+  --available-pet-text-color: #1eddd4;
+  --overall-description-container-bg-color: #691eb9;
+  --title-text-color: #1eddd4;
+  --description-text-color: #1eddd4;
+  --button-donations-bg-color: #ab62ff;
+  --button-donations-text-color: #c3fdfa;
+  --about-volunteer-bg-color: #381162;
+  --content-volunteer-p-text-color: #c3fdfa;
+  --h3-text-color: #c3fdfa;
+  --learn-more-bg-color: #ab62ff;
+  --learn-more-text-color: #381162;
+  --learn-more-hover-text-color: #1eddd4;
+}
+
+body {
+  background-color: var(--body-bg-color);
+}
+
+main {
+  background: var(--main-bg-color);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
+}
+
+#petsTitle {
+  color: var(--petsTitle-text-color);
+}
+
+.search-bar {
+  background: var(--search-bar-bg-color);
+}
+
+.button {
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+}
+
+.button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.pet-card {
+  background-color: var(--pet-card-bg-color);
+}
+
+.pet-name {
+  color: var(--pet-name-text-color);
+}
+
+#available-pet {
+  color: var(--available-pet-text-color);
+}
+
+.overall-description-container {
+  background-color: var(--overall-description-container-bg-color);
+}
+
+.title {
+  color: var(--title-text-color);
+}
+
+.description {
+  color: var(--description-text-color);
+}
+
+.button-donations {
+  background-color: var(--button-donations-bg-color);
+  color: var(--button-donations-text-color);
+}
+
+.about-volunteer {
+  background-color: var(--about-volunteer-bg-color);
+}
+
+.content-volunteer p {
+  color: var(--content-volunteer-p-text-color);
+}
+
+h3 {
+  color: var(--h3-text-color);
+}
+
+.learn-more {
+  background-color: var(--learn-more-bg-color);
+  color: var(--learn-more-text-color);
+}
+
+.learn-more:hover {
+  color: var(--learn-more-hover-text-color);
+}

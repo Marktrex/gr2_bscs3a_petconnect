@@ -1,0 +1,108 @@
+:root {
+}
+
+[data-theme="dark"] {
+    --content-card-background-color: #9d4df7;
+    --content-card-text-color: #c3fdfa;
+
+    --h1-color: #a3fffa;
+    --content-card-date-background-color: var(--content-card-background-color);
+    --content-card-date-box-shadow-color: rgba(0, 0, 0, 0.99);
+    --content-card-date-text-color: #c6fffb;
+
+    --calendar-day-hover: rgba(45,48,64,0.81);
+    --calendar-day-text-hover: white;
+
+    --red-or-something: #08e0d6;
+    --links-color: black;
+
+    --today-background-color: #1eddd4;
+    --today-color:#ab62ff;
+
+    --table-responsive-border: #29252b;
+    --table-resposive-background-color: #ab62ff;
+
+    --table-responsive-box-shadow: rgba(0, 0, 0, 0.2);
+    --table-responsive-box-shadow2: rgba(0, 0, 0, 019);
+
+    --table-color: black;
+    --thead-background-color: #1eddd4;
+    --theader-color: #090b29;
+
+    --tables-th-td-border: #414a4c;
+
+    --delete-link-color: red;
+    --action-btn-link-background-color: #00fff2;
+    --action-btn-link-border-color: #e66155;
+    --action-btn-link-border-color2: #1eddd4;
+
+    --action-btn-link-hover-color: #ab62ff;
+    --action-btn-link-hover-border-color: var(--action-btn-link-hover-color);
+    --tables-row-background-color: #c3fdfa;
+}
+
+
+.content .cards .card {
+  background: var(--content-card-background-color);
+  color: var(--content-card-text-color);
+}
+h1 {
+  color: var(--h1-color);
+}
+/* Calendar */
+.content .cards .card-date {
+  background: var(--content-card-date-background-color);
+  box-shadow: 0 4px 8px 4px var(--content-card-date-box-shadow-color),
+    0 6px 22px 0 var(--content-card-date-box-shadow-color);
+  color: var(--content-card-date-text-color);
+}
+
+.calendar-container td:hover {
+  background-color: var(--calendar-day-hover); /* Background color for the hovered day */
+  color: var(--calendar-day-text-hover); /* Text color for the hovered day */
+}
+
+.red {
+  color: var(--red-or-something);
+}
+
+a {
+  color: var(--links-color);
+}
+.today {
+  background-color: var(--today-background-color);
+  color: var(--today-color);
+}
+/* Recent Activities */
+.table_responsive {
+  border: 1px solid var(--table-responsive-border);
+  background-color: var(--table-resposive-background-color);
+  box-shadow: 0 4px 8px 0 var(--table-responsive-box-shadow), 0 6px 20px 0 var(--table-responsive-box-shadow2);
+}
+.tables {
+  color: var(--table-color);
+}
+thead {
+  background-color: var(--thead-background-color);
+  color: var(--theader-color);
+}
+
+.tables th,
+.tables td {
+  border: 1px solid var(--tables-th-td-border);
+}
+.delete-link {
+  color: var(--delete-link-color);
+}
+.action-btn > a {
+  background: var(--action-btn-link-background-color);
+  border: 1px solid var(--action-btn-link-border-color);
+  border-color: var(--action-btn-link-border-color2);
+}
+.action-btn a:hover {
+  color: var(--action-btn-link-hover-color);
+  border-color: var(--action-btn-link-hover-border-color);
+}
+.tables > tbody > tr {
+  background-color: var(--tables-row-background-color);
+}

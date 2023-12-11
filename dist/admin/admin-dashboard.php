@@ -166,7 +166,7 @@ $eventsJson = json_encode($events);
         <header class="">
             <nav class="navbar">
                 <a href="admin-dashboard.php" class="logo"
-                    ><img src="../icons/logo.png" alt="Insert Logo"
+                    ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
                 /></a>
                 <ul class="items">
                     <li>

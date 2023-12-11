@@ -287,7 +287,7 @@ $conn = null;
         <!-- header/nav -->
         <header>
             <nav class="navbar">
-                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo" /></a>
+                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo" id="logIcon"/></a>
 
                 <ul class="items">
                 <li>
