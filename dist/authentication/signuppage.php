@@ -184,7 +184,7 @@ if (isset($_POST["register"])) { //code ni marc
 
     <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
         <a href="#">
-            <img src="dist/image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
+            <img src="../image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
         </a>
     </div>
     <div class = "flex items-center justify-center mt-10 mb-10">
@@ -197,7 +197,7 @@ if (isset($_POST["register"])) { //code ni marc
             
             <div class="hidden lg:flex items-center justify-center flex-1">
                 <!-- photo for the right(change here) -->
-                <img src="dist/image/LoginSignup/photo-deco-2.png" alt="design photo" 
+                <img src="../image/LoginSignup/photo-deco-2.png" alt="design photo" 
                 class= "">
             </div>
 
