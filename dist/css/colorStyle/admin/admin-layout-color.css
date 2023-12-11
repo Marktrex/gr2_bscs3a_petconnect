@@ -1,0 +1,109 @@
+:root
+{
+    --main-box-shadow: 0px 2px 3px #2a0c4ac2; 
+
+    /* header */
+    --header-color: #450a88;
+    --header-notif-message-color:  #1EDDD4;
+    --message-notif-hover-color: #c3fdfa;
+
+    /* content color */
+    --main-con-color: #090b29 ;
+
+    /* sidebar color */
+    --sidebar-color: #240155 ;
+
+    /* menu links color */
+    --menu-links-default-text-color: rgba(255, 255, 255, 0.738);
+
+    --menu-links-hover-text-color: white;
+    --menu-links-hover-background-color: #171939 ;
+
+    --menu-links-active-background-color: #121423;
+    --menu-links-active-text-color: var(--menu-links-hover-text-color);
+    /* menu burger and mobile colors */
+    --burger-AndClose-color: #1EDDD4;
+}
+
+[data-theme="dark"]
+{
+    --main-box-shadow: 0px 2px 3px #2a0c4ac2; 
+
+    /* header */
+    --header-color: #450a88;
+    --header-notif-message-color:  #1EDDD4;
+    --message-notif-hover-color: #c3fdfa;
+
+    /* content color */
+    --main-con-color: #090b29 ;
+
+    /* sidebar color */
+    --sidebar-color: #240155 ;
+
+    /* menu links color */
+    --menu-links-default-text-color: rgba(255, 255, 255, 0.738);
+
+    --menu-links-hover-text-color: white;
+    --menu-links-hover-background-color: #171939 ;
+
+    --menu-links-active-background-color: #121423;
+    --menu-links-active-text-color: var(--menu-links-hover-text-color);
+    /* menu burger and mobile colors */
+    --burger-AndClose-color: #1EDDD4;
+}
+
+
+
+/* layouts color */
+header
+{
+    background-color: var(--header-color);
+}
+
+#messages, #notifications   
+{
+    color: var(--header-notif-message-color);
+}
+
+#messages :hover, #notification:hover
+{
+    color: var(--message-notif-hover-color);
+}
+
+main
+{
+    background-color: var(--main-con-color);
+}
+
+.sidebar
+{
+    background-color: var(--sidebar-color);
+}
+
+.menu-links-color
+{
+    background-color: var(--sidebar-color);
+}
+
+.menu-links a
+{
+    color: var(--menu-links-default-text-color);
+}
+
+.menu-links a.active
+{
+    background-color: var(--menu-links-active-background-color);
+    color: var(--menu-links-active-text-color);
+}
+
+.sidebar a:hover:not(.active)
+{
+    background-color: var(--menu-links-hover-background-color);
+    color: var(--menu-links-hover-text-color);
+}
+
+#menu-btn, #close-btn
+{
+    color: var(--burger-AndClose-color);
+}
+

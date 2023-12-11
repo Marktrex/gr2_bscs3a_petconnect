@@ -1,0 +1,110 @@
+:root{
+    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(37, 141, 141, 0.248);
+
+    --wrapper-background-color: #fdf7ec;
+    --wrapper-header-color: #127475;
+    --wrapper-header-border-color: #127475;
+    --span-color: #eee;
+
+    --table-background-color: #ab62ff;
+    --table-color: #eee;
+
+    --table-tr-even-bg-color: #7f36d2;
+    --table-tr-hover-bg-color: #582790;
+
+    --table-th-color: #c3fdfa;
+    --table-th-bg-color: #552b86;
+
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-start: #0e9594;
+    --scrollbar-thumb-end:  #ffb845;
+
+    --table-tr-small-border-color: #ccc;
+    --table-td-small-border-color: #eee;
+}
+
+[data-theme="dark"]{
+    --main-box-shadow: 0px 3px 10px rgb(101, 101, 101); 
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(195, 253, 250, 0.776);
+
+    --wrapper-background-color: #381162;
+    --wrapper-header-color: #c3fdfa;
+    --wrapper-header-border-color: #c3fdfa;
+    --span-color: #eee;
+
+    --table-background-color: #ab62ff;
+    --table-color: #eee;
+
+    --table-tr-even-bg-color: #7f36d2;
+    --table-tr-hover-bg-color: #582790;
+
+    --table-th-color: #c3fdfa;
+    --table-th-bg-color: #552b86;
+
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-start: #0e9594;
+    --scrollbar-thumb-end:  #ffb845;
+
+    --table-tr-small-border-color: #ccc;
+    --table-td-small-border-color: #eee;
+}
+
+
+.wrapper{
+    background-color: var(--wrapper-background-color);
+}
+
+.wrapper h1{
+    color: var(--wrapper-header-color);
+    border-bottom: 2px solid var(--wrapper-header-border-color);
+}
+
+span{
+    color: var(--span-color);
+}
+
+table{
+    box-shadow: var(--main-content-shadow);
+}
+
+table{
+    background-color: var(--table-background-color);
+    color: var(--table-color);
+}
+
+table tr:nth-child(even){
+    background-color: var(--table-tr-even-bg-color);
+}
+
+table tr:hover {
+    background-color: var(--table-tr-hover-bg-color);
+}
+
+th{
+    color: var(--table-th-color);
+    background-color: var(--table-th-bg-color);
+}
+
+
+
+::-webkit-scrollbar-track{
+    background-color: var(--scrollbar-track-bg-color);
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(var(--scrollbar-thumb-start), var(--scrollbar-thumb-end));
+}
+
+
+@media only screen and (max-width: 1024px)  {
+
+	
+	tr { border: 1px solid var(--table-tr-small-border-color); }
+	
+	td { 
+		border-bottom: 1px solid var(--table-td-small-border-color); 
+	}
+
+}

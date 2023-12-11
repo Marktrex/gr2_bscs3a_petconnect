@@ -1,0 +1,76 @@
+:root{
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(195, 253, 250, 0.776);
+
+    --wrapper-background-color: #381162;
+    --form-title-text-color:#c3fdfa;
+    --form-title-border-color:var(--form-title-text-color);
+    --form-label-image-background-color: #ffb845ba;
+    --form-label-image-text-color:black;
+
+    --pet-container-link-color: var(--form-title-text-color);
+    --add-btn-color: #58c3c3;
+    --add-btn-hover-color: #0e9594; 
+
+    --clear-btn-color: var(--form-label-image-background-color);
+    --clear-btn-hover-color: #ffb845;
+}
+
+[data-theme="dark"] {
+    --main-content-shadow:0 .4rem .8rem #0005;
+    --main-input-color:rgba(195, 253, 250, 0.776);
+
+    --wrapper-background-color: #381162;
+    --form-title-text-color:#c3fdfa;
+    --form-title-border-color:var(--form-title-text-color);
+    --form-label-image-background-color: #ffb845ba;
+    --form-label-image-text-color:black;
+
+    --pet-container-link-color: var(--form-title-text-color);
+    --add-btn-color: #58c3c3;
+    --add-btn-hover-color: #0e9594; 
+
+    --clear-btn-color: var(--form-label-image-background-color);
+    --clear-btn-hover-color: #ffb845;
+}
+
+
+.wrapper {
+    background-color:var(--wrapper-background-color);
+}
+
+form .form-title {
+    color: var(--form-title-text-color);
+    border-bottom: 2px solid var(--form-title-border-color);
+}
+
+
+.pet-container a{
+    color: var(--pet-container-link-color);
+}
+
+.form .image-container label {
+    background-color: var(--form-label-image-background-color);
+    color: var(--form-label-image-text-color);
+}
+
+
+
+.add-btn{
+    background-color:  var(--add-btn-color);
+}
+
+.add-btn:hover{
+    box-shadow: 0px 0px 7px var(--add-btn-hover-color);
+    background-color: var(--add-btn-hover-color);
+}
+
+.clear-btn{
+    background-color:  var(--clear-btn-color);
+}
+
+.clear-btn:hover{
+    box-shadow: 0px 0px 7px var(--clear-btn-hover-color);
+    background-color: var(--clear-btn-hover-color);
+    transition: all 0.2s ease;
+}

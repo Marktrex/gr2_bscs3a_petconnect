@@ -36,6 +36,7 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audit Trail</title>
     <!-- content position -->
+    
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/audit-trail.css">
 
     <!-- for layout color -->
@@ -45,13 +46,16 @@ else
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css"> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="..\css\colorStyle\admin\layout-color.css.css">
+    <link rel="stylesheet" href="../css/colorStyle/admin/audit-trail-color.css">
 </head>
 <body>
     <div class="container">
         <!--Navbar-->
         <header>
             <nav class="navbar">
-                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo"></a>
+                <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo" id="logIcon"></a>
 
                 <ul class="items">
                     <li><a id="messages" href="#"><i class="fa fa-envelope"></i></a></li>
@@ -135,6 +139,8 @@ else
                 </section>
             </div>
         </main>
+
+        <?php require_once '..\components\light-switch.php'?>
         
         <?php require_once "../components/admin/adminSidebar.php"?>        
     </div>
