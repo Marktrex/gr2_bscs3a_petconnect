@@ -103,6 +103,7 @@ $eventsJson = json_encode($events);
     
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <link rel="stylesheet" href="..\css\admin\admin-calendar.css">
     
 </head>
 
@@ -189,7 +190,9 @@ $eventsJson = json_encode($events);
             <form action="" method="post" style = "display:none">
                 <input type="date" id="date-input" name="date-input" onchange = "this.form.submit()">
             </form>
-            <div id='calendar'></div>
+            <div class ="calendar-container">
+                <div id='calendar'></div>
+            </div>
             <div class="cards">
                 <!--Adopt-->
                 <div class="card">
@@ -393,19 +396,22 @@ $eventsJson = json_encode($events);
 <script>
     // Attach event listeners to the document
     document.addEventListener('click', function(event) {
-        event.preventDefault();
+        
         // Check if the clicked element is an "Accept" button
         if (event.target.matches('.accept-btn')) {
+            event.preventDefault();
             const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Accepted');
         }
         // Check if the clicked element is a "Cancel" button
         else if (event.target.matches('.decline-btn')) {
+            event.preventDefault();
             const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Declined');
         }
         // Check if the clicked element is a "Cancel" button
         else if (event.target.matches('.cancel-btn')) {
+            event.preventDefault();
             const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Cancelled');
         }

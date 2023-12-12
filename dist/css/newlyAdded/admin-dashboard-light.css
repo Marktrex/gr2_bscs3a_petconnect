@@ -50,34 +50,20 @@ h1 {
     text-align: center;
     font-size: 24px;
 }
-.calendar-container td {
-    font-size: 20px;
-    border-radius: 40%;
-    padding: 5px 8px;
-    cursor: pointer;
-    transition: background-color 0.5s;
-}   
-.calendar-container td:hover {
-    background-color: rgba(45, 48, 64, 0.81); /* Background color for the hovered day */
-    color: white; /* Text color for the hovered day */
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3vh 0;
 }
-.day {
-        font-size: 14px;
-        width: 40px;
-        text-align: center;
-        padding: 5px;
-    }
-.red {
-        color: red
-    }
-.days-of-week {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-a{
-    color: black;
+
+.calendar-container{
+    width: 80%;
+    background-color: white;
+    color: #127475;
 }
+
 .today {
     background-color: #007bff; 
     color: white; 
