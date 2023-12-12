@@ -1,0 +1,69 @@
+:root {
+    --wrapper-bg-color: #381162;
+    --wrapper-box-shadow-color: #0005;
+    --form-title-text-color: #c3fdfa;
+    --form-title-border-color: #c3fdfa;
+    --pet-container-link-color: #c3fdfa;
+    --image-container-label-bg-color: #ffb845ba;
+    --image-container-label-text-color: black;
+    --form-input-bg-color: rgba(195, 253, 250, 0.776);
+    --textarea-bg-color: rgba(195, 253, 250, 0.776);
+    --add-btn-bg-color: #58c3c3;
+    --add-btn-hover-box-shadow-color: #0e9594;
+    --add-btn-hover-bg-color: #0e9594;
+    --clear-btn-bg-color: #ffb845ba;
+    --clear-btn-hover-box-shadow-color: #ffb845;
+    --clear-btn-hover-bg-color: #ffb845;
+  }
+  
+  .wrapper {
+    background-color: var(--wrapper-bg-color);
+    box-shadow: 0 .4rem .8rem var(--wrapper-box-shadow-color);
+}
+
+form .form-title {
+    color: var(--form-title-text-color);
+    border-bottom: 2px solid var(--form-title-border-color);
+}
+
+.pet-container a {
+    color: var(--pet-container-link-color);
+}
+
+.form .image-container label {
+    background-color: var(--image-container-label-bg-color);
+    color: var(--image-container-label-text-color);
+}
+
+.form-input .pet-container input,
+.form-input .pet-container select {
+    background-color: var(--form-input-bg-color);
+}
+
+textarea {
+    background-color: var(--textarea-bg-color);
+}
+
+.add-btn {
+    background-color: var(--add-btn-bg-color);
+}
+
+.add-btn:hover {
+    box-shadow: 0px 0px 7px var(--add-btn-hover-box-shadow-color);
+    background-color: var(--add-btn-hover-bg-color);
+}
+
+.clear-btn {
+    background-color: var(--clear-btn-bg-color);
+}
+
+.clear-btn:hover {
+    box-shadow: 0px 0px 7px var(--clear-btn-hover-box-shadow-color);
+    background-color: var(--clear-btn-hover-bg-color);
+}
+
+
+
+
+
+
