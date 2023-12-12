@@ -72,7 +72,7 @@
                     </div>
                         <br><br>
                     <p>
-                       Make sure that the above confirmation is correct. You are welcome to go back to the previous page.
+                       Make sure that the above confirmation is correct. You are welcome to go back to the previous page. If you are to proceed, please check your email for the confirmation.
                     </p>
                     <button type="submit" name="go_back" id="submit">Go Back</button>
                     <button type="submit" name="appoint" id="submit">Confirm</button>
