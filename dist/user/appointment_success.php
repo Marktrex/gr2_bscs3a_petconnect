@@ -9,9 +9,9 @@ if(!(isset($_GET['token']) && isset($_GET['id']))){
 $appointmentControl = new AppointmentModelController();
 $appointment = $appointmentControl->get_appointment_data_by_id($_GET['id']);
 //update the appointment, make it pending
+$status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['token']);
 
-$appointment = new AppointmentModelController();
-$status = $appointment->make_appointment_pending($_GET['id'], $_GET['token']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,13 +69,7 @@ $status = $appointment->make_appointment_pending($_GET['id'], $_GET['token']);
             </h3>
           </div>
 
-          <div class="flex-container">
-            <div class="exit-box">
-              <div class="exit">
-                <h3>Exit</h3>
-              </div>
-            </div>
-          </div>
+          <a class = "exit-box"href="index.php">Home</a>
         </div>
       </div>
     </main>

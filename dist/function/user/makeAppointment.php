@@ -16,7 +16,7 @@ if (isset($_POST['go_back'])) {
         "date" =>  $_POST['date'],
         "time-slot" =>  $_POST['time-slot'],
     ];
-    header("Location: ../user/appointment.php");
+    header("Location: ../../user/appointment.php");
 } 
 
 

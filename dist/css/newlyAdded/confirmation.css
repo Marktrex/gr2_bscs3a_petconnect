@@ -50,16 +50,6 @@ body{
   margin-bottom: 20px;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;
-  align-items: center;
-  position: absolute;
-  flex-direction: column;
-  
-}
-
 /* Style for the exit icon (adjust as needed) */
 .exit-box {
   flex-wrap: wrap;
@@ -74,18 +64,7 @@ body{
   text-align: center;
   justify-content: space-around;
   margin: 0 auto;
-  max-width: 950px;
-  margin-top: -275px;
-  margin-left:305px;
-}
-
-.exit{
-  font-family: 'dairantou';
-  font-size: 25px;
   color: #fff6e8;
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 5px;
 }
 
 .text2 {
@@ -107,8 +86,6 @@ body{
   color: #127457;
   text-align: center;
   padding: 10px 20px;
-  margin-left: -600px;
-  margin-right: 50px;
   box-sizing: border-box;
   margin-bottom: 20px;
 }
@@ -126,28 +103,24 @@ body{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-right: 573px;
   margin-bottom: 20px;
 }
 .appdate{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-right: 577px;
   margin-bottom: 20px;
 }
 .sesstime{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-right: 596px;
   margin-bottom: 20px;
 }
 .address{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-right: 648px;
   margin-bottom: 65px;
 }
 
@@ -155,7 +128,6 @@ body{
   display: block;
   font-family: 'Lato';
   color:#127475;
-  margin-right: 624px;
   margin-bottom: 10px;
 }
 .text3{
@@ -200,6 +172,5 @@ body{
   margin-right: 20px;
   box-sizing: border-box;
   display: inline-block;
-  margin-bottom: 250px;
 }
 
