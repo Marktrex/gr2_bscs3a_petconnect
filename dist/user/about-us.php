@@ -1,3 +1,17 @@
+<?php
+require '../function/config.php';
+session_start(); // Add this line to start the session
+if (!isset($_SESSION['auth_user'])) {
+  // Redirect to login page if the user is not authenticated
+  header("Location: ../authentication/loginpage.php");
+  exit();
+}
+
+if ($_SESSION['auth_user']['role'] === "1") { 
+  // Redirect to admin dashboard if the user has admin role
+  header("Location: ../admin/admin-dashboard.php");
+  exit();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +31,7 @@
         <div>
           <h1>About Us</h1>
             <p class="text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus velit ducimus, enim inventore earum, eligendi nostrum pariatur necessitatibus eius dicta a voluptates sit deleniti autem error eos totam nisi neque voluptates sit deleniti autem error eos totam nisi neque.
-            </p>
+            PetConnect raises awareness about the value of animal rescue and the difficulties they encounter. We advocate responsible pet ownership and emphasize issues related to animal overpopulation and abandonment.            </p>
         </div>
         <div>
         </div>

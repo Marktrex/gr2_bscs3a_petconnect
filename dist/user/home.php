@@ -3,7 +3,7 @@ require '../function/config.php';
 session_start(); // Add this line to start the session
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
-  header("Location: ../../loginpage.php");
+  header("Location: ../authentication/loginpage.php");
   exit();
 }
 

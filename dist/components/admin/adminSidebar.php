@@ -37,6 +37,16 @@
         &nbsp;&nbsp;&nbsp;Audit Trail</a>
     </li>
     <li>
+        <a id="add" href="admin-add-adoption.php">
+        <i class="fa fa-clock-o"></i>
+        &nbsp;&nbsp;&nbsp;Add Adoption</a>
+    </li>
+    <li>
+        <a id="add" href="admin-manage-adoption.php">
+        <i class="fa fa-clock-o"></i>
+        &nbsp;&nbsp;&nbsp;Manage Adoption</a>
+    </li>
+    <li>
         <a id="logout" href="javascript:void(0);" onclick="logout()"
         ><i class="fa fa-arrow-circle-right"></i
         >&nbsp;&nbsp;&nbsp;Logout</a
@@ -58,3 +68,5 @@
         }
     }
 </script>
+
+<script src="../script/admin-general.js"></script>

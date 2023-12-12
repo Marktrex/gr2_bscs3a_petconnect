@@ -1,0 +1,85 @@
+@import url("../normalize.css");
+
+:root{
+    --body-bg-color: #fdc161 ;
+    --main-bg-color: #FFF6E8;
+    --text-color: #127475;
+    --input-bg-color: #6B939266;
+    --text-area-bg-color: #9ED4D480;
+    --button-bg-color : #58C3C3;
+}
+
+body{
+    background-color: var(--body-bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    & main{
+        flex-grow: 1;
+        color: var(--text-color);
+        width: 80vw;
+        align-self: center;
+        background-color: var(--main-bg-color);
+        border-radius: 20px;
+        padding: 5%;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        & > h1 {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        & > hr{
+            background-color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        & > p {
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        & > #section{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        & input{
+            background-color: var(--input-bg-color);
+            border: none;
+            border-radius: 5px;
+            padding: 0.2rem;
+        }
+        
+        & form {
+            display: flex;
+            flex-direction: column;
+            & > textarea {
+                width: 100%;
+                height: 300px;
+                resize: none;
+                background-color: var(--text-area-bg-color);
+                border-radius: 10px;
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            & > button{
+                padding: 0.5rem 3rem;
+                width: fit-content;
+                align-self: end;
+                background-color: var(--button-bg-color);
+                border-radius: 50px;
+                border: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    body > main > form > button{
+        align-self: center;
+    }
+}
+
+

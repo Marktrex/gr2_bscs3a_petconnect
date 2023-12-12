@@ -25,62 +25,148 @@ $usersData = $userController->getAllUsers();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Adoption</title>
+    <link rel="stylesheet" href="../css/newlyAdded/layout-light.css">
+    <link rel="stylesheet" href="../css/admin/admin-add-adoption.css">
+
+    <link rel="stylesheet" href="..\css\colorStyle\admin\layout-color.css">
 </head>
 <body>
-    <div id="content">
-        <form action="" method="post" id="add_adoption">
-            <div>
-                <img src="../upload/userImages/default.jpg" alt="" id="image_user">
-                <p id = "name_user">none</p>
-                Display Profile here
-                <input type="text" name="userId" id="userId" required readonly>
+    <div class="container">
+        <header>
+        </header>
+        <main>
+            <div id="content">
+                <form action="" method="post" id="add_adoption">
+                    <div>
+                        <h1>User Profile</h1>
+                        <div>
+                            <div>
+                                <img src="../upload/userImages/default.jpg" alt="" id="image_user">
+                                <div>
+                                    <label for="userId">ID: </label>
+                                    <input type="text" name="userId" id="userId" required readonly>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="name_user">Name: </label>
+                                    <input type="text" id = "name_user" readonly >
+                                </div>
+                                <div>
+                                    <label for="email_user">Email: </label>
+                                    <input type="text" id = "email_user" readonly>
+                                </div>
+                                <div>
+                                    <label for="mobile_user">Mobile: </label>
+                                    <input type="text" id = "mobile_user" readonly>
+                            
+                                </div>
+                                <div>
+                                    <label for="home_user">Address: </label>
+                                    <input type="text" id = "home_user" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h1>Pet Profile</h1>
+                        <div>
+                            <div>
+                                <img src="../upload/petImages/default.jpg" alt="" id="image_pet">
+                                <div>
+                                    <label for="petId">ID: </label>
+                                    <input type="text" name="petId" id="petId" required readonly>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="name_pet">Name: </label>
+                                    <input type ="text" id = "name_pet" readonly>
+                                </div>
+                                <div>
+                                    <label for="type_pet">Type: </label>
+                                    <input type="text" id = "type_pet" readonly>
+                            
+                                </div>
+                                <div>
+                                    <label for="breed_pet">Breed: </label>
+                                    <input type="text" id = "breed_pet" readonly>
+                                </div>
+                                <div>
+                                    <label for="sex_pet">Sex: </label>
+                                    <input type="text" id = "sex_pet" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" onclick="document.getElementById('add_adoption').submit();">Add to adoption</button>
             </div>
-            <div>
-                <img src="../upload/petImages/default.jpg" alt="" id="image_pet">
-                <p id = "name_pet">none</p>
-                Display Pet here
-                <input type="text" name="petId" id="petId" required readonly>
+            <div id="theTables">
+                <div class = "containsTable">
+                    <h1>User List</h1>
+                    <section>
+                        <table id="userTable">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($usersData as $user): ?>
+                                    <?php
+                                        $id = $user->user_id;
+                                        $name = $user->fname . " " . $user->lname;
+                                        $email = $user->email;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($id);?></td>
+                                        <td><?php echo htmlspecialchars($name);?></td>
+                                        <td><?php echo htmlspecialchars($email);?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+                <div class = "containsTable">
+                    <h1>Pets List</h1>
+                    <section>
+                        <table id = "petTable">
+                            <thead>
+                                <tr>
+                                    <th>Pet ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Breed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($petsData as $pet): ?>
+                                    <?php
+                                        $id = $pet->pets_id;
+                                        $name = $pet->name;
+                                        $type = $pet->type;
+                                        $breed = $pet->breed;
+                                    ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($id);?></td>
+                                        <td><?php echo htmlspecialchars($name);?></td>
+                                        <td><?php echo htmlspecialchars($type);?></td>
+                                        <td><?php echo htmlspecialchars($breed);?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
             </div>
-            <button type="submit" >Add to adoption</button>
-        </form>
+        </main>
+
+        <?php require_once "../components/admin/adminSidebar.php"?>
     </div>
-    <div>
-        <table id="userTable">
-            <tr>
-                <th>User ID</th>
-                <th>Name</th>
-            </tr>
-            <?php foreach ($usersData as $user): ?>
-                <?php
-                    $id = $user->user_id;
-                    $name = $user->fname . " " . $user->lname;
-                ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($id);?></td>
-                    <td><?php echo htmlspecialchars($name);?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    <div>
-        <table id = "petTable">
-            <tr>
-                <th>User ID</th>
-                <th>Name</th>
-            </tr>
-            <?php foreach ($petsData as $pet): ?>
-                <?php
-                    $id = $pet->pets_id;
-                    $name = $pet->name;
-                ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($id);?></td>
-                    <td><?php echo htmlspecialchars($name);?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
-    
 </body>
 <script>
     //adoption form
@@ -131,7 +217,11 @@ $usersData = $userController->getAllUsers();
         .then(response => response.text())
         .then(data => {
             let user = JSON.parse(data);
-            document.getElementById('name_user').textContent = user.fname + " " + user.lname;
+            document.getElementById('name_user').value = user.fname + " " + user.lname;
+            document.getElementById('email_user').value = user.email;
+            document.getElementById('mobile_user').value = user.mobile_number;
+            document.getElementById('home_user').value = user.home_address;
+
             const defaultImage = '../upload/userImages/default.jpg';
             const change = '../upload/userImages/' + user.photo;
             console.log(change);
@@ -164,7 +254,11 @@ $usersData = $userController->getAllUsers();
         .then(response => response.text())
         .then(data => {
             let pets = JSON.parse(data);
-            document.getElementById('name_pet').textContent = pets.name;
+            document.getElementById('name_pet').value = pets.name;
+            document.getElementById('breed_pet').value = pets.breed;
+            document.getElementById('type_pet').value = pets.type;
+            document.getElementById('sex_pet').value = pets.sex;
+
             const defaultImage = '../upload/petImages/default.jpg';
             const change = '../upload/petImages/' + pets.image;
             const tag = document.querySelector("#image_pet");

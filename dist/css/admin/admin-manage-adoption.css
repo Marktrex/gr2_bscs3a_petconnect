@@ -1,0 +1,230 @@
+@import url("../normalize.css");
+
+:root {
+  --form-div-bg-color: #fff6e8;
+  --input-bg-color: #6b939266;
+  --heavy-text-color: #127475;
+  --text-color: #0e9594;
+
+
+  --table-bg-color: #feeed3;
+  --table-even-color: #f2dab2;
+  --table-hover-color: #fbd08c;
+  --table-text-color: black;
+  --thead-text-color: #fdf7ec;
+  --thead-bg-color: #0e9594;
+
+  --button-send-bg-color: #58C3C3;
+  --button-delete-bg-color: #E66155;
+  --button-text-color: black;
+}
+
+/* for divs above */
+main {
+  padding: 4vw;
+  #content {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--text-color);
+    gap: 3vh;
+    margin-bottom: 3vh;
+    justify-content: center;
+    & > h1 {
+      color: var(--heavy-text-color);
+    }
+    & > div {
+      background-color: var(--form-div-bg-color);
+      padding: 4rem;
+      border-radius: 20px;
+      flex: 1;
+      min-width: fit-content;
+      & img {
+        width: clamp(150px, 15vw, 250px);
+        height: clamp(150px, 15vw, 250px);
+        object-fit: contain;
+        aspect-ratio: 1/1;
+      }
+      & > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3vw;
+        & > div{
+          flex: 1;
+        }
+        > :nth-child(1) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 1;
+          }
+        }
+        > :nth-child(2) {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          gap: 3vh;
+          > div {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+            & * {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    input {
+        background-color: var(--input-bg-color);
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem;
+      }
+  }
+}
+
+/* for table */
+main {
+  #containsTable{
+    background-color: var(--form-div-bg-color);
+    overflow-x: auto;
+    width: 100%;
+    border-radius: 20px;
+    & > h1 {
+      color: var(--heavy-text-color);
+      padding: 0 1rem;
+    } 
+  }
+
+
+  & table {
+    border-collapse: collapse;
+    background-color: var(--table-color);
+    width: 100%;
+    color: var(--table-text-color);
+  }
+
+  & table tr:nth-child(even) {
+    background-color: var(--table-even-color);
+  }
+
+  & table tr:hover {
+    background-color: var(--table-hover-color);
+    transition: all 0.2s ease;
+  }
+
+  & table,
+  td,
+  th {
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  & th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--thead-text-color);
+    background-color: var(--thead-bg-color);
+    text-align: left;
+  }
+
+  & td img {
+    width: 46px;
+    height: 46px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .actionButtons{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    gap: 0.5rem;
+    & button{
+      flex: 1;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .sendEmail{
+      background-color: var(--button-send-bg-color);
+      color: var(--button-text-color);
+    }
+    .deleteData{
+      background-color: var(--button-delete-bg-color);
+      color: var(--button-text-color);
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #content {
+    > :nth-child(3) {
+      display: none;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+    main {
+        & td
+        {
+            padding-left: 50%; 
+        }
+    }
+    /*
+    Label the data
+    */
+    & td:nth-of-type(1):before { content: "Adoption Id"; }
+    & td:nth-of-type(2):before { content: "Name of User"; }
+    & td:nth-of-type(3):before { content: "Name of Pet"; }
+    & td:nth-of-type(4):before { content: "Story"; }
+    & td:nth-of-type(5):before { content: "Action"; }
+
+}

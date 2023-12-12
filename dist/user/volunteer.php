@@ -11,7 +11,7 @@ if (!isset($_SESSION['auth_user'])) {
   echo '<script language="javascript">';
   echo 'alert("You do not have access to this page");';
   echo '</script>';
-  header("Location: ../loginpage.php");
+  header("Location: ../authentication/loginpage.php");
   exit();
 } 
 
@@ -29,7 +29,7 @@ $loggedIn = isset($_SESSION['auth_user']);
 </head>
 
 <body>
-  <?php require_once "../components/fixedNavbar.php"?>
+  <?php require_once "../components/user/fixedNavbar.php"?>
   <header>
      <div class="title-container">
           <h1 id="petsTitle">Join PetConnect<br>and help us by<br>Volunteering</h1>
@@ -82,7 +82,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   </div>
 </div>
 
-<?php require_once "../components/footer.html"?>
+<?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>

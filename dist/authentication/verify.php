@@ -1,13 +1,25 @@
 <?php 
 // session_start();
-use MyApp\Controller\AuditModelController;
-use PHPMailer\PHPMailer\PHPMailer;
+print_r($_SESSION);
+use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-
+if (!isset($_SESSION['auth_user'])) {
+    // Redirect to login page if the user is not authenticated
+    header("Location: ../authentication/loginpage.php");
+    exit();
+  }
+  
+  if ($_SESSION['auth_user']['role'] === "1") { 
+    // Redirect to admin dashboard if the user has admin role
+    header("Location: ../admin/admin-dashboard.php");
+    exit();
+  }
 
 if (isset($_POST["resend"])){
    
@@ -45,10 +57,57 @@ if (isset($_POST["resend"])){
     $mail->Subject = 'Welcome to PetConnect!';
 
     $mail->Body = '
-    <p>Congratulations, your account has been successfully created.</p>
-    <p>This is your OTP Code:</p> 
-    <h3>' . $otp . '</h3>
-    <p>Thank you for signing up.</p>';
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Verify Email | Pet Connect</title>
+    </head>
+    <body style = "background-color: #fdc161;font-family: Arial, Helvetica, sans-serif;">
+        <div style="padding: 5vw;
+            color:#127475;
+            ">
+            <div style="border: none; border-bottom: 1px solid rgba(242, 84, 45, 0.7); padding: 1rem 0;">
+                <img src="https://i.ibb.co/b6GMMSM/logo.png" alt="Pet Connect Logo" style="border-radius: 50%;
+                height: 10vw; width: 12vw; aspect-ratio: 1/1;">
+            </div>
+            <h2>
+                Email Verification
+            </h2>
+            <br>
+            <p>
+                Dear <span style="font-weight: bold;">Pet Person </span>,
+            </p>
+            <br>
+            <p>
+                Thank you for signing up with PetConnect. Please use the provided One Time Password (OTP) to access your account.
+
+            </p>
+            <br>
+            <p>
+                Your OTP Code is: <span style="font-weight: bold;">' . $otp .'</span> 
+            </p>
+            <br>
+            <p>
+                Do not share your OTP to others. 
+            </p>
+            <br>
+            <p>
+                If you think this is a mistake, send us an email to <span style="text-decoration: underline;
+                font-weight: bold; font-style: italic;">PetConnect@gmail.com</span>
+            </p>
+            <br>
+            <p>
+                Sincerely,
+            </p>
+            <p style="font-weight: bold;">
+                PetConnect
+            </p>
+        </div>
+    </body>
+    </html>
+    ';
 
     if(!$mail->send()){
         throw new Exception("Mail failed to send");
@@ -158,11 +217,11 @@ if (isset($_POST["verify"])) {
             </div>
         </form>
         
-        </form>
+        
         <form action="#" method="POST">
         <small>
             If you didn't recieve a code, 
-            <input type="submit" value="Send Code" name="resend">
+            <button type="submit" class="resend-btn" value="Send Code" name="resend">Resend Code</button>
         </small>
         </form>
     </div>

@@ -189,7 +189,7 @@ $eventsJson = json_encode($events);
             <form action="" method="post" style = "display:none">
                 <input type="date" id="date-input" name="date-input" onchange = "this.form.submit()">
             </form>
-        <div id='calendar'></div>
+            <div id='calendar'></div>
             <div class="cards">
                 <!--Adopt-->
                 <div class="card">
@@ -281,9 +281,15 @@ $eventsJson = json_encode($events);
                                             // Show the "Accept" and "Cancel" buttons
                                             echo '<span class = "action-btn">';
                                             echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
+                                            echo '<button type = "button" class="decline-btn" data-appointment-id="' . $row->appointment_id . '">Decline</button>';
+                                            echo '</span>';
+                                        } 
+                                        elseif($row->status == 'Accepted') {
+                                            echo '<span class = "action-btn">';
                                             echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
                                             echo '</span>';
-                                        } else {
+                                        }
+                                        else {
                                             // Show the status value
                                             echo $row->status;
                                         }
@@ -355,7 +361,7 @@ $eventsJson = json_encode($events);
                                             // Show the "Accept" and "Cancel" buttons
                                             echo '<span class = "action-btn">';
                                             echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
-                                            echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
+                                            echo '<button type = "button" class="decline-btn" data-appointment-id="' . $row->appointment_id . '">Decline</button>';
                                             echo '</span>';
                                         } else {
                                             // Show the status value
@@ -378,7 +384,6 @@ $eventsJson = json_encode($events);
                 </table>
             </div>
         </main>
-        
         <?php require_once "../components/admin/adminSidebar.php"?>        
     </div>
 </body>
@@ -393,6 +398,11 @@ $eventsJson = json_encode($events);
         if (event.target.matches('.accept-btn')) {
             const appointmentId = event.target.dataset.appointmentId;
             updateStatus(appointmentId, 'Accepted');
+        }
+        // Check if the clicked element is a "Cancel" button
+        else if (event.target.matches('.decline-btn')) {
+            const appointmentId = event.target.dataset.appointmentId;
+            updateStatus(appointmentId, 'Declined');
         }
         // Check if the clicked element is a "Cancel" button
         else if (event.target.matches('.cancel-btn')) {
