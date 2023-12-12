@@ -18,7 +18,7 @@
   }
  
   [data-theme="dark"] {
-      --body-bg-color: #090b29;
+    --body-bg-color: #090b29;
     --container-bg-color: #381162;
     --container-text-color: #c3fdfa;
     --container-box-shadow:  0px 10px 40px rgb(0, 0, 1);
