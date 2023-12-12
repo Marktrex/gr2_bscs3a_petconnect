@@ -17,9 +17,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Confirmation Page</title>
-    <link rel="stylesheet" href="../css/newlyAdded/confirmation.css" />
+    <link rel="stylesheet" href="..\css\user\appointment_made.css" />
   </head>
   <body>
-    We have sent you an email to confirm your appointment. Please check your email.
+    <?php require_once "../components/user/userNavbar.php"?>
+    <main>
+      We have sent you an email to confirm your appointment. Please check your email.
+    </main>
+    <?php require_once "../components/user/footer.html"?>
   </body>
 </html>
