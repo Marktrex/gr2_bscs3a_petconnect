@@ -54,7 +54,10 @@ if (isset($_POST['appoint'])) {
     $_SESSION['auth_user']['lname'] = $lname;
 
     unset($_SESSION['appointment']);
-    header("Location: ../../user/appointment_made.php");
+    echo "<script type='text/javascript'>
+            alert('Your appointment has been made! Please Check your email for Confirmation');
+            window.location.href = '../../user/index.php';
+          </script>";
 }
 
 ?>
