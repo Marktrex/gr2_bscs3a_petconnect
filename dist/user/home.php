@@ -25,6 +25,8 @@ if ($_SESSION['auth_user']['role'] === "1") {
   <link rel="stylesheet" href="../css/newlyAdded/home-page-light.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="..\css\colorStyle\user\home-page-color.css">
 </head>
 <body>
 <?php require_once "../components/user/fixedNavbar.php"?>
@@ -137,7 +139,8 @@ if ($_SESSION['auth_user']['role'] === "1") {
 
 
   <?php require_once "..\components\call_across_pages.php"?>
-  <?php require_once "../components/user/footer.html"?>    
+  <?php require_once "../components/user/footer.html"?>
+  <?php require_once "..\components\light-switch.php"?>
 
 </body>
 </html>

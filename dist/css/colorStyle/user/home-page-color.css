@@ -1,4 +1,5 @@
 :root {
+  /* for light */
   --body-bg-color: #090b29;
   --main-bg-color: #f5dfbb;
   --scrollbar-track-bg-color: #fdf7ec;
@@ -16,6 +17,7 @@
 }
 
 [data-theme="dark"] {
+  /* for dark */
   --body-bg-color: #090b29;
   --main-bg-color: #f5dfbb;
   --scrollbar-track-bg-color: #fdf7ec;
@@ -44,6 +46,11 @@
 
 body {
   background-color: var(--body-bg-color);
+}
+
+
+header {
+  background: url('../../../icons/close-up-portrait.png');
 }
 
 main {

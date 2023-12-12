@@ -69,6 +69,8 @@ class AppointmentModelController{
             "None",
             "All"
         );
+
+        return $lastId;
     }
 
     public function get_appointment_data_by_id($id){
@@ -80,6 +82,10 @@ class AppointmentModelController{
     public function make_appointment_pending($id, $token){
         $data = $this->get_appointment_data_by_id($id);
         
+        if(empty($data)){
+            return "Appointment not found";
+        }
+
         if ($data->status != "Disabled") {
             return "Appointment has been process already";
         }
@@ -169,8 +175,10 @@ class AppointmentModelController{
         $date = $appointment_data->appointment_date;
         $timeslot = $appointment_data->time_slot;
         $title = "Appointment Status Update";
+        $withAttachment = false;
         if ($status == "Accepted"){
             $body = $emailMaker->make_body_email_accept($fullname, $type, $date, $timeslot);
+            $withAttachment = true;
         }
         if ($status == "Declined"){
             $body = $emailMaker->make_body_email_decline($fullname);
@@ -178,7 +186,7 @@ class AppointmentModelController{
         if ($status == "Cancelled"){
             $body = $emailMaker->make_body_email_cancel($fullname);
         }
-        $this->make_email($oldData->email, $fullname, $title, $body);
+        $this->make_email($oldData->email, $fullname, $title, $body, $withAttachment);
         return true;
     }
 

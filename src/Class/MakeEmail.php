@@ -224,7 +224,7 @@ class MakeEmail {
                     height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-left: 5vw;">
                 </div>
                 <h2 style="text-align: center;">
-                    <img src="https://i.ibb.co/J77xPvN/Urgent-Message.png" alt="Image" style="border-radius: 50%;
+                    <img src="https://i.ibb.co/J77xPvN/Urgent-Message.png" alt="Image" style="
                     aspect-ratio: 1/1; height: 10vw; width: 12vw;">
                     <br>
                     Your Appointment still needs Verification!
