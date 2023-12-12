@@ -1,6 +1,32 @@
 :root{
     --main-content-shadow:0 .4rem .8rem #0005;
-    --main-input-color:rgba(195, 253, 250, 0.776);
+    --main-input-color:rgba(37, 141, 141, 0.248);
+    --content-text-color: #eee;
+    --content-h1-text-color: #0e9594;
+
+    --profile-list-bg-color: #fdf7ec;
+    --profile-list-text-color: black;
+
+    --img-label-bg-color: #ffb845ba;
+    --img-label-text-color: black;
+
+    --update-btn-bg-color: #58c3c3;
+    --update-btn-hover-bg-color: #0e9594;
+    --update-btn-hover-shadow-color: #0e9594;
+
+    --delete-btn-bg-color: #e66155;
+    --delete-btn-hover-bg-color: #e34234;
+    --delete-btn-hover-shadow-color: #e34234;
+
+    --table-bg-color: #feeed3;
+    --table-text-color: black;
+    --table-tr-even-bg-color: #f2dab2;
+    --table-tr-hover-bg-color: #fbd08c;
+    --th-text-color: #c3fdfa;
+    --th-bg-color: #0e9594;
+    --tr-border-color: #ccc;
+    --td-border-bottom-color: #eee;
+    --table-tr-active-bg-color: #a9926f;
 }
 
 [data-theme="dark"]{
@@ -31,6 +57,7 @@
     --th-bg-color: #552b86;
     --tr-border-color: #ccc;
     --td-border-bottom-color: #eee;
+    --table-tr-active-bg-color: #3C038C;
 }
 
 
@@ -115,7 +142,9 @@ th{
     color: var(--th-text-color);
     background-color: var(--th-bg-color);
 }
-
+table tr.active{
+    background-color: var(--table-tr-active-bg-color);
+}
 @media only screen and (max-width: 1024px)  {
     tr { border: 1px solid var(--tr-border-color); }
     td { 
