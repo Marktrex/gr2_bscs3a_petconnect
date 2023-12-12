@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use MyApp\Controller\AppointmentModelController;
 if(!(isset($_GET['token']) && isset($_GET['id']))){
-    header("Location: ../user/403-forbidden.html");
+    header("Location: ../error/403-forbidden.html");
+    exit();
 }
 
 $appointmentControl = new AppointmentModelController();
@@ -11,8 +12,14 @@ $appointment = $appointmentControl->get_appointment_data_by_id($_GET['id']);
 //update the appointment, make it pending
 $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['token']);
 
-//guard for empty
-//guard for invalid token
+
+//guard for empty and invalid token
+if ($status == "Appointment not found" || $status == "Appointment has been process already" || $status == "Invalid Token") {
+    echo "<script type='text/javascript'>
+            alert('$status');
+            window.location.href = '../error/403-forbidden.html';
+          </script>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
