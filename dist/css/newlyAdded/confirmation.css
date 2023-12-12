@@ -22,7 +22,7 @@ body{
   flex-wrap: nowrap;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 3vh;
 }
 .content-box {
   flex-wrap: wrap;
@@ -36,18 +36,18 @@ body{
   align-items: center;
   text-align: center;
   justify-content: space-around;
+  flex-direction: column;
   margin: 0 auto;
   max-width: 950px;
-  margin-top: 20px;
-  margin-bottom: 70px;
   box-shadow:0 .4rem .8rem #0005;
+  padding: 4vw;
+  gap: 2rem;
 }
 .text {
   font-family: 'dairantou';
   font-size: 25px;
   color: #127457;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 /* Style for the exit icon (adjust as needed) */
@@ -64,8 +64,13 @@ body{
   text-align: center;
   justify-content: space-around;
   margin: 0 auto;
+  max-width: 950px;
+  text-decoration: none;
+  font-family: 'dairantou';
   color: #fff6e8;
+  text-align: center;
 }
+
 
 .text2 {
   font-family: 'Lato';
@@ -73,11 +78,8 @@ body{
   color: #0e9594;
   text-align: center;
   padding: 10px 20px;
-  margin-left: 50px;
-  margin-right: 50px;
   box-sizing: border-box;
   display: inline-block;
-  margin-bottom: 20px;
 }
 
 .details {
@@ -87,7 +89,6 @@ body{
   text-align: center;
   padding: 10px 20px;
   box-sizing: border-box;
-  margin-bottom: 20px;
 }
 
 .stacks{
@@ -103,73 +104,58 @@ body{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-bottom: 20px;
+
 }
 .appdate{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-bottom: 20px;
 }
 .sesstime{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-bottom: 20px;
 }
 .address{
   display: block;
   font-family: 'Lato';
   color:#0e9594;
-  margin-bottom: 65px;
 }
 
 .conditions{
   display: block;
   font-family: 'Lato';
   color:#127475;
-  margin-bottom: 10px;
 }
 .text3{
   font-family: 'Lato';
   color:#127475;
   text-align: center;
   padding: 10px 20px;
-  margin-left: 20px;
-  margin-right: 20px;
   box-sizing: border-box;
   display: inline-block;
-  margin-bottom: 20px;
 }
 .text4 {
   font-family: 'Lato';
   color:#127475;
   text-align: center;
   padding: 10px 20px;
-  margin-left: 20px;
-  margin-right: 20px;
   box-sizing: border-box;
   display: inline-block;
-  margin-bottom: 20px;
 }
 .text5 {
   font-family: 'Lato';
   color:#127475;
   text-align: center;
   padding: 10px 20px;
-  margin-left: 20px;
-  margin-right: 20px;
   box-sizing: border-box;
   display: inline-block;
-  margin-bottom: 20px;
 }
 .text6 {
   font-family: 'Lato';
   color:#127475;
   text-align: center;
   padding: 10px 20px;
-  margin-left: 20px;
-  margin-right: 20px;
   box-sizing: border-box;
   display: inline-block;
 }

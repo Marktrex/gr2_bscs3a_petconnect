@@ -11,7 +11,8 @@ $appointment = $appointmentControl->get_appointment_data_by_id($_GET['id']);
 //update the appointment, make it pending
 $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['token']);
 
-
+//guard for empty
+//guard for invalid token
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +70,7 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
             </h3>
           </div>
 
-          <a class = "exit-box"href="index.php">Home</a>
+          <a class = "exit-box" href="index.php">Home</a>
         </div>
       </div>
     </main>
