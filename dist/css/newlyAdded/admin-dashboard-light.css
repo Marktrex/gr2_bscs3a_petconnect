@@ -126,6 +126,7 @@ thead{
     font-weight: bold;
     border-radius: 10px;
     border-color: black;
+    cursor: pointer;
 }
 .action-btn button:hover{
     color: #f2542d;
