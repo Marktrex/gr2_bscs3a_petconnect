@@ -2,6 +2,7 @@
 namespace MyApp\Controller;
 
 use Dotenv\Dotenv;
+use MyApp\Class\MakeEmail;
 use MyApp\Model\Appointment;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -46,7 +47,7 @@ class AppointmentModelController{
         $dotenv->load();
         $root = $_ENV['ROOT_FOLDER'];
 
-        
+        $emailMaker = new MakeEmail();
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
         $token = $appointmentData['token'];
@@ -55,17 +56,9 @@ class AppointmentModelController{
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
         $fullname = $currentUser->fname . ' ' . $currentUser->lname;
-        $body = '
-            <h1>Appointment Confirmation</h1>
-            <p>Dear ' . $fullname . ',</p>
-            <p>Thank you for making an appointment with Pet Connect. To confirm your email address and enable your account, please click the link below:</p>
-            <p><a href="'.$link.'">Confirm Email</a></p>
-            <p>If you did not make this appointment, please ignore this email.</p>
-            <p>Best regards,</p>
-            <p>Pet Connect Team</p>
-        ';
+        $body = $emailMaker->make_body_email_verify($fullname, $link);
 
-        $this->make_email($recipient, $fullname, "Appointment Confirmation", $body, true);
+        $this->make_email($recipient, $fullname, "Appointment Confirmation", $body, false);
 
         $log->activity_log(
             $userId,
@@ -167,10 +160,25 @@ class AppointmentModelController{
                 );
             }
         }
+        $emailMaker = new MakeEmail();
+
         //send email to the user
+        $fullname = $oldData->fname . ' ' . $oldData->lname;
+        $appointment_data = $this->get_appointment_data_by_id($id);
+        $type = $appointment_data->appointment_type;
+        $date = $appointment_data->appointment_date;
+        $timeslot = $appointment_data->time_slot;
         $title = "Appointment Status Update";
-        $body = "Your appointment has been " . $status;
-        $this->make_email($oldData->email, $oldData->fname . ' ' . $oldData->lname, $title, $body);
+        if ($status == "Accepted"){
+            $body = $emailMaker->make_body_email_accept($fullname, $type, $date, $timeslot);
+        }
+        if ($status == "Declined"){
+            $body = $emailMaker->make_body_email_decline($fullname);
+        }
+        if ($status == "Cancelled"){
+            $body = $emailMaker->make_body_email_cancel($fullname);
+        }
+        $this->make_email($oldData->email, $fullname, $title, $body);
         return true;
     }
 
