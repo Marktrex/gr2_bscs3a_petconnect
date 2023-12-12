@@ -174,7 +174,7 @@ $adoptionData = $adoptionController->getAllAdoption();
                 </section>
             </div>
         </main>
-
+        <?php require_once '..\components\light-switch.php'?>
         <?php require_once "../components/admin/adminSidebar.php"?>
     </div>
 </body>
