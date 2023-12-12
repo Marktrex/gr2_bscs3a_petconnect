@@ -61,11 +61,9 @@ h1 {
 .calendar-container{
     width: 80%;
     background-color: white;
+    color: #127475;
 }
 
-a{
-    color: black;
-}
 .today {
     background-color: #007bff; 
     color: white; 

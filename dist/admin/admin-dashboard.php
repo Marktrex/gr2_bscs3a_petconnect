@@ -103,6 +103,7 @@ $eventsJson = json_encode($events);
     
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <link rel="stylesheet" href="..\css\admin\admin-calendar.css">
     
 </head>
 
