@@ -275,6 +275,9 @@ $conn = null;
     <!-- layout position -->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
 
+    <link rel="stylesheet" href="..\css\colorStyle\admin\manage-color.css">
+    <link rel="stylesheet" href="..\css\colorStyle\admin\layout-color.css">
+
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -431,6 +434,8 @@ $conn = null;
                 </section>
             </div>
         </main>
+        
+        <?php require_once '..\components\light-switch.php'?>
         <?php require_once "../components/admin/adminSidebar.php"?>                  
     </div>
 

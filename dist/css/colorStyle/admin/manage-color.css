@@ -26,6 +26,7 @@
     --th-bg-color: #0e9594;
     --tr-border-color: #ccc;
     --td-border-bottom-color: #eee;
+    --table-tr-active-bg-color: #a9926f;
 }
 
 [data-theme="dark"]{
@@ -56,6 +57,7 @@
     --th-bg-color: #552b86;
     --tr-border-color: #ccc;
     --td-border-bottom-color: #eee;
+    --table-tr-active-bg-color: #3C038C;
 }
 
 
@@ -140,7 +142,9 @@ th{
     color: var(--th-text-color);
     background-color: var(--th-bg-color);
 }
-
+table tr.active{
+    background-color: var(--table-tr-active-bg-color);
+}
 @media only screen and (max-width: 1024px)  {
     tr { border: 1px solid var(--tr-border-color); }
     td { 
