@@ -1,4 +1,5 @@
 :root{
     --fc-today-bg-color: #127475;
-    /* --fc-more-link-text-color: white; */
+    --fc-neutral-text-color: black;
+    --fc-button-hover-bg-color: black;
 }

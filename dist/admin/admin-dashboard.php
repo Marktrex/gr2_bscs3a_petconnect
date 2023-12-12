@@ -128,9 +128,7 @@ $eventsJson = json_encode($events);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
+                    right: 'prev today next'
                 },
                 selectable: true,
                 select: function(info) {
@@ -366,7 +364,11 @@ $eventsJson = json_encode($events);
                                             echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
                                             echo '<button type = "button" class="decline-btn" data-appointment-id="' . $row->appointment_id . '">Decline</button>';
                                             echo '</span>';
-                                        } else {
+                                        } elseif($row->status == 'Accepted') {
+                                            echo '<span class = "action-btn">';
+                                            echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
+                                            echo '</span>';
+                                        }else {
                                             // Show the status value
                                             echo $row->status;
                                         }
@@ -427,7 +429,7 @@ $eventsJson = json_encode($events);
             // Check if the request was successful
             if (xhr.status === 200) {
                 // Reload the page to reflect the updated status
-                // location.reload();
+                location.reload();
             }
         };
         xhr.send('appointmentId=' + appointmentId + '&status=' + status);
