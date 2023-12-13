@@ -156,7 +156,24 @@ if (isset($_POST['delete'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Connect</title>
-    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile.css">
+    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile-page.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
+    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../image/icon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Connect</title>
+    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile-page.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
@@ -173,7 +190,7 @@ if (isset($_POST['delete'])) {
                 <form class="edit" method="POST" enctype="multipart/form-data">
                     <h1>Edit Profile</h1>
                     <hr>
-                    <div>
+                    <div class="user-profile-pic">
                         <?php $image = $user_data->photo;
                             if (!$image){
                                 $image = "default.jpg";
@@ -183,48 +200,72 @@ if (isset($_POST['delete'])) {
                         <label class="img-label" for="image">Upload Image</label>
                         <input type="file" accept="image/jpeg, image/jpg, image/png" id="image" name="image">
                     </div>
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" class="fname" id="fname" name="fname" required value ="<?php echo $user_data->fname?>">
+                    <div class="form-container">
+                        <form class="edit">
+                            <h2>Edit Account Information</h2>
+                            <div class="info-box-2col">
+                                <div class="acc-info">
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" class="form-control" id="fname" name="fname" 
+                                    placeholder="Enter your first name" required value ="<?php echo $user_data->fname?>">
+                                </div>
+
+                                <div class="acc-info">
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lname" name="lname"
+                                        placeholder="Enter your last name" required value="<?php echo $user_data->lname?>">
+                                </div>
+
+                                
+                                <div class="acc-info">
+                                    <label for="num">Phone Number:</label>
+                                    <input type="number" class="form-control" id="num" name="num"
+                                        placeholder="Enter your phone number">
+                                </div>
+
+                                
+                                <div class="acc-info">
+                                    <label for="addr">Address:</label>
+                                    <input type="text" class="form-control" id="addr" name="addr"
+                                        placeholder="Enter your home address">
+                                </div>
+                        </form>    
                     </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name:</label>
-                        <input type="text" class="form-control" id="lname" name="lname"
-                            placeholder="Enter your last name" required value="<?php echo $user_data->lname?>">
-                    </div>
+
                     <div class="text-center">
                         <button type="submit" name="update" id ="update" class="btn btn-primary">Update</button>
                     </div>
-                </form>
-            </div>
 
-            <div class="container">
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label for = "password">Current Password</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                    <div class="info-box-1col">
+                        <form action="" method="POST">
+                            <h2>Change Password</h2>
+                            <div class="form-group">
+                                <label for = "password">Current Password</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for = "newPassword">New Password</label>
+                                <input type="password" name="newPassword" id="newPassword" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for = "conPassword">Confirm Password</label>
+                                <input type="password" name="conPassword" id="conPassword" class = "form-control">
+                            </div>
+                        </form>
+                        <div class="text-center-pass">
+                            <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for = "newPassword">New Password</label>
-                        <input type="password" name="newPassword" id="newPassword" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for = "conPassword">Confirm Password</label>
-                        <input type="password" name="conPassword" id="conPassword" class = "form-control">
-                    </div>
-                    <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
-                </form>
-            </div>
 
-            <div class="container mt-5">
-                Warning You are trying to delete your account
-                <form action="" method="post">
-                    <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
-                </form>
-            </div>
+                    
+                    <div class="btn-group">
+                        <form action="" method="post">
+                            Warning! You are trying to delete your account<br>
+                            <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
+                        </form>
+                        <button type="submit" name = "cancel" id="cancel" class="btn btn-primary">Cancel</button><br>
+                    </div>
 
-            
-            
         </div>
     </div>
     
