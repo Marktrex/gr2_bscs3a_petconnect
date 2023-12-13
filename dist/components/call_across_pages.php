@@ -12,6 +12,32 @@
         left:50%;
         transform: translateX(-50%);
         z-index:10000;
+
+        & > form{
+            height: 10vh;
+            width: 10vw;
+            background-color: #fdc161;
+            & > img {
+                border-radius: 50%;
+                border: 2px solid white;
+            }
+
+            & > button{
+                border-radius: 50%;
+                padding: 1rem;
+                margin-right: 2rem;
+            }
+            > .join_call_button{
+                background-color: #4caf50;
+                border: none;
+                color: white;
+            }
+            > .decline_call_button{
+                background-color: #f44336;
+                border: none;
+                color: white;
+            }
+        }
     }
 </style>
 
@@ -33,8 +59,10 @@
     let output="";
     if(data.type == 'call') {
         output = '<form class="join_call_form" id="join_call_form_"' + data.channel + '" method="POST" >';
+        output += '<img src="../image/logo.png" alt="logo" width="50" height="50">';
+        output += '<p>Incoming Call from admin</p>';
         output += '<input type="hidden" name = "channel" value="' + data.channel + '">';
-        output += '<button type="submit"  id="join_call_button">Join Call</button>';
+        output += '<button type="submit" class="join_call_button" id="join_call_button">Join Call</button>';
         output += '<button type="button" class="decline_call_button" id="decline_call_button">Decline Call</button>';
         output += '</form>';
     }
