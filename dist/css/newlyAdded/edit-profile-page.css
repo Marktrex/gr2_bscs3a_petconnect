@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
 @font-face{
   font-family: 'dairantou';
   src: url(/src/fonts/Dairantou.ttf);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
 }
+
 .main {
   min-height: 100vh;
   position: relative;
   background: #fdc161;
   padding: 70px;
 }
+
+
 /* Content */
 .content{
   background: #f5dfbb;
@@ -25,69 +30,89 @@
   border-radius: 26px;
   margin-bottom: 5%;
 }
-h1{
+
+form h1{
   text-align: left;
   font-size: 45px;
-  padding-bottom: 5px;
   margin-left: 3%;
+  font-weight: 700;
   color: #127475;
+  margin-bottom: 1%;
 }
-hr {
+
+form hr {
   background: #127475;
-  height: 1px;
+  height: 2px;
   border: none;
+  margin-bottom: 5%;
 }
-.container {
+
+h1, hr {
+    width: 100%;
+}
+
+.form-container h2 {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+  color: #127475;
+  margin-bottom: 2%;
+}
+
+.container .edit {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 40px;
-  margin-top: 2%;
+  flex-wrap: wrap;
+  column-gap: 50px;
+  height: auto;
 }
-.container .edit img {
+
+.user-profile-pic{
+  margin-left: 3%;
+  width: 230px;
+}
+.user-profile-pic img {
   width: 230px;
   height: 230px;
   border-radius: 30px;
   margin-bottom: 30px;
 }
 
-.user-profile label {
+.user-profile-pic label {
   display: block;
   background-color: #FFB845;
   color:#127475;
   padding: 10px;
-  width: 85%;
-  border: none;
   --webkit-appearance: button;
   cursor: pointer;
   border-radius: 26px;
-  background: #FFB845;
-  color:#127475;
-  font-size: 15px;
   font-weight: 700;
-  margin-left: 2%;
   text-align: center;
 }
 
-.user-profile input {
+.user-profile-pic input {
   display: none;
 }
 
-.info-box{
+.form-container{
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   color:#127475;
-  width: 100%;
+  width: 68%;
 }
-.acc-info label,
-.acc-info-gender label{
+
+.acc-info {
+  margin-bottom: 1%;
+}
+
+.acc-info label{
   display: inline-block;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
   font-size: 16px;
 }
-.info-box input {
-  padding: 7px;
+
+.form-container input {
+  padding: 10px;
   border: none;
   border-radius: 10px;
   background: #6B9392;
@@ -95,46 +120,82 @@ hr {
   width: 100%;
   margin-bottom: 2%;
 }
+
 .info-box-1col{
+  margin-top: 2%;
   width: 100%;
   height: auto;
+  margin-bottom: 4%;
 }
-.info-box-2col, 
-.acc-info-gender {
+
+.info-box-2col{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
   height: auto;
 }
+
 .info-box-2col > div {
   width: calc(50% - 20px);
 }
-.save-button {
-  position: relative;
-  width: 20%;
-  margin-left: 81%;
-}
-.save-button button{
-  font-size: 20px;
-  padding: 10px;
+
+.text-center,
+.text-center-pass {
   width: 100%;
+  justify-content: end;
+  align-items: end;
+}
+
+.text-center-pass{
+  margin-top: 5%;
+}
+
+.text-center button,
+.text-center-pass button, 
+#cancel{
+  width: 100%;
+  padding: 10px;
   border: none;
+  color: #FFB845;
+  background-color: #127475;
   border-radius: 26px;
-  color:#F5DFBB;
-  background:#127475;
+  font-size: 16px;
   font-weight: 700;
+  text-align: center;
 }
 
-.save-button button:hover {
+.text-center button:hover,
+.text-center-pass button:hover,
+#cancel:hover {
   transform: scale(1.05);
-  background: #f2542d;
+  background: #FFB845;
+  color: #127475;
 }
 
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 2%;
+  align-items: end;
+}
 
-
+.btn-group form {
+  width: 70%;
+}
+#cancel {
+  width: 20%;
+}
+#delete {
+  width: 40%;
+  margin-top: 1%;
+  border-radius: 26px;
+}
 
 /*--------------------------------------------------------------------------------------------*/
+
+
 /*--- Customize Scrollbar ---*/
 ::-webkit-scrollbar{
   width: 10px;
@@ -146,79 +207,134 @@ hr {
   background: linear-gradient(#ffb845,#0e9594);
   border-radius: 20px;
 }
+
 /*--------------------------------------------------------------------------------------------*/
+
 @media only screen and (max-width: 900px) {
   
-  body{
-    height: 100vh;
+  .main{
+    height: auto;
     width: 100%;
     padding: 30px;
   }
-  main {
-    margin-top: 35%;
-    height: auto;
+
+  .content {
+    padding: 10px;
   }
-  h1 {
+  form h1 {
     text-align: center;
     font-size: 30px;
+    margin-bottom: 0;
   }
   
-  hr {
+  form hr {
     width: 100%;
   }
-  h3 {
-    margin-bottom: 4%;
-    margin-top: 5%;
+
+   h2{
+    font-size: 20px;
+    font-weight: 600;
+    color: #127475;
+    margin-bottom: 2%;
+  }
+  .edit{
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    padding: 3px;
+    margin-bottom: 7%;
   }
   .container {
     flex-direction: column;
     text-align: center;
     margin-top: 7%;
-    margin-bottom: 30%;
   }
-  .user-profile img {
+
+  .user-profile-pic {
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    margin-bottom: 10%;
+  }
+  .user-profile-pic img {
     max-width: 180px;
     max-height: 180px;
   }
 
-  .user-profile label {
-    max-width: 50%;
-    margin-left: 20%;
+  .user-profile-pic label {
+    margin-left: 22%;
     max-width: 200px;
     width: 100%;
     text-align: center;
     padding: 8px;
-
+  
+  }
+  .form-container{
+    margin: 0;
+    width: 100%;
   }
 
-  .acc-info {
+  .form-container input{
+    padding: 4px;
+  }
+  
+  .form-group {
     margin-bottom: 3%;
   }
-  .acc-info label {
-    margin-bottom: 4%;
-  }
-    
-  .acc-info-gender {
-    display: none;
-  }
+
   .info-box {
     text-align: left;
   }
+
+  .info-box-1col {
+    margin-top: 15%;
+  }
+  
   .info-box-2col {
     flex-direction: column;
     margin-bottom: -5%;
   }
+
   .info-box-2col > div {
     width: 100%;
   }
-  .save-button {
-    width: 80%;
-    margin-left: 10%;
-    margin-top: -30%;
-    
+
+  .text-center, 
+  .text-center-pass{
+    margin-top: 8%;
+    width: 100%;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+  } 
+
+  .text-center button,
+  .text-center-pass button {
+    width: 50%;
   }
-  .save-button button{
-    font-size: 15px;
-    padding: 8px;
+
+  .text-center button,
+  .text-center-pass button, 
+  #cancel{
+    padding: 5px;
   }
+
+  .btn-group {
+    width: 100%;
+    gap: 20px;
+    margin-top: 10%;
+  }
+  .btn-group form {
+    width: 50%;
+    font-size: 12px;
+  }
+  #cancel {
+    width: 30%;
+  }
+  #delete {
+    font-size: 12px;
+    width: 90%;
+  }
+
+
 }
