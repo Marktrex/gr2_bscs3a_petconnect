@@ -157,14 +157,7 @@ require '../function/config.php';
     <link rel="stylesheet" href="..\css\newlyAdded\forget-password.css">
     <link rel="stylesheet" href="..\css\colorStyle\user\forget-pw-colors.css">
 </head>
-<body class="h-screen w-screen
-            custom-background-color">
-
-    <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
-        <a href="#">
-            <img src="../image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
-        </a>
-    </div>
+<body>
     <div class="container">
         <h1>Forgot password?</h1>
         <p>
@@ -182,6 +175,8 @@ require '../function/config.php';
     </div>
     
 <?php require_once "../components/light-switch.php";?>
+<script src="../script/change-color-schema.js"></script>
+
 
 </body>
 </html>
