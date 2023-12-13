@@ -113,7 +113,7 @@ class AppointmentModelController{
 
         try {
             //Server settings
-            $mail->SMTPDebug = false;                      //Enable verbose debug output
+            $mail->SMTPDebug = true;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -178,7 +178,9 @@ class AppointmentModelController{
         $withAttachment = false;
         if ($status == "Accepted"){
             $body = $emailMaker->make_body_email_accept($fullname, $type, $date, $timeslot);
-            $withAttachment = true;
+            if ($type == "Adopt"){
+                $withAttachment = true;
+            }
         }
         if ($status == "Declined"){
             $body = $emailMaker->make_body_email_decline($fullname);

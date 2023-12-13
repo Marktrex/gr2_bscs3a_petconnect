@@ -109,8 +109,6 @@ class MakeEmail {
                 align-items: center;">
                     <img src="https://i.ibb.co/b6GMMSM/logo.png" alt="Pet Connect Logo" style="border-radius: 50%;
                     height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-left: 5vw;">
-                    <img src="https://i.ibb.co/Pr4Vh99/Box-Important.png" alt="Urgent Image" style="border-radius: 50%;
-                    height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-right: 5vw;">
                 </div>
                 
                 <h2 style="text-align: center; padding: 0 5vw;">
@@ -169,8 +167,6 @@ class MakeEmail {
                 align-items: center;">
                     <img src="https://i.ibb.co/b6GMMSM/logo.png" alt="Pet Connect Logo" style="border-radius: 50%;
                     height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-left: 5vw;">
-                    <img src="https://i.ibb.co/Pr4Vh99/Box-Important.png" alt="Urgent Image" style="border-radius: 50%;
-                    height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-right: 5vw;">
                 </div>
                 <h2 style="text-align: center; padding: 0 5vw;">
                     <img src="https://i.ibb.co/J77xPvN/Urgent-Message.png" alt="Image" style="aspect-ratio: 1/1; height: 10vw; width: 12vw;">
