@@ -18,20 +18,20 @@
 
 [data-theme="dark"] {
   /* for dark here */
-  --body-bg-color: #fdc161;
-  --about-section-child-bg-color: #0e9594;
+  --body-bg-color: #090b29;
+  --about-section-child-bg-color: #090b29;
   --about-section-child-text-color: #f5dfbb;
-  --team-bg-color: #f2542d;
-  --team-text-color: #fdc161;
-  --team-flex-div-bg-color: #f5dfbb;
-  --team-flex-div-p-bg-color: #f5dfbb;
-  --team-flex-div-p-text-color: #0e9594;
-  --extraInfo-bg-color: #f5dfbb;
-  --extraInfo-div-bg-color: #0e9594;
-  --extraInfo-div-text-color: #f5dfbb;
-  --scrollbar-track-bg-color: #fdf7ec;
+  --team-bg-color: #381162;
+  --team-text-color: #1eddd4;
+  --team-flex-div-bg-color: #381162;
+  --team-flex-div-p-bg-color: #090b29;
+  --team-flex-div-p-text-color: #1eddd4;
+  --extraInfo-bg-color: #090b29;
+  --extraInfo-div-bg-color: #381162;
+  --extraInfo-div-text-color: #1eddd4;
+  --scrollbar-track-bg-color: #090b29;
   --scrollbar-thumb-gradient-start: #ffb845;
-  --scrollbar-thumb-gradient-end: #0e9594;
+  --scrollbar-thumb-gradient-end: #1eddd4;
 }
 
 body {
