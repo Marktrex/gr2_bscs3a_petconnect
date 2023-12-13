@@ -201,6 +201,7 @@
         }
       }
       .dropdown-btn {
+      
         color: #e89003;
         .dropdown-content {
           top: 0;
@@ -327,4 +328,16 @@ text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
 #floating-btn  .icon:hover .pop-up,
 #floating-btn  .icon:hover .pop-up:before{
 background: #f2542d;
+}
+.menu-links li a {
+  text-decoration: none;
+}
+.dropdown-content a {
+  color: #fff; /* Replace with your desired color code */
+  text-decoration: none;
+  transition: color 0.2s ease; /* Optional: Add a smooth transition effect */
+}
+
+.dropdown-content a:hover {
+  color: #fff; /* Replace with your desired hover color code */
 }

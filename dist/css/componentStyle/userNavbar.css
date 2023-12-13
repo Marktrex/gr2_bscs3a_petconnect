@@ -251,6 +251,8 @@
 /* try ni marc */
 .dropdown-item:hover .dropdown-content {
   display: block;
+  text-decoration: none; /* Remove underline */
+
 }
 #floating-btn{
   width: 75px;

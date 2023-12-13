@@ -17,7 +17,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
       <!-- Insert the new dropdown code here -->
       <li class="new-dropdown-item dropdown-item">
           <div class="dropdown">
-              <label for="newDropdown" class="dropdown-btn">About Us</label>
+          <a href="../user/about-us.php" class="dropdown-btn">About Us</a>
               <input type="checkbox" id="newDropdown" />
               <div class="dropdown-content">
                   <label>
