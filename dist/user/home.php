@@ -55,7 +55,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
 <div class="pet-container">
     <?php
     $type = 'Dog'; // Set the type to 'Dog'
-    $sql = "SELECT * FROM pets WHERE type = :type LIMIT 4"; // Adjust the SQL query to fetch only dogs and limit to 4 results
+    $sql = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0 LIMIT 4";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':type', $type, PDO::PARAM_STR);
     $stmt->execute();
@@ -85,7 +85,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
 <div class="pet-container">
     <?php
     $type = 'Cat'; // Set the type to 'Dog'
-    $sql = "SELECT * FROM pets WHERE type = :type LIMIT 4"; // Adjust the SQL query to fetch only dogs and limit to 4 results
+    $sql = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0 LIMIT 4";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':type', $type, PDO::PARAM_STR);
     $stmt->execute();

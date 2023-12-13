@@ -12,7 +12,7 @@ if (!isset($_SESSION['auth_user'])) {
   echo 'alert("You do not have access to this page");';
   echo '</script>';
   header("Location: ../authentication/loginpage.php");
-  exit();
+    exit();
 } 
 $loggedIn = isset($_SESSION['auth_user']);
 
@@ -22,13 +22,14 @@ $type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
 try { //research this try catch method
    
     // Build the base query
-    $query = "SELECT * FROM pets WHERE type= :type";
+    $query = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0";
 
+    echo "Query: $query\n";
 
 
     // Prepare the statement
     $stmt = $conn->prepare($query);
-    $stmt->bindParam(':type', $type);
+    $stmt->bindParam(':type', $type, PDO::PARAM_STR);
 
     // Execute the statement
     $stmt->execute();
