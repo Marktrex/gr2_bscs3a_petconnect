@@ -1,5 +1,40 @@
 :root{
+  --body-bg-color: #fdc161;
 
+  --hero-content-h1-text-color: #127475;
+  --hero-content-p-text-color: #fff6e8;
+
+  --register-btn-bg-color: #f2542d;
+  --register-btn-box-shadow: #7a1d05;
+  --register-btn-text-color: #FFFFFF;
+
+  --container1-bg-color: #f5dfbb;
+  --container1-box-shadow: #0005;
+
+  --container1-h1-color: #f2542d;
+  --services-item-bg-color: #0e9594;
+  --service-h1-color: wheat;
+
+  --item-p-color: wheat;
+  --services-item-hover-shadow-color: #127475;
+
+  --container2-bg-color: #ff653e;
+  --container2-h1-color: #ffb845;
+  --container2-p-color: wheat;
+
+  --container3-h1-color: #0e9594;
+
+  --testimonials-item-bg-color: #f5dfbb;
+  --testimonials-item-hover-bg-color: #d3c3a9;
+
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+
+  --navbar-menu-links-bg-color: #fdf7ec;
+  --navbar-menu-links-link-color: #e89003;
+  --navbar-join-btn-bg-color: #7b1212;
+  --navbar-join-btn-link-hover-color: #062e2e;
 }
 
 [data-theme="dark"]{
@@ -116,4 +151,41 @@ body {
 
 ::-webkit-scrollbar-thumb{
   background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
+}
+
+
+/* Default styles */
+.navbar .menu-links {
+  background: var(--navbar-menu-links-bg-color);
+}
+
+.navbar .menu-links li a {
+  color: var(--navbar-menu-links-link-color);
+}
+
+.navbar .menu-links .join-btn a {
+  background-color: var(--navbar-join-btn-bg-color);
+}
+
+.navbar .menu-links .join-btn a:hover {
+  color: var(--navbar-join-btn-link-hover-color);
+}
+
+/* Media Query for screen size <= 1024px */
+@media only screen and (max-width: 1024px) {
+  .navbar .menu-links {
+    background: var(--navbar-menu-links-bg-color);
+  }
+
+  .navbar .menu-links li a {
+    color: var(--navbar-menu-links-link-color);
+  }
+
+  .navbar .menu-links .join-btn a {
+    background-color: var(--navbar-join-btn-bg-color);
+  }
+
+  .navbar .menu-links .join-btn a:hover {
+    color: var(--navbar-join-btn-link-hover-color);
+  }
 }

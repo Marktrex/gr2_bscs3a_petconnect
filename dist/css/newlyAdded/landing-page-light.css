@@ -102,6 +102,7 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
+  margin-top: -20px;
 }
 
 .hero-section .content p {

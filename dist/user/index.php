@@ -16,7 +16,7 @@
     />
 
     <link rel="stylesheet" href="..\css\colorStyle\user\landing-page-color.css">
-    <link rel="stylesheet" href="..\css\colorStyle\user\footer-color.css">
+    <link rel="stylesheet" href="...\css\colorStyle\user\footer-color.css">
   </head>
 
   <body>
