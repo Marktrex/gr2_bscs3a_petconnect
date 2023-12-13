@@ -16,19 +16,19 @@
   --thead-bg-color: #0e9594;
 }
 [data-theme="dark"] {
-  --form-div-bg-color: #fff6e8;
-  --input-bg-color: #6b939266;
-  --heavy-text-color: #127475;
-  --text-color: #0e9594;
+  --form-div-bg-color: #381162;
+  --input-bg-color: #a8ccdc;
+  --heavy-text-color: #c3fdfa;
+  --text-color: #c3fdfa;
 
-  --button-color: white;
+  --button-color: black;
 
-  --table-bg-color: #feeed3;
-  --table-even-color: #f2dab2;
-  --table-hover-color: #fbd08c;
+  --table-color: #ab62ff;
+  --table-even-color: #7f36d2;
+  --table-hover-color: #582790;
   --table-text-color: black;
   --thead-text-color:  #fdf7ec;
-  --thead-bg-color: #0e9594;
+  --thead-bg-color: #552b86;
 }
 
 /* design for form */

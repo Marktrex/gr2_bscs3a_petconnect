@@ -19,6 +19,24 @@
   --button-text-color: black;
 }
 
+[data-theme="dark"] {
+  --form-div-bg-color: #381162;
+  --input-bg-color: #a8ccdc;
+  --heavy-text-color: #c3fdfa;
+  --text-color: #c3fdfa;
+
+
+  --table-bg-color: #ab62ff;
+  --table-even-color: #7f36d2;
+  --table-hover-color: #582790;
+  --table-text-color: black;
+  --thead-text-color: #fdf7ec;
+  --thead-bg-color: #552b86;
+
+  --button-send-bg-color: #58C3C3;
+  --button-delete-bg-color: #E66155;
+  --button-text-color: black;
+}
 /* for divs above */
 main {
   padding: 4vw;
