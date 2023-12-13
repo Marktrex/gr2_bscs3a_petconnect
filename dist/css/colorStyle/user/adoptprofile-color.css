@@ -6,7 +6,7 @@
     --back-hover-bg-color: rgba(255, 255, 255, 0.5);
     --searchbox-border-color: #c9e6e7;
     --searchbox-bg-color: #f5dfbb;
-    --secondNavbar-bg-color: #fdf7ec;
+    --secondNavbar-bg-color: #127475;
     --petcontent-bg-color: #f5dfbb;
     --petcontent-box-shadow: 0 0.4rem 0.8rem #0005;
     --bookbutton-bg-color: #f2542d;
@@ -21,7 +21,7 @@
     /* dark here */
 --body-bg-color: #090b29;
 --logo-margin-left: 3rem;
---back-color: #127475;
+--back-color: #1eddd4;
 --back-hover-bg-color: rgba(255, 255, 255, 0.5);
 --searchbox-border-color: #c9e6e7;
 --searchbox-bg-color: #f5dfbb;
@@ -34,7 +34,7 @@
 --petname-font-size: 65px;
 --petname-font-weight: bold;
 --pettxt-font-size: 25px;
---pettxt-color: #127475;
+--pettxt-color: #1eddd4;
 }
 body {
     background: var(--body-bg-color);
