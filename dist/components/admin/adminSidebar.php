@@ -1,4 +1,5 @@
 <!--SideBar-->
+
 <aside id="sidenav" class="sidebar">
     <ul class="menu-links menu-links-color">
     <span
@@ -17,35 +18,47 @@
         >
     </li>
     <li>
-        <a id="add" href="admin-add-pets.php"
-        ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
-        >
-    </li>
-    <li>
-        <a id="manage" href="admin-manage-pets.php"
-        ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
-        >
-    </li>
-    <li>
-        <a id="users" href="admin-manage-user.php"
-        ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
-        >
-    </li>
-    <li>
         <a id="add" href="admin-audit-trail.php">
         <i class="fa fa-clock-o"></i>
         &nbsp;&nbsp;&nbsp;Audit Trail</a>
     </li>
-    <li>
-        <a id="add" href="admin-add-adoption.php">
-        <i class="fa fa-clock-o"></i>
-        &nbsp;&nbsp;&nbsp;Add Adoption</a>
-    </li>
-    <li>
-        <a id="add" href="admin-manage-adoption.php">
-        <i class="fa fa-clock-o"></i>
-        &nbsp;&nbsp;&nbsp;Manage Adoption</a>
-    </li>
+    
+    <button class="dropdown-btn">Add
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <li>
+            <a id="add" href="admin-add-pets.php"
+            ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
+            >
+        </li>
+        <li>
+            <a id="add" href="admin-add-adoption.php">
+            <i class="fa fa-clock-o"></i>
+            &nbsp;&nbsp;&nbsp;Add Adoption</a>
+        </li>
+    </div>
+
+    <button class="dropdown-btn">Manage
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <li>    
+            <a id="manage" href="admin-manage-pets.php"
+            ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
+            >
+        </li>
+        <li>
+            <a id="users" href="admin-manage-user.php"
+            ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
+            >
+        </li>
+        <li>
+            <a id="add" href="admin-manage-adoption.php">
+            <i class="fa fa-clock-o"></i>
+            &nbsp;&nbsp;&nbsp;Manage Adoption</a>
+        </li>
+    </div>
     <li>
         <a id="logout" href="javascript:void(0);" onclick="logout()"
         ><i class="fa fa-arrow-circle-right"></i
@@ -67,6 +80,23 @@
             window.location.href = "../function/authentication/logout.php";
         }
     }
+</script>
+
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
 </script>
 
 <script src="../script/admin-general.js"></script>
