@@ -19,13 +19,16 @@
     --overlay-bg-color: rgba(0, 0, 0, 0.75);
     --img-bg-h2-text-color: #1EDDD4;
     --overlay-p-text-color: #fff6e8;
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-gradient-start: #ffb845;
+    --scrollbar-thumb-gradient-end: #0e9594;
 }
 
 [data-theme="dark"]{
     /* dark here */
     --body-bg-color: #090b29;
     --content-bg-color: #240155;
-    --dropdown-btn-border-color: #1EDDD4;
+    /* --dropdown-btn-border-color: #1EDDD4; */
     --dropdown-btn-text-color: #f9f9f9;
     --dropdown-content-bg-color: #240155;
     --dropdown-content-border-color: #1EDDD4;
@@ -42,6 +45,11 @@
     --overlay-bg-color: rgba(0, 0, 0, 0.75);
     --img-bg-h2-text-color: #1EDDD4;
     --overlay-p-text-color: #fff6e8;
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-gradient-start: #ffb845;
+    --scrollbar-thumb-gradient-end: #0e9594;
+
+
 }
 
 
