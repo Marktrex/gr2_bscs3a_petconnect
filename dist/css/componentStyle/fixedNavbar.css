@@ -338,6 +338,3 @@ background: #f2542d;
   transition: color 0.2s ease; /* Optional: Add a smooth transition effect */
 }
 
-.dropdown-content a:hover {
-  color: #fff; /* Replace with your desired hover color code */
-}
