@@ -21,15 +21,20 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 
 $user = new UserModelController();
 
+
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
+    $mobile= $_POST["num"];
+    $address = $_POST["addr"];
     $currentUserId = $_SESSION['auth_user']['id'];
     $oldData = $user->get_user_data_by_id($currentUserId);
     $newData = [
         'fname' => $firstName,
-        'lname' => $lastName
+        'lname' => $lastName,
+        'mobile_number' => $mobile,
+        'home_address' => $address
     ];
     // Update the data in both tables
     $conn->beginTransaction();
@@ -80,7 +85,9 @@ if (isset($_POST['update'])) {
             $user_update = new UserModelController();
             $user_update->updateProfile($currentUserId, [
                 'fname' => $firstName,
-                'lname' => $lastName
+                'lname' => $lastName,
+                'mobile_number' => $mobile,
+                'home_address' => $address
             ]);
         }
         $log = new AuditModelController();
@@ -100,8 +107,13 @@ if (isset($_POST['update'])) {
     } catch (PDOException $e) {
         // An error occurred, rollback the transaction
         $conn->rollBack();
-        echo "Error updating data: " . $e->getMessage();
+        echo '<script>
+        alert("Error updating profile");
+        </script';
     }
+    echo '<script>
+        alert("Profile updated");
+        </script';
 }
 
 if (isset($_POST['changePassword'])) {
@@ -125,12 +137,14 @@ if (isset($_POST['changePassword'])) {
                 "SECRET",
                 "SECRET"
             );
+            echo "<script>alert('Password updated')</script>";
         } else {
             echo "<script>alert('New password and confirm password must be same')</script>";
         }
     } else {
         echo "<script>alert('Current password is incorrect')</script>";
     }
+    
 }
 
 
@@ -189,7 +203,6 @@ if (isset($_POST['delete'])) {
 
 <body>
     <div class="main">
-        <a href="home.php" class="btn back">Back</a>
         <div class="content">
             <?php $user_data = $user->get_user_data_by_id($_SESSION['auth_user']['id'])?>
             <div class="container">
@@ -225,15 +238,15 @@ if (isset($_POST['delete'])) {
                                 
                                 <div class="acc-info">
                                     <label for="num">Phone Number:</label>
-                                    <input type="number" class="form-control" id="num" name="num"
-                                        placeholder="Enter your phone number">
+                                    <input type="text" class="form-control" id="num" name="num"
+                                        placeholder="Enter your phone number" value="<?php echo $user_data->mobile_number?>">
                                 </div>
 
                                 
                                 <div class="acc-info">
                                     <label for="addr">Address:</label>
                                     <input type="text" class="form-control" id="addr" name="addr"
-                                        placeholder="Enter your home address">
+                                        placeholder="Enter your home address"  value="<?php echo $user_data->home_address?>">
                                 </div>
                         </form>    
                     </div>
@@ -257,10 +270,10 @@ if (isset($_POST['delete'])) {
                                 <label for = "conPassword">Confirm Password</label>
                                 <input type="password" name="conPassword" id="conPassword" class = "form-control">
                             </div>
+                            <div class="text-center-pass">
+                                <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
+                            </div>
                         </form>
-                        <div class="text-center-pass">
-                            <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
-                        </div>
                     </div>
 
                     
