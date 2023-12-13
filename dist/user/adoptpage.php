@@ -24,7 +24,6 @@ try { //research this try catch method
     // Build the base query
     $query = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0";
 
-    echo "Query: $query\n";
 
 
     // Prepare the statement
