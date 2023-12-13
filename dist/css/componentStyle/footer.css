@@ -16,7 +16,7 @@ footer .footer-content{
     display: flex;
     justify-content: space-around;
     background: #0e9594;
-    color: #c9e6e7;; 
+    color: #c9e6e7;
     padding: 2em; 
     font-size: 1.2rem;
 }
@@ -161,7 +161,7 @@ footer .info .item{
         flex-direction: column;
         width: 100%;
         background: #0e9594;
-        color: #c9e6e7;; 
+        color: #c9e6e7;
         padding: 2em; 
         font-size: 1.2rem;
     }

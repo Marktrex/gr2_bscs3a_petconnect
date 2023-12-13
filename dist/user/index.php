@@ -14,6 +14,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+
+    <link rel="stylesheet" href="..\css\colorStyle\user\landing-page-color.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\footer-color.css">
   </head>
 
   <body>
@@ -87,6 +90,7 @@
       </div>
     </div>
 
+    <?php require_once '..\components\light-switch.php'?>
     <?php require_once "../components/user/footer.html"?>
 
     <?php
