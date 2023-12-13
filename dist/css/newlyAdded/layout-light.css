@@ -135,7 +135,7 @@ main{
     padding: 6px 8px 6px 60px;
     text-decoration: none;
     font-size: 20px;
-    color: white;
+  /*  color: white;*/
     display: block;
     border: none;
     background: none;
@@ -146,9 +146,9 @@ main{
   }
   
   /* On mouse-over */
-  .sidenav a:hover, .dropdown-btn:hover {
+ /* .sidenav a:hover, .dropdown-btn:hover {
     color: #b4bbbb;
-  }
+  }*/
   
   /* Main content */
   .main {
@@ -158,16 +158,14 @@ main{
   }
   
   /* Add an active class to the active dropdown button */
-  .active {
-    background-color: #fdc161;
-    color: white;
-  }
+ /*  .active {
+    color: white; 
+  }*/
   
   /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
   .dropdown-container {
     display: none;
-    background-color: #0e9594;
-    background-color: var(--dropdown-container-color);
+    
   }
   
   /* Optional: Style the caret down icon */
