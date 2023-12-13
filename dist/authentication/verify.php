@@ -9,11 +9,11 @@ use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-// if (!isset($_SESSION['auth_user'])) {
-//     // Redirect to login page if the user is not authenticated
-//     header("Location: ../authentication/loginpage.php");
-//     exit();
-//   }
+if (!isset($_SESSION['auth_user'])) {
+    // Redirect to login page if the user is not authenticated
+    header("Location: loginpage.php");
+    exit();
+  }
   
 if (isset($_SESSION['auth_user'])) {
     // Check if the role is equal to 1 and email is set
@@ -204,6 +204,7 @@ if (isset($_POST["verify"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otp  |   Petconnect</title>
     <link rel="stylesheet" href="../css/newlyAdded/otp-page.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\otp-colors.css">
 </head>
 <body>
     <div class="container">
@@ -252,4 +253,6 @@ if (isset($_POST["verify"])) {
         })
      });
 </script>
+<?php require_once "../components/light-switch.php";?>
+    <script src="../script/change-color-schema.js"></script>
 </html>
