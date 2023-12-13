@@ -26,6 +26,8 @@
      --burger-AndClose-color: #1EDDD4;
       /* Dropdown */
     --active-color: #166566;
+    --sidenav-a-dropdown-btn-color: white;
+    --sidenav-a-hover-dropdown-btn-hover-color: #b4bbbb;
 }
 
 [data-theme="dark"]{
@@ -55,6 +57,8 @@
      --burger-AndClose-color: #1EDDD4;
      /* Dropdown */
      --active-color: #310b68;
+     --sidenav-a-dropdown-btn-color: white;
+     --sidenav-a-hover-dropdown-btn-hover-color: #b4bbbb;
 }
 
 
@@ -116,5 +120,10 @@ main
 .active{
     background-color: var(--active-color);
 }
-
+.sidenav a, .dropdown-btn {
+    color: var(--sidenav-a-dropdown-btn-color);
+}
+.sidenav a:hover, .dropdown-btn:hover {
+  color: var(--sidenav-a-hover-dropdown-btn-hover-color);
+}
 

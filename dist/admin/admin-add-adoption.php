@@ -120,7 +120,7 @@ $usersData = $userController->getAllUsers();
                         </div>
                     </div>
                 </form>
-                <button type="button" onclick="document.getElementById('add_adoption').submit();">Add to adoption</button>
+                <button type="button" class="btn-add" onclick="document.getElementById('add_adoption').submit();">Add to adoption</button>
             </div>
             <div id="theTables">
                 <div class = "containsTable">

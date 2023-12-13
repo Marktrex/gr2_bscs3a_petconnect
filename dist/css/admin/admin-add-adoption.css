@@ -6,7 +6,7 @@
   --heavy-text-color: #127475;
   --text-color: #0e9594;
 
-  --button-color: white;
+  --btn-add-color: white;
 
   --table-bg-color: #feeed3;
   --table-even-color: #f2dab2;
@@ -21,7 +21,7 @@
   --heavy-text-color: #c3fdfa;
   --text-color: #c3fdfa;
 
-  --button-color: black;
+  --btn-add-color: black;
 
   --table-color: #ab62ff;
   --table-even-color: #7f36d2;
@@ -105,9 +105,9 @@ main {
   }
 }
 
-button {
+.btn-add {
   background-color: var(--heavy-text-color);
-  color: var(--button-color);
+  color: var(--btn-add-color);
   border: none;
   border-radius: 10px;
   padding: 0.5rem;

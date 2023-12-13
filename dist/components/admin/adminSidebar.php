@@ -23,41 +23,35 @@
         &nbsp;&nbsp;&nbsp;Audit Trail</a>
     </li>
     
-    <button class="dropdown-btn">Add
+        <button class="dropdown-btn">Add
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <li>
-            <a id="add" href="admin-add-pets.php"
-            ><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a
-            >
-        </li>
-        <li>
-            <a id="add" href="admin-add-adoption.php">
-            <i class="fa fa-clock-o"></i>
-            &nbsp;&nbsp;&nbsp;Add Adoption</a>
-        </li>
+        <ul>
+            <li>
+                <a href="admin-add-pets.php"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add Pets</a>
+            </li>
+            <li>
+                <a href="admin-add-adoption.php"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Add Adoption</a>
+            </li>
+        </ul>
     </div>
 
     <button class="dropdown-btn">Manage
         <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-container">
-        <li>    
-            <a id="manage" href="admin-manage-pets.php"
-            ><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a
-            >
-        </li>
-        <li>
-            <a id="users" href="admin-manage-user.php"
-            ><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a
-            >
-        </li>
-        <li>
-            <a id="add" href="admin-manage-adoption.php">
-            <i class="fa fa-clock-o"></i>
-            &nbsp;&nbsp;&nbsp;Manage Adoption</a>
-        </li>
+        <ul>
+            <li>
+                <a href="admin-manage-pets.php"><i class="fa fa-paw"></i>&nbsp;&nbsp;&nbsp;Manage Pets</a>
+            </li>
+            <li>
+                <a href="admin-manage-user.php"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;Manage Users</a>
+            </li>
+            <li>
+                <a href="admin-manage-adoption.php"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Manage Adoption</a>
+            </li>
+        </ul>
     </div>
     <li>
         <a id="logout" href="javascript:void(0);" onclick="logout()"
