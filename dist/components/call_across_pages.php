@@ -15,7 +15,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
         gap: 2vh;
         padding: 3rem;
         & > form{
@@ -124,7 +123,8 @@
     document.addEventListener('click', function(event) {
         if (event.target.matches('.decline_call_button')) {
             var parentElement = event.target.parentElement;
-            removeElement(parentElement);
+            var grandElement = parentElement.parentElement;
+            removeElement(grandElement);
         }
     });
 
