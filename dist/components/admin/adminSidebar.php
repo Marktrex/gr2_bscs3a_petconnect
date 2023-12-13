@@ -13,7 +13,7 @@
         >
     </li>
     <li>
-        <a id="db" href="admin-message.php"
+        <a id="db" href="..\chat.php"
         ><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp;Messages</a
         >
     </li>

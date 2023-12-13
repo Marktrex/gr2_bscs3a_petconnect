@@ -68,7 +68,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 	<div class="chat-container">
 		<div class="chat-content">
 			<div class="content-sidebar">
-				
 				<div class="content-sidebar-title"><a>Chats</a></div>
 				<div class="back-button">
 					<a href="user\home.php">Back</a>
