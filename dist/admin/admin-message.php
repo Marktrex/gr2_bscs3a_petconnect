@@ -10,7 +10,7 @@ if(!isset($_SESSION['auth_user']))
 	header('location:authentication/loginpage.php');
 }
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '../../../vendor/autoload.php';
 
 ?>
 
@@ -20,9 +20,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css\chat\content-message.css">
-	<link rel="stylesheet" href="css\chat\conversation.css">
-	<link rel="stylesheet" href="css\chat\responsive-chatbox.css">
+    <link rel="stylesheet" href="..\css\chat\content-message.css">
+	<link rel="stylesheet" href="..\css\chat\conversation.css">
+	<link rel="stylesheet" href="..\css\chat\responsive-chatbox.css">
     <title>Chat</title>
 
 <!-- code from yt -->
@@ -70,10 +70,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			<div class="content-sidebar">
 				<!-- search start here -->
 				<div class="content-sidebar-title"><a>Chats</a></div>
-				<form action="" class="content-sidebar-form">
-					<input type="search" class="content-sidebar-input" placeholder="Search...">
-					<button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
-				</form>
+				
 				<div class="content-messages">
 					<ul class="content-messages-list">
 						<li class="content-message-title"></li>
@@ -104,7 +101,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 									}
 									$image = $user['photo'];
 									if($image == '') {
-										$image = '../../icons/icons-user.png';
+										$image = '../../../icons/icons-user.png';
 									}
 									echo "
 									<li>
@@ -307,7 +304,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			$('#is_active_chat').val('Yes');
 
 			$.ajax({
-				url:"function/call_chat/action.php",
+				url:"../function/call_chat/action.php",
 				method:"POST",
 				data:{action:'fetch_chat', to_user_id:receiver_userid, from_user_id:from_user_id},
 				dataType:"JSON",
@@ -397,7 +394,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			event.preventDefault();
 			
 			$.ajax({
-				url: 'function/call_chat/check_login_status.php', // replace with your PHP script
+				url: '../function/call_chat/check_login_status.php', // replace with your PHP script
 				method: 'POST',
 				success: function(response) {
 					if (response.loggedIn) { // replace with the actual response field
@@ -432,7 +429,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			// Your code for initiating a video call goes here
 			// Use AJAX to generate the channel
 			$.ajax({
-				url: 'function/call_chat/generateChannelForCall.php',
+				url: '../function/call_chat/generateChannelForCall.php',
 				method: 'POST',
 				data: { uid: $('#login_user_id').val() },
 				success: function(data) {
@@ -448,7 +445,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 					});
 					// Submit the form
 					$('#chat_form').submit();
-					window.open('user/VideoCall.php', '_blank');
+					window.open('../user/VideoCall.php', '_blank');
 				}
 			});
 			

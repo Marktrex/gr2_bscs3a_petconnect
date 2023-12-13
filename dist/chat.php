@@ -70,10 +70,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			<div class="content-sidebar">
 				<!-- search start here -->
 				<div class="content-sidebar-title"><a>Chats</a></div>
-				<form action="" class="content-sidebar-form">
-					<input type="search" class="content-sidebar-input" placeholder="Search...">
-					<button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
-				</form>
+				
 				<div class="content-messages">
 					<ul class="content-messages-list">
 						<li class="content-message-title"></li>
