@@ -21,6 +21,7 @@ if (!isset($_SESSION['auth_user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetConnet Homepage</title>
     <link rel="stylesheet" href="../css/newlyAdded/donate.css" />
+    <link rel="stylesheet" href="..\css\colorStyle\user\donate-color.css"/>
     <link rel="stylesheet" href="../css/newlyAdded/footer.css" />
     <link
       rel="stylesheet"
@@ -115,6 +116,7 @@ if (!isset($_SESSION['auth_user'])) {
         </div>
       </div>
     </main>
+    <?php require_once "..\components\light-switch.php"?>
     <?php require_once "../components/user/footer.html"?>
     <?php require_once "..\components\call_across_pages.php"?>
   </body>
