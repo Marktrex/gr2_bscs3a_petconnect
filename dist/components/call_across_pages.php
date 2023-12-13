@@ -15,6 +15,7 @@
     }
 </style>
 
+
 <div id= "placeForCall">
 </div>
 
@@ -51,8 +52,8 @@
         var formData = new FormData();
         formData.append('action', 'join_call');
         formData.append('channel', channel);
-
-        fetch('../../action.php', {
+        console.log(formData);
+        fetch('..\\function\\call_chat\\action.php', {
             method: 'POST',
             body: formData
         })
