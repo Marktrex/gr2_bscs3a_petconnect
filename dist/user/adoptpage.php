@@ -46,20 +46,12 @@ try { //research this try catch method
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adopt | PetConnect</title>
     <link rel="stylesheet" href="../css/newlyAdded/donate-cat-page.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href= "..\css\colorStyle\user\donate-pet-color.css">
   </head>
-
   <body>
-  <?php require_once "../components/user/userNavbar.php"?>
+  <?php require_once "../components/user/fixedNavbar.php"?>
     <form action="" method="get" id= "searchForm">
       
       <section class="content">
