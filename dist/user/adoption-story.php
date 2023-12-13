@@ -26,8 +26,8 @@ $stories = $adoptionController->getAllAdoption();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption Story</title>
-
     <link rel="stylesheet" href="..\css\user\adoption-story.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\adoption-story-color.css">
 </head>
 <body>
     <?php require_once "../components/user/fixedNavbar.php"?>
@@ -67,5 +67,6 @@ $stories = $adoptionController->getAllAdoption();
         </div>
     </main>
     <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\light-switch.php"?>
 </body>
 </html>
