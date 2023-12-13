@@ -187,6 +187,7 @@ $eventsJson = json_encode($events);
     <link rel="stylesheet" href="..\css\user\calendar.css">
 </head>
 <body>
+    <?php require_once "../components/user/userNavbar.php"?>
     <header>
         <h1>Book an Appointment</h1>
     </header>
@@ -262,5 +263,7 @@ $eventsJson = json_encode($events);
         <button type="submit" class="styled-button">CONFIRM</button>
     </div>
     </form>
+
+    <?php require_once "../components/user/footer.html"?>
 </body>
 </html>
