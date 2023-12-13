@@ -269,7 +269,7 @@ class ChatUser
 			if ($user_type === '1') {
 				// User is an admin, execute the admin query
 				$query = "
-					SELECT user_id, lname, fname, user_login_status, 
+					SELECT user_id, lname, fname, user_login_status, photo,
 						(SELECT COUNT(*) FROM chat_message 
 						 WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status 
 					FROM user
@@ -279,7 +279,7 @@ class ChatUser
 			} elseif ($user_type === '2') {
 			//User is a regular user, execute the user query
 				$query = "
-					SELECT user_id, lname, fname, user_login_status, 
+					SELECT user_id, lname, fname, user_login_status, photo,
 						(SELECT COUNT(*) FROM chat_message 
 						 WHERE to_user_id = :user_id AND from_user_id = user.user_id AND status = 'No') AS count_status 
 					FROM user
