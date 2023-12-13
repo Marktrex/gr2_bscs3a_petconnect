@@ -36,11 +36,11 @@
   --scrollbar-thumb-gradient-end: #1eddd4;
   --petsTitle-text-color: #c3fdfa;
   --search-bar-bg-color: rgba(180, 178, 178, 0.533);
-  --button-bg-color: #ab62ff;
+  --button-bg-color: #381162;
   --button-text-color: white;
   --button-hover-bg-color: #7543af;
   --pet-card-color: #381162;
-  --pet-name-text-color: #c3fdfa;
+  --pet-name-text-color: #1eddd4;
   --available-pet-text-color: #1eddd4;
   --overall-description-container-bg-color: #691eb9;
   --title-text-color: #1eddd4;
@@ -99,6 +99,7 @@ main {
 
 .pet-name {
   color: var(--pet-name-text-color);
+  background-color: var(--pet-card-bg-color);
 }
 
 #available-pet {
