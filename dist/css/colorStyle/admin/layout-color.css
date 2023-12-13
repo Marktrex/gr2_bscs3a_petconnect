@@ -24,6 +24,8 @@
      --menu-links-active-text-color: var(--menu-links-hover-text-color);
      /* menu burger and mobile colors */
      --burger-AndClose-color: #1EDDD4;
+      /* Dropdown */
+    --active-color: #166566;
 }
 
 [data-theme="dark"]{
@@ -51,6 +53,8 @@
      --menu-links-active-text-color: var(--menu-links-hover-text-color);
      /* menu burger and mobile colors */
      --burger-AndClose-color: #1EDDD4;
+     /* Dropdown */
+     --active-color: #310b68;
 }
 
 
@@ -107,6 +111,10 @@ main
 #menu-btn, #close-btn
 {
     color: var(--burger-AndClose-color);
+}
+
+.active{
+    background-color: var(--active-color);
 }
 
 
