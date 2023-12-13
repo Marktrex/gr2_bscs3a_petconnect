@@ -1,0 +1,44 @@
+
+			<div class="conversation" id="conversation-1">
+					<div class="conversation-top">
+						<button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button>
+						<div class="conversation-user">
+							<img class="conversation-user-image" src="icons/icons-user.png" alt="">
+							<div>
+								<div class="conversation-user-name"></div>
+								<div class="conversation-user-status online"><a>online</a></div>
+							</div>
+						</div>
+						<div class="conversation-buttons">
+							<button type="button"><i class="ri-vidicon-line"></i></button>
+							<button type="button"><i class="ri-information-line"></i></button>
+						</div>
+					</div>
+					<div class="conversation-main">
+						<ul class="conversation-wrapper">
+							<div class="coversation-divider"><span>Today</span></div>
+						<div id="chat_area"></div>
+							<li class="conversation-item me">
+								<div class="conversation-item-side">
+									<img class="conversation-item-image" src="icons/icons-user.png" alt="">
+								</div>
+								<div class="conversation-item-content">
+									<div class="conversation-item-wrapper">
+										<div class="conversation-item-box">
+											<div class="conversation-item-text">
+												<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet natus repudiandae quisquam sequi nobis suscipit consequatur rerum alias odio repellat!</p>
+												<div class="conversation-item-time">12:30</div>
+											</div>
+										</div>
+									</div>
+									<div class="conversation-item-wrapper">
+										<div class="conversation-item-box">
+											<div class="conversation-item-text">
+												<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, tenetur!</p>
+												<div class="conversation-item-time">12:30</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</li>

@@ -20,7 +20,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/newlyAdded/message.css">
+    <link rel="stylesheet" href="css\chat\content-message.css">
+	<link rel="stylesheet" href="css\chat\conversation.css">
+	<link rel="stylesheet" href="css\chat\responsive-chatbox.css">
     <title>Chat</title>
 
 <!-- code from yt -->
@@ -41,11 +43,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 		$token = $_SESSION['auth_user']["token"];
 		$name = $_SESSION['auth_user']["fname"] . ' ' . $_SESSION['auth_user']["lname"];
-
+		$role = $_SESSION['auth_user']["role"];
+		$isAdmin = false;
+		if ($role == '1'){
+			$isAdmin = true;
+		}
 	?>
 		<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
-
 		<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
+		<input type="hidden" name="isAdmin" id="isAdmin" value="<?php echo $isAdmin?>"/>
 	<?php
 
 		$user_object = new ChatUser;
@@ -57,118 +63,79 @@ require_once __DIR__ . '/../vendor/autoload.php';
 	?>
 					
 <!-- start: Chat -->
-<section class="chat-section">
-        <div class="chat-container">
-            <div class="chat-content">
-				<div class="content-sidebar">
-					<!-- search start here -->
-					<div class="content-sidebar-title"><a>Chats</a></div>
-					<form action="" class="content-sidebar-form">
-						<input type="search" class="content-sidebar-input" placeholder="Search...">
-						<button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
-					</form>
-					<div class="content-messages">
-						<ul class="content-message-list">
+
+<main class = "content">
+	<div class="chat-container">
+		<div class="chat-content">
+			<div class="content-sidebar">
+				<!-- search start here -->
+				<div class="content-sidebar-title"><a>Chats</a></div>
+				<form action="" class="content-sidebar-form">
+					<input type="search" class="content-sidebar-input" placeholder="Search...">
+					<button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
+				</form>
+				<div class="content-messages">
+					<ul class="content-messages-list">
+						<li class="content-message-title"></li>
 						<?php
 							foreach($user_data as $key => $user)
 							{
 								// for login ung icon
-								// $icon = '<i class="fa fa-circle text-danger"></i>';
+								$icon = '<input type=hidden id="user_status_'.$user["user_id"].'" value="false" >';
 
-								// if($user['user_login_status'] == 'Login')
-								// {
-								// 	$icon = '<i class="fa fa-circle text-success"></i>';
-								// }
 
-								//add this kapag lalagay ung onlie
-								//<span class='' id='userstatus_".$user['user_id']."'>".$icon."</span>
-
+								if($user['user_login_status'] == 'Login')
+								{
+									$icon = '<input type=hidden id="user_status_'.$user["user_id"].'" value="true" >';
+								}
 
 								if($user['user_id'] != $login_user_id)
 								{
 									if($user['count_status'] > 0)
 									{
-										$total_unread_message = '<span class="">' . $user['count_status'] . '</span>';
+										$total_unread_message = '
+										<span class="content-message-more">
+											<span class="content-message-unread" id="userid_'.$user['user_id'].'">'.$user['count_status'] .'</span>
+										</span>';
 									}
 									else
 									{
 										$total_unread_message = '';
 									}
-
+									$image = $user['photo'];
+									if($image == '') {
+										$image = '../../icons/icons-user.png';
+									}
 									echo "
 									<li>
 										<a class='select_user'  data-userid = '".$user['user_id']."'>
-											<img class='content-message-image' src='icons/icons-user.png' alt=''>
+											<img class='content-message-image' id='user_photo_".$user["user_id"]."' src='upload/userImages/".$image."' alt=''>
 											<span class='content-message-info'>
 												<span class='content-message-name' id='list_user_name_".$user["user_id"]."'>".$user['fname']."</span>
 											</span>
-											<span class='content-message-more'>
-												<span class='content-message-unread' id='userid_".$user['user_id']."'>".$total_unread_message."</span>
-											</span>
+											".$total_unread_message."
+											".$icon."
 										</a>
 									</li>
 									";
 								}
 							}
 						?>
-						</ul>
-					</div>
-
+					</ul>
 				</div>
-                <div class="conversation" id="conversation-1">
-                    <div class="conversation-top">
-                        <button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button>
-                        <div class="conversation-user">
-                            <img class="conversation-user-image" src="icons/icons-user.png" alt="">
-                            <div>
-                                <div class="conversation-user-name">
-									
 
-					</div>
-                                <div class="conversation-user-status online"><a>online</a></div>
-                            </div>
-                        </div>
-                        <div class="conversation-buttons">
-                            <button type="button"><i class="ri-vidicon-line"></i></button>
-                            <button type="button"><i class="ri-information-line"></i></button>
-                        </div>
-                    </div>
-                    <div class="conversation-main">
-                        <ul class="conversation-wrapper">
-                            <div class="coversation-divider"><span>Today</span></div>
-							<div id="chat_area"></div>
-                            <li class="conversation-item me">
-                                <div class="conversation-item-side">
-                                    <img class="conversation-item-image" src="icons/icons-user.png" alt="">
-                                </div>
-                                <div class="conversation-item-content">
-                                    <div class="conversation-item-wrapper">
-                                        <div class="conversation-item-box">
-                                            <div class="conversation-item-text">
-                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet natus repudiandae quisquam sequi nobis suscipit consequatur rerum alias odio repellat!</p>
-                                                <div class="conversation-item-time">12:30</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="conversation-item-wrapper">
-                                        <div class="conversation-item-box">
-                                            <div class="conversation-item-text">
-                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, tenetur!</p>
-                                                <div class="conversation-item-time">12:30</div>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-		        <!-- <h3 class="">MESSAGES</h3>
-		       <hr />
-		        <br /> -->
-		        <!-- <div id="chat_area"></div> --> 
 			</div>
+
+			<!-- start: Conversation -->
+			<div class="conversation conversation-default active"  id = "default_chat_area">
+				<i class="ri-chat-3-line"></i>
+				<p>Select chat and view conversation</p>
+			</div>
+			<div class="conversation" id = "chat_area">
+			</div>
+		</div>
 	</div>
-</section>
+</main>
 
 </body>
 <script type="text/javascript">
@@ -189,11 +156,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 			if(data.status_type == 'Online')
 			{
-				$('#userstatus_'+data.user_id_status).html('<i class="fa fa-circle text-success"></i>');
+				$('#userstatus_'+data.user_id_status).val('true') ;
 			}
 			else if(data.status_type == 'Offline')
 			{
-				$('#userstatus_'+data.user_id_status).html('<i class="fa fa-circle text-danger"></i>');
+				$('#userstatus_'+data.user_id_status).val('false');
 			}
 			else
 			{
@@ -203,13 +170,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 				
 				if(data.from == 'Me')
 				{
-					row_class = 'row justify-content-start';
-					background_class = 'alert-primary';
+					row_class = 'me';
 				}
 				else
 				{
-					row_class = 'row justify-content-end';
-					background_class = 'alert-success';
+					row_class = '';
 				}
 
 				if(receiver_userid == data.userId || data.from == 'Me')
@@ -220,31 +185,36 @@ require_once __DIR__ . '/../vendor/autoload.php';
 						count--;
 						var output;
 						if(data.type == 'call') {
-							output = '<form class="" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
-								output += '<input type="hidden" name="channel' +count+'" value="' + data.channel + '">';
-								output += '<button type="submit" class="" id="join_call_button">Join Call</button>';
-							output += '</form>';
+							var isAdmin = $('#isAdmin').val();
+							if(isAdmin == 1) {
+								output = '<button type="button" class="btn btn-success btn-sm join_call_button">Call Again</button>';
+							} else{
+								output = '<b>A call has been processed by an admin. Message them to request for a call again</b>';
+							}
 						} else {
 							output = data.msg;
 						}
 
 						var html_data = `
-						<div class="`+row_class+`">
-							<div class="">
-								<div class=" `+background_class+`">
-									<b>`+data.from+` - </b>`+output+`<br />
-									<div class="">
-										<small><i>`+data.datetime+`</i></small>
+						<li class = "conversation-item  ${row_class}">
+								<div class="conversation-item-content">
+									<div class="conversation-item-wrapper">
+										<div class="conversation-item-box">
+											<div class = "conversation-item-text">
+												<p> ${output}</p>
+												<div class="conversation-item-time">${data.datetime}</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						`;
+							</li>
+							`;
 
 						$('#messages_area').append(html_data);
 
-						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
-
+						var parentElement = $('#messages_area').parent();
+						parentElement.scrollTop(parentElement[0].scrollHeight);
+						
 						$('#chat_message').val("");
 					}
 				}
@@ -269,41 +239,49 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			console.log('connection close');
 		};
 
-		function make_chat_area(user_name) {
-    var html = `
-        <div class="conversation-main">
-            <ul class="conversation-wrapper">
-                <div class="coversation-divider"><span>Chat with <span class="" id="chat_user_name">${user_name}</span></span></div>
-                <li class="conversation-item me">
-                    <div class="conversation-item-side">
-                        <a href="#" id="video_call_button" class="">Call</a>&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="" id="close_chat_area" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                </li>
-            </ul>
-            <ul class="conversation-wrapper" id="messages_area"></ul>
-        </div>
+		function make_chat_area(user_name, status, photo) {
+			var isAdmin = $('#isAdmin').val();
+			var call = '';
+			if(isAdmin == "1") {
+				call = `<button type="button" id="video_call_button"><i class="ri-vidicon-line"></i></button>`;
+			}
+			var html = `
+				<div class = "conversation-top">
+					<button type="button" class="conversation-back"  id="close_chat_area" data-dismiss="alert"><i class="ri-arrow-left-line"></i></button>
+					<div class="conversation-user">
+						<img class="conversation-user-image" src="${photo}" alt="">
+						<div>
+							<div class="conversation-user-name">${user_name}</div>
+							<div class="conversation-user-status ${status}"><a>${status}</a></div>
+						</div>
+					</div>
 
-        <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
-            <div class="conversation-form">
-                <input type="hidden" id="message_type" name="message_type" value="message">
-                <input type="hidden" id="channel" name="channel">
-                <textarea class="conversation-form-input" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
-                <div class="">
-                    <button type="submit" name="send" class="conversation-form-button conversation-form-submit"><i class="ri-send-plane-2-line"></i></button>
-                </div>
-            </div>
-            <div id="validation_error"></div>
-            <br/>
-        </form>
-    `;
+					<!-- eto pang video call -->
+					<div class="conversation-buttons">
+						${call}
+					</div>
+				</div>
+				<div class="conversation-main">
+					<ul class="conversation-wrapper" id="messages_area" >
+					</ul>
+				</div>
+				<form class = "conversation-form" id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
+					<div class="conversation-form-group">
+						<input type="hidden" id="message_type" name="message_type" value="message">
+						<input type="hidden" id="channel" name="channel">
+						<textarea class="conversation-form-input" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 \\n]+$/" required></textarea>
+					</div>
+					<button type="submit" name="send" class="conversation-form-button conversation-form-submit"><i class="ri-send-plane-2-line"></i></button>
+					<div id="validation_error"></div>
+					<br/>
+				</form>
+			`;
 
-    $('#chat_area').html(html);
-
-    $('#chat_form').parsley();
-}
+			$('#chat_area').html(html);
+			$('#default_chat_area').removeClass('active');
+			$('#chat_area').addClass('active');
+			$('#chat_form').parsley();
+		}
 
 		$(document).on('click', '.select_user', function(){
 			receiver_userid = $(this).data('userid');
@@ -312,11 +290,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 			var receiver_user_name = $('#list_user_name_'+receiver_userid).text();
 
+			var photo = $('#user_photo_'+receiver_userid).attr('src');
+
+			var inpStatus = $('#user_status_'+receiver_userid).val();
+			var status = 'offline';
+			if(inpStatus == "true"){
+				status = 'online';
+			}
 			$('.select_user.active').removeClass('active');
 
 			$(this).addClass('active');
 
-			make_chat_area(receiver_user_name);
+
+			make_chat_area(receiver_user_name, status, photo);
 
 			$('#is_active_chat').val('Yes');
 
@@ -341,43 +327,40 @@ require_once __DIR__ . '/../vendor/autoload.php';
 							var message_type = data[count].message_type;
 
 							if(data[count].message_type == 'call') {
-								output = '<form class="join_call_form" id="join_call_form'+count+'" method="POST" data-count="'+count+'">';
-									output += '<input type="hidden" name="channel' +count+'" value="' + data[count].channel + '">';
-									output += '<button type="submit" class="btn btn-success btn-sm" id="join_call_button">Join Call</button>';
-								output += '</form>';
+								var isAdmin = $('#isAdmin').val();
+								if(isAdmin == 1) {
+									output = '<button type="button" class="btn btn-success btn-sm join_call_button" >Call Again</button>';
+								} else{
+									output = '<b>A call has been processed by an admin. Message them to request for a call again</b>';
+								}
+								
 							} else {
 								output = data[count].chat_message;
 							}
 
 							if(data[count].from_user_id == from_user_id)
 							{
-								row_class = 'row justify-content-start';
-
-								background_class = 'alert-primary';
-
+								row_class = 'me';
 								user_name = 'Me';
-								
 							}
 							else
 							{
-								row_class = 'row justify-content-end';
-
-								background_class = 'alert-success';
-
+								row_class = '';
 								user_name = data[count].from_user_name;
 							}
 							html_data += `
-							<div class="`+row_class+`">
-								<div class="col-sm-10">
-									<div class="shadow alert `+background_class+`">
-										<b>`+user_name+` - </b>
-										`+output+`<br />
-										<div class="text-right">
-											<small><i>`+data[count].timestamp+`</i></small>
+							<li class = "conversation-item  ${row_class}">
+								<div class="conversation-item-content">
+									<div class="conversation-item-wrapper">
+										<div class="conversation-item-box">
+											<div class = "conversation-item-text">
+												<p> ${output}</p>
+												<div class="conversation-item-time">${data[count].timestamp}</div>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</li>
 							`;
 							
 						}
@@ -386,7 +369,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 						$('#messages_area').html(html_data);
 
-						$('#messages_area').scrollTop($('#messages_area')[0].scrollHeight);
+						var parentElement = $('#messages_area').parent();
+						parentElement.scrollTop(parentElement[0].scrollHeight);
+
 					}
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
@@ -469,11 +454,23 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			
 		});
 
+		$(document).on('click', '.join_call_button', function(event){
+			$('#video_call_button').click();
+		});
+
 		$(document).on('click', '#send', function(event){
 			event.preventDefault();
 			//change the value of the message_type to message
 			$('#message_type').val('message');
 			$('#chat_form').submit();
+		});
+
+		$(document).on('click', '.conversation-back', function(){
+			$('#chat_area').html('');
+
+			$('#chat_area').removeClass('active');
+
+			$('#default_chat_area').addClass('active');
 		});
 	})
 
