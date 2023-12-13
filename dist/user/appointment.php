@@ -265,5 +265,6 @@ $eventsJson = json_encode($events);
     </form>
 
     <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>
