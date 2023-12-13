@@ -108,5 +108,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['story'])) {
     </main>
 
     <?php require_once "../components/user/footer.html"?>    
+    <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    if(isset($_SESSION['auth_user'])) {
+        require_once "..\components\call_across_pages.php";
+      }
+    ?>
 </body>
 </html>
