@@ -142,19 +142,29 @@ require '../function/config.php';
         }
     }
 
-
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="image/icon.png" type="image/png">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forget Password</title>
+    
     <link rel="stylesheet" href="..\css\newlyAdded\forget-password.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\forget-pw-colors.css">
 </head>
-<body>
+<body class="h-screen w-screen
+            custom-background-color">
+
+    <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
+        <a href="#">
+            <img src="../image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
+        </a>
+    </div>
     <div class="container">
         <h1>Forgot password?</h1>
         <p>
@@ -170,6 +180,8 @@ require '../function/config.php';
         </div>
         </form>
     </div>
-</body>
+    
+<?php require_once "../components/light-switch.php";?>
 
+</body>
 </html>
