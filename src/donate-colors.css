@@ -1,0 +1,66 @@
+:root {    
+    --body-bg-color: #090b29;
+    --text1-color: white;
+    --text2-color: white;
+    
+    --content-box-bg-color: #F5DFBB;
+    
+    --logo-with-text-color: #0e9594;
+    
+    --flexbox1-bg-color: #754033;
+    --text-center1-color: #fff6e0;
+    --text-under-logo1-color: #fff6e8;
+    
+    --description1-color: #fff6e0;
+    --description2-color: #fff6e0;
+    --description3-color: #fff6e0;
+    --description4-color: #fff6e0;
+  }
+
+  body {
+    background: var(--body-bg-color);
+  }
+
+  .text1 {
+    color: var(--text1-color);
+  }
+  
+  .text2 {
+    color: var(--text2-color);
+  }
+  
+  .content-box {
+    background-color: var(--content-box-bg-color);
+  }
+  
+  .logo-with-text {
+    color: var(--logo-with-text-color);
+  }
+  
+  .flexbox1 {
+    background-color: var(--flexbox1-bg-color);
+  }
+  
+  .text-center1 {
+    color: var(--text-center1-color);
+  }
+  
+  .text-under-logo1 {
+    color: var(--text-under-logo1-color);
+  }
+  
+  .description1 {
+    color: var(--description1-color);
+  }
+  
+  .description2 {
+    color: var(--description2-color);
+  }
+  
+  .description3 {
+    color: var(--description3-color);
+  }
+  
+  .description4 {
+    color: var(--description4-color);
+  }
