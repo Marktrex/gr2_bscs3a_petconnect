@@ -231,3 +231,7 @@
     }
   }
 }
+/* try ni marc */
+.dropdown-item:hover .dropdown-content {
+  display: block;
+}
