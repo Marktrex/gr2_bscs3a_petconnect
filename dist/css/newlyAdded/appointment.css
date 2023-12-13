@@ -148,6 +148,7 @@ form .fields .input-field-1{
     flex: 1;
     box-sizing: border-box;
     text-align: center;
+    min-width: 300px;
 }
 
 .cl {

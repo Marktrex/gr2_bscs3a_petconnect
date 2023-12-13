@@ -1,0 +1,30 @@
+:root{
+    --fc-today-bg-color: #127475;
+    --fc-neutral-text-color: black;
+    --fc-button-hover-bg-color: black; 
+
+    --calendar-bg-color: #ffefd4;
+    --calendar-header-color: #127475;
+    --calendar-day-color: #FF9B00;
+    --calendar-day-hover-color: #72d6d5;
+}
+
+#calendar{
+    background-color: var(--calendar-bg-color);
+    & h2{
+        color: var(--calendar-header-color);
+        text-align: center;
+    }
+
+    & th{
+        color: var(--calendar-header-color);
+    }
+
+    & td{
+        color: var(--calendar-day-color)
+    }
+
+    .fc-daygrid-day-frame:hover{
+        background-color: var(--calendar-day-hover-color);
+    }
+}
