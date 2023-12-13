@@ -1,0 +1,104 @@
+:root {
+    --body-bg-color: #FDC161;
+    --content-bg-color: #F5DFBB;
+    --text-color: #127475;
+    --scrollbar-bg-color: #fdf7ec;
+    --scrollbar-thumb-bg: linear-gradient(#ffb845, #0e9594);
+    --button-bg-color: #0e9594;
+    --button-text-color: #FFB845;
+    --cancel-button-bg-color: #127475;
+    --cancel-button-text-color: #FFB845;
+}
+[data-theme="dark"] {
+    --body-bg-color: #090b29;
+    --content-bg-color: #381162;
+    --text-color: #127475;
+    --scrollbar-bg-color: #381162;
+    --scrollbar-thumb-bg: linear-gradient(#ffb845, #0e9594);
+    --button-bg-color: #1eddd4;
+    --button-text-color: #381162;
+    --cancel-button-bg-color: #1eddd4;
+    --cancel-button-text-color: #1eddd4;
+}
+
+.main {
+  
+    background: var(--body-bg-color);
+    
+}
+
+/* Content */
+.content {
+    background: var(--content-bg-color);
+ 
+}
+
+form h1 {
+ 
+    color: var(--text-color);
+}
+
+form hr {
+    background: var(--text-color);
+    
+}
+
+
+
+.form-container h2 {
+    
+    color: var(--text-color);
+  
+}
+
+
+
+.user-profile-pic label {
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+  
+}
+
+
+
+.form-container {
+ 
+    color: var(--text-color);
+}
+
+
+
+
+
+
+.text-center button,
+.text-center-pass button,
+#cancel {
+  
+    color: var(--button-text-color);
+    background-color: var(--cancel-button-bg-color);
+    
+}
+
+.text-center button:hover,
+.text-center-pass button:hover,
+#cancel:hover {
+   
+    background: var(--button-bg-color);
+    color: var(--text-color);
+}
+
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+}
+
+    h2 {
+      
+        color: var(--text-color);
+      
+    }
