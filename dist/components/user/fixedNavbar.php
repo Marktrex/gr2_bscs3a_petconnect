@@ -53,6 +53,18 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
           </div>
         </div>
       </li>
+       <!--floating button-->
+       <div id="floating-btn">
+          <div class="icon message">
+              <div class="pop-up">
+                  Chat Us
+              </div>
+
+              <a href="..\chat.php">
+                  <span><i class="fa fa-envelope"></i></span>
+              </a>
+          </div>
+        </div>
       <?php
       if(session_status() == PHP_SESSION_NONE){
         // session has not started
