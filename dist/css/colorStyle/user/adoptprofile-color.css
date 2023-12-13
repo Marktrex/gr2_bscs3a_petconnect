@@ -2,11 +2,11 @@
         /* light here */
     --body-bg-color: #fdc161;
     --logo-margin-left: 3rem;
-    --back-color: #127475;
+    --back-color: #fdf7ec;
     --back-hover-bg-color: rgba(255, 255, 255, 0.5);
     --searchbox-border-color: #c9e6e7;
     --searchbox-bg-color: #f5dfbb;
-    --secondNavbar-bg-color: #127475;
+    --secondNavbar-bg-color: #fdf7ec;
     --petcontent-bg-color: #f5dfbb;
     --petcontent-box-shadow: 0 0.4rem 0.8rem #0005;
     --bookbutton-bg-color: #f2542d;
@@ -15,7 +15,7 @@
     --petname-font-size: 65px;
     --petname-font-weight: bold;
     --pettxt-font-size: 25px;
-    --pettxt-color: #127475;
+    --pettxt-color: #fdf7ec;
   }
 [data-theme="dark"]{
     /* dark here */
@@ -25,11 +25,11 @@
 --back-hover-bg-color: rgba(255, 255, 255, 0.5);
 --searchbox-border-color: #c9e6e7;
 --searchbox-bg-color: #f5dfbb;
---secondNavbar-bg-color: #127475;
+--secondNavbar-bg-color: #7543af;
 --petcontent-bg-color: #f5dfbb;
 --petcontent-box-shadow: 0 0.4rem 0.8rem #0005;
---bookbutton-bg-color: #f2542d;
---bookbutton-hover-bg-color: #c43917;
+--bookbutton-bg-color: #7543af;
+--bookbutton-hover-bg-color: #691eb9;
 --petname-font-family: "dairantou";
 --petname-font-size: 65px;
 --petname-font-weight: bold;

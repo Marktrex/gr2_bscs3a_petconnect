@@ -5,14 +5,14 @@
   --scrollbar-track-bg-color: #fdf7ec;
   --scrollbar-thumb-gradient-start: #ffb845;
   --scrollbar-thumb-gradient-end: #0e9594;
-  --petsTitle-text-color: #c3fdfa;
+  --petsTitle-text-color: #fdf7ec;
   --search-bar-bg-color: rgba(140, 206, 203, 0.5);
   --button-bg-color: #ab62ff;
   --button-text-color: white;
   --button-hover-bg-color: #7543af;
   --pet-card-bg-color: #ab62ff;
-  --pet-name-text-color: #c3fdfa;
-  --available-pet-text-color: #1eddd4;
+  --pet-name-text-color: #fdf7ec;
+  --available-pet-text-color: #fdf7ec;
   --overall-description-container-bg-color: #691eb9;
 }
 
@@ -26,7 +26,7 @@
   --petsTitle-text-color: #c3fdfa;
   --search-bar-bg-color: rgba(140, 206, 203, 0.5);
   --button-bg-color: #ab62ff;
-  --button-text-color: white;
+  --button-text-color: #0e9594;
   --button-hover-bg-color: #7543af;
   --pet-card-bg-color: #ab62ff;
   --pet-name-text-color: #c3fdfa;
