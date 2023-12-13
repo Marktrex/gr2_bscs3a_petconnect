@@ -5,7 +5,6 @@ use MyApp\Controller\Chat\ChatUser;
 //privatechat.php
 
 session_start();
-print_r($_SESSION);
 if(!isset($_SESSION['auth_user']))
 {
 	header('location:authentication/loginpage.php');
@@ -34,87 +33,98 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 </head>
 <body>
-<?php
+
+<!-- stores info in the page -->
+	<?php
 				
-				$login_user_id = $_SESSION['auth_user']["id"];
+		$login_user_id = $_SESSION['auth_user']["id"];
 
-				$token = $_SESSION['auth_user']["token"];
-				$name = $_SESSION['auth_user']["fname"] . ' ' . $_SESSION['auth_user']["lname"];
+		$token = $_SESSION['auth_user']["token"];
+		$name = $_SESSION['auth_user']["fname"] . ' ' . $_SESSION['auth_user']["lname"];
 
-				?>
-				<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
+	?>
+		<input type="hidden" name="login_user_id" id="login_user_id" value="<?php echo $login_user_id; ?>" />
 
-				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
+		<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
+	<?php
 
-				<div class="chat-container">
-					<!-- <h3 class=""><?php
-					//  echo $name; 
-					 ?></h3> -->
-					<a href="user/home.php" class="">Back</a>
-					<input type="button" class="" id="logout" name="logout" value="Logout" onclick="window.location.href='function/logout.php'"/>
-				</div>
-				<?php
+		$user_object = new ChatUser;
 
-				$user_object = new ChatUser;
+		$user_object->setUserId($login_user_id);
 
-				$user_object->setUserId($login_user_id);
+		$user_data = $user_object->get_user_all_data_with_status_count();
 
-				$user_data = $user_object->get_user_all_data_with_status_count();
-
-				?>
-        <div class="">
+	?>
 					
 <!-- start: Chat -->
 <section class="chat-section">
         <div class="chat-container">
-
             <div class="chat-content">
-                <!-- start: Conversation -->
+				<div class="content-sidebar">
+					<!-- search start here -->
+					<div class="content-sidebar-title"><a>Chats</a></div>
+					<form action="" class="content-sidebar-form">
+						<input type="search" class="content-sidebar-input" placeholder="Search...">
+						<button type="submit" class="content-sidebar-submit"><i class="ri-search-line"></i></button>
+					</form>
+					<div class="content-messages">
+						<ul class="content-message-list">
+						<?php
+							foreach($user_data as $key => $user)
+							{
+								// for login ung icon
+								// $icon = '<i class="fa fa-circle text-danger"></i>';
+
+								// if($user['user_login_status'] == 'Login')
+								// {
+								// 	$icon = '<i class="fa fa-circle text-success"></i>';
+								// }
+
+								//add this kapag lalagay ung onlie
+								//<span class='' id='userstatus_".$user['user_id']."'>".$icon."</span>
+
+
+								if($user['user_id'] != $login_user_id)
+								{
+									if($user['count_status'] > 0)
+									{
+										$total_unread_message = '<span class="">' . $user['count_status'] . '</span>';
+									}
+									else
+									{
+										$total_unread_message = '';
+									}
+
+									echo "
+									<li>
+										<a class='select_user'  data-userid = '".$user['user_id']."'>
+											<img class='content-message-image' src='icons/icons-user.png' alt=''>
+											<span class='content-message-info'>
+												<span class='content-message-name' id='list_user_name_".$user["user_id"]."'>".$user['fname']."</span>
+											</span>
+											<span class='content-message-more'>
+												<span class='content-message-unread' id='userid_".$user['user_id']."'>".$total_unread_message."</span>
+											</span>
+										</a>
+									</li>
+									";
+								}
+							}
+						?>
+						</ul>
+					</div>
+
+				</div>
                 <div class="conversation" id="conversation-1">
                     <div class="conversation-top">
                         <button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button>
                         <div class="conversation-user">
                             <img class="conversation-user-image" src="icons/icons-user.png" alt="">
                             <div>
-                                <div class="conversation-user-name"><?php
-					
-					foreach($user_data as $key => $user)
-					{
-						$icon = '<i class="fa fa-circle text-danger"></i>';
+                                <div class="conversation-user-name">
+									
 
-						if($user['user_login_status'] == 'Login')
-						{
-							$icon = '<i class="fa fa-circle text-success"></i>';
-						}
-
-						if($user['user_id'] != $login_user_id)
-						{
-							if($user['count_status'] > 0)
-							{
-								$total_unread_message = '<span class="">' . $user['count_status'] . '</span>';
-							}
-							else
-							{
-								$total_unread_message = '';
-							}
-
-							echo "
-							<a class='select_user'  data-userid = '".$user['user_id']."'>
-								
-								<span class='ml-1'>
-									<strong>
-										<span id='list_user_name_".$user["user_id"]."'>".$user['lname']."</span>
-										<span id='userid_".$user['user_id']."'>".$total_unread_message."</span>
-									</strong>
-								</span>
-								<span class='' id='userstatus_".$user['user_id']."'>".$icon."</span>
-							</a>
-							";
-						}
-					}
-
-
-					?></div>
+					</div>
                                 <div class="conversation-user-status online"><a>online</a></div>
                             </div>
                         </div>
@@ -138,13 +148,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
                                                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet natus repudiandae quisquam sequi nobis suscipit consequatur rerum alias odio repellat!</p>
                                                 <div class="conversation-item-time">12:30</div>
                                             </div>
-                                            <!-- <div class="conversation-item-dropdown">
-                                                <button type="button" class="conversation-item-dropdown-toggle"><i class="ri-more-2-line"></i></button>
-                                                <ul class="conversation-item-dropdown-list">
-                                                    <li><a href="#"><i class="ri-share-forward-line"></i> Forward</a></li>
-                                                    <li><a href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
-                                                </ul>
-                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="conversation-item-wrapper">
@@ -164,8 +167,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 		        <br /> -->
 		        <!-- <div id="chat_area"></div> --> 
 			</div>
-			
-		<!-- </div> -->
 	</div>
 </section>
 
