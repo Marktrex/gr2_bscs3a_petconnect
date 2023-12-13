@@ -1,6 +1,6 @@
 <?php 
 // session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -9,17 +9,26 @@ use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-if (!isset($_SESSION['auth_user'])) {
-    // Redirect to login page if the user is not authenticated
-    header("Location: ../authentication/loginpage.php");
-    exit();
-  }
+// if (!isset($_SESSION['auth_user'])) {
+//     // Redirect to login page if the user is not authenticated
+//     header("Location: ../authentication/loginpage.php");
+//     exit();
+//   }
   
-  if ($_SESSION['auth_user']['role'] === "1") { 
-    // Redirect to admin dashboard if the user has admin role
-    header("Location: ../admin/admin-dashboard.php");
-    exit();
-  }
+if (isset($_SESSION['auth_user'])) {
+    // Check if the role is equal to 1 and email is set
+    if ($_SESSION['auth_user']['role'] === "1" && isset($_SESSION['email'])) {
+        // Redirect to admin dashboard if the user has admin role and email is set
+        header("Location: ../admin/admin-dashboard.php");
+        exit();
+    }
+    // Redirect to a different page if the role is not equal to 1 or email is not set (optional)
+    else {
+        header("Location: ../some-other-page.php");
+        exit();
+    }
+}
+
 
 if (isset($_POST["resend"])){
    
