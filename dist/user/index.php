@@ -92,6 +92,14 @@
 
     <?php require_once '..\components\light-switch.php'?>
     <?php require_once "../components/user/footer.html"?>
-    
+
+    <?php
+     if (session_status() === PHP_SESSION_NONE) {
+         session_start();
+     }
+     if(isset($_SESSION['auth_user'])) {
+         require_once "..\components\call_across_pages.php";
+       }
+    ?>
   </body>
 </html>

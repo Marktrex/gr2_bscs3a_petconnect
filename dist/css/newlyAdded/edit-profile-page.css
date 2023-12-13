@@ -115,10 +115,10 @@ h1, hr {
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background: #6B9392;
-  opacity: 40%;
+  background-color: rgba(107, 147, 146, 0.4);
   width: 100%;
   margin-bottom: 2%;
+  color: black;
 }
 
 .info-box-1col{
@@ -210,7 +210,7 @@ h1, hr {
 
 /*--------------------------------------------------------------------------------------------*/
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   
   .main{
     height: auto;
@@ -262,7 +262,7 @@ h1, hr {
   }
 
   .user-profile-pic label {
-    margin-left: 22%;
+    margin: 0 auto;
     max-width: 200px;
     width: 100%;
     text-align: center;

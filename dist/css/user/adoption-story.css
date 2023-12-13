@@ -1,0 +1,118 @@
+@import url("../normalize.css");
+
+
+@font-face {
+    font-family: 'daintarou';
+    src: url('../../fonts/daintarou.ttf');
+}
+
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'daintarou';
+}
+
+header{
+    height: 60vh;
+    background-image: url("../../image/pet-stories/header.png");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    & > h1, h3{
+        font-family: 'daintarou';
+    }
+}
+
+
+main{
+    flex: 1;
+
+    & > div{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 5vw;
+        gap: 3vw;
+        & > div{
+            flex: 1;
+            max-width: 50%;
+            
+            
+            & > h1{
+                font-family: 'daintarou';
+            }
+
+            & > p{
+                font-family: 'daintarou';
+                font-size: 1.5rem;
+                line-height: 2rem;
+                text-align: justify;
+            
+            }
+        }
+        
+        & > img{
+            flex: 1;
+            max-width: clamp(200px,50%,400px);
+            height: clamp(300px,80%,600px);
+            object-fit: cover;
+            border-radius: 20px;
+        }
+    }
+    & > div:nth-child(4n+1) {
+        background-color: #0E9594;
+        color: #F5DFBB;
+    }
+    
+    & > div:nth-child(4n+2) {
+        background-color: #F5DFBB;
+        color: #127475BB;
+    }
+    
+    & > div:nth-child(4n+3) {
+        background-color: #f2542d;
+        color: #FFCF83;
+    }
+    
+    & > div:nth-child(4n+4) {
+        background-color: #fdc161;
+        color: #FFCF83;
+    }
+    & > div:nth-child(odd){
+        flex-direction: row; 
+    }
+
+    & > div:nth-child(even){
+        flex-direction: row-reverse;
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    main{
+        & > div:nth-child(1n+1){
+            flex-direction: column;
+            align-items: center;
+            & > div{
+                order: 2;
+                max-width: 100%;
+                & > p{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+            }
+            & > img{
+                order: 1;
+            }
+        }
+    }
+    
+}

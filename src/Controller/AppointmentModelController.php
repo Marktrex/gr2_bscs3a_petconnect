@@ -51,7 +51,7 @@ class AppointmentModelController{
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
         $token = $appointmentData['token'];
-        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '';
+        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId;
         //send email
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
@@ -113,7 +113,7 @@ class AppointmentModelController{
 
         try {
             //Server settings
-            $mail->SMTPDebug = true;                      //Enable verbose debug output
+            $mail->SMTPDebug = false;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication

@@ -5,13 +5,13 @@ use MyApp\Controller\UserModelController;
 use MyApp\Controller\AppointmentModelController;
 session_start(); // Add this line to start the session
 //is admin
-if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") { 
-    header("Location: ../admin/admin-dashboard.php");
+if (!isset($_SESSION['auth_user']) ) { 
+    header("Location: ../error/403-forbidden.html");
     exit();
 }
-//not logged in
-if (!isset($_SESSION['auth_user'])) { 
-    header("Location: ../error/403-forbidden.html");
+
+if ($_SESSION['auth_user']['role'] === "1"){
+    header("Location: ../admin/admin-dashboard.php");
     exit();
 }
 
@@ -183,8 +183,11 @@ $eventsJson = json_encode($events);
             }
         });
     </script>
+
+    <link rel="stylesheet" href="..\css\user\calendar.css">
 </head>
 <body>
+    <?php require_once "../components/user/userNavbar.php"?>
     <header>
         <h1>Book an Appointment</h1>
     </header>
@@ -199,7 +202,7 @@ $eventsJson = json_encode($events);
                             <input type="text" placeholder="First name" id="fname" name="fname" required value = "<?php echo $resultUser->fname?>" >
                         </div>        
                         <div class="input-field">
-                            <label for="lname">Last Name:<span> *</span></label>
+                            <label for="lname">First Name:<span> *</span></label>
                             <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->fname?>">
                         </div>
                         <div class="input-field">
@@ -260,5 +263,8 @@ $eventsJson = json_encode($events);
         <button type="submit" class="styled-button">CONFIRM</button>
     </div>
     </form>
+
+    <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>

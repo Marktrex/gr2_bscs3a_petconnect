@@ -1,5 +1,5 @@
 <?php 
-// session_start();
+session_start();
 // print_r($_SESSION);
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
@@ -134,7 +134,7 @@ if (isset($_POST["resend"])){
 // Assuming $conn and $email are defined elsewhere in your code
 
 if (isset($_POST["verify"])) {
-    $email = $_SESSION['email']; // Add this line to set $email
+    $email = $_SESSION['email'];
 
     $otp_code = '';
     // Concatenate the values from each input field to form the complete OTP
