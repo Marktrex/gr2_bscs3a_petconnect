@@ -1,34 +1,45 @@
 :root {
   /* for light */
-  --body-bg-color: #090b29;
+  --body-bg-color: #fdc161;
   --main-bg-color: #f5dfbb;
   --scrollbar-track-bg-color: #fdf7ec;
   --scrollbar-thumb-gradient-start: #ffb845;
   --scrollbar-thumb-gradient-end: #0e9594;
-  --petsTitle-text-color: #c3fdfa;
-  --search-bar-bg-color: rgba(140, 206, 203, 0.5);
-  --button-bg-color: #ab62ff;
+  --petsTitle-text-color: white;
+  --search-bar-bg-color: rgba(180, 178, 178, 0.533);
+
+  --button-bg-color: #f2542d;
   --button-text-color: white;
-  --button-hover-bg-color: #7543af;
+  --button-hover-bg-color: #953a23;
   --pet-card-bg-color: #ab62ff;
-  --pet-name-text-color: #c3fdfa;
-  --available-pet-text-color: #1eddd4;
-  --overall-description-container-bg-color: #691eb9;
+  --pet-name-text-color: #127475;
+  --available-pet-text-color: #127475;
+  --overall-description-container-bg-color: #f5dfbb;
+  --title-text-color: #127475;
+  --description-text-color: #127475;
+  --button-donations-bg-color: #127475;
+  --button-donations-text-color: #f5dfbb;
+  --about-volunteer-bg-color: #f2542d;
+  --content-volunteer-p-text-color: #fdc161;
+  --h3-text-color: #fdc161;
+  --learn-more-bg-color: #fdc161;
+  --learn-more-text-color: #f2542d;
+  --learn-more-hover-text-color: #0e9594;
 }
 
 [data-theme="dark"] {
   /* for dark */
   --body-bg-color: #090b29;
-  --main-bg-color: #f5dfbb;
-  --scrollbar-track-bg-color: #fdf7ec;
-  --scrollbar-thumb-gradient-start: #ffb845;
-  --scrollbar-thumb-gradient-end: #0e9594;
+  --main-bg-color: #381162;
+  --scrollbar-track-bg-color: #48345d;
+  --scrollbar-thumb-gradient-start: #ab62ff;
+  --scrollbar-thumb-gradient-end: #1eddd4;
   --petsTitle-text-color: #c3fdfa;
-  --search-bar-bg-color: rgba(140, 206, 203, 0.5);
+  --search-bar-bg-color: rgba(180, 178, 178, 0.533);
   --button-bg-color: #ab62ff;
   --button-text-color: white;
   --button-hover-bg-color: #7543af;
-  --pet-card-bg-color: #ab62ff;
+  --pet-card-color: #381162;
   --pet-name-text-color: #c3fdfa;
   --available-pet-text-color: #1eddd4;
   --overall-description-container-bg-color: #691eb9;
@@ -83,7 +94,7 @@ main {
 }
 
 .pet-card {
-  background-color: var(--pet-card-bg-color);
+  background-color: var(--pet-card-color);
 }
 
 .pet-name {

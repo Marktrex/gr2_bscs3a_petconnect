@@ -31,10 +31,6 @@
   --scrollbar-thumb-gradient-start: #ffb845;
   --scrollbar-thumb-gradient-end: #0e9594;
 
-  --navbar-menu-links-bg-color: #fdf7ec;
-  --navbar-menu-links-link-color: #e89003;
-  --navbar-join-btn-bg-color: #7b1212;
-  --navbar-join-btn-link-hover-color: #062e2e;
 }
 
 [data-theme="dark"]{

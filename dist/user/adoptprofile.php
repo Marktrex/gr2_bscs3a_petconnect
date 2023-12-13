@@ -7,6 +7,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 }
+
 if (!isset($_SESSION['auth_user'])) { 
   echo '<script language="javascript">';
   echo 'alert("You do not have access to this page");';
@@ -69,6 +70,8 @@ $loggedIn = isset($_SESSION['auth_user']);
     
 <?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
+  <?php require_once "..\components\light-switch.php"?>
+
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>
   </body>

@@ -1,24 +1,24 @@
 :root{
     /* light here */
     --body-bg-color: #fdc161;
-    --content-bg-color: #240155;
-    --dropdown-btn-border-color: #1EDDD4;
+    --content-bg-color: #0e9594;
+    --dropdown-btn-border-color: #127475;
     --dropdown-btn-text-color: #f9f9f9;
     --dropdown-content-bg-color: #240155;
-    --dropdown-content-border-color: #1EDDD4;
+    --dropdown-content-border-color: #127475;
     --dropdown-content-a-text-color: #f9f9f9;
     --dropdown-content-a-hover-bg-color: #127475;
     --dropdown-content-a-hover-border-bottom-color: #f9f9f9;
     --dropdown-content-box-shadow: rgba(0,0,0,0.2);
     --input-field-bg-color: #c5d5ce;
     --input-field-text-color: #797070;
-    --cat-select-label-text-color: #1EDDD4;
-    --cat-select-select-text-color: #1EDDD4;
-    --cat-content-h1-text-color: #1EDDD4;
-    --img-bg-bg-color: #ab62ff;
-    --img-bg-p-text-color: #c3fdfa;
+    --cat-select-label-text-color: #127475;
+    --cat-select-select-text-color: #127475;
+    --cat-content-h1-text-color: #127475;
+    --img-bg-bg-color: #f5dfbb;
+    --img-bg-p-text-color: #127475;
     --overlay-bg-color: rgba(0, 0, 0, 0.75);
-    --img-bg-h2-text-color: #1EDDD4;
+    --img-bg-h2-text-color: #fdc161;
     --overlay-p-text-color: #fff6e8;
 }
 
@@ -56,7 +56,7 @@ body {
 
 .dropdown-btn {
     background: transparent;
-    border: 2px solid var(--dropdown-btn-border-color);
+
     color: var(--dropdown-btn-text-color);
 }
 

@@ -14,6 +14,23 @@
   --bookbutton-hover-bg-color: #c43917;
 }
 
+[data-theme="dark"] {
+  /* for dark */
+  --body-bg-color: #090b29;
+  --back-text-color: #fff;
+  --back-border-color: #c9e6e7;
+  --back-bg-color: #127475;
+  --back-hover-after-bg-color: rgba(255, 255, 255, 0.5);
+  --searchbox-border-color: #c9e6e7;
+  --searchbox-text-color: black;
+  --navbar-bg-color: #127475;
+  --petcontent-bg-color: #f5dfbb;
+  --pettxt-text-color: #127475;
+  --bookbutton-text-color: #f5dfbb;
+  --bookbutton-bg-color: #f2542d;
+  --bookbutton-hover-bg-color: #c43917;
+}
+
 body {
   background: var(--body-bg-color);
 }
