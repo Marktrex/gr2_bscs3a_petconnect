@@ -5,6 +5,7 @@ use MyApp\Controller\Chat\ChatUser;
 //privatechat.php
 
 session_start();
+print_r($_SESSION);
 if(!isset($_SESSION['auth_user']))
 {
 	header('location:authentication/loginpage.php');
@@ -15,12 +16,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Chat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/newlyAdded/message.css">
+    <title>Chat</title>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css\parseley.css"/>
+<!-- code from yt -->
     <script
 	src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -30,10 +34,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="">
-			<div class="" >
-				<?php
+<?php
 				
 				$login_user_id = $_SESSION['auth_user']["id"];
 
@@ -45,8 +46,10 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 				<input type="hidden" name="is_active_chat" id="is_active_chat" value="No" />
 
-				<div class="">
-					<h3 class=""><?php echo $name; ?></h3>
+				<div class="chat-container">
+					<!-- <h3 class=""><?php
+					//  echo $name; 
+					 ?></h3> -->
 					<a href="user/home.php" class="">Back</a>
 					<input type="button" class="" id="logout" name="logout" value="Logout" onclick="window.location.href='function/logout.php'"/>
 				</div>
@@ -59,8 +62,21 @@ require_once __DIR__ . '/../vendor/autoload.php';
 				$user_data = $user_object->get_user_all_data_with_status_count();
 
 				?>
-				<div class="">
-					<?php
+        <div class="">
+					
+<!-- start: Chat -->
+<section class="chat-section">
+        <div class="chat-container">
+
+            <div class="chat-content">
+                <!-- start: Conversation -->
+                <div class="conversation" id="conversation-1">
+                    <div class="conversation-top">
+                        <button type="button" class="conversation-back"><i class="ri-arrow-left-line"></i></button>
+                        <div class="conversation-user">
+                            <img class="conversation-user-image" src="icons/icons-user.png" alt="">
+                            <div>
+                                <div class="conversation-user-name"><?php
 					
 					foreach($user_data as $key => $user)
 					{
@@ -98,20 +114,61 @@ require_once __DIR__ . '/../vendor/autoload.php';
 					}
 
 
-					?>
-				</div>
+					?></div>
+                                <div class="conversation-user-status online"><a>online</a></div>
+                            </div>
+                        </div>
+                        <div class="conversation-buttons">
+                            <button type="button"><i class="ri-vidicon-line"></i></button>
+                            <button type="button"><i class="ri-information-line"></i></button>
+                        </div>
+                    </div>
+                    <div class="conversation-main">
+                        <ul class="conversation-wrapper">
+                            <div class="coversation-divider"><span>Today</span></div>
+							<div id="chat_area"></div>
+                            <li class="conversation-item me">
+                                <div class="conversation-item-side">
+                                    <img class="conversation-item-image" src="icons/icons-user.png" alt="">
+                                </div>
+                                <div class="conversation-item-content">
+                                    <div class="conversation-item-wrapper">
+                                        <div class="conversation-item-box">
+                                            <div class="conversation-item-text">
+                                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet natus repudiandae quisquam sequi nobis suscipit consequatur rerum alias odio repellat!</p>
+                                                <div class="conversation-item-time">12:30</div>
+                                            </div>
+                                            <!-- <div class="conversation-item-dropdown">
+                                                <button type="button" class="conversation-item-dropdown-toggle"><i class="ri-more-2-line"></i></button>
+                                                <ul class="conversation-item-dropdown-list">
+                                                    <li><a href="#"><i class="ri-share-forward-line"></i> Forward</a></li>
+                                                    <li><a href="#"><i class="ri-delete-bin-line"></i> Delete</a></li>
+                                                </ul>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="conversation-item-wrapper">
+                                        <div class="conversation-item-box">
+                                            <div class="conversation-item-text">
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, tenetur!</p>
+                                                <div class="conversation-item-time">12:30</div>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+		        <!-- <h3 class="">MESSAGES</h3>
+		       <hr />
+		        <br /> -->
+		        <!-- <div id="chat_area"></div> --> 
 			</div>
 			
-			<div class="">
-				<br />
-		        <h3 class="">MESSAGES</h3>
-		        <hr />
-		        <br />
-		        <div id="chat_area"></div>
-			</div>
-			
-		</div>
+		<!-- </div> -->
 	</div>
+</section>
+
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -211,48 +268,41 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			console.log('connection close');
 		};
 
-		function make_chat_area(user_name)
-		{
-			var html = `
-			<div class="">
-				<div class="">
+		function make_chat_area(user_name) {
+    var html = `
+        <div class="conversation-main">
+            <ul class="conversation-wrapper">
+                <div class="coversation-divider"><span>Chat with <span class="" id="chat_user_name">${user_name}</span></span></div>
+                <li class="conversation-item me">
+                    <div class="conversation-item-side">
+                        <a href="#" id="video_call_button" class="">Call</a>&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="" id="close_chat_area" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <ul class="conversation-wrapper" id="messages_area"></ul>
+        </div>
 
-					<div class="">
-						<div class="">
-							<b>Chat with <span class="" id="chat_user_name">`+user_name+`</span></b>
-						</div>
-						<div class="">
-							<a href="#" id="video_call_button" class="">Call</a>&nbsp;&nbsp;&nbsp;
-							<button type="button" class="" id="close_chat_area" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					</div>
+        <form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
+            <div class="conversation-form">
+                <input type="hidden" id="message_type" name="message_type" value="message">
+                <input type="hidden" id="channel" name="channel">
+                <textarea class="conversation-form-input" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
+                <div class="">
+                    <button type="submit" name="send" class="conversation-form-button conversation-form-submit"><i class="ri-send-plane-2-line"></i></button>
+                </div>
+            </div>
+            <div id="validation_error"></div>
+            <br/>
+        </form>
+    `;
 
-				</div>
-				<div class="card-body" id="messages_area">
+    $('#chat_area').html(html);
 
-				</div>
-			</div>
-
-			<form id="chat_form" method="POST" data-parsley-errors-container="#validation_error">
-				<div class="">
-					<input type="hidden" id="message_type" name="message_type" value="message">
-					<input type="hidden" id="channel" name="channel">
-					<textarea class="" id="chat_message" name="chat_message" placeholder="Type Message Here" data-parsley-maxlength="1000" data-parsley-pattern="/^[a-zA-Z0-9 ]+$/" required></textarea>
-					<div class="">
-						<button type="submit" name="send" id="send" class=""><i class="fa fa-paper-plane"></i></button>
-					</div>
-				</div>
-				<div id="validation_error"></div>
-				<br />
-			</form>
-			`;
-
-			$('#chat_area').html(html);
-
-			$('#chat_form').parsley();
-		}
+    $('#chat_form').parsley();
+}
 
 		$(document).on('click', '.select_user', function(){
 			receiver_userid = $(this).data('userid');
@@ -425,6 +475,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			$('#chat_form').submit();
 		});
 	})
+
 </script>
 </html>
 

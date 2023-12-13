@@ -171,7 +171,7 @@ $eventsJson = json_encode($events);
                 /></a>
                 <ul class="items">
                     <li>
-                    <a class="" id="messages" href="../../privatechat.php"
+                    <a class="" id="messages" href="admin-message.php"
                         ><i class="fa fa-envelope"></i
                     ></a>
                     </li>
