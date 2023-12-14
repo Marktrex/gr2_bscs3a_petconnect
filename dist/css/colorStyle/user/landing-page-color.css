@@ -30,7 +30,35 @@
   --scrollbar-track-bg-color: #fdf7ec;
   --scrollbar-thumb-gradient-start: #ffb845;
   --scrollbar-thumb-gradient-end: #0e9594;
+  --hero-content-h1-text-color: #1EDDD4;
+  --hero-content-p-text-color: #fff6e8;
 
+  --register-btn-bg-color: #f2542d;
+  --register-btn-box-shadow: #f5dfbb;
+  --register-btn-text-color: #FFFFFF;
+
+  --container1-bg-color: #f2542d;
+  --container1-box-shadow: #f5dfbb;
+
+  --container1-h1-color: #1EDDD4;
+  --services-item-bg-color: #f5dfbb;
+  --service-h1-color: rgb(177, 232, 229);
+
+  --item-p-color: rgb(177, 232, 229);
+  --services-item-hover-shadow-color: #f5dfbb;
+
+  --container2-bg-color: #f2542d;
+  --container2-h1-color: #1EDDD4;
+  --container2-p-color: aliceblue;
+
+  --container3-h1-color: #0e9594;
+
+  --testimonials-item-bg-color: #f5dfbb;
+  --testimonials-item-hover-bg-color: #d3c3a9;
+
+  --scrollbar-track-bg-color: #f5dfbb;
+  --scrollbar-thumb-gradient-start: #f5dfbb;
+  --scrollbar-thumb-gradient-end: #1EDDD4;
 }
 
 [data-theme="dark"]{

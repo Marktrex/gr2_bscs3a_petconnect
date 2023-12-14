@@ -7,12 +7,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 require '../../vendor/autoload.php';
 require '../function/config.php';
-print_r($_SESSION);
+// print_r($_SESSION);
 if (!isset($_SESSION['token'])) { 
     echo '<script language="javascript">';
     echo 'alert("You do not have access to this page");';
     echo '</script>';
-    header("Location: ../user/home.php");
+    header("Location: loginpage.php");
     exit();
 } 
 
@@ -167,6 +167,8 @@ if(isset($_POST["login"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forget Password</title>
     <link rel="stylesheet" href="../css/newlyAdded/login-recovery.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\login-recovery-colors.css">
+
 </head>
 <body>
     <div class="container">
@@ -185,6 +187,7 @@ if(isset($_POST["login"])){
             <p>If you didn't recieve a code, <button type="submit" class="resend-btn" value="Resend Code" name="resend">Resend Code</button></strong></p>
         </form>
     </div>
+<?php require_once "../components/light-switch.php";?>
+<script src="../script/change-color-schema.js"></script>
 </body>
-
 </html>

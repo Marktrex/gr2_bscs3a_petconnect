@@ -78,7 +78,6 @@ $eventsJson = json_encode($events);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     
     <link rel="icon" href="../image/icon.png" type="image/png">
@@ -167,21 +166,6 @@ $eventsJson = json_encode($events);
                 <a href="admin-dashboard.php" class="logo"
                     ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
                 /></a>
-                <ul class="items">
-                    <li>
-                    <a class="" id="messages" href="admin-message.php"
-                        ><i class="fa fa-envelope"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a class="" id="notifications" href="#"
-                        ><i class="fa fa-bell"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
-                    </li>
-                </ul>
             </nav>
         </header>
         <main class="content">

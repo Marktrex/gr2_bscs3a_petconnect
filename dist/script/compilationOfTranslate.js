@@ -5,7 +5,7 @@ export const translations = {
     },
     es: {
       "Profile": "Perfil",
-
+      "About Us": "Acerca de Nosotros",
       Address: "DirecciÃ³n",
       Adopt: "Adoptar",
       Chat: "Chat",
@@ -107,7 +107,7 @@ export const translations = {
     },
     fn: {
       "Profile": "Properlyo",
-
+      "About Us": "Tungkol sa Amin",
       Address: "Address",
       Adopt: "Mag-ampon",  
       Chat: "Chat",

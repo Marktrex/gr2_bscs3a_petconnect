@@ -24,6 +24,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PetConnet Volunteer</title>
   <link rel="stylesheet" href="../css/newlyAdded/volunteer-page.css">
+  <link rel="stylesheet" href="..\css\colorStyle\user\volunteer-color.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -84,6 +85,7 @@ $loggedIn = isset($_SESSION['auth_user']);
   </div>
 </div>
 
+<?php require_once "..\components\light-switch.php"?>
 <?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
 <?php require_once '..\components\light-switch.php'?>

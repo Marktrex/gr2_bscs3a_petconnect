@@ -93,7 +93,7 @@ $eventsJson = json_encode($events);
     <title>Appointment</title>
     <link rel="stylesheet" href="..\css\newlyAdded\appointment.css">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-    
+    <link rel="stylesheet" href="..\css\colorStyle\user\appointment-color.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var calendarEl = document.getElementById('calendar');
@@ -198,12 +198,12 @@ $eventsJson = json_encode($events);
                     <span class="title">Personal Information</span>
                     <div class="fields">
                         <div class="input-field">
-                            <label for="fname">Last Name:<span> *</span></label>
+                            <label for="fname">First Name:<span> *</span></label>
                             <input type="text" placeholder="First name" id="fname" name="fname" required value = "<?php echo $resultUser->fname?>" >
                         </div>        
                         <div class="input-field">
-                            <label for="lname">First Name:<span> *</span></label>
-                            <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->fname?>">
+                            <label for="lname">Last Name:<span> *</span></label>
+                            <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->lname?>">
                         </div>
                         <div class="input-field">
                             <label for="mobile">Mobile Number:<span> *</span></label>
@@ -264,6 +264,7 @@ $eventsJson = json_encode($events);
     </div>
     </form>
 
+    <?php require_once "..\components\light-switch.php"?>
     <?php require_once "../components/user/footer.html"?>
     <?php require_once "..\components\call_across_pages.php"?>
 </body>

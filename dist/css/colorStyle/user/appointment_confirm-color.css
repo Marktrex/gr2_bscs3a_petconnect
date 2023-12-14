@@ -1,0 +1,97 @@
+:root {
+    --body-bg-color: #fdc161;
+    --scrollbar-bg-color: #fdf7ec;
+    --scrollbar-thumb-bg: linear-gradient(#ffb845, #0e9594);
+    --text-color: #fdf7ec;
+    --form-bg-color: #f5dfbb;
+    --input-border-radius: 10px;
+    --input-border-color: #aaa;
+    --input-padding: 0 15px;
+    --input-height: 42px;
+    --input-margin: 8px 0;
+    --card-border-radius: 15px;
+    --card-border-color: #aaa;
+    --card-bg-color: white;
+    --card-font-size: 24px;
+    --card-padding: 10px;
+    --save-button-bg-color: #0e9594;
+    --save-button-border-radius: 30px;
+    --save-button-color: #f5dfbb;
+    --calendar-bg-color: white;
+    --calendar-height: 500px;
+    --calendar-padding: 10px;
+    --calendar-border-radius: 10px;
+  }
+  [data-theme="dark"] {
+    --body-bg-color: #090b29;
+    --scrollbar-bg-color: #fdf7ec;
+    --scrollbar-thumb-bg: linear-gradient(#ffb845, #1eddd4);
+    --text-color: #0e9594;
+    --form-bg-color: #381162;
+    --input-border-radius: 10px;
+    --input-border-color: #1eddd4;
+    --input-padding: 0 15px;
+    --input-height: 42px;
+    --input-margin: 8px 0;
+    --card-border-radius: 15px;
+    --card-border-color: #1eddd4;
+    --card-bg-color: #1eddd4;
+    --card-font-size: 24px;
+    --card-padding: 10px;
+    --save-button-bg-color: #1eddd4;;
+    --save-button-border-radius: 30px;
+    --save-button-color: #0e9594;
+    --calendar-bg-color: #1eddd4;
+    --calendar-height: 500px;
+    --calendar-padding: 10px;
+    --calendar-border-radius: 10px;
+  }
+  body {
+   
+    background-color: var(--body-bg-color);
+  }
+  
+  
+  ::-webkit-scrollbar-track{
+    background-color: var(--scrollbar-bg-color);
+  }
+  ::-webkit-scrollbar-thumb{
+    background: var(--scrollbar-thumb-bg);
+   
+  }
+  
+  /* --------------------------------CONTENT--------------------------------- */ 
+  
+  .container-1 {
+  
+    background-color: var(--form-bg-color);
+  }
+  .container-1 form {
+                 
+    background-color: var(--form-bg-color);
+  }
+  .container-1 form .form {
+    background-color: var(--form-bg-color);
+  
+  }
+  
+  .input-field input, select, .input-field-1 input, select {
+   
+    border-radius: var(--input-border-radius);   
+    border: 1px solid var(--input-border-color);
+    padding: var(--input-padding);
+    height: var(--input-height);
+    margin: var(--input-margin);
+  }
+  button {
+    background-color: var(--save-button-bg-color);
+    border-radius: var(--save-button-border-radius);
+    color: var(--save-button-color);
+  
+  }
+  
+  button:hover {
+  
+    color: var(--save-button-color);
+  }
+  

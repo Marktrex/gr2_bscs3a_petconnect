@@ -1,0 +1,96 @@
+:root { 
+        /* light here */
+    --body-bg-color: #fdc161;
+    --logo-margin-left: 3rem;
+    --back-color: #fdf7ec;
+    --back-hover-bg-color: rgba(255, 255, 255, 0.5);
+    --searchbox-border-color: #c9e6e7;
+    --searchbox-bg-color: #f5dfbb;
+    --secondNavbar-bg-color: #127475;
+    --petcontent-bg-color: #f5dfbb;
+    --petcontent-box-shadow: 0 0.4rem 0.8rem #0005;
+    --bookbutton-bg-color: #f2542d;
+    --bookbutton-hover-bg-color: #c43917;
+    --petname-font-family: "dairantou";
+    --petname-font-size: 65px;
+    --petname-font-weight: bold;
+    --pettxt-font-size: 25px;
+    --pettxt-color: #fdf7ec;
+  }
+[data-theme="dark"]{
+    /* dark here */
+--body-bg-color: #090b29;
+--logo-margin-left: 3rem;
+--back-color: #1eddd4;
+--back-hover-bg-color: rgba(255, 255, 255, 0.5);
+--searchbox-border-color: #c9e6e7;
+--searchbox-bg-color: #f5dfbb;
+--secondNavbar-bg-color: #7543af;
+--petcontent-bg-color: #f5dfbb;
+--petcontent-box-shadow: 0 0.4rem 0.8rem #0005;
+--bookbutton-bg-color: #7543af;
+--bookbutton-hover-bg-color: #691eb9;
+--petname-font-family: "dairantou";
+--petname-font-size: 65px;
+--petname-font-weight: bold;
+--pettxt-font-size: 25px;
+--pettxt-color: #1eddd4;
+}
+body {
+    background: var(--body-bg-color);
+}
+.logo img {
+    margin-left: var(--logo-margin-left);
+}
+.back {
+    border: 1px solid var(--searchbox-border-color);
+}
+.back:hover:after {
+  
+    background-color: var(--back-hover-bg-color);
+  
+  }
+  
+  .searchbox {
+    border: 1px solid var(--searchbox-border-color);
+   
+  }
+  
+  .secondNavbar {
+    background-color: var(--secondNavbar-bg-color);
+  
+  }
+  
+  .petcontent {
+    /* Content Container */
+    background-color: var(--petcontent-bg-color);
+   
+  }
+  
+  
+  
+  .pettxt {
+    font-size: var(--pettxt-font-size);
+   
+  }
+  
+  .bookbutton {
+   
+    color: var(--petcontent-bg-color);
+    background-color: var(--bookbutton-bg-color);
+   
+  }
+  
+  .bookbutton:hover {
+    background-color: var(--bookbutton-hover-bg-color);
+  }
+  
+  
+  
+  .petname {
+    font-family: var(--petname-font-family);
+    font-size: var(--petname-font-size);
+    font-weight: var(--petname-font-weight);
+  }
+  
+  

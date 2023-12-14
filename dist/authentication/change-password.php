@@ -44,7 +44,7 @@ if (isset($_POST['changepass'])) {
         } else {
             ?>
             <script>
-                window.location.replace("confirm.html");
+                window.location.replace("confirm.php");
             </script>
             <?php
         }
@@ -59,6 +59,7 @@ if (isset($_POST['changepass'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetConnect | Change Password</title>
     <link rel="stylesheet" href="..\css\newlyAdded\reset-password.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\rest-pw-colors.css">
     <script>
         function validateForm() {
             var newPassword = document.getElementById("new-password").value;
@@ -90,5 +91,7 @@ if (isset($_POST['changepass'])) {
         </div>
         </form>
     </div>
+    <?php require_once "../components/light-switch.php";?>
+    <script src="../script/change-color-schema.js"></script>
 </body>
 </html>

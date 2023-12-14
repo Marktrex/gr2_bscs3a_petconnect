@@ -164,25 +164,16 @@ if (isset($_POST['delete'])) {
     header("Location: ../function/authnetication/logout.php");
     exit();
 }
+
+if(isset($_POST['cancel'])){
+    header("Location: home.php");
+    exit();
+
+}
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <link rel="icon" href="../image/icon.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Connect</title>
-    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile-page.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
-    <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -198,10 +189,12 @@ if (isset($_POST['delete'])) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\edit-profile-color.css">
 </head>
 
 <body>
+
+    <?php require_once "../components/user/userNavbar.php"?>
     <div class="main">
         <div class="content">
             <?php $user_data = $user->get_user_data_by_id($_SESSION['auth_user']['id'])?>
@@ -254,7 +247,7 @@ if (isset($_POST['delete'])) {
                     <div class="text-center">
                         <button type="submit" name="update" id ="update" class="btn btn-primary">Update</button>
                     </div>
-
+                </form>
                     <div class="info-box-1col">
                         <form action="" method="POST">
                             <h2>Change Password</h2>
@@ -282,10 +275,14 @@ if (isset($_POST['delete'])) {
                             Warning! You are trying to delete your account<br>
                             <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
                         </form>
+                        <form action="" method="post">
                         <button type="submit" name = "cancel" id="cancel" class="btn btn-primary">Cancel</button><br>
-                    </div>
+                        </form>
 
+                    </div>
+            </div>
         </div>
+    </div>
     </div>
     
     <script>
@@ -308,8 +305,14 @@ if (isset($_POST['delete'])) {
             }
         });
     </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
 <?php require_once "..\components\call_across_pages.php"?>
+<?php require_once "..\components\light-switch.php"?>
+<?php require_once "../components/user/footer.html"?>
+
 </body>
 
 </html>

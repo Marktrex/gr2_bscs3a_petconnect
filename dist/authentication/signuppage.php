@@ -223,7 +223,7 @@ if (isset($_POST["register"])) { //code ni marc
 <html lang="en">
 
 <head>
-    <link rel="icon" href="image/logo.png" type="image/png">
+    <link rel="icon" href="image/icon.png" type="image/png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -241,7 +241,7 @@ if (isset($_POST["register"])) { //code ni marc
             custom-background-color">
 
     <div class = "flex justify-start items-center ps-8 custom-navbar-color py-6">
-        <a href="#">
+        <a href="../user/">
             <img src="../image/logo.png" alt="icon" class="w-[100px]" id = "logIcon">
         </a>
     </div>

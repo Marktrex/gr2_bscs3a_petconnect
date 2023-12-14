@@ -17,18 +17,19 @@ if (!isset($_SESSION['auth_user'])) {
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
-$type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
+$type = $_GET['type'] ?? 'Cat';
+$searchTerm = isset($_GET['search']) ? '%' . $_GET['search'] . '%' : '%';
 
 try { //research this try catch method
    
     // Build the base query
-    $query = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0";
+    $stmt = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0 AND name LIKE :searchTerm";
+    $stmt = $conn->prepare($stmt);
 
-    echo "Query: $query\n";
+    $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
 
 
     // Prepare the statement
-    $stmt = $conn->prepare($query);
     $stmt->bindParam(':type', $type, PDO::PARAM_STR);
 
     // Execute the statement

@@ -46,7 +46,7 @@ if (isset($_POST["submit"])) {
             $newImageName .= '.' . $imageExtension;
 
             move_uploaded_file($tmpName, '../upload/petImages/' . $newImageName);
-            $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image, user_id) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image, :user_id)";
+            $sql = "INSERT INTO pets (name,type,breed,sex,weight,age,about,date,image) VALUES(:name , :type, :breed, :sex, :weight, :age, :about, :date, :image)";
 
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -58,7 +58,6 @@ if (isset($_POST["submit"])) {
             $stmt->bindParam(':about', $about, PDO::PARAM_STR);
             $stmt->bindParam(':date', $date, PDO::PARAM_STR);
             $stmt->bindParam(':image', $newImageName, PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $stmt->execute();
             // Execute the prepared statement
             $lastId = $conn->lastInsertId();
@@ -113,21 +112,8 @@ if (isset($_POST["submit"])) {
             <a href="admin-dashboard.php" class="logo" 
                 ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
             /></a>
-            <ul class="items">
-                <li>
-                <a class="" id="messages" href="#"
-                    ><i class="fa fa-envelope"></i
-                ></a>
-                </li>
-                <li>
-                <a class="" id="notifications" href="#"
-                    ><i class="fa fa-bell"></i
-                ></a>
-                </li>
-                <li>
-                <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
-                </li>
-            </ul>
+            
+           
             </nav>
         </header>
         

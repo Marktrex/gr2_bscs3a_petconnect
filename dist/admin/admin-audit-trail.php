@@ -58,11 +58,7 @@ else
             <nav class="navbar">
                 <a href="#" class="logo"><img src="../icons/logo.png" alt="Logo" id="logIcon"></a>
 
-                <ul class="items">
-                    <li><a id="messages" href="#"><i class="fa fa-envelope"></i></a></li>
-                    <li><a id="notifications" href="#"><i class="fa fa-bell"></i></a></li>
-                    <li><a href="#"><img src="../icons/icons-user.png" alt="Profile"></a></li>
-                </ul>
+                
             </nav>
         </header>
         <main class="content">

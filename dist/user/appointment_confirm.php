@@ -30,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../image/logo.png" type="image/png">
     <link rel="stylesheet" href="..\css\newlyAdded\appointment-confirmation.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\appointment_confirm-color.css">
     <title>Appointment Confirmation</title>
 </head>
 <body>
@@ -80,7 +81,7 @@
             </div>
         </form>
     </div>
-
+    <?php require_once "..\components\light-switch.php"?>
     <?php require_once "..\components\call_across_pages.php"?>
 </body>
 </html>
