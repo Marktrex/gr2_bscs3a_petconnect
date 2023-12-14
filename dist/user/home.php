@@ -1,6 +1,6 @@
 <?php
 session_start(); // Add this line to start the session
-
+// print_r($_SESSION);
 require '../function/config.php';
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated

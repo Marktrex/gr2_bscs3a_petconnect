@@ -76,6 +76,13 @@ export const translations = {
       //donatepage
       "Help us Maintain our Purpose": "Ayúdanos a Mantener nuestro Propósito",
       "Help us to Donate our Pets": "Ayúdanos a Donar a nuestras Mascotas",
+      "For Other Options": "Para otras opciones",
+      "Contact us via Gmail:": "Contacta con nosotros a través de Gmail:",
+      "Contact us via Phone Number:": "Contáctenos a través del número de teléfono:",
+      "Contact us via Viber:": "Contacta con nosotros a través de Viber",
+      "Your Donations Helps us to expand our animal shelter to provide more comfort": "Tus donaciones nos ayudan a ampliar nuestro refugio de animales para brindar más comodidad",
+      "Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions": "Brinda atención médica como vacunas, esterilización, castración y otras atenciones médicas",
+      "Helps us to cover the cost of important pet resources and other materials": "Nos ayuda a cubrir el costo de recursos importantes para mascotas y otros materiales.",
       //volunteer
       "Join PetConnect": "Únete a PetConnect",
       "and help us by": "y ayúdanos siendo",
@@ -109,6 +116,7 @@ export const translations = {
       "Story by": "Historia de",
       "No more stories": "No más historias",
       "Wow such emptiness": "wow que vacio",
+      
     },
     fn: {
       "Profile": "Properlyo",
@@ -182,8 +190,13 @@ export const translations = {
       //donatepage
       "Help us Maintain our Purpose": "Tulungan kami sa Pagpapanatili ng Aming Layunin",
       "Help us to Donate our Pets": "Tulungan kami sa Pag-donate ng Aming Mga Alaga",
-      
-     
+      "For Other Options": "Para sa Iba pang mga Opsyon",
+      "Contact us via Gmail:": "Makipag-ugnayan sa amin sa pamamagitan ng Gmail:",
+      "Contact us via Phone Number:": "Makipag-ugnayan sa amin sa pamamagitan ng Numero ng Telepono:",
+      "Contact us via Viber:": "Makipag-ugnayan sa amin sa pamamagitan ng Viber",
+      "Your Donations Helps us to expand our animal shelter to provide more comfort": "Ang iyong mga Donasyon ay tumutulong sa amin na palawakin ang aming kanlungan ng mga hayop upang magbigay ng higit na kaginhawahan",
+      "Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions": "Nagbibigay ng Pangangalagang Medikal tulad ng mga pagbabakuna, spaying, neutering at iba pang mga medikal na atensyon",
+      "Helps us to cover the cost of important pet resources and other materials": "Tumutulong sa amin na mabayaran ang halaga ng mahahalagang mapagkukunan ng alagang hayop at iba pang materyales",
       //volunteer
       "Join PetConnect": "Sumali sa PetConnect",
       "and help us by": "at tulungan kami sa pamamagitan ng pagiging",
@@ -216,6 +229,7 @@ export const translations = {
       "Story by": "Kuwento ni",
       "No more stories": "Wala nang kwento",
       "Wow such emptiness": "Wow sobrang kawalan",
+     
     },
   };
   
