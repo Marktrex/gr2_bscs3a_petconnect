@@ -20,16 +20,16 @@
   /* for dark here */
   --body-bg-color: #090b29;
   --about-section-child-bg-color: #090b29;
-  --about-section-child-text-color: #f5dfbb;
+  --about-section-child-text-color: #1eddd4;
   --team-bg-color: #381162;
-  --team-text-color: #1eddd4;
-  --team-flex-div-bg-color: #381162;
-  --team-flex-div-p-bg-color: #090b29;
-  --team-flex-div-p-text-color: #1eddd4;
+  --team-text-color:  #1eddd4;
+  --team-flex-div-bg-color: #dd931c;
+  --team-flex-div-p-bg-color: #ab62ff;
+  --team-flex-div-p-text-color:  #1eddd4;
   --extraInfo-bg-color: #090b29;
   --extraInfo-div-bg-color: #381162;
-  --extraInfo-div-text-color: #1eddd4;
-  --scrollbar-track-bg-color: #090b29;
+  --extraInfo-div-text-color:  #1eddd4;
+  --scrollbar-track-bg-color: #fdf7ec;
   --scrollbar-thumb-gradient-start: #ffb845;
   --scrollbar-thumb-gradient-end: #1eddd4;
 }
