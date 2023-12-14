@@ -137,7 +137,20 @@ export const translations = {
       "Wow such emptiness": "wow que vacio",
       "Our team": "Nuestro equipo",
       "Contact Us": "Contacta con nosotros",
-
+      //appointment page
+      "Book an Appointment": "Agendar una Cita",
+      "Personal Information": "Información Personal",
+      "First Name": "Nombre",
+      "Last Name": "Apellido",
+      "Mobile Number": "Número de Teléfono Móvil",
+      "Home Address": "Dirección de Casa",
+      "PetConnect values data confidentially. Your information will be only used for appointment purposes.": "PetConnect valora los datos de forma confidencial. Su información solo se utilizará con fines de citas.",
+      "Appointment Type": "Tipo de Cita",
+      "CHOOSE APPOINTMENT DATE": "ELEGIR FECHA DE CITA",
+      "Schedule Calendar": "Calendario de Programación",
+      "Select Session": "Seleccionar Sesión",
+      "Date": "Fecha",
+      "CONFIRM": "CONFIRMAR",
     },
     fn: {
       "Profile": "Properlyo",
@@ -271,7 +284,20 @@ export const translations = {
       "Wow such emptiness": "Wow sobrang kawalan",
       "Our team": "Ang aming koponan",
       "Contact Us": "Makipag-ugnayan sa amin",
-
+      //appointment php
+      "Book an Appointment": "Mag-Book ng Apointment",
+      "Personal Information": "Personal na Impormasyon",
+      "First Name": "Pangalan",
+      "Last Name": "Apelyido",
+      "Mobile Number": "Numero ng Mobile",
+      "Home Address": "Bahay na Address",
+      "PetConnect values data confidentially. Your information will be only used for appointment purposes.": "Ang PetConnect ay nagbibigay halaga sa mga datos ng pribado. Ang iyong impormasyon ay gagamitin lamang para sa mga layunin ng appointment.",
+      "Appointment Type": "Uri ng Apointment",
+      "CHOOSE APPOINTMENT DATE": "PUMILI NG PETSA NG APPOINTMENT",
+      "Schedule Calendar": "Kalendaryo ng Iskedyul",
+      "Select Session": "Pumili ng Session",
+      "Date": "Petsa",
+      "CONFIRM": "KUMPORMA",
     },
   };
   

@@ -4,7 +4,7 @@
 use MyApp\Controller\UserModelController;
 use MyApp\Controller\AppointmentModelController;
 session_start(); // Add this line to start the session
-//is admin
+// is admin
 if (!isset($_SESSION['auth_user']) ) { 
     header("Location: ../error/403-forbidden.html");
     exit();
@@ -32,10 +32,10 @@ $operatorsArray = ['=', '>='];
 $result = $appointmentController->searchV2($searchWordsArray, $columnsArray, $tablesArray, $operatorsArray);
 
 // echo json_encode($result);
-if (!empty($result)){
-    header("Location: ../error/appointment.html");
-    exit();
-}
+// if (!empty($result)){
+//     header("Location: ../error/appointment.html");
+//     exit();
+// }
 
 //Retrieve the user information by id
 $user = new UserModelController();
@@ -215,8 +215,7 @@ $eventsJson = json_encode($events);
                         </div>
                     </div>
                     <p>
-                        PetConnect values data confientially. Your information well be
-                        only used in appoinment purposes.
+                        PetConnect values data confientially. Your information well be only used in appoinment purposes.
                     </p>
                     <br><br>
                     <div class="fields">
