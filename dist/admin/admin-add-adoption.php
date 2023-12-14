@@ -37,21 +37,7 @@ $usersData = $userController->getAllUsers();
                 <a href="admin-dashboard.php" class="logo"
                     ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
                 /></a>
-                <ul class="items">
-                    <li>
-                    <a class="" id="messages" href="../../privatechat.php"
-                        ><i class="fa fa-envelope"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a class="" id="notifications" href="#"
-                        ><i class="fa fa-bell"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
-                    </li>
-                </ul>
+               
             </nav>
         </header>
         <main>

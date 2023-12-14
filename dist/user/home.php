@@ -1,6 +1,6 @@
 <?php
 session_start(); // Add this line to start the session
-
+// print_r($_SESSION);
 require '../function/config.php';
 if (!isset($_SESSION['auth_user'])) {
   // Redirect to login page if the user is not authenticated
@@ -55,7 +55,7 @@ try { //research this try catch method
 <header>
      <div class="title-container">
           <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
-          <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
+          <h2 id="petsTitle">Browse Pets and Become their Bestfriend</h2>
         <div class="search-container">
               <form action="adoptpage.php" method="get" id="searchForm">
           <input type="text" class="search-bar" placeholder="Search dogs, cats, etc." name="search">

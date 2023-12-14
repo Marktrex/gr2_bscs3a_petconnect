@@ -3,3 +3,9 @@
     --fc-neutral-text-color: black;
     --fc-button-hover-bg-color: black;
 }
+
+[data-theme="dark"]{
+    --fc-today-bg-color: #1fded4ff;
+    --fc-neutral-text-color: black;
+    --fc-button-hover-bg-color: black;   
+}

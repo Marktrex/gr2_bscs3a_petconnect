@@ -90,7 +90,7 @@ $eventsJson = json_encode($events);
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-dashboard-light.css" />
 
     <!-- for layout color -->
-    <link rel="stylesheet" type="text/css" href="../css/newlyAdded/admin-layout-colors.css" />
+    <link rel="stylesheet" type="text/css" href="..\css\colorStyle\admin\layout-color.css" />
 
     <!-- layout style position-->
     <link rel="stylesheet" type="text/css" href="../css/newlyAdded/layout-light.css" />
@@ -102,7 +102,10 @@ $eventsJson = json_encode($events);
     
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <!-- for calendar color-->
     <link rel="stylesheet" href="..\css\admin\admin-calendar.css">
+    <!-- for colors -->
+    <link rel="stylesheet" href="..\css\colorStyle\admin\dashboard-color.css">
     
 </head>
 
@@ -373,6 +376,7 @@ $eventsJson = json_encode($events);
                 </table>
             </div>
         </main>
+        <?php require_once "..\components\light-switch.php"?>  
         <?php require_once "../components/admin/adminSidebar.php"?>        
     </div>
 </body>

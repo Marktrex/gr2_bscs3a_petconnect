@@ -98,6 +98,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 											<span class="content-message-unread" id="userid_'.$user['user_id'].'">'.$user['count_status'] .'</span>
 										</span>';
 									}
+									
 									else
 									{
 										$total_unread_message = '';
@@ -136,7 +137,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 		</div>
 	</div>
 </main>
-
+<?php require_once "components/root-folder-light-sw.php"?>
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){

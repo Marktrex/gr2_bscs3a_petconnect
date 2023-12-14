@@ -49,4 +49,6 @@
 </script>
 <script src="..\script\AgoraRTC_N-4.19.3.js"></script>
 <script src='..\script\Call.js'></script>
+
+<?php require_once "../components/light-switch.php"?>
 </html>

@@ -84,7 +84,7 @@ main{
     
     & > div:nth-child(4n+4) {
         background-color: #fdc161;
-        color: #FFCF83;
+        color: #F2542D;
     }
     & > div:nth-child(odd){
         flex-direction: row; 

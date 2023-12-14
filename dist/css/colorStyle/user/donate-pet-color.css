@@ -47,17 +47,23 @@
     --overlay-bg-color: rgba(0, 0, 0, 0.75);
     --img-bg-h2-text-color: #1EDDD4;
     --overlay-p-text-color: #fff6e8;
-    --scrollbar-track-bg-color: #fdf7ec;
-    --scrollbar-thumb-gradient-start: #ffb845;
-    --scrollbar-thumb-gradient-end: #0e9594;
+    --scrollbar-track-bg-color: #48345d;
+    --scrollbar-thumb-gradient-start: #ab62ff;
+    --scrollbar-thumb-gradient-end: #1eddd4;
 
 
 }
-
 
 body {
     background: var(--body-bg-color);
 }
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-bg-color);
+  }
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg-color);
+  }
 
 .content{
     background: var(--content-bg-color);   
@@ -94,7 +100,7 @@ body {
 }
 
 .cat-select select{
-    color: var(--cat-select-select-text-color);
+    /* color: var(--cat-select-select-text-color); */
 }
 
 .cat-content h1{

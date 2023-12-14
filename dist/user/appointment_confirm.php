@@ -9,10 +9,10 @@
         exit();
     }
 
-    if (!isset($_POST['fname'])){
-        header("Location: ../user/appointment.php");
-        exit();
-    }
+    // if (!isset($_POST['fname'])){
+    //     header("Location: ../user/appointment.php");
+    //     exit();
+    // }
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $mobile = $_POST['mobile'];
@@ -34,11 +34,13 @@
     <title>Appointment Confirmation</title>
 </head>
 <body>
+
+        <?php require_once "../components/user/userNavbar.php"?>
     <div class="container-1">
         <form action="../function/user/makeAppointment.php" method="post">
             <div class="form first">
                 <div class="details personal">
-                    <span class="title">Appoinment Confirmation</span>
+                    <span class="title">Appointment Confirmation</span>
                     <div class="fields">                  
 
                         <div class="input-field">
@@ -81,6 +83,7 @@
             </div>
         </form>
     </div>
+    <?php require_once "../components/user/footer.html"?>
     <?php require_once "..\components\light-switch.php"?>
     <?php require_once "..\components\call_across_pages.php"?>
 </body>
