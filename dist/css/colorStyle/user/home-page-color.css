@@ -9,13 +9,13 @@
   --search-bar-bg-color: rgba(180, 178, 178, 0.533);
 
   --button-bg-color: #f2542d;
-  --button-text-color: white;
+  --button-text-color: #127475;
   --button-hover-bg-color: #953a23;
   --pet-card-bg-color: #ab62ff;
-  --pet-name-text-color: #127475;
+  --pet-name-text-color: white;
   --available-pet-text-color: #127475;
   --overall-description-container-bg-color: #f5dfbb;
-  --title-text-color: #127475;
+  --title-text-color: white;
   --description-text-color: #127475;
   --button-donations-bg-color: #127475;
   --button-donations-text-color: #f5dfbb;
@@ -34,10 +34,10 @@
   --scrollbar-track-bg-color: #48345d;
   --scrollbar-thumb-gradient-start: #ab62ff;
   --scrollbar-thumb-gradient-end: #1eddd4;
-  --petsTitle-text-color: #c3fdfa;
+  --petsTitle-text-color: #1eddd4;
   --search-bar-bg-color: rgba(180, 178, 178, 0.533);
   --button-bg-color: #381162;
-  --button-text-color: white;
+  --button-text-color: #1eddd4;
   --button-hover-bg-color: #7543af;
   --pet-card-color: #381162;
   --pet-name-text-color: #1eddd4;
@@ -46,10 +46,10 @@
   --title-text-color: #1eddd4;
   --description-text-color: #1eddd4;
   --button-donations-bg-color: #ab62ff;
-  --button-donations-text-color: #c3fdfa;
+  --button-donations-text-color: #381162;
   --about-volunteer-bg-color: #381162;
-  --content-volunteer-p-text-color: #c3fdfa;
-  --h3-text-color: #c3fdfa;
+  --content-volunteer-p-text-color: #1eddd4;
+  --h3-text-color: #1eddd4;
   --learn-more-bg-color: #ab62ff;
   --learn-more-text-color: #381162;
   --learn-more-hover-text-color: #1eddd4;

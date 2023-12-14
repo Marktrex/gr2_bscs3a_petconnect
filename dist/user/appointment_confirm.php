@@ -34,12 +34,13 @@
     <title>Appointment Confirmation</title>
 </head>
 <body>
-    <?php require_once "../components/user/userNavbar.php"?>
+
+        <?php require_once "../components/user/userNavbar.php"?>
     <div class="container-1">
         <form action="../function/user/makeAppointment.php" method="post">
             <div class="form first">
                 <div class="details personal">
-                    <span class="title">Appoinment Confirmation</span>
+                    <span class="title">Appointment Confirmation</span>
                     <div class="fields">                  
 
                         <div class="input-field">
