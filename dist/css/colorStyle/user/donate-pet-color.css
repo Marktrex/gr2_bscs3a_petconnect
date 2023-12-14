@@ -94,7 +94,7 @@ body {
 }
 
 .cat-select select{
-    color: var(--cat-select-select-text-color);
+    /* color: var(--cat-select-select-text-color); */
 }
 
 .cat-content h1{
