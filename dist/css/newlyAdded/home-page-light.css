@@ -515,7 +515,9 @@ h3{
   .button-container{
     & a{
       & img {
-        display: none;
+        /* display: none; */
+        width: 13vw;
+        height: 13vw;
       }
     }
   }
