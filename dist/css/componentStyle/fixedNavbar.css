@@ -197,7 +197,6 @@
       & li {
         margin-bottom: 30px;
         & a {
-          color: #e89003;
           font-size: 1.1rem;
         }
       }
@@ -230,6 +229,20 @@
     }
     .hidden{
       display: list-item;
+    }
+    .dropdown{
+      .dropdown-content{
+        top: -50px;
+        right: -50px;
+      }
+    }
+    .language-item{
+      .dropdown{
+        .dropdown-content{
+          top: -50px;
+          right: -20px;
+        }
+      }
     }
   }
 }
