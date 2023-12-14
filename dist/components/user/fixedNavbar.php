@@ -17,14 +17,16 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
       <!-- Insert the new dropdown code here -->
       <li class="new-dropdown-item dropdown-item">
           <div class="dropdown">
-          <a href="../user/about-us.php" class="dropdown-btn">About Us</a>
+          <label for="" class="dropdown-btn">
+            About Us
+          </label>
               <input type="checkbox" id="newDropdown" />
               <div class="dropdown-content">
                   <label>
                       <a href="..\user\adoption-story.php">Adoption Stories</a>
                   </label>
                   <label>
-                      <a href="#">Mission</a>
+                      <a href="../user/about-us.php">Who we are</a>
                   </label>
                   <!-- Add more links as needed -->
               </div>

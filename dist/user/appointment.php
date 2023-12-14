@@ -198,12 +198,12 @@ $eventsJson = json_encode($events);
                     <span class="title">Personal Information</span>
                     <div class="fields">
                         <div class="input-field">
-                            <label for="fname">Last Name:<span> *</span></label>
+                            <label for="fname">First Name:<span> *</span></label>
                             <input type="text" placeholder="First name" id="fname" name="fname" required value = "<?php echo $resultUser->fname?>" >
                         </div>        
                         <div class="input-field">
-                            <label for="lname">First Name:<span> *</span></label>
-                            <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->fname?>">
+                            <label for="lname">Last Name:<span> *</span></label>
+                            <input type="text" placeholder="Last name" id="lname" name="lname" required value = "<?php echo $resultUser->lname?>">
                         </div>
                         <div class="input-field">
                             <label for="mobile">Mobile Number:<span> *</span></label>
