@@ -27,9 +27,9 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../image/logo.png" type="image/png">
-    
     <title>Appointment Successful</title>
     <link rel="stylesheet" href="../css/newlyAdded/confirmation.css" />
+    <link rel="stylesheet" href="..\css\colorStyle\user\confirmation-color.css">
 </head>
 <body>
     <?php require_once "../components/user/userNavbar.php"?>
@@ -82,5 +82,7 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
           require_once "..\components\call_across_pages.php";
       }
     ?>
+        <?php require_once "..\components\light-switch.php"?>
+
 </body>
 </html>
