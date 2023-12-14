@@ -76,6 +76,13 @@ export const translations = {
       //donatepage
       "Help us Maintain our Purpose": "Ayúdanos a Mantener nuestro Propósito",
       "Help us to Donate our Pets": "Ayúdanos a Donar a nuestras Mascotas",
+      "For Other Options": "Para otras opciones",
+      "Contact us via Gmail:": "Contacta con nosotros a través de Gmail:",
+      "Contact us via Phone Number:": "Contáctenos a través del número de teléfono:",
+      "Contact us via Viber:": "Contacta con nosotros a través de Viber",
+      "Your Donations Helps us to expand our animal shelter to provide more comfort": "Tus donaciones nos ayudan a ampliar nuestro refugio de animales para brindar más comodidad",
+      "Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions": "Brinda atención médica como vacunas, esterilización, castración y otras atenciones médicas",
+      "Helps us to cover the cost of important pet resources and other materials": "Nos ayuda a cubrir el costo de recursos importantes para mascotas y otros materiales.",
       //volunteer
       "Join PetConnect": "Únete a PetConnect",
       "and help us by": "y ayúdanos siendo",
@@ -100,10 +107,50 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Envíanos tu correo electrónico y te enviaremos las instrucciones para tu proceso de aplicación.",
       //edit profile
       "Edit Profile": "Editar Perfil", //wala palang option para sa change language lol pero ok lang kase dapat as a user alam mo english
+      "Edit Account Information": "Editar Información de la Cuenta",
+      "First Name": "Nombre",
+      "Last Name": "Apellido",
+      "Phone Number": "Número de Teléfono",
+      "Address": "Dirección",
+      "Update": "Actualizar",
+      "Upload Image": "Subir Imagen",
+      "Change Password": "Cambiar Contraseña",
+      "Current Password": "Contraseña Actual",
+      "New Password": "Nueva Contraseña",
+      "Confirm Password": "Confirmar Contraseña",
+      "Warning! You are trying to delete your account": "¡Advertencia! Estás intentando eliminar tu cuenta",
+      "Delete Account": "Eliminar Cuenta",
+      "Cancel": "Cancelar",
       //adoptprofile
-      "Animal: ": "Animal:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Animal:": "Animal:",
+        "Breed:": "Raza:",
+        "Age:": "Edad:",
+        "Sex:": "Género:",
+        "Date of Rescue:": "Fecha de Rescate:",
+        "About:": "Acerca de:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Agendar Cita",
-
+      //adoption-story
+      "Adoption Story": "Historia de adopción",
+      "Find out the latest stories from our users": "Descubra las últimas historias de nuestros usuarios",
+      "Story by": "Historia de",
+      "No more stories": "No más historias",
+      "Wow such emptiness": "wow que vacio",
+      "Our team": "Nuestro equipo",
+      "Contact Us": "Contacta con nosotros",
+      //appointment page
+      "Book an Appointment": "Agendar una Cita",
+      "Personal Information": "Información Personal",
+      "First Name": "Nombre",
+      "Last Name": "Apellido",
+      "Mobile Number": "Número de Teléfono Móvil",
+      "Home Address": "Dirección de Casa",
+      "PetConnect values data confidentially. Your information will be only used for appointment purposes.": "PetConnect valora los datos de forma confidencial. Su información solo se utilizará con fines de citas.",
+      "Appointment Type": "Tipo de Cita",
+      "CHOOSE APPOINTMENT DATE": "ELEGIR FECHA DE CITA",
+      "Schedule Calendar": "Calendario de Programación",
+      "Select Session": "Seleccionar Sesión",
+      "Date": "Fecha",
+      "CONFIRM": "CONFIRMAR",
     },
     fn: {
       "Profile": "Properlyo",
@@ -177,8 +224,13 @@ export const translations = {
       //donatepage
       "Help us Maintain our Purpose": "Tulungan kami sa Pagpapanatili ng Aming Layunin",
       "Help us to Donate our Pets": "Tulungan kami sa Pag-donate ng Aming Mga Alaga",
-      
-     
+      "For Other Options": "Para sa Iba pang mga Opsyon",
+      "Contact us via Gmail:": "Makipag-ugnayan sa amin sa pamamagitan ng Gmail:",
+      "Contact us via Phone Number:": "Makipag-ugnayan sa amin sa pamamagitan ng Numero ng Telepono:",
+      "Contact us via Viber:": "Makipag-ugnayan sa amin sa pamamagitan ng Viber",
+      "Your Donations Helps us to expand our animal shelter to provide more comfort": "Ang iyong mga Donasyon ay tumutulong sa amin na palawakin ang aming kanlungan ng mga hayop upang magbigay ng higit na kaginhawahan",
+      "Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions": "Nagbibigay ng Pangangalagang Medikal tulad ng mga pagbabakuna, spaying, neutering at iba pang mga medikal na atensyon",
+      "Helps us to cover the cost of important pet resources and other materials": "Tumutulong sa amin na mabayaran ang halaga ng mahahalagang mapagkukunan ng alagang hayop at iba pang materyales",
       //volunteer
       "Join PetConnect": "Sumali sa PetConnect",
       "and help us by": "at tulungan kami sa pamamagitan ng pagiging",
@@ -202,11 +254,50 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Ipadala sa amin ang iyong Email at ipapadala namin ang mga Tagubilin para sa iyong Proseso ng Pag-aapply.",
       //edit profile
       "Edit Profile": "I-edit ang Profilo",
+      "Edit Account Information": "I-edit ang Impormasyon ng Account",
+      "First Name": "Pangalan",
+      "Last Name": "Apelyido",
+      "Phone Number": "Numero ng Telepono",
+      "Address": "Address",
+      "Update": "I-update",
+      "Upload Image": "Mag-upload ng Larawan",
+      "Change Password": "Baguhin ang Password",
+      "Current Password": "Kasalukuyang Password",
+      "New Password": "Bagong Password",
+      "Confirm Password": "Kumpirmahin ang Password",
+      "Warning! You are trying to delete your account": "Babala! Sinusubukan mong burahin ang iyong account",
+      "Delete Account": "Burahin ang Account",
+      "Cancel": "Kanselahin",
       //adoptpage
-      "Animal: ": "Hayop:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Animal:": "Hayop:",
+      "Breed:": "Lahi:",
+      "Age:": "Edad:",
+      "Sex:": "Kasarian:",
+      "Date of Rescue:": "Petsa ng Pagliligtas:",
+      "About:": "Tungkol sa:",
       "Book Appointment": "Mag-Book ng Apointment",
-
-
+      //adoption-story
+      "Adoption Story": "Kwento ng Pag-ampon",
+      "Find out the latest stories from our users": "Alamin ang pinakabagong mga kuwento mula sa aming mga user",
+      "Story by": "Kuwento ni",
+      "No more stories": "Wala nang kwento",
+      "Wow such emptiness": "Wow sobrang kawalan",
+      "Our team": "Ang aming koponan",
+      "Contact Us": "Makipag-ugnayan sa amin",
+      //appointment php
+      "Book an Appointment": "Mag-Book ng Apointment",
+      "Personal Information": "Personal na Impormasyon",
+      "First Name": "Pangalan",
+      "Last Name": "Apelyido",
+      "Mobile Number": "Numero ng Mobile",
+      "Home Address": "Bahay na Address",
+      "PetConnect values data confidentially. Your information will be only used for appointment purposes.": "Ang PetConnect ay nagbibigay halaga sa mga datos ng pribado. Ang iyong impormasyon ay gagamitin lamang para sa mga layunin ng appointment.",
+      "Appointment Type": "Uri ng Apointment",
+      "CHOOSE APPOINTMENT DATE": "PUMILI NG PETSA NG APPOINTMENT",
+      "Schedule Calendar": "Kalendaryo ng Iskedyul",
+      "Select Session": "Pumili ng Session",
+      "Date": "Petsa",
+      "CONFIRM": "KUMPORMA",
     },
   };
   

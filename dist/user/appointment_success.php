@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 use MyApp\Controller\AppointmentModelController;
-if(!(isset($_GET['token']) && isset($_GET['id']))){
-    header("Location: ../error/403-forbidden.html");
-    exit();
-}
+// if(!(isset($_GET['token']) && isset($_GET['id']))){
+//     header("Location: ../error/403-forbidden.html");
+//     exit();
+// }
 
 $appointmentControl = new AppointmentModelController();
 $appointment = $appointmentControl->get_appointment_data_by_id($_GET['id']);
@@ -14,12 +14,12 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
 
 
 //guard for empty and invalid token
-if ($status == "Appointment not found" || $status == "Appointment has been process already" || $status == "Invalid Token") {
-    echo "<script type='text/javascript'>
-            alert('$status');
-            window.location.href = '../error/403-forbidden.html';
-          </script>";
-}
+// if ($status == "Appointment not found" || $status == "Appointment has been process already" || $status == "Invalid Token") {
+//     echo "<script type='text/javascript'>
+//             alert('$status');
+//             window.location.href = '../error/403-forbidden.html';
+//           </script>";
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +72,7 @@ if ($status == "Appointment not found" || $status == "Appointment has been proce
             <h3>
               Please send our admin a private message or email our customer
               support team at mail to petconnect@gmail.com at least
-              <b>24 hours in advance</b> if you need to cancel or reschedule
+              24 hours in advance if you need to cancel or reschedule
               your appointment.
             </h3>
           </div>

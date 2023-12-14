@@ -49,7 +49,7 @@ $stories = $adoptionController->getAllAdoption();
             }
             echo '<div>';
             echo '  <div>';
-            echo '    <h1> Story by' . htmlspecialchars($story->fname, ENT_QUOTES, 'UTF-8') . '</h1>'; // Replace 'title' with the actual property name
+            echo '    <h1> Story by ' . htmlspecialchars($story->fname, ENT_QUOTES, 'UTF-8') . '</h1>'; // Replace 'title' with the actual property name
             echo '    <p>' . htmlspecialchars($story->story, ENT_QUOTES, 'UTF-8') . '</p>'; // Replace 'content' with the actual property name
             echo '  </div>';
             echo '  <img src="../upload/petImages/' . htmlspecialchars($image, ENT_QUOTES, 'UTF-8') . '" alt="">'; // Replace 'image' with the actual property name

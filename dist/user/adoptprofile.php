@@ -52,14 +52,19 @@ $loggedIn = isset($_SESSION['auth_user']);
     <img src="../upload/petImages/<?php echo $row['image']; ?>" class="petimg" alt="" />
     <div class="pettxt">
         <span class="petname"><?php echo $row['name']; ?></span>
-        <p class="animal">Animal: <?php echo $row['type']; ?></p>
+        <p class="animal"><b>Animal:</b>
+        <span><?php echo $row['type']; ?></p></span>
         <div class="list">
-            <span>Breed: <?php echo $row['breed']; ?></span>
-            <span>Age: <?php echo $row['age']; ?></span>
-            <span>Sex: <?php echo $row['sex']; ?></span>
-            <span>Date of Rescue: <?php echo $row['date']; ?></span>
+            <span><b>Breed:</b></span>
+            <span><?php echo $row['breed']; ?></span>
+            <span><b>Age:</b></span>
+            <span><?php echo $row['age']; ?></span>
+            <span><b>Sex:</b></span>
+            <span><?php echo $row['sex']; ?></span>
+            <span><b>Date of Rescue:</b></span>
+            <span><?php echo $row['date']; ?></span>
         </div>
-        <span class="aboutinfo">About:</b></span>
+        <span class="aboutinfo"><b>About:</b></span>
         <span><?php echo $row['about']; ?></span>
         <div>
             <button class="bookbutton" onclick="window.location.href='appointment.php'"> 

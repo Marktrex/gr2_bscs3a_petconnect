@@ -9,10 +9,10 @@
         exit();
     }
 
-    if (!isset($_POST['fname'])){
-        header("Location: ../user/appointment.php");
-        exit();
-    }
+    // if (!isset($_POST['fname'])){
+    //     header("Location: ../user/appointment.php");
+    //     exit();
+    // }
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $mobile = $_POST['mobile'];
