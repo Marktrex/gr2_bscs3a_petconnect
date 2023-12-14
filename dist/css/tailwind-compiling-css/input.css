@@ -21,7 +21,7 @@
     /* dark theme */
     [data-theme="dark"] {
         --background-text-color: #090b29;
-        --navbar-color: #240155;
+        --navbar-color: transparent;
         --frame-shadow: rgb(61, 23, 88);
         --frame-color:#381162;
         --text-color: #1EDDD4;
