@@ -116,7 +116,9 @@ export const translations = {
       "Story by": "Historia de",
       "No more stories": "No más historias",
       "Wow such emptiness": "wow que vacio",
-      
+      "Our team": "Nuestro equipo",
+      "Contact Us": "Contacta con nosotros",
+
     },
     fn: {
       "Profile": "Properlyo",
@@ -229,7 +231,9 @@ export const translations = {
       "Story by": "Kuwento ni",
       "No more stories": "Wala nang kwento",
       "Wow such emptiness": "Wow sobrang kawalan",
-     
+      "Our team": "Ang aming koponan",
+      "Contact Us": "Makipag-ugnayan sa amin",
+
     },
   };
   
