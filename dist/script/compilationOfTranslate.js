@@ -151,6 +151,30 @@ export const translations = {
       "Select Session": "Seleccionar Sesión",
       "Date": "Fecha",
       "CONFIRM": "CONFIRMAR",
+      //appoointment_confirm page
+      "Appointment Confirmation": "Confirmación de Cita",
+      "First Name:": "Nombre",
+      "Last Name:": "Apellido",
+      "Mobile:": "Móvil",
+      "Home Address:": "Dirección de Casa",
+      "Type:": "Tipo",
+      "Date:": "Fecha",
+      "Make sure that the above confirmation is correct. You are welcome to go back to the previous page. If you are to proceed, please check your email for the confirmation.": "Asegúrese de que la confirmación anterior sea correcta. Puede volver a la página anterior si lo desea. Si va a continuar, por favor, revise su correo electrónico para la confirmación.",
+      "Go Back": "Volver",
+      "Confirm": "Confirmar",
+      //appointment_success page
+      "Booking Successful": "Reserva Exitosa",
+      "We have successfully recorded your appointment in our database. We will be happy to be of service. PetConnect is eager to meet with you at the appointed time. Please review the appointment details listed below:": "Hemos registrado con éxito su cita en nuestra base de datos. Estaremos encantados de servirle. PetConnect está ansioso por encontrarse con usted en el momento designado. Por favor, revise los detalles de la cita que se enumeran a continuación:",
+      "Details:": "Detalles:",
+      "Appointed Type:": "Tipo de Cita:",
+      "Appointed Date:": "Fecha de Cita:",
+      "Session Time:": "Hora de Sesión:",
+      "Address:  Dhvsu Main": "Dirección: Dhvsu Principal",
+      "Conditions:": "Condiciones:",
+      "Kindly arrive at the designated location no later than ten minutes before your scheduled the time of the appointment.": "Por favor,llegue a la ubicación designada no más tarde de diez minutos antes de la hora programada de la cita.",
+      "Please send our admin a private message or email our customer support team at mail to petconnect@gmail.com at least 24 hours in advance if you need to cancel or reschedule your appointment.": "Por favor, envíe un mensaje privado a nuestro administrador o envíe un correo electrónico a nuestro equipo de soporte al cliente a mail to petconnect@gmail.com al menos 24 horas antes si necesita cancelar o reprogramar su cita.",
+      "Home": "Inicio",
+
     },
     fn: {
       "Profile": "Properlyo",
@@ -298,6 +322,30 @@ export const translations = {
       "Select Session": "Pumili ng Session",
       "Date": "Petsa",
       "CONFIRM": "KUMPORMA",
-    },
-  };
+      //appoointment_confirm page
+      "Appointment Confirmation": "Kumpirmasyon ng Apointment",
+      "First Name:": "Pangalan",
+      "Last Name:": "Apelyido",
+      "Mobile:": "Mobile",
+      "Home Address:": "Bahay na Address",
+      "Type:": "Uri",
+      "Date:": "Petsa",
+      "Make sure that the above confirmation is correct. You are welcome to go back to the previous page. If you are to proceed, please check your email for the confirmation.": "Siguruhing tama ang kumpirmasyon sa itaas. Maligayang pagbabalik sa nakaraang pahina. Kung magpapatuloy ka, mangyaring suriin ang iyong email para sa kumpirmasyon.",
+      "Go Back": "Bumalik",
+      "Confirm": "Kumpirmahin",
+      //appoointment_sucess page
+      "Booking Successful": "Matagumpay na Paggawa ng Reserbasyon",
+      "We have successfully recorded your appointment in our database. We will be happy to be of service. PetConnect is eager to meet with you at the appointed time. Please review the appointment details listed below:": "Matagumpay naming naitala ang iyong reserbasyon sa aming database. Maligaya kaming magsilbi sa iyo. Ang PetConnect ay handang makipagkita sa iyo sa itinakdang oras. Mangyaring suriin ang mga detalye ng reserbasyon na nakalista sa ibaba:",
+      "Details:": "Detalye:",
+      "Appointed Type:": "Uri ng Cita:",
+      "Appointed Date:": "Petsa ng Cita:",
+      "Session Time:": "Oras ng Sesyon:",
+      "Address:  Dhvsu Main": "Address: Dhvsu Main",
+      "Conditions:": "Mga Kondisyon:",
+      "Kindly arrive at the designated location no later than ten minutes before your scheduled the time of the appointment.": "Mangyaring dumating sa itinakdang lokasyon hindi huli sa sampung minuto bago ang itinakdang oras ng appointment.",
+      "Please send our admin a private message or email our customer support team at mail to petconnect@gmail.com at least 24 hours in advance if you need to cancel or reschedule your appointment.": "Mangyaring magpadala ng pribadong mensahe sa aming admin o mag-email sa aming koponan ng suporta sa customer sa mail to petconnect@gmail.com nang hindi kukulangin sa 24 oras bago kung kailangan mong kanselahin o i-rechedule ang iyong appointment.",
+      "Home": "Home",
+
+  }
+    };
   
