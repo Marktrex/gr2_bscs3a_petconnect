@@ -1,8 +1,10 @@
+document.addEventListener("DOMContentLoaded", function () {
 
+  
 const navColors = {
   light: {
       "navbar-responsive-bg-color": "#fdf7ec",
-      "navbar-text-color": "#fff",
+      "navbar-text-color": "orange",
       "navbar-hover-color": "#127475",
       "navbar-active-color": "rgb(242, 84, 45)"
   },
@@ -66,6 +68,7 @@ function changeHeaderColor(textColor) {
     header.querySelectorAll("li > div > a , li > a, li > .dropdown > label, li > .dropdown > label > span").forEach(function (a) {
       a.style.cssText = `color: ${textColor}`; // Change to your desired text color
     });
+    activeLink();
     return; // Exit the function
   }
   
@@ -118,6 +121,7 @@ function activeLink() {
       } else{
         link.style.color = navColors.light["navbar-active-color"];
       }
+      console.log(link.style.color);
     }
   });
 }
@@ -128,3 +132,6 @@ function checkRootForDark(){
   const theme = root.getAttribute('data-theme'); // Get the value of the 'data-theme' attribute
   return theme === 'dark'; // Return true if the theme is 'dark', false otherwise
 }
+
+
+});

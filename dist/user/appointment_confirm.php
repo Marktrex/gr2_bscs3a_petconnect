@@ -34,8 +34,8 @@
     <title>Appointment Confirmation</title>
 </head>
 <body>
-        <?php require_once "../components/user/userNavbar.php"?>
 
+        <?php require_once "../components/user/userNavbar.php"?>
     <div class="container-1">
         <form action="../function/user/makeAppointment.php" method="post">
             <div class="form first">
@@ -83,6 +83,7 @@
             </div>
         </form>
     </div>
+    <?php require_once "../components/user/footer.html"?>
     <?php require_once "..\components\light-switch.php"?>
     <?php require_once "..\components\call_across_pages.php"?>
 </body>
