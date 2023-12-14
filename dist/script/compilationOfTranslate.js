@@ -103,7 +103,12 @@ export const translations = {
       //adoptprofile
       "Animal: ": "Animal:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Agendar Cita",
-
+      //adoption-story
+      "Adoption Story": "Historia de adopción",
+      "Find out the latest stories from our users": "Descubra las últimas historias de nuestros usuarios",
+      "Story by": "Historia de",
+      "No more stories": "No más historias",
+      "Wow such emptiness": "wow que vacio",
     },
     fn: {
       "Profile": "Properlyo",
@@ -205,8 +210,12 @@ export const translations = {
       //adoptpage
       "Animal: ": "Hayop:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Mag-Book ng Apointment",
-
-
+      //adoption-story
+      "Adoption Story": "Kwento ng Pag-ampon",
+      "Find out the latest stories from our users": "Alamin ang pinakabagong mga kuwento mula sa aming mga user",
+      "Story by": "Kuwento ni",
+      "No more stories": "Wala nang kwento",
+      "Wow such emptiness": "Wow sobrang kawalan",
     },
   };
   
