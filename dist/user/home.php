@@ -13,7 +13,28 @@ if ($_SESSION['auth_user']['role'] === "1") {
   header("Location: ../admin/admin-dashboard.php");
   exit();
 }
+// Retrieve the selected filter values from the form submission
+$type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
 
+try { //research this try catch method
+   
+    // Build the base query
+    $query = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0";
+
+
+
+    // Prepare the statement
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch the pet data
+    $pet_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 
 
 ?>
@@ -36,7 +57,9 @@ if ($_SESSION['auth_user']['role'] === "1") {
           <h1 id="petsTitle">Our Pets are<br>waiting for you!</h1>
           <h2 id="UnderpetsTitle">Browse Pets and Become their Bestfriend</h2>
         <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search dogs, cats, etc.">
+              <form action="adoptpage.php" method="get" id="searchForm">
+          <input type="text" class="search-bar" placeholder="Search dogs, cats, etc." name="search">
+      </form>
         </div>
     </div>
   </header>
