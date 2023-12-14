@@ -25,9 +25,8 @@
     color: #fdf7ec !important;
 }
 .chat-container {
-    max-width: 1590px;
     width: 100%;
-    height: 745px;
+    height: 100vh;
     /* border-radius: ; */
     position: relative;
     color: #127475;
@@ -59,7 +58,7 @@
 }
 
 .content-sidebar {
-    width: 256px;
+    width: 20vw;
     background-color: var(--sidebar-content-color);
     display: flex;
     flex-direction: column;
