@@ -35,9 +35,15 @@ header .navbar {
   justify-content: space-between;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
 .logo img {
-  width: 130px;
-  image-resolution: 300px;
+  width: 80%;
+  aspect-ratio: 1/1;
 }
 
 .navbar .menu-links {

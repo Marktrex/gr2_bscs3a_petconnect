@@ -75,7 +75,7 @@ if (!isset($_SESSION['auth_user'])) {
           </div>
           <div class="logo">
             <!-- Your logo goes here -->
-            <img src="" alt="" />
+            <img src="..\image\gcash-bank\bank.png" alt="" />
           </div>
           <div class="text-under-logo1">
             <p>Account Number: 1234-678-91011</p>
@@ -89,11 +89,11 @@ if (!isset($_SESSION['auth_user'])) {
           </div>
           <div class="logo">
             <!-- Your logo goes here -->
-            <img src="" alt="" />
+            <img src="..\image\gcash-bank\gcash.jpg" alt="" />
           </div>
           <div class="text-under-logo1">
-            <p>Account Number: 09293883802</p>
-            <p>Account Name: MarcMarc</p>
+            <p>Account Number: 0927 637 5907</p>
+            <p>Account Name: Dumbbell</p>
           </div>
         </div>
       </div>
