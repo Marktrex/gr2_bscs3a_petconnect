@@ -17,7 +17,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
       <!-- Insert the new dropdown code here -->
       <li class="new-dropdown-item dropdown-item">
           <div class="dropdown">
-          <label for="" class="dropdown-btn">
+          <label for="newDropdown" class="dropdown-btn">
             About Us
           </label>
               <input type="checkbox" id="newDropdown" />
@@ -91,7 +91,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
         </div>
       </li>
 
-      <li class="hidden"><a href="#">Profile</a></li>
+      <li class="hidden"><a href="edit-profile.php">Profile</a></li>
       <li class="hidden"><a href="../function/authentication/logout.php">Logout</a></li>
       <?php
         } else {

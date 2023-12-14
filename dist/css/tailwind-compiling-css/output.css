@@ -613,20 +613,12 @@ video {
   margin-bottom: 2.5rem;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
 .mt-10 {
   margin-top: 2.5rem;
 }
 
 .mt-3 {
   margin-top: 0.75rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
 }
 
 .block {
@@ -686,6 +678,10 @@ video {
   flex: 1 1 0%;
 }
 
+.border-collapse {
+  border-collapse: collapse;
+}
+
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
@@ -736,10 +732,6 @@ video {
   gap: 1.75rem;
 }
 
-.gap-\[5vh\] {
-  gap: 5vh;
-}
-
 .gap-\[3vh\] {
   gap: 3vh;
 }
@@ -771,6 +763,10 @@ video {
   padding-inline-start: 2rem;
 }
 
+.pt-6 {
+  padding-top: 1.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -792,6 +788,14 @@ video {
   text-transform: lowercase;
 }
 
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
 .underline-offset-2 {
   text-underline-offset: 2px;
 }
@@ -803,14 +807,6 @@ video {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 :root
@@ -829,7 +825,7 @@ video {
 
 [data-theme="dark"] {
   --background-text-color: #090b29;
-  --navbar-color: #240155;
+  --navbar-color: transparent;
   --frame-shadow: rgb(61, 23, 88);
   --frame-color:#381162;
   --text-color: #1EDDD4;
@@ -918,14 +914,6 @@ input[type="checkbox"]
 @media (min-width: 768px) {
   .md\:w-3\/4 {
     width: 75%;
-  }
-
-  .md\:max-w-\[75\] {
-    max-width: 75;
-  }
-
-  .md\:max-w-\[75\%\] {
-    max-width: 75%;
   }
 
   .md\:max-w-\[65\%\] {

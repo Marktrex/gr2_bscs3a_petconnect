@@ -15,7 +15,7 @@ body{
 }
 
 header{
-    height: 60vh;
+    height: 100vh;
     background-image: url("../../image/pet-stories/header.png");
     background-size: cover; 
     background-repeat: no-repeat;
