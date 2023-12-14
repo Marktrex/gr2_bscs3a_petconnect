@@ -195,10 +195,12 @@ $usersData = $userController->getAllUsers();
         var button = document.getElementById('submit_button');
 
         button.addEventListener('click', function() {
-            form.submit();
+            event.preventDefault();
+            var submitEvent = new Event('submit');
+            form.dispatchEvent(submitEvent);
         });
         
-        document.querySelector('#add_adoption').addEventListener('submit', function(event) {
+        form.addEventListener('submit', function(event) {
             event.preventDefault();
             var userId = document.getElementById('userId');
             var petId = document.getElementById('petId');
@@ -217,7 +219,7 @@ $usersData = $userController->getAllUsers();
             .then(response => response.text())
             .then(data => {
                 alert(data);
-                // location.reload();
+                location.reload();
             })
             .catch(error => {
                 console.error(error);
