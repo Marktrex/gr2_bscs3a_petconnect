@@ -35,7 +35,7 @@ function changeHeaderColor(textColor) {
   // Check if the viewport width exceeds 800px
   if (window.innerWidth < 1024) {
     textColor = "#e89003";
-    header.querySelectorAll("li > a, li > .dropdown > label, li > .dropdown > label > span").forEach(function (a) {
+    header.querySelectorAll("li > div > a , li > a, li > .dropdown > label, li > .dropdown > label > span").forEach(function (a) {
       a.style.cssText = `color: ${textColor}`; // Change to your desired text color
     });
     return; // Exit the function

@@ -33,10 +33,30 @@ $usersData = $userController->getAllUsers();
 <body>
     <div class="container">
         <header>
+            <nav class="navbar">
+                <a href="admin-dashboard.php" class="logo"
+                    ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
+                /></a>
+                <ul class="items">
+                    <li>
+                    <a class="" id="messages" href="../../privatechat.php"
+                        ><i class="fa fa-envelope"></i
+                    ></a>
+                    </li>
+                    <li>
+                    <a class="" id="notifications" href="#"
+                        ><i class="fa fa-bell"></i
+                    ></a>
+                    </li>
+                    <li>
+                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
+                    </li>
+                </ul>
+            </nav>
         </header>
         <main>
             <div id="content">
-                <form action="" method="post" id="add_adoption">
+                <form action="" method="POST" id="add_adoption">
                     <div>
                         <h1>User Profile</h1>
                         <div>
@@ -100,7 +120,7 @@ $usersData = $userController->getAllUsers();
                         </div>
                     </div>
                 </form>
-                <button type="button" onclick="document.getElementById('add_adoption').submit();">Add to adoption</button>
+                <button id="submit_button" class="btn-add">Add to adoption</button>
             </div>
             <div id="theTables">
                 <div class = "containsTable">
@@ -164,13 +184,23 @@ $usersData = $userController->getAllUsers();
                 </div>
             </div>
         </main>
-
+        
+        <?php require_once '..\components\light-switch.php'?>
         <?php require_once "../components/admin/adminSidebar.php"?>
     </div>
 </body>
 <script>
-    //adoption form
-    document.getElementById('add_adoption').addEventListener('submit', function(event) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('add_adoption');
+        var button = document.getElementById('submit_button');
+
+        button.addEventListener('click', function() {
+            event.preventDefault();
+            var submitEvent = new Event('submit');
+            form.dispatchEvent(submitEvent);
+        });
+        
+        form.addEventListener('submit', function(event) {
             event.preventDefault();
             var userId = document.getElementById('userId');
             var petId = document.getElementById('petId');
@@ -278,5 +308,9 @@ $usersData = $userController->getAllUsers();
         }
         tag.src = change;
     }
+
+    });
+    //adoption form
+   
 </script>
 </html>

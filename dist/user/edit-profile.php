@@ -21,15 +21,20 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
 
 $user = new UserModelController();
 
+
 if (isset($_POST['update'])) {
     // Retrieve the data from the form
     $firstName = $_POST["fname"];
     $lastName = $_POST["lname"];
+    $mobile= $_POST["num"];
+    $address = $_POST["addr"];
     $currentUserId = $_SESSION['auth_user']['id'];
     $oldData = $user->get_user_data_by_id($currentUserId);
     $newData = [
         'fname' => $firstName,
-        'lname' => $lastName
+        'lname' => $lastName,
+        'mobile_number' => $mobile,
+        'home_address' => $address
     ];
     // Update the data in both tables
     $conn->beginTransaction();
@@ -80,7 +85,9 @@ if (isset($_POST['update'])) {
             $user_update = new UserModelController();
             $user_update->updateProfile($currentUserId, [
                 'fname' => $firstName,
-                'lname' => $lastName
+                'lname' => $lastName,
+                'mobile_number' => $mobile,
+                'home_address' => $address
             ]);
         }
         $log = new AuditModelController();
@@ -100,8 +107,13 @@ if (isset($_POST['update'])) {
     } catch (PDOException $e) {
         // An error occurred, rollback the transaction
         $conn->rollBack();
-        echo "Error updating data: " . $e->getMessage();
+        echo '<script>
+        alert("Error updating profile");
+        </script';
     }
+    echo '<script>
+        alert("Profile updated");
+        </script';
 }
 
 if (isset($_POST['changePassword'])) {
@@ -125,12 +137,14 @@ if (isset($_POST['changePassword'])) {
                 "SECRET",
                 "SECRET"
             );
+            echo "<script>alert('Password updated')</script>";
         } else {
             echo "<script>alert('New password and confirm password must be same')</script>";
         }
     } else {
         echo "<script>alert('Current password is incorrect')</script>";
     }
+    
 }
 
 
@@ -150,7 +164,15 @@ if (isset($_POST['delete'])) {
     header("Location: ../function/authnetication/logout.php");
     exit();
 }
+
+if(isset($_POST['cancel'])){
+    header("Location: home.php");
+    exit();
+
+}
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -162,24 +184,25 @@ if (isset($_POST['delete'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Connect</title>
-    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile.css">
+    <link rel="stylesheet" href="..\css\newlyAdded\edit-profile-page.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sigmar">
     <script src="https://kit.fontawesome.com/98b545cfa6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\edit-profile-color.css">
 </head>
 
 <body>
+
+    <?php require_once "../components/user/userNavbar.php"?>
     <div class="main">
-        <a href="home.php" class="btn back">Back</a>
         <div class="content">
             <?php $user_data = $user->get_user_data_by_id($_SESSION['auth_user']['id'])?>
             <div class="container">
                 <form class="edit" method="POST" enctype="multipart/form-data">
                     <h1>Edit Profile</h1>
                     <hr>
-                    <div>
+                    <div class="user-profile-pic">
                         <?php $image = $user_data->photo;
                             if (!$image){
                                 $image = "default.jpg";
@@ -189,49 +212,77 @@ if (isset($_POST['delete'])) {
                         <label class="img-label" for="image">Upload Image</label>
                         <input type="file" accept="image/jpeg, image/jpg, image/png" id="image" name="image">
                     </div>
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" class="fname" id="fname" name="fname" required value ="<?php echo $user_data->fname?>">
+                    <div class="form-container">
+                        <form class="edit">
+                            <h2>Edit Account Information</h2>
+                            <div class="info-box-2col">
+                                <div class="acc-info">
+                                    <label for="fname">First Name:</label>
+                                    <input type="text" class="form-control" id="fname" name="fname" 
+                                    placeholder="Enter your first name" required value ="<?php echo $user_data->fname?>">
+                                </div>
+
+                                <div class="acc-info">
+                                    <label for="lname">Last Name:</label>
+                                    <input type="text" class="form-control" id="lname" name="lname"
+                                        placeholder="Enter your last name" required value="<?php echo $user_data->lname?>">
+                                </div>
+
+                                
+                                <div class="acc-info">
+                                    <label for="num">Phone Number:</label>
+                                    <input type="text" class="form-control" id="num" name="num"
+                                        placeholder="Enter your phone number" value="<?php echo $user_data->mobile_number?>">
+                                </div>
+
+                                
+                                <div class="acc-info">
+                                    <label for="addr">Address:</label>
+                                    <input type="text" class="form-control" id="addr" name="addr"
+                                        placeholder="Enter your home address"  value="<?php echo $user_data->home_address?>">
+                                </div>
+                        </form>    
                     </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name:</label>
-                        <input type="text" class="form-control" id="lname" name="lname"
-                            placeholder="Enter your last name" required value="<?php echo $user_data->lname?>">
-                    </div>
+
                     <div class="text-center">
                         <button type="submit" name="update" id ="update" class="btn btn-primary">Update</button>
                     </div>
                 </form>
-            </div>
-
-            <div class="container">
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label for = "password">Current Password</label>
-                        <input type="password" name="password" id="password" class="form-control">
+                    <div class="info-box-1col">
+                        <form action="" method="POST">
+                            <h2>Change Password</h2>
+                            <div class="form-group">
+                                <label for = "password">Current Password</label>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for = "newPassword">New Password</label>
+                                <input type="password" name="newPassword" id="newPassword" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for = "conPassword">Confirm Password</label>
+                                <input type="password" name="conPassword" id="conPassword" class = "form-control">
+                            </div>
+                            <div class="text-center-pass">
+                                <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for = "newPassword">New Password</label>
-                        <input type="password" name="newPassword" id="newPassword" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for = "conPassword">Confirm Password</label>
-                        <input type="password" name="conPassword" id="conPassword" class = "form-control">
-                    </div>
-                    <button type="submit" name = "changePassword" id="changePassword" class="btn btn-primary">Change Password</button>
-                </form>
-            </div>
 
-            <div class="container mt-5">
-                Warning You are trying to delete your account
-                <form action="" method="post">
-                    <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
-                </form>
-            </div>
+                    
+                    <div class="btn-group">
+                        <form action="" method="post">
+                            Warning! You are trying to delete your account<br>
+                            <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
+                        </form>
+                        <form action="" method="post">
+                        <button type="submit" name = "cancel" id="cancel" class="btn btn-primary">Cancel</button><br>
+                        </form>
 
-            
-            
+                    </div>
+            </div>
         </div>
+    </div>
     </div>
     
     <script>
@@ -254,8 +305,14 @@ if (isset($_POST['delete'])) {
             }
         });
     </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
 <?php require_once "..\components\call_across_pages.php"?>
+<?php require_once "..\components\light-switch.php"?>
+<?php require_once "../components/user/footer.html"?>
+
 </body>
 
 </html>

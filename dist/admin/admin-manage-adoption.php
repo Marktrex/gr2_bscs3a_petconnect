@@ -31,7 +31,14 @@ $adoptionData = $adoptionController->getAllAdoption();
 </head>
 <body>
     <div class="container">
-        <header></header>
+        <header>
+            <nav class="navbar">
+                <a href="admin-dashboard.php" class="logo"
+                    ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
+                /></a>
+                
+            </nav>
+        </header>
 
         <main>
             <div id="content">
@@ -153,7 +160,7 @@ $adoptionData = $adoptionController->getAllAdoption();
                 </section>
             </div>
         </main>
-
+        <?php require_once '..\components\light-switch.php'?>
         <?php require_once "../components/admin/adminSidebar.php"?>
     </div>
 </body>

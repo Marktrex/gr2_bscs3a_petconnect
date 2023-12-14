@@ -21,10 +21,18 @@ class PetModelController{
         return $pet_data;
     }
 
-    public function search($value, $columns, $userOperator=null){
-        $pets = $this->pets;
-        return $pets->search($value, $columns,$userOperator);
+    public function search($value, $columns, $userOperator = null)
+    {
+        $pets = new Pet();
+
+        // Append the isAdopted condition
+        $columns[] = ['isAdopted'];
+        $value[] = 0; // Assuming 0 means not adopted, adjust if needed
+        $userOperator[] = true;
+
+        return $pets->search($value, $columns, $userOperator);
     }
+
 
     public function get_four_latest_pet($pet_type){
         $pets = $this->pets;

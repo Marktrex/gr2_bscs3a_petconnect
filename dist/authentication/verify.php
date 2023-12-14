@@ -1,6 +1,6 @@
 <?php 
-// session_start();
-print_r($_SESSION);
+session_start();
+// print_r($_SESSION);
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -9,17 +9,26 @@ use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-if (!isset($_SESSION['auth_user'])) {
-    // Redirect to login page if the user is not authenticated
-    header("Location: ../authentication/loginpage.php");
+if (!isset($_SESSION['email'])) {
+    // Redirect to login page if the email failed to load
+    header("Location: loginpage.php");
     exit();
   }
   
-  if ($_SESSION['auth_user']['role'] === "1") { 
-    // Redirect to admin dashboard if the user has admin role
-    header("Location: ../admin/admin-dashboard.php");
-    exit();
-  }
+if (isset($_SESSION['auth_user'])) {
+    // Check if the role is equal to 1 and email is set
+    if ($_SESSION['auth_user']['role'] === "1") {
+        // Redirect to admin dashboard if the user has admin role and email is set
+        header("Location: ../admin/admin-dashboard.php");
+        exit();
+    }
+    // Redirect to a different page if the role is not equal to 1 or email is not set (optional)
+    else {
+        header("Location: ../error/403-forbidden.html");
+        exit();
+    }
+}
+
 
 if (isset($_POST["resend"])){
    
@@ -125,7 +134,7 @@ if (isset($_POST["resend"])){
 // Assuming $conn and $email are defined elsewhere in your code
 
 if (isset($_POST["verify"])) {
-    $email = $_SESSION['email']; // Add this line to set $email
+    $email = $_SESSION['email'];
 
     $otp_code = '';
     // Concatenate the values from each input field to form the complete OTP
@@ -195,6 +204,7 @@ if (isset($_POST["verify"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otp  |   Petconnect</title>
     <link rel="stylesheet" href="../css/newlyAdded/otp-page.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\otp-colors.css">
 </head>
 <body>
     <div class="container">
@@ -243,4 +253,6 @@ if (isset($_POST["verify"])) {
         })
      });
 </script>
+<?php require_once "../components/light-switch.php";?>
+    <script src="../script/change-color-schema.js"></script>
 </html>

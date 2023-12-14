@@ -76,20 +76,23 @@ if (document.documentElement.getAttribute("data-theme") == "dark"){
 }
 
 
-function setLogo(isDark)
-{
+function setLogo(isDark) {
     const icon = document.querySelector('#logIcon');
+
+    // Check if #logIcon exists
+    if (!icon) {
+        console.error("#logIcon not found");
+        return; // Exit the function if #logIcon does not exist
+    }
+
     const darkIcon = "logo-dark.png";
     const lightIcon = "logo.png";
 
     let iconValue = icon.getAttribute('src');
     let parts = iconValue.split('/');
-    if(isDark)
-    {
+    if (isDark) {
         parts[parts.length - 1] = darkIcon;
-    }
-    else
-    {
+    } else {
         parts[parts.length - 1] = lightIcon;
     }
 

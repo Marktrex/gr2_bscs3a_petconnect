@@ -51,7 +51,7 @@ class AppointmentModelController{
         // make appointment
         $lastId =  $this->appointment->insert($appointmentData);
         $token = $appointmentData['token'];
-        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId . '';
+        $link = $root . '/dist/user/appointment_success.php?token=' . $token . '&id=' . $lastId;
         //send email
         $currentUser = $user->get_user_data_by_id($userId);
         $recipient = $currentUser->email;
@@ -178,7 +178,9 @@ class AppointmentModelController{
         $withAttachment = false;
         if ($status == "Accepted"){
             $body = $emailMaker->make_body_email_accept($fullname, $type, $date, $timeslot);
-            $withAttachment = true;
+            if ($type == "Adopt"){
+                $withAttachment = true;
+            }
         }
         if ($status == "Declined"){
             $body = $emailMaker->make_body_email_decline($fullname);

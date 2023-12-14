@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,7 @@
     <title>Call</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='..\css\VideoCall\VideoCall.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 <body>
 
@@ -14,11 +16,10 @@
         <div id="video-streams">
             
         </div>
-
         <div id="stream-controls">
-            <button id="leave-btn">Leave Stream</button>
-            <button id="mic-btn">Mic On</button>
-            <button id="camera-btn">Camera on</button>
+            <button id="camera-btn"><span class="material-symbols-outlined">videocam</span></button>
+            <button id="mic-btn"><span class="material-symbols-outlined">mic</span></button>
+            <button id="leave-btn"><span class="material-symbols-outlined">call_end</span></button>
         </div>
     </div>
     
@@ -32,6 +33,19 @@
     leave.addEventListener('click', () => {
         window.close();
     });
+
+    const cameraBtn = document.getElementById('camera-btn');
+    cameraBtn.addEventListener('click', () => {
+        const span = cameraBtn.querySelector('span');
+        span.textContent = span.textContent === 'videocam' ? 'videocam_off' : 'videocam';
+    });
+
+    const micBtn = document.getElementById('mic-btn');
+    micBtn.addEventListener('click', () => {
+        const span = micBtn.querySelector('span');
+        span.textContent = span.textContent === 'mic' ? 'mic_off' : 'mic';
+    });
+
 </script>
 <script src="..\script\AgoraRTC_N-4.19.3.js"></script>
 <script src='..\script\Call.js'></script>

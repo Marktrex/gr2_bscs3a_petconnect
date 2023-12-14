@@ -4,7 +4,7 @@
     }
     $token = $_SESSION['auth_user']['token'];
 ?>
-
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 <style>
     #placeForCall{
         position:fixed;
@@ -12,8 +12,57 @@
         left:50%;
         transform: translateX(-50%);
         z-index:10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2vh;
+        padding: 3rem;
+        & > form{
+            min-width: fit-content;
+            min-height: fit-content;
+            background-color: #fdc161;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 3rem;
+            border-radius: 1rem;
+            gap: 2vh;
+            & > img {
+                border-radius: 50%;
+                height: 5rem;
+                width: 5rem;
+            }
+            & > .button_container{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 2vw;
+                width: 100%;
+                & > button{
+                border-radius: 50%;
+                padding: 1rem;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                align-self: center;
+                }
+                > .join_call_button{
+                    background-color: #4caf50;
+                    border: none;
+                    color: white;
+                }
+                > .decline_call_button{
+                    background-color: #f44336;
+                    border: none;
+                    color: white;
+                }
+            }
+        }
     }
 </style>
+
 
 <div id= "placeForCall">
 </div>
@@ -32,9 +81,13 @@
     let output="";
     if(data.type == 'call') {
         output = '<form class="join_call_form" id="join_call_form_"' + data.channel + '" method="POST" >';
+        output += '<img src="../image/logo.png" alt="logo">';
+        output += '<p>Incoming Call from admin</p>';
         output += '<input type="hidden" name = "channel" value="' + data.channel + '">';
-        output += '<button type="submit"  id="join_call_button">Join Call</button>';
-        output += '<button type="button" class="decline_call_button" id="decline_call_button">Decline Call</button>';
+        output += '<div class = "button_container">';
+        output += '<button type="submit" class="join_call_button" id="join_call_button"><span class="material-symbols-outlined">call</span></button>';
+        output += '<button type="button" class="decline_call_button" id="decline_call_button"><span class="material-symbols-outlined">call_end</span></button>';
+        output += '</div>';
         output += '</form>';
     }
     document.getElementById('placeForCall').innerHTML += output;
@@ -51,8 +104,8 @@
         var formData = new FormData();
         formData.append('action', 'join_call');
         formData.append('channel', channel);
-
-        fetch('../../action.php', {
+        console.log(formData);
+        fetch('..\\function\\call_chat\\action.php', {
             method: 'POST',
             body: formData
         })
@@ -70,7 +123,8 @@
     document.addEventListener('click', function(event) {
         if (event.target.matches('.decline_call_button')) {
             var parentElement = event.target.parentElement;
-            removeElement(parentElement);
+            var grandElement = parentElement.parentElement;
+            removeElement(grandElement);
         }
     });
 

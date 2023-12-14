@@ -78,7 +78,6 @@ $eventsJson = json_encode($events);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     
     <link rel="icon" href="../image/icon.png" type="image/png">
@@ -128,9 +127,7 @@ $eventsJson = json_encode($events);
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
+                    right: 'prev today next'
                 },
                 selectable: true,
                 select: function(info) {
@@ -169,21 +166,6 @@ $eventsJson = json_encode($events);
                 <a href="admin-dashboard.php" class="logo"
                     ><img src="../icons/logo.png" alt="Insert Logo" id="logIcon"
                 /></a>
-                <ul class="items">
-                    <li>
-                    <a class="" id="messages" href="../../privatechat.php"
-                        ><i class="fa fa-envelope"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a class="" id="notifications" href="#"
-                        ><i class="fa fa-bell"></i
-                    ></a>
-                    </li>
-                    <li>
-                    <a href="#"><img src="../icons/icons-user.png" alt="Profile" /></a>
-                    </li>
-                </ul>
             </nav>
         </header>
         <main class="content">
@@ -366,7 +348,11 @@ $eventsJson = json_encode($events);
                                             echo '<button type = "button" class="accept-btn" data-appointment-id="' . $row->appointment_id . '">Accept</button>';
                                             echo '<button type = "button" class="decline-btn" data-appointment-id="' . $row->appointment_id . '">Decline</button>';
                                             echo '</span>';
-                                        } else {
+                                        } elseif($row->status == 'Accepted') {
+                                            echo '<span class = "action-btn">';
+                                            echo '<button type = "button" class="cancel-btn" data-appointment-id="' . $row->appointment_id . '">Cancel</button>';
+                                            echo '</span>';
+                                        }else {
                                             // Show the status value
                                             echo $row->status;
                                         }
@@ -427,7 +413,7 @@ $eventsJson = json_encode($events);
             // Check if the request was successful
             if (xhr.status === 200) {
                 // Reload the page to reflect the updated status
-                // location.reload();
+                location.reload();
             }
         };
         xhr.send('appointmentId=' + appointmentId + '&status=' + status);

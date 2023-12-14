@@ -60,8 +60,16 @@ h1 {
 
 .calendar-container{
     width: 80%;
-    background-color: white;
+    background-color: #f4b85b;
     color: #127475;
+    padding: 1rem;
+    max-width: 1000px;
+    & a {
+        color: white;
+    }
+    .fc-daygrid-day-frame:hover{
+        background-color: #72d6d5;
+    }
 }
 
 .today {
@@ -101,15 +109,15 @@ thead{
     border: 1px solid #414a4c;
     padding: 10px 15px;
 }
-.delete-link {
-        color: red;
-    }
+.decline-btn {
+    color: red;
+}
 .action-btn{
     display: flex;
     justify-content: center;
     gap: 10px;
 }
-.action-btn>a{
+.action-btn>button{
     text-decoration: none;
     background: #f5dfbb;
     border: 1px solid #e66155;
@@ -118,8 +126,9 @@ thead{
     font-weight: bold;
     border-radius: 10px;
     border-color: black;
+    cursor: pointer;
 }
-.action-btn a:hover{
+.action-btn button:hover{
     color: #f2542d;
     border-color: #f2542d;
     transition: 0.3s ease-in-out;

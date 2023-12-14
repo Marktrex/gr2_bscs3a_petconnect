@@ -12,23 +12,25 @@ if (!isset($_SESSION['auth_user'])) {
   echo 'alert("You do not have access to this page");';
   echo '</script>';
   header("Location: ../authentication/loginpage.php");
-  exit();
+    exit();
 } 
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
-$type = $_GET['type'] ?? $_GET['type'] ?? 'Cat';
+$type = $_GET['type'] ?? 'Cat';
+$searchTerm = isset($_GET['search']) ? '%' . $_GET['search'] . '%' : '%';
 
 try { //research this try catch method
    
     // Build the base query
-    $query = "SELECT * FROM pets WHERE type= :type";
+    $stmt = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0 AND name LIKE :searchTerm";
+    $stmt = $conn->prepare($stmt);
 
+    $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
 
 
     // Prepare the statement
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':type', $type);
+    $stmt->bindParam(':type', $type, PDO::PARAM_STR);
 
     // Execute the statement
     $stmt->execute();

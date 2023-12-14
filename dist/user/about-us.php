@@ -100,6 +100,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
     </main>
     <?php require_once "..\components\light-switch.php"?>
     <?php require_once "../components/user/footer.html"?>
+    <?php require_once "..\components\call_across_pages.php"?>
     <?php require_once "..\components\light-switch.php"?>
 </body>
 </html>
