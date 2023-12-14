@@ -100,6 +100,11 @@ main {
       text-align: center;
       padding: 3vw;
       color: #F5DFBB;
+      & > img {
+        height: 60%;
+        width: 60%;
+        aspect-ratio: 1/1;
+        }
     }
   }
 }

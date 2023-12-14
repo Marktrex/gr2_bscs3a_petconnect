@@ -96,18 +96,23 @@ if ($_SESSION['auth_user']['role'] === "1") {
             <i id="right" class="fa-solid fa-angle-right"></i>
           </div>
         </div>
-      <div class="extraInfo">
+        <div class="extraInfo">
         <div>
-          <h1>
-            Contact Us
-          </h1>
+          <h1>Contact Us</h1>
+          <br><br><br><br>
+            <h4>Gmail: PetConnect@gmail.com</h4><br>
+            <h4>Phone Number: 09123456789</h4><br>
+            <h4>Viber: 09123456789</h4><br>
+            <!-- Add more contacts as needed -->
+          
         </div>
         <div>
-          <h1>
-            Address
-          </h1>
+          <h1>Address</h1>
+          <br><br><br>
+            <img src="..\image\gcash-bank\address.png" alt="">
+            <!-- Add more contacts as needed -->
         </div>
-      </div>
+        </div>
     </main>
     <?php require_once "..\components\light-switch.php"?>
     <?php require_once "../components/user/footer.html"?>

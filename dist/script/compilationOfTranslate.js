@@ -21,6 +21,8 @@ export const translations = {
       Visit: "Visitar",
       Volunteer: "Voluntariado",
       login: "Iniciar sesiÃ³n",
+      "Who we are": "Quienes somos",
+      "Adoption Stories": "Historias de adopción",
       //index or homepage
       "Give our Furry Companions": "Dale a nuestros Compañeros Peludos",
       "a chance to have their Forever Homes": "una oportunidad de tener sus Hogares para Siempre",
@@ -174,7 +176,9 @@ export const translations = {
       "Kindly arrive at the designated location no later than ten minutes before your scheduled the time of the appointment.": "Por favor,llegue a la ubicación designada no más tarde de diez minutos antes de la hora programada de la cita.",
       "Please send our admin a private message or email our customer support team at mail to petconnect@gmail.com at least 24 hours in advance if you need to cancel or reschedule your appointment.": "Por favor, envíe un mensaje privado a nuestro administrador o envíe un correo electrónico a nuestro equipo de soporte al cliente a mail to petconnect@gmail.com al menos 24 horas antes si necesita cancelar o reprogramar su cita.",
       "Home": "Inicio",
-
+      "Contact us via Gmail:": "Contáctanos por Gmail:",
+      "Contact us via Phone Number:": "Contáctanos por Número de Teléfono:",
+      "Contact us via Viber:": "Contáctanos por Viber:",
     },
     fn: {
       "Profile": "Properlyo",
@@ -193,6 +197,9 @@ export const translations = {
       Visit: "Bisitahin",
       Volunteer: "Mag-volunteer",
       login: "Mag-login",
+      "Who we are": "Kung sino tayo",
+      "Adoption Stories": "Mga Kwento ng Pag-ampon",
+
       //index or homepage
       "Give our Furry Companions": "Ibigay sa aming Mga Kasamang May Buhok",
       "a chance to have their Forever Homes": "isang pagkakataon na magkaruon ng kanilang Panghabang-buhay na Tahanan",
@@ -345,7 +352,9 @@ export const translations = {
       "Kindly arrive at the designated location no later than ten minutes before your scheduled the time of the appointment.": "Mangyaring dumating sa itinakdang lokasyon hindi huli sa sampung minuto bago ang itinakdang oras ng appointment.",
       "Please send our admin a private message or email our customer support team at mail to petconnect@gmail.com at least 24 hours in advance if you need to cancel or reschedule your appointment.": "Mangyaring magpadala ng pribadong mensahe sa aming admin o mag-email sa aming koponan ng suporta sa customer sa mail to petconnect@gmail.com nang hindi kukulangin sa 24 oras bago kung kailangan mong kanselahin o i-rechedule ang iyong appointment.",
       "Home": "Home",
-
+      "Contact us via Gmail:": "Makipag-ugnayan sa amin sa pamamagitan ng Gmail:",
+      "Contact us via Phone Number:": "Makipag-ugnayan sa amin sa pamamagitan ng Numero ng Telepono:",
+      "Contact us via Viber:": "Makipag-ugnayan sa amin sa pamamagitan ng Viber:",
   }
     };
   

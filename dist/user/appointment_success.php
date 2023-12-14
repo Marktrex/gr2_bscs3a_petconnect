@@ -51,7 +51,7 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
             <span class="apptype"><h3>Appointed Type:</span> <?php echo $appointment->appointment_type?></h3></span>
             <span class="appdate"><h3>Appointed Date:</span>  <?php echo $appointment->appointment_date?></h3></span>
             <span class="sesstime"><h3>Session Time:</span>  <?php echo $appointment->time_slot?></h3></span>
-            <span class="address"><h3>Address: Dhvsu Main</h3></span>
+            <span class="address"><h3>Address: DHVSU Main</h3></span>
           </div>
 
           <div class="conditions">
