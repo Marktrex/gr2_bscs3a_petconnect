@@ -7,7 +7,6 @@
     height: 100%;
     padding-left: 20vw;
     display: none;
-    border-radius: 15px;
     box-shadow: var(--shadow-content);
 }
 
@@ -21,7 +20,6 @@
     background-color:#0e9594;
     display: flex;
     align-items: center;
-    border-radius: 0px 15px 0px 0px;
 }
 
 .conversation-back {
@@ -307,7 +305,7 @@
     background-color: #ffe0b0;
     display: flex;
     align-items: flex-end;
-    border-radius: 0px 0px 15px 0px;
+
 }
 
 .conversation-form-group {

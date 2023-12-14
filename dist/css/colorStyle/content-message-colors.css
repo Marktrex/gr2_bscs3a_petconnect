@@ -34,17 +34,17 @@
   }
 
   [data-theme="dark"] {
-    --back-button-text-color: #0a6262;
-    --back-button-bg-color: #fdf7ec;
+    --back-button-text-color: #240155;
+    --back-button-bg-color: #ab62ff;
   
     --back-button-hover-text-color: #fdf7ec;
-    --back-button-hover-bg-color: #127475;
+    --back-button-hover-bg-color: #522289;
   
-    --chat-container-text-color: #127475;
+    --chat-container-text-color: #1EDDD4;
   
-    --chat-content-link-color: azure;
+    --chat-content-link-color: #1EDDD4;
   
-    --content-sidebar-bg-color: rgb(38, 148, 148);
+    --content-sidebar-bg-color: #240155;
   
     --content-sidebar-input-bg-color: rgb(108, 178, 178);
     --content-sidebar-input-border-color: #0e9594;
@@ -54,9 +54,9 @@
     --content-sidebar-submit-bg-color: transparent;
   
     --content-messages-link-color: white;
-    --content-messages-link-hover-bg-color: #127475;
+    --content-messages-link-hover-bg-color: #522289;
   
-    --content-message-title-color: white;
+    --content-message-title-color: 1;
     --content-message-title-bg-color: rgb(38, 148, 148);
     --content-message-title-before-border-color: #cbd5e1;
   
