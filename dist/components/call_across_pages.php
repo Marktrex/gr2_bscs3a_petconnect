@@ -81,13 +81,13 @@
     let output="";
     if(data.type == 'call') {
         output = '<form class="join_call_form" id="join_call_form_"' + data.channel + '" method="POST" >';
-        output += '<img src="../image/logo.png" alt="logo">';
-        output += '<p>Incoming Call from admin</p>';
-        output += '<input type="hidden" name = "channel" value="' + data.channel + '">';
-        output += '<div class = "button_container">';
-        output += '<button type="submit" class="join_call_button" id="join_call_button"><span class="material-symbols-outlined">call</span></button>';
-        output += '<button type="button" class="decline_call_button" id="decline_call_button"><span class="material-symbols-outlined">call_end</span></button>';
-        output += '</div>';
+        output += ' <img src="../image/logo.png" alt="logo">';
+        output += ' <p>Incoming Call from admin</p>';
+        output += ' <input type="hidden" name = "channel" value="' + data.channel + '">';
+        output += ' <div class = "button_container">';
+        output += '     <button type="submit" class="join_call_button" id="join_call_button"><span class="material-symbols-outlined">call</span></button>';
+        output += '     <button type="button" class="decline_call_button" id="decline_call_button"><span class="material-symbols-outlined">call_end</span></button>';
+        output += ' </div>';
         output += '</form>';
     }
     document.getElementById('placeForCall').innerHTML += output;
@@ -120,8 +120,11 @@
     }
     });
     //decline call
+    //decline call
     document.addEventListener('click', function(event) {
         if (event.target.matches('.decline_call_button')) {
+            event.stopPropagation(); // Stop the event propagation
+
             var parentElement = event.target.parentElement;
             var grandElement = parentElement.parentElement;
             removeElement(grandElement);
