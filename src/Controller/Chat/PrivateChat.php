@@ -129,7 +129,7 @@ class PrivateChat
 			ON chat_message.call_id = c.call_id
 		WHERE (chat_message.from_user_id = :from_user_id AND chat_message.to_user_id = :to_user_id) 
 		OR (chat_message.from_user_id = :to_user_id AND chat_message.to_user_id = :from_user_id)
-		";
+		ORDER BY timestamp ASC";
 
 		$statement = $this->connect->prepare($query);
 
