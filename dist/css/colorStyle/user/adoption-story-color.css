@@ -7,7 +7,8 @@
     --main-bg-color-3: #F2542D;
     --main-text-color-3: #FFCF83;
     --main-bg-color-4: #FDC161;
-    --main-text-color-4: #FFCF83;
+    --main-text-color-4: #F2542D;
+    --header-bg-image: url('../../image/pet-stories/header.png');
 }
 [data-theme="dark"] {
     --body-bg-color: #090b29;
@@ -26,9 +27,7 @@ body {
 }
 
 header {
-   
     background-image: var(--header-bg-image);
-   
 }
 
 main {
