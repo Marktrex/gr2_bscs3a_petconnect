@@ -1,0 +1,140 @@
+:root {
+    --back-button-text-color: #0a6262;
+    --back-button-bg-color: #fdf7ec;
+  
+    --back-button-hover-text-color: #fdf7ec;
+    --back-button-hover-bg-color: #127475;
+  
+    --chat-container-text-color: #127475;
+  
+    --chat-content-link-color: azure;
+  
+    --content-sidebar-bg-color: rgb(38, 148, 148);
+  
+    --content-sidebar-input-bg-color: rgb(108, 178, 178);
+    --content-sidebar-input-border-color: #0e9594;
+    --content-sidebar-input-focus-border-color: black;
+  
+    --content-sidebar-submit-text-color: #0e9594;
+    --content-sidebar-submit-bg-color: transparent;
+  
+    --content-messages-link-color: white;
+    --content-messages-link-hover-bg-color: #127475;
+  
+    --content-message-title-color: white;
+    --content-message-title-bg-color: rgb(38, 148, 148);
+    --content-message-title-before-border-color: #cbd5e1;
+  
+    --content-message-text-color: grey;
+  
+    --content-message-unread-text-color: white;
+    --content-message-unread-bg-color: #0e5354;
+  
+    --content-message-time-color: white;
+  }
+
+  [data-theme="dark"] {
+    --back-button-text-color: #0a6262;
+    --back-button-bg-color: #fdf7ec;
+  
+    --back-button-hover-text-color: #fdf7ec;
+    --back-button-hover-bg-color: #127475;
+  
+    --chat-container-text-color: #127475;
+  
+    --chat-content-link-color: azure;
+  
+    --content-sidebar-bg-color: rgb(38, 148, 148);
+  
+    --content-sidebar-input-bg-color: rgb(108, 178, 178);
+    --content-sidebar-input-border-color: #0e9594;
+    --content-sidebar-input-focus-border-color: black;
+  
+    --content-sidebar-submit-text-color: #0e9594;
+    --content-sidebar-submit-bg-color: transparent;
+  
+    --content-messages-link-color: white;
+    --content-messages-link-hover-bg-color: #127475;
+  
+    --content-message-title-color: white;
+    --content-message-title-bg-color: rgb(38, 148, 148);
+    --content-message-title-before-border-color: #cbd5e1;
+  
+    --content-message-text-color: grey;
+  
+    --content-message-unread-text-color: white;
+    --content-message-unread-bg-color: #0e5354;
+  
+    --content-message-time-color: white;
+  }
+  
+  .back-button a {
+      color: var(--back-button-text-color) !important;
+      background-color: var(--back-button-bg-color);
+  }
+  
+  .back-button a:hover {
+      background-color: var(--back-button-hover-bg-color);
+      color: var(--back-button-hover-text-color) !important;
+  }
+  
+  .chat-container {
+      color: var(--chat-container-text-color);
+  }
+  
+  .chat-content a {
+      color: var(--chat-content-link-color);
+  }
+  
+  .content-sidebar {
+      background-color: var(--content-sidebar-bg-color);
+  }
+  
+  .content-sidebar-input {
+      background-color: var(--content-sidebar-input-bg-color);
+      border: 1px solid var(--content-sidebar-input-border-color);
+  }
+  
+  .content-sidebar-input:focus {
+      border-color: var(--content-sidebar-input-focus-border-color);
+  }
+  
+  .content-sidebar-submit {
+      color: var(--content-sidebar-submit-text-color);
+      background-color: var(--content-sidebar-submit-bg-color);
+      outline: transparent;
+  }
+  
+  .content-messages-list > * > a {
+      color: var(--content-messages-link-color);
+  }
+  
+  .content-messages-list > * > a:hover {
+      background-color: var(--content-messages-link-hover-bg-color);
+  }
+  
+  .content-message-title {
+      color: var(--content-message-title-color);
+  }
+  
+  .content-message-title > * {
+      background-color: var(--content-message-title-bg-color);
+  }
+  
+  .content-message-title::before {
+      border-bottom: 1px solid var(--content-message-title-before-border-color);
+  }
+  
+  .content-message-text {
+      color: var(--content-message-text-color);
+  }
+  
+  .content-message-unread {
+      color: var(--content-message-unread-text-color);
+      background-color: var(--content-message-unread-bg-color);
+  }
+  
+  .content-message-time {
+      color: var(--content-message-time-color);
+  }
+  
