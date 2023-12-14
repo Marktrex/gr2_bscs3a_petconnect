@@ -9,22 +9,22 @@ use MyApp\Controller\AuditModelController;
 
 require '../../vendor/autoload.php';
 require '../function/config.php'; //PDO connection to the database
-if (!isset($_SESSION['auth_user'])) {
-    // Redirect to login page if the user is not authenticated
+if (!isset($_SESSION['email'])) {
+    // Redirect to login page if the email failed to load
     header("Location: loginpage.php");
     exit();
   }
   
 if (isset($_SESSION['auth_user'])) {
     // Check if the role is equal to 1 and email is set
-    if ($_SESSION['auth_user']['role'] === "1" && isset($_SESSION['email'])) {
+    if ($_SESSION['auth_user']['role'] === "1") {
         // Redirect to admin dashboard if the user has admin role and email is set
         header("Location: ../admin/admin-dashboard.php");
         exit();
     }
     // Redirect to a different page if the role is not equal to 1 or email is not set (optional)
     else {
-        header("Location: ../some-other-page.php");
+        header("Location: ../error/403-forbidden.html");
         exit();
     }
 }

@@ -56,13 +56,7 @@ class AdoptionManage {
         $fullname = $userData->fname . " " . $userData->lname;
         $title = "Story Request";
         $link = $root . "dist/user/add-adoption-story.php?token=" . $token . "&adoptionId=" . $adoptionId;
-        $body = '
-            <h1>Pet Connect Story Request</h1>
-            <p>Our team is eager to know your experience to our pet</p>
-            <p>Please share your story to us</p>
-            <p>Click the link below to redirect to the page</p>
-            <a href="' . $link . '">Click Here</a>
-        ';
+        $body = $this->make_body_email($fullname, $link);
 
         $this->make_email($recipient, $fullname, $title, $body);
 
@@ -131,6 +125,71 @@ class AdoptionManage {
         } catch (Exception $e) {
             return false;
         }
+    }
+
+
+    private function make_body_email($name, $link){
+        return '<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Share your Story</title>
+        </head>
+        <body style = "background-color: #fdc161; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif;">
+            <div style="padding: 5vw;
+                color:#127475;
+                ">
+                <div style="border: none; border-bottom: 1px solid rgba(242, 84, 45, 0.7); padding: 1rem 0;">
+                    <img src="https://i.ibb.co/b6GMMSM/logo.png" alt="Pet Connect Logo" style="border-radius: 50%;
+                    height: 10vw; width: 12vw; aspect-ratio: 1/1; margin-left: 5vw;">
+                </div>
+                <h2 style="text-align: center;">
+                    <img src="https://i.ibb.co/1LzZbWH/Ok.png" alt="Image" style="border-radius: 50%;
+                    aspect-ratio: 1/1; height: 10vw; width: 12vw;">
+                    <br>
+                    The PetConnect Team is asking for your story
+                </h2>
+                <br>
+                <div style="padding: 5vw;">
+                    <p>
+                        Dear <span style="font-weight: bold;">'.$name.'</span>,
+                    </p>
+                    <br><br>
+                    <p>
+                        We are striving everyday to encourage people to meet their pets.
+                        And now Pet Connect is asking for your story to help us find the owners of our pets.
+                    </p>
+                    <a href="'.$link.'" style="background-color: #f5dfbb;
+                     padding: 10px;
+                     border-radius: 30px;
+                     border: 2px solid #ffb845;
+                     text-decoration: none;
+                     display: inline-block;
+                     color: black;">
+                        Click the link to visit the page
+                    </a>
+                    <br>
+                    <p style="font-style: italic; font-size: 0.8rem;">
+                        PetConnect values data confidentially. Your information will be only used in appointment purposes.
+                    </p>
+                    <br>
+                    <p style=" font-size: 0.8rem;">
+                        If there is something wrong with your details please message us at our website <span style="text-decoration: underline;
+                        font-weight: bold; font-style: italic;">PetConnect.com</span>
+                    </p>
+                    <br>
+                    <p>
+                        Sincerely,
+                    </p>
+                    <p style="font-weight: bold;">
+                        PetConnect
+                    </p>
+                </div>
+            </div>
+        </body>
+        </html>
+        ';
     }
 }
 

@@ -8,6 +8,8 @@
     --button-text-color: #FFB845;
     --cancel-button-bg-color: #127475;
     --cancel-button-text-color: #FFB845;
+    --delete-btn-text-color: white;
+    --delete-btn-bg-color: red;
 }
 [data-theme="dark"] {
     --body-bg-color: #090b29;
@@ -19,6 +21,12 @@
     --button-text-color: #381162;
     --cancel-button-bg-color: #1eddd4;
     --cancel-button-text-color: #1eddd4;
+    --delete-btn-text-color: white;
+    --delete-btn-bg-color: red;
+}
+
+body{
+    background: var(--body-bg-color);
 }
 
 .main {
@@ -67,7 +75,10 @@ form hr {
 }
 
 
-
+#delete {
+    color: var(--delete-btn-text-color);
+    background-color: var(--delete-btn-bg-color);
+}
 
 
 

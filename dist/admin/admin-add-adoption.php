@@ -56,7 +56,7 @@ $usersData = $userController->getAllUsers();
         </header>
         <main>
             <div id="content">
-                <form action="" method="post" id="add_adoption">
+                <form action="" method="POST" id="add_adoption">
                     <div>
                         <h1>User Profile</h1>
                         <div>
@@ -120,7 +120,7 @@ $usersData = $userController->getAllUsers();
                         </div>
                     </div>
                 </form>
-                <button type="button" class="btn-add" onclick="document.getElementById('add_adoption').submit();">Add to adoption</button>
+                <button id="submit_button" class="btn-add">Add to adoption</button>
             </div>
             <div id="theTables">
                 <div class = "containsTable">
@@ -190,8 +190,15 @@ $usersData = $userController->getAllUsers();
     </div>
 </body>
 <script>
-    //adoption form
-    document.getElementById('add_adoption').addEventListener('submit', function(event) {
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('add_adoption');
+        var button = document.getElementById('submit_button');
+
+        button.addEventListener('click', function() {
+            form.submit();
+        });
+        
+        document.querySelector('#add_adoption').addEventListener('submit', function(event) {
             event.preventDefault();
             var userId = document.getElementById('userId');
             var petId = document.getElementById('petId');
@@ -210,7 +217,7 @@ $usersData = $userController->getAllUsers();
             .then(response => response.text())
             .then(data => {
                 alert(data);
-                location.reload();
+                // location.reload();
             })
             .catch(error => {
                 console.error(error);
@@ -299,5 +306,9 @@ $usersData = $userController->getAllUsers();
         }
         tag.src = change;
     }
+
+    });
+    //adoption form
+   
 </script>
 </html>
