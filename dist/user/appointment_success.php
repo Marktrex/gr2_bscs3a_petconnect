@@ -72,7 +72,7 @@ $status = $appointmentControl->make_appointment_pending($_GET['id'], $_GET['toke
             <h3>
               Please send our admin a private message or email our customer
               support team at mail to petconnect@gmail.com at least
-              <b>24 hours in advance</b> if you need to cancel or reschedule
+              24 hours in advance if you need to cancel or reschedule
               your appointment.
             </h3>
           </div>

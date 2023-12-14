@@ -122,7 +122,12 @@ export const translations = {
       "Delete Account": "Eliminar Cuenta",
       "Cancel": "Cancelar",
       //adoptprofile
-      "Animal: ": "Animal:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Animal:": "Animal:",
+        "Breed:": "Raza:",
+        "Age:": "Edad:",
+        "Sex:": "Género:",
+        "Date of Rescue:": "Fecha de Rescate:",
+        "About:": "Acerca de:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Agendar Cita",
       //adoption-story
       "Adoption Story": "Historia de adopción",
@@ -251,7 +256,12 @@ export const translations = {
       "Delete Account": "Burahin ang Account",
       "Cancel": "Kanselahin",
       //adoptpage
-      "Animal: ": "Hayop:", //ayaow nila ma translate etong mga to brred,age, etc
+      "Animal:": "Hayop:",
+      "Breed:": "Lahi:",
+      "Age:": "Edad:",
+      "Sex:": "Kasarian:",
+      "Date of Rescue:": "Petsa ng Pagliligtas:",
+      "About:": "Tungkol sa:",
       "Book Appointment": "Mag-Book ng Apointment",
       //adoption-story
       "Adoption Story": "Kwento ng Pag-ampon",
