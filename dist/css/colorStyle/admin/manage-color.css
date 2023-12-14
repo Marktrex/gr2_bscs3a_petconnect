@@ -27,6 +27,10 @@
     --tr-border-color: #ccc;
     --td-border-bottom-color: #eee;
     --table-tr-active-bg-color: #a9926f;
+
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-gradient-start: #ffb845;
+    --scrollbar-thumb-gradient-end: #0e9594;
 }
 
 [data-theme="dark"]{
@@ -58,6 +62,10 @@
     --tr-border-color: #ccc;
     --td-border-bottom-color: #eee;
     --table-tr-active-bg-color: #3C038C;
+
+    --scrollbar-track-bg-color: #48345d;
+    --scrollbar-thumb-gradient-start: #ab62ff;
+    --scrollbar-thumb-gradient-end: #1eddd4;
 }
 
 
@@ -145,6 +153,15 @@ th{
 table tr.active{
     background-color: var(--table-tr-active-bg-color);
 }
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-bg-color);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
+  }
+  
 @media only screen and (max-width: 1024px)  {
     tr { border: 1px solid var(--tr-border-color); }
     td { 

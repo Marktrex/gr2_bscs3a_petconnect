@@ -1,4 +1,47 @@
 :root {
+  --content-card-background-color: #fff6e8;
+  --content-card-text-color: black;
+
+  --h1-color: #818996ff;
+  --content-card-date-background-color: var(--content-card-background-color);
+  --content-card-date-box-shadow-color: rgba(0, 0, 0, 0.99);
+  --content-card-date-text-color: #c6fffb;
+
+  --calendar-day-hover: ;
+  --calendar-day-text-hover: white;
+
+  --red-or-something: #08e0d6;
+  --links-color: black;
+
+  --table-responsive-border: #29252b;
+  --table-resposive-background-color: #fff6e8;
+
+  --table-responsive-box-shadow: rgba(0, 0, 0, 0.2);
+  --table-responsive-box-shadow2: rgba(0, 0, 0, 019);
+
+  --table-color: black;
+  --thead-background-color: #127475;
+  --theader-color: #090b29;
+
+  --tables-th-td-border: #414a4c;
+
+  --delete-link-color: red;
+  --action-btn-link-background-color: #00fff2;
+  --action-btn-link-border-color: #e66155;
+  --action-btn-link-border-color2: #1eddd4;
+
+  --action-btn-link-hover-color: #ab62ff;
+  --action-btn-link-hover-border-color: var(--action-btn-link-hover-color);
+  --tables-row-background-color: #c3fdfa;
+
+  --calendar-container-background-color: #f4b85b;
+  --calendar-container-color: #127475;
+
+  --scrollbar-track-bg-color: #fdf7ec;
+  --scrollbar-thumb-gradient-start: #ffb845;
+  --scrollbar-thumb-gradient-end: #0e9594;
+
+  --fc-daygrid-day-frame-hover-background-color:#72d6d5;
 }
 
 [data-theme="dark"] {
@@ -10,7 +53,7 @@
     --content-card-date-box-shadow-color: rgba(0, 0, 0, 0.99);
     --content-card-date-text-color: #c6fffb;
 
-    --calendar-day-hover: rgba(45,48,64,0.81);
+    --calendar-day-hover: ;
     --calendar-day-text-hover: white;
 
     --red-or-something: #08e0d6;
@@ -39,6 +82,15 @@
     --action-btn-link-hover-color: #ab62ff;
     --action-btn-link-hover-border-color: var(--action-btn-link-hover-color);
     --tables-row-background-color: #c3fdfa;
+
+    --calendar-container-background-color: #9d4df7;
+    --calendar-container-color: #c3fdfa;
+
+    --scrollbar-track-bg-color: #48345d;
+    --scrollbar-thumb-gradient-start: #ab62ff;
+    --scrollbar-thumb-gradient-end: #1eddd4;
+
+    --fc-daygrid-day-frame-hover-background-color: rgba(5, 12, 52, 0.81)
 }
 
 
@@ -105,4 +157,19 @@ thead {
 }
 .tables > tbody > tr {
   background-color: var(--tables-row-background-color);
+}
+.calendar-container {
+  background-color: var(--calendar-container-background-color);
+  color: var(--calendar-container-color);
+}
+.fc-daygrid-day-frame:hover {
+  background-color: var(--fc-daygrid-day-frame-hover-background-color)
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--scrollbar-thumb-gradient-start), var(--scrollbar-thumb-gradient-end));
 }

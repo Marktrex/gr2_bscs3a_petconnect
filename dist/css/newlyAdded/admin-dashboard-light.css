@@ -67,9 +67,10 @@ h1 {
     & a {
         color: white;
     }
-    .fc-daygrid-day-frame:hover{
-        background-color: #72d6d5;
-    }
+
+}
+.fc-daygrid-day-frame:hover{
+    background-color: #72d6d5;
 }
 
 .today {
