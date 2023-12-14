@@ -1,3 +1,21 @@
+:root{
+    --body-bg-color: #fdc161;
+    --video-container-bg-color: #203A49;
+    --button-bg-color: #F2542D;
+    --button-font-color: black;
+    --leave-btn-bg-color: #F60000;
+}
+[data-theme="dark"]{
+    --body-bg-color: #090b29;
+    --video-container-bg-color: #203A49;
+    --button-bg-color: #E15B3A;
+    --button-font-color: black;
+    --leave-btn-bg-color: #DF3333;
+}
+
+
+
+
 body{
     background:#fdc161;
 }
@@ -75,4 +93,22 @@ button{
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         width: 95%;
     }
+}
+
+body {
+    background: var(--body-bg-color);
+}
+
+
+.video-container {
+    background-color: var(--video-container-bg-color);
+}
+
+button {
+    background-color: var(--button-bg-color);
+    color: var(--button-font-color);
+}
+
+#leave-btn {
+    background-color: var(--leave-btn-bg-color);
 }
