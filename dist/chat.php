@@ -23,6 +23,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <link rel="stylesheet" href="css\chat\content-message.css">
 	<link rel="stylesheet" href="css\chat\conversation.css">
 	<link rel="stylesheet" href="css\chat\responsive-chatbox.css">
+
+    <link rel="stylesheet" href="..css\colorStyle\content-message-colors.css">
     <title>Chat</title>
 
 <!-- code from yt -->
@@ -472,6 +474,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 			$('#default_chat_area').addClass('active');
 		});
 	})
+
 
 </script>
 </html>

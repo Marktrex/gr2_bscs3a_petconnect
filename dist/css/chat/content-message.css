@@ -1,10 +1,12 @@
-:root{
-    --shadow-content: 0 .4rem .8rem #0005;
-    --shadow-main: 0px 3px 10px rgb(101, 101, 101);
-    --searchbar-color: rgb(108, 178, 178);
-    --sidebar-content-color: rgb(38, 148, 148);
-}
 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+  }
+  
 /* start: Chat */
 .back-button {
     margin-left: 17px; /* Adjust the margin as needed */
