@@ -96,6 +96,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 											<span class="content-message-unread" id="userid_'.$user['user_id'].'">'.$user['count_status'] .'</span>
 										</span>';
 									}
+									
 									else
 									{
 										$total_unread_message = '';

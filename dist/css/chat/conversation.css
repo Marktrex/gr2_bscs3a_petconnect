@@ -5,7 +5,7 @@
 .conversation {
     background-color: #fdf7ec;
     height: 100%;
-    padding-left: 256px;
+    padding-left: 20vw;
     display: none;
     border-radius: 15px;
     box-shadow: var(--shadow-content);
@@ -391,4 +391,16 @@
 }
 .conversation-default p {
     margin-top: 16px;
+}
+
+
+
+.join_call_button
+{
+    border: none;
+    border-radius: 30px;
+    color: black;
+    cursor: pointer;
+    background-color: lightskyblue;
+    padding: 1rem 3rem;
 }
