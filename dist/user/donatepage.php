@@ -46,21 +46,21 @@ if (!isset($_SESSION['auth_user'])) {
       <div class="container5">
         <div class="content-box">
           <div class="logo-with-text">
-            <img src="https://picsum.photos/200/300" alt="">
+            <img src="../icons/volunteer1.png" alt="">
             <h5>
               Your Donations Helps us to expand our animal shelter to provide more comfort
             </h5>
           </div>
 
           <div class="logo-with-text">
-            <img src="https://picsum.photos/200/300" alt="">
+            <img src="../icons/volunteer2.png" alt="">
             <h5>
               Provides Medical Care such as vaccinations, spaying,neutering and other Medical attentions
             </h5>
           </div>
 
           <div class="logo-with-text">
-            <img src="https://picsum.photos/200/300" alt="">
+            <img src="../icons/volunteer3.png" alt="">
             <h5>
               Helps us to cover the cost of important pet resources and other materials
             </h5>
@@ -75,7 +75,7 @@ if (!isset($_SESSION['auth_user'])) {
           </div>
           <div class="logo">
             <!-- Your logo goes here -->
-            <img src="" alt="" />
+            <img src="..\image\gcash-bank\bank.png" alt="" />
           </div>
           <div class="text-under-logo1">
             <p>Account Number: 1234-678-91011</p>
@@ -89,11 +89,11 @@ if (!isset($_SESSION['auth_user'])) {
           </div>
           <div class="logo">
             <!-- Your logo goes here -->
-            <img src="" alt="" />
+            <img src="..\image\gcash-bank\gcash.jpg" alt="" />
           </div>
           <div class="text-under-logo1">
-            <p>Account Number: 09293883802</p>
-            <p>Account Name: MarcMarc</p>
+            <p>Account Number: 0927 637 5907</p>
+            <p>Account Name: Dumbbell</p>
           </div>
         </div>
       </div>

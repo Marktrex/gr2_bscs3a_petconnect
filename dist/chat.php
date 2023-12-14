@@ -135,7 +135,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 		</div>
 	</div>
 </main>
-
+<?php require_once "components/root-folder-light-sw.php"?>
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
