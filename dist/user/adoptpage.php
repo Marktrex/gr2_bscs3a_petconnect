@@ -17,13 +17,13 @@ if (!isset($_SESSION['auth_user'])) {
 $loggedIn = isset($_SESSION['auth_user']);
 
 // Retrieve the selected filter values from the form submission
-$type = $_GET['type'] ?? 'Cat';
+$type = isset($_GET['type']) ? '%' . $_GET['type'] . '%' : '%';
 $searchTerm = isset($_GET['search']) ? '%' . $_GET['search'] . '%' : '%';
 
 try { //research this try catch method
    
     // Build the base query
-    $stmt = "SELECT * FROM pets WHERE type = :type AND isAdopted = 0 AND name LIKE :searchTerm";
+    $stmt = "SELECT * FROM pets WHERE type LIKE :type AND isAdopted = 0 AND name LIKE :searchTerm";
     $stmt = $conn->prepare($stmt);
 
     $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
@@ -39,6 +39,9 @@ try { //research this try catch method
     $pet_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
+}
+if ($type == "%") {
+  $type = "All";
 }
 ?>
 <!DOCTYPE html>
@@ -70,11 +73,16 @@ try { //research this try catch method
           <div class="dropdown">
             <label for="dropdown" class="dropdown-btn">
               <img src="../icons/kitty-icon.png" alt="icon" id = "iconType"/>
-              <span id = "selectedType"><?php echo $type ?></span>
+              <span id="selectedType"><?php echo $type ?></span>
               <i class="fa fa-chevron-circle-down" style="color: #f9f9f9"></i>
             </label>
             <input type="checkbox" id="dropdown" />
             <div class="dropdown-content">
+              <label>
+                <span >All</span>
+                <input <?php if($type == "All"){echo "checked";}?>
+                type="radio" name="type" id="default" value = "" >
+              </label>
               <label>
                 <img  src="../icons/kitty-icon.png" alt="icon" />
                 <span >Cat</span>
@@ -104,7 +112,8 @@ try { //research this try catch method
       <main class="main-content max-width">
         <!--For Cats-->
         <div class="cat-content">
-          <h1>Meet our <?php echo $type."s" ?></h1>
+          <?php if($type == "All"){$type = "Pet";}?>
+          <h1 id="headerPet">Meet our <?php echo $type."s" ?></h1>
           <ul class="cat-select">
             <li>
               <label for="breed">Breed:</label>
@@ -241,13 +250,22 @@ try { //research this try catch method
         type.forEach(function (input) {
             input.addEventListener('change', function (e) {
               if (e.target.checked) {
-                  if (e.target.value == 'dog'){
+                  const headerPet = document.getElementById('headerPet');
+                  if (e.target.value == 'Dog'){
                     icon = '../icons/puppy-icon.png';
-                  } else {
+                    headerPet.textContent = "Meet our Dogs";
+                    value = e.target.value;
+                  } else if (e.target.value == 'Cat'){
                     icon = "../icons/kitty-icon.png";
+                    headerPet.textContent = "Meet our Cats";
+                    value = e.target.value;
+                  }else {
+                    icon = "../icons/puppy-icon.png";
+                    headerPet.textContent = "Meet our Pets";
+                    value = "All";
                   }
                   iconType.src = icon;
-                  selectedType.textContent = e.target.value;
+                  selectedType.textContent = value;
               }
               const check = document.getElementById('dropdown');
               check.checked = false;
