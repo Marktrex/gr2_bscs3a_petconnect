@@ -107,6 +107,20 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Envíanos tu correo electrónico y te enviaremos las instrucciones para tu proceso de aplicación.",
       //edit profile
       "Edit Profile": "Editar Perfil", //wala palang option para sa change language lol pero ok lang kase dapat as a user alam mo english
+      "Edit Account Information": "Editar Información de la Cuenta",
+      "First Name": "Nombre",
+      "Last Name": "Apellido",
+      "Phone Number": "Número de Teléfono",
+      "Address": "Dirección",
+      "Update": "Actualizar",
+      "Upload Image": "Subir Imagen",
+      "Change Password": "Cambiar Contraseña",
+      "Current Password": "Contraseña Actual",
+      "New Password": "Nueva Contraseña",
+      "Confirm Password": "Confirmar Contraseña",
+      "Warning! You are trying to delete your account": "¡Advertencia! Estás intentando eliminar tu cuenta",
+      "Delete Account": "Eliminar Cuenta",
+      "Cancel": "Cancelar",
       //adoptprofile
       "Animal: ": "Animal:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Agendar Cita",
@@ -222,6 +236,20 @@ export const translations = {
       "Send us your Email and we will send the Instructions for your Application Process.": "Ipadala sa amin ang iyong Email at ipapadala namin ang mga Tagubilin para sa iyong Proseso ng Pag-aapply.",
       //edit profile
       "Edit Profile": "I-edit ang Profilo",
+      "Edit Account Information": "I-edit ang Impormasyon ng Account",
+      "First Name": "Pangalan",
+      "Last Name": "Apelyido",
+      "Phone Number": "Numero ng Telepono",
+      "Address": "Address",
+      "Update": "I-update",
+      "Upload Image": "Mag-upload ng Larawan",
+      "Change Password": "Baguhin ang Password",
+      "Current Password": "Kasalukuyang Password",
+      "New Password": "Bagong Password",
+      "Confirm Password": "Kumpirmahin ang Password",
+      "Warning! You are trying to delete your account": "Babala! Sinusubukan mong burahin ang iyong account",
+      "Delete Account": "Burahin ang Account",
+      "Cancel": "Kanselahin",
       //adoptpage
       "Animal: ": "Hayop:", //ayaow nila ma translate etong mga to brred,age, etc
       "Book Appointment": "Mag-Book ng Apointment",
