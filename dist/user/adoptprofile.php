@@ -7,6 +7,7 @@ if (isset($_SESSION['auth_user']) && $_SESSION['auth_user']['role'] === "1") {
     header("Location: ../admin/admin-dashboard.php");
     exit();
 }
+
 if (!isset($_SESSION['auth_user'])) { 
   echo '<script language="javascript">';
   echo 'alert("You do not have access to this page");';
@@ -24,7 +25,7 @@ $loggedIn = isset($_SESSION['auth_user']);
     <link rel="stylesheet" href="../css/newlyAdded/viewpets.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="..\css\colorStyle\user\adoptprofile-color.css">
+    <link rel="stylesheet" href="..\css\colorStyle\user\viewpets-colors.css">
   </head>
 
 
@@ -70,7 +71,8 @@ $loggedIn = isset($_SESSION['auth_user']);
     
 <?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
-<?php require_once "..\components\light-switch.php"?>
+  <?php require_once "..\components\light-switch.php"?>
+
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>
   </body>

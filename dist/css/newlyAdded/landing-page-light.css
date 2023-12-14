@@ -102,6 +102,7 @@ header .navbar {
   font-size: 350%;
   max-width: 200vh;
   line-height: 70px;
+  margin-top: -20px;
 }
 
 .hero-section .content p {
@@ -203,8 +204,7 @@ header .navbar {
 }
 
 .services .item{
-  margin-top: 2.5rem;
-  min-height: 510px;
+  margin-top: 3.5rem;
   text-align: center;
   background-color: #0e9594;
   border-radius: 12px;
@@ -414,9 +414,19 @@ header .navbar {
     padding: 3rem;
   }
 
+  .service1, .service3{
+    width: 100px;
+  }
+
+  .service1 h1,
   .service3 h1{
-    font-size: 46px;
+    text-align: center;
+    font-size: 26px;
     margin-left: 0px;
+  }
+
+  .service2 h1{
+    font-size: 36px;
   }
 }
 
@@ -424,4 +434,5 @@ header .navbar {
   .photodecor{
     display: none;
   }
+
 }

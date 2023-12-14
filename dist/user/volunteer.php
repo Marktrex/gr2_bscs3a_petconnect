@@ -27,6 +27,8 @@ $loggedIn = isset($_SESSION['auth_user']);
   <link rel="stylesheet" href="..\css\colorStyle\user\volunteer-color.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="..\css\colorStyle\user\volunteer-color.css">
 </head>
 
 <body>
@@ -86,6 +88,8 @@ $loggedIn = isset($_SESSION['auth_user']);
 <?php require_once "..\components\light-switch.php"?>
 <?php require_once "../components/user/footer.html"?>
 <?php require_once "..\components\call_across_pages.php"?>
+<?php require_once '..\components\light-switch.php'?>
+
 <script src="..\script\user-navbar-change.js"></script>
 <script type="module" src="..\script\translation.js"></script>
 </body>

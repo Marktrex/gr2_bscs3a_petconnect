@@ -24,26 +24,26 @@
 
 [data-theme="dark"] {
   --body-bg-color: #090b29;
-  --main-bg-color: #090b29;
-  --main-box-shadow-color: rgb(110, 109, 109);
-  --scrollbar-track-bg-color: #1eddd4;
-  --scrollbar-thumb-bg-color: linear-gradient(#ffb845, #0e9594);
-  --petsTitle-text-color: #1eddd4;
-  --about-container-bg-color: #381162;
+  --main-bg-color: #381162;
+  --main-box-shadow-color: rgb(27, 26, 26);
+  --scrollbar-track-bg-color: #48345d;
+  --scrollbar-thumb-bg-color: linear-gradient(#ab62ff, #1eddd4);
+  --petsTitle-text-color: #c3fdfa;
+  --about-container-bg-color: #341a57;
   --volunteer-title-text-color: #1eddd4;
-  --p-text-color: #1eddd4;
-  --about-container-1-bg-color: #381162;
+  --p-text-color: #c3fdfa;
+  --about-container-1-bg-color: #240155;
   --volunteer-title-1-text-color: #1eddd4;
-  --custom1-paragraph-1-text-color: #1eddd4;
-  --custom2-paragraph-1-text-color: #1eddd4;
-  --applynow-bg-color: #090b29;
-  --applynow-container-bg-color: #381162;
+  --custom1-paragraph-1-text-color: #c3fdfa;
+  --custom2-paragraph-1-text-color: #c3fdfa;
+  --applynow-bg-color:transparent;
+  --applynow-container-bg-color: #532c7c;
   --applynow-title-text-color: #1eddd4;
-  --applynow-text-color: #1eddd4;
-  --applynow-input-bg-color: #381162;
-  --applynow-input-border-color: #0e9594;
-  --applynow-input-placeholder-color: #1eddd4;
-  --applynow-input-focus-border-color: #1eddd4;
+  --applynow-text-color: #c3fdfa;
+  --applynow-input-bg-color: transparent;
+  --applynow-input-border-color: #c3fdfa;
+  --applynow-input-placeholder-color: #c3fdfa;
+  --applynow-input-focus-border-color: #c3fdfa;
 }
 
 body {
