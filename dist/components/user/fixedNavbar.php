@@ -91,7 +91,7 @@ href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wg
         </div>
       </li>
 
-      <li class="hidden"><a href="#">Profile</a></li>
+      <li class="hidden"><a href="edit-profile.php">Profile</a></li>
       <li class="hidden"><a href="../function/authentication/logout.php">Logout</a></li>
       <?php
         } else {

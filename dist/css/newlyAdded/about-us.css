@@ -22,13 +22,13 @@ body {
 main {
   .about-section {
     display: flex;
-    min-height: 60vh;
+    height: 100vh;
     > :nth-child(1) {
       background: #0E9594;
       text-align: left;
       color: #F5DFBB;
       display: flex;
-      justify-content: left;
+      justify-content: center;
       align-items: flex-start;
       flex-direction: column;
       padding: 10vw 5vw;
