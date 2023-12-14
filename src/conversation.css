@@ -4,7 +4,7 @@
     padding-left: 256px;
     display: none;
     border-radius: 15px;
-    box-shadow: var(--shadow-content);
+    box-shadow: 0 .4rem .8rem #0005;;
 }
 
 .conversation.active {
@@ -14,7 +14,6 @@
 
 .conversation-top {
     padding: 8px 16px;
-    background-color:#0e9594;
     display: flex;
     align-items: center;
     border-radius: 0px 15px 0px 0px;
@@ -163,7 +162,7 @@
 .conversation-item-text {
     padding: 12px 16px 8px;
     background-color: whitesmoke;
-    box-shadow: var(--shadow-content);
+    box-shadow: 0px 3px 10px rgb(101, 101, 101);
     font-size: 14px;
     border-radius: 6px;
     line-height: 1.5;
@@ -175,7 +174,7 @@
 }
 .conversation-item.me .conversation-item-text {
     background-color: #0e9594;
-    box-shadow: var(--shadow-content);
+    box-shadow: 0px 3px 10px rgb(101, 101, 101);
     color: rgba(255, 255, 255, .8);
 }
 .conversation-item-time {
@@ -221,7 +220,7 @@
 .conversation-item-dropdown-toggle:hover {
     background-color: #0e9594;
     color: white;
-    box-shadow: var(--shadow-content);
+    box-shadow: 0 .4rem .8rem #0005;
 }
 
 .conversation-item-dropdown-list {

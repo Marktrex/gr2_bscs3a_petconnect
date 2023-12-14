@@ -1,0 +1,284 @@
+:root {
+    --chat-container-color: #127475;
+    --chat-content-link-color: azure;
+    --content-sidebar-bg-color: rgb(38, 148, 148);
+    --content-sidebar-input-bg-color: rgb(108, 178, 178);
+    --content-sidebar-input-border-color: #0e9594;
+    --content-sidebar-input-focus-border-color: black;
+    --content-sidebar-submit-color: #0e9594;
+    --content-sidebar-submit-bg-color: transparent;
+    --content-messages-list-link-color: white;
+    --content-messages-list-link-hover-bg-color: #127475;
+    --content-message-title-color: white;
+    --content-message-title-bg-color: #0e9594;
+    --content-message-title-before-border-color: #cbd5e1;
+    --content-message-text-color: grey;
+    --content-message-unread-color: white;
+    --content-message-unread-bg-color: #0e5354;
+    --content-message-time-color: white;
+    --conversation-bg-color: #fdf7ec;
+    --conversation-top-bg-color: #0e9594;
+    --conversation-back-bg-color: transparent;
+    --conversation-back-color: white;
+    --conversation-back-hover-bg-color: aliceblue;
+    --conversation-back-hover-color: #127475;
+    --conversation-user-status-color: green;
+    --conversation-user-status-link-color: aliceblue;
+    --conversation-user-status-before-bg-color: aliceblue;
+    --conversation-user-status-online-before-bg-color: green;
+    --conversation-buttons-color: aliceblue;
+    --conversation-buttons-hover-bg-color: aliceblue;
+    --conversation-buttons-hover-color: #127475;
+    --conversation-main-bg-color: #fdf7ec;
+    --conversation-item-text-bg-color: whitesmoke;
+    --conversation-item-text-shadow: 0px 3px 10px rgb(101, 101, 101);
+    --conversation-item-me-text-bg-color: #0e9594;
+    --conversation-item-me-text-shadow: 0px 3px 10px rgb(101, 101, 101);
+    --conversation-item-me-text-color: rgba(255, 255, 255, .8);
+    --conversation-item-time-color: #0e5354;
+    --conversation-item-me-time-color: rgba(255, 255, 255, .7);
+    --conversation-item-dropdown-toggle-border-radius: 4px;
+    --conversation-item-dropdown-toggle-bg-color: white;
+    --conversation-item-dropdown-toggle-border: 1px solid white;
+    --conversation-item-dropdown-toggle-hover-bg-color: #0e9594;
+    --conversation-item-dropdown-toggle-hover-color: white;
+    --conversation-item-dropdown-toggle-hover-box-shadow: 0 .4rem .8rem #0005;
+    --conversation-item-dropdown-list-bg-color: white;
+    --conversation-item-dropdown-list-link-color: black;
+    --conversation-item-dropdown-list-link-hover-bg-color: #cbd5e1;
+    --conversation-item-dropdown-list-link-active-bg-color: black;
+    --coversation-divider-color: #0e5354;
+    --conversation-form-bg-color: #ffe0b0;
+    --conversation-form-input-bg-color: #f1f5f9;
+    --conversation-form-input-border-color: #cbd5e1;
+    --conversation-form-input-outline: transparent;
+    --conversation-form-record-color: #94a3b8;
+    --conversation-form-record-hover-color: #475569;
+    --conversation-form-button-bg-color: transparent;
+    --conversation-form-button-outline: transparent;
+    --conversation-form-button-font-size: 20px;
+    --conversation-form-button-color: #94a3b8;
+    --conversation-form-button-hover-bg-color: #f1f5f9;
+    --conversation-form-button-hover-color: #475569;
+    --conversation-form-submit-bg-color: #64748b;
+    --conversation-form-submit-box-shadow: 0 2px 8px -2px #64748b;
+    --conversation-form-submit-color: white;
+    --conversation-form-submit-hover-bg-color: #475569;
+    --conversation-form-submit-hover-color: white;
+    --conversation-form-submit-active-bg-color: #334155;
+    --conversation-form-submit-active-color: white;
+    --conversation-default-color: #94a3b8;
+  }
+  
+  .chat-container {
+    color: var(--chat-container-color);
+}
+
+.chat-content a {
+    color: var(--chat-content-link-color);
+}
+
+.content-sidebar {
+    background-color: var(--content-sidebar-bg-color);
+}
+
+.content-sidebar-input {
+    background-color: var(--content-sidebar-input-bg-color);
+    border: 1px solid var(--content-sidebar-input-border-color);
+}
+
+.content-sidebar-input:focus {
+    border-color: var(--content-sidebar-input-focus-border-color);
+}
+
+.content-sidebar-submit {
+    color: var(--content-sidebar-submit-color);
+    background-color: var(--content-sidebar-submit-bg-color);
+    outline: var(--content-sidebar-submit-outline);
+}
+
+.content-messages-list > * > a {
+    color: var(--content-messages-list-link-color);
+}
+
+.content-messages-list > * > a:hover {
+    background-color: var(--content-messages-list-link-hover-bg-color);
+}
+
+.content-message-title {
+    color: var(--content-message-title-color);
+}
+
+.content-message-title > * {
+    background-color: var(--content-message-title-bg-color);
+}
+
+.content-message-title::before {
+    border-bottom: 1px solid var(--content-message-title-before-border-color);
+}
+
+.content-message-text {
+    color: var(--content-message-text-color);
+}
+
+.content-message-unread {
+    color: var(--content-message-unread-color);
+    background-color: var(--content-message-unread-bg-color);
+}
+
+.content-message-time {
+    color: var(--content-message-time-color);
+}
+
+.conversation {
+    background-color: var(--conversation-bg-color);
+    box-shadow: var(--conversation-box-shadow);
+}
+
+.conversation-top {
+    background-color: var(--conversation-top-bg-color);
+}
+
+.conversation-back {
+    background-color: var(--conversation-back-bg-color);
+    color: var(--conversation-back-color);
+}
+
+.conversation-back:hover {
+    background-color: var(--conversation-back-hover-bg-color);
+    color: var(--conversation-back-hover-color);
+}
+
+.conversation-user-status {
+    color: var(--conversation-user-status-color);
+}
+
+.conversation-user-status a {
+    color: var(--conversation-user-status-link-color);
+}
+
+.conversation-user-status::before {
+    background-color: var(--conversation-user-status-before-bg-color);
+}
+
+.conversation-user-status.online::before {
+    background-color: var(--conversation-user-status-online-before-bg-color);
+}
+
+.conversation-buttons > * {
+    background-color: var(--conversation-buttons-color);
+    outline: var(--conversation-buttons-outline);
+}
+
+.conversation-buttons > :hover {
+    background-color: var(--conversation-buttons-hover-bg-color);
+    color: var(--conversation-buttons-hover-color);
+}
+
+.conversation-main {
+    background-color: var(--conversation-main-bg-color);
+}
+
+.conversation-item-text {
+    background-color: var(--conversation-item-text-bg-color);
+    box-shadow: var(--conversation-item-text-shadow);
+}
+
+.conversation-item.me .conversation-item-text {
+    background-color: var(--conversation-item-me-text-bg-color);
+    box-shadow: var(--conversation-item-me-text-shadow);
+    color: var(--conversation-item-me-text-color);
+}
+
+.conversation-item-time {
+    color: var(--conversation-item-time-color);
+}
+
+.conversation-item.me .conversation-item-time {
+    color: var(--conversation-item-me-time-color);
+}
+
+.conversation-item-dropdown-toggle {
+    border-radius: var(--conversation-item-dropdown-toggle-border-radius);
+    background-color: var(--conversation-item-dropdown-toggle-bg-color);
+    outline: var(--conversation-item-dropdown-toggle-outline);
+    border: var(--conversation-item-dropdown-toggle-border);
+}
+
+.conversation-item-dropdown-toggle:hover {
+    background-color: var(--conversation-item-dropdown-toggle-hover-bg-color);
+    color: var(--conversation-item-dropdown-toggle-hover-color);
+    box-shadow: var(--conversation-item-dropdown-toggle-hover-box-shadow);
+}
+
+.conversation-item-dropdown-list {
+    background-color: var(--conversation-item-dropdown-list-bg-color);
+}
+
+.conversation-item-dropdown-list a {
+    color: var(--conversation-item-dropdown-list-link-color);
+}
+
+.conversation-item-dropdown-list a:hover {
+    background-color: var(--conversation-item-dropdown-list-link-hover-bg-color);
+}
+
+.conversation-item-dropdown-list a:active {
+    background-color: var(--conversation-item-dropdown-list-link-active-bg-color);
+}
+
+.coversation-divider {
+    color: var(--coversation-divider-color);
+}
+
+.conversation-form {
+    background-color: var(--conversation-form-bg-color);
+}
+
+.conversation-form-input {
+    background-color: var(--conversation-form-input-bg-color);
+    border: 1px solid var(--conversation-form-input-border-color);
+    outline: var(--conversation-form-input-outline);
+}
+
+.conversation-form-record {
+    color: var(--conversation-form-record-color);
+    background-color: var(--conversation-form-record-bg-color);
+    outline: var(--conversation-form-record-outline);
+}
+
+.conversation-form-record:hover {
+    color: var(--conversation-form-record-hover-color);
+}
+
+.conversation-form-button {
+    background-color: var(--conversation-form-button-bg-color);
+    outline: var(--conversation-form-button-outline);
+    font-size: var(--conversation-form-button-font-size);
+    color: var(--conversation-form-button-color);
+}
+
+.conversation-form-button:hover {
+    background-color: var(--conversation-form-button-hover-bg-color);
+    color: var(--conversation-form-button-hover-color);
+}
+
+.conversation-form-submit {
+    background-color: var(--conversation-form-submit-bg-color);
+    box-shadow: var(--conversation-form-submit-box-shadow);
+    color: var(--conversation-form-submit-color);
+}
+
+.conversation-form-submit:hover {
+    background-color: var(--conversation-form-submit-hover-bg-color);
+    color: var(--conversation-form-submit-hover-color);
+}
+
+.conversation-form-submit:active {
+    background-color: var(--conversation-form-submit-active-bg-color);
+    color: var(--conversation-form-submit-active-color);
+}
+
+.conversation-default {
+    color: var(--conversation-default-color);
+}

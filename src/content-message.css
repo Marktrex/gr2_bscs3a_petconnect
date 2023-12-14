@@ -44,7 +44,7 @@
 
 .content-sidebar {
     width: 256px;
-    background-color: var(--sidebar-content-color);
+    background-color: rgb(38, 148, 148);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -66,7 +66,7 @@
 }
 .content-sidebar-input {
     padding: 8px 16px;
-    background-color: var(--searchbar-color);
+    background-color: rgb(108, 178, 178);
     border: 1px solid #0e9594;
     outline: none;
     width: 100%;
@@ -123,7 +123,7 @@
     position: relative;
     z-index: 1;
     padding: 0 4px 0 0;
-    background-color: var(--sidebar-color);
+    background-color: #0e9594;
 }
 .content-message-title::before {
     content: '';
