@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 10:23 AM
+-- Generation Time: Dec 14, 2023 at 07:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `petconnect`
 --
-DROP DATABASE IF EXISTS `petconnect`;
 CREATE DATABASE IF NOT EXISTS `petconnect` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `petconnect`;
 
@@ -30,7 +29,6 @@ USE `petconnect`;
 -- Table structure for table `adoption`
 --
 
-DROP TABLE IF EXISTS `adoption`;
 CREATE TABLE `adoption` (
   `adoption_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -44,7 +42,10 @@ CREATE TABLE `adoption` (
 --
 
 INSERT INTO `adoption` (`adoption_id`, `user_id`, `pets_id`, `story`, `token`) VALUES
-(6, 4, 1, '123', '6ecf8b7e61f694562b2af24f8460da5f6d782b408964b82ca82ab9e148d2e09514c9238ce2d9245fa1174a16a506ed00028a');
+(12, 36, 17, 'Enter Jane, a software developer on a quest for a dynamic duo. Her expectation was simple: a pet to keep her company through the labyrinth of late-night coding. Venturing into a local animal shelter, she met Max, a Labrador mix with soulful eyes.\r\n\r\nMax exceeded all expectations, evolving into more than just a pet. Their bond grew, and Max\'s tail wagged in sync with Jane\'s coding triumphs. Together, they formed an unbeatable team, proving that the best coding companions often have fur and a wet nose.', NULL),
+(13, 36, 12, 'David, a web developer immersed in the digital realm, sought a pet companion who shared his tech enthusiasm. At the local shelter, he found Pixel, a tech-savvy cat with a penchant for virtual mice.\r\n\r\nPixel seamlessly integrated into David\'s coding routine, perching on his desk and adding a touch of feline charm to his workspace. Their journey from bytes to barks showcased a unique bond, demonstrating that coding joy could be enhanced by a furry friend.', NULL),
+(14, 36, 15, 'Emily, a creative web developer, envisioned a pet that would infuse inspiration into her design projects. Luna, a gentle mixed-breed dog, turned out to be the perfect muse.\r\n\r\nLuna\'s unexpected knack for design aesthetics brought a new dimension to Emily\'s workspace. As they navigated tight deadlines together, Luna\'s presence became a calming force. Emily found herself explaining design concepts to Luna, creating a harmonious work environment. This story proves that the best pet companions not only bring joy but also contribute to the creative flow.', NULL),
+(15, 36, 16, 'Meet Alex, a software developer with a heart set on finding a feline friend to share the coding journey. The expectation was clear: a companion to bring warmth to the lines of code. A local shelter introduced Alex to Whiskers, a playful and curious cat.\r\n\r\nWhiskers turned out to be the missing piece in Alex\'s coding puzzle. The gentle purring became the soundtrack to late-night coding sessions, and Whiskers\' antics provided much-needed breaks. Together, they crafted a purrfect code harmony, proving that sometimes the ideal coding companion is one with a fluffy tail and a penchant for purrs.', NULL);
 
 -- --------------------------------------------------------
 
@@ -52,7 +53,6 @@ INSERT INTO `adoption` (`adoption_id`, `user_id`, `pets_id`, `story`, `token`) V
 -- Table structure for table `appointment`
 --
 
-DROP TABLE IF EXISTS `appointment`;
 CREATE TABLE `appointment` (
   `appointment_id` int(11) NOT NULL,
   `appointment_type` varchar(250) NOT NULL,
@@ -71,8 +71,10 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_type`, `appointment_da
 (19, 'Adopt', '2023-12-12', 'Morning Session', 3, 'Disabled', '8bc04b0c5341c8a652d760046927a4a9'),
 (20, 'Adopt', '2023-12-12', 'Afternoon Session', 3, 'Disabled', '297c4c21f881b4dc86f26c316d1063e2'),
 (21, 'Adopt', '2023-12-13', 'Morning Session', 3, 'Disabled', '6d1ec4c06f6442096f2c1513b4c8cf60'),
-(22, 'Adopt', '2023-12-13', 'Afternoon Session', 3, 'Pending', '027f68a4c05833f5f8c7cdeb81a4049e'),
-(25, 'Adopt', '2023-12-11', 'Morning Session', 31, 'Pending', 'be7e90ac6a6895ec07c37365492d9f4b');
+(25, 'Adopt', '2023-12-11', 'Morning Session', 31, 'Pending', 'be7e90ac6a6895ec07c37365492d9f4b'),
+(29, 'Donate', '2023-12-13', 'Afternoon Session', 31, 'Pending', 'dd46f98d60d07872e92e296548fae80c'),
+(30, 'Adopt', '2023-12-22', 'Morning Session', 36, 'Accepted', 'd552edc02efab1cfb9a590619dc3fdf2'),
+(31, 'Adopt', '2023-12-23', 'Morning Session', 36, 'Declined', 'd552edc02efab1cfb9a590619dc3fdf2');
 
 -- --------------------------------------------------------
 
@@ -80,7 +82,6 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_type`, `appointment_da
 -- Table structure for table `audit_log`
 --
 
-DROP TABLE IF EXISTS `audit_log`;
 CREATE TABLE `audit_log` (
   `id` int(11) NOT NULL,
   `responsible_id` int(11) NOT NULL,
@@ -148,7 +149,69 @@ INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `date_time`, `old_value
 (155, 31, 'UPDATE', '2023-12-11 21:13:07', NULL, '123', 'USER', 31, 'home_address'),
 (156, 31, 'UPDATE', '2023-12-11 21:13:07', '', '123', 'USER', 31, 'mobile_number'),
 (157, 31, 'INSERT', '2023-12-11 21:13:11', 'None', 'All', 'APPOINTMENT', 31, 'All'),
-(158, 31, 'INSERT', '2023-12-12 15:46:51', 'None', 'All', 'APPOINTMENT', 31, 'All');
+(158, 31, 'INSERT', '2023-12-12 15:46:51', 'None', 'All', 'APPOINTMENT', 31, 'All'),
+(159, 4, 'UPDATE', '2023-12-12 21:08:50', 'Pending', 'Accepted', 'APPOINTMENT', 22, 'status'),
+(160, 4, 'UPDATE', '2023-12-12 21:11:39', 'Pending', 'Accepted', 'APPOINTMENT', 22, 'status'),
+(161, 4, 'UPDATE', '2023-12-12 21:14:13', 'Pending', 'Accepted', 'APPOINTMENT', 22, 'status'),
+(162, 4, 'UPDATE', '2023-12-12 21:17:12', 'Pending', 'Accepted', 'APPOINTMENT', 22, 'status'),
+(163, 4, 'UPDATE', '2023-12-12 21:17:50', 'Pending', 'Accepted', 'APPOINTMENT', 22, 'status'),
+(164, 4, 'UPDATE', '2023-12-12 21:18:48', 'Accepted', 'Cancelled', 'APPOINTMENT', 22, 'status'),
+(165, 4, 'UPDATE', '2023-12-12 21:19:26', 'Pending', 'Declined', 'APPOINTMENT', 22, 'status'),
+(166, 4, 'UPDATE', '2023-12-12 21:26:23', 'Pending', 'Declined', 'APPOINTMENT', 22, 'status'),
+(167, 4, 'UPDATE', '2023-12-12 21:48:58', 'Accepted', 'Cancelled', 'APPOINTMENT', 22, 'status'),
+(168, 31, 'INSERT', '2023-12-13 10:37:15', 'None', 'All', 'APPOINTMENT', 31, 'All'),
+(169, 31, 'INSERT', '2023-12-13 10:41:45', 'None', 'All', 'APPOINTMENT', 31, 'All'),
+(170, 31, 'INSERT', '2023-12-13 10:47:35', 'None', 'All', 'APPOINTMENT', 31, 'All'),
+(171, 31, 'UPDATE', '2023-12-13 15:09:09', 'sanoke2', 'sanoke', 'USER', 31, 'fname'),
+(172, 31, 'UPDATE', '2023-12-13 15:09:10', 'sanoke2', 'sanoke', 'USER', 31, 'lname'),
+(173, 31, 'UPDATE', '2023-12-13 15:12:07', 'sanoke', 'sanoke1', 'USER', 31, 'fname'),
+(174, 31, 'UPDATE', '2023-12-13 15:12:07', 'sanoke', 'sanoke1', 'USER', 31, 'lname'),
+(175, 31, 'UPDATE', '2023-12-13 15:12:07', '123', '1232', 'USER', 31, 'home_address'),
+(176, 31, 'UPDATE', '2023-12-13 15:12:08', '123', '1232', 'USER', 31, 'mobile_number'),
+(177, 31, 'UPDATE', '2023-12-13 15:12:14', NULL, 'image_6579594ed3be0.png', 'USER', 31, 'photo'),
+(178, 31, 'UPDATE', '2023-12-13 15:13:46', 'SECRET', 'SECRET', 'USER', 31, 'password'),
+(179, 31, 'UPDATE', '2023-12-13 15:13:52', 'SECRET', 'SECRET', 'USER', 31, 'password'),
+(180, 31, 'UPDATE', '2023-12-13 15:14:45', 'SECRET', 'SECRET', 'USER', 31, 'password'),
+(181, 31, 'UPDATE', '2023-12-13 15:14:50', 'SECRET', 'SECRET', 'USER', 31, 'password'),
+(182, 32, 'INSERT', '2023-12-13 18:47:22', 'None', 'None', 'USER', 32, 'All'),
+(183, 33, 'INSERT', '2023-12-13 18:50:49', 'None', 'None', 'USER', 33, 'All'),
+(184, 34, 'INSERT', '2023-12-13 19:28:03', 'None', 'None', 'USER', 34, 'All'),
+(185, 35, 'INSERT', '2023-12-14 09:03:26', 'None', 'None', 'USER', 35, 'All'),
+(186, 36, 'INSERT', '2023-12-14 09:14:13', 'None', 'None', 'USER', 36, 'All'),
+(187, 36, 'UPDATE', '2023-12-14 09:47:01', 'Aries', 'Aries Joseph', 'USER', 36, 'fname'),
+(188, 36, 'UPDATE', '2023-12-14 09:47:01', 'Tagle', 'Tagle2', 'USER', 36, 'lname'),
+(189, 36, 'UPDATE', '2023-12-14 09:47:01', NULL, 'San Juan', 'USER', 36, 'home_address'),
+(190, 36, 'UPDATE', '2023-12-14 09:47:01', '', '09276375907', 'USER', 36, 'mobile_number'),
+(191, 36, 'INSERT', '2023-12-14 09:47:05', 'None', 'All', 'APPOINTMENT', 36, 'All'),
+(192, 4, 'UPDATE', '2023-12-14 10:53:01', 'Pending', 'Accepted', 'APPOINTMENT', 30, 'status'),
+(193, 4, 'INSERT', '2023-12-14 11:35:44', NULL, NULL, 'ADOPTION', 9, 'ALL'),
+(194, 4, 'UPDATE', '2023-12-14 11:35:44', '0', '1', 'PETS', 1, 'isAdopted'),
+(195, 4, 'UPDATE', '2023-12-14 11:40:17', NULL, '5613c7edd7f384f64eb5387319d565525607e7f5901247d667550313dc74754fb7c63c99824ac84f8150014d1c3acbc3cfd3', 'ADOPTION', 9, 'token'),
+(196, 4, 'UPDATE', '2023-12-14 11:49:57', '5613c7edd7f384f64eb5387319d565525607e7f5901247d667550313dc74754fb7c63c99824ac84f8150014d1c3acbc3cfd3', 'a742969b3ea20dac630d96fcd62efb714038746ce0d0300e24fc949d73430a069ca841de84d2ef40b29cd62f24d1e3b705a5', 'ADOPTION', 9, 'token'),
+(197, 4, 'INSERT', '2023-12-14 11:55:14', NULL, NULL, 'ADOPTION', 10, 'ALL'),
+(198, 4, 'UPDATE', '2023-12-14 11:55:15', '0', '1', 'PETS', 8, 'isAdopted'),
+(199, 4, 'INSERT', '2023-12-14 11:55:53', NULL, NULL, 'ADOPTION', 11, 'ALL'),
+(200, 4, 'UPDATE', '2023-12-14 11:55:53', '0', '1', 'PETS', 6, 'isAdopted'),
+(201, 4, 'delete', '2023-12-14 11:56:04', 'All', 'All', 'adoption', 10, 'All'),
+(202, 4, 'delete', '2023-12-14 11:56:06', 'All', 'All', 'adoption', 11, 'All'),
+(203, 4, 'delete', '2023-12-14 11:56:08', 'All', 'All', 'adoption', 9, 'All'),
+(204, 4, 'INSERT', '2023-12-15 01:27:46', 'None', 'None', 'PET', 12, 'All'),
+(205, 4, 'INSERT', '2023-12-15 01:28:19', 'None', 'None', 'PET', 13, 'All'),
+(206, 4, 'INSERT', '2023-12-15 01:29:29', 'None', 'None', 'PET', 14, 'All'),
+(207, 4, 'INSERT', '2023-12-15 02:17:15', 'None', 'None', 'PET', 15, 'All'),
+(208, 4, 'INSERT', '2023-12-15 02:17:45', 'None', 'None', 'PET', 16, 'All'),
+(209, 4, 'INSERT', '2023-12-15 02:18:13', 'None', 'None', 'PET', 17, 'All'),
+(210, 4, 'DELETE', '2023-12-15 02:19:43', 'Null', 'Null', 'PET', 6, 'ALL'),
+(211, 4, 'INSERT', '2023-12-15 02:20:40', 'None', 'None', 'PET', 18, 'All'),
+(212, 4, 'INSERT', '2023-12-15 02:21:11', 'None', 'None', 'PET', 19, 'All'),
+(213, 4, 'INSERT', '2023-12-15 02:21:43', NULL, NULL, 'ADOPTION', 12, 'ALL'),
+(214, 4, 'UPDATE', '2023-12-15 02:21:43', '0', '1', 'PETS', 17, 'isAdopted'),
+(215, 4, 'INSERT', '2023-12-15 02:21:50', NULL, NULL, 'ADOPTION', 13, 'ALL'),
+(216, 4, 'UPDATE', '2023-12-15 02:21:50', '0', '1', 'PETS', 12, 'isAdopted'),
+(217, 4, 'INSERT', '2023-12-15 02:22:17', NULL, NULL, 'ADOPTION', 14, 'ALL'),
+(218, 4, 'UPDATE', '2023-12-15 02:22:17', '0', '1', 'PETS', 15, 'isAdopted'),
+(219, 4, 'INSERT', '2023-12-15 02:22:26', NULL, NULL, 'ADOPTION', 15, 'ALL'),
+(220, 4, 'UPDATE', '2023-12-15 02:22:26', '0', '1', 'PETS', 16, 'isAdopted');
 
 -- --------------------------------------------------------
 
@@ -156,7 +219,6 @@ INSERT INTO `audit_log` (`id`, `responsible_id`, `type`, `date_time`, `old_value
 -- Table structure for table `call_table`
 --
 
-DROP TABLE IF EXISTS `call_table`;
 CREATE TABLE `call_table` (
   `call_id` int(11) NOT NULL,
   `channel` varchar(255) DEFAULT NULL,
@@ -164,57 +226,12 @@ CREATE TABLE `call_table` (
   `receiver_has_join` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `call_table`
---
-
-INSERT INTO `call_table` (`call_id`, `channel`, `from_has_join`, `receiver_has_join`) VALUES
-(9, 'channel_656ace6cc8b2b', 1, 0),
-(10, 'channel_656acef2a31ed', 1, 0),
-(11, 'channel_656acfdf11d01', 0, 1),
-(12, 'channel_65727d7b4b724', 0, 0),
-(13, 'channel_65727e5153891', 1, 0),
-(14, 'channel_657281d5047f9', 1, 0),
-(15, 'channel_6572c9462c005', 0, 0),
-(16, 'channel_6572c956cf648', 0, 0),
-(17, 'channel_6572cdcf0ef2c', 0, 0),
-(18, 'channel_6572d45a2c7aa', 1, 0),
-(19, 'channel_6572d80d5a944', 0, 0),
-(20, 'channel_6572d8303e250', 0, 0),
-(21, 'channel_6572d8896f7e8', 0, 0),
-(22, 'channel_6572d8b28def0', 0, 0),
-(23, 'channel_6572d8b6b07ae', 0, 0),
-(24, 'channel_6572dd4f7add8', 0, 0),
-(25, 'channel_6572dd6f20db8', 1, 0),
-(26, 'channel_6572dd72c4b5a', 1, 0),
-(27, 'channel_6572dd8bb77e3', 1, 0),
-(28, 'channel_6572ddd256d4a', 0, 0),
-(29, 'channel_6572ddd99a8b0', 1, 0),
-(30, 'channel_6572e00c1488c', 1, 0),
-(31, 'channel_6572e034b9ca6', 1, 0),
-(32, 'channel_6572e09081c09', 1, 1),
-(33, 'channel_6572f89fdb39a', 0, 0),
-(34, 'channel_6572f8abaefb6', 1, 0),
-(35, 'channel_6572f9b845958', 1, 0),
-(36, 'channel_6572f9f811ed8', 1, 0),
-(37, 'channel_6572fa1ca88e1', 1, 0),
-(38, 'channel_6572fae40edfb', 1, 0),
-(39, 'channel_6572ffe315a95', 0, 0),
-(40, 'channel_6572ffec34761', 1, 0),
-(41, 'channel_6572fffc77b5a', 1, 0),
-(42, 'channel_6573001038b27', 1, 1),
-(43, 'channel_65769bc868c71', 0, 0),
-(44, 'channel_65769c221d844', 0, 0),
-(45, 'channel_65769c7ce5406', 0, 0),
-(46, 'channel_65769c8c55cbb', 1, 0);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `chat_message`
 --
 
-DROP TABLE IF EXISTS `chat_message`;
 CREATE TABLE `chat_message` (
   `chat_message_id` int(11) NOT NULL,
   `to_user_id` int(11) NOT NULL,
@@ -226,66 +243,12 @@ CREATE TABLE `chat_message` (
   `call_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `chat_message`
---
-
-INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`, `message_type`, `call_id`) VALUES
-(171, 3, 4, '23', '2023-12-07 19:20:41', 'Yes', 'message', NULL),
-(172, 3, 4, 'this is a call', '2023-12-07 19:20:43', 'Yes', 'call', 12),
-(173, 3, 4, '123', '2023-12-07 19:24:14', 'Yes', 'message', NULL),
-(174, 3, 4, 'this is a call', '2023-12-07 19:24:17', 'Yes', 'call', 13),
-(175, 4, 3, '123', '2023-12-07 19:25:55', 'Yes', 'message', NULL),
-(176, 26, 4, 'this is a call', '2023-12-07 19:39:17', 'No', 'call', 14),
-(177, 3, 4, '13', '2023-12-07 19:43:25', 'Yes', 'message', NULL),
-(178, 3, 4, '123', '2023-12-08 00:42:04', 'Yes', 'message', NULL),
-(179, 26, 4, '2', '2023-12-08 00:43:08', 'No', 'message', NULL),
-(180, 3, 4, '2', '2023-12-08 00:44:04', 'Yes', 'message', NULL),
-(181, 3, 4, 'this is a call', '2023-12-08 00:44:06', 'Yes', 'call', 15),
-(182, 3, 4, 'this is a call', '2023-12-08 00:44:23', 'Yes', 'call', 16),
-(183, 3, 4, '123', '2023-12-08 00:44:45', 'Yes', 'message', NULL),
-(184, 3, 4, '123123', '2023-12-08 00:45:29', 'Yes', 'message', NULL),
-(185, 3, 4, '2', '2023-12-08 00:45:36', 'Yes', 'message', NULL),
-(186, 3, 4, 'this is a call', '2023-12-08 01:03:27', 'Yes', 'call', 17),
-(187, 3, 4, 'this is a call', '2023-12-08 01:31:22', 'Yes', 'call', 18),
-(188, 3, 4, 'this is a call', '2023-12-08 01:47:09', 'Yes', 'call', 19),
-(189, 3, 4, 'this is a call', '2023-12-08 01:47:44', 'Yes', 'call', 20),
-(190, 3, 4, 'this is a call', '2023-12-08 01:49:13', 'Yes', 'call', 21),
-(191, 3, 4, 'this is a call', '2023-12-08 01:49:54', 'Yes', 'call', 22),
-(192, 3, 4, 'this is a call', '2023-12-08 01:49:58', 'Yes', 'call', 23),
-(193, 3, 4, 'this is a call', '2023-12-08 02:09:35', 'Yes', 'call', 24),
-(194, 3, 4, 'this is a call', '2023-12-08 02:10:07', 'Yes', 'call', 25),
-(195, 3, 4, 'this is a call', '2023-12-08 02:10:10', 'Yes', 'call', 26),
-(196, 3, 4, 'this is a call', '2023-12-08 02:10:35', 'Yes', 'call', 27),
-(197, 3, 4, 'this is a call', '2023-12-08 02:11:46', 'Yes', 'call', 28),
-(198, 3, 4, 'this is a call', '2023-12-08 02:11:53', 'Yes', 'call', 29),
-(199, 3, 4, 'this is a call', '2023-12-08 02:21:16', 'Yes', 'call', 30),
-(200, 3, 4, 'this is a call', '2023-12-08 02:21:56', 'Yes', 'call', 31),
-(201, 3, 4, 'this is a call', '2023-12-08 02:23:28', 'Yes', 'call', 32),
-(202, 3, 4, 'this is a call', '2023-12-08 04:06:08', 'Yes', 'call', 33),
-(203, 3, 4, 'this is a call', '2023-12-08 04:06:19', 'Yes', 'call', 34),
-(204, 3, 4, 'this is a call', '2023-12-08 04:10:48', 'Yes', 'call', 35),
-(205, 3, 4, 'this is a call', '2023-12-08 04:11:52', 'Yes', 'call', 36),
-(206, 3, 4, 'this is a call', '2023-12-08 04:12:28', 'Yes', 'call', 37),
-(207, 3, 4, 'this is a call', '2023-12-08 04:15:48', 'Yes', 'call', 38),
-(208, 3, 4, 'this is a call', '2023-12-08 04:37:07', 'Yes', 'call', 39),
-(209, 3, 4, 'this is a call', '2023-12-08 04:37:16', 'Yes', 'call', 40),
-(210, 3, 4, 'this is a call', '2023-12-08 04:37:32', 'Yes', 'call', 41),
-(211, 3, 4, 'this is a call', '2023-12-08 04:37:52', 'Yes', 'call', 42),
-(212, 27, 3, '123', '2023-12-10 22:18:49', 'Yes', 'message', NULL),
-(213, 4, 3, '231', '2023-12-10 22:18:52', 'Yes', 'message', NULL),
-(214, 27, 3, 'this is a call', '2023-12-10 22:19:04', 'Yes', 'call', 43),
-(215, 27, 3, 'this is a call', '2023-12-10 22:20:34', 'Yes', 'call', 44),
-(216, 27, 3, 'this is a call', '2023-12-10 22:22:05', 'Yes', 'call', 45),
-(217, 27, 3, 'this is a call', '2023-12-10 22:22:20', 'Yes', 'call', 46);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `pets`
 --
 
-DROP TABLE IF EXISTS `pets`;
 CREATE TABLE `pets` (
   `pets_id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
@@ -305,11 +268,18 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`pets_id`, `name`, `type`, `breed`, `sex`, `weight`, `age`, `date`, `about`, `image`, `isAdopted`) VALUES
-(1, 'aye', 'Cat', 'Shih Tzu', 'Female', '10-20 lbs', '5 to 10 years', '2023-10-24', 'wkwwdwdwdwdwdwd', 'image_6554fbe161043.png', 1),
-(5, 'test', 'Dog', 'Shih Tzu', 'Male', '5-10 lbs', '5 to 10 years', '2023-10-24', 'barabida omsim', '65376a772b8f3.png', 1),
-(6, 'wew', 'Cat', 'Rottweiler', 'Female', 'Less than 5 lbs', 'Less than 6 months', '2023-10-24', 'sheesh pogi ni aries', '65376a95c15e7.png', 1),
-(7, 'admin1', 'Dog', 'Bulldog', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'something', 'image_6554fc2b82705.jpg', 1),
-(8, 'admi', 'Cat', 'Shih Tzu', 'Female', 'Less than 5 lbs', 'Less than 6 months', '0222-02-22', '23333333', 'BichonFrise.jpeg', 0);
+(1, 'Master', 'Cat', 'Shih Tzu', 'Female', '10-20 lbs', '5 to 10 years', '2023-10-24', 'I was a lonely cat', '646af0c07149d.jpg', 0),
+(5, 'Dogma', 'Dog', 'Shih Tzu', 'Male', '5-10 lbs', '5 to 10 years', '2023-10-24', 'I like chocolates', '646ae9b514fc8.jpg', 0),
+(7, 'Hat', 'Dog', 'Bulldog', 'Male', '10-20 lbs', '6 months to 5 years', '1212-12-12', 'I like hotdogs', '646ae47825387.jpg', 0),
+(8, 'Nath', 'Cat', 'Shih Tzu', 'Female', 'Less than 5 lbs', 'Less than 6 months', '0222-02-22', 'I can be your friend', '646aefe7498dd.jpg', 0),
+(12, 'Briar', 'Cat', 'Puspin', 'Female', '10-20 lbs', '5 to 10 years', '2023-12-26', 'I love hotdogs', '657b3b128b4c5.png', 1),
+(13, 'Eren', 'Cat', 'Maine Coon', 'Male', '20-50 lbs', '6 months to 5 years', '2022-12-13', 'I want to fly', '657b3b33871d2.jpg', 0),
+(14, 'Cheese', 'Dog', 'Golden Retriever', 'Male', '10-20 lbs', '5 to 10 years', '2023-11-21', 'My name is Cheese even though I dont like Cheese', '657b3b7971dfb.jpg', 0),
+(15, 'August', 'Cat', 'Scottish Fold', 'Male', '5-10 lbs', '6 months to 5 years', '2023-12-27', 'I am a furry', '657b46ab2a27c.jpg', 1),
+(16, 'Rizzler', 'Cat', 'Ragdoll', 'Male', '5-10 lbs', '6 months to 5 years', '2023-11-29', 'You want some Rizz baby gurl?', '657b46c8f34ba.jpg', 1),
+(17, 'Sussy Dog', 'Dog', 'Pomeranian', 'Male', '10-20 lbs', 'Less than 6 months', '2023-11-29', 'What you doing?', '657b46e5050e9.jpg', 1),
+(18, 'Gold', 'Dog', 'Golden Retriever', 'Female', '5-10 lbs', '6 months to 5 years', '1999-03-12', 'I like you', '657b477887789.jpeg', 0),
+(19, 'Terry', 'Dog', 'Labrador Retriever', 'Male', '5-10 lbs', '6 months to 5 years', '2023-12-06', 'hello my guy', '657b4797d1b4f.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -317,7 +287,6 @@ INSERT INTO `pets` (`pets_id`, `name`, `type`, `breed`, `sex`, `weight`, `age`, 
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `fname` varchar(250) NOT NULL,
@@ -340,11 +309,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `fname`, `lname`, `email`, `password`, `user_type`, `created_at`, `user_status`, `user_login_status`, `user_token`, `user_connection_id`, `photo`, `home_address`, `mobile_number`) VALUES
-(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-12 07:46:14', 'Enabled', 'Logout', '572a69fcb5744a8fbfb438af52fbed89', 93, NULL, NULL, ''),
+(4, 'admin', 'admin1', 'admin@sample', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '1', '2023-12-14 18:24:05', 'Enabled', 'Logout', '855d298f89ca7362771f8bfd75fb7718', 924, 'image_656d8e78e69f4.png', NULL, ''),
 (26, 'mark', 'kevin', 'sinicchi123@gmail.com', '$2y$10$wFFacnx5J3VQSeCGC1XYMOtMgs6B0uZHef1uiXm7CpmfG.MwK2Cy6', '2', '2023-12-08 02:46:45', 'Disabled', 'Login', '81ac20d0c3b7aa8817aa9b7cd88d8719', 0, NULL, NULL, ''),
 (27, 'aras', 'aras', '1233@sample', '123', '1', '2023-12-04 10:13:22', '', 'Logout', '', 0, NULL, NULL, ''),
 (29, '12', '12', '222@sample', '$2y$10$SC2jZScWWkAiY3BSqL3Ik.haX4lWicUNObLqIK33gM/f3Z3caz2HW', '2', '2023-12-04 11:57:42', 'Disabled', 'Logout', '', 0, NULL, NULL, ''),
-(31, 'sanoke2', 'sanoke2', 'ajtagle12@gmail.com', '$2y$10$apyJ5EDOSXF2QiSTqmsTGOxJg0L.ILV9iqv3TzdPC3rX5m8rHICj2', '2', '2023-12-12 08:42:10', 'Enabled', 'Login', '86c0c27dea9896cc4d7143e5c9bf5064', 129, NULL, '123', '123');
+(36, 'Aries Joseph', 'Tagle2', 'ajtagle12@gmail.com', '$2y$10$dQ0W2YKUUSgrkpyinoQYROgc7y58Z0E03zKkHQ1A0Qr4Pt.pA7s8W', '2', '2023-12-14 18:29:31', 'Enabled', 'Login', '17ce00e94c11bb6aa7bdf6e3b0bdc729', 1013, NULL, 'San Juan', '09276375907');
 
 --
 -- Indexes for dumped tables
@@ -400,43 +369,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `adoption`
 --
 ALTER TABLE `adoption`
-  MODIFY `adoption_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `adoption_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `audit_log`
 --
 ALTER TABLE `audit_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `call_table`
 --
 ALTER TABLE `call_table`
-  MODIFY `call_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `call_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 
 --
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `pets_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
