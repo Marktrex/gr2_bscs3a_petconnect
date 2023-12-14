@@ -65,7 +65,7 @@ if ($_SESSION['auth_user']['role'] === "1") {
               <li class="card">
                 <div class="img"><img src="../image/team/Buglosa, Kriesha Mae T.jpg" alt="img" draggable="false"></div>
                 <h2>Buglosa, Kriesha</h2>
-                <span>Girl Power</span>
+                <span>Nyah's Assistant</span>
               </li>
               <li class="card">
                 <div class="img"><img src="../image/team/Feliciano, EJ.jpg" alt="img" draggable="false"></div>
