@@ -9,6 +9,9 @@
     --main-bg-color-4: #FDC161;
     --main-text-color-4: #F2542D;
     --header-bg-image: url('../../image/pet-stories/header.png');
+    --scrollbar-track-bg-color: #fdf7ec;
+    --scrollbar-thumb-gradient-start: #ffb845;
+    --scrollbar-thumb-gradient-end: #0e9594;
 }
 [data-theme="dark"] {
     --body-bg-color: #090b29;
@@ -20,6 +23,9 @@
     --main-text-color-3: #1eddd4;
     --main-bg-color-4: #1eddd4;
     --main-text-color-4: #381162;
+    --scrollbar-track-bg-color: #48345d;
+  --scrollbar-thumb-gradient-start: #ab62ff;
+  --scrollbar-thumb-gradient-end: #1eddd4;
 }
 body {
     
@@ -49,4 +55,13 @@ main {
     }
 
 }
-
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track-bg-color);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      var(--scrollbar-thumb-gradient-start),
+      var(--scrollbar-thumb-gradient-end)
+    );
+  }
+  
