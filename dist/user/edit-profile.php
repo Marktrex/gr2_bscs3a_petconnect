@@ -272,8 +272,8 @@ if(isset($_POST['cancel'])){
                     
                     <div class="btn-group">
                         <form action="" method="post">
-                            Warning! You are trying to delete your account<br>
                             <button type="submit" name = "delete" id="delete" class="btn btn-danger">Delete Account</button>
+                            Warning! You are trying to delete your account<br>
                         </form>
                         <form action="" method="post">
                         <button type="submit" name = "cancel" id="cancel" class="btn btn-primary">Cancel</button><br>
