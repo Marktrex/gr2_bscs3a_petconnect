@@ -1,0 +1,284 @@
+:root {
+    --conversation-bg-color: #fdf7ec;
+    --conversation-box-shadow: 0 .4rem .8rem #0005;
+    
+    --conversation-top-bg-color: #0e9594;
+
+    --conversation-back-bg-color: transparent;
+    --conversation-back-text-color: white;
+    --conversation-back-hover-bg-color: aliceblue;
+    --conversation-back-hover-text-color: #127475;
+
+    --conversation-user-status-color: green;
+    --conversation-user-status-link-color: aliceblue;
+    --conversation-user-status-before-bg-color: aliceblue;
+    --conversation-user-status-online-before-bg-color: green;
+    --conversation-user-status-offline-before-bg-color: red;
+
+    --conversation-buttons-bg-color: transparent;
+    --conversation-buttons-outline: transparent;
+    --conversation-buttons-text-color: aliceblue;
+    --conversation-buttons-hover-bg-color: aliceblue;
+    --conversation-buttons-hover-text-color: #127475;
+
+    --conversation-main-bg-color: #fdf7ec;
+
+    --conversation-item-text-bg-color: #0e9594;
+    --conversation-item-text-box-shadow: 0 .4rem .8rem #0005;
+    --conversation-item-text-color: rgba(255, 255, 255, .8);
+    
+    --conversation-item-me-text-bg-color: whitesmoke;
+    --conversation-item-me-text-box-shadow: 0 .4rem .8rem #0005;
+    --conversation-item-me-text-color: #127475;
+
+    --conversation-item-time-color: rgba(255, 255, 255, .7);
+    --conversation-item-me-time-color: #0e5354;
+
+    --conversation-item-dropdown-toggle-bg-color: white;
+    --conversation-item-dropdown-toggle-outline: transparent;
+    --conversation-item-dropdown-toggle-border: 1px solid white;
+    --conversation-item-dropdown-toggle-hover-bg-color: #0e9594;
+    --conversation-item-dropdown-toggle-hover-text-color: white;
+    --conversation-item-dropdown-toggle-hover-box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+
+    --conversation-item-dropdown-list-bg-color: white;
+    --conversation-item-dropdown-list-box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    --conversation-item-dropdown-list-link-color: black;
+    --conversation-item-dropdown-list-link-hover-bg-color: #cbd5e1;
+    --conversation-item-dropdown-list-link-active-bg-color: black;
+
+    --conversation-divider-color: #0e5354;
+
+    --conversation-form-bg-color: #ffe0b0;
+
+    --conversation-form-input-bg-color: #f1f5f9;
+    --conversation-form-input-border: 1px solid #cbd5e1;
+    --conversation-form-input-outline: transparent;
+
+    --conversation-form-record-color: #94a3b8;
+    --conversation-form-record-bg-color: transparent;
+    --conversation-form-record-outline: transparent;
+    --conversation-form-record-hover-color: #475569;
+
+    --conversation-form-button-bg-color: transparent;
+    --conversation-form-button-outline: transparent;
+    --conversation-form-button-text-color: #94a3b8;
+    --conversation-form-button-hover-bg-color: #f1f5f9;
+    --conversation-form-button-hover-text-color: #475569;
+
+    --conversation-form-submit-bg-color: #64748b;
+    --conversation-form-submit-box-shadow: 0 2px 8px -2px  #64748b;
+    --conversation-form-submit-text-color: white;
+    --conversation-form-submit-hover-bg-color: #475569;
+    --conversation-form-submit-hover-text-color: white;
+    --conversation-form-submit-active-bg-color: #334155;
+    --conversation-form-submit-active-text-color: white;
+
+    --conversation-default-color: #94a3b8;
+
+    --join-call-button-color: black;
+    --join-call-button-bg-color: lightskyblue;
+}
+
+[data-theme="dark"]{
+    --conversation-bg-color: #050402;
+    --conversation-box-shadow: 0 .4rem .8rem #0005;
+    
+    --conversation-top-bg-color:#381162;
+
+    --conversation-back-bg-color: transparent;
+    --conversation-back-text-color: white;
+    --conversation-back-hover-bg-color: rgb(14, 49, 80);
+    --conversation-back-hover-text-color: #127475;
+
+    --conversation-user-status-color: green;
+    --conversation-user-status-link-color: aliceblue;
+    --conversation-user-status-before-bg-color: aliceblue;
+    --conversation-user-status-online-before-bg-color: green;
+    --conversation-user-status-offline-before-bg-color: red;
+
+    --conversation-buttons-bg-color: transparent;
+    --conversation-buttons-outline: transparent;
+    --conversation-buttons-text-color: aliceblue;
+    --conversation-buttons-hover-bg-color: aliceblue;
+    --conversation-buttons-hover-text-color: #;
+
+    --conversation-main-bg-color: #130527;
+
+    --conversation-item-text-bg-color: #ab62ff;
+    --conversation-item-text-box-shadow: 0 .4rem .8rem #0005;
+    --conversation-item-text-color: rgba(255, 255, 255, .8);
+    
+    --conversation-item-me-text-bg-color: #c3fdfa;
+    --conversation-item-me-text-box-shadow: 0 .4rem .8rem #0005;
+    --conversation-item-me-text-color: black;
+
+    --conversation-item-time-color: rgba(255, 255, 255, .7);
+    --conversation-item-me-time-color: #0e5354;
+
+    --conversation-item-dropdown-toggle-bg-color: white;
+    --conversation-item-dropdown-toggle-outline: transparent;
+    --conversation-item-dropdown-toggle-border: 1px solid white;
+    --conversation-item-dropdown-toggle-hover-bg-color: #0e9594;
+    --conversation-item-dropdown-toggle-hover-text-color: white;
+    --conversation-item-dropdown-toggle-hover-box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+
+    --conversation-item-dropdown-list-bg-color: white;
+    --conversation-item-dropdown-list-box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    --conversation-item-dropdown-list-link-color: black;
+    --conversation-item-dropdown-list-link-hover-bg-color: #cbd5e1;
+    --conversation-item-dropdown-list-link-active-bg-color: black;
+
+    --conversation-divider-color: #0e5354;
+
+    --conversation-form-bg-color: #381162;
+
+    --conversation-form-input-bg-color: #f1f5f9;
+    --conversation-form-input-border: 1px solid #cbd5e1;
+    --conversation-form-input-outline: transparent;
+
+    --conversation-form-record-color: #94a3b8;
+    --conversation-form-record-bg-color: transparent;
+    --conversation-form-record-outline: transparent;
+    --conversation-form-record-hover-color: #475569;
+
+    --conversation-form-button-bg-color: transparent;
+    --conversation-form-button-outline: transparent;
+    --conversation-form-button-text-color: #94a3b8;
+    --conversation-form-button-hover-bg-color: #f1f5f9;
+    --conversation-form-button-hover-text-color: #475569;
+
+    --conversation-form-submit-bg-color: #64748b;
+    --conversation-form-submit-box-shadow: 0 2px 8px -2px  #64748b;
+    --conversation-form-submit-text-color: white;
+    --conversation-form-submit-hover-bg-color: #475569;
+    --conversation-form-submit-hover-text-color: white;
+    --conversation-form-submit-active-bg-color: #334155;
+    --conversation-form-submit-active-text-color: white;
+
+    --conversation-default-color: #94a3b8;
+
+    --join-call-button-color: black;
+    --join-call-button-bg-color: lightskyblue;
+}
+
+.conversation {
+    background-color: var(--conversation-bg-color);
+    box-shadow: var(--conversation-box-shadow);
+}
+
+.conversation-top {
+    background-color: var(--conversation-top-bg-color);
+}
+
+.conversation-back {
+    background-color: var(--conversation-back-bg-color);
+    color: var(--conversation-back-text-color);
+}
+
+.conversation-back:hover {
+    background-color: var(--conversation-back-hover-bg-color);
+    color: var(--conversation-back-hover-text-color);
+}
+
+.conversation-user-status {
+    color: var(--conversation-user-status-color);
+}
+
+.conversation-user-status a {
+    color: var(--conversation-user-status-link-color);
+}
+
+.conversation-user-status::before {
+    background-color: var(--conversation-user-status-before-bg-color);
+}
+
+.conversation-user-status.online::before {
+    background-color: var(--conversation-user-status-online-before-bg-color);
+}
+
+.conversation-user-status.offline::before {
+    background-color: var(--conversation-user-status-offline-before-bg-color);
+}
+
+.conversation-buttons > * {
+    background-color: var(--conversation-buttons-bg-color);
+    outline: var(--conversation-buttons-outline);
+    color: var(--conversation-buttons-text-color);
+}
+
+.conversation-buttons > :hover {
+    background-color: var(--conversation-buttons-hover-bg-color);
+    color: var(--conversation-buttons-hover-text-color);
+}
+
+.conversation-main {
+    background-color: var(--conversation-main-bg-color);
+}
+
+.conversation-item-text {
+    background-color: var(--conversation-item-text-bg-color);
+    box-shadow: var(--conversation-item-text-box-shadow);
+    color: var(--conversation-item-text-color);
+}
+
+.conversation-item.me .conversation-item-text {
+    background-color: var(--conversation-item-me-text-bg-color);
+    box-shadow: var(--conversation-item-me-text-box-shadow);
+    color: var(--conversation-item-me-text-color);
+}
+
+.conversation-item-time {
+    color: var(--conversation-item-time-color);
+}
+
+.conversation-item.me .conversation-item-time {
+    color: var(--conversation-item-me-time-color);
+}
+
+.conversation-item-dropdown-toggle {
+    background-color: var(--conversation-item-dropdown-toggle-bg-color);
+    outline: var(--conversation-item-dropdown-toggle-outline);
+    border: var(--conversation-item-dropdown-toggle-border);
+}
+
+.conversation-item-dropdown-toggle:hover {
+    background-color: var(--conversation-item-dropdown-toggle-hover-bg-color);
+    color: var(--conversation-item-dropdown-toggle-hover-text-color);
+    box-shadow: var(--conversation-item-dropdown-toggle-hover-box-shadow);
+}
+
+.conversation-item-dropdown-list {
+    background-color: var(--conversation-item-dropdown-list-bg-color);
+    box-shadow: var(--conversation-item-dropdown-list-box-shadow);
+}
+
+.conversation-item-dropdown-list a {
+    color: var(--conversation-item-dropdown-list-link-color);
+}
+
+.conversation-item-dropdown-list a:hover {
+    background-color: var(--conversation-item-dropdown-list-link-hover-bg-color);
+}
+
+.conversation-item-dropdown-list a:active {
+    background-color: var(--conversation-item-dropdown-list-link-active-bg-color);
+}
+
+.coversation-divider {
+    color: var(--conversation-divider-color);
+}
+
+.conversation-form {
+    background-color: var(--conversation-form-bg-color);
+}
+
+.conversation-form-input {
+    background-color: var(--conversation-form-input-bg-color);
+    border: var(--conversation-form-input-border);
+    outline: var(--conversation-form-input-outline);
+}
+
+.conversation-form-record {
+    color: var(--conversation-form-record-color);
+    background-color: var(--conversation
