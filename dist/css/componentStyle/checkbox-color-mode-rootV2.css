@@ -38,3 +38,14 @@
   opacity:1;
   transform:translateX(-25px);
 }
+
+@media screen and (max-width: 1200px) {
+  #switch-label{
+    top: 10px;
+    right: 50%;
+    /* transform: translateX(-50%); */
+    bottom: unset;
+    left: unset;
+  }
+  
+}
