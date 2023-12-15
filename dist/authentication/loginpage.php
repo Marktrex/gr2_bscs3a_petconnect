@@ -66,8 +66,8 @@
                 <div class="mt-3 relative">
                     <i class="fa-solid fa-lock icon custom-important-text
                             absolute top-[3px] "></i>
-                    <input class="custom-input  " type="password" placeholder="Password" name="password" id="password"
-                        required value="<?php echo $pass?>">
+                    <input class="custom-input  " type="password" placeholder="Password" name="password" id="password" required value="<?php echo $pass?>">
+                        
                 </div>
                 <!-- checkbox -->
                 <div class="flex justify-between

@@ -86,7 +86,6 @@ main {
 
 .button {
   background-color: var(--button-bg-color);
-  color: var(--button-text-color);
 }
 
 .button:hover {
