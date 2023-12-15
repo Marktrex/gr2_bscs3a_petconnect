@@ -11,6 +11,7 @@
   border-radius:30px;
   padding:10px;
   cursor:pointer;
+  z-index: 100;
 }
 
 .fa-sun{
