@@ -47,3 +47,7 @@ composer dump-autoload
 3. change the root folder if necessary
     - ung sa signup d pa napapalitan ung link
 
+
+## open sa localhost dapat naka setup na ung sql:
+http://localhost/gr2_bscs3a_petconnect/dist/user/
+
