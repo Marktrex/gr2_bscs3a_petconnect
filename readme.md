@@ -1,4 +1,7 @@
 # Pet Connect
+A pet adoption web system. Includes real time feature developed using web-sockets
+
+## development instruction
 
 ung instructions sa sql script nasa folder niya
 /sqldatabase
